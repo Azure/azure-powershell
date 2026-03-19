@@ -8,44 +8,19 @@ schema: 2.0.0
 # New-AzDnsResolverOutboundEndpoint
 
 ## SYNOPSIS
-Create an outbound endpoint for a DNS resolver.
+Creates or updates an outbound endpoint for a DNS resolver.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzDnsResolverOutboundEndpoint -Name <String> -DnsResolverName <String> -ResourceGroupName <String>
+New-AzDnsResolverOutboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -Location <String> -SubnetId <String>
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
-```
-New-AzDnsResolverOutboundEndpoint -Name <String> -DnsResolverName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzDnsResolverOutboundEndpoint -Name <String> -DnsResolverName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityDnsResolverExpanded
-```
-New-AzDnsResolverOutboundEndpoint -Name <String> -DnsResolverInputObject <IDnsResolverIdentity>
- [-IfMatch <String>] [-IfNoneMatch <String>] -Location <String> -SubnetId <String> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Create an outbound endpoint for a DNS resolver.
+Creates or updates an outbound endpoint for a DNS resolver.
 
 ## EXAMPLES
 
@@ -108,27 +83,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsResolverInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: CreateViaIdentityDnsResolverExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DnsResolverName
 The name of the DNS resolver.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -171,42 +131,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityDnsResolverExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -252,7 +182,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -267,7 +197,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityDnsResolverExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -283,7 +213,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -298,7 +228,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityDnsResolverExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -344,11 +274,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IOutboundEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IOutboundEndpoint
 
 ## NOTES
 

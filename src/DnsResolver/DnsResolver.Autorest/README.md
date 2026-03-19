@@ -71,8 +71,8 @@ commit: 6286ea80b3ac7eecfc2f230d65b2034a656f10bf
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2023-07-01-preview/dnsresolver.json
-  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2023-07-01-preview/dnsresolverpolicy.json
+  - C:/Git/jamesvoong-azure-rest-api-specs/specification/dnsresolver/resource-manager/Microsoft.Network/DnsResolver/preview/2025-10-01-preview/openapi.json
+  - C:/Git/jamesvoong-azure-rest-api-specs/specification/dnsresolver/resource-manager/Microsoft.Network/DnsResolver/preview/2025-10-01-preview/openapi.json
 
 module-version: 0.2.9
 title: DnsResolver

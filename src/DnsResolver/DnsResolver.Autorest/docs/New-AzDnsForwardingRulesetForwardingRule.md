@@ -8,42 +8,20 @@ schema: 2.0.0
 # New-AzDnsForwardingRulesetForwardingRule
 
 ## SYNOPSIS
-Create a forwarding rule in a DNS forwarding ruleset.
+Creates or updates a forwarding rule in a DNS forwarding ruleset.
 
 ## SYNTAX
 
-### CreateViaIdentityDnsForwardingRulesetExpanded (Default)
-```
-New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetInputObject <IDnsResolverIdentity>
- -Name <String> -DomainName <String> -TargetDnsServer <ITargetDnsServer[]> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-ForwardingRuleState <String>] [-Metadata <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
 ```
 New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
  -ResourceGroupName <String> -DomainName <String> -TargetDnsServer <ITargetDnsServer[]>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-ForwardingRuleState <String>]
- [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a forwarding rule in a DNS forwarding ruleset.
+Creates or updates a forwarding rule in a DNS forwarding ruleset.
 
 ## EXAMPLES
 
@@ -93,27 +71,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsForwardingRulesetInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: CreateViaIdentityDnsForwardingRulesetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DnsForwardingRulesetName
 The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -128,7 +91,7 @@ The domain name for the forwarding rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityDnsForwardingRulesetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -142,8 +105,8 @@ Accept wildcard characters: False
 The state of forwarding rule.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityDnsForwardingRulesetExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ForwardingRuleState
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -186,42 +149,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Metadata
 Metadata attached to the forwarding rule.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityDnsForwardingRulesetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -252,7 +185,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -268,7 +201,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -280,10 +213,11 @@ Accept wildcard characters: False
 
 ### -TargetDnsServer
 DNS servers to forward the DNS query to.
+To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.ITargetDnsServer[]
-Parameter Sets: CreateExpanded, CreateViaIdentityDnsForwardingRulesetExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ITargetDnsServer[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -329,11 +263,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IForwardingRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IForwardingRule
 
 ## NOTES
 

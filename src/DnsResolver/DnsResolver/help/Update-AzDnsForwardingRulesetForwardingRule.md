@@ -8,49 +8,27 @@ schema: 2.0.0
 # Update-AzDnsForwardingRulesetForwardingRule
 
 ## SYNOPSIS
-Update a forwarding rule in a DNS forwarding ruleset.
+Updates a forwarding rule in a DNS forwarding ruleset.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-ForwardingRuleState <String>]
- [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] -JsonString <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityDnsForwardingRulesetExpanded
-```
-Update-AzDnsForwardingRulesetForwardingRule -Name <String>
- -DnsForwardingRulesetInputObject <IDnsResolverIdentity> [-IfMatch <String>] [-ForwardingRuleState <String>]
- [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsForwardingRulesetForwardingRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-ForwardingRuleState <String>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
+ [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a forwarding rule in a DNS forwarding ruleset.
+Updates a forwarding rule in a DNS forwarding ruleset.
 
 ## EXAMPLES
 
@@ -99,27 +77,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsForwardingRulesetInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: UpdateViaIdentityDnsForwardingRulesetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DnsForwardingRulesetName
 The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -133,8 +96,8 @@ Accept wildcard characters: False
 The state of forwarding rule.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsForwardingRulesetExpanded, UpdateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ForwardingRuleState
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -163,6 +126,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -176,42 +140,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Metadata
 Metadata attached to the forwarding rule.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsForwardingRulesetExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -226,7 +160,7 @@ The name of the forwarding rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityDnsForwardingRulesetExpanded
+Parameter Sets: UpdateExpanded
 Aliases: ForwardingRuleName
 
 Required: True
@@ -242,7 +176,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -258,7 +192,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -270,10 +204,11 @@ Accept wildcard characters: False
 
 ### -TargetDnsServer
 DNS servers to forward the DNS query to.
+To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.ITargetDnsServer[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsForwardingRulesetExpanded, UpdateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ITargetDnsServer[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -323,7 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IForwardingRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IForwardingRule
 
 ## NOTES
 

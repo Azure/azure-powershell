@@ -20,13 +20,6 @@ Remove-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyName <String> -Na
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityDnsResolverPolicy
-```
-Remove-AzDnsResolverPolicyVirtualNetworkLink -Name <String>
- -DnsResolverPolicyInputObject <IDnsResolverIdentity> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### DeleteViaIdentity
 ```
 Remove-AzDnsResolverPolicyVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
@@ -88,21 +81,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsResolverPolicyInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: DeleteViaIdentityDnsResolverPolicy
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DnsResolverPolicyName
 The name of the DNS resolver policy.
 
@@ -137,6 +115,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -155,7 +134,7 @@ The name of the DNS resolver policy virtual network link for the DNS resolver po
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityDnsResolverPolicy
+Parameter Sets: Delete
 Aliases: DnsResolverPolicyVirtualNetworkLinkName
 
 Required: True
