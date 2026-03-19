@@ -532,6 +532,11 @@ directive:
       parameter-name: BackupInstanceName
     set:
       parameter-description: The name of the deleted backup instance
+  - where:
+      verb: Update
+      subject: ^BackupInstance$
+      variant: ^UpdateViaIdentityBackupVaultExpanded$|^UpdateViaIdentityExpanded$
+    remove: true
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges"].post
     transform: $["description"] = "Finds the valid recovery point in time ranges for the restore."
@@ -591,6 +596,11 @@ directive:
       subject: FetchCrossRegionRestoreJob      
     set:
       subject: CrossRegionRestoreJob
+  - where:
+      verb: Update
+      subject: ^BackupInstance$
+      variant: ^UpdateExpanded$
+    hide: true
   - where:
       verb: Update
       subject: ^BackupInstance$

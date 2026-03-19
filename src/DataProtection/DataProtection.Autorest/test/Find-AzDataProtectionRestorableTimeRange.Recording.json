@@ -2,12 +2,12 @@
   "Find-AzDataProtectionRestorableTimeRange+[NoContext]+PostExpanded+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/backupInstances?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/backupInstances?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/backupInstances?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "815c7bed-5fcf-458b-bd70-cf92ccf48cd7" ],
+        "x-ms-unique-id": [ "141" ],
+        "x-ms-client-request-id": [ "f368f942-55f0-4555-8f93-908af61ac524" ],
         "CommandName": [ "Get-AzDataProtectionBackupInstance" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupInstance_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,17 +22,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/eastus2euap/2c6f385d-90e8-4519-a775-1cbba6b2be5f" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/westus2/751452cc-34cb-41b3-8863-44ec6b5414c1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-request-id": [ "77715a53-6f25-4543-86d5-9d83fa9b6e13" ],
-        "x-ms-correlation-request-id": [ "77715a53-6f25-4543-86d5-9d83fa9b6e13" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260104T201429Z:77715a53-6f25-4543-86d5-9d83fa9b6e13" ],
+        "x-ms-request-id": [ "0cb8db11-3c11-4e1a-9004-a8c0f2dbff11" ],
+        "x-ms-correlation-request-id": [ "0cb8db11-3c11-4e1a-9004-a8c0f2dbff11" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260213T044210Z:0cb8db11-3c11-4e1a-9004-a8c0f2dbff11" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 49EEDDBEDD0D438AA9638B4F4A3284AE Ref B: PNQ231110908036 Ref C: 2026-01-04T20:14:27Z" ],
-        "Date": [ "Sun, 04 Jan 2026 20:14:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 897949171AE24AF398F991C4DD40BF53 Ref B: SG2AA1040516054 Ref C: 2026-02-13T04:42:09Z" ],
+        "Date": [ "Fri, 13 Feb 2026 04:42:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "9474" ],
@@ -47,7 +46,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad/backupInstances/afspstesttargetsa-afspstesttargetsa-5db8ae64-8f88-4e82-9104-8d69c925b05e/findRestorableTimeRanges?api-version=2025-09-01",
-      "Content": "{\r\n  \"sourceDataStoreType\": \"OperationalStore\",\r\n  \"startTime\": \"2025-12-06T01:44:28.0000000Z\",\r\n  \"endTime\": \"2026-01-05T01:44:28.0000000Z\"\r\n}",
+      "Content": "{\r\n  \"sourceDataStoreType\": \"OperationalStore\",\r\n  \"startTime\": \"2026-01-14T10:12:09.0000000Z\",\r\n  \"endTime\": \"2026-02-13T10:12:09.0000000Z\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -61,24 +60,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/eastus2euap/59ad0d21-bea4-4432-ba4c-c5af37aa670f" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/westus2/cddb5d0a-f868-43ef-8e86-cdec49b1ded3" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-request-id": [ "bb22bd5d-6a15-497c-a19a-988396087bde" ],
-        "x-ms-correlation-request-id": [ "bb22bd5d-6a15-497c-a19a-988396087bde" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260104T201433Z:bb22bd5d-6a15-497c-a19a-988396087bde" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-request-id": [ "a90996dc-df90-4f18-95a6-ef9046c637d3" ],
+        "x-ms-correlation-request-id": [ "a90996dc-df90-4f18-95a6-ef9046c637d3" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260213T044213Z:a90996dc-df90-4f18-95a6-ef9046c637d3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E3F9833E0CE44C838933783FE2343AB9 Ref B: PNQ231110908036 Ref C: 2026-01-04T20:14:30Z" ],
-        "Date": [ "Sun, 04 Jan 2026 20:14:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CFD5DB123363415EB6FDA84C342380E3 Ref B: SG2AA1040516054 Ref C: 2026-02-13T04:42:10Z" ],
+        "Date": [ "Fri, 13 Feb 2026 04:42:13 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "389" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"restorableTimeRanges\":[{\"startTime\":\"2025-12-06T01:44:28.0000000Z\",\"endTime\":\"2026-01-04T20:14:32.8003874Z\",\"objectType\":\"RestorableTimeRange\"}],\"objectType\":\"AzureBackupFindRestorableTimeRangesResponse\"},\"id\":\"afspstesttargetsa-afspstesttargetsa-5db8ae64-8f88-4e82-9104-8d69c925b05e\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges\"}",
+      "Content": "{\"properties\":{\"restorableTimeRanges\":[{\"startTime\":\"2026-01-14T10:12:09.0000000Z\",\"endTime\":\"2026-02-13T04:42:13.7815243Z\",\"objectType\":\"RestorableTimeRange\"}],\"objectType\":\"AzureBackupFindRestorableTimeRangesResponse\"},\"id\":\"afspstesttargetsa-afspstesttargetsa-5db8ae64-8f88-4e82-9104-8d69c925b05e\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges\"}",
       "isContentBase64": false
     }
   }
