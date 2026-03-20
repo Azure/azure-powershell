@@ -14,6 +14,7 @@ Describe 'Remove-AzDnsResolverDomainList' {
         if ($TestMode -ne 'playback') {
             Select-AzSubscription -SubscriptionId $subscriptionId
             New-AzResourceGroup -Name $rgName -Location $location
+            New-AzDnsResolverDomainList -Name "domainlist-rm-1" -ResourceGroupName $rgName -Location $location -Domain @("contoso.com.")
         }
     }
     AfterAll {
@@ -22,9 +23,6 @@ Describe 'Remove-AzDnsResolverDomainList' {
         }
     }
     It 'Delete a domain list' {
-        if ($TestMode -ne 'playback') {
-            New-AzDnsResolverDomainList -Name "domainlist-rm-1" -ResourceGroupName $rgName -Location $location -Domain @("contoso.com.")
-        }
         Remove-AzDnsResolverDomainList -Name "domainlist-rm-1" -ResourceGroupName $rgName
         { Get-AzDnsResolverDomainList -Name "domainlist-rm-1" -ResourceGroupName $rgName } | Should -Throw
     }

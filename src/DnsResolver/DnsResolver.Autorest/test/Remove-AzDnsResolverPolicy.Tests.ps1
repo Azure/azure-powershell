@@ -14,6 +14,7 @@ Describe 'Remove-AzDnsResolverPolicy' {
         if ($TestMode -ne 'playback') {
             Select-AzSubscription -SubscriptionId $subscriptionId
             New-AzResourceGroup -Name $rgName -Location $location
+            New-AzDnsResolverPolicy -Name "policy-rm-1" -ResourceGroupName $rgName -Location $location
         }
     }
     AfterAll {
@@ -22,9 +23,6 @@ Describe 'Remove-AzDnsResolverPolicy' {
         }
     }
     It 'Delete a DNS resolver policy' {
-        if ($TestMode -ne 'playback') {
-            New-AzDnsResolverPolicy -Name "policy-rm-1" -ResourceGroupName $rgName -Location $location
-        }
         Remove-AzDnsResolverPolicy -Name "policy-rm-1" -ResourceGroupName $rgName
         { Get-AzDnsResolverPolicy -Name "policy-rm-1" -ResourceGroupName $rgName } | Should -Throw
     }
