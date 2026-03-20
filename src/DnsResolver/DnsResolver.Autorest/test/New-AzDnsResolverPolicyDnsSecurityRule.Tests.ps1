@@ -1,34 +1,26 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzDnsResolverPolicyDnsSecurityRule'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzDnsResolverPolicyDnsSecurityRule.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
-}
+$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzDnsResolverPolicyDnsSecurityRule.Recording.json'
+$currentPath = $PSScriptRoot
+while(-not $mockingPath) { $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File; $currentPath = Split-Path -Path $currentPath -Parent }
+. ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDnsResolverPolicyDnsSecurityRule' {
-    It 'Create DNS security rule' {
-        # ARRANGE
-        $dnsResolverPolicyName = "psdnsresolverpolicyforrulename0j0cdzg";
-        $dnsSecurityRuleName = "psdnssecurityrulename0j0cdzg";
-        $dnsResolverDomainListName = "psdnsresolverdomainlistforrulename0j0cdzg";
-        $resourceGroupName = "powershell-test-rg-debug-new";
-        $location = "westus2";
-        $resolverPolicy = New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
-        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
-
-        # ACT
-        $securityRule = New-AzDnsResolverPolicyDnsSecurityRule -Name $dnsSecurityRuleName -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location -DnsResolverDomainList @{id = $domainList.Id;} -DnsSecurityRuleState "Enabled" -ActionType "Block" -ActionBlockResponseCode "SERVFAIL" -Priority 100
-
-        # ASSERT
-        {Get-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName $dnsResolverPolicyName -DnsSecurityRuleName $dnsSecurityRuleName -ResourceGroupName $resourceGroupName } | Should -Not -Throw
+    BeforeAll {
+        $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'; $location = 'westus2'
+        $rgName = "ps-secrule-new-$(Get-Random -Max 99999)"
+        if ($TestMode -ne 'playback') {
+            Select-AzSubscription -SubscriptionId $subscriptionId
+            New-AzResourceGroup -Name $rgName -Location $location
+            New-AzDnsResolverPolicy -Name "policy-secrule-1" -ResourceGroupName $rgName -Location $location
+            New-AzDnsResolverDomainList -Name "domainlist-secrule-1" -ResourceGroupName $rgName -Location $location -Domain @("contoso.com.")
+        }
+    }
+    AfterAll {
+        if ($TestMode -ne 'playback') { Remove-AzResourceGroup -Name $rgName -ErrorAction SilentlyContinue -AsJob | Out-Null }
+    }
+    It 'Create a DNS security rule' {
+        $dlId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/dnsResolverDomainLists/domainlist-secrule-1"
+        $rule = New-AzDnsResolverPolicyDnsSecurityRule -Name "secrule-new-1" -DnsResolverPolicyName "policy-secrule-1" -ResourceGroupName $rgName -Location $location -DnsSecurityRuleState "Enabled" -ActionType "Block" -Priority 100 -DnsResolverDomainList @(@{id = $dlId})
+        $rule.ProvisioningState | Should -Be "Succeeded"
+        $rule.Name | Should -Be "secrule-new-1"
     }
 }
