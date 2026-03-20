@@ -63,12 +63,13 @@ Describe 'Get-AzFileShareSnapshot' {
                 ResourceName = $env.fileShareName01
                 Name = $snapshotName
             }
-            $retrieved = Get-AzFileShareSnapshot -InputObject $inputObj
+            $identity = [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.FileShareIdentity]$inputObj
+            $retrieved = Get-AzFileShareSnapshot -InputObject $identity
             $retrieved | Should -Not -BeNullOrEmpty
             $retrieved.Name | Should -Be $snapshotName
             
             # Clean up
-            Remove-AzFileShareSnapshot -InputObject $inputObj
+            Remove-AzFileShareSnapshot -InputObject $identity
         } | Should -Not -Throw
     }
 
@@ -88,7 +89,8 @@ Describe 'Get-AzFileShareSnapshot' {
                 ResourceGroupName = $env.resourceGroup
                 ResourceName = $env.fileShareName01
             }
-            $retrieved = Get-AzFileShareSnapshot -FileShareInputObject $fileShareInputObj -Name $snapshotName
+            $fileShareIdentity = [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.FileShareIdentity]$fileShareInputObj
+            $retrieved = Get-AzFileShareSnapshot -FileShareInputObject $fileShareIdentity -Name $snapshotName
             $retrieved | Should -Not -BeNullOrEmpty
             $retrieved.Name | Should -Be $snapshotName
             

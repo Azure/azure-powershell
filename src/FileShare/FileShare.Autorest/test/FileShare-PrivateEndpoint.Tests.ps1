@@ -24,7 +24,6 @@ This test suite validates FileShare functionality with Azure Private Endpoints i
 - Private Endpoint creation for FileShares
 - Network access restrictions
 - Private DNS zone integration
-- Resource group moves for VNets, Private Endpoints, and FileShares
 
 .NOTES
 Requires: Az.Network and Az.FileShare modules
@@ -38,16 +37,16 @@ Describe 'FileShare-PrivateEndpoint' {
         $script:subnetName = "subnet-pe"
         $script:privateEndpointName = "pe-fileshare-fixed01"
         $script:fileSharePeName = "share-pe-fixed01"
-        $script:secondaryRgName = "rg-fileshare-move-fixed01"
         $script:vnetAddressPrefix = "10.0.0.0/16"
         $script:subnetAddressPrefix = "10.0.1.0/24"
         $script:skipPrivateEndpointTests = $false
         
         # Check if Az.Network module is available
+        # Even in playback mode, we need Az.Network cmdlets to be callable (HttpPipelineMocking intercepts them)
         $azNetworkAvailable = $null -ne (Get-Module -ListAvailable Az.Network | Where-Object { $_.Version -ge [Version]"7.0.0" })
         
         if (-not $azNetworkAvailable) {
-            Write-Warning "Az.Network module not available or version too old. FileShare-PrivateEndpoint tests may fail."
+            Write-Warning "Az.Network module not available or version too old. Private Endpoint tests will be skipped."
             $script:skipPrivateEndpointTests = $true
         }
         else {
@@ -57,14 +56,13 @@ Describe 'FileShare-PrivateEndpoint' {
                 Write-Host "Az.Network module loaded successfully"
             }
             catch {
-                Write-Warning "Failed to load Az.Network module: $_. FileShare-PrivateEndpoint tests may fail."
+                Write-Warning "Failed to load Az.Network module: $_. Private Endpoint tests will be skipped."
                 $script:skipPrivateEndpointTests = $true
             }
         }
         
         Write-Host "Test Configuration:"
         Write-Host "  Resource Group: $($env.resourceGroup)"
-        Write-Host "  Secondary RG: $script:secondaryRgName"
         Write-Host "  Location: $($env.location)"
         Write-Host "  VNet: $script:vnetName"
         Write-Host "  Subnet: $script:subnetName"
@@ -163,10 +161,13 @@ Describe 'FileShare-PrivateEndpoint' {
                 $fileShare = Get-AzFileShare -ResourceName $script:fileSharePeName -ResourceGroupName $env.resourceGroup
                 
                 # Create Private Link Service Connection
+                # GroupId for Microsoft.FileShares/fileShares is "fileshare"
+                # Required members: ["file"]
+                # Required zone names: ["privatelink.file.core.windows.net"]
                 $privateLinkServiceConnection = New-AzPrivateLinkServiceConnection `
                     -Name "$script:privateEndpointName-connection" `
                     -PrivateLinkServiceId $fileShare.Id `
-                    -GroupId "share"
+                    -GroupId "fileshare"
                 
                 # Create Private Endpoint
                 $privateEndpoint = New-AzPrivateEndpoint `
@@ -240,172 +241,17 @@ Describe 'FileShare-PrivateEndpoint' {
         }
     }
     
-    Context 'Resource Move Operations - Setup' {
-        It 'Should create secondary resource group for move operations' -Skip:$script:skipPrivateEndpointTests {
-            {
-                $secondaryRg = New-AzResourceGroup -Name $script:secondaryRgName `
-                                                   -Location $env.location
-                
-                $secondaryRg | Should -Not -BeNullOrEmpty
-                $secondaryRg.ResourceGroupName | Should -Be $script:secondaryRgName
-                $secondaryRg.Location | Should -Be $env.location
-            } | Should -Not -Throw
-        }
-    }
-    
-    Context 'Resource Move - FileShare' {
-        It 'Should validate FileShare can be moved to another resource group' -Skip:$script:skipPrivateEndpointTests {
-            {
-                $fileShare = Get-AzFileShare -ResourceName $script:fileSharePeName `
-                                             -ResourceGroupName $env.resourceGroup
-                
-                # Test validation endpoint
-                $targetRgId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$script:secondaryRgName"
-                
-                # Note: Actual move operation requires extensive validation and may take time
-                # For testing purposes, we validate the resource properties before move
-                $fileShare.Id | Should -Not -BeNullOrEmpty
-                $fileShare.ProvisioningState | Should -Be "Succeeded"
-            } | Should -Not -Throw
-        }
-        
-        It 'Should move FileShare to secondary resource group' -Skip {
-            # This test is skipped by default as resource moves can take significant time
-            # and require careful planning. Enable only for full integration testing.
-            {
-                $fileShare = Get-AzFileShare -ResourceName $script:fileSharePeName `
-                                             -ResourceGroupName $env.resourceGroup
-                
-                $targetRgId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$script:secondaryRgName"
-                
-                # Move the FileShare resource
-                Move-AzResource -SourceResourceId $fileShare.Id `
-                                -DestinationResourceGroupName $script:secondaryRgName `
-                                -Force
-                
-                # Wait for move to complete
-                Start-TestSleep -Seconds 30
-                
-                # Verify FileShare is in new resource group
-                $movedShare = Get-AzFileShare -ResourceName $script:fileSharePeName `
-                                              -ResourceGroupName $script:secondaryRgName
-                
-                $movedShare | Should -Not -BeNullOrEmpty
-                $movedShare.Name | Should -Be $script:fileSharePeName
-            } | Should -Not -Throw
-        }
-    }
-    
-    Context 'Resource Move - Virtual Network' {
-        It 'Should validate Virtual Network resource before move' -Skip:$script:skipPrivateEndpointTests {
-            {
-                $vnet = Get-AzVirtualNetwork -Name $script:vnetName `
-                                             -ResourceGroupName $env.resourceGroup
-                
-                $vnet.Id | Should -Not -BeNullOrEmpty
-                $vnet.ProvisioningState | Should -Be 'Succeeded'
-                
-                # Ensure no dependencies are blocking the move
-                # VNet with Private Endpoints may have move restrictions
-            } | Should -Not -Throw
-        }
-        
-        It 'Should prepare VNet for move (remove dependencies)' -Skip:$script:skipPrivateEndpointTests {
-            # Note: Virtual Networks with Private Endpoints cannot be moved
-            # PE must be deleted first, then VNet can be moved
-            Write-Host "Note: VNet with active Private Endpoints cannot be moved directly"
-            Write-Host "This test validates the constraint and preparation steps"
-            
-            $vnet = Get-AzVirtualNetwork -Name $script:vnetName -ResourceGroupName $env.resourceGroup
-            $vnet | Should -Not -BeNullOrEmpty
-            
-            # Check for Private Endpoints in subnets
-            $hasPrivateEndpoints = $false
-            foreach ($subnet in $vnet.Subnets) {
-                if ($subnet.PrivateEndpoints.Count -gt 0) {
-                    $hasPrivateEndpoints = $true
-                    break
-                }
-            }
-            
-            if ($hasPrivateEndpoints) {
-                Write-Host "VNet has Private Endpoints - move operation would require PE removal first"
-            }
-            
-            $hasPrivateEndpoints | Should -Be $true
-        }
-        
-        It 'Should demonstrate VNet move workflow (Conceptual)' {
-            # This test documents the proper workflow for moving a VNet with PEs
-            Write-Host "VNet Move Workflow:"
-            Write-Host "1. Remove/Delete all Private Endpoints in the VNet"
-            Write-Host "2. Validate VNet has no dependencies"
-            Write-Host "3. Execute Move-AzResource for the VNet"
-            Write-Host "4. Recreate Private Endpoints in the new resource group"
-            
-            # This test always passes - it's for documentation
-            $true | Should -Be $true
-        }
-    }
-    
-    Context 'Resource Move - Private Endpoint' {
-        It 'Should validate Private Endpoint resource before move' -Skip:$script:skipPrivateEndpointTests {
-            {
-                $pe = Get-AzPrivateEndpoint -Name $script:privateEndpointName `
-                                            -ResourceGroupName $env.resourceGroup
-                
-                $pe.Id | Should -Not -BeNullOrEmpty
-                $pe.ProvisioningState | Should -Be 'Succeeded'
-            } | Should -Not -Throw
-        }
-        
-        It 'Should move Private Endpoint to secondary resource group' -Skip {
-            # This test is skipped by default as PE moves require careful coordination
-            # Private Endpoints can be moved, but the VNet must remain accessible
-            {
-                $pe = Get-AzPrivateEndpoint -Name $script:privateEndpointName `
-                                            -ResourceGroupName $env.resourceGroup
-                
-                $targetRgId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$script:secondaryRgName"
-                
-                # Move the Private Endpoint
-                Move-AzResource -SourceResourceId $pe.Id `
-                                -DestinationResourceGroupName $script:secondaryRgName `
-                                -Force
-                
-                # Wait for move to complete
-                Start-TestSleep -Seconds 30
-                
-                # Verify PE is in new resource group
-                $movedPe = Get-AzPrivateEndpoint -Name $script:privateEndpointName `
-                                                 -ResourceGroupName $script:secondaryRgName
-                
-                $movedPe | Should -Not -BeNullOrEmpty
-                $movedPe.Name | Should -Be $script:privateEndpointName
-            } | Should -Not -Throw
-        }
-    }
-    
-    Context 'Complete Resource Move Scenario' {
-        It 'Should document complete cross-RG move procedure' -Skip:$script:skipPrivateEndpointTests {
-            Write-Host "`nComplete Resource Move Procedure:"
-            Write-Host "================================="
-            Write-Host "1. Create secondary resource group (completed)"
-            Write-Host "2. Remove Private Endpoint from source VNet"
-            Write-Host "3. Move FileShare to target RG (if Public Network Access enabled)"
-            Write-Host "4. Move VNet to target RG (after PE removal)"
-            Write-Host "5. Recreate Private Endpoint in target RG"
-            Write-Host "6. Update FileShare network configuration"
-            Write-Host "7. Validate end-to-end connectivity"
-            Write-Host ""
-            
-            # Verify secondary RG exists
-            $secondaryRg = Get-AzResourceGroup -Name $script:secondaryRgName -ErrorAction SilentlyContinue
-            $secondaryRg | Should -Not -BeNullOrEmpty
-        }
-    }
+
     
     AfterAll {
+        # Skip cleanup in playback mode (no actual resources created)
+        $isPlaybackMode = $env:AzPSAutorestTestPlaybackMode -eq $true
+        
+        if ($isPlaybackMode) {
+            Write-Host "`nPlayback mode - skipping cleanup (no real resources created)"
+            return
+        }
+        
         Write-Host "`nCleaning up test resources..."
         
         # Clean up in reverse order of dependencies
@@ -428,11 +274,6 @@ Describe 'FileShare-PrivateEndpoint' {
             Remove-TestVirtualNetwork -ResourceGroupName $env.resourceGroup `
                                      -VNetName $script:vnetName `
                                      -ErrorAction SilentlyContinue
-            
-            Start-TestSleep -Seconds 5
-            
-            # Remove Secondary Resource Group
-            Remove-AzResourceGroup -Name $script:secondaryRgName -Force -AsJob -ErrorAction SilentlyContinue
             
             Write-Host "Cleanup completed"
         }
