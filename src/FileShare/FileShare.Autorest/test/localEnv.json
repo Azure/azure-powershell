@@ -4,7 +4,6 @@
   "fileShareName03": "testshare03",
   "subnetAddressPrefix": "10.0.1.0/24",
   "testMetadataKey": "environment",
-  "storageAccountName": "stfilesharetest",
   "testPublicNetworkAccessDisabled": "Disabled",
   "location": "eastasia",
   "testPublicNetworkAccess": "Enabled",
