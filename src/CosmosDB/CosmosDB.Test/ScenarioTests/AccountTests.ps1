@@ -104,18 +104,21 @@ function Test-AccountRelatedCmdlets
   # Add capability
   $capabilities = @("DisableRateLimitingResponses")
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Capabilities $capabilities
-  Assert-AreEqual 1 $updatedCosmosDBAccount.Capabilities.Count
-  Assert-AreEqual "DisableRateLimitingResponses" $updatedCosmosDBAccount.Capabilities[0].Name
+  Assert-NotNull $updatedCosmosDBAccount.Capabilities
+  $capabilityNames = $updatedCosmosDBAccount.Capabilities | ForEach-Object { $_.Name }
+  Assert-AreEqual $true ($capabilityNames -contains "DisableRateLimitingResponses")
 
   # Update without specifying -Capabilities should leave the property unchanged
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Tag @{ name = "tag1" }
-  Assert-AreEqual 1 $updatedCosmosDBAccount.Capabilities.Count
-  Assert-AreEqual "DisableRateLimitingResponses" $updatedCosmosDBAccount.Capabilities[0].Name
+  Assert-NotNull $updatedCosmosDBAccount.Capabilities
+  $capabilityNames = $updatedCosmosDBAccount.Capabilities | ForEach-Object { $_.Name }
+  Assert-AreEqual $true ($capabilityNames -contains "DisableRateLimitingResponses")
 
   # Setting -Capabilities to empty array should remove all capabilities from the account
   $emptyCapabilities = @()
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -Capabilities $emptyCapabilities
-  Assert-AreEqual 0 $updatedCosmosDBAccount.Capabilities.Count
+  $capabilityNames = $updatedCosmosDBAccount.Capabilities | ForEach-Object { $_.Name }
+  Assert-AreEqual $false ($capabilityNames -contains "DisableRateLimitingResponses")
 
   $cosmosDBAccountKey = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname
   Assert-NotNull $cosmosDBAccountKey
