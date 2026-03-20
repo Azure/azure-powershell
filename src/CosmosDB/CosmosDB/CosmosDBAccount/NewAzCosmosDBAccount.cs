@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public PSLocation[] LocationObject { get; set; }
         
         // As of 03082022, using this list only for Mongo Accounts >= 3.6
-        [Parameter(Mandatory = false, HelpMessage = Constants.LocationHelpMessage)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.CapabilitiesHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string[] Capabilities { get; set; }
 
