@@ -51,6 +51,7 @@ function setupEnv() {
     # --- Names for New tests (NOT created here; the tests create them) ---
     $env['ServiceGroupNameForNew'] = 'testsgnew' + $env.RandomString
     $env['ServiceGroupNameForNewJson'] = 'testsgnewjson' + $env.RandomString
+    $env['ServiceGroupNameForNewJsonFile'] = 'testsgnewjsonf' + $env.RandomString
     $env['ChildServiceGroupNameForNew'] = 'testsgchildnew' + $env.RandomString
 
     # --- Resources for Get tests ---
@@ -86,6 +87,7 @@ function cleanupEnv() {
     # Delete children before parents
     Remove-AzServiceGroup -Name $env.ChildServiceGroupName -ErrorAction SilentlyContinue
     Remove-AzServiceGroup -Name $env.ChildServiceGroupNameForNew -ErrorAction SilentlyContinue
+    Remove-AzServiceGroup -Name $env.ServiceGroupNameForNewJsonFile -ErrorAction SilentlyContinue
     Remove-AzServiceGroup -Name $env.ServiceGroupNameForNewJson -ErrorAction SilentlyContinue
     Remove-AzServiceGroup -Name $env.ServiceGroupNameForNew -ErrorAction SilentlyContinue
     Remove-AzServiceGroup -Name $env.ServiceGroupNameToDeleteViaIdentity -ErrorAction SilentlyContinue

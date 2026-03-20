@@ -46,12 +46,11 @@ directive:
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
-  # Following two directives are v4 specific
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$
     remove: true
   # Remove the Set-* cmdlets as they are not supported
   - where:

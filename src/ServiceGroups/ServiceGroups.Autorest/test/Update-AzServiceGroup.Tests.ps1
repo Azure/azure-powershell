@@ -29,14 +29,18 @@ Describe 'Update-AzServiceGroup' {
         $serviceGroup.DisplayName | Should -Be 'Updated Via JSON'
     }
 
-    It 'UpdateViaIdentityExpanded' {
-        $sgObj = Get-AzServiceGroup -Name $env.ServiceGroupNameToUpdate
-        # Inspect the object being piped to understand conversion
-        Write-Host "sgObj type: $($sgObj.GetType().FullName)"
-        Write-Host "sgObj.Id: $($sgObj.Id)"
-        Write-Host "sgObj.Name: $($sgObj.Name)"
-        $serviceGroup = $sgObj | Update-AzServiceGroup -DisplayName 'Updated Via Identity'
-        $serviceGroup | Should -Not -BeNullOrEmpty
-        $serviceGroup.DisplayName | Should -Be 'Updated Via Identity'
+    It 'UpdateViaJsonFilePath' {
+        $jsonContent = '{"properties":{"displayName":"Updated Via JSON File"}}'
+        $jsonFilePath = Join-Path -Path $PSScriptRoot -ChildPath 'Update-AzServiceGroup-Params.json'
+        $jsonContent | Out-File -FilePath $jsonFilePath -Encoding utf8
+        try {
+            $serviceGroup = Update-AzServiceGroup -Name $env.ServiceGroupNameToUpdate -JsonFilePath $jsonFilePath
+            $serviceGroup | Should -Not -BeNullOrEmpty
+            $serviceGroup.DisplayName | Should -Be 'Updated Via JSON File'
+        } finally {
+            Remove-Item -Path $jsonFilePath -Force -ErrorAction SilentlyContinue
+        }
     }
+
+
 }

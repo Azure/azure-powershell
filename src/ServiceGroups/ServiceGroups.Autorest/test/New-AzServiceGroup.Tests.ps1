@@ -29,6 +29,20 @@ Describe 'New-AzServiceGroup' {
         $serviceGroup.Name | Should -Be $env.ServiceGroupNameForNewJson
     }
 
+    It 'CreateViaJsonFilePath' {
+        $jsonContent = '{"properties":{"displayName":"Test SG From JSON File","parent":{"resourceId":"' + $env.TenantParentId + '"}}}'
+        $jsonFilePath = Join-Path -Path $PSScriptRoot -ChildPath 'New-AzServiceGroup-Params.json'
+        $jsonContent | Out-File -FilePath $jsonFilePath -Encoding utf8
+        try {
+            $serviceGroup = New-AzServiceGroup -Name $env.ServiceGroupNameForNewJsonFile -JsonFilePath $jsonFilePath
+            $serviceGroup | Should -Not -BeNullOrEmpty
+            $serviceGroup.Name | Should -Be $env.ServiceGroupNameForNewJsonFile
+            $serviceGroup.DisplayName | Should -Be 'Test SG From JSON File'
+        } finally {
+            Remove-Item -Path $jsonFilePath -Force -ErrorAction SilentlyContinue
+        }
+    }
+
     It 'CreateWithNonTenantParent' {
         $serviceGroup = New-AzServiceGroup -Name $env.ChildServiceGroupNameForNew -DisplayName 'Child Service Group' -ParentResourceId $env.ParentServiceGroupId
         $serviceGroup | Should -Not -BeNullOrEmpty
