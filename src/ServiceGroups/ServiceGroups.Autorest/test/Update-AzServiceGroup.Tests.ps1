@@ -31,7 +31,11 @@ Describe 'Update-AzServiceGroup' {
 
     It 'UpdateViaIdentityExpanded' {
         $sgObj = Get-AzServiceGroup -Name $env.ServiceGroupNameToUpdate
-        $serviceGroup = Update-AzServiceGroup -InputObject $sgObj -DisplayName 'Updated Via Identity'
+        # Inspect the object being piped to understand conversion
+        Write-Host "sgObj type: $($sgObj.GetType().FullName)"
+        Write-Host "sgObj.Id: $($sgObj.Id)"
+        Write-Host "sgObj.Name: $($sgObj.Name)"
+        $serviceGroup = $sgObj | Update-AzServiceGroup -DisplayName 'Updated Via Identity'
         $serviceGroup | Should -Not -BeNullOrEmpty
         $serviceGroup.DisplayName | Should -Be 'Updated Via Identity'
     }
