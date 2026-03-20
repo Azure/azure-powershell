@@ -1013,6 +1013,10 @@
     "alias": "FileShare"
   },
   {
+    "module": "ComputeLimit",
+    "alias": "ComputeLimit"
+  },
+  {
     "module": "ServiceGroups",
     "alias": "ServiceGroups"
   }
