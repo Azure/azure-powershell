@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<DdosDetectionRule> DetectionRules {get; set; }
 
         /// <summary>
-        /// Gets or sets the list of frontend IP configurations associated with the
-        /// custom policy.
+        /// Gets the list of frontend IP configurations associated with the
+        /// custom policy. This list is read-only.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.frontEndIpConfiguration")]
-        public System.Collections.Generic.IList<SubResource> FrontEndIPConfiguration {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.frontendIpConfigurations")]
+        public System.Collections.Generic.IList<SubResource> FrontEndIPConfiguration {get; private set; }
     }
 }

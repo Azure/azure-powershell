@@ -210,5 +210,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.gatewayLoadBalancer")]
         public SubResource GatewayLoadBalancer {get; set; }
+
+        /// <summary>
+        /// Gets or sets the DDoS settings of the frontend IP configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ddosSettings")]
+        public DdosSettings DdosSettings {get; set; }
     }
 }

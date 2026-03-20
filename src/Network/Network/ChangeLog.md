@@ -19,6 +19,16 @@
 --->
 
 ## Upcoming Release
+* Fixed DDoS custom policy frontend IP configuration retrieval.
+    - `Get-AzDdosCustomPolicy` now returns frontend IP configuration references after a load balancer frontend is associated with the policy.
+* Added DdosCustomPolicyId parameter to load balancer frontend IP configuration cmdlets for linking DDoS custom policies to frontend IPs:
+    - Added `-DdosCustomPolicyId` parameter to `New-AzLoadBalancerFrontendIpConfig` cmdlet
+    - Added `-DdosCustomPolicyId` parameter to `Add-AzLoadBalancerFrontendIpConfig` cmdlet
+    - Added `-DdosCustomPolicyId` parameter to `Set-AzLoadBalancerFrontendIpConfig` cmdlet
+* Added DDoS custom policy management cmdlets:
+    - `Get-AzDdosCustomPolicy`: Get a DDoS custom policy by name or resource group
+    - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy resource
+    - `Remove-AzDdosCustomPolicy`: Remove a DDoS custom policy resource
 * Added EdgeZone (Extended Location) parameter support for Azure Firewall
     - Added `-EdgeZone` parameter to `New-AzFirewall` cmdlet
     - When `-EdgeZone` is specified, availability zones are not supported for Azure Firewall resources

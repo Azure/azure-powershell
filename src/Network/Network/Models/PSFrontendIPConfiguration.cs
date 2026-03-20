@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSDdosSettings
+    public partial class PSFrontendIPConfiguration
     {
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string ProtectionMode { get; set; }
+        [JsonProperty(Order = 1)]
+        public PSDdosSettings DdosSettings { get; set; }
 
-        public PSResourceId DdosProtectionPlan { get; set; }
+        [JsonIgnore]
+        public string DdosSettingsText
+        {
+            get { return JsonConvert.SerializeObject(DdosSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
-        public PSResourceId DdosCustomPolicy { get; set; }
-
+        public bool ShouldSerializeDdosSettings()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
     }
 }
