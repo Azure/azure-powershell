@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ComputeLimit-help.xml
 Module Name: Az.ComputeLimit
 online version: https://learn.microsoft.com/powershell/module/az.computelimit/get-azsharedlimit
 schema: 2.0.0
@@ -24,14 +24,15 @@ Get-AzSharedLimit -Location <String> -Name <String> [-SubscriptionId <String[]>]
  [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzSharedLimit -InputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentityLocation
 ```
-Get-AzSharedLimit -LocationInputObject <IComputeLimitIdentity> -Name <String> [-DefaultProfile <PSObject>]
+Get-AzSharedLimit -Name <String> -LocationInputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzSharedLimit -InputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -104,7 +105,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -150,7 +151,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -174,4 +175,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

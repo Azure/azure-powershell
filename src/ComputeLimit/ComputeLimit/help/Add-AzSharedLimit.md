@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ComputeLimit-help.xml
 Module Name: Az.ComputeLimit
 online version: https://learn.microsoft.com/powershell/module/az.computelimit/add-azsharedlimit
 schema: 2.0.0
@@ -15,37 +15,37 @@ Enables sharing of a compute limit by the host subscription with its guest subsc
 ### CreateExpanded (Default)
 ```
 Add-AzSharedLimit -Location <String> -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
-Add-AzSharedLimit -Location <String> -Name <String> -Resource <ISharedLimit> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzSharedLimit -Location <String> -Name <String> [-SubscriptionId <String>] -Resource <ISharedLimit>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityLocationExpanded
+```
+Add-AzSharedLimit -Name <String> -LocationInputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityLocation
+```
+Add-AzSharedLimit -Name <String> -LocationInputObject <IComputeLimitIdentity> -Resource <ISharedLimit>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+Add-AzSharedLimit -InputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 Add-AzSharedLimit -InputObject <IComputeLimitIdentity> -Resource <ISharedLimit> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-Add-AzSharedLimit -InputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityLocation
-```
-Add-AzSharedLimit -LocationInputObject <IComputeLimitIdentity> -Name <String> -Resource <ISharedLimit>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityLocationExpanded
-```
-Add-AzSharedLimit -LocationInputObject <IComputeLimitIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,7 +102,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeLimit.Models.IComputeLimitIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -117,7 +117,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -132,7 +132,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeLimit.Models.IComputeLimitIdentity
-Parameter Sets: CreateViaIdentityLocation, CreateViaIdentityLocationExpanded
+Parameter Sets: CreateViaIdentityLocationExpanded, CreateViaIdentityLocation
 Aliases:
 
 Required: True
@@ -147,7 +147,7 @@ The name of the SharedLimit
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityLocation, CreateViaIdentityLocationExpanded
+Parameter Sets: CreateExpanded, Create, CreateViaIdentityLocationExpanded, CreateViaIdentityLocation
 Aliases:
 
 Required: True
@@ -162,7 +162,7 @@ Compute limits shared by the subscription.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeLimit.Models.ISharedLimit
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityLocation
+Parameter Sets: Create, CreateViaIdentityLocation, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -178,7 +178,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: False
@@ -235,4 +235,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

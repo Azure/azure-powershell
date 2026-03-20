@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ComputeLimit-help.xml
 Module Name: Az.ComputeLimit
 online version: https://learn.microsoft.com/powershell/module/az.computelimit/add-azguestsubscription
 schema: 2.0.0
@@ -14,38 +14,40 @@ Adds a subscription as a guest to consume the compute limits shared by the host 
 
 ### CreateExpanded (Default)
 ```
-Add-AzGuestSubscription -Id <String> -Location <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-Add-AzGuestSubscription -Id <String> -Location <String> -Resource <IGuestSubscription>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-Add-AzGuestSubscription -InputObject <IComputeLimitIdentity> -Resource <IGuestSubscription>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-Add-AzGuestSubscription -InputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityLocation
-```
-Add-AzGuestSubscription -Id <String> -LocationInputObject <IComputeLimitIdentity>
- -Resource <IGuestSubscription> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzGuestSubscription -Id <String> -Location <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityLocationExpanded
 ```
 Add-AzGuestSubscription -Id <String> -LocationInputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityLocation
+```
+Add-AzGuestSubscription -Id <String> -LocationInputObject <IComputeLimitIdentity>
+ -Resource <IGuestSubscription> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### Create
+```
+Add-AzGuestSubscription -Id <String> -Location <String> [-SubscriptionId <String>]
+ -Resource <IGuestSubscription> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+Add-AzGuestSubscription -InputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+Add-AzGuestSubscription -InputObject <IComputeLimitIdentity> -Resource <IGuestSubscription>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,7 +104,7 @@ The name of the GuestSubscription
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaIdentityLocation, CreateViaIdentityLocationExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityLocationExpanded, CreateViaIdentityLocation, Create
 Aliases: GuestSubscriptionId
 
 Required: True
@@ -117,7 +119,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeLimit.Models.IComputeLimitIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -132,7 +134,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -147,7 +149,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeLimit.Models.IComputeLimitIdentity
-Parameter Sets: CreateViaIdentityLocation, CreateViaIdentityLocationExpanded
+Parameter Sets: CreateViaIdentityLocationExpanded, CreateViaIdentityLocation
 Aliases:
 
 Required: True
@@ -162,7 +164,7 @@ Guest subscription that consumes shared compute limits.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeLimit.Models.IGuestSubscription
-Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityLocation
+Parameter Sets: CreateViaIdentityLocation, Create, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -178,7 +180,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: False
@@ -235,4 +237,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

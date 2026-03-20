@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ComputeLimit-help.xml
 Module Name: Az.ComputeLimit
 online version: https://learn.microsoft.com/powershell/module/az.computelimit/remove-azsharedlimit
 schema: 2.0.0
@@ -15,19 +15,19 @@ Disables sharing of a compute limit by the host subscription with its guest subs
 ### Delete (Default)
 ```
 Remove-AzSharedLimit -Location <String> -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzSharedLimit -InputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityLocation
 ```
-Remove-AzSharedLimit -LocationInputObject <IComputeLimitIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzSharedLimit -Name <String> -LocationInputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzSharedLimit -InputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -207,4 +207,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
