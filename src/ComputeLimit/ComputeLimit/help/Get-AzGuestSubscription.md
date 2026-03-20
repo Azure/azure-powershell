@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ComputeLimit-help.xml
 Module Name: Az.ComputeLimit
 online version: https://learn.microsoft.com/powershell/module/az.computelimit/get-azguestsubscription
 schema: 2.0.0
@@ -18,6 +18,12 @@ Get-AzGuestSubscription -Location <String> [-SubscriptionId <String[]>] [-Defaul
  [<CommonParameters>]
 ```
 
+### GetViaIdentityLocation
+```
+Get-AzGuestSubscription -Id <String> -LocationInputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzGuestSubscription -Id <String> -Location <String> [-SubscriptionId <String[]>]
@@ -26,12 +32,7 @@ Get-AzGuestSubscription -Id <String> -Location <String> [-SubscriptionId <String
 
 ### GetViaIdentity
 ```
-Get-AzGuestSubscription -InputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityLocation
-```
-Get-AzGuestSubscription -Id <String> -LocationInputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>]
+Get-AzGuestSubscription -InputObject <IComputeLimitIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -89,7 +90,7 @@ The name of the GuestSubscription
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityLocation
+Parameter Sets: GetViaIdentityLocation, Get
 Aliases: GuestSubscriptionId
 
 Required: True
@@ -119,7 +120,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -150,7 +151,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -174,4 +175,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
