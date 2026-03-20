@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDnsResolverPolicyDnsSecurityRule
 
 ## SYNOPSIS
-Updates a DNS security rule.
+Update a DNS security rule.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Update-AzDnsResolverPolicyDnsSecurityRule -InputObject <IDnsResolverIdentity> [-
 ```
 
 ## DESCRIPTION
-Updates a DNS security rule.
+Update a DNS security rule.
 
 ## EXAMPLES
 
@@ -136,7 +136,6 @@ Accept wildcard characters: False
 
 ### -DnsResolverDomainList
 DNS resolver policy domains lists that the DNS security rule applies to.
-To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.ISubResource[]
@@ -214,7 +213,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -405,7 +403,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsSecurityRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsSecurityRule
 
 ## NOTES
 

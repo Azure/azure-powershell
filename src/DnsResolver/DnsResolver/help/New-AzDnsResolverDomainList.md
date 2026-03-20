@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDnsResolverDomainList
 
 ## SYNOPSIS
-Creates or updates a DNS resolver domain list.
+Create a DNS resolver domain list.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzDnsResolverDomainList -Name <String> -ResourceGroupName <String> [-Subscri
 ```
 
 ## DESCRIPTION
-Creates or updates a DNS resolver domain list.
+Create a DNS resolver domain list.
 
 ## EXAMPLES
 
@@ -100,6 +100,7 @@ Accept wildcard characters: False
 
 ### -Domain
 The domains in the domain list.
+Will be null if user is using large domain list.
 
 ```yaml
 Type: System.String[]
@@ -306,7 +307,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverDomainList
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverDomainList
 
 ## NOTES
 

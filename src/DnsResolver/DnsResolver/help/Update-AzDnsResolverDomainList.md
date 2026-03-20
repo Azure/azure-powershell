@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDnsResolverDomainList
 
 ## SYNOPSIS
-Updates a DNS resolver domain list.
+Update a DNS resolver domain list.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzDnsResolverDomainList -InputObject <IDnsResolverIdentity> [-IfMatch <St
 ```
 
 ## DESCRIPTION
-Updates a DNS resolver domain list.
+Update a DNS resolver domain list.
 
 ## EXAMPLES
 
@@ -139,7 +139,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -300,7 +299,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverDomainList
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverDomainList
 
 ## NOTES
 

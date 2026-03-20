@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDnsForwardingRulesetForwardingRule
 
 ## SYNOPSIS
-Updates a forwarding rule in a DNS forwarding ruleset.
+Update a forwarding rule in a DNS forwarding ruleset.
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ Update-AzDnsForwardingRulesetForwardingRule -InputObject <IDnsResolverIdentity> 
 ```
 
 ## DESCRIPTION
-Updates a forwarding rule in a DNS forwarding ruleset.
+Update a forwarding rule in a DNS forwarding ruleset.
 
 ## EXAMPLES
 
@@ -163,7 +163,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -271,7 +270,6 @@ Accept wildcard characters: False
 
 ### -TargetDnsServer
 DNS servers to forward the DNS query to.
-To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.ITargetDnsServer[]
@@ -325,7 +323,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IForwardingRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IForwardingRule
 
 ## NOTES
 

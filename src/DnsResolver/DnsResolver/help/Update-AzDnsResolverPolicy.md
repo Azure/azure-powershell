@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDnsResolverPolicy
 
 ## SYNOPSIS
-Updates a DNS resolver policy.
+Update a DNS resolver policy.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzDnsResolverPolicy -InputObject <IDnsResolverIdentity> [-IfMatch <String
 ```
 
 ## DESCRIPTION
-Updates a DNS resolver policy.
+Update a DNS resolver policy.
 
 ## EXAMPLES
 
@@ -124,7 +124,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -285,7 +284,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverPolicy
 
 ## NOTES
 

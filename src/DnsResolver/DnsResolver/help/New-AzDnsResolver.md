@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDnsResolver
 
 ## SYNOPSIS
-Creates or updates a DNS resolver.
+Create a DNS resolver.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzDnsResolver -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
 ```
 
 ## DESCRIPTION
-Creates or updates a DNS resolver.
+Create a DNS resolver.
 
 ## EXAMPLES
 
@@ -306,7 +306,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolver
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolver
 
 ## NOTES
 

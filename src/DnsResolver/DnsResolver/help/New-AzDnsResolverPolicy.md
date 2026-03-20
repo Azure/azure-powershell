@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDnsResolverPolicy
 
 ## SYNOPSIS
-Creates or updates a DNS resolver policy.
+Create a DNS resolver policy.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzDnsResolverPolicy -Name <String> -ResourceGroupName <String> [-Subscriptio
 ```
 
 ## DESCRIPTION
-Creates or updates a DNS resolver policy.
+Create a DNS resolver policy.
 
 ## EXAMPLES
 
@@ -290,7 +290,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverPolicy
 
 ## NOTES
 

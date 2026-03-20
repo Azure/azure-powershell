@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDnsResolverOutboundEndpoint
 
 ## SYNOPSIS
-Creates or updates an outbound endpoint for a DNS resolver.
+Create an outbound endpoint for a DNS resolver.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ New-AzDnsResolverOutboundEndpoint -Name <String> -DnsResolverInputObject <IDnsRe
 ```
 
 ## DESCRIPTION
-Creates or updates an outbound endpoint for a DNS resolver.
+Create an outbound endpoint for a DNS resolver.
 
 ## EXAMPLES
 
@@ -344,9 +344,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IOutboundEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IOutboundEndpoint
 
 ## NOTES
 

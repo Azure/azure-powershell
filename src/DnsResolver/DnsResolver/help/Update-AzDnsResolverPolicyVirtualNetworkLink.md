@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDnsResolverPolicyVirtualNetworkLink
 
 ## SYNOPSIS
-Updates a DNS resolver policy virtual network link.
+Update a DNS resolver policy virtual network link.
 
 ## SYNTAX
 
@@ -52,7 +52,7 @@ Update-AzDnsResolverPolicyVirtualNetworkLink -InputObject <IDnsResolverIdentity>
 ```
 
 ## DESCRIPTION
-Updates a DNS resolver policy virtual network link.
+Update a DNS resolver policy virtual network link.
 
 ## EXAMPLES
 
@@ -165,7 +165,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -326,7 +325,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicyVirtualNetworkLink
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverPolicyVirtualNetworkLink
 
 ## NOTES
 

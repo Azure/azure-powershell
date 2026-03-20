@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDnsForwardingRulesetVirtualNetworkLink
 
 ## SYNOPSIS
-Creates or updates a virtual network link to a DNS forwarding ruleset.
+Create a virtual network link to a DNS forwarding ruleset.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ New-AzDnsForwardingRulesetVirtualNetworkLink -Name <String>
 ```
 
 ## DESCRIPTION
-Creates or updates a virtual network link to a DNS forwarding ruleset.
+Create a virtual network link to a DNS forwarding ruleset.
 
 ## EXAMPLES
 
@@ -329,9 +329,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IVirtualNetworkLink
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IVirtualNetworkLink
 
 ## NOTES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDnsResolverPolicyVirtualNetworkLink
 
 ## SYNOPSIS
-Creates or updates a DNS resolver policy virtual network link.
+Create a DNS resolver policy virtual network link.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ New-AzDnsResolverPolicyVirtualNetworkLink -Name <String> -DnsResolverPolicyInput
 ```
 
 ## DESCRIPTION
-Creates or updates a DNS resolver policy virtual network link.
+Create a DNS resolver policy virtual network link.
 
 ## EXAMPLES
 
@@ -344,9 +344,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicyVirtualNetworkLink
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverPolicyVirtualNetworkLink
 
 ## NOTES
 

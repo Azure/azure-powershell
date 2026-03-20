@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDnsResolverInboundEndpoint
 
 ## SYNOPSIS
-Updates an inbound endpoint for a DNS resolver.
+Update an inbound endpoint for a DNS resolver.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ Update-AzDnsResolverInboundEndpoint -InputObject <IDnsResolverIdentity> [-IfMatc
 ```
 
 ## DESCRIPTION
-Updates an inbound endpoint for a DNS resolver.
+Update an inbound endpoint for a DNS resolver.
 
 ## EXAMPLES
 
@@ -161,7 +161,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
@@ -322,7 +321,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IInboundEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IInboundEndpoint
 
 ## NOTES
 
