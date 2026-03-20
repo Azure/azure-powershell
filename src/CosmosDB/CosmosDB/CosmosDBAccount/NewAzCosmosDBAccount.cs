@@ -165,6 +165,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.EnableAutomaticFailover = EnableAutomaticFailover;
             databaseAccountCreateUpdateParameters.VirtualNetworkRules = virtualNetworkRule;
             databaseAccountCreateUpdateParameters.DisableKeyBasedMetadataWriteAccess = DisableKeyBasedMetadataWriteAccess;
+            databaseAccountCreateUpdateParameters.DisableLocalAuth = DisableLocalAuth;
             databaseAccountCreateUpdateParameters.PublicNetworkAccess = PublicNetworkAccess;
             databaseAccountCreateUpdateParameters.EnableFreeTier = EnableFreeTier;
             databaseAccountCreateUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
