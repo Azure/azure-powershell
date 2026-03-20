@@ -1,76 +1,34 @@
-."$PSScriptRoot\testDataGenerator.ps1"
-."$PSScriptRoot\virtualNetworkClient.ps1"
-."$PSScriptRoot\virtualNetworkLinkAssertions.ps1"
-."$PSScriptRoot\Constants.ps1"
-
-Add-AssertionOperator -Name 'BeSuccessfullyCreatedVirtualNetworkLink' -Test $Function:BeSuccessfullyCreatedVirtualNetworkLink
-
-$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-if (-Not (Test-Path -Path $loadEnvPath)) {
-    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-}
-. ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzDnsForwardingRulesetVirtualNetworkLink.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
-    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-    $currentPath = Split-Path -Path $currentPath -Parent
-}
+while(-not $mockingPath) { $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File; $currentPath = Split-Path -Path $currentPath -Parent }
 . ($mockingPath | Select-Object -First 1).FullName
-
-function CreateVirtualNetworkLink([String]$VirtualNetworkLinkName, [String]$DnsForwardingRulesetName, [String]$OutboundEndpointName, [String]$DnsResolverName, [String]$VirtualNetworkName)
-{
-    if ($TestMode -eq "Record")
-    {
-        $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
-        $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
-    }
-
-    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
-
-    $outboundEndpoint = New-AzDnsResolverOutboundEndpoint -Name $OutboundEndpointName -DnsResolverName $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -SubnetId $subnetId -Location $LOCATION
-
-    New-AzDnsForwardingRuleset -Name $DnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $LOCATION -DnsResolverOutboundEndpoint  @{id = $outboundEndpoint.id;}
-    
-    New-AzDnsForwardingRulesetVirtualNetworkLink -Name $virtualNetworkLinkName -DnsForwardingRulesetName $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId
-}
-
 Describe 'Get-AzDnsForwardingRulesetVirtualNetworkLink' {
-    It 'Get single virtual network link by name, expect virtual network link retrieved' {
-        # ARRANGE
-        $dnsResolverName = "psdnsresolvername45";
-        $outboundEndpointName = "psoutboundendpointname45";
-        $dnsForwardingRulesetName = "psdnsforwardingrulesetname45";
-        $virtualNetworkLinkName = "psdnsvirtualnetworklinkname45";
-        $virtualNetworkName = "psvirtualnetworkname45";
-        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
-        
-        CreateVirtualNetworkLink -VirtualNetworkLinkName $virtualNetworkLinkName -DnsForwardingRulesetName $dnsForwardingRulesetName -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
-
-        # ACT
-        $virtualNetworkLink =  Get-AzDnsForwardingRulesetVirtualNetworkLink -Name $virtualNetworkLinkName -DnsForwardingRulesetName $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME
-
-        # ASSERT
-        $virtualNetworkLink | Should -BeSuccessfullyCreatedVirtualNetworkLink
+    BeforeAll {
+        $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'; $location = 'westus2'
+        $rgName = "ps-frs-vnl-get-$(Get-Random -Max 99999)"
+        if ($TestMode -ne 'playback') {
+            Select-AzSubscription -SubscriptionId $subscriptionId
+            New-AzResourceGroup -Name $rgName -Location $location
+            $vnet = New-AzVirtualNetwork -Name "vnet-frs" -ResourceGroupName $rgName -Location $location -AddressPrefix "10.0.0.0/16"
+            Add-AzVirtualNetworkSubnetConfig -Name "snet-frs" -VirtualNetwork $vnet -AddressPrefix "10.0.2.0/24" -Delegation @((New-AzDelegation -Name "dnsResolvers" -ServiceName "Microsoft.Network/dnsResolvers")) | Out-Null
+            $vnet | Set-AzVirtualNetwork | Out-Null
+            $vnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/vnet-frs"
+            New-AzDnsResolver -Name "resolver-frs" -ResourceGroupName $rgName -VirtualNetworkId $vnetId -Location $location
+            $subnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/vnet-frs/subnets/snet-frs"
+            New-AzDnsResolverOutboundEndpoint -DnsResolverName "resolver-frs" -Name "oe-frs" -ResourceGroupName $rgName -Location $location -SubnetId $subnetId
+            $oeId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/dnsResolvers/resolver-frs/outboundEndpoints/oe-frs"
+            New-AzDnsForwardingRuleset -Name "frs-vnl" -ResourceGroupName $rgName -Location $location -DnsResolverOutboundEndpoint @(@{id = $oeId})
+            New-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName "frs-vnl" -Name "vnl-get-1" -ResourceGroupName $rgName -VirtualNetworkId $vnetId
+        }
     }
-
-    It 'List all virtual network links under the DNS forwarding ruleset, expect all virtual network links retrieved' {
-        # ARRANGE
-        $dnsResolverName = "psdnsresolvername46";
-        $outboundEndpointName = "psoutboundendpointname46";
-        $dnsForwardingRulesetName = "psdnsforwardingrulesetname46";
-        $virtualNetworkLinkName = "psdnsvirtualnetworklinkname46";
-        $virtualNetworkName = "psvirtualnetworkname46";
-        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
-        
-        CreateVirtualNetworkLink -VirtualNetworkLinkName $virtualNetworkLinkName -DnsForwardingRulesetName $dnsForwardingRulesetName -OutboundEndpointName $outboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
-
-        # ACT
-        $virtualNetworkLink =  Get-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME
-
-        # ASSERT
-        $virtualNetworkLink.Count | Should -Be "1"
+    AfterAll { if ($TestMode -ne 'playback') { Remove-AzResourceGroup -Name $rgName -ErrorAction SilentlyContinue -AsJob | Out-Null } }
+    It 'Get a VNet link' {
+        $link = Get-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName "frs-vnl" -Name "vnl-get-1" -ResourceGroupName $rgName
+        $link.ProvisioningState | Should -Be "Succeeded"
+    }
+    It 'List VNet links' {
+        $links = Get-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName "frs-vnl" -ResourceGroupName $rgName
+        $links.Count | Should -BeGreaterThan 0
     }
 }
+

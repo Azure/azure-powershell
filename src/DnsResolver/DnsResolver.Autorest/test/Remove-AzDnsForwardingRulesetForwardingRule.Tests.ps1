@@ -1,51 +1,31 @@
-."$PSScriptRoot\testDataGenerator.ps1"
-."$PSScriptRoot\virtualNetworkClient.ps1"
-."$PSScriptRoot\Constants.ps1"
-
-$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-if (-Not (Test-Path -Path $loadEnvPath)) {
-    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-}
-. ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzDnsForwardingRulesetForwardingRule.Recording.json'
 $currentPath = $PSScriptRoot
-while(-not $mockingPath) {
-    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-    $currentPath = Split-Path -Path $currentPath -Parent
-}
+while(-not $mockingPath) { $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File; $currentPath = Split-Path -Path $currentPath -Parent }
 . ($mockingPath | Select-Object -First 1).FullName
-
 Describe 'Remove-AzDnsForwardingRulesetForwardingRule' {
-    It 'Delete a forwarding rule, expect forwarding rule deleted' {
-        # ARRANGE
-        $dnsResolverName = "psdnsresolvername42";
-        $outboundEndpointName =  "psoutboundendpointname42";
-        $dnsForwardingRulesetName = "psdnsforwardingrulesetname42"
-        $forwardingRuleName = "psdnsforwardingrulename42";
-        $domainName = "psdomainName42.com."
-        $virtualNetworkName = "psvirtualnetworkname42";
-        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
-        
-        if ($TestMode -eq "Record")
-        {
-            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
-            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+    BeforeAll {
+        $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'; $location = 'westus2'
+        $rgName = "ps-frs-fr-remove-$(Get-Random -Max 99999)"
+        if ($TestMode -ne 'playback') {
+            Select-AzSubscription -SubscriptionId $subscriptionId
+            New-AzResourceGroup -Name $rgName -Location $location
+            $vnet = New-AzVirtualNetwork -Name "vnet-frs" -ResourceGroupName $rgName -Location $location -AddressPrefix "10.0.0.0/16"
+            Add-AzVirtualNetworkSubnetConfig -Name "snet-frs" -VirtualNetwork $vnet -AddressPrefix "10.0.2.0/24" -Delegation @((New-AzDelegation -Name "dnsResolvers" -ServiceName "Microsoft.Network/dnsResolvers")) | Out-Null
+            $vnet | Set-AzVirtualNetwork | Out-Null
+            $vnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/vnet-frs"
+            New-AzDnsResolver -Name "resolver-frs" -ResourceGroupName $rgName -VirtualNetworkId $vnetId -Location $location
+            $subnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/vnet-frs/subnets/snet-frs"
+            New-AzDnsResolverOutboundEndpoint -DnsResolverName "resolver-frs" -Name "oe-frs" -ResourceGroupName $rgName -Location $location -SubnetId $subnetId
+            $oeId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/dnsResolvers/resolver-frs/outboundEndpoints/oe-frs"
+            New-AzDnsForwardingRuleset -Name "frs-fr" -ResourceGroupName $rgName -Location $location -DnsResolverOutboundEndpoint @(@{id = $oeId})
+            $target = New-AzDnsResolverTargetDnsServerObject -IPAddress "10.0.0.1" -Port 53
+            New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName "frs-fr" -Name "fr-remove-1" -ResourceGroupName $rgName -DomainName "contoso.com." -TargetDnsServer @($target)
         }
-
-        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
-        
-        $outboundEndpoint = New-AzDnsResolverOutboundEndpoint -Name $outboundEndpointName -DnsResolverName $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -SubscriptionId $SUBSCRIPTION_ID -SubnetId $subnetId -Location $LOCATION
-
-        New-AzDnsForwardingRuleset -Name $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME -Location $LOCATION -DnsResolverOutboundEndpoint  @{id = $outboundEndpoint.id;}
-
-        $targetDnsServer = New-AzDnsResolverTargetDnsServerObject -IPAddress 10.0.0.3
-        New-AzDnsForwardingRulesetForwardingRule -Name $forwardingRuleName -DnsForwardingRulesetName $dnsForwardingRulesetName -DomainName $domainName -ResourceGroupName $RESOURCE_GROUP_NAME -TargetDnsServer $targetDnsServer
-        
-        # ACT
-        Remove-AzDnsForwardingRulesetForwardingRule -Name $forwardingRuleName -DnsForwardingRulesetName $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME
-
-        # ASSERT
-        {Get-AzDnsForwardingRulesetForwardingRule -Name $forwardingRuleName -DnsForwardingRulesetName $dnsForwardingRulesetName -ResourceGroupName $RESOURCE_GROUP_NAME } | Should -Throw
+    }
+    AfterAll { if ($TestMode -ne 'playback') { Remove-AzResourceGroup -Name $rgName -ErrorAction SilentlyContinue -AsJob | Out-Null } }
+    It 'Delete a forwarding rule' {
+        Remove-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName "frs-fr" -Name "fr-remove-1" -ResourceGroupName $rgName
+        { Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName "frs-fr" -Name "fr-remove-1" -ResourceGroupName $rgName } | Should -Throw
     }
 }
+
