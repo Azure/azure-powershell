@@ -18,7 +18,7 @@
   "testRootSquash": "NoRootSquash",
   "testFileShareQuota": 5120,
   "testProvisionedIoPerSec": 4024,
-  "Tenant": "70a036f6-8e4d-4615-bad6-149c02e7720d",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
   "updatedQuota": 10240,
   "secondaryLocation": "southeastasia",
   "testProtocol": "NFS",
