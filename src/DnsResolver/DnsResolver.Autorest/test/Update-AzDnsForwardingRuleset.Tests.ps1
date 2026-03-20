@@ -5,7 +5,7 @@ while(-not $mockingPath) { $mockingPath = Get-ChildItem -Path $currentPath -Recu
 Describe 'Update-AzDnsForwardingRuleset' {
     BeforeAll {
         $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'; $location = 'westus2'
-        $rgName = "ps-frs-upd-$(Get-Random -Max 99999)"
+        $rgName = "ps-frs-upd-57404"
         if ($TestMode -ne 'playback') {
             Select-AzSubscription -SubscriptionId $subscriptionId
             New-AzResourceGroup -Name $rgName -Location $location

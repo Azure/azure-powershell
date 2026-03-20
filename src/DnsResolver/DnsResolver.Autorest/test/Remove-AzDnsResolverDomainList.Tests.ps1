@@ -10,7 +10,7 @@ Describe 'Remove-AzDnsResolverDomainList' {
     BeforeAll {
         $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'
         $location = 'westus2'
-        $rgName = "ps-domainlist-rm-$(Get-Random -Max 99999)"
+        $rgName = "ps-domainlist-rm-27751"
         if ($TestMode -ne 'playback') {
             Select-AzSubscription -SubscriptionId $subscriptionId
             New-AzResourceGroup -Name $rgName -Location $location

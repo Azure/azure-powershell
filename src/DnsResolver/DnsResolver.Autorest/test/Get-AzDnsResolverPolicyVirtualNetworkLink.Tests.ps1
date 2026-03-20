@@ -6,7 +6,7 @@ while(-not $mockingPath) { $mockingPath = Get-ChildItem -Path $currentPath -Recu
 Describe 'Get-AzDnsResolverPolicyVirtualNetworkLink' {
     BeforeAll {
         $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'; $location = 'westus2'
-        $rgName = "ps-pvnl-get-$(Get-Random -Max 99999)"
+        $rgName = "ps-pvnl-get-50549"
         if ($TestMode -ne 'playback') {
             Select-AzSubscription -SubscriptionId $subscriptionId
             New-AzResourceGroup -Name $rgName -Location $location

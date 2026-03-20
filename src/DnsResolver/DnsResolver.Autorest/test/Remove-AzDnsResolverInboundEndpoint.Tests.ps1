@@ -5,7 +5,7 @@ while(-not $mockingPath) { $mockingPath = Get-ChildItem -Path $currentPath -Recu
 Describe 'Remove-AzDnsResolverInboundEndpoint' {
     BeforeAll {
         $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'; $location = 'westus2'
-        $rgName = "ps-ie-rm-$(Get-Random -Max 99999)"
+        $rgName = "ps-ie-rm-47654"
         if ($TestMode -ne 'playback') {
             Select-AzSubscription -SubscriptionId $subscriptionId
             New-AzResourceGroup -Name $rgName -Location $location

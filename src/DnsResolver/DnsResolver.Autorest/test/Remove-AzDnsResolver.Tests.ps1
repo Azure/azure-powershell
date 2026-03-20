@@ -12,7 +12,7 @@ Describe 'Remove-AzDnsResolver' {
     BeforeAll {
         $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'
         $location = 'westus2'
-        $rgName = "ps-dnsresolver-rm-$(Get-Random -Max 99999)"
+        $rgName = "ps-dnsresolver-rm-68978"
 
         if ($TestMode -ne 'playback') {
             Select-AzSubscription -SubscriptionId $subscriptionId

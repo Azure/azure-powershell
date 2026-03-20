@@ -17,7 +17,7 @@ Describe 'Invoke-AzDnsResolverBulkDnsResolverDomainList' {
             New-AzResourceGroup -Name $rgName -Location $location
 
             # Create storage account for bulk operations
-            $saName = "psbulk$(Get-Random -Max 999999)"
+            $saName = "psbulktest123"
             $sa = New-AzStorageAccount -Name $saName -ResourceGroupName $rgName -Location $location -SkuName "Standard_LRS"
 
             # Use storage account key for context (ensures SAS works)
