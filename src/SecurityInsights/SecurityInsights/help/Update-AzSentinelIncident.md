@@ -46,6 +46,28 @@ Update-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceNam
 ```
 
 This command updates an incident by assigning an owner.
+The `-Title`, `-Status`, and `-Severity` parameters must be provided to avoid validation errors, even though they are listed as optional in the parameter syntax.
+
+### Example 2: Update an Incident using InputObject
+```powershell
+$incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434"
+Update-AzSentinelIncident -InputObject $incident -Title $incident.Title -Status $incident.Status -Severity $incident.Severity -OwnerAssignedTo "user@mydomain.local"
+```
+
+This command updates an incident using the pipeline identity parameter.
+When using `-InputObject`, you must still provide `-Title`, `-Status`, and `-Severity` to prevent the API from returning a validation error.
+It is recommended to pass the existing values from the incident object (e.g., `$incident.Title`) to avoid unintentionally resetting those fields.
+
+### Example 3: Update Incident Labels using InputObject
+```powershell
+$incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434"
+$newLabels = @( @{ LabelName = "Critical" } )
+Update-AzSentinelIncident -InputObject $incident -Title $incident.Title -Status $incident.Status -Severity $incident.Severity -Label $newLabels
+```
+
+This command updates the labels on an existing incident.
+Note that `-Title`, `-Status`, and `-Severity` must be included to avoid validation errors.
+Passing the original values from `$incident` ensures those fields are not reset.
 
 ## PARAMETERS
 
