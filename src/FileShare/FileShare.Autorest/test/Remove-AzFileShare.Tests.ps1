@@ -15,11 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFileShare'))
 }
 
 Describe 'Remove-AzFileShare' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName03 -PassThru
+            $config = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName03 -ErrorAction SilentlyContinue
+            $config | Should -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        {
+            $fileShare = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName02
+            Remove-AzFileShare -InputObject $fileShare -PassThru
+            $config = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName02 -ErrorAction SilentlyContinue
+            $config | Should -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 }
