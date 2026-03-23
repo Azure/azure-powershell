@@ -15,19 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWvdSessionHostSingleReg
 }
 
 Describe 'Get-AzWvdSessionHostSingleRegistrationToken' {
-    It 'ListExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Retrieve' {
+        try {
+            New-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
+                -ResourceGroupName $env.ResourceGroupPersistent `
+                -HostPoolName $env.HostPoolPersistent `
+                -Name $env.SHMSessionHostNameRemove
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ListViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ListViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+            $tokenList = Get-AzWvdSessionHostSingleRegistrationToken `
+                -SubscriptionId $env.SubscriptionId `
+                -ResourceGroupName $env.ResourceGroupPersistent `
+                -HostPoolName $env.HostPoolPersistent `
+                -SessionHostName $env.SHMSessionHostNameRemove `
+                -ExpirationTimeInUtc (Get-Date).ToUniversalTime().AddHours(2)
+            $tokenList | Should -Not -BeNullOrEmpty
+            $tokenList[0].Token | Should -Not -BeNullOrEmpty
+        } finally {
+            Remove-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
+                -ResourceGroupName $env.ResourceGroupPersistent `
+                -HostPoolName $env.HostPoolPersistent `
+                -Name $env.SHMSessionHostNameRemove `
+                -Force
+        }
     }
 }

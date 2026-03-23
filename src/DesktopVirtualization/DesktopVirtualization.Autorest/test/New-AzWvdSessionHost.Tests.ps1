@@ -15,15 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWvdSessionHost'))
 }
 
 Describe 'New-AzWvdSessionHost' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create' {
+        $sessionHostPath = $env.HostPoolPersistent + '/' + $env.SHMSessionHostNameRemove
+        try {
+            $sessionHost = New-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
+                -ResourceGroupName $env.ResourceGroupPersistent `
+                -HostPoolName $env.HostPoolPersistent `
+                -Name $env.SHMSessionHostNameRemove
+            $sessionHost | Should -Not -BeNullOrEmpty
+            $sessionHost.Name | Should -Be $sessionHostPath
+        } finally {
+            Remove-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
+                -ResourceGroupName $env.ResourceGroupPersistent `
+                -HostPoolName $env.HostPoolPersistent `
+                -Name $env.SHMSessionHostNameRemove `
+                -Force
+        }
     }
 }
