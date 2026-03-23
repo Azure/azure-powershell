@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Extensions;
 
-    /// <summary>Specifies the elasticity profile of the standby container group pools.</summary>
-    public partial class StandbyContainerGroupPoolElasticityProfile
+    /// <summary>Specifies the dynamic sizing configuration.</summary>
+    public partial class DynamicSizing
     {
 
         /// <summary>
@@ -54,22 +54,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfile.
-        /// </summary>
-        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" /> to deserialize from.</param>
-        /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfile.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfile FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode node)
-        {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json ? new StandbyContainerGroupPoolElasticityProfile(json) : null;
-        }
-
-        /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject into a new instance of <see cref="StandbyContainerGroupPoolElasticityProfile" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject into a new instance of <see cref="DynamicSizing" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal StandbyContainerGroupPoolElasticityProfile(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json)
+        internal DynamicSizing(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -77,22 +65,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return;
             }
-            {_dynamicSizing = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject>("dynamicSizing"), out var __jsonDynamicSizing) ? Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizing.FromJson(__jsonDynamicSizing) : _dynamicSizing;}
-            {_maxReadyCapacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber>("maxReadyCapacity"), out var __jsonMaxReadyCapacity) ? (long)__jsonMaxReadyCapacity : _maxReadyCapacity;}
-            {_refillPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString>("refillPolicy"), out var __jsonRefillPolicy) ? (string)__jsonRefillPolicy : (string)_refillPolicy;}
+            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool?)__jsonEnabled : _enabled;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="StandbyContainerGroupPoolElasticityProfile" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode"
-        /// />.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing.
+        /// </summary>
+        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" /> to deserialize from.</param>
+        /// <returns>
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode node)
+        {
+            return node is Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject json ? new DynamicSizing(json) : null;
+        }
+
+        /// <summary>
+        /// Serializes this instance of <see cref="DynamicSizing" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="StandbyContainerGroupPoolElasticityProfile" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode"
-        /// />.
+        /// a serialized instance of <see cref="DynamicSizing" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode)
         {
@@ -104,9 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return container;
             }
-            AddIf( null != this._dynamicSizing ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) this._dynamicSizing.ToJson(null,serializationMode) : null, "dynamicSizing" ,container.Add );
-            AddIf( (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber(this._maxReadyCapacity), "maxReadyCapacity" ,container.Add );
-            AddIf( null != (((object)this._refillPolicy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString(this._refillPolicy.ToString()) : null, "refillPolicy" ,container.Add );
+            AddIf( null != this._enabled ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonBoolean((bool)this._enabled) : null, "enabled" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
