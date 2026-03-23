@@ -19,13 +19,13 @@ Describe 'Get-AzWvdSessionHostSingleRegistrationToken' {
         try {
             New-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroupPersistent `
-                -HostPoolName $env.HostPoolPersistent `
+                -HostPoolName $env.StandardHostPoolPersistent `
                 -Name $env.SHMSessionHostNameRemove
 
             $tokenList = Get-AzWvdSessionHostSingleRegistrationToken `
                 -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroupPersistent `
-                -HostPoolName $env.HostPoolPersistent `
+                -HostPoolName $env.StandardHostPoolPersistent `
                 -SessionHostName $env.SHMSessionHostNameRemove `
                 -ExpirationTimeInUtc (Get-Date).ToUniversalTime().AddHours(2)
             $tokenList | Should -Not -BeNullOrEmpty
@@ -33,7 +33,7 @@ Describe 'Get-AzWvdSessionHostSingleRegistrationToken' {
         } finally {
             Remove-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroupPersistent `
-                -HostPoolName $env.HostPoolPersistent `
+                -HostPoolName $env.StandardHostPoolPersistent `
                 -Name $env.SHMSessionHostNameRemove `
                 -Force
         }

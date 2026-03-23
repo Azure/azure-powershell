@@ -16,18 +16,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWvdSessionHost'))
 
 Describe 'New-AzWvdSessionHost' {
     It 'Create' {
-        $sessionHostPath = $env.HostPoolPersistent + '/' + $env.SHMSessionHostNameRemove
+        $sessionHostPath = $env.StandardHostPoolPersistent + '/' + $env.SHMSessionHostNameRemove
         try {
             $sessionHost = New-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroupPersistent `
-                -HostPoolName $env.HostPoolPersistent `
+                -HostPoolName $env.StandardHostPoolPersistent `
                 -Name $env.SHMSessionHostNameRemove
             $sessionHost | Should -Not -BeNullOrEmpty
             $sessionHost.Name | Should -Be $sessionHostPath
         } finally {
             Remove-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroupPersistent `
-                -HostPoolName $env.HostPoolPersistent `
+                -HostPoolName $env.StandardHostPoolPersistent `
                 -Name $env.SHMSessionHostNameRemove `
                 -Force
         }
