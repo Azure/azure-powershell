@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-* Fixed `Update-AzSentinelIncident` help documentation to include required `-Title`, `-Status`, and `-Severity` parameters in examples and added examples for `UpdateViaIdentityExpanded` parameter set [#29130]
+* Improved `Update-AzSentinelIncident` help documentation for updating incidents using `-InputObject`
+    - Examples now include required `-Title`, `-Status`, and `-Severity` parameters and avoid validation errors when using `-InputObject`
+    - Fixed issue [#29130]
 
 ## Version 3.2.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229

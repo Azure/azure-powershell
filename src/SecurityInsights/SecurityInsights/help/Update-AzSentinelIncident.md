@@ -54,7 +54,7 @@ $incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -Wor
 Update-AzSentinelIncident -InputObject $incident -Title $incident.Title -Status $incident.Status -Severity $incident.Severity -OwnerAssignedTo "user@mydomain.local"
 ```
 
-This command updates an incident using the pipeline identity parameter.
+This command updates an incident by passing the incident object via the `-InputObject` parameter.
 When using `-InputObject`, you must still provide `-Title`, `-Status`, and `-Severity` to prevent the API from returning a validation error.
 It is recommended to pass the existing values from the incident object (e.g., `$incident.Title`) to avoid unintentionally resetting those fields.
 
