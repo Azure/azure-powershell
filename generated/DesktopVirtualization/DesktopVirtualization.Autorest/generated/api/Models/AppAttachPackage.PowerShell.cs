@@ -132,6 +132,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("DeploymentScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).DeploymentScope = (string) content.GetValueForProperty("DeploymentScope",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).DeploymentScope, global::System.Convert.ToString);
+            }
             if (content.Contains("Image"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).Image = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInfoProperties) content.GetValueForProperty("Image",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).Image, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackageInfoPropertiesTypeConverter.ConvertFrom);
@@ -296,6 +300,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).DeploymentScope = (string) content.GetValueForProperty("DeploymentScope",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackageInternal)this).DeploymentScope, global::System.Convert.ToString);
             }
             if (content.Contains("Image"))
             {

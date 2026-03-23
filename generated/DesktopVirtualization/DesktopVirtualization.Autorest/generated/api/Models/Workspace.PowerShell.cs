@@ -202,6 +202,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
+            if (content.Contains("DeploymentScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).DeploymentScope = (string) content.GetValueForProperty("DeploymentScope",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).DeploymentScope, global::System.Convert.ToString);
+            }
             if (content.Contains("PlanName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).PlanName = (string) content.GetValueForProperty("PlanName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).PlanName, global::System.Convert.ToString);
@@ -382,6 +386,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).DeploymentScope = (string) content.GetValueForProperty("DeploymentScope",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IWorkspaceInternal)this).DeploymentScope, global::System.Convert.ToString);
             }
             if (content.Contains("PlanName"))
             {

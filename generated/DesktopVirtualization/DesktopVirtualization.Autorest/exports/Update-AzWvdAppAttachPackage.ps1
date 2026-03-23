@@ -67,6 +67,7 @@ To create the parameters described below, construct a hash table containing the 
 
 APPATTACHPACKAGE <AppAttachPackage>: 
   [CustomData <String>]: Field that can be populated with custom data and filtered on in list GET calls
+  [DeploymentScope <String>]: DeploymentScope type for AppAttachPackage.
   [FailHealthCheckOnStagingFailure <String>]: Parameter indicating how the health check should behave if this package fails staging
   [HostPoolReference <List<String>>]: List of Hostpool resource Ids.
   [ImageCertificateExpiry <DateTime?>]: Date certificate expires, found in the appxmanifest.xml.

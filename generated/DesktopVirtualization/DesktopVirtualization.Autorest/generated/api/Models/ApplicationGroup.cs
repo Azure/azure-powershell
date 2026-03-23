@@ -27,6 +27,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public bool? CloudPcResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).CloudPcResource; }
 
+        /// <summary>DeploymentScope type for ApplicationGroup.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public string DeploymentScope { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).DeploymentScope; }
+
         /// <summary>Description of ApplicationGroup.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
         public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).Description = value ?? null; }
@@ -116,6 +120,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>Internal Acessors for CloudPcResource</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.CloudPcResource { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).CloudPcResource; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).CloudPcResource = value ?? default(bool); }
+
+        /// <summary>Internal Acessors for DeploymentScope</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.DeploymentScope { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).DeploymentScope; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupPropertiesInternal)Property).DeploymentScope = value ?? null; }
 
         /// <summary>Internal Acessors for Etag</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationGroupInternal.Etag { get => this._etag; set { {_etag = value;} } }
@@ -360,6 +367,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"cloudPcResource",
         PossibleTypes = new [] { typeof(bool) })]
         bool? CloudPcResource { get;  }
+        /// <summary>DeploymentScope type for ApplicationGroup.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"DeploymentScope type for ApplicationGroup.",
+        SerializedName = @"deploymentScope",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+        string DeploymentScope { get;  }
         /// <summary>Description of ApplicationGroup.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -673,6 +692,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string ApplicationGroupType { get; set; }
         /// <summary>Is cloud pc resource.</summary>
         bool? CloudPcResource { get; set; }
+        /// <summary>DeploymentScope type for ApplicationGroup.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Geographical", "Regional")]
+        string DeploymentScope { get; set; }
         /// <summary>Description of ApplicationGroup.</summary>
         string Description { get; set; }
         /// <summary>

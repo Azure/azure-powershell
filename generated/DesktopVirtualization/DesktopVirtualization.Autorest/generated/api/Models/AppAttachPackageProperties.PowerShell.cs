@@ -108,6 +108,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)this).CustomData = (string) content.GetValueForProperty("CustomData",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)this).CustomData, global::System.Convert.ToString);
             }
+            if (content.Contains("DeploymentScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)this).DeploymentScope = (string) content.GetValueForProperty("DeploymentScope",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)this).DeploymentScope, global::System.Convert.ToString);
+            }
             if (content.Contains("ImagePackageAlias"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)this).ImagePackageAlias = (string) content.GetValueForProperty("ImagePackageAlias",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)this).ImagePackageAlias, global::System.Convert.ToString);
@@ -220,6 +224,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("CustomData"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)this).CustomData = (string) content.GetValueForProperty("CustomData",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)this).CustomData, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)this).DeploymentScope = (string) content.GetValueForProperty("DeploymentScope",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePropertiesInternal)this).DeploymentScope, global::System.Convert.ToString);
             }
             if (content.Contains("ImagePackageAlias"))
             {

@@ -73,6 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {_packageOwnerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("packageOwnerName"), out var __jsonPackageOwnerName) ? (string)__jsonPackageOwnerName : (string)_packageOwnerName;}
             {_packageLookbackUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("packageLookbackUrl"), out var __jsonPackageLookbackUrl) ? (string)__jsonPackageLookbackUrl : (string)_packageLookbackUrl;}
             {_customData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("customData"), out var __jsonCustomData) ? (string)__jsonCustomData : (string)_customData;}
+            {_deploymentScope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("deploymentScope"), out var __jsonDeploymentScope) ? (string)__jsonDeploymentScope : (string)_deploymentScope;}
             AfterFromJson(json);
         }
 
@@ -126,6 +127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             AddIf( null != (((object)this._packageOwnerName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._packageOwnerName.ToString()) : null, "packageOwnerName" ,container.Add );
             AddIf( null != (((object)this._packageLookbackUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._packageLookbackUrl.ToString()) : null, "packageLookbackUrl" ,container.Add );
             AddIf( null != (((object)this._customData)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._customData.ToString()) : null, "customData" ,container.Add );
+            AddIf( null != (((object)this._deploymentScope)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._deploymentScope.ToString()) : null, "deploymentScope" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
