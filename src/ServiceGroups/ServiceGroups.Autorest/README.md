@@ -50,7 +50,7 @@ directive:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   # Remove the Set-* cmdlets as they are not supported
   - where:

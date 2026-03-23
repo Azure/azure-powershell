@@ -22,6 +22,13 @@ Describe 'Update-AzServiceGroup' {
         $serviceGroup.Tag.Count | Should -BeGreaterOrEqual 1
     }
 
+    It 'UpdateViaIdentityExpanded' {
+        $sgObj = Get-AzServiceGroup -Name $env.ServiceGroupNameToUpdate
+        $serviceGroup = $sgObj | Update-AzServiceGroup -DisplayName 'Updated Via Identity'
+        $serviceGroup | Should -Not -BeNullOrEmpty
+        $serviceGroup.DisplayName | Should -Be 'Updated Via Identity'
+    }
+
     It 'UpdateViaJsonString' {
         $jsonString = '{"properties":{"displayName":"Updated Via JSON"}}'
         $serviceGroup = Update-AzServiceGroup -Name $env.ServiceGroupNameToUpdate -JsonString $jsonString
@@ -41,6 +48,4 @@ Describe 'Update-AzServiceGroup' {
             Remove-Item -Path $jsonFilePath -Force -ErrorAction SilentlyContinue
         }
     }
-
-
 }
