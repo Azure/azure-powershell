@@ -55,6 +55,7 @@ function setupEnv() {
     # Todo: Remove and combine duplicated/useless parameters. And we should remove the presistent resources as much as we can. In most cases, we only need one automated hostpool with two active session hosts to finish all tests.
     # The following resources are manually created and removed by the operator.
     $null = $env.Add("ResourceGroupPersistent", $env.ResourceGroup)
+    $null = $env.Add("StandardHostPoolPersistent", "zhongjie-personal")
     # Using this HostPool to run test depending on the existed session host/user sessions, so you need to create a session host manually and connect to the VM manually.
     $null = $env.Add("HostPoolPersistent", "zhongjie-automated")
     $null = $env.Add("AutomatedHostpoolPersistent", "zhongjie-automated")
