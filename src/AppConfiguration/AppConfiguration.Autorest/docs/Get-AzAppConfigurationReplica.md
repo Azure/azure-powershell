@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.AppConfiguration-help.xml
 Module Name: Az.AppConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationreplica
 schema: 2.0.0
