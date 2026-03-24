@@ -19,6 +19,21 @@
 --->
 
 ## Upcoming Release
+* Added EdgeZone (Extended Location) parameter support for Azure Firewall
+    - Added `-EdgeZone` parameter to `New-AzFirewall` cmdlet
+    - When `-EdgeZone` is specified, availability zones are not supported for Azure Firewall resources
+
+## Version 7.25.1
+* Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
+* Onboarded `Microsoft.DurableTask/schedulers` to Private Link Common Cmdlets
+
+## Version 7.25.0
+* Added `-IpVersionType` parameter to `New-AzPrivateEndpoint` cmdlet to specify the IP version type for private IPs of the private endpoint. Allowed values are IPv4, IPv6, or DualStack.
+* Added new cmdlets for VirtualNetworkAppliance resource:
+    - `Get-AzVirtualNetworkAppliance`: Get a Virtual Network Appliance resource by name, resource group, or list all.
+    - `New-AzVirtualNetworkAppliance`: Create a new Virtual Network Appliance resource.
+    - `Remove-AzVirtualNetworkAppliance`: Remove a Virtual Network Appliance resource.
+    - `Update-AzVirtualNetworkAppliance`: Update tags on a Virtual Network Appliance resource.
 
 ## Version 7.24.1
 * Onboarded `Microsoft.Security/privateLinks` to Private Link Common Cmdlets
@@ -41,6 +56,7 @@
 * Bug fix for `AzureFirewallPolicy` to ensure `BasePolicy` is properly set via `Set-AzFirewallPolicy` cmdlet either via pipe or direct value.
 
 ## Version 7.22.0
+
 * Added new RouteTableUsageMode property for Network Manager Routing Configuration
   - Updated `New-AzNetworkManagerRoutingConfiguration` cmdlet
   - Updated `Set-AzNetworkManagerRoutingConfiguration` cmdlet

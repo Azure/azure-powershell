@@ -2235,7 +2235,6 @@ configuration:
         - mentionUsers:
             mentionees:
             - dkershaw10
-            - baywet
             - SteveMutungi254
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
@@ -3235,9 +3234,9 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - t-bzhan
-            - gxue
-            - TracyYaoYao
+            - jingnanxu
+            - luxue
+            - arashz
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

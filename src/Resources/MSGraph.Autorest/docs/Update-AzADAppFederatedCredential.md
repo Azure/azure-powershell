@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzADAppFederatedCredential
 
 ## SYNOPSIS
-update the navigation property federatedIdentityCredentials in applications
+Update the navigation property federatedIdentityCredentials in applications
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Update-AzADAppFederatedCredential -ApplicationObjectId <String> -FederatedCreden
 ```
 
 ## DESCRIPTION
-update the navigation property federatedIdentityCredentials in applications
+Update the navigation property federatedIdentityCredentials in applications
 
 ## EXAMPLES
 
