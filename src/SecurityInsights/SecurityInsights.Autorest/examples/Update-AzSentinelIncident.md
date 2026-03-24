@@ -15,3 +15,14 @@ Update-AzSentinelIncident -InputObject $incident -Title $incident.Title -Status 
 ```
 
 This command adds a label to an existing incident using `-InputObject`. When using `-InputObject`, you must still supply `-Title`, `-Status`, and `-Severity` (pass the original values to keep them unchanged).
+
+### Example 3: Update Incident Labels using InputObject
+```powershell
+$incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434"
+$newLabels = @( @{ LabelName = "Critical" } )
+Update-AzSentinelIncident -InputObject $incident -Title $incident.Title -Status $incident.Status -Severity $incident.Severity -Label $newLabels
+```
+
+This command updates the labels on an existing incident.
+Note that `-Title`, `-Status`, and `-Severity` must be included to avoid validation errors.
+Passing the original values from `$incident` ensures those fields are not reset.
