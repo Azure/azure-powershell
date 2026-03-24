@@ -15,6 +15,37 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFileShareSnapshot'))
 }
 
 Describe 'Get-AzFileShareSnapshot' {
+    BeforeAll {
+        # Ensure the parent file share exists before running snapshot tests
+        $existingShare = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01 -ErrorAction SilentlyContinue
+        if (-not $existingShare) {
+            New-AzFileShare -ResourceName $env.fileShareName01 `
+                           -ResourceGroupName $env.resourceGroup `
+                           -Location $env.location `
+                           -MediaTier "SSD" `
+                           -Protocol "NFS" `
+                           -ProvisionedStorageGiB 1024 `
+                           -ProvisionedIoPerSec 4024 `
+                           -ProvisionedThroughputMiBPerSec 228 `
+                           -Redundancy "Local" `
+                           -PublicNetworkAccess "Enabled" `
+                           -NfProtocolPropertyRootSquash "NoRootSquash" `
+                           -Tag @{"environment" = "test"; "purpose" = "testing"}
+        }
+    }
+
+    AfterAll {
+        # Clean up all snapshots for this file share
+        $snapshots = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01 -ErrorAction SilentlyContinue
+        if ($snapshots) {
+            foreach ($snapshot in $snapshots) {
+                Remove-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01 -Name $snapshot.Name -ErrorAction SilentlyContinue
+            }
+        }
+        # Clean up the test file share
+        Remove-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01 -ErrorAction SilentlyContinue
+    }
+
     It 'List' {
         {
             $config = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
