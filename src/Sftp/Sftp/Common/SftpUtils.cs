@@ -26,7 +26,7 @@ using Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 {
-    public static class SftpUtils
+    internal static class SftpUtils
     {
         private static class NativeMethods
         {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         /// <param name="dwCtrlEvent"></param>
         /// <param name="dwProcessGroupId"></param>
         /// <returns>True if the event was generated, false otherwise.</returns>
-        public static bool TryGenerateConsoleCtrlEvent(uint dwCtrlEvent, uint dwProcessGroupId)
+        internal static bool TryGenerateConsoleCtrlEvent(uint dwCtrlEvent, uint dwProcessGroupId)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -83,8 +83,79 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static string[] BuildSftpCommand(SFTPSession opInfo)
+        /// <summary>
+        /// Validates that a user-provided value is safe to use as a command-line argument.
+        /// Rejects control characters that break argument boundaries regardless of quoting,
+        /// and double-quote characters that would break argument escaping.
+        /// Shell metacharacters (|, &amp;, ;, etc.) are NOT rejected because all process
+        /// launches use UseShellExecute=false, so no shell interprets them.
+        /// </summary>
+        /// <param name="value">The value to validate.</param>
+        /// <param name="parameterName">The parameter name for error messages.</param>
+        /// <exception cref="AzPSApplicationException">Thrown if the value contains dangerous characters.</exception>
+        internal static void ValidateCommandLineArgument(string value, string parameterName)
         {
+            if (string.IsNullOrEmpty(value))
+            {
+                return;
+            }
+
+            // Only reject characters that break argument boundaries regardless of quoting:
+            // - Control characters (\n, \r, \0) bypass any form of argument escaping
+            // - Double-quote characters break the quoting used by EscapeProcessArgument
+            // Shell metacharacters (;, |, &, $, etc.) are safe because UseShellExecute=false
+            // is used for all process launches, so no shell interprets them.
+            // Common path characters like (, ), & are intentionally allowed to support
+            // paths such as "C:\Program Files (x86)\...".
+            char[] dangerousChars = { '\n', '\r', '\0', '"' };
+            int index = value.IndexOfAny(dangerousChars);
+            if (index >= 0)
+            {
+                throw new AzPSApplicationException(
+                    $"The value for '{parameterName}' contains an invalid character at position {index}. " +
+                    "Values must not contain control characters or double-quote characters."
+                );
+            }
+        }
+
+        /// <summary>
+        /// Escapes a single argument for use in ProcessStartInfo.Arguments.
+        /// Wraps the argument in double quotes if it contains spaces or tabs
+        /// to preserve argument boundaries. This is safe because
+        /// ValidateCommandLineArgument has already rejected values containing
+        /// double-quote and control characters.
+        /// </summary>
+        /// <param name="arg">The argument to escape.</param>
+        /// <returns>The escaped argument string.</returns>
+        internal static string EscapeProcessArgument(string arg)
+        {
+            if (string.IsNullOrEmpty(arg))
+            {
+                return "\"\"";
+            }
+
+            // Validated inputs cannot contain " or control chars, so simple
+            // quoting is sufficient to preserve argument boundaries.
+            if (arg.Contains(" ") || arg.Contains("\t"))
+            {
+                return $"\"{arg}\"";
+            }
+
+            return arg;
+        }
+
+        internal static string[] BuildSftpCommand(SFTPSession opInfo)
+        {
+            // Validate user-provided values that become process arguments.
+            // SftpArgs is intentionally not validated here — it is a documented
+            // pass-through parameter for advanced OpenSSH options.
+            ValidateCommandLineArgument(opInfo.CertFile, nameof(opInfo.CertFile));
+            ValidateCommandLineArgument(opInfo.PrivateKeyFile, nameof(opInfo.PrivateKeyFile));
+            ValidateCommandLineArgument(opInfo.PublicKeyFile, nameof(opInfo.PublicKeyFile));
+            ValidateCommandLineArgument(opInfo.Username, nameof(opInfo.Username));
+            ValidateCommandLineArgument(opInfo.Host, nameof(opInfo.Host));
+            ValidateCommandLineArgument(opInfo.SshClientFolder, nameof(opInfo.SshClientFolder));
+
             string destination = opInfo.GetDestination();
             var command = new List<string>
         {
@@ -125,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             return command.ToArray();
         }
 
-        public static void HandleProcessInterruption(Process sftpProcess)
+        internal static void HandleProcessInterruption(Process sftpProcess)
         {
             LogInfo("Connection interrupted by user (KeyboardInterrupt)");
             if (sftpProcess == null || sftpProcess.HasExited)
@@ -164,7 +235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             catch { }
         }
 
-        public static Tuple<Process, int?> ExecuteSftpProcess(string[] command, Dictionary<string, string> env = null, ProcessCreationFlags creationFlags = ProcessCreationFlags.None)
+        internal static Tuple<Process, int?> ExecuteSftpProcess(string[] command, Dictionary<string, string> env = null, ProcessCreationFlags creationFlags = ProcessCreationFlags.None)
         {
             var processInfo = new ProcessStartInfo
             {
@@ -178,23 +249,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                 StandardErrorEncoding = Encoding.UTF8
             };
 
-            // Build arguments string with proper escaping for .NET Standard 2.0 compatibility
+            // Build arguments string with proper escaping to preserve argument boundaries
             if (command.Length > 1)
             {
-                var arguments = new List<string>();
-                foreach (var arg in command.Skip(1))
-                {
-                    // Escape arguments that contain spaces or special characters
-                    if (arg.Contains(" ") || arg.Contains("\"") || arg.Contains("\\"))
-                    {
-                        arguments.Add($"\"{arg.Replace("\"", "\\\"")}\"");
-                    }
-                    else
-                    {
-                        arguments.Add(arg);
-                    }
-                }
-                processInfo.Arguments = string.Join(" ", arguments);
+                processInfo.Arguments = string.Join(" ", command.Skip(1).Select(EscapeProcessArgument));
             }
 
             // Set environment variables if provided
@@ -232,7 +290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static Tuple<bool, double?, string> AttemptConnection(string[] command, Dictionary<string, string> env, ProcessCreationFlags creationFlags, SFTPSession opInfo, int attemptNum)
+        internal static Tuple<bool, double?, string> AttemptConnection(string[] command, Dictionary<string, string> env, ProcessCreationFlags creationFlags, SFTPSession opInfo, int attemptNum)
         {
             var connectionStartTime = DateTime.UtcNow;
 
@@ -277,7 +335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static System.Diagnostics.Process StartSftpConnection(SFTPSession opInfo)
+        internal static System.Diagnostics.Process StartSftpConnection(SFTPSession opInfo)
         {
             try
             {
@@ -303,10 +361,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                             CreateNoWindow = false  // Allow console for interactive session
                         };
 
-                        // Build arguments string - keep it simple like SSH PowerShell does
+                        // Build arguments string with proper escaping to preserve argument boundaries
                         if (command.Length > 1)
                         {
-                            processInfo.Arguments = string.Join(" ", command.Skip(1));
+                            processInfo.Arguments = string.Join(" ", command.Skip(1).Select(EscapeProcessArgument));
                         }
 
                         // Set environment variables if provided
@@ -385,8 +443,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static void GeneratePublicKeyFromPrivate(string privateKeyFile, string publicKeyFile, string sshClientFolder = null)
+        internal static void GeneratePublicKeyFromPrivate(string privateKeyFile, string publicKeyFile, string sshClientFolder = null)
         {
+            ValidateCommandLineArgument(privateKeyFile, nameof(privateKeyFile));
+            ValidateCommandLineArgument(publicKeyFile, nameof(publicKeyFile));
             var sshKeygenPath = GetSshClientPath("ssh-keygen", sshClientFolder);
             var command = new string[] { sshKeygenPath, "-y", "-f", privateKeyFile };
             LogDebug($"Running ssh-keygen command to generate public key: {string.Join(" ", command)}");
@@ -396,7 +456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                 var processInfo = new ProcessStartInfo
                 {
                     FileName = command[0],
-                    Arguments = string.Join(" ", command.Skip(1).Select(arg => $"\"{arg}\"")),
+                    Arguments = string.Join(" ", command.Skip(1).Select(EscapeProcessArgument)),
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
@@ -434,8 +494,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static void CreateSshKeyfile(string privateKeyFile, string sshClientFolder = null)
+        internal static void CreateSshKeyfile(string privateKeyFile, string sshClientFolder = null)
         {
+            ValidateCommandLineArgument(privateKeyFile, nameof(privateKeyFile));
             var sshKeygenPath = GetSshClientPath("ssh-keygen", sshClientFolder);
 
             // Delete existing key files if they exist
@@ -465,11 +526,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                 };
 
                 // Build arguments properly for no passphrase
-                // Use separate argument approach which is more reliable
                 var argsList = new List<string>
                 {
                     "-t", "rsa",
-                    "-f", $"\"{privateKeyFile}\"",
+                    "-f", EscapeProcessArgument(privateKeyFile),
                     "-N", "\"\"",  // Empty passphrase
                     "-q"
                 };
@@ -545,7 +605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static List<string> GetSshCertPrincipals(string certFile, string sshClientFolder = null)
+        internal static List<string> GetSshCertPrincipals(string certFile, string sshClientFolder = null)
         {
             var info = GetSshCertInfo(certFile, sshClientFolder);
             var principals = new List<string>();
@@ -574,8 +634,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         }
 
 
-        public static List<string> GetSshCertInfo(string certFile, string sshClientFolder = null)
+        internal static List<string> GetSshCertInfo(string certFile, string sshClientFolder = null)
         {
+            ValidateCommandLineArgument(certFile, nameof(certFile));
             var sshKeygenPath = GetSshClientPath("ssh-keygen", sshClientFolder);
             var command = new string[] { sshKeygenPath, "-L", "-f", certFile };
             LogDebug($"Running ssh-keygen command {string.Join(" ", command)}");
@@ -585,7 +646,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                 var processInfo = new ProcessStartInfo
                 {
                     FileName = command[0],
-                    Arguments = string.Join(" ", command.Skip(1).Select(arg => $"\"{arg}\"")),
+                    Arguments = string.Join(" ", command.Skip(1).Select(EscapeProcessArgument)),
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
@@ -617,8 +678,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             }
         }
 
-        public static string GetSshClientPath(string sshCommand = "ssh", string sshClientFolder = null)
+        internal static string GetSshClientPath(string sshCommand = "ssh", string sshClientFolder = null)
         {
+            ValidateCommandLineArgument(sshClientFolder, nameof(sshClientFolder));
             if (!string.IsNullOrEmpty(sshClientFolder))
             {
                 var clientSshPath = Path.Combine(sshClientFolder, sshCommand);
@@ -677,7 +739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         }
 
         [Flags]
-        public enum ProcessCreationFlags : uint
+        internal enum ProcessCreationFlags : uint
         {
             None = 0,
             CREATE_NO_WINDOW = 0x08000000,
@@ -686,7 +748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             DETACHED_PROCESS = 0x00000008
         }
 
-        public static Tuple<DateTime, DateTime> GetCertificateStartAndEndTimes(string certFile, string sshClientFolder = null)
+        internal static Tuple<DateTime, DateTime> GetCertificateStartAndEndTimes(string certFile, string sshClientFolder = null)
         {
             var validityStr = GetSshCertValidity(certFile, sshClientFolder);
 
@@ -719,7 +781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
             return null;
         }
 
-        public static string GetSshCertValidity(string certFile, string sshClientFolder = null)
+        internal static string GetSshCertValidity(string certFile, string sshClientFolder = null)
         {
             if (!string.IsNullOrEmpty(certFile))
             {

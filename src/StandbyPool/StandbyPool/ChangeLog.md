@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `-DynamicSizingEnabled` parameter to `New-AzStandbyVMPool`, `Update-AzStandbyVMPool`, `New-AzStandbyContainerGroupPool`, and `Update-AzStandbyContainerGroupPool`
+* Added `-PostProvisioningDelay` parameter to `New-AzStandbyVMPool` and `Update-AzStandbyVMPool`
+* Removed upper limit of 2000 on `-MaxReadyCapacity` and `-MinReadyCapacity`
 
 ## Version 0.3.0
 * Updated existing Cmdlets

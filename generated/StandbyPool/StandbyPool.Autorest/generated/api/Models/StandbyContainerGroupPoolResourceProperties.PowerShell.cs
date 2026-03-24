@@ -130,6 +130,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("ElasticityProfileDynamicSizing"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ElasticityProfileDynamicSizing = (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing) content.GetValueForProperty("ElasticityProfileDynamicSizing",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ElasticityProfileDynamicSizing, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizingTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ElasticityProfileRefillPolicy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ElasticityProfileRefillPolicy = (string) content.GetValueForProperty("ElasticityProfileRefillPolicy",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ElasticityProfileRefillPolicy, global::System.Convert.ToString);
@@ -153,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             if (content.Contains("ContainerGroupProfileRevision"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ContainerGroupProfileRevision = (long?) content.GetValueForProperty("ContainerGroupProfileRevision",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ContainerGroupProfileRevision, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("DynamicSizingEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).DynamicSizingEnabled = (bool?) content.GetValueForProperty("DynamicSizingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).DynamicSizingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -187,6 +195,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
+            if (content.Contains("ElasticityProfileDynamicSizing"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ElasticityProfileDynamicSizing = (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing) content.GetValueForProperty("ElasticityProfileDynamicSizing",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ElasticityProfileDynamicSizing, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizingTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ElasticityProfileRefillPolicy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ElasticityProfileRefillPolicy = (string) content.GetValueForProperty("ElasticityProfileRefillPolicy",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ElasticityProfileRefillPolicy, global::System.Convert.ToString);
@@ -210,6 +222,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             if (content.Contains("ContainerGroupProfileRevision"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ContainerGroupProfileRevision = (long?) content.GetValueForProperty("ContainerGroupProfileRevision",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).ContainerGroupProfileRevision, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("DynamicSizingEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).DynamicSizingEnabled = (bool?) content.GetValueForProperty("DynamicSizingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourcePropertiesInternal)this).DynamicSizingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

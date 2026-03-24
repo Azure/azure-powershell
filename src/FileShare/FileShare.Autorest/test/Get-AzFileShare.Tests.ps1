@@ -15,19 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFileShare'))
 }
 
 Describe 'Get-AzFileShare' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $config = Get-AzFileShare -ResourceGroupName $env.resourceGroup
+            $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        {
+            $config = Get-AzFileShare
+            $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $config = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
+            $config.Name | Should -Be $env.fileShareName01
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        {
+            $fileShare = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
+            $config = Get-AzFileShare -InputObject $fileShare
+            $config.Name | Should -Be $env.fileShareName01
+        } | Should -Not -Throw
     }
 }
