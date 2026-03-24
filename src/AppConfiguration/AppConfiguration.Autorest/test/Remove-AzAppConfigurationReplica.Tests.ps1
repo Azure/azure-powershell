@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAppConfigurationRepl
 
 Describe 'Remove-AzAppConfigurationReplica' {
     BeforeAll {
-        $removeReplicaStoreName = "azrm" + (Get-Random -Maximum 99999)
+        $removeReplicaStoreName = $env.removeReplicaStoreName
         New-AzAppConfigurationStore -Name $removeReplicaStoreName -ResourceGroupName $env.resourceGroup -Location $env.location -Sku Standard
     }
 

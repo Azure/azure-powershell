@@ -172,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the container registry belongs.
+The name of the resource group that contains the App Configuration store.
 
 ```yaml
 Type: System.String

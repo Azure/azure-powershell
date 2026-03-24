@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAppConfigurationReplica
 
 Describe 'New-AzAppConfigurationReplica' {
     BeforeAll {
-        $newReplicaStoreName = "aznew" + (Get-Random -Maximum 99999)
+        $newReplicaStoreName = $env.newReplicaStoreName
         New-AzAppConfigurationStore -Name $newReplicaStoreName -ResourceGroupName $env.resourceGroup -Location $env.location -Sku Standard
     }
 
