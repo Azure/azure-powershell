@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-* Fixed documentation for `Update-AzSentinelIncident` to clarify that `-Title`, `-Status`, and `-Severity` are required by the API [#29130]
-* Added `-InputObject` example showing how to update an incident while preserving required fields [#29130]
 
 ## Version 3.2.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
