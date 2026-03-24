@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change] Removed parameter `ActionBlockResponseCode` from `New-AzDnsResolverPolicyDnsSecurityRule` and `Update-AzDnsResolverPolicyDnsSecurityRule`. The block response code is no longer configurable.
+* [Breaking Change] Parameter `DnsResolverDomainList` is no longer mandatory on `New-AzDnsResolverPolicyDnsSecurityRule`. DNS security rules now support `ManagedDomainList` as an alternative.
+* [Breaking Change] Parameter `Domain` is no longer mandatory on `New-AzDnsResolverDomainList`. Domain lists now support bulk upload via `Invoke-AzDnsResolverBulkDnsResolverDomainList`.
 
 ## Version 1.2.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
