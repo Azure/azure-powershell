@@ -134,7 +134,8 @@ function AddSquadLabelsToYaml {
             }
 
             $labelsToAdd = [System.Collections.Generic.List[string]]::new()
-            foreach ($label in $labelsPresent.Keys) {
+            $sortedLabels = $labelsPresent.Keys | Sort-Object -CultureInvariant -CaseSensitive
+            foreach ($label in $sortedLabels) {
                 if ($LabelToSquad.ContainsKey($label)) {
                     $squadLabel = $LabelToSquad[$label]
                     if (-not $labelsPresent.ContainsKey($squadLabel) -and -not $labelsToAdd.Contains($squadLabel)) {
