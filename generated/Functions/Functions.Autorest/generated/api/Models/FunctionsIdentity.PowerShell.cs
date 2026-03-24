@@ -360,13 +360,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ResourceName, global::System.Convert.ToString);
             }
-            if (content.Contains("KeyId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId = (string) content.GetValueForProperty("KeyId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId, global::System.Convert.ToString);
-            }
             if (content.Contains("PurgeId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PurgeId = (string) content.GetValueForProperty("PurgeId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PurgeId, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId = (string) content.GetValueForProperty("KeyId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId, global::System.Convert.ToString);
             }
             if (content.Contains("Scope"))
             {
@@ -653,13 +653,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ResourceName = (string) content.GetValueForProperty("ResourceName",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).ResourceName, global::System.Convert.ToString);
             }
-            if (content.Contains("KeyId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId = (string) content.GetValueForProperty("KeyId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId, global::System.Convert.ToString);
-            }
             if (content.Contains("PurgeId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PurgeId = (string) content.GetValueForProperty("PurgeId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).PurgeId, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId = (string) content.GetValueForProperty("KeyId",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentityInternal)this).KeyId, global::System.Convert.ToString);
             }
             if (content.Contains("Scope"))
             {

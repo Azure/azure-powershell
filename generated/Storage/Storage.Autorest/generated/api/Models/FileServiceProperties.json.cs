@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            __resource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Resource(json);
+            __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ProxyResource(json);
             {_fileServiceProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.FileServiceProperties1.FromJson(__jsonProperties) : _fileServiceProperty;}
             {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("sku"), out var __jsonSku) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Sku.FromJson(__jsonSku) : _sku;}
             AfterFromJson(json);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return container;
             }
-            __resource?.ToJson(container, serializationMode);
+            __proxyResource?.ToJson(container, serializationMode);
             AddIf( null != this._fileServiceProperty ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._fileServiceProperty.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {

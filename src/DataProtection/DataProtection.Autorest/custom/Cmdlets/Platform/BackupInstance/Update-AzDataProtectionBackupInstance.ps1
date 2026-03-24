@@ -2,7 +2,7 @@
 
 function Update-AzDataProtectionBackupInstance
 {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupInstanceResource')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupInstanceResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a given backup instance')]
 
@@ -125,7 +125,7 @@ function Update-AzDataProtectionBackupInstance
                 throw "UserAssignedIdentityArmId cannot be provided without UseSystemAssignedIdentity and UseSystemAssignedIdentity must be false when UserAssignedIdentityArmId is provided."
             }
             
-            $instance.Property.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IdentityDetails]::new()
+            $instance.Property.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IdentityDetails]::new()
             $instance.Property.IdentityDetail.UseSystemAssignedIdentity = $UseSystemAssignedIdentity            
 
             if ($hasUserAssignedIdentityArmId) {
@@ -154,11 +154,11 @@ function Update-AzDataProtectionBackupInstance
             }
             elseif($datasourceParam -eq $null){
                 if ($DatasourceType -eq "AzureBlob"){
-                    $backupConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.BlobBackupDatasourceParameters]::new()
+                    $backupConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BlobBackupDatasourceParameters]::new()
                     $backupConfiguration.ObjectType = "BlobBackupDatasourceParameters"
                 }
                 elseif ($DatasourceType -eq "AzureDataLakeStorage"){
-                    $backupConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.AdlsBlobBackupDatasourceParameters]::new()
+                    $backupConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AdlsBlobBackupDatasourceParameters]::new()
                     $backupConfiguration.ObjectType = "AdlsBlobBackupDatasourceParameters"
                 }
                 $backupConfiguration.ContainersList = $VaultedBackupContainer

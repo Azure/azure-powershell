@@ -60,6 +60,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="vectorEmbeddingPolicy">The vector embedding policy for the container.
         /// </param>
 
+        /// <param name="fullTextPolicy">The FullText policy for the container.
+        /// </param>
+
         /// <param name="rid">A system generated property. A unique identifier.
         /// </param>
 
@@ -70,7 +73,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="etag">A system generated property representing the resource etag required for
         /// optimistic concurrency control.
         /// </param>
-        public SqlContainerGetPropertiesResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), ClientEncryptionPolicy clientEncryptionPolicy = default(ClientEncryptionPolicy), long? analyticalStorageTtl = default(long?), ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string), System.Collections.Generic.IList<ComputedProperty> computedProperties = default(System.Collections.Generic.IList<ComputedProperty>), VectorEmbeddingPolicy vectorEmbeddingPolicy = default(VectorEmbeddingPolicy), string rid = default(string), double? ts = default(double?), string etag = default(string))
+        public SqlContainerGetPropertiesResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), ClientEncryptionPolicy clientEncryptionPolicy = default(ClientEncryptionPolicy), long? analyticalStorageTtl = default(long?), ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string), System.Collections.Generic.IList<ComputedProperty> computedProperties = default(System.Collections.Generic.IList<ComputedProperty>), VectorEmbeddingPolicy vectorEmbeddingPolicy = default(VectorEmbeddingPolicy), FullTextPolicy fullTextPolicy = default(FullTextPolicy), string rid = default(string), double? ts = default(double?), string etag = default(string))
 
         {
             this.Id = id;
@@ -85,6 +88,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.CreateMode = createMode;
             this.ComputedProperties = computedProperties;
             this.VectorEmbeddingPolicy = vectorEmbeddingPolicy;
+            this.FullTextPolicy = fullTextPolicy;
             this.Rid = rid;
             this.Ts = ts;
             this.Etag = etag;
@@ -173,6 +177,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public VectorEmbeddingPolicy VectorEmbeddingPolicy {get; set; }
 
         /// <summary>
+        /// Gets or sets the FullText policy for the container.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "fullTextPolicy")]
+        public FullTextPolicy FullTextPolicy {get; set; }
+
+        /// <summary>
         /// Gets a system generated property. A unique identifier.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "_rid")]
@@ -215,6 +225,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 this.ClientEncryptionPolicy.Validate();
             }
+
 
 
 

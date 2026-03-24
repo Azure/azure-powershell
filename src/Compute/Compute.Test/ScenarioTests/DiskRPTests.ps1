@@ -1983,3 +1983,102 @@ function Test-SupportedSecurityOption
 		Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Testing disk availability policy - comprehensive coverage
+#>
+function Test-DiskAvailabilityPolicy
+{
+    $rgname = Get-ComputeTestResourceName;
+    $diskname1 = 'disk1' + $rgname;
+    $diskname2 = 'disk2' + $rgname;
+    $diskname3 = 'disk3' + $rgname;
+
+    try
+    {
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # In-memory config validation
+        $diskConfigWithPolicy = New-AzDiskConfig -Location $loc -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty -ActionOnDiskDelay 'None';
+        Assert-NotNull $diskConfigWithPolicy.AvailabilityPolicy;
+        Assert-AreEqual 'None' $diskConfigWithPolicy.AvailabilityPolicy.ActionOnDiskDelay;
+
+        $diskConfigAutoReattach = New-AzDiskConfig -Location $loc -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty -ActionOnDiskDelay 'AutomaticReattach';
+        Assert-NotNull $diskConfigAutoReattach.AvailabilityPolicy;
+        Assert-AreEqual 'AutomaticReattach' $diskConfigAutoReattach.AvailabilityPolicy.ActionOnDiskDelay;
+
+        $updateConfigWithPolicy = New-AzDiskUpdateConfig -ActionOnDiskDelay 'AutomaticReattach';
+        Assert-NotNull $updateConfigWithPolicy.AvailabilityPolicy;
+        Assert-AreEqual 'AutomaticReattach' $updateConfigWithPolicy.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Create disk with AvailabilityPolicy
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty -ActionOnDiskDelay 'None';
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -Disk $diskconfig;
+        Assert-NotNull $disk;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-NotNull $disk.AvailabilityPolicy;
+        Assert-AreEqual 'None' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Update AvailabilityPolicy (None -> AutomaticReattach)
+        $updateConfig = New-AzDiskUpdateConfig -ActionOnDiskDelay 'AutomaticReattach';
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -DiskUpdate $updateConfig;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-NotNull $disk.AvailabilityPolicy;
+        Assert-AreEqual 'AutomaticReattach' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Update AvailabilityPolicy (AutomaticReattach -> None)
+        $updateConfig = New-AzDiskUpdateConfig -ActionOnDiskDelay 'None';
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -DiskUpdate $updateConfig;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-NotNull $disk.AvailabilityPolicy;
+        Assert-AreEqual 'None' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Null update preserves existing policy
+        $updateConfig = New-AzDiskUpdateConfig -ActionOnDiskDelay 'AutomaticReattach';
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -DiskUpdate $updateConfig;
+        
+        $updateConfig = New-AzDiskUpdateConfig -Tag @{"test"="preservePolicy"};
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname1 -DiskUpdate $updateConfig;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-AreEqual 'AutomaticReattach' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+        Assert-AreEqual 'preservePolicy' $disk.Tags["test"];
+
+        # Create disk with AutomaticReattach initially
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty -ActionOnDiskDelay 'AutomaticReattach';
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname2 -Disk $diskconfig;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname2;
+        Assert-NotNull $disk.AvailabilityPolicy;
+        Assert-AreEqual 'AutomaticReattach' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+
+        # Hydrated disk with AvailabilityPolicy
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 5 -SkuName Standard_LRS -OsType Windows -CreateOption Empty;
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname3 -Disk $diskconfig;
+        
+        $access = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname3 -Access Read -DurationInSecond 3600;
+        Assert-NotNull $access.AccessSAS;
+        
+        $updateConfig = New-AzDiskUpdateConfig -ActionOnDiskDelay 'AutomaticReattach';
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname3 -DiskUpdate $updateConfig;
+        
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname3;
+        Assert-AreEqual 'AutomaticReattach' $disk.AvailabilityPolicy.ActionOnDiskDelay;
+        
+        Revoke-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname3;
+
+        # Verify disk properties
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname1;
+        Assert-AreEqual 5 $disk.DiskSizeGB;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}

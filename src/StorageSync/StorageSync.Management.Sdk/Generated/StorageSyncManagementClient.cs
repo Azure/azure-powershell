@@ -70,13 +70,21 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </summary>
         public virtual IStorageSyncServicesOperations StorageSyncServices { get; private set; }
         /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations
+        /// Gets the IOperationStatusOperations
         /// </summary>
-        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+        public virtual IOperationStatusOperations OperationStatus { get; private set; }
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
         /// </summary>
         public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+        /// <summary>
+        /// Gets the IRegisteredServersOperations
+        /// </summary>
+        public virtual IRegisteredServersOperations RegisteredServers { get; private set; }
         /// <summary>
         /// Gets the ISyncGroupsOperations
         /// </summary>
@@ -90,17 +98,9 @@ namespace Microsoft.Azure.Management.StorageSync
         /// </summary>
         public virtual IServerEndpointsOperations ServerEndpoints { get; private set; }
         /// <summary>
-        /// Gets the IRegisteredServersOperations
-        /// </summary>
-        public virtual IRegisteredServersOperations RegisteredServers { get; private set; }
-        /// <summary>
         /// Gets the IWorkflowsOperations
         /// </summary>
         public virtual IWorkflowsOperations Workflows { get; private set; }
-        /// <summary>
-        /// Gets the IOperationStatusOperations
-        /// </summary>
-        public virtual IOperationStatusOperations OperationStatus { get; private set; }
         /// <summary>
         /// Initializes a new instance of the StorageSyncManagementClient class.
         /// </summary>
@@ -341,14 +341,14 @@ namespace Microsoft.Azure.Management.StorageSync
         {
             this.Operations = new Operations(this);
             this.StorageSyncServices = new StorageSyncServicesOperations(this);
-            this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            this.OperationStatus = new OperationStatusOperations(this);
             this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
+            this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
+            this.RegisteredServers = new RegisteredServersOperations(this);
             this.SyncGroups = new SyncGroupsOperations(this);
             this.CloudEndpoints = new CloudEndpointsOperations(this);
             this.ServerEndpoints = new ServerEndpointsOperations(this);
-            this.RegisteredServers = new RegisteredServersOperations(this);
             this.Workflows = new WorkflowsOperations(this);
-            this.OperationStatus = new OperationStatusOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.ApiVersion = "2022-09-01";
             this.AcceptLanguage = "en-US";
@@ -420,11 +420,11 @@ namespace Microsoft.Azure.Management.StorageSync
 
 
  
-
             if (this.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.ApiVersion");
             }
+
 
             if (locationName == null)
             {

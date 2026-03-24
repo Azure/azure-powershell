@@ -14,11 +14,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
     {
 
         /// <summary>Backing field for <see cref="PerInstanceConcurrency" /> property.</summary>
-        private float? _perInstanceConcurrency;
+        private int? _perInstanceConcurrency;
 
         /// <summary>The maximum number of concurrent HTTP trigger invocations per instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
-        public float? PerInstanceConcurrency { get => this._perInstanceConcurrency; set => this._perInstanceConcurrency = value; }
+        public int? PerInstanceConcurrency { get => this._perInstanceConcurrency; set => this._perInstanceConcurrency = value; }
 
         /// <summary>
         /// Creates an new <see cref="FunctionsScaleAndConcurrencyTriggersHttp" /> instance.
@@ -38,8 +38,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         ReadOnly = false,
         Description = @"The maximum number of concurrent HTTP trigger invocations per instance.",
         SerializedName = @"perInstanceConcurrency",
-        PossibleTypes = new [] { typeof(float) })]
-        float? PerInstanceConcurrency { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? PerInstanceConcurrency { get; set; }
 
     }
     /// Scale and concurrency settings for the HTTP trigger.
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
 
     {
         /// <summary>The maximum number of concurrent HTTP trigger invocations per instance.</summary>
-        float? PerInstanceConcurrency { get; set; }
+        int? PerInstanceConcurrency { get; set; }
 
     }
 }

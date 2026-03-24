@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Storage.Models
     /// The properties of File services in storage account.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class FileServiceProperties : Resource
+    public partial class FileServiceProperties : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the FileServiceProperties class.
@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the FileServiceProperties class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
         /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="sku">Sku name and tier.
@@ -50,9 +54,9 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="shareDeleteRetentionPolicy">The file service properties for share soft delete.
         /// </param>
-        public FileServiceProperties(string id = default(string), string name = default(string), string type = default(string), Sku sku = default(Sku), ProtocolSettings protocolSettings = default(ProtocolSettings), CorsRules cors = default(CorsRules), DeleteRetentionPolicy shareDeleteRetentionPolicy = default(DeleteRetentionPolicy))
+        public FileServiceProperties(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), Sku sku = default(Sku), ProtocolSettings protocolSettings = default(ProtocolSettings), CorsRules cors = default(CorsRules), DeleteRetentionPolicy shareDeleteRetentionPolicy = default(DeleteRetentionPolicy))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.Sku = sku;
             this.ProtocolSettings = protocolSettings;

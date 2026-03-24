@@ -8116,3 +8116,57 @@ function Test-VirtualMachineGalleryApplicationFlags
         Clean-ResourceGroup $resourceGroupName
     }
 }
+<#
+.SYNOPSIS
+Test Virtual Machine Data Disk with IOPS and MBPS parameters
+#>
+function Test-VMDataDiskIOPSMBPS
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = 'vm' + $rgname;
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+
+        # Test adding data disk with DiskIOPSReadWrite and DiskMBpsReadWrite parameters
+        $diskName = 'testdisk1';
+        $diskLun = 0;
+        $diskSize = 10;
+        $diskIOPS = 100;
+        $diskMBPS = 1;
+        
+        # Add data disk with IOPS and MBPS for managed disk (implicit creation scenario)
+        $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name $diskName -Lun $diskLun -CreateOption 'Empty' -DiskSizeInGB $diskSize -StorageAccountType 'UltraSSD_LRS' -Caching 'None' -DiskIOPSReadWrite $diskIOPS -DiskMBpsReadWrite $diskMBPS;
+
+        # Verify the disk was added with correct properties
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks.Count 1;
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].DiskIOPSReadWrite $diskIOPS;
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].DiskMBpsReadWrite $diskMBPS;
+
+        # Test adding another data disk without IOPS/MBPS parameters
+        $diskName2 = 'testdisk2';
+        $diskLun2 = 1;
+        $diskSize2 = 20;
+        
+        $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name $diskName2 -Lun $diskLun2 -CreateOption 'Empty' `
+            -DiskSizeInGB $diskSize2 -StorageAccountType 'Premium_LRS' -Caching 'ReadOnly';
+
+        # Verify the second disk was added without IOPS/MBPS
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks.Count 2;
+        Assert-Null $vmConfig.StorageProfile.DataDisks[1].DiskIOPSReadWrite;
+        Assert-Null $vmConfig.StorageProfile.DataDisks[1].DiskMBpsReadWrite;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

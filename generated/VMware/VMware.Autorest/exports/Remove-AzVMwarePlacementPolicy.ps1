@@ -49,7 +49,9 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
   [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
@@ -60,6 +62,7 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
   [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
@@ -79,7 +82,9 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
   [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
@@ -90,6 +95,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
   [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
@@ -109,7 +115,9 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
   [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
@@ -120,6 +128,7 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
   [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
@@ -266,8 +275,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

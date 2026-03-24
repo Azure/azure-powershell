@@ -21,20 +21,24 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// Initializes a new instance of the RegisteredServersTriggerRolloverHeaders class.
         /// </summary>
 
-        /// <param name="xmsRequestId">
+        /// <param name="xmsCorrelationRequestId">
         /// </param>
 
-        /// <param name="xmsCorrelationRequestId">
+        /// <param name="xmsRequestId">
         /// </param>
 
         /// <param name="location">
         /// </param>
-        public RegisteredServersTriggerRolloverHeaders(string xmsRequestId = default(string), string xmsCorrelationRequestId = default(string), string location = default(string))
+
+        /// <param name="retryAfter">
+        /// </param>
+        public RegisteredServersTriggerRolloverHeaders(string xmsCorrelationRequestId = default(string), string xmsRequestId = default(string), string location = default(string), int? retryAfter = default(int?))
 
         {
-            this.XMSRequestId = xmsRequestId;
             this.XMSCorrelationRequestId = xmsCorrelationRequestId;
+            this.XMSRequestId = xmsRequestId;
             this.Location = location;
+            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -47,19 +51,25 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-request-id")]
-        public string XMSRequestId {get; set; }
-
-        /// <summary>
-        /// Gets or sets
-        /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-correlation-request-id")]
         public string XMSCorrelationRequestId {get; set; }
 
         /// <summary>
         /// Gets or sets
         /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-request-id")]
+        public string XMSRequestId {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
         public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
     }
 }

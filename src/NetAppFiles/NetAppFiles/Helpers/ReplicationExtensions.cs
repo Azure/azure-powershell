@@ -30,7 +30,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ReplicationId = replication.ReplicationId,
                 EndpointType = replication.EndpointType,
                 RemoteVolumeRegion = replication.RemoteVolumeRegion,
-                RemoteVolumeResourceId = replication.RemoteVolumeResourceId
+                RemoteVolumeResourceId = replication.RemoteVolumeResourceId,
+                ReplicationSchedule = replication.ReplicationSchedule,
+                MirrorState = replication.MirrorState,
+                ReplicationCreationTime = replication.ReplicationCreationTime,
+                ReplicationDeletionTime = replication.ReplicationDeletionTime
             };
             return psReplicaitonObject;
         }

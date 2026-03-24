@@ -80,21 +80,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.UsagesPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Id"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Id, global::System.Convert.ToString);
-            }
-            if (content.Contains("Type"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Name, global::System.Convert.ToString);
-            }
             if (content.Contains("ETag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).ETag, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("AnyProperty"))
             {
@@ -126,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
             }
             if (content.Contains("UsageValue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue = (int) content.GetValueForProperty("UsageValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue = (int?) content.GetValueForProperty("UsageValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("UsageUsagesType"))
             {
@@ -161,21 +189,49 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IUsagesProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.UsagesPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("Id"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Id, global::System.Convert.ToString);
-            }
-            if (content.Contains("Type"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("Name"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).Name, global::System.Convert.ToString);
-            }
             if (content.Contains("ETag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).ETag = (string) content.GetValueForProperty("ETag",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).ETag, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
             if (content.Contains("AnyProperty"))
             {
@@ -207,7 +263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
             }
             if (content.Contains("UsageValue"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue = (int) content.GetValueForProperty("UsageValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue = (int?) content.GetValueForProperty("UsageValue",((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBaseInternal)this).UsageValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("UsageUsagesType"))
             {

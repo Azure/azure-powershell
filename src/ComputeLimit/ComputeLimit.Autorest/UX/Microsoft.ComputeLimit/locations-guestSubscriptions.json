@@ -1,0 +1,123 @@
+{
+  "resourceType": "locations/guestSubscriptions",
+  "apiVersion": "2025-08-15",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.computelimit"
+  },
+  "commands": [
+    {
+      "name": "Add-AzGuestSubscription",
+      "description": "Adds a subscription as a guest to consume the compute limits shared by the host subscription.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.computelimit/add-azguestsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Id <String>",
+              "-Location <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Adds a subscription as a guest to consume the compute limits shared by the host subscription.",
+          "parameters": [
+            {
+              "name": "-Id",
+              "value": "[Path.guestSubscriptionId]"
+            },
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzGuestSubscription",
+      "description": "Gets the properties of a guest subscription.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.computelimit/get-azguestsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Id <String>",
+              "-Location <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the properties of a guest subscription.",
+          "parameters": [
+            {
+              "name": "-Id",
+              "value": "[Path.guestSubscriptionId]"
+            },
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzGuestSubscription",
+      "description": "Deletes a subscription as a guest to stop consuming the compute limits shared by the host subscription.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions/{guestSubscriptionId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.computelimit/remove-azguestsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Id <String>",
+              "-Location <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a subscription as a guest to stop consuming the compute limits shared by the host subscription.",
+          "parameters": [
+            {
+              "name": "-Id",
+              "value": "[Path.guestSubscriptionId]"
+            },
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

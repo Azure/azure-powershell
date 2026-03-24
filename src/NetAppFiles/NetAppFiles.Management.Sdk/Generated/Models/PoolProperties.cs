@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// for this pool and all volumes in it. This value can only be set when
         /// creating new pool.
         /// Possible values include: &#39;Single&#39;, &#39;Double&#39;</param>
-        public PoolProperties(long size, string serviceLevel, string poolId = default(string), string provisioningState = default(string), double? totalThroughputMibps = default(double?), double? utilizedThroughputMibps = default(double?), double? customThroughputMibps = default(double?), string qosType = default(string), bool? coolAccess = default(bool?), string encryptionType = default(string))
+        public PoolProperties(long size, string serviceLevel, string poolId = default(string), string provisioningState = default(string), double? totalThroughputMibps = default(double?), double? utilizedThroughputMibps = default(double?), int? customThroughputMibps = default(int?), string qosType = default(string), bool? coolAccess = default(bool?), string encryptionType = default(string))
 
         {
             this.PoolId = poolId;
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Flexible service level
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "customThroughputMibps")]
-        public double? CustomThroughputMibps {get; set; }
+        public int? CustomThroughputMibps {get; set; }
 
         /// <summary>
         /// Gets or sets the qos type of the pool Possible values include: &#39;Auto&#39;, &#39;Manual&#39;

@@ -84,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {_allocatedOutboundPort = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber>("allocatedOutboundPorts"), out var __jsonAllocatedOutboundPorts) ? (int?)__jsonAllocatedOutboundPorts : _allocatedOutboundPort;}
             {_idleTimeoutInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber>("idleTimeoutInMinutes"), out var __jsonIdleTimeoutInMinutes) ? (int?)__jsonIdleTimeoutInMinutes : _idleTimeoutInMinute;}
             {_enableMultipleStandardLoadBalancer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean>("enableMultipleStandardLoadBalancers"), out var __jsonEnableMultipleStandardLoadBalancers) ? (bool?)__jsonEnableMultipleStandardLoadBalancers : _enableMultipleStandardLoadBalancer;}
+            {_backendPoolType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString>("backendPoolType"), out var __jsonBackendPoolType) ? (string)__jsonBackendPoolType : (string)_backendPoolType;}
             AfterFromJson(json);
         }
 
@@ -109,18 +110,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             AddIf( null != this._managedOutboundIP ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._managedOutboundIP.ToJson(null,serializationMode) : null, "managedOutboundIPs" ,container.Add );
             AddIf( null != this._outboundIPPrefix ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._outboundIPPrefix.ToJson(null,serializationMode) : null, "outboundIPPrefixes" ,container.Add );
             AddIf( null != this._outboundIP ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._outboundIP.ToJson(null,serializationMode) : null, "outboundIPs" ,container.Add );
-            if (null != this._effectiveOutboundIP)
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SerializationMode.IncludeRead))
             {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.XNodeArray();
-                foreach( var __x in this._effectiveOutboundIP )
+                if (null != this._effectiveOutboundIP)
                 {
-                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._effectiveOutboundIP )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("effectiveOutboundIPs",__w);
                 }
-                container.Add("effectiveOutboundIPs",__w);
             }
             AddIf( null != this._allocatedOutboundPort ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber((int)this._allocatedOutboundPort) : null, "allocatedOutboundPorts" ,container.Add );
             AddIf( null != this._idleTimeoutInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber((int)this._idleTimeoutInMinute) : null, "idleTimeoutInMinutes" ,container.Add );
             AddIf( null != this._enableMultipleStandardLoadBalancer ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonBoolean((bool)this._enableMultipleStandardLoadBalancer) : null, "enableMultipleStandardLoadBalancers" ,container.Add );
+            AddIf( null != (((object)this._backendPoolType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonString(this._backendPoolType.ToString()) : null, "backendPoolType" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private const string CsvHeaderIsSuccess = "IsSuccess";
         private const string Delimiter = ",";
 
-        private readonly IList<string> ExcludedSource = new List<string>
+        private static readonly HashSet<string> ExcludedSource = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
             "Common.ps1",
             "Assert.ps1",
@@ -45,9 +44,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             "AzureRM.Storage.ps1"
         };
 
-        private static readonly string s_testCoveragePath;
+        private static readonly Regex ModuleNameRegex = new Regex(@"[\\/](?:artifacts[\\/]Debug|src)[\\/](?:Az\.)?(?<ModuleName>[a-zA-Z0-9]+)[\\/]", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-        private static readonly ReaderWriterLockSlim s_lock = new ReaderWriterLockSlim();
+        private static readonly string s_testCoveragePath;
+        
+        private static readonly string s_csvHeader;
+
+        private static readonly object s_fileLock = new object();
 
         static TestCoverage()
         {
@@ -69,9 +72,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 Directory.CreateDirectory(s_testCoveragePath);
             }
+
+            s_csvHeader = GenerateCsvHeader();
         }
 
-        private string GenerateCsvHeader()
+        private static string GenerateCsvHeader()
         {
             StringBuilder headerBuilder = new StringBuilder();
             headerBuilder.Append(CsvHeaderCommandName).Append(Delimiter)
@@ -104,60 +109,49 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public void LogRawData(AzurePSQoSEvent qos)
         {
 #if DEBUG || TESTCOVERAGE
-            string moduleName = qos.ModuleName;
-            string commandName = ProcessCommandName(qos.CommandName);
+            string commandName = qos.CommandName;
             string sourceScriptPath = qos.SourceScript;
             string sourceScriptName = Path.GetFileName(sourceScriptPath);
 
-            if (string.IsNullOrEmpty(moduleName) || string.IsNullOrEmpty(commandName) || string.IsNullOrEmpty(sourceScriptName) || ExcludedSource.Contains(sourceScriptName))
+            if (string.IsNullOrEmpty(commandName) || string.IsNullOrEmpty(sourceScriptName) || ExcludedSource.Contains(sourceScriptName))
                 return;
 
-            var pattern = @"[\\|\/](?:artifacts[\\|\/]Debug|src)[\\|\/](?:Az\.)?(?<ModuleName>[a-zA-Z]+)[\\|\/]";
-            var match = Regex.Match(sourceScriptPath, pattern, RegexOptions.IgnoreCase);
-            var testingModuleName = $"Az.{match.Groups["ModuleName"].Value}";
-            if (string.Compare(testingModuleName, moduleName, true) != 0)
+            var moduleMatch = ModuleNameRegex.Match(sourceScriptPath);
+            if (!moduleMatch.Success)
                 return;
 
+            var moduleName = $"Az.{moduleMatch.Groups["ModuleName"].Value}";
             var csvFilePath = Path.Combine(s_testCoveragePath, $"{moduleName}.csv");
-            StringBuilder csvData = new StringBuilder();
 
-            s_lock.EnterWriteLock();
-            try
+            lock (s_fileLock)
             {
-                if (!File.Exists(csvFilePath))
+                try
                 {
-                    var csvHeader = GenerateCsvHeader();
-                    csvData.Append(csvHeader);
+                    bool fileExists = File.Exists(csvFilePath);
+                    using (var writer = new StreamWriter(csvFilePath, true, Encoding.UTF8))
+                    {
+                        if (!fileExists)
+                        {
+                            writer.WriteLine(s_csvHeader);
+                        }
+
+                        var csvItem = GenerateCsvItem(commandName, qos.ParameterSetName, qos.Parameters, sourceScriptName, qos.ScriptLineNumber, qos.StartTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"), qos.EndTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"), qos.IsSuccess);
+                        writer.WriteLine(csvItem);
+                    }
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"##[group]Error occurred when generating raw data of test coverage for module {moduleName}");
 
-                csvData.AppendLine();
-                var csvItem = GenerateCsvItem(commandName, qos.ParameterSetName, qos.Parameters, sourceScriptName, qos.ScriptLineNumber, qos.StartTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"), qos.EndTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"), qos.IsSuccess);
-                csvData.Append(csvItem);
-
-                File.AppendAllText(csvFilePath, csvData.ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"##[group]Error occurred when generating raw data of test coverage for module {moduleName}");
-                Console.WriteLine($"##[error]Error Message: {ex.Message}");
-                Console.WriteLine($"##[error]Source: {ex.Source}");
-                Console.WriteLine($"##[error]Stack Trace: {ex.StackTrace}");
-                Console.WriteLine("##[endgroup]");
-            }
-            finally
-            {
-                s_lock.ExitWriteLock();
+                    Console.WriteLine($"##[error]Exception Type: {ex.GetType().FullName}");
+                    Console.WriteLine($"##[error]Error Message: {ex.Message}");
+                    Console.WriteLine($"##[error]Command Name: {commandName}");
+                    Console.WriteLine($"##[error]Source Script: {sourceScriptName}");
+                    Console.WriteLine($"##[error]Stack Trace: {ex.StackTrace}");
+                    Console.WriteLine("##[endgroup]");
+                }
             }
 #endif
-        }
-
-        private string ProcessCommandName(string commandName)
-        {
-            if (commandName.Contains("_"))
-            {
-                commandName = commandName.Substring(0, commandName.IndexOf("_"));
-            }
-            return commandName;
         }
     }
 }
