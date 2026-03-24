@@ -26,6 +26,9 @@ Gets a list of key-values.
 ### [Get-AzAppConfigurationLabel](Get-AzAppConfigurationLabel.md)
 Gets a list of labels.
 
+### [Get-AzAppConfigurationReplica](Get-AzAppConfigurationReplica.md)
+Gets the properties of the specified replica.
+
 ### [Get-AzAppConfigurationRevision](Get-AzAppConfigurationRevision.md)
 Gets a list of key-value revisions.
 
@@ -35,8 +38,11 @@ Get or list app configuration stores.
 ### [Get-AzAppConfigurationStoreKey](Get-AzAppConfigurationStoreKey.md)
 Lists the access key for the specified configuration store.
 
+### [New-AzAppConfigurationReplica](New-AzAppConfigurationReplica.md)
+Create a replica with the specified parameters.
+
 ### [New-AzAppConfigurationStore](New-AzAppConfigurationStore.md)
-create a configuration store with the specified parameters.
+Create a configuration store with the specified parameters.
 
 ### [New-AzAppConfigurationStoreKey](New-AzAppConfigurationStoreKey.md)
 Regenerates an access key for the specified configuration store.
@@ -46,6 +52,9 @@ Deletes a key-value.
 
 ### [Remove-AzAppConfigurationLock](Remove-AzAppConfigurationLock.md)
 Unlocks a key-value.
+
+### [Remove-AzAppConfigurationReplica](Remove-AzAppConfigurationReplica.md)
+Deletes a replica.
 
 ### [Remove-AzAppConfigurationStore](Remove-AzAppConfigurationStore.md)
 Deletes a configuration store.
@@ -62,6 +71,9 @@ Requests the headers and status of the given resource.
 ### [Test-AzAppConfigurationStoreNameAvailability](Test-AzAppConfigurationStoreNameAvailability.md)
 Checks whether the configuration store name is available for use.
 
+### [Update-AzAppConfigurationReplica](Update-AzAppConfigurationReplica.md)
+Update a replica with the specified parameters.
+
 ### [Update-AzAppConfigurationStore](Update-AzAppConfigurationStore.md)
-update a configuration store with the specified parameters.
+Update a configuration store with the specified parameters.
 

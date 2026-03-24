@@ -1,21 +1,22 @@
 {
-  "resourceType": "configurationStores",
+  "resourceType": "configurationStores/replicas",
   "apiVersion": "2024-06-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration"
   },
   "commands": [
     {
-      "name": "Get-AzAppConfigurationStore",
-      "description": "Get or list app configuration stores.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+      "name": "Get-AzAppConfigurationReplica",
+      "description": "Gets the properties of the specified replica.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstore"
+          "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationreplica"
         },
         "parameterSets": [
           {
             "parameters": [
+              "-ConfigStoreName <String>",
               "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
@@ -25,11 +26,15 @@
       },
       "examples": [
         {
-          "description": "Get or list app configuration stores.",
+          "description": "Gets the properties of the specified replica.",
           "parameters": [
             {
-              "name": "-Name",
+              "name": "-ConfigStoreName",
               "value": "[Path.configStoreName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.replicaName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -44,16 +49,17 @@
       ]
     },
     {
-      "name": "Remove-AzAppConfigurationStore",
-      "description": "Deletes a configuration store.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+      "name": "Remove-AzAppConfigurationReplica",
+      "description": "Deletes a replica.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/remove-azappconfigurationstore"
+          "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/remove-azappconfigurationreplica"
         },
         "parameterSets": [
           {
             "parameters": [
+              "-ConfigStoreName <String>",
               "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
@@ -63,11 +69,15 @@
       },
       "examples": [
         {
-          "description": "Deletes a configuration store.",
+          "description": "Deletes a replica.",
           "parameters": [
             {
-              "name": "-Name",
+              "name": "-ConfigStoreName",
               "value": "[Path.configStoreName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.replicaName]"
             },
             {
               "name": "-ResourceGroupName",
