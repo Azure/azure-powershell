@@ -22,7 +22,7 @@ Describe 'New-AzAppConfigurationReplica' {
 
     AfterAll {
         Remove-AzAppConfigurationReplica -ConfigStoreName $newReplicaStoreName -ResourceGroupName $env.resourceGroup -Name "westus2replica" -ErrorAction SilentlyContinue
-        Remove-AzAppConfigurationStore -Name $newReplicaStoreName -ResourceGroupName $env.resourceGroup
+        Remove-AzAppConfigurationStore -Name $newReplicaStoreName -ResourceGroupName $env.resourceGroup -Confirm:$false
     }
 
     It 'CreateExpanded' {

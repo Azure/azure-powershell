@@ -23,7 +23,7 @@ Describe 'Get-AzAppConfigurationReplica' {
     }
 
     AfterAll {
-        Remove-AzAppConfigurationStore -Name $replicaTestStoreName -ResourceGroupName $env.resourceGroup
+        Remove-AzAppConfigurationStore -Name $replicaTestStoreName -ResourceGroupName $env.resourceGroup -Confirm:$false
     }
 
     It 'List' {
