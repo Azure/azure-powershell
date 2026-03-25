@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the container registry belongs.
+The name of the resource group to which the azure app configuration store belongs.
 
 ```yaml
 Type: System.String

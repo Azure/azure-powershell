@@ -124,8 +124,8 @@ Accept wildcard characters: False
 ```
 
 ### -DataPlaneProxyPrivateLinkDelegation
-The data plane proxy private link delegation setting.
-This property controls whether a request from a delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires a private link.
+The data plane proxy private link delegation.
+This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
 
 ```yaml
 Type: System.String
@@ -337,7 +337,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the container registry belongs.
+The name of the resource group to which the azure app configuration store belongs.
 
 ```yaml
 Type: System.String

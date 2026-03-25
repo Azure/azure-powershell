@@ -16,14 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzAppConfigurationRepl
 
 Describe 'Update-AzAppConfigurationReplica' {
     BeforeAll {
-        $updateReplicaStoreName = "azupd" + (Get-Random -Maximum 99999)
+        $updateReplicaStoreName = $env.updateReplicaStoreName
         New-AzAppConfigurationStore -Name $updateReplicaStoreName -ResourceGroupName $env.resourceGroup -Location $env.location -Sku Standard
         $updateReplicaName = "westus2replica"
         New-AzAppConfigurationReplica -ConfigStoreName $updateReplicaStoreName -ResourceGroupName $env.resourceGroup -Name $updateReplicaName -Location "westus2"
     }
 
     AfterAll {
-        Remove-AzAppConfigurationStore -Name $updateReplicaStoreName -ResourceGroupName $env.resourceGroup
+        Remove-AzAppConfigurationStore -Name $updateReplicaStoreName -ResourceGroupName $env.resourceGroup -Confirm:$false
     }
 
     It 'UpdateExpanded' {

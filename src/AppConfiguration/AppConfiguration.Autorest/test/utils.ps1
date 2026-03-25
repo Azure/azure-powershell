@@ -54,6 +54,19 @@ function setupEnv() {
 
     $env.Add("location", "eastus")
 
+    $replicaTestStoreName = "az" + (RandomString -allChars $false -len 4)
+    $env.Add("replicaTestStoreName", $replicaTestStoreName)
+    $env.Add("replicaName", "eastus2replica")
+
+    $newReplicaStoreName = "az" + (RandomString -allChars $false -len 4)
+    $env.Add("newReplicaStoreName", $newReplicaStoreName)
+
+    $removeReplicaStoreName = "az" + (RandomString -allChars $false -len 4)
+    $env.Add("removeReplicaStoreName", $removeReplicaStoreName)
+
+    $updateReplicaStoreName = "az" + (RandomString -allChars $false -len 4)
+    $env.Add("updateReplicaStoreName", $updateReplicaStoreName)
+
     write-host "start to create test group"
     $resourceGroup = "azpstestgroup-" + $str1
     $env.Add("resourceGroup", $resourceGroup)

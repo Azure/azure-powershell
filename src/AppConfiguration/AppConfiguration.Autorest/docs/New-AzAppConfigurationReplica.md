@@ -1,5 +1,5 @@
 ---
-external help file: Az.AppConfiguration-help.xml
+external help file:
 Module Name: Az.AppConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationreplica
 schema: 2.0.0
@@ -197,7 +197,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the App Configuration store and replica.
+The name of the resource group to which the container registry belongs.
 
 ```yaml
 Type: System.String

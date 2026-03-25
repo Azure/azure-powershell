@@ -149,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the App Configuration store.
+The name of the resource group to which the azure app configuration store belongs.
 
 ```yaml
 Type: System.String

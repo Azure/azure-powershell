@@ -25,10 +25,8 @@ For information on how to develop for `Az.AppConfiguration`, see [how-to.md](how
 
 ---
 ## Generation Requirements
-Use of the beta version of `autorest.powershell` generator requires the following:
-- [NodeJS LTS](https://nodejs.org) (10.15.x LTS preferred)
-  - **Note**: It *will not work* with Node < 10.x. Using 11.x builds may cause issues as they may introduce instability or breaking changes.
-> If you want an easy way to install and update Node, [NVS - Node Version Switcher](../nodejs/installing-via-nvs.md) or [NVM - Node Version Manager](../nodejs/installing-via-nvm.md) is recommended.
+Use of the `autorest.powershell` generator requires the following:
+- [NodeJS LTS](https://nodejs.org) (18.x LTS or greater)
 - [AutoRest](https://aka.ms/autorest) v3 <br>`npm install -g autorest@latest`<br>&nbsp;
 - PowerShell 7.0 or greater
   - If you don't have it installed, you can use the cross-platform npm package <br>`npm install -g pwsh`<br>&nbsp;
