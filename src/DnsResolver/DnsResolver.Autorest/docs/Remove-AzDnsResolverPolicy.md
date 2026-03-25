@@ -32,20 +32,20 @@ WARNING: This operation cannot be undone.
 
 ## EXAMPLES
 
-### Example 1: Remove a Dns Resolver Policy by name
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Remove-AzDnsResolverPolicy -ResourceGroupName powershell-test-rg -Name psdnsresolvername33nmy1fz
 ```
 
-This command removes a Dns Resolver Policy by name.
 
-### Example 2: Remove a Dns Resolver Policy by identity
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 $dnsResolverPolicyObject = Get-AzDnsResolverPolicy -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
-Remove-AzDnsResolverPolicy -InputObject $dnsResolverPolicyObject 
+Remove-AzDnsResolverPolicy -InputObject $dnsResolverPolicyObject
 ```
 
-This command removes a Dns Resolver Policy by identity.
+
 
 ## PARAMETERS
 

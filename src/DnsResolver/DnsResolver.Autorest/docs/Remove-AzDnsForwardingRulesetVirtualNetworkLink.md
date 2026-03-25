@@ -39,20 +39,20 @@ WARNING: This operation cannot be undone.
 
 ## EXAMPLES
 
-### Example 1: Remove an virtual network link by name.
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Remove-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleVnetLink -ResourceGroupName sampleRG
 ```
 
-This command removes an virtual network link by name.
 
-### Example 2: Remove an virtual network link by identity
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 $inputObject = Get-AzDnsForwardingRulesetVirtualNetworkLink -DnsForwardingRulesetName pstestdnsresolvername -Name samplevnetLink1 -ResourceGroupName powershell-test-rg
 Remove-AzDnsForwardingRulesetVirtualNetworkLink -InputObject $inputObject
 ```
 
-This command removes an virtual network link by identity.
+
 
 ## PARAMETERS
 

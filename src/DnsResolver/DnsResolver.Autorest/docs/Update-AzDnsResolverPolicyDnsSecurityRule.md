@@ -15,25 +15,25 @@ Update a DNS security rule.
 ### UpdateExpanded (Default)
 ```
 Update-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-ActionBlockResponseCode <String>] [-ActionType <String>] [-DnsResolverDomainList <ISubResource[]>]
- [-DnsSecurityRuleState <String>] [-Priority <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-ActionType <String>]
+ [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <String>] [-ManagedDomainList <String[]>]
+ [-Priority <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityDnsResolverPolicyExpanded
 ```
 Update-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyInputObject <IDnsResolverIdentity> -Name <String>
- [-IfMatch <String>] [-ActionBlockResponseCode <String>] [-ActionType <String>]
- [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <String>] [-Priority <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IfMatch <String>] [-ActionType <String>] [-DnsResolverDomainList <ISubResource[]>]
+ [-DnsSecurityRuleState <String>] [-ManagedDomainList <String[]>] [-Priority <Int32>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsResolverPolicyDnsSecurityRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-ActionBlockResponseCode <String>] [-ActionType <String>] [-DnsResolverDomainList <ISubResource[]>]
- [-DnsSecurityRuleState <String>] [-Priority <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-ActionType <String>] [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <String>]
+ [-ManagedDomainList <String[]>] [-Priority <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -56,49 +56,22 @@ Update a DNS security rule.
 
 ## EXAMPLES
 
-### Example 1: Update an existing DNS Security Rule by name
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-Update-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnssecurityrulename33nmy1fz -Tag @{"key0" = "value0"} 
+Update-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnssecurityrulename33nmy1fz -Tag @{"key0" = "value0"}
 ```
 
-```output
-Location Name                                Type                                     Etag
--------- ----                                ----                                     ----
-westus2  psdnssecurityrulename33nmy1fz       Microsoft.Network/dnsSecurityRules       "0000efd6-0000-0800-0000-60401c7c0000"
-```
 
-This command updates an existing DNS Security Rules by name ( adding tag ).
 
-### Example 2: Updates an existing DNS Resolver by identity
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 $dnsSecurityRuleObject = Get-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnssecurityrulename33nmy1fz
-Update-AzDnsResolverPolicyDnsSecurityRule -InputObject $dnsSecurityRuleObject  -Tag @{} 
+Update-AzDnsResolverPolicyDnsSecurityRule -InputObject $dnsSecurityRuleObject  -Tag @{}
 ```
 
-```output
-Location Name                                Type                                     Etag
--------- ----                                ----                                     ----
-westus2  psdnssecurityrulename33nmy1fz       Microsoft.Network/dnsSecurityRules       "0000efd6-0000-0800-0000-60401c7c0000"
-```
 
-This command updates an existing DNS Security Rules by identity ( removing tag ).
 
 ## PARAMETERS
-
-### -ActionBlockResponseCode
-The response code for block actions.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsResolverPolicyExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ActionType
 The type of action to take.
@@ -262,6 +235,21 @@ Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedDomainList
+Managed domain lists that the DNS security rule applies to.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsResolverPolicyExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

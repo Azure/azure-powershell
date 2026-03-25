@@ -12,22 +12,21 @@ Create a DNS security rule for a DNS resolver policy.
 
 ## SYNTAX
 
-### CreateViaIdentityDnsResolverPolicyExpanded (Default)
-```
-New-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyInputObject <IDnsResolverIdentity> -Name <String>
- -DnsResolverDomainList <ISubResource[]> -Location <String> -Priority <Int32> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-ActionBlockResponseCode <String>] [-ActionType <String>]
- [-DnsSecurityRuleState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <String>
- -ResourceGroupName <String> -DnsResolverDomainList <ISubResource[]> -Location <String> -Priority <Int32>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-ActionBlockResponseCode <String>]
- [-ActionType <String>] [-DnsSecurityRuleState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -Location <String> -Priority <Int32> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-ActionType <String>] [-DnsResolverDomainList <ISubResource[]>]
+ [-DnsSecurityRuleState <String>] [-ManagedDomainList <String[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityDnsResolverPolicyExpanded
+```
+New-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyInputObject <IDnsResolverIdentity> -Name <String>
+ -Location <String> -Priority <Int32> [-IfMatch <String>] [-IfNoneMatch <String>] [-ActionType <String>]
+ [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <String>] [-ManagedDomainList <String[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -51,49 +50,21 @@ Create a DNS security rule for a DNS resolver policy.
 
 ## EXAMPLES
 
-### Example 1: Create a DNS security rule 
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -Location westus2 -DnsSecurityRuleState "Enabled" -ActionType "Block" -ActionBlockResponseCode "SERVFAIL" -Priority 100 -DnsResolverDomainList @{id = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolverDomainLists/exampleDomainListName";}
-
+New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -Location westus2 -DnsSecurityRuleState "Enabled" -ActionType "Block" -Priority 100 -DnsResolverDomainList @{id = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolverDomainLists/exampleDomainListName";}
 ```
 
-```output
-Location Name                     Type                                     Etag
--------- ----                     ----                                     ----
-westus2  sampleSecurityRule       Microsoft.Network/dnsSecurityRules       "000027d5-0000-0800-0000-6040150e0000"
-```
 
-This cmdlet creates a DNS security rule.
 
-### Example 2: Create a DNS security rule with tag 
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -Location westus2 -DnsSecurityRuleState "Enabled" -ActionType "Block" -ActionBlockResponseCode "SERVFAIL" -Priority 100 -DnsResolverDomainList @{id = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolverDomainLists/exampleDomainListName";} -Tag @{"key0" = "value0"}
+New-AzDnsResolverPolicyDnsSecurityRule -Name sampleSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName samplePolicyName -Location westus2 -DnsSecurityRuleState "Enabled" -ActionType "Block" -Priority 100 -DnsResolverDomainList @{id = "/subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/dnsResolverDomainLists/exampleDomainListName";} -Tag @{"key0" = "value0"}
 ```
 
-```output
-Location Name                     Type                                     Etag
--------- ----                     ----                                     ----
-westus2  sampleSecurityRule       Microsoft.Network/dnsSecurityRules       "00008cd5-0000-0800-0000-604016c90000"
-```
 
-This cmdlet creates a DNS security rule with tag.
 
 ## PARAMETERS
-
-### -ActionBlockResponseCode
-The response code for block actions.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityDnsResolverPolicyExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ActionType
 The type of action to take.
@@ -149,7 +120,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.ISubResource[]
 Parameter Sets: CreateExpanded, CreateViaIdentityDnsResolverPolicyExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -273,6 +244,21 @@ Parameter Sets: CreateExpanded, CreateViaIdentityDnsResolverPolicyExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedDomainList
+Managed domain lists that the DNS security rule applies to.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityDnsResolverPolicyExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

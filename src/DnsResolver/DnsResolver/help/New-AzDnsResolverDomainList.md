@@ -15,7 +15,7 @@ Create a DNS resolver domain list.
 ### CreateExpanded (Default)
 ```
 New-AzDnsResolverDomainList -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] -Domain <String[]> -Location <String> [-Tag <Hashtable>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] -Location <String> [-Domain <String[]>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -100,13 +100,14 @@ Accept wildcard characters: False
 
 ### -Domain
 The domains in the domain list.
+Will be null if user is using large domain list.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

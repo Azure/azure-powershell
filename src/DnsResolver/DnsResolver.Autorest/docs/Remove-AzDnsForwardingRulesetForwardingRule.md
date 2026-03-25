@@ -39,21 +39,19 @@ WARNING: This operation cannot be undone.
 
 ## EXAMPLES
 
-### Example 1: Remove forwarding rule by name
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Remove-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName sampleForwardingRuleset -Name sampleForwardingRule -ResourceGroupName powershell-test-rg
 ```
 
-This command removes forwarding rule by name
 
-### Example 2: Remove forwarding rule via identity
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 $inputobject = Get-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName DnsResolverName -ResourceGroupName sampleRG -Name forwardingRule
-
-Remove-AzDnsForwardingRulesetForwardingRule -InputObject $inputObject
 ```
 
-This command removes forwarding rule via identity
+Remove-AzDnsForwardingRulesetForwardingRule -InputObject $inputObject
 
 ## PARAMETERS
 

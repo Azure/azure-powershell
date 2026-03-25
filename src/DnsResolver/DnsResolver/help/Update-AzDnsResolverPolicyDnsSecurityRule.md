@@ -15,8 +15,8 @@ Update a DNS security rule.
 ### UpdateExpanded (Default)
 ```
 Update-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-ActionBlockResponseCode <String>]
- [-ActionType <String>] [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-ActionType <String>]
+ [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <String>] [-ManagedDomainList <String[]>]
  [-Priority <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -40,17 +40,17 @@ Update-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name 
 ### UpdateViaIdentityDnsResolverPolicyExpanded
 ```
 Update-AzDnsResolverPolicyDnsSecurityRule -Name <String> -DnsResolverPolicyInputObject <IDnsResolverIdentity>
- [-IfMatch <String>] [-ActionBlockResponseCode <String>] [-ActionType <String>]
- [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <String>] [-Priority <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IfMatch <String>] [-ActionType <String>] [-DnsResolverDomainList <ISubResource[]>]
+ [-DnsSecurityRuleState <String>] [-ManagedDomainList <String[]>] [-Priority <Int32>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsResolverPolicyDnsSecurityRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-ActionBlockResponseCode <String>] [-ActionType <String>] [-DnsResolverDomainList <ISubResource[]>]
- [-DnsSecurityRuleState <String>] [-Priority <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-ActionType <String>] [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <String>]
+ [-ManagedDomainList <String[]>] [-Priority <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,21 +87,6 @@ westus2  psdnssecurityrulename33nmy1fz       Microsoft.Network/dnsSecurityRules 
 This command updates an existing DNS Security Rules by identity ( removing tag ).
 
 ## PARAMETERS
-
-### -ActionBlockResponseCode
-The response code for block actions.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsResolverPolicyExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ActionType
 The type of action to take.
@@ -265,6 +250,21 @@ Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedDomainList
+Managed domain lists that the DNS security rule applies to.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityDnsResolverPolicyExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

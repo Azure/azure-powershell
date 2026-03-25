@@ -39,20 +39,20 @@ WARNING: This operation cannot be undone.
 
 ## EXAMPLES
 
-### Example 1: Remove a DNS Security Rule by name
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Remove-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleResolverPolicyName -Name psdnssecurityrulename33nmy1fz
 ```
 
-This command removes a DNS Security Rule by name.
 
-### Example 2: Remove a DNS Security Rule by identity
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 $dnsSecurityRuleObject = Get-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleResolverPolicyName -Name psdnssecurityrulename33nmy1fz
-Remove-AzDnsResolverPolicyDnsSecurityRule  -InputObject $dnsSecurityRuleObject 
+Remove-AzDnsResolverPolicyDnsSecurityRule  -InputObject $dnsSecurityRuleObject
 ```
 
-This command removes a DNS Security Rule by identity.
+
 
 ## PARAMETERS
 

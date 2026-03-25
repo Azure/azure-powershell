@@ -39,21 +39,19 @@ WARNING: This operation cannot be undone.
 
 ## EXAMPLES
 
-### Example 1: Remove Inbound Endpoint by name
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 Remove-AzDnsResolverInboundEndpoint  -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
 ```
 
-This command removes Inbound Endpoint by name
 
-### Example 2: Remove Inbound Endpoint via identity
+
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 $inputobject = Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
-
-Remove-AzDnsResolverInboundEndpoint -InputObject $inputObject
 ```
 
-This command removes Inbound Endpoint via identity
+Remove-AzDnsResolverInboundEndpoint -InputObject $inputObject
 
 ## PARAMETERS
 

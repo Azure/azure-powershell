@@ -14,9 +14,9 @@ Create a DNS resolver domain list.
 
 ### CreateExpanded (Default)
 ```
-New-AzDnsResolverDomainList -Name <String> -ResourceGroupName <String> -Domain <String[]> -Location <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDnsResolverDomainList -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-Domain <String[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -38,31 +38,19 @@ Create a DNS resolver domain list.
 
 ## EXAMPLES
 
-### Example 1: Create a DNS resolver domain list 
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 New-AzDnsResolverDomainList -Name sampleResolverDomainList -ResourceGroupName powershell-test-rg -Location westus2 -Domain @("contoso.com.", "example.com.")
 ```
 
-```output
-Location Name                     Type                           Etag
--------- ----                     ----                           ----
-westus2  sampleResolverDomainList Microsoft.Network/dnsResolvers "000027d5-0000-0800-0000-6040150e0000"
-```
 
-This cmdlet creates a DNS resolver domain list.
 
-### Example 2: Create a DNS resolver domain list with tag
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 New-AzDnsResolverDomainList -Name sampleResolverDomainList -ResourceGroupName powershell-test-rg -Location westus2 -Domain @("contoso.com.", "example.com.") -Tag @{"key0" = "value0"}
 ```
 
-```output
-Location Name                     Type                                  Etag
--------- ----                     ----                                  ----
-westus2  sampleResolverDomainList Microsoft.Network/dnsResolverPolicies "00008cd5-0000-0800-0000-604016c90000"
-```
 
-This cmdlet creates a DNS resolver domain list with tag.
 
 ## PARAMETERS
 
@@ -99,13 +87,14 @@ Accept wildcard characters: False
 
 ### -Domain
 The domains in the domain list.
+Will be null if user is using large domain list.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
