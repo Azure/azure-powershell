@@ -18,7 +18,8 @@ Update-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceNam
  [-SubscriptionId <String>] [-DisplayName <String>] [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>]
  [-IncidentInfoRelationName <String>] [-IncidentInfoSeverity <String>] [-IncidentInfoTitle <String>]
  [-Label <String[]>] [-Note <String>] [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>]
- [-QueryStartTime <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-QueryStartTime <DateTime>] [-UpdatedByEmail <String>] [-UpdatedByName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -27,7 +28,8 @@ Update-AzSentinelBookmark -InputObject <ISecurityInsightsIdentity> [-DisplayName
  [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>] [-IncidentInfoRelationName <String>]
  [-IncidentInfoSeverity <String>] [-IncidentInfoTitle <String>] [-Label <String[]>] [-Note <String>]
  [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UpdatedByEmail <String>] [-UpdatedByName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -299,6 +301,36 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdatedByEmail
+The email of the user.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdatedByName
+The name of the user.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

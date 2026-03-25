@@ -675,11 +675,11 @@ function New-AzSentinelDataConnector {
                 }
 
                 If($PSBoundParameters['PermissionResourceProvider']){
-                    $DataConnector.AvailabilityStatus = $PSBoundParameters['PermissionResourceProvider']
+                    $DataConnector.PermissionResourceProvider = $PSBoundParameters['PermissionResourceProvider']
                     $null = $PSBoundParameters.Remove('PermissionResourceProvider')
                 }
                 ElseIf($PSBoundParameters['PermissionCustom']){
-                    $DataConnector.AvailabilityStatus = $PSBoundParameters['PermissionCustom']
+                    $DataConnector.PermissionCustom = $PSBoundParameters['PermissionCustom']
                     $null = $PSBoundParameters.Remove('PermissionCustom')
                 }
                 Else {
