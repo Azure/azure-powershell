@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// <param name="templateLink">The URI of the template. Use either the templateLink property or the
         /// template property, but not both.
         /// </param>
-        public DeploymentStackTemplateDefinition(object template = default(object), DeploymentStacksTemplateLink templateLink = default(DeploymentStacksTemplateLink))
+        public DeploymentStackTemplateDefinition(System.Collections.Generic.IDictionary<string, object> template = default(System.Collections.Generic.IDictionary<string, object>), DeploymentStacksTemplateLink templateLink = default(DeploymentStacksTemplateLink))
 
         {
             this.Template = template;
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// property or the template property, but not both.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "template")]
-        public object Template {get; set; }
+        public System.Collections.Generic.IDictionary<string, object> Template {get; set; }
 
         /// <summary>
         /// Gets or sets the URI of the template. Use either the templateLink property

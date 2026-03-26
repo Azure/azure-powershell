@@ -24,12 +24,28 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Initializes a new instance of the ResourceReference class.
         /// </summary>
 
-        /// <param name="id">The resourceId of a resource managed by the deployment stack.
+        /// <param name="id">The ARM Resource ID of a resource managed by the deployment stack.
         /// </param>
-        public ResourceReference(string id = default(string))
+
+        /// <param name="extension">The extension the resource was deployed with.
+        /// </param>
+
+        /// <param name="type">The resource type.
+        /// </param>
+
+        /// <param name="identifiers">The extensible resource identifiers.
+        /// </param>
+
+        /// <param name="apiVersion">The API version the resource was deployed with
+        /// </param>
+        public ResourceReference(string id = default(string), DeploymentExtension extension = default(DeploymentExtension), string type = default(string), System.Collections.Generic.IDictionary<string, object> identifiers = default(System.Collections.Generic.IDictionary<string, object>), string apiVersion = default(string))
 
         {
             this.Id = id;
+            this.Extension = extension;
+            this.Type = type;
+            this.Identifiers = identifiers;
+            this.ApiVersion = apiVersion;
             CustomInit();
         }
 
@@ -40,9 +56,50 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
         /// <summary>
-        /// Gets the resourceId of a resource managed by the deployment stack.
+        /// Gets the ARM Resource ID of a resource managed by the deployment stack.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; private set; }
+
+        /// <summary>
+        /// Gets the extension the resource was deployed with.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "extension")]
+        public DeploymentExtension Extension {get; private set; }
+
+        /// <summary>
+        /// Gets the resource type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
+        public string Type {get; private set; }
+
+        /// <summary>
+        /// Gets the extensible resource identifiers.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identifiers")]
+        public System.Collections.Generic.IDictionary<string, object> Identifiers {get; private set; }
+
+        /// <summary>
+        /// Gets the API version the resource was deployed with
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "apiVersion")]
+        public string ApiVersion {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+            if (this.Extension != null)
+            {
+                this.Extension.Validate();
+            }
+
+
+
+        }
     }
 }

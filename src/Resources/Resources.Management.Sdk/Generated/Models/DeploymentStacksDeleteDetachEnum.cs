@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Resources.Models
 
     public static class DeploymentStacksDeleteDetachEnum
     {
+        /// <summary>
+        /// Delete the specified resources from Azure
+        /// </summary>
         public const string Delete = "delete";
+        /// <summary>
+        /// Keep the specified resources in Azure
+        /// </summary>
         public const string Detach = "detach";
     }
 }
