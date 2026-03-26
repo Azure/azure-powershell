@@ -200,7 +200,43 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="churnOptionSelected">A value indicating the churn option selected by user.
         /// Possible values include: &#39;Normal&#39;, &#39;High&#39;</param>
-        public A2AReplicationDetails(string fabricObjectId = default(string), string initialPrimaryZone = default(string), string initialPrimaryFabricLocation = default(string), string initialRecoveryZone = default(string), ExtendedLocation initialPrimaryExtendedLocation = default(ExtendedLocation), ExtendedLocation initialRecoveryExtendedLocation = default(ExtendedLocation), string initialRecoveryFabricLocation = default(string), string multiVMGroupId = default(string), string multiVMGroupName = default(string), string multiVMGroupCreateOption = default(string), string managementId = default(string), string protectionClusterId = default(string), bool? isClusterInfraReady = default(bool?), System.Collections.Generic.IList<A2AProtectedDiskDetails> protectedDisks = default(System.Collections.Generic.IList<A2AProtectedDiskDetails>), System.Collections.Generic.IList<A2AUnprotectedDiskDetails> unprotectedDisks = default(System.Collections.Generic.IList<A2AUnprotectedDiskDetails>), System.Collections.Generic.IList<A2AProtectedManagedDiskDetails> protectedManagedDisks = default(System.Collections.Generic.IList<A2AProtectedManagedDiskDetails>), string recoveryBootDiagStorageAccountId = default(string), string primaryFabricLocation = default(string), string recoveryFabricLocation = default(string), string osType = default(string), string recoveryAzureVMSize = default(string), string recoveryAzureVMName = default(string), string recoveryAzureResourceGroupId = default(string), string recoveryCloudService = default(string), string recoveryAvailabilitySet = default(string), string selectedRecoveryAzureNetworkId = default(string), string selectedTfoAzureNetworkId = default(string), System.Collections.Generic.IList<VMNicDetails> vmNics = default(System.Collections.Generic.IList<VMNicDetails>), AzureToAzureVmSyncedConfigDetails vmSyncedConfigDetails = default(AzureToAzureVmSyncedConfigDetails), int? monitoringPercentageCompletion = default(int?), string monitoringJobType = default(string), System.DateTime? lastHeartbeat = default(System.DateTime?), string agentVersion = default(string), System.DateTime? agentExpiryDate = default(System.DateTime?), bool? isReplicationAgentUpdateRequired = default(bool?), System.DateTime? agentCertificateExpiryDate = default(System.DateTime?), bool? isReplicationAgentCertificateUpdateRequired = default(bool?), string recoveryFabricObjectId = default(string), string vmProtectionState = default(string), string vmProtectionStateDescription = default(string), string lifecycleId = default(string), string testFailoverRecoveryFabricObjectId = default(string), long? rpoInSeconds = default(long?), System.DateTime? lastRpoCalculatedTime = default(System.DateTime?), string primaryAvailabilityZone = default(string), string recoveryAvailabilityZone = default(string), ExtendedLocation primaryExtendedLocation = default(ExtendedLocation), ExtendedLocation recoveryExtendedLocation = default(ExtendedLocation), string vmEncryptionType = default(string), string tfoAzureVMName = default(string), string recoveryAzureGeneration = default(string), string recoveryProximityPlacementGroupId = default(string), string autoProtectionOfDataDisk = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), string churnOptionSelected = default(string))
+
+        /// <param name="agentReinstallAttemptToVersion">The agent version to which last agent reinstall was attempted.
+        /// </param>
+
+        /// <param name="osFamilyName">The OS family name.
+        /// </param>
+
+        /// <param name="distroName">The distro name.
+        /// </param>
+
+        /// <param name="distroNameForWhichAgentIsInstalled">The agent os name last agent reinstall was attempted.
+        /// </param>
+
+        /// <param name="isAgentUpgradeable">A value indicating whether replication agent upgradeable.
+        /// </param>
+
+        /// <param name="isAgentReinstallRequired">A value indicating whether replication agent reinstallation is required.
+        /// </param>
+
+        /// <param name="reasonsBlockingReInstall">value for reason blocking reinstall.
+        /// </param>
+
+        /// <param name="reasonsBlockingReinstallDetails">whether reinstall is possible or not.
+        /// </param>
+
+        /// <param name="isAgentUpgradeInProgress">A value indicating whether replication agent Upgrade is In-Progress.
+        /// </param>
+
+        /// <param name="autoAgentUpgradeRetryCount">auto agent upgrade retry count.
+        /// </param>
+
+        /// <param name="isAgentUpgradeRetryThresholdExhausted">A value indicating whether replication agent Upgrade retry exhausted.
+        /// </param>
+
+        /// <param name="platformFaultDomain">the platform fault domain.
+        /// </param>
+        public A2AReplicationDetails(string fabricObjectId = default(string), string initialPrimaryZone = default(string), string initialPrimaryFabricLocation = default(string), string initialRecoveryZone = default(string), ExtendedLocation initialPrimaryExtendedLocation = default(ExtendedLocation), ExtendedLocation initialRecoveryExtendedLocation = default(ExtendedLocation), string initialRecoveryFabricLocation = default(string), string multiVMGroupId = default(string), string multiVMGroupName = default(string), string multiVMGroupCreateOption = default(string), string managementId = default(string), string protectionClusterId = default(string), bool? isClusterInfraReady = default(bool?), System.Collections.Generic.IList<A2AProtectedDiskDetails> protectedDisks = default(System.Collections.Generic.IList<A2AProtectedDiskDetails>), System.Collections.Generic.IList<A2AUnprotectedDiskDetails> unprotectedDisks = default(System.Collections.Generic.IList<A2AUnprotectedDiskDetails>), System.Collections.Generic.IList<A2AProtectedManagedDiskDetails> protectedManagedDisks = default(System.Collections.Generic.IList<A2AProtectedManagedDiskDetails>), string recoveryBootDiagStorageAccountId = default(string), string primaryFabricLocation = default(string), string recoveryFabricLocation = default(string), string osType = default(string), string recoveryAzureVMSize = default(string), string recoveryAzureVMName = default(string), string recoveryAzureResourceGroupId = default(string), string recoveryCloudService = default(string), string recoveryAvailabilitySet = default(string), string selectedRecoveryAzureNetworkId = default(string), string selectedTfoAzureNetworkId = default(string), System.Collections.Generic.IList<VMNicDetails> vmNics = default(System.Collections.Generic.IList<VMNicDetails>), AzureToAzureVmSyncedConfigDetails vmSyncedConfigDetails = default(AzureToAzureVmSyncedConfigDetails), int? monitoringPercentageCompletion = default(int?), string monitoringJobType = default(string), System.DateTime? lastHeartbeat = default(System.DateTime?), string agentVersion = default(string), System.DateTime? agentExpiryDate = default(System.DateTime?), bool? isReplicationAgentUpdateRequired = default(bool?), System.DateTime? agentCertificateExpiryDate = default(System.DateTime?), bool? isReplicationAgentCertificateUpdateRequired = default(bool?), string recoveryFabricObjectId = default(string), string vmProtectionState = default(string), string vmProtectionStateDescription = default(string), string lifecycleId = default(string), string testFailoverRecoveryFabricObjectId = default(string), long? rpoInSeconds = default(long?), System.DateTime? lastRpoCalculatedTime = default(System.DateTime?), string primaryAvailabilityZone = default(string), string recoveryAvailabilityZone = default(string), ExtendedLocation primaryExtendedLocation = default(ExtendedLocation), ExtendedLocation recoveryExtendedLocation = default(ExtendedLocation), string vmEncryptionType = default(string), string tfoAzureVMName = default(string), string recoveryAzureGeneration = default(string), string recoveryProximityPlacementGroupId = default(string), string autoProtectionOfDataDisk = default(string), string recoveryVirtualMachineScaleSetId = default(string), string recoveryCapacityReservationGroupId = default(string), string churnOptionSelected = default(string), string agentReinstallAttemptToVersion = default(string), string osFamilyName = default(string), string distroName = default(string), string distroNameForWhichAgentIsInstalled = default(string), bool? isAgentUpgradeable = default(bool?), bool? isAgentReinstallRequired = default(bool?), string reasonsBlockingReInstall = default(string), System.Collections.Generic.IList<A2AAgentReinstallBlockingErrorDetails> reasonsBlockingReinstallDetails = default(System.Collections.Generic.IList<A2AAgentReinstallBlockingErrorDetails>), bool? isAgentUpgradeInProgress = default(bool?), long? autoAgentUpgradeRetryCount = default(long?), bool? isAgentUpgradeRetryThresholdExhausted = default(bool?), int? platformFaultDomain = default(int?))
 
         {
             this.FabricObjectId = fabricObjectId;
@@ -259,6 +295,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.RecoveryVirtualMachineScaleSetId = recoveryVirtualMachineScaleSetId;
             this.RecoveryCapacityReservationGroupId = recoveryCapacityReservationGroupId;
             this.ChurnOptionSelected = churnOptionSelected;
+            this.AgentReinstallAttemptToVersion = agentReinstallAttemptToVersion;
+            this.OSFamilyName = osFamilyName;
+            this.DistroName = distroName;
+            this.DistroNameForWhichAgentIsInstalled = distroNameForWhichAgentIsInstalled;
+            this.IsAgentUpgradeable = isAgentUpgradeable;
+            this.IsAgentReinstallRequired = isAgentReinstallRequired;
+            this.ReasonsBlockingReInstall = reasonsBlockingReInstall;
+            this.ReasonsBlockingReinstallDetails = reasonsBlockingReinstallDetails;
+            this.IsAgentUpgradeInProgress = isAgentUpgradeInProgress;
+            this.AutoAgentUpgradeRetryCount = autoAgentUpgradeRetryCount;
+            this.IsAgentUpgradeRetryThresholdExhausted = isAgentUpgradeRetryThresholdExhausted;
+            this.PlatformFaultDomain = platformFaultDomain;
             CustomInit();
         }
 
@@ -612,6 +660,81 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "churnOptionSelected")]
         public string ChurnOptionSelected {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the agent version to which last agent reinstall was attempted.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "agentReinstallAttemptToVersion")]
+        public string AgentReinstallAttemptToVersion {get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS family name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "osFamilyName")]
+        public string OSFamilyName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the distro name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "distroName")]
+        public string DistroName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the agent os name last agent reinstall was attempted.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "distroNameForWhichAgentIsInstalled")]
+        public string DistroNameForWhichAgentIsInstalled {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether replication agent upgradeable.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isAgentUpgradeable")]
+        public bool? IsAgentUpgradeable {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether replication agent reinstallation is
+        /// required.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isAgentReinstallRequired")]
+        public bool? IsAgentReinstallRequired {get; set; }
+
+        /// <summary>
+        /// Gets or sets value for reason blocking reinstall.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "reasonsBlockingReInstall")]
+        public string ReasonsBlockingReInstall {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether reinstall is possible or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "reasonsBlockingReinstallDetails")]
+        public System.Collections.Generic.IList<A2AAgentReinstallBlockingErrorDetails> ReasonsBlockingReinstallDetails {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether replication agent Upgrade is
+        /// In-Progress.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isAgentUpgradeInProgress")]
+        public bool? IsAgentUpgradeInProgress {get; set; }
+
+        /// <summary>
+        /// Gets or sets auto agent upgrade retry count.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "autoAgentUpgradeRetryCount")]
+        public long? AutoAgentUpgradeRetryCount {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether replication agent Upgrade retry
+        /// exhausted.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isAgentUpgradeRetryThresholdExhausted")]
+        public bool? IsAgentUpgradeRetryThresholdExhausted {get; set; }
+
+        /// <summary>
+        /// Gets or sets the platform fault domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "platformFaultDomain")]
+        public int? PlatformFaultDomain {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -671,6 +794,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 this.RecoveryExtendedLocation.Validate();
             }
+
+
+
+
+
+
 
 
 

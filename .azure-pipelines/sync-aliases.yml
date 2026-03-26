@@ -16,7 +16,7 @@ resources:
 jobs:
 - job: UpdateYaml
   displayName: Update resourceManagement.yml
-  pool: pool-windows-2019
+  pool: pool-windows-2022
   uses:
     repositories:
     - ServiceContactList
@@ -38,18 +38,18 @@ jobs:
       dotnet tool install powershell --version 7.4.*
     displayName: Install PowerShell 7.4.x
 
-  - pwsh: |
-      if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
-        Install-PackageProvider -Name NuGet -Force
-      }
-      Install-Package -Name YamlDotNet -RequiredVersion $(YamlDotNetVersion) -ProviderName NuGet -Force -ErrorAction Stop
+  - task: NuGetCommand@2
     displayName: Install YamlDotNet NuGet Package
-    retryCountOnTaskFailure: 5
+    inputs:
+      command: custom
+      arguments: 'install YamlDotNet -Version $(YamlDotNetVersion) -OutputDirectory "$(Agent.TempDirectory)/packages" -NonInteractive'
+    retryCountOnTaskFailure: 3
 
   - pwsh: |
       dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -File ./tools/Github/ParseServiceContactsList.ps1 -AccessToken $env:SYSTEM_ACCESSTOKEN
     env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+      YAMLDOTNETVERSION: $(YamlDotNetVersion)
     displayName: Update resourceManagement.yml file locally
     condition: succeeded()
 

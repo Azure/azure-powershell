@@ -37,19 +37,12 @@ Delete a EdgeActionVersion
 
 ## EXAMPLES
 
-### Example 1: Delete an edge action version by name
+### Example 1: Delete an edge action version
 ```powershell
 Remove-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1"
 ```
 
 Deletes the specified version from the edge action.
-
-### Example 2: Delete an edge action version using pipeline input
-```powershell
-Get-AzEdgeActionVersion -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" | Remove-AzEdgeActionVersion
-```
-
-Retrieves an edge action version and pipes it to delete the resource.
 
 ## PARAMETERS
 

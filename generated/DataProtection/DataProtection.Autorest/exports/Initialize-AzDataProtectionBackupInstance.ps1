@@ -46,7 +46,7 @@ $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType Azur
 $backupInstance
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupInstanceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -58,7 +58,7 @@ BACKUPCONFIGURATION <IBackupDatasourceParameters>: Backup configuration for back
 https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionbackupinstance
 #>
 function Initialize-AzDataProtectionBackupInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupInstanceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupInstanceResource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -113,7 +113,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupDatasourceParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupDatasourceParameters]
     # Backup configuration for backup.
     # Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage.
     # To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.

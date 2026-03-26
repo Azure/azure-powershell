@@ -53,7 +53,43 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="isUpgradeable">A value indicating whether agent is upgradeable or not.
         /// </param>
-        public InMageRcmMobilityAgentDetails(string version = default(string), string latestVersion = default(string), string latestAgentReleaseDate = default(string), string driverVersion = default(string), string latestUpgradableVersionWithoutReboot = default(string), System.DateTime? agentVersionExpiryDate = default(System.DateTime?), System.DateTime? driverVersionExpiryDate = default(System.DateTime?), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), System.Collections.Generic.IList<string> reasonsBlockingUpgrade = default(System.Collections.Generic.IList<string>), string isUpgradeable = default(string))
+
+        /// <param name="agentReinstallState">The agent auto reinstall state.
+        /// </param>
+
+        /// <param name="lastAgentReinstallType">The last agent reinstall type.
+        /// </param>
+
+        /// <param name="agentReinstallJobId">The agent reinstall job Id.
+        /// </param>
+
+        /// <param name="agentReinstallAttemptToVersion">The last agent reinstall type.
+        /// </param>
+
+        /// <param name="osFamilyName">The OS family name.
+        /// </param>
+
+        /// <param name="distroName">The distro name.
+        /// </param>
+
+        /// <param name="distroNameForWhichAgentIsInstalled">Distro name for which agent is installed.
+        /// </param>
+
+        /// <param name="isAgentUpgradeable">A value indicating whether replication agent upgradeable.
+        /// </param>
+
+        /// <param name="isAgentReinstallRequired">A value indicating whether replication agent reinstallation is required.
+        /// </param>
+
+        /// <param name="isLastReinstallSuccessful">A value indicating whether replication agent reinstallation is required.
+        /// </param>
+
+        /// <param name="reasonsBlockingReinstall">whether reinstall is possible or not.
+        /// </param>
+
+        /// <param name="reasonsBlockingReinstallDetails">whether reinstall is possible or not.
+        /// </param>
+        public InMageRcmMobilityAgentDetails(string version = default(string), string latestVersion = default(string), string latestAgentReleaseDate = default(string), string driverVersion = default(string), string latestUpgradableVersionWithoutReboot = default(string), System.DateTime? agentVersionExpiryDate = default(System.DateTime?), System.DateTime? driverVersionExpiryDate = default(System.DateTime?), System.DateTime? lastHeartbeatUtc = default(System.DateTime?), System.Collections.Generic.IList<string> reasonsBlockingUpgrade = default(System.Collections.Generic.IList<string>), string isUpgradeable = default(string), System.Collections.Generic.IList<string> agentReinstallState = default(System.Collections.Generic.IList<string>), string lastAgentReinstallType = default(string), string agentReinstallJobId = default(string), string agentReinstallAttemptToVersion = default(string), string osFamilyName = default(string), string distroName = default(string), string distroNameForWhichAgentIsInstalled = default(string), bool? isAgentUpgradeable = default(bool?), bool? isAgentReinstallRequired = default(bool?), bool? isLastReinstallSuccessful = default(bool?), System.Collections.Generic.IList<string> reasonsBlockingReinstall = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<InMageRcmAgentReinstallBlockingErrorDetails> reasonsBlockingReinstallDetails = default(System.Collections.Generic.IList<InMageRcmAgentReinstallBlockingErrorDetails>))
 
         {
             this.Version = version;
@@ -66,6 +102,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.LastHeartbeatUtc = lastHeartbeatUtc;
             this.ReasonsBlockingUpgrade = reasonsBlockingUpgrade;
             this.IsUpgradeable = isUpgradeable;
+            this.AgentReinstallState = agentReinstallState;
+            this.LastAgentReinstallType = lastAgentReinstallType;
+            this.AgentReinstallJobId = agentReinstallJobId;
+            this.AgentReinstallAttemptToVersion = agentReinstallAttemptToVersion;
+            this.OSFamilyName = osFamilyName;
+            this.DistroName = distroName;
+            this.DistroNameForWhichAgentIsInstalled = distroNameForWhichAgentIsInstalled;
+            this.IsAgentUpgradeable = isAgentUpgradeable;
+            this.IsAgentReinstallRequired = isAgentReinstallRequired;
+            this.IsLastReinstallSuccessful = isLastReinstallSuccessful;
+            this.ReasonsBlockingReinstall = reasonsBlockingReinstall;
+            this.ReasonsBlockingReinstallDetails = reasonsBlockingReinstallDetails;
             CustomInit();
         }
 
@@ -134,5 +182,79 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isUpgradeable")]
         public string IsUpgradeable {get; private set; }
+
+        /// <summary>
+        /// Gets the agent auto reinstall state.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "agentReinstallState")]
+        public System.Collections.Generic.IList<string> AgentReinstallState {get; private set; }
+
+        /// <summary>
+        /// Gets the last agent reinstall type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "lastAgentReinstallType")]
+        public string LastAgentReinstallType {get; private set; }
+
+        /// <summary>
+        /// Gets the agent reinstall job Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "agentReinstallJobId")]
+        public string AgentReinstallJobId {get; private set; }
+
+        /// <summary>
+        /// Gets the last agent reinstall type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "agentReinstallAttemptToVersion")]
+        public string AgentReinstallAttemptToVersion {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the OS family name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "osFamilyName")]
+        public string OSFamilyName {get; set; }
+
+        /// <summary>
+        /// Gets or sets the distro name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "distroName")]
+        public string DistroName {get; set; }
+
+        /// <summary>
+        /// Gets or sets distro name for which agent is installed.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "distroNameForWhichAgentIsInstalled")]
+        public string DistroNameForWhichAgentIsInstalled {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether replication agent upgradeable.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isAgentUpgradeable")]
+        public bool? IsAgentUpgradeable {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether replication agent reinstallation is
+        /// required.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isAgentReinstallRequired")]
+        public bool? IsAgentReinstallRequired {get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether replication agent reinstallation is
+        /// required.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isLastReinstallSuccessful")]
+        public bool? IsLastReinstallSuccessful {get; set; }
+
+        /// <summary>
+        /// Gets whether reinstall is possible or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "reasonsBlockingReinstall")]
+        public System.Collections.Generic.IList<string> ReasonsBlockingReinstall {get; private set; }
+
+        /// <summary>
+        /// Gets whether reinstall is possible or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "reasonsBlockingReinstallDetails")]
+        public System.Collections.Generic.IList<InMageRcmAgentReinstallBlockingErrorDetails> ReasonsBlockingReinstallDetails {get; private set; }
     }
 }

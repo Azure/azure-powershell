@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDataProtectionBackupVault_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Creates or updates a BackupVault resource belonging to a resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}", ApiVersion = "2025-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}", ApiVersion = "2025-09-01")]
     public partial class NewAzDataProtectionBackupVault_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Backup Vault Resource</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.BackupVaultResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupVaultResource();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -120,8 +120,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         ReadOnly = false,
         Description = @"Customer Managed Key details of the resource.",
         SerializedName = @"encryptionSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IEncryptionSettings) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IEncryptionSettings EncryptionSetting { get => _parametersBody.EncryptionSetting ?? null /* object */; set => _parametersBody.EncryptionSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IEncryptionSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IEncryptionSettings EncryptionSetting { get => _parametersBody.EncryptionSetting ?? null /* object */; set => _parametersBody.EncryptionSetting = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -157,8 +157,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         ReadOnly = false,
         Description = @"Gets or sets the user assigned identities.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IDppIdentityDetailsUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.IDppIdentityDetailsUserAssignedIdentities IdentityUserAssignedIdentity { get => _parametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _parametersBody.IdentityUserAssignedIdentity = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IDppIdentityDetailsUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IDppIdentityDetailsUserAssignedIdentities IdentityUserAssignedIdentity { get => _parametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _parametersBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.")]
@@ -175,13 +175,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>Resource location.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location.")]
+        /// <summary>The geo-location where the resource lives</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
-        Description = @"Resource location.",
+        Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
@@ -286,15 +286,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
 
         /// <summary>Storage Settings</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Storage Settings")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Storage Settings")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Storage Settings",
         SerializedName = @"storageSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IStorageSetting) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IStorageSetting[] StorageSetting { get => _parametersBody.StorageSetting ?? null /* arrayOf */; set => _parametersBody.StorageSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IStorageSetting) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IStorageSetting[] StorageSetting { get => _parametersBody.StorageSetting ?? null /* arrayOf */; set => _parametersBody.StorageSetting = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -323,8 +323,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IDppBaseTrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IDppBaseTrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>Backing field for <see cref="Token" /> property.</summary>
         private string _token;
@@ -354,29 +354,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Path)]
         public string VaultName { get => this._vaultName; set => this._vaultName = value; }
 
+        /// <summary>Backing field for <see cref="XmsDeletedVaultId" /> property.</summary>
+        private string _xmsDeletedVaultId;
+
+        /// <summary>The ID of the deleted backup vault to restore from during undelete flow.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ID of the deleted backup vault to restore from during undelete flow.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of the deleted backup vault to restore from during undelete flow.",
+        SerializedName = @"x-ms-deleted-vault-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Header)]
+        public string XmsDeletedVaultId { get => this._xmsDeletedVaultId; set => this._xmsDeletedVaultId = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -418,6 +432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.VaultName = this.VaultName;
             clone.Token = this.Token;
+            clone.XmsDeletedVaultId = this.XmsDeletedVaultId;
             return clone;
         }
 
@@ -596,12 +611,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.BackupVaultsCreateOrUpdate(SubscriptionId, ResourceGroupName, VaultName, this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null, _parametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.BackupVaultsCreateOrUpdate(SubscriptionId, ResourceGroupName, VaultName, this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null, this.InvocationInformation.BoundParameters.ContainsKey("XmsDeletedVaultId") ? XmsDeletedVaultId : null, _parametersBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,VaultName=VaultName,Token=this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null,body=_parametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,VaultName=VaultName,Token=this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null,XmsDeletedVaultId=this.InvocationInformation.BoundParameters.ContainsKey("XmsDeletedVaultId") ? XmsDeletedVaultId : null,body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -639,12 +654,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -661,15 +676,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, VaultName=VaultName, Token=this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null, body=_parametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, VaultName=VaultName, Token=this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null, XmsDeletedVaultId=this.InvocationInformation.BoundParameters.ContainsKey("XmsDeletedVaultId") ? XmsDeletedVaultId : null, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, VaultName=VaultName, Token=this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null, body=_parametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, VaultName=VaultName, Token=this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null, XmsDeletedVaultId=this.InvocationInformation.BoundParameters.ContainsKey("XmsDeletedVaultId") ? XmsDeletedVaultId : null, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -679,12 +694,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -696,7 +711,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource
                 WriteObject((await response));
             }
         }

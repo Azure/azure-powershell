@@ -20,7 +20,7 @@ Update a EdgeActionExecutionFilter
 .Description
 Update a EdgeActionExecutionFilter
 .Example
-Update-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Name "myFilter" -Tag @{ Environment = "Production" }
+Update-AzEdgeActionExecutionFilter -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -ExecutionFilter "myFilter" -Tag @{ Environment = "Production" }
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionExecutionFilterUpdate
@@ -213,8 +213,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

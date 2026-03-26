@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Updates the tags of an application resource of a given managed cluster.
+        /// Updates an application resource of a given managed cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -162,13 +162,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='applicationName'>
         /// The name of the application resource.
         /// </param>
-        public static ApplicationResource Update(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public static ApplicationResource Update(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ApplicationUpdateParametersProperties properties = default(ApplicationUpdateParametersProperties))
         {
-                return ((IApplicationsOperations)operations).UpdateAsync(resourceGroupName, clusterName, applicationName, tags).GetAwaiter().GetResult();
+                return ((IApplicationsOperations)operations).UpdateAsync(resourceGroupName, clusterName, applicationName, tags, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Updates the tags of an application resource of a given managed cluster.
+        /// Updates an application resource of a given managed cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -185,9 +185,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationResource> UpdateAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationResource> UpdateAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ApplicationUpdateParametersProperties properties = default(ApplicationUpdateParametersProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, tags, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, tags, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -240,6 +240,53 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
+        /// Get the status of the deployed application health. It will query the
+        /// cluster to find the health of the deployed application.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        public static ApplicationsFetchHealthHeaders FetchHealth(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, ApplicationFetchHealthRequest parameters)
+        {
+                return ((IApplicationsOperations)operations).FetchHealthAsync(resourceGroupName, clusterName, applicationName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get the status of the deployed application health. It will query the
+        /// cluster to find the health of the deployed application.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationsFetchHealthHeaders> FetchHealthAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, ApplicationFetchHealthRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.FetchHealthWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Get the status of the latest application upgrade. It will query the cluster
         /// to find the status of the latest application upgrade.
         /// </summary>
@@ -282,6 +329,53 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         public static async System.Threading.Tasks.Task<ApplicationsReadUpgradeHeaders> ReadUpgradeAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ReadUpgradeWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Restart a code package instance of a service replica or instance. This is a
+        /// potentially destabilizing operation that should be used with immense care.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        public static ApplicationsRestartDeployedCodePackageHeaders RestartDeployedCodePackage(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, RestartDeployedCodePackageRequest parameters)
+        {
+                return ((IApplicationsOperations)operations).RestartDeployedCodePackageAsync(resourceGroupName, clusterName, applicationName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Restart a code package instance of a service replica or instance. This is a
+        /// potentially destabilizing operation that should be used with immense care.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationsRestartDeployedCodePackageHeaders> RestartDeployedCodePackageAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, RestartDeployedCodePackageRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RestartDeployedCodePackageWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -381,6 +475,51 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
+        /// Send a request to update the current application upgrade.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        public static ApplicationsUpdateUpgradeHeaders UpdateUpgrade(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, RuntimeUpdateApplicationUpgradeParameters parameters)
+        {
+                return ((IApplicationsOperations)operations).UpdateUpgradeAsync(resourceGroupName, clusterName, applicationName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Send a request to update the current application upgrade.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationsUpdateUpgradeHeaders> UpdateUpgradeAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, RuntimeUpdateApplicationUpgradeParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateUpgradeWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Create or update a Service Fabric managed application resource with the
         /// specified name.
         /// </summary>
@@ -423,6 +562,51 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         public static async System.Threading.Tasks.Task<ApplicationResource> BeginCreateOrUpdateAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, ApplicationResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates an application resource of a given managed cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        public static ApplicationResource BeginUpdate(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ApplicationUpdateParametersProperties properties = default(ApplicationUpdateParametersProperties))
+        {
+                return ((IApplicationsOperations)operations).BeginUpdateAsync(resourceGroupName, clusterName, applicationName, tags, properties).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates an application resource of a given managed cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationResource> BeginUpdateAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ApplicationUpdateParametersProperties properties = default(ApplicationUpdateParametersProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, tags, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -475,6 +659,53 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
+        /// Get the status of the deployed application health. It will query the
+        /// cluster to find the health of the deployed application.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        public static ApplicationsFetchHealthHeaders BeginFetchHealth(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, ApplicationFetchHealthRequest parameters)
+        {
+                return ((IApplicationsOperations)operations).BeginFetchHealthAsync(resourceGroupName, clusterName, applicationName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get the status of the deployed application health. It will query the
+        /// cluster to find the health of the deployed application.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationsFetchHealthHeaders> BeginFetchHealthAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, ApplicationFetchHealthRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginFetchHealthWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Get the status of the latest application upgrade. It will query the cluster
         /// to find the status of the latest application upgrade.
         /// </summary>
@@ -517,6 +748,53 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         public static async System.Threading.Tasks.Task<ApplicationsReadUpgradeHeaders> BeginReadUpgradeAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginReadUpgradeWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Restart a code package instance of a service replica or instance. This is a
+        /// potentially destabilizing operation that should be used with immense care.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        public static ApplicationsRestartDeployedCodePackageHeaders BeginRestartDeployedCodePackage(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, RestartDeployedCodePackageRequest parameters)
+        {
+                return ((IApplicationsOperations)operations).BeginRestartDeployedCodePackageAsync(resourceGroupName, clusterName, applicationName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Restart a code package instance of a service replica or instance. This is a
+        /// potentially destabilizing operation that should be used with immense care.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationsRestartDeployedCodePackageHeaders> BeginRestartDeployedCodePackageAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, RestartDeployedCodePackageRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRestartDeployedCodePackageWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -611,6 +889,51 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         public static async System.Threading.Tasks.Task<ApplicationsStartRollbackHeaders> BeginStartRollbackAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginStartRollbackWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Send a request to update the current application upgrade.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        public static ApplicationsUpdateUpgradeHeaders BeginUpdateUpgrade(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, RuntimeUpdateApplicationUpgradeParameters parameters)
+        {
+                return ((IApplicationsOperations)operations).BeginUpdateUpgradeAsync(resourceGroupName, clusterName, applicationName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Send a request to update the current application upgrade.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// The name of the cluster resource.
+        /// </param>
+        /// <param name='applicationName'>
+        /// The name of the application resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationsUpdateUpgradeHeaders> BeginUpdateUpgradeAsync(this IApplicationsOperations operations, string resourceGroupName, string clusterName, string applicationName, RuntimeUpdateApplicationUpgradeParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateUpgradeWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }

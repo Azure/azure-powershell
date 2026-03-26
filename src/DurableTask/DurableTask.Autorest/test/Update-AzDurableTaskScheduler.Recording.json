@@ -1,15 +1,15 @@
 {
-  "Update-AzDurableTaskScheduler+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01+1": {
+  "Update-AzDurableTaskScheduler+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01",
-      "Content": "{\r\n  \"tags\": {\r\n    \"Environment\": \"Test\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Disabled\"\r\n  },\r\n  \"tags\": {\r\n    \"Environment\": \"Test\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "49" ]
+        "Content-Length": [ "113" ]
       }
     },
     "Response": {
@@ -17,45 +17,45 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"bf049c9b-0000-0100-0000-691d1f440000\"" ],
+        "ETag": [ "\"020016e1-0000-3300-0000-69a26c980000\"" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6417f33f-937c-43aa-8721-7350eee35af2/westus2/8f4df49a-ab5d-46ff-b48a-a1bedc9cba65" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=be519825-f79e-4772-bb28-d8b95f2e2702/northcentralus/d02e01a0-fbab-4c55-ab98-f1c1041239d1" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "5405efb4-4368-44c1-8170-a3b275f74f4a" ],
-        "api-supported-versions": [ "2024-10-01-preview, 2025-04-01-preview, 2025-05-04-preview, 2025-11-01" ],
+        "mise-correlation-id": [ "e5395c7e-b968-49da-9407-cf5dd704e5a7" ],
+        "api-supported-versions": [ "2024-10-01-preview, 2025-04-01-preview, 2025-05-04-preview, 2025-11-01, 2026-02-01" ],
         "x-ms-failure-cause": [ "service" ],
-        "x-ms-request-id": [ "884f58c4-8995-4840-a494-67dc53f10ccb" ],
-        "x-ms-correlation-request-id": [ "d04cf961-f0f7-4e40-a492-1d6df82d86e1" ],
+        "x-ms-request-id": [ "569f9811-ae6a-4fae-8ea1-f0333e11e4c3" ],
+        "x-ms-correlation-request-id": [ "b59cd818-5d4f-4958-aa02-9338bbdbf612" ],
         "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20251119T013708Z:d04cf961-f0f7-4e40-a492-1d6df82d86e1" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20260228T041832Z:b59cd818-5d4f-4958-aa02-9338bbdbf612" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 70890E2749044E8789AEFBC57024DF52 Ref B: MWH011020808034 Ref C: 2025-11-19T01:37:07Z" ],
-        "Date": [ "Wed, 19 Nov 2025 01:37:07 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AC99EA5A28B64F21821A9924AFCC43F5 Ref B: MWH011020807060 Ref C: 2026-02-28T04:18:29Z" ],
+        "Date": [ "Sat, 28 Feb 2026 04:18:31 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "752" ],
+        "Content-Length": [ "770" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx\",\"name\":\"ps-test-scheduler-75gx\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Environment\":\"Test\"},\"systemData\":{\"createdBy\":\"anatolib@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-19T00:39:30.7276001Z\",\"lastModifiedBy\":\"anatolib@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-19T01:37:07.8144105Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fgdbavga.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Dedicated\",\"capacity\":1,\"redundancyState\":\"None\"}}}",
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Environment\":\"Test\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:29.8536761Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaJsonString+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01+1": {
+  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaJsonString+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01",
-      "Content": "{\r\n  \"tags\": {\r\n    \"Department\": \"Engineering\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"Department\": \"Engineering\"\r\n  },\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Disabled\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "55" ]
+        "Content-Length": [ "119" ]
       }
     },
     "Response": {
@@ -63,45 +63,45 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"bf04e99b-0000-0100-0000-691d1f450000\"" ],
+        "ETag": [ "\"020017e1-0000-3300-0000-69a26c990000\"" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6417f33f-937c-43aa-8721-7350eee35af2/northcentralus/493a900d-29c8-439a-886c-0872b0d63357" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=be519825-f79e-4772-bb28-d8b95f2e2702/northcentralus/f890b236-98ed-40fd-b387-d353b8044858" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "05de5a5b-e2e2-4ba6-89fc-15ecb1012bc0" ],
-        "api-supported-versions": [ "2024-10-01-preview, 2025-04-01-preview, 2025-05-04-preview, 2025-11-01" ],
+        "mise-correlation-id": [ "1503dd1b-9146-4dfe-b94e-d6e9eda43d34" ],
+        "api-supported-versions": [ "2024-10-01-preview, 2025-04-01-preview, 2025-05-04-preview, 2025-11-01, 2026-02-01" ],
         "x-ms-failure-cause": [ "service" ],
-        "x-ms-request-id": [ "240df742-5264-4f70-90e3-9d3c3f02769a" ],
-        "x-ms-correlation-request-id": [ "bc1f8847-102e-4720-ad9f-a312f8f5add7" ],
+        "x-ms-request-id": [ "fce1989f-fe0c-485a-8523-503fdd2c8912" ],
+        "x-ms-correlation-request-id": [ "4b74786f-4fa3-412a-8a1a-a3f658340f5d" ],
         "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20251119T013709Z:bc1f8847-102e-4720-ad9f-a312f8f5add7" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20260228T041833Z:4b74786f-4fa3-412a-8a1a-a3f658340f5d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9E66273C5D9E47809AB4EE8DAA8476DD Ref B: MWH011020808034 Ref C: 2025-11-19T01:37:08Z" ],
-        "Date": [ "Wed, 19 Nov 2025 01:37:08 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A135AB7C925244E9B461844C72673177 Ref B: MWH011020807060 Ref C: 2026-02-28T04:18:32Z" ],
+        "Date": [ "Sat, 28 Feb 2026 04:18:32 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "758" ],
+        "Content-Length": [ "776" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx\",\"name\":\"ps-test-scheduler-75gx\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Department\":\"Engineering\"},\"systemData\":{\"createdBy\":\"anatolib@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-19T00:39:30.7276001Z\",\"lastModifiedBy\":\"anatolib@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-19T01:37:09.3585538Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fgdbavga.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Dedicated\",\"capacity\":1,\"redundancyState\":\"None\"}}}",
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Department\":\"Engineering\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:32.9056393Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaJsonFilePath+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01+1": {
+  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaJsonFilePath+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01",
-      "Content": "ew0KICAidGFncyI6IHsNCiAgICAiUHJvamVjdCI6ICJEdXJhYmxlVGFzayINCiAgfQ0KfQ0K",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
+      "Content": "ew0KICAidGFncyI6IHsNCiAgICAiUHJvamVjdCI6ICJEdXJhYmxlVGFzayINCiAgfSwNCiAgInByb3BlcnRpZXMiOiB7DQogICAgInB1YmxpY05ldHdvcmtBY2Nlc3MiOiAiRGlzYWJsZWQiDQogIH0NCn0NCg==",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "54" ]
+        "Content-Length": [ "118" ]
       }
     },
     "Response": {
@@ -109,47 +109,47 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"bf04219c-0000-0100-0000-691d1f460000\"" ],
+        "ETag": [ "\"020018e1-0000-3300-0000-69a26c9a0000\"" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6417f33f-937c-43aa-8721-7350eee35af2/northcentralus/8702ad7f-5333-4f02-a22a-879bd9565422" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=be519825-f79e-4772-bb28-d8b95f2e2702/northcentralus/aecc2c1d-832b-4e34-bdbc-1fc164ee7d37" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "6994c388-f1bd-45ce-995a-3fb190f632fe" ],
-        "api-supported-versions": [ "2024-10-01-preview, 2025-04-01-preview, 2025-05-04-preview, 2025-11-01" ],
+        "mise-correlation-id": [ "381887ee-20d1-431b-a315-618fa3c05f99" ],
+        "api-supported-versions": [ "2024-10-01-preview, 2025-04-01-preview, 2025-05-04-preview, 2025-11-01, 2026-02-01" ],
         "x-ms-failure-cause": [ "service" ],
-        "x-ms-request-id": [ "a3eb4b99-2fad-44fe-a485-07f9eed22bbd" ],
-        "x-ms-correlation-request-id": [ "c2836e35-c6ca-4848-93c5-3465e8df3684" ],
+        "x-ms-request-id": [ "a9b3c9f9-a554-4662-8786-f26cf7ffb07c" ],
+        "x-ms-correlation-request-id": [ "e84fe186-8e9c-4f29-b7f1-913523a9cf73" ],
         "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20251119T013710Z:c2836e35-c6ca-4848-93c5-3465e8df3684" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20260228T041834Z:e84fe186-8e9c-4f29-b7f1-913523a9cf73" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5074B55DFBE74CE38B877D9A1EA68FC5 Ref B: MWH011020808034 Ref C: 2025-11-19T01:37:09Z" ],
-        "Date": [ "Wed, 19 Nov 2025 01:37:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 397A136AD7F540DB9BB3ED67C3869D4B Ref B: MWH011020807060 Ref C: 2026-02-28T04:18:33Z" ],
+        "Date": [ "Sat, 28 Feb 2026 04:18:33 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "755" ],
+        "Content-Length": [ "773" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx\",\"name\":\"ps-test-scheduler-75gx\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Project\":\"DurableTask\"},\"systemData\":{\"createdBy\":\"anatolib@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-19T00:39:30.7276001Z\",\"lastModifiedBy\":\"anatolib@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-19T01:37:10.1141952Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fgdbavga.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Dedicated\",\"capacity\":1,\"redundancyState\":\"None\"}}}",
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Project\":\"DurableTask\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:33.9751168Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01+1": {
+  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "175" ],
-        "x-ms-client-request-id": [ "af1f2ef8-af77-4b8b-870d-b99b40547ed6" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "e8e17169-dfe9-42fb-ae09-65a2e542585b" ],
         "CommandName": [ "Get-AzDurableTaskScheduler" ],
         "FullCommandName": [ "Get-AzDurableTaskScheduler_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.DurableTask/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.4.13", "Az.DurableTask/0.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -160,39 +160,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"bf04219c-0000-0100-0000-691d1f460000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "ETag": [ "\"020018e1-0000-3300-0000-69a26c9a0000\"" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "d3c68285-8c78-4fa7-83a6-f6441d204f38" ],
-        "x-ms-correlation-request-id": [ "56ecd7c9-356a-4af4-852e-dbf4bd2d5c78" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20251119T013710Z:56ecd7c9-356a-4af4-852e-dbf4bd2d5c78" ],
+        "x-ms-request-id": [ "f3a22da7-2bac-478a-a825-08aaf36cfdd5" ],
+        "x-ms-correlation-request-id": [ "a50a1d71-3cfd-449b-b1af-82bdc85bc7b7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20260228T041834Z:a50a1d71-3cfd-449b-b1af-82bdc85bc7b7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6EEFCDAC0BEA4EDCB194AE06D4ADC464 Ref B: MWH011020808034 Ref C: 2025-11-19T01:37:10Z" ],
-        "Date": [ "Wed, 19 Nov 2025 01:37:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 18A08EEB34C44AAB8B8C814396F57EC6 Ref B: MWH011020807060 Ref C: 2026-02-28T04:18:34Z" ],
+        "Date": [ "Sat, 28 Feb 2026 04:18:34 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "755" ],
+        "Content-Length": [ "773" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx\",\"name\":\"ps-test-scheduler-75gx\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Project\":\"DurableTask\"},\"systemData\":{\"createdBy\":\"anatolib@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-19T00:39:30.7276001Z\",\"lastModifiedBy\":\"anatolib@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-19T01:37:10.1141952Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fgdbavga.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Dedicated\",\"capacity\":1,\"redundancyState\":\"None\"}}}",
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Project\":\"DurableTask\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:33.9751168Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01+2": {
+  "Update-AzDurableTaskScheduler+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx?api-version=2025-11-01",
-      "Content": "{\r\n  \"tags\": {\r\n    \"Status\": \"Active\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd?api-version=2026-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Disabled\"\r\n  },\r\n  \"tags\": {\r\n    \"Status\": \"Active\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "46" ]
+        "Content-Length": [ "110" ]
       }
     },
     "Response": {
@@ -200,31 +200,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"bf044a9c-0000-0100-0000-691d1f470000\"" ],
+        "ETag": [ "\"020019e1-0000-3300-0000-69a26c9c0000\"" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6417f33f-937c-43aa-8721-7350eee35af2/northcentralus/2c0313a0-0f5e-4a7e-8ecc-eee6ed4f26dc" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=be519825-f79e-4772-bb28-d8b95f2e2702/northcentralus/bb72cc0f-27d4-4ae4-bc19-2c4b48263ac5" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "35450ef8-28fb-4a74-819e-1bbd6f8bc84f" ],
-        "api-supported-versions": [ "2024-10-01-preview, 2025-04-01-preview, 2025-05-04-preview, 2025-11-01" ],
+        "mise-correlation-id": [ "71017dff-3af7-4062-9974-972cefb802cf" ],
+        "api-supported-versions": [ "2024-10-01-preview, 2025-04-01-preview, 2025-05-04-preview, 2025-11-01, 2026-02-01" ],
         "x-ms-failure-cause": [ "service" ],
-        "x-ms-request-id": [ "32394d88-d727-44c5-912a-ccab60787068" ],
-        "x-ms-correlation-request-id": [ "ea5226a9-4b69-4e82-8a55-79fc4c2233aa" ],
+        "x-ms-request-id": [ "97e308bc-c377-4a87-8d94-9a9294411fae" ],
+        "x-ms-correlation-request-id": [ "0bbc5fd6-3d26-423b-bdd6-6e7eaf92672d" ],
         "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20251119T013711Z:ea5226a9-4b69-4e82-8a55-79fc4c2233aa" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20260228T041836Z:0bbc5fd6-3d26-423b-bdd6-6e7eaf92672d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A56E34272F3B4C7FA07B61B227C15345 Ref B: MWH011020808034 Ref C: 2025-11-19T01:37:10Z" ],
-        "Date": [ "Wed, 19 Nov 2025 01:37:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 564F47FBF296484C9D18EA88CFE376E1 Ref B: MWH011020807060 Ref C: 2026-02-28T04:18:34Z" ],
+        "Date": [ "Sat, 28 Feb 2026 04:18:35 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "749" ],
+        "Content-Length": [ "767" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-b67i/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-75gx\",\"name\":\"ps-test-scheduler-75gx\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Status\":\"Active\"},\"systemData\":{\"createdBy\":\"anatolib@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-19T00:39:30.7276001Z\",\"lastModifiedBy\":\"anatolib@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-19T01:37:11.1444915Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fgdbavga.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Dedicated\",\"capacity\":1,\"redundancyState\":\"None\"}}}",
+      "Content": "{\"id\":\"/subscriptions/01cd122d-8616-45ca-adce-1ec35d96f1e7/resourceGroups/ps-test-durable-task-4qx5/providers/Microsoft.DurableTask/schedulers/ps-test-scheduler-2kcd\",\"name\":\"ps-test-scheduler-2kcd\",\"type\":\"microsoft.durabletask/schedulers\",\"location\":\"northcentralus\",\"tags\":{\"Status\":\"Active\"},\"systemData\":{\"createdBy\":\"beverst@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-02-28T04:15:49.4650641Z\",\"lastModifiedBy\":\"beverst@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-02-28T04:18:35.3143727Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"endpoint\":\"https://ps-test-schedul-fabmffgq.northcentralus.durabletask.io\",\"ipAllowlist\":[\"10.0.0.0/8\"],\"sku\":{\"name\":\"Consumption\",\"redundancyState\":\"None\"},\"publicNetworkAccess\":\"Disabled\"}}",
       "isContentBase64": false
     }
   }

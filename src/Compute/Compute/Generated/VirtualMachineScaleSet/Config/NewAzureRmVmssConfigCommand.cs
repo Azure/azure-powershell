@@ -443,6 +443,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [ValidateNotNullOrEmpty]
         public string[] ExcludeZone { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the high speed interconnect placement for the virtual machine scale set.")]
+        [PSArgumentCompleter("None", "Trunk")]
+        public string HighSpeedInterconnectPlacement { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -1248,7 +1255,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 PriorityMixPolicy = vPriorityMixPolicy,
                 SkuProfile = vSkuProfile,
                 ResiliencyPolicy = vResiliencyPolicy,
-                Placement = vPlacement
+                Placement = vPlacement,
+                HighSpeedInterconnectPlacement = this.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? this.HighSpeedInterconnectPlacement : null
             };
 
             WriteObject(vVirtualMachineScaleSet);

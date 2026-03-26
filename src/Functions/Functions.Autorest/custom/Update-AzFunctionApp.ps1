@@ -1,5 +1,10 @@
 
 function Update-AzFunctionApp {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026.           *`n
+    * At least one change applies to this cmdlet.                                                     *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+    ***************************************************************************************************")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Updates a function app.')]
     [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
@@ -54,17 +59,23 @@ function Update-AzFunctionApp {
         [ValidateNotNull()]
         ${Tag},
 
-        [Parameter(HelpMessage="Determines whether to enable a system-assigned identity for the resource.")]
+        [Parameter(HelpMessage="Specifies the type of identity used for the function app.
+            The type 'None' will remove any identities from the function app. The acceptable values for this parameter are:
+            - SystemAssigned
+            - UserAssigned
+            - None
+            ")]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityUpdateType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [System.Boolean]
-        ${EnableSystemAssignedIdentity},
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
+        ${IdentityType},
 
-        [Parameter(HelpMessage="The array of user assigned identities associated with the function app.
+        [Parameter(HelpMessage="Specifies the list of user identities associated with the function app.
             The user identity references will be ARM resource ids in the form:
-            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'")]
+            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'")]
         [ValidateNotNullOrEmpty()]
         [System.String[]]
-        ${UserAssignedIdentity},
+        ${IdentityID},
 
         [Parameter(HelpMessage='Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
@@ -130,7 +141,9 @@ function Update-AzFunctionApp {
         $paramsToRemove = @(
             "PlanName",
             "ApplicationInsightsName",
-            "ApplicationInsightsKey",
+            "ApplicationInsightsKey"
+            "IdentityType",
+            "IdentityID",
             "Tag"
         )
         foreach ($paramName in $paramsToRemove)
@@ -173,21 +186,14 @@ function Update-AzFunctionApp {
         $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Site
 
         # Identity information
-        $userProvidedIdentitySettings = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or
-                                         ($UserAssignedIdentity)
-
-        if ($userProvidedIdentitySettings)
+        if ($IdentityType)
         {
-            $enableSystemAssigned = $EnableSystemAssignedIdentity -eq $true
-            $hasUserAssigned = $UserAssignedIdentity
+            $functionAppDef.IdentityType = $IdentityType
 
-            if ($enableSystemAssigned)
+            if ($IdentityType -eq "UserAssigned")
             {
-                $functionAppDef.IdentityType = "SystemAssigned"
-            }
-            elseif ($hasUserAssigned)
-            {
-                if ($UserAssignedIdentity.Count -eq 0)
+                # Set UserAssigned managed identity
+                if (-not $IdentityID)
                 {
                     $errorMessage = "IdentityID is required for UserAssigned identity"
                     $exception = [System.InvalidOperationException]::New($errorMessage)
@@ -195,16 +201,11 @@ function Update-AzFunctionApp {
                                             -ErrorMessage $errorMessage `
                                             -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                                             -Exception $exception
+
                 }
 
-                $functionAppDef.IdentityType = "UserAssigned"
-                $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $UserAssignedIdentity
+                $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
                 $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
-            }
-            elseif ($EnableSystemAssignedIdentity -eq $false)
-            {
-                # Explicitly disable identity
-                $functionAppDef.IdentityType = "None"
             }
         }
         elseif ($existingFunctionApp.IdentityType)

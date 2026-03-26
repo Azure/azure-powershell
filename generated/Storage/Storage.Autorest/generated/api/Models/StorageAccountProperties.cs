@@ -278,6 +278,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public bool? FailoverInProgress { get => this._failoverInProgress; }
 
+        /// <summary>Backing field for <see cref="GeoPriorityReplicationStatus" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus _geoPriorityReplicationStatus;
+
+        /// <summary>Status indicating whether Geo Priority Replication is enabled for the account.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus GeoPriorityReplicationStatus { get => (this._geoPriorityReplicationStatus = this._geoPriorityReplicationStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoPriorityReplicationStatus()); set => this._geoPriorityReplicationStatus = value; }
+
+        /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? GeoPriorityReplicationStatusIsBlobEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatusInternal)GeoPriorityReplicationStatus).IsBlobEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatusInternal)GeoPriorityReplicationStatus).IsBlobEnabled = value ?? default(bool); }
+
         /// <summary>Backing field for <see cref="GeoReplicationStat" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoReplicationStats _geoReplicationStat;
 
@@ -491,6 +504,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>Internal Acessors for FailoverInProgress</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal.FailoverInProgress { get => this._failoverInProgress; set { {_failoverInProgress = value;} } }
+
+        /// <summary>Internal Acessors for GeoPriorityReplicationStatus</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal.GeoPriorityReplicationStatus { get => (this._geoPriorityReplicationStatus = this._geoPriorityReplicationStatus ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoPriorityReplicationStatus()); set { {_geoPriorityReplicationStatus = value;} } }
 
         /// <summary>Internal Acessors for GeoReplicationStat</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoReplicationStats Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountPropertiesInternal.GeoReplicationStat { get => (this._geoReplicationStat = this._geoReplicationStat ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.GeoReplicationStats()); set { {_geoReplicationStat = value;} } }
@@ -1245,6 +1261,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? FailoverInProgress { get;  }
         /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether Blob Geo Priority Replication is enabled for the storage account.",
+        SerializedName = @"isBlobEnabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? GeoPriorityReplicationStatusIsBlobEnabled { get; set; }
+        /// <summary>
         /// A boolean flag which indicates whether or not account failover is supported for the account.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
@@ -1651,7 +1680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Gets the status of the storage account at the time the operation was called.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded", "ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Deleting", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded")]
         string ProvisioningState { get;  }
         /// <summary>
         /// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
@@ -2013,6 +2042,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// If the failover is in progress, the value will be true, otherwise, it will be null.
         /// </summary>
         bool? FailoverInProgress { get; set; }
+        /// <summary>Status indicating whether Geo Priority Replication is enabled for the account.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoPriorityReplicationStatus GeoPriorityReplicationStatus { get; set; }
+        /// <summary>
+        /// Indicates whether Blob Geo Priority Replication is enabled for the storage account.
+        /// </summary>
+        bool? GeoPriorityReplicationStatusIsBlobEnabled { get; set; }
         /// <summary>Geo Replication Stats</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IGeoReplicationStats GeoReplicationStat { get; set; }
         /// <summary>
@@ -2151,7 +2186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>Gets the status of the storage account at the time the operation was called.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded", "ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Deleting", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded")]
         string ProvisioningState { get; set; }
         /// <summary>
         /// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
