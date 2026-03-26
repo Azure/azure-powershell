@@ -16,7 +16,7 @@ Creates a function app.
 ```
 New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> -Runtime <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-Break <Object>] [-DisableApplicationInsights] [-EnableSystemAssignedIdentity]
+ [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-EnableSystemAssignedIdentity]
  [-FunctionsVersion <String>] [-OSType <String>] [-PassThru] [-RuntimeVersion <String>]
  [-SubscriptionId <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -26,7 +26,7 @@ New-AzFunctionApp -Location <String> -Name <String> -ResourceGroupName <String> 
 ```
 New-AzFunctionApp -Name <String> -PlanName <String> -ResourceGroupName <String> -Runtime <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-Break <Object>] [-DisableApplicationInsights] [-EnableSystemAssignedIdentity]
+ [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-EnableSystemAssignedIdentity]
  [-FunctionsVersion <String>] [-OSType <String>] [-PassThru] [-RuntimeVersion <String>]
  [-SubscriptionId <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -36,8 +36,8 @@ New-AzFunctionApp -Name <String> -PlanName <String> -ResourceGroupName <String> 
 ```
 New-AzFunctionApp -Image <String> -Name <String> -PlanName <String> -ResourceGroupName <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-Break <Object>] [-DisableApplicationInsights] [-EnableSystemAssignedIdentity]
- [-PassThru] [-RegistryCredential <PSCredential>] [-SubscriptionId <String>] [-Tag <Hashtable>]
+ [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-EnableSystemAssignedIdentity] [-PassThru]
+ [-RegistryCredential <PSCredential>] [-SubscriptionId <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -46,12 +46,11 @@ New-AzFunctionApp -Image <String> -Name <String> -PlanName <String> -ResourceGro
 ```
 New-AzFunctionApp -Environment <String> -Name <String> -ResourceGroupName <String>
  -StorageAccountName <String> [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>]
- [-AppSetting <Hashtable>] [-Break <Object>] [-DisableApplicationInsights] [-EnableSystemAssignedIdentity]
- [-Image <String>] [-PassThru] [-RegistryCredential <PSCredential>] [-RegistryServer <String>]
- [-ResourceCpu <Double>] [-ResourceMemory <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>]
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-WorkloadProfileName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AppSetting <Hashtable>] [-DisableApplicationInsights] [-EnableSystemAssignedIdentity] [-Image <String>]
+ [-PassThru] [-RegistryCredential <PSCredential>] [-RegistryServer <String>] [-ResourceCpu <Double>]
+ [-ResourceMemory <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-WorkloadProfileName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FlexConsumption
@@ -59,7 +58,7 @@ New-AzFunctionApp -Environment <String> -Name <String> -ResourceGroupName <Strin
 New-AzFunctionApp -FlexConsumptionLocation <String> -Name <String> -ResourceGroupName <String>
  -Runtime <String> -StorageAccountName <String> [-AlwaysReady <Hashtable[]>]
  [-ApplicationInsightsKey <String>] [-ApplicationInsightsName <String>] [-AppSetting <Hashtable>]
- [-Break <Object>] [-DeploymentStorageAuthType <String>] [-DeploymentStorageAuthValue <String>]
+ [-DeploymentStorageAuthType <String>] [-DeploymentStorageAuthValue <String>]
  [-DeploymentStorageContainerName <String>] [-DeploymentStorageName <String>] [-DisableApplicationInsights]
  [-EnableSystemAssignedIdentity] [-EnableZoneRedundancy] [-HttpPerInstanceConcurrency <Int32>]
  [-InstanceMemoryMB <Int32>] [-MaximumInstanceCount <Int32>] [-PassThru] [-RuntimeVersion <String>]
@@ -200,21 +199,6 @@ Runs the cmdlet as a background job.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-
-
-```yaml
-Type: System.Object
 Parameter Sets: (All)
 Aliases:
 

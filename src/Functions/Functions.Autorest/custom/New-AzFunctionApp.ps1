@@ -286,6 +286,9 @@ function New-AzFunctionApp {
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
         [System.Management.Automation.PSObject]
         ${DefaultProfile},
+
+        [Parameter(DontShow)]
+        [System.Management.Automation.SwitchParameter]
         ${Break},
 
         [Parameter(DontShow)]

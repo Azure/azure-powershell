@@ -18,9 +18,8 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
  -Runtime <String> [-SubscriptionId <String>] [-ApplicationInsightsName <String>]
  [-ApplicationInsightsKey <String>] [-OSType <String>] [-RuntimeVersion <String>] [-FunctionsVersion <String>]
  [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
- [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-Break <Object>]
- [-DefaultProfile <PSObject>] [-NoWait] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByAppServicePlan
@@ -29,8 +28,8 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
  [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
  [-OSType <String>] [-RuntimeVersion <String>] [-FunctionsVersion <String>] [-DisableApplicationInsights]
  [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>] [-EnableSystemAssignedIdentity]
- [-UserAssignedIdentity <String[]>] [-Break <Object>] -PlanName <String> [-DefaultProfile <PSObject>] [-NoWait]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] -PlanName <String> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FlexConsumption
@@ -38,7 +37,7 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
 New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String> -Runtime <String>
  [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
  [-RuntimeVersion <String>] [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>]
- [-AppSetting <Hashtable>] [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-Break <Object>]
+ [-AppSetting <Hashtable>] [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
  -FlexConsumptionLocation <String> [-DeploymentStorageName <String>] [-DeploymentStorageContainerName <String>]
  [-DeploymentStorageAuthType <String>] [-DeploymentStorageAuthValue <String>] [-AlwaysReady <Hashtable[]>]
  [-MaximumInstanceCount <Int32>] [-InstanceMemoryMB <Int32>] [-HttpPerInstanceConcurrency <Int32>]
@@ -51,8 +50,8 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
 New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String>
  [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
  [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
- [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-Break <Object>] -Environment <String>
- [-Image <String>] [-RegistryCredential <PSCredential>] [-WorkloadProfileName <String>] [-ResourceCpu <Double>]
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] -Environment <String> [-Image <String>]
+ [-RegistryCredential <PSCredential>] [-WorkloadProfileName <String>] [-ResourceCpu <Double>]
  [-ResourceMemory <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>] [-RegistryServer <String>]
  [-DefaultProfile <PSObject>] [-NoWait] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -63,7 +62,7 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
 New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String>
  [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
  [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
- [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-Break <Object>] -Image <String>
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] -Image <String>
  [-RegistryCredential <PSCredential>] -PlanName <String> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -201,20 +200,6 @@ Runs the cmdlet as a background job.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-
-```yaml
-Type: System.Object
 Parameter Sets: (All)
 Aliases:
 

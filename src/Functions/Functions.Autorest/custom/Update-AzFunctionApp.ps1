@@ -208,14 +208,13 @@ function Update-AzFunctionApp {
 
         # Identity information
         $userProvidedIdentitySettings = $hasEnableSystemAssignedIdentityParam -or
-                                         ($UserAssignedIdentity)
+                                         $hasUserAssignedIdentityParam
 
         if ($userProvidedIdentitySettings)
         {
             $enableSystemAssigned = $EnableSystemAssignedIdentity -eq $true
-            $hasUserAssigned = $UserAssignedIdentity
 
-            if ($hasUserAssigned -and $UserAssignedIdentity.Count -eq 0)
+            if ($hasUserAssignedIdentityParam -and $UserAssignedIdentity.Count -eq 0)
             {
                 $errorMessage = "At least one user-assigned identity resource ID must be provided via the -UserAssignedIdentity parameter."
                 $exception = [System.InvalidOperationException]::New($errorMessage)
@@ -225,7 +224,7 @@ function Update-AzFunctionApp {
                                         -Exception $exception
             }
 
-            if ($enableSystemAssigned -and $hasUserAssigned)
+            if ($enableSystemAssigned -and $hasUserAssignedIdentityParam)
             {
                 $functionAppDef.IdentityType = "SystemAssigned,UserAssigned"
                 $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $UserAssignedIdentity
@@ -235,7 +234,7 @@ function Update-AzFunctionApp {
             {
                 $functionAppDef.IdentityType = "SystemAssigned"
             }
-            elseif ($hasUserAssigned)
+            elseif ($hasUserAssignedIdentityParam)
             {
                 $functionAppDef.IdentityType = "UserAssigned"
                 $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $UserAssignedIdentity
