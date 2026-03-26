@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Resources
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -65,6 +65,18 @@ namespace Microsoft.Azure.Management.Resources
         /// Gets the IDeploymentStacksOperations
         /// </summary>
         public virtual IDeploymentStacksOperations DeploymentStacks { get; private set; }
+        /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtManagementGroupOperations
+        /// </summary>
+        public virtual IDeploymentStacksWhatIfResultsAtManagementGroupOperations DeploymentStacksWhatIfResultsAtManagementGroup { get; private set; }
+        /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtSubscriptionOperations
+        /// </summary>
+        public virtual IDeploymentStacksWhatIfResultsAtSubscriptionOperations DeploymentStacksWhatIfResultsAtSubscription { get; private set; }
+        /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtResourceGroupOperations
+        /// </summary>
+        public virtual IDeploymentStacksWhatIfResultsAtResourceGroupOperations DeploymentStacksWhatIfResultsAtResourceGroup { get; private set; }
         /// <summary>
         /// Initializes a new instance of the DeploymentStacksClient class.
         /// </summary>
@@ -304,8 +316,11 @@ namespace Microsoft.Azure.Management.Resources
         private void Initialize()
         {
             this.DeploymentStacks = new DeploymentStacksOperations(this);
+            this.DeploymentStacksWhatIfResultsAtManagementGroup = new DeploymentStacksWhatIfResultsAtManagementGroupOperations(this);
+            this.DeploymentStacksWhatIfResultsAtSubscription = new DeploymentStacksWhatIfResultsAtSubscriptionOperations(this);
+            this.DeploymentStacksWhatIfResultsAtResourceGroup = new DeploymentStacksWhatIfResultsAtResourceGroupOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-03-01";
+            this.ApiVersion = "2025-07-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

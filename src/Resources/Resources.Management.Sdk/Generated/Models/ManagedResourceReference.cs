@@ -24,7 +24,19 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Initializes a new instance of the ManagedResourceReference class.
         /// </summary>
 
-        /// <param name="id">The resourceId of a resource managed by the deployment stack.
+        /// <param name="id">The ARM Resource ID of a resource managed by the deployment stack.
+        /// </param>
+
+        /// <param name="extension">The extension the resource was deployed with.
+        /// </param>
+
+        /// <param name="type">The resource type.
+        /// </param>
+
+        /// <param name="identifiers">The extensible resource identifiers.
+        /// </param>
+
+        /// <param name="apiVersion">The API version the resource was deployed with
         /// </param>
 
         /// <param name="status">Current management state of the resource in the deployment stack.
@@ -32,10 +44,10 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <param name="denyStatus">denyAssignment settings applied to the resource.
         /// Possible values include: &#39;denyDelete&#39;, &#39;notSupported&#39;, &#39;inapplicable&#39;,
-        /// &#39;denyWriteAndDelete&#39;, &#39;removedBySystem&#39;, &#39;none&#39;</param>
-        public ManagedResourceReference(string id = default(string), string status = default(string), string denyStatus = default(string))
+        /// &#39;denyWriteAndDelete&#39;, &#39;removedBySystem&#39;, &#39;none&#39;, &#39;unknown&#39;</param>
+        public ManagedResourceReference(string id = default(string), DeploymentExtension extension = default(DeploymentExtension), string type = default(string), System.Collections.Generic.IDictionary<string, object> identifiers = default(System.Collections.Generic.IDictionary<string, object>), string apiVersion = default(string), string status = default(string), string denyStatus = default(string))
 
-        : base(id)
+        : base(id, extension, type, identifiers, apiVersion)
         {
             this.Status = status;
             this.DenyStatus = denyStatus;
@@ -56,9 +68,21 @@ namespace Microsoft.Azure.Management.Resources.Models
         public string Status {get; set; }
 
         /// <summary>
-        /// Gets or sets denyAssignment settings applied to the resource. Possible values include: &#39;denyDelete&#39;, &#39;notSupported&#39;, &#39;inapplicable&#39;, &#39;denyWriteAndDelete&#39;, &#39;removedBySystem&#39;, &#39;none&#39;
+        /// Gets or sets denyAssignment settings applied to the resource. Possible values include: &#39;denyDelete&#39;, &#39;notSupported&#39;, &#39;inapplicable&#39;, &#39;denyWriteAndDelete&#39;, &#39;removedBySystem&#39;, &#39;none&#39;, &#39;unknown&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "denyStatus")]
         public string DenyStatus {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public override void Validate()
+        {
+            base.Validate();
+
+
+        }
     }
 }

@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Management.Resources
 
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -73,6 +73,21 @@ namespace Microsoft.Azure.Management.Resources
         /// Gets the IDeploymentStacksOperations
         /// </summary>
         IDeploymentStacksOperations DeploymentStacks { get; }
+
+        /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtManagementGroupOperations
+        /// </summary>
+        IDeploymentStacksWhatIfResultsAtManagementGroupOperations DeploymentStacksWhatIfResultsAtManagementGroup { get; }
+
+        /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtSubscriptionOperations
+        /// </summary>
+        IDeploymentStacksWhatIfResultsAtSubscriptionOperations DeploymentStacksWhatIfResultsAtSubscription { get; }
+
+        /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtResourceGroupOperations
+        /// </summary>
+        IDeploymentStacksWhatIfResultsAtResourceGroupOperations DeploymentStacksWhatIfResultsAtResourceGroup { get; }
 
     }
 }

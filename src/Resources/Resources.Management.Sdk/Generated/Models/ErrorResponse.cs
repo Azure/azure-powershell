@@ -10,12 +10,12 @@ namespace Microsoft.Azure.Management.Resources.Models
     /// <summary>
     /// Common error response for all Azure Resource Manager APIs to return error
     /// details for failed operations. (This also follows the OData error response
-    /// format.)
+    /// format.).
     /// </summary>
     /// <remarks>
     /// Common error response for all Azure Resource Manager APIs to return error
     /// details for failed operations. (This also follows the OData error response
-    /// format.)
+    /// format.).
     /// </remarks>
     public partial class ErrorResponse
     {
@@ -31,28 +31,12 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
 
-        /// <param name="code">The error code.
+        /// <param name="error">The error object.
         /// </param>
-
-        /// <param name="message">The error message.
-        /// </param>
-
-        /// <param name="target">The error target.
-        /// </param>
-
-        /// <param name="details">The error details.
-        /// </param>
-
-        /// <param name="additionalInfo">The error additional info.
-        /// </param>
-        public ErrorResponse(string code = default(string), string message = default(string), string target = default(string), System.Collections.Generic.IList<ErrorResponse> details = default(System.Collections.Generic.IList<ErrorResponse>), System.Collections.Generic.IList<ErrorAdditionalInfo> additionalInfo = default(System.Collections.Generic.IList<ErrorAdditionalInfo>))
+        public ErrorResponse(ErrorDetail error = default(ErrorDetail))
 
         {
-            this.Code = code;
-            this.Message = message;
-            this.Target = target;
-            this.Details = details;
-            this.AdditionalInfo = additionalInfo;
+            this.Error = error;
             CustomInit();
         }
 
@@ -63,33 +47,9 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
         /// <summary>
-        /// Gets the error code.
+        /// Gets or sets the error object.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "code")]
-        public string Code {get; private set; }
-
-        /// <summary>
-        /// Gets the error message.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "message")]
-        public string Message {get; private set; }
-
-        /// <summary>
-        /// Gets the error target.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "target")]
-        public string Target {get; private set; }
-
-        /// <summary>
-        /// Gets the error details.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "details")]
-        public System.Collections.Generic.IList<ErrorResponse> Details {get; private set; }
-
-        /// <summary>
-        /// Gets the error additional info.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "additionalInfo")]
-        public System.Collections.Generic.IList<ErrorAdditionalInfo> AdditionalInfo {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
+        public ErrorDetail Error {get; set; }
     }
 }
