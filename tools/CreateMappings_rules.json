@@ -1011,5 +1011,9 @@
   {
     "module": "FileShare",
     "alias": "FileShare"
+  },
+  {
+    "module": "ComputeLimit",
+    "alias": "ComputeLimit"
   }
 ]

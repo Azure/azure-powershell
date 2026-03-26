@@ -14,7 +14,7 @@ Get usages
 
 ```
 Get-AzNetAppFilesUsage -Location <String> [-UsageType <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +31,7 @@ Gets `totalTibsPerSubscription` usage information on "westus" region
 
 ### Example 2
 ```powershell
-Get-AzNetAppFilesUsage -Location "westus" 
+Get-AzNetAppFilesUsage -Location "westus"
 ```
 
 Lists of usage information for all usage types on "westus" region
@@ -62,6 +62,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
