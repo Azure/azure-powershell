@@ -188,7 +188,7 @@ function Update-AzFunctionApp {
 
             if ($enableSystemAssigned)
             {
-                                $functionAppDef.IdentityType = "SystemAssigned"
+                $functionAppDef.IdentityType = "SystemAssigned"
             }
             elseif ($hasUserAssigned)
             {
@@ -200,7 +200,6 @@ function Update-AzFunctionApp {
                                             -ErrorMessage $errorMessage `
                                             -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                                             -Exception $exception
-
                 }
 
                 $functionAppDef.IdentityType = "UserAssigned"

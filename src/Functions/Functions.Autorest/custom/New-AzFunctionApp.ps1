@@ -178,7 +178,6 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [Parameter(ParameterSetName="FlexConsumption")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityCreateType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         ${EnableSystemAssignedIdentity},
@@ -351,8 +350,6 @@ function New-AzFunctionApp {
             "FunctionsVersion",
             "RuntimeVersion",
             "AppSetting",
-            "IdentityType",
-            "IdentityID",
             "Tag",
             "Environment",
             "RegistryServer",
