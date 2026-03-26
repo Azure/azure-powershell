@@ -15,19 +15,61 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFileShare'))
 }
 
 Describe 'Update-AzFileShare' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        {
+            $config = Update-AzFileShare -ResourceGroupName $env.resourceGroup `
+                                          -ResourceName $env.fileShareName01 `
+                                          -Tag @{"updated" = "true"; "environment" = "production"}
+            $config.Name | Should -Be $env.fileShareName01
+            $config.Tag["updated"] | Should -Be "true"
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaJsonString' {
+        {
+            $jsonString = @{
+                tags = @{
+                    updated = "jsonstring"
+                    method = "jsonstring"
+                }
+            } | ConvertTo-Json -Depth 10
+            
+            $config = Update-AzFileShare -ResourceGroupName $env.resourceGroup `
+                                          -ResourceName $env.fileShareName01 `
+                                          -JsonString $jsonString
+            $config.Name | Should -Be $env.fileShareName01
+            $config.Tag["updated"] | Should -Be "jsonstring"
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaJsonFilePath' {
+        {
+            $jsonFilePath = Join-Path $PSScriptRoot 'test-update.json'
+            $jsonContent = @{
+                tags = @{
+                    updated = "jsonfile"
+                    method = "jsonfile"
+                }
+            } | ConvertTo-Json -Depth 10
+            Set-Content -Path $jsonFilePath -Value $jsonContent
+            
+            $config = Update-AzFileShare -ResourceGroupName $env.resourceGroup `
+                                          -ResourceName $env.fileShareName01 `
+                                          -JsonFilePath $jsonFilePath
+            $config.Name | Should -Be $env.fileShareName01
+            $config.Tag["updated"] | Should -Be "jsonfile"
+            
+            Remove-Item -Path $jsonFilePath -Force -ErrorAction SilentlyContinue
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        {
+            $fileShare = Get-AzFileShare -ResourceGroupName $env.resourceGroup -ResourceName $env.fileShareName01
+            $config = Update-AzFileShare -InputObject $fileShare `
+                                          -Tag @{"updated" = "identity"; "method" = "identity"}
+            $config.Name | Should -Be $env.fileShareName01
+            $config.Tag["updated"] | Should -Be "identity"
+        } | Should -Not -Throw
     }
 }

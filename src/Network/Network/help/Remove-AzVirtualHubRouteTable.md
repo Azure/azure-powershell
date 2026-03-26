@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualHub
-{{ Fill VirtualHub Description }}
+The virtual hub resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
