@@ -163,13 +163,6 @@ directive:
       parameter-name: Location
     hide: true
 
-  # SoftDeleteRetentionInDay is create-only, set at creation time
-  - where:
-      verb: Update
-      subject: ConfigurationStore
-      parameter-name: SoftDeleteRetentionInDay
-    hide: true
-
   # Location is create-only on replicas
   - where:
       verb: Update

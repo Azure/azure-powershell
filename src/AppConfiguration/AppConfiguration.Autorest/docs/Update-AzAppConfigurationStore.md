@@ -18,9 +18,9 @@ Update-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-Subs
  [-DataPlaneProxyAuthenticationMode <String>] [-DataPlaneProxyPrivateLinkDelegation <String>]
  [-DefaultKeyValueRevisionRetentionPeriodInSecond <Int64>] [-DisableLocalAuth] [-EnablePurgeProtection]
  [-EnableSystemAssignedIdentity <Boolean?>] [-EncryptionKeyIdentifier <String>]
- [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <String>] [-Sku <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <String>] [-Sku <String>]
+ [-SoftDeleteRetentionInDay <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -29,9 +29,9 @@ Update-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity>
  [-DataPlaneProxyAuthenticationMode <String>] [-DataPlaneProxyPrivateLinkDelegation <String>]
  [-DefaultKeyValueRevisionRetentionPeriodInSecond <Int64>] [-DisableLocalAuth] [-EnablePurgeProtection]
  [-EnableSystemAssignedIdentity <Boolean?>] [-EncryptionKeyIdentifier <String>]
- [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <String>] [-Sku <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <String>] [-Sku <String>]
+ [-SoftDeleteRetentionInDay <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -301,6 +301,21 @@ The SKU name of the configuration store.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftDeleteRetentionInDay
+The amount of time in days that the configuration store will be retained when it is soft deleted.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
