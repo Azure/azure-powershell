@@ -75,6 +75,14 @@ subject-prefix: Sentinel
 inlining-threshold: 50
 
 directive:
+  # Fix Update PUT partial createdBy/updatedBy 400 error
+  - from: swagger-document
+    where: $.definitions.UserInfo
+    transform: >-
+      delete $.properties.email.readOnly;
+      $.properties.email['x-ms-mutability'] = ['read','update','create'];
+      delete $.properties.name.readOnly;
+      $.properties.name['x-ms-mutability'] = ['read','update','create'];
   # Customize
   # Hide Operation API
   # - where:

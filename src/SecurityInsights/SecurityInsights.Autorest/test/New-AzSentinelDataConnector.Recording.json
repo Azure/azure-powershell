@@ -1,15 +1,15 @@
 {
-  "New-AzSentinelDataConnector+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/5fcca10d-4c38-42a7-b811-a33d367ef23f?api-version=2021-09-01-preview+1": {
+  "New-AzSentinelDataConnector+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/c05dcef2-870f-4e2e-82e4-700b377c9cc5?api-version=2021-09-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/5fcca10d-4c38-42a7-b811-a33d367ef23f?api-version=2021-09-01-preview",
-      "Content": "{\n  \"kind\": \"MicrosoftThreatIntelligence\",\n  \"properties\": {\n    \"tenantId\": \"d6eebbdd-d77c-465e-b008-4339027b4006\",\n    \"dataTypes\": {\n      \"bingSafetyPhishingURL\": {\n        \"state\": \"Enabled\",\n        \"lookbackPeriod\": \"1970-01-01T00:00:00.000Z\"\n      },\n      \"microsoftEmergingThreatFeed\": {\n        \"state\": \"Enabled\",\n        \"lookbackPeriod\": \"1970-01-01T00:00:00.000Z\"\n      }\n    }\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/c05dcef2-870f-4e2e-82e4-700b377c9cc5?api-version=2021-09-01-preview",
+      "Content": "{\r\n  \"kind\": \"MicrosoftThreatIntelligence\",\r\n  \"properties\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"dataTypes\": {\r\n      \"bingSafetyPhishingURL\": {\r\n        \"state\": \"Enabled\",\r\n        \"lookbackPeriod\": \"1970-01-01T00:00:00.000Z\"\r\n      },\r\n      \"microsoftEmergingThreatFeed\": {\r\n        \"state\": \"Enabled\",\r\n        \"lookbackPeriod\": \"1970-01-01T00:00:00.000Z\"\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "398" ]
+        "Content-Length": [ "413" ]
       }
     },
     "Response": {
@@ -17,21 +17,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
-        "x-ms-request-id": [ "e69cbb16-8b5c-48cd-a25c-bd7b864943d3" ],
-        "x-ms-correlation-request-id": [ "e69cbb16-8b5c-48cd-a25c-bd7b864943d3" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160802Z:e69cbb16-8b5c-48cd-a25c-bd7b864943d3" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/16a4677e-929a-465b-bd89-2343a8a9ba1c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "3e21bcfe-7d8b-49fb-aa50-1403bc7abb10" ],
+        "x-ms-correlation-request-id": [ "3e21bcfe-7d8b-49fb-aa50-1403bc7abb10" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074528Z:3e21bcfe-7d8b-49fb-aa50-1403bc7abb10" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:08:01 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 18153F61E27A4D84A3D92DC0D865E063 Ref B: AMS231020512027 Ref C: 2026-03-25T07:45:27Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:45:28 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "675" ],
+        "Content-Length": [ "593" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/5fcca10d-4c38-42a7-b811-a33d367ef23f\",\"name\":\"5fcca10d-4c38-42a7-b811-a33d367ef23f\",\"etag\":\"9a259b91-05b8-4378-a10c-38ece73d38f1\",\"type\":\"Microsoft.SecurityInsights/dataConnectors\",\"kind\":\"MicrosoftThreatIntelligence\",\"properties\":{\"dataTypes\":{\"bingSafetyPhishingURL\":{\"state\":\"enabled\",\"lookbackPeriod\":\"01/01/1970 00:00:00\"},\"microsoftEmergingThreatFeed\":{\"state\":\"enabled\",\"lookbackPeriod\":\"01/01/1970 00:00:00\"}},\"tenantId\":\"d6eebbdd-d77c-465e-b008-4339027b4006\"}}",
+      "Content": "{\"id\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/c05dcef2-870f-4e2e-82e4-700b377c9cc5\",\"name\":\"c05dcef2-870f-4e2e-82e4-700b377c9cc5\",\"etag\":\"9700d6c2-0000-0500-0000-69c392980000\",\"type\":\"Microsoft.SecurityInsights/dataConnectors\",\"kind\":\"MicrosoftThreatIntelligence\",\"properties\":{\"dataTypes\":{\"microsoftEmergingThreatFeed\":{\"state\":\"enabled\",\"lookbackPeriod\":\"1970-01-01T00:00:00Z\"}},\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"}}",
       "isContentBase64": false
     }
   }

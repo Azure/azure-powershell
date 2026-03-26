@@ -86,7 +86,7 @@ Function Write-OMSLogfile {
         $contentType = 'application/json'
         $resource = '/api/logs'
         $rfc1123date = ($dateTime).ToString('r')
-        $ContentLength = $Body.Length
+        $ContentLength = [System.Text.Encoding]::UTF8.GetByteCount($Body)
         $signature = BuildSignature `
             -customerId $CustomerID `
             -sharedKey $SharedKey `
@@ -201,7 +201,7 @@ Function Create-AlertRule{
     set-content -Path .\test\deployment-templates\alertRule\template.parameters.json -Value (ConvertTo-Json $alertRuleParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\alertRule\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\alertRule\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"AlertRule") -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"AlertRule") -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add(($PSVerb+"AlertRuleName"), $alertRuleName)
         $null = $env.Add(($PSVerb+"AlertRuleId"), $alertRuleId)
@@ -234,7 +234,7 @@ Function Create-AlertRuleAction{
     set-content -Path .\test\deployment-templates\alertRuleAction\template.parameters.json -Value (ConvertTo-Json $alertRuleActionParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\alertRuleAction\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\alertRuleAction\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"AlertRuleAction") -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"AlertRuleAction") -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add(($PSVerb+"alertRuleActionRuleId"), $alertRuleActionRuleId)
         $null = $env.Add(($PSVerb+"alertRuleActionRuleName"), $alertRuleActionRuleName)
@@ -263,7 +263,7 @@ Function Create-AutomationRule{
     set-content -Path .\test\deployment-templates\automationRule\template.parameters.json -Value (ConvertTo-Json $automationRuleParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\automationRule\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\automationRule\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"AutomationRule") -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"AutomationRule") -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add(($PSVerb+'AutomationRule'), $automationRuleName)
         $null = $env.Add(($PSVerb+'AutomationRuleId'), $automationRuleId)
@@ -289,7 +289,7 @@ Function Create-Bookmark{
     set-content -Path .\test\deployment-templates\bookmark\template.parameters.json -Value (ConvertTo-Json $bookmarkParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\bookmark\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\bookmark\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"bookmark") -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"bookmark") -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add(($PSVerb+'BookmarkName'), $bookmarkName)
         $null = $env.Add(($PSVerb+'BookmarkId'), $bookmarkId)
@@ -339,7 +339,7 @@ Function Create-BookmarkRelation{
     set-content -Path .\test\deployment-templates\bookmarkRelation\template.parameters.json -Value (ConvertTo-Json $bookmarkRelationParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\bookmarkRelation\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\bookmarkRelation\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"BookmarkRelation") -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"BookmarkRelation") -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add(($PSVerb+'BookmarkRelationName'), $bookmarkRelationName)
         $null = $env.Add(($PSVerb+'BookmarkRelationId'), $bookmarkRelationId)
@@ -367,7 +367,7 @@ Function Create-EntityQuery{
     $TemplateFile = (Get-ChildItem $TemplatePath\entityQuery\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\entityQuery\template.parameters.json).FullName
     # Bug Sent to Aviv
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"entityQuery") -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"entityQuery") -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add(($PSVerb+'entityQueryActivityName'), $entityQueryActivityName)
         $null = $env.Add(($PSVerb+'entityQueryActivityId'), $entityQueryActivityId)              
@@ -390,7 +390,7 @@ Function Create-Incident{
     set-content -Path .\test\deployment-templates\incident\template.parameters.json -Value (ConvertTo-Json $incidentParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\incident\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\incident\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"incident") -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"incident") -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add(($PSVerb+'incidentName'), $incidentName)
         $null = $env.Add(($PSVerb+'incidentId'), $incidentId)   
@@ -416,7 +416,7 @@ Function Create-IncidentComment{
     set-content -Path .\test\deployment-templates\incidentComment\template.parameters.json -Value (ConvertTo-Json $incidentCommentParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\incidentComment\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\incidentComment\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"incidentComment") -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"incidentComment") -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add(($PSVerb+'incidentCommentName'), $incidentCommentName)
         $null = $env.Add(($PSVerb+'incidentCommentId'), $incidentCommentId)
@@ -451,7 +451,7 @@ Function Create-IncidentRelation{
     $TemplateFile = (Get-ChildItem $TemplatePath\incidentRelation\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\incidentRelation\template.parameters.json).FullName
     #Bug due to bookmark
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"incidentRelation") -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"incidentRelation") -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add(($PSVerb+'incidentRelationName'), $incidentRelationName)
         $null = $env.Add(($PSVerb+'incidentRelationId'), $incidentRelationId)
@@ -482,7 +482,7 @@ Function Create-SourceControl{
     set-content -Path .\test\deployment-templates\sourceControl\template.parameters.json -Value (ConvertTo-Json $sourceControlParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\sourceControl\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\sourceControl\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"sourceControl") -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name ($PSVerb+"sourceControl") -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add(($PSVerb+'sourceControlName'), $sourceControlName)
         $null = $env.Add(($PSVerb+'sourceControlId'), $sourceControlId)
@@ -543,7 +543,13 @@ Function Create-ThreatIntelligenceIndicator{
     }
     $tiBody = $tiBody | Convertto-json
     $uri = "https://management.azure.com/subscriptions/"+ $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroupName + "/providers/Microsoft.OperationalInsights/workspaces/" + $env.workspaceName + "/providers/Microsoft.SecurityInsights/threatIntelligence/main/createIndicator?api-version=2021-09-01-preview"
-    $indicator = Invoke-RestMethod -Method POST -Uri $Uri -Headers $tiHeaders -body $tiBody -ContentType Application/json
+    # Retry once on transient server errors (500)
+    try {
+        $indicator = Invoke-RestMethod -Method POST -Uri $Uri -Headers $tiHeaders -body $tiBody -ContentType Application/json
+    } catch {
+        Start-TestSleep -Seconds 10
+        $indicator = Invoke-RestMethod -Method POST -Uri $Uri -Headers $tiHeaders -body $tiBody -ContentType Application/json
+    }
     #if($indicator.Kind -eq "indicator"){
         $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorName'), $threatIntelligenceIndicatorName)
         $null = $env.Add(($PSVerb+'threatIntelligenceIndicatorId'), ($indicator.Name))

@@ -1,17 +1,17 @@
 {
-  "Get-AzSentinelEntityTimeline+[NoContext]+ListExpanded+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entities?api-version=2021-09-01-preview+1": {
+  "Get-AzSentinelEntityTimeline+[NoContext]+ListExpanded+$GET+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/entities?api-version=2021-09-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entities?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/entities?api-version=2021-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "205" ],
-        "x-ms-client-request-id": [ "2ec57016-bc84-4571-8584-02edd5bdab17" ],
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "e9c24f8d-9c2c-4abd-97ca-2bcf3229a054" ],
         "CommandName": [ "Get-AzSentinelentity" ],
         "FullCommandName": [ "Get-AzSentinelEntity_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.6.0", "Az.SecurityInsights/3.2.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,35 +22,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11960" ],
-        "x-ms-request-id": [ "fbffee43-bc69-4dda-b717-fddd3a2a68db" ],
-        "x-ms-correlation-request-id": [ "fbffee43-bc69-4dda-b717-fddd3a2a68db" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160730Z:fbffee43-bc69-4dda-b717-fddd3a2a68db" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/fa1eaea9-8789-49fc-83ef-16f1ddd17688" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "f5c6234e-9acc-4d19-8ac7-72a5f8ad71d2" ],
+        "x-ms-correlation-request-id": [ "f5c6234e-9acc-4d19-8ac7-72a5f8ad71d2" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074450Z:f5c6234e-9acc-4d19-8ac7-72a5f8ad71d2" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:07:30 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 19AFF193543743FBAB059B20CF0FBA3F Ref B: AMS231020512027 Ref C: 2026-03-25T07:44:50Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:44:50 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "461" ],
+        "Content-Length": [ "482" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d\",\"name\":\"f76e8451-9f40-544f-61e4-33a50dca269d\",\"type\":\"Microsoft.SecurityInsights/entities\",\"kind\":\"Ip\",\"properties\":{\"address\":\"175.45.176.99\",\"additionalData\":{\"AlertCount\":\"5\"},\"friendlyName\":\"175.45.176.99\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d\",\"name\":\"f76e8451-9f40-544f-61e4-33a50dca269d\",\"type\":\"Microsoft.SecurityInsights/entities\",\"kind\":\"Ip\",\"properties\":{\"address\":\"175.45.176.99\",\"additionalData\":{\"AlertCount\":\"5\",\"IsExactMatch\":false},\"friendlyName\":\"175.45.176.99\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzSentinelEntityTimeline+[NoContext]+ListExpanded+$POST+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d/getTimeline?api-version=2021-09-01-preview+2": {
+  "Get-AzSentinelEntityTimeline+[NoContext]+ListExpanded+$POST+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d/getTimeline?api-version=2021-09-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d/getTimeline?api-version=2021-09-01-preview",
-      "Content": "{\n  \"startTime\": \"2022-08-15T04:00:00.0000000+00:00\",\n  \"endTime\": \"2022-08-16T04:00:00.0000000+00:00\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d/getTimeline?api-version=2021-09-01-preview",
+      "Content": "{\r\n  \"startTime\": \"2026-03-24T09:00:00.0000000+02:00\",\r\n  \"endTime\": \"2026-03-25T09:00:00.0000000+02:00\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "104" ]
+        "Content-Length": [ "107" ]
       }
     },
     "Response": {
@@ -58,14 +62,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
-        "x-ms-request-id": [ "1b8c739e-1bd8-422d-a3f5-fd5933df6785" ],
-        "x-ms-correlation-request-id": [ "1b8c739e-1bd8-422d-a3f5-fd5933df6785" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160733Z:1b8c739e-1bd8-422d-a3f5-fd5933df6785" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/9117cb9c-dd6b-446d-a878-6646ce444752" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "26219c0a-1d29-48b7-a222-8659899f5635" ],
+        "x-ms-correlation-request-id": [ "26219c0a-1d29-48b7-a222-8659899f5635" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074452Z:26219c0a-1d29-48b7-a222-8659899f5635" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:07:32 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0D5432E51A214D4595B540B043DB231D Ref B: AMS231020512027 Ref C: 2026-03-25T07:44:51Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:44:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "152" ],

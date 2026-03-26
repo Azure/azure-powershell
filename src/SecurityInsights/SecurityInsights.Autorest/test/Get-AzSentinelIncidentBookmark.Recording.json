@@ -1,17 +1,17 @@
 {
-  "Get-AzSentinelIncidentBookmark+[NoContext]+List+$POST+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/524da4fb-3888-4446-9e92-12183ac2eaab/bookmarks?api-version=2021-09-01-preview+1": {
+  "Get-AzSentinelIncidentBookmark+[NoContext]+List+$POST+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/da7f7404-2a4a-4811-9f0e-fa20649928fa/bookmarks?api-version=2021-09-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/incidents/524da4fb-3888-4446-9e92-12183ac2eaab/bookmarks?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/incidents/da7f7404-2a4a-4811-9f0e-fa20649928fa/bookmarks?api-version=2021-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "213" ],
-        "x-ms-client-request-id": [ "937f1661-977f-4695-8a28-6f150ead213a" ],
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "f741355c-02b6-4920-acd9-63d4a3ad9d5f" ],
         "CommandName": [ "Get-AzSentinelIncidentBookmark" ],
         "FullCommandName": [ "Get-AzSentinelIncidentBookmark_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.6.0", "Az.SecurityInsights/3.2.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,21 +22,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
-        "x-ms-request-id": [ "874c5be9-5668-4529-b9dd-99d1eef583b1" ],
-        "x-ms-correlation-request-id": [ "874c5be9-5668-4529-b9dd-99d1eef583b1" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160736Z:874c5be9-5668-4529-b9dd-99d1eef583b1" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/92d5d857-2ada-4be1-9e06-0af489f424fe" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "064bc1d6-5732-4532-951f-cb788c9ab2eb" ],
+        "x-ms-correlation-request-id": [ "064bc1d6-5732-4532-951f-cb788c9ab2eb" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074457Z:064bc1d6-5732-4532-951f-cb788c9ab2eb" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:07:36 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4CC07A2736804E188E81A579F132FF9F Ref B: AMS231020512027 Ref C: 2026-03-25T07:44:57Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:44:56 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1118" ],
+        "Content-Length": [ "1108" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Entities/40c54fdc-490c-4164-901e-b95ca08e0a88\",\"name\":\"40c54fdc-490c-4164-901e-b95ca08e0a88\",\"type\":\"Microsoft.SecurityInsights/Entities\",\"kind\":\"Bookmark\",\"properties\":{\"displayName\":\"GetincidentRelationBookmarkNameu4dakt\",\"created\":\"2022-08-16T16:03:18.3793809+00:00\",\"updated\":\"2022-08-16T16:03:18.3793809+00:00\",\"createdBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"updatedBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"eventTime\":\"2022-08-16T04:00:00+00:00\",\"notes\":\"Notes go here\",\"labels\":[\"asptest\"],\"query\":\"SecurityEvent\\n| take 1\",\"additionalData\":{\"EntityMappings\":\"[]\",\"Tactics\":\"[]\",\"Techniques\":\"[]\",\"ETag\":\"\\\"3c00618c-0000-0100-0000-62fbbfc70000\\\"\",\"EntityId\":\"40c54fdc-490c-4164-901e-b95ca08e0a88\"},\"friendlyName\":\"GetincidentRelationBookmarkNameu4dakt\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/Entities/fd69298f-7839-41cf-85aa-4a0a182790c4\",\"name\":\"fd69298f-7839-41cf-85aa-4a0a182790c4\",\"type\":\"Microsoft.SecurityInsights/Entities\",\"kind\":\"Bookmark\",\"properties\":{\"displayName\":\"GetincidentRelationBookmarkNamen4atph\",\"created\":\"2026-03-25T07:31:23.9333039+00:00\",\"updated\":\"2026-03-25T07:31:23.9333039+00:00\",\"createdBy\":{\"objectId\":\"6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb\",\"email\":\"t-helezra@microsoft.com\",\"name\":\"Hadas Elezra\"},\"updatedBy\":{\"objectId\":\"6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb\",\"email\":\"t-helezra@microsoft.com\",\"name\":\"Hadas Elezra\"},\"eventTime\":\"2026-03-25T07:00:00+00:00\",\"notes\":\"Notes go here\",\"labels\":[\"asptest\"],\"query\":\"SecurityEvent\\n| take 1\",\"additionalData\":{\"EntityMappings\":\"[]\",\"Tactics\":\"[]\",\"Techniques\":\"[]\",\"ETag\":\"\\\"3c001226-0000-0100-0000-69c38f4d0000\\\"\",\"EntityId\":\"fd69298f-7839-41cf-85aa-4a0a182790c4\"},\"friendlyName\":\"GetincidentRelationBookmarkNamen4atph\"}}]}",
       "isContentBase64": false
     }
   }

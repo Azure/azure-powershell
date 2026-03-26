@@ -1,15 +1,15 @@
 {
-  "Remove-AzSentinelDataConnector+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/fee9b467-294d-476a-a02c-93f178b75533?api-version=2021-09-01-preview+1": {
+  "Remove-AzSentinelDataConnector+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/87ee73c4-216c-4d82-bcda-555b974a2930?api-version=2021-09-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/fee9b467-294d-476a-a02c-93f178b75533?api-version=2021-09-01-preview",
-      "Content": "{\n  \"kind\": \"MicrosoftCloudAppSecurity\",\n  \"properties\": {\n    \"tenantId\": \"d6eebbdd-d77c-465e-b008-4339027b4006\",\n    \"dataTypes\": {\n      \"alerts\": {\n        \"state\": \"Enabled\"\n      },\n      \"discoveryLogs\": {\n        \"state\": \"Disabled\"\n      }\n    }\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/87ee73c4-216c-4d82-bcda-555b974a2930?api-version=2021-09-01-preview",
+      "Content": "{\r\n  \"kind\": \"GenericUI\",\r\n  \"properties\": {\r\n    \"connectorUiConfig\": {\r\n      \"availability\": {\r\n        \"status\": 1,\r\n        \"isPreview\": true\r\n      },\r\n      \"permissions\": {\r\n        \"customs\": [\r\n          {\r\n            \"name\": \"TestPermission\",\r\n            \"description\": \"Test permission\"\r\n          }\r\n        ]\r\n      },\r\n      \"title\": \"Test\",\r\n      \"publisher\": \"Test\",\r\n      \"descriptionMarkdown\": \"Test\",\r\n      \"graphQueriesTableName\": \"TestTable_CL\",\r\n      \"graphQueries\": [\r\n        {\r\n          \"metricName\": \"Events\",\r\n          \"legend\": \"Events\",\r\n          \"baseQuery\": \"TestTable_CL\"\r\n        }\r\n      ],\r\n      \"sampleQueries\": [\r\n        {\r\n          \"description\": \"All\",\r\n          \"query\": \"TestTable_CL\"\r\n        }\r\n      ],\r\n      \"dataTypes\": [\r\n        {\r\n          \"name\": \"TestTable_CL\",\r\n          \"lastDataReceivedQuery\": \"TestTable_CL | summarize max(TimeGenerated)\"\r\n        }\r\n      ],\r\n      \"connectivityCriteria\": [\r\n        {\r\n          \"type\": \"IsConnectedQuery\",\r\n          \"value\": [ \"TestTable_CL | take 1\" ]\r\n        }\r\n      ],\r\n      \"instructionSteps\": [\r\n        {\r\n          \"title\": \"Connect\",\r\n          \"description\": \"Test\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "260" ]
+        "Content-Length": [ "1222" ]
       }
     },
     "Response": {
@@ -17,37 +17,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "498" ],
-        "x-ms-request-id": [ "1224e725-0421-41c5-a77f-09c63e860977" ],
-        "x-ms-correlation-request-id": [ "1224e725-0421-41c5-a77f-09c63e860977" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160825Z:1224e725-0421-41c5-a77f-09c63e860977" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/0af50f8b-533f-474e-92a1-23e62e6be6cb" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "7bc198d7-14c0-4007-b1b3-43409b864bc7" ],
+        "x-ms-correlation-request-id": [ "7bc198d7-14c0-4007-b1b3-43409b864bc7" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074600Z:7bc198d7-14c0-4007-b1b3-43409b864bc7" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:08:24 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 91B3466F59F14816822D8E702DB94CCF Ref B: AMS231020512027 Ref C: 2026-03-25T07:45:59Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:45:59 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "567" ],
+        "Content-Length": [ "1086" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/fee9b467-294d-476a-a02c-93f178b75533\",\"name\":\"fee9b467-294d-476a-a02c-93f178b75533\",\"etag\":\"1df1f1f1-841a-4908-8656-d57520725fe0\",\"type\":\"Microsoft.SecurityInsights/dataConnectors\",\"kind\":\"MicrosoftCloudAppSecurity\",\"properties\":{\"dataTypes\":{\"discoveryLogs\":{\"state\":\"disabled\"},\"alerts\":{\"state\":\"enabled\"}},\"tenantId\":\"d6eebbdd-d77c-465e-b008-4339027b4006\"}}",
+      "Content": "{\"id\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/87ee73c4-216c-4d82-bcda-555b974a2930\",\"name\":\"87ee73c4-216c-4d82-bcda-555b974a2930\",\"etag\":\"\\\"00005783-0000-0100-0000-69c392b70000\\\"\",\"type\":\"Microsoft.SecurityInsights/dataConnectors\",\"kind\":\"GenericUI\",\"properties\":{\"connectorUiConfig\":{\"availability\":{\"status\":1,\"isPreview\":true},\"permissions\":{\"customs\":[{\"name\":\"TestPermission\",\"description\":\"Test permission\"}]},\"title\":\"Test\",\"publisher\":\"Test\",\"descriptionMarkdown\":\"Test\",\"graphQueriesTableName\":\"TestTable_CL\",\"graphQueries\":[{\"metricName\":\"Events\",\"legend\":\"Events\",\"baseQuery\":\"TestTable_CL\"}],\"sampleQueries\":[{\"description\":\"All\",\"query\":\"TestTable_CL\"}],\"dataTypes\":[{\"name\":\"TestTable_CL\",\"lastDataReceivedQuery\":\"TestTable_CL | summarize max(TimeGenerated)\"}],\"connectivityCriteria\":[{\"type\":\"IsConnectedQuery\",\"value\":[\"TestTable_CL | take 1\"]}],\"instructionSteps\":[{\"title\":\"Connect\",\"description\":\"Test\"}]}}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzSentinelDataConnector+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/fee9b467-294d-476a-a02c-93f178b75533?api-version=2021-09-01-preview+2": {
+  "Remove-AzSentinelDataConnector+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/87ee73c4-216c-4d82-bcda-555b974a2930?api-version=2021-09-01-preview+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/fee9b467-294d-476a-a02c-93f178b75533?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/87ee73c4-216c-4d82-bcda-555b974a2930?api-version=2021-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "270" ],
-        "x-ms-client-request-id": [ "ca33115f-9e1e-4ab1-972b-29ad10bd9055" ],
+        "x-ms-unique-id": [ "113" ],
+        "x-ms-client-request-id": [ "4cab400a-5c86-4093-be2e-e0de7961fb0b" ],
         "CommandName": [ "Remove-AzSentinelDataConnector" ],
         "FullCommandName": [ "Remove-AzSentinelDataConnector_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.6.0", "Az.SecurityInsights/3.2.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -58,14 +60,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
-        "x-ms-request-id": [ "a6704650-82a3-42a0-9a6c-da598caa2f25" ],
-        "x-ms-correlation-request-id": [ "a6704650-82a3-42a0-9a6c-da598caa2f25" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160826Z:a6704650-82a3-42a0-9a6c-da598caa2f25" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/bf544b19-63c3-4117-8f22-ccbc4d221d53" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "829e6c9f-8d5a-4b99-9d36-edcfec8a9821" ],
+        "x-ms-correlation-request-id": [ "829e6c9f-8d5a-4b99-9d36-edcfec8a9821" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074600Z:829e6c9f-8d5a-4b99-9d36-edcfec8a9821" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:08:25 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 81B2317939224D0CAD51E34D7F4A3739 Ref B: AMS231020512027 Ref C: 2026-03-25T07:46:00Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:46:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2" ],
@@ -76,17 +80,17 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzSentinelDataConnector+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/e5723525-11fc-45ee-901a-09bef4dcf3df?api-version=2021-09-01-preview+1": {
+  "Remove-AzSentinelDataConnector+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/877f061e-b79b-4424-a55d-89f4a0030794?api-version=2021-09-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/e5723525-11fc-45ee-901a-09bef4dcf3df?api-version=2021-09-01-preview",
-      "Content": "{\n  \"kind\": \"MicrosoftCloudAppSecurity\",\n  \"properties\": {\n    \"tenantId\": \"d6eebbdd-d77c-465e-b008-4339027b4006\",\n    \"dataTypes\": {\n      \"alerts\": {\n        \"state\": \"Enabled\"\n      },\n      \"discoveryLogs\": {\n        \"state\": \"Disabled\"\n      }\n    }\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/877f061e-b79b-4424-a55d-89f4a0030794?api-version=2021-09-01-preview",
+      "Content": "{\r\n  \"kind\": \"GenericUI\",\r\n  \"properties\": {\r\n    \"connectorUiConfig\": {\r\n      \"availability\": {\r\n        \"status\": 1,\r\n        \"isPreview\": true\r\n      },\r\n      \"permissions\": {\r\n        \"customs\": [\r\n          {\r\n            \"name\": \"TestPermission\",\r\n            \"description\": \"Test permission\"\r\n          }\r\n        ]\r\n      },\r\n      \"title\": \"Test2\",\r\n      \"publisher\": \"Test\",\r\n      \"descriptionMarkdown\": \"Test\",\r\n      \"graphQueriesTableName\": \"TestTable_CL\",\r\n      \"graphQueries\": [\r\n        {\r\n          \"metricName\": \"Events\",\r\n          \"legend\": \"Events\",\r\n          \"baseQuery\": \"TestTable_CL\"\r\n        }\r\n      ],\r\n      \"sampleQueries\": [\r\n        {\r\n          \"description\": \"All\",\r\n          \"query\": \"TestTable_CL\"\r\n        }\r\n      ],\r\n      \"dataTypes\": [\r\n        {\r\n          \"name\": \"TestTable_CL\",\r\n          \"lastDataReceivedQuery\": \"TestTable_CL | summarize max(TimeGenerated)\"\r\n        }\r\n      ],\r\n      \"connectivityCriteria\": [\r\n        {\r\n          \"type\": \"IsConnectedQuery\",\r\n          \"value\": [ \"TestTable_CL | take 1\" ]\r\n        }\r\n      ],\r\n      \"instructionSteps\": [\r\n        {\r\n          \"title\": \"Connect\",\r\n          \"description\": \"Test\"\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "260" ]
+        "Content-Length": [ "1223" ]
       }
     },
     "Response": {
@@ -94,37 +98,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
-        "x-ms-request-id": [ "b770a4f5-6ea5-4988-ad3e-54ff165ba3f3" ],
-        "x-ms-correlation-request-id": [ "b770a4f5-6ea5-4988-ad3e-54ff165ba3f3" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160827Z:b770a4f5-6ea5-4988-ad3e-54ff165ba3f3" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/bed4a884-4259-4d0f-989e-00d9a02baef6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "4165be9e-3da4-4d90-9024-8b35950bf7b2" ],
+        "x-ms-correlation-request-id": [ "4165be9e-3da4-4d90-9024-8b35950bf7b2" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074601Z:4165be9e-3da4-4d90-9024-8b35950bf7b2" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:08:26 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9697BF6A5B15445B94EF3AF61DB1827F Ref B: AMS231020512027 Ref C: 2026-03-25T07:46:01Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:46:01 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "567" ],
+        "Content-Length": [ "1087" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/e5723525-11fc-45ee-901a-09bef4dcf3df\",\"name\":\"e5723525-11fc-45ee-901a-09bef4dcf3df\",\"etag\":\"526dfb41-1d23-426e-b711-7ccc39ba1b85\",\"type\":\"Microsoft.SecurityInsights/dataConnectors\",\"kind\":\"MicrosoftCloudAppSecurity\",\"properties\":{\"dataTypes\":{\"discoveryLogs\":{\"state\":\"disabled\"},\"alerts\":{\"state\":\"enabled\"}},\"tenantId\":\"d6eebbdd-d77c-465e-b008-4339027b4006\"}}",
+      "Content": "{\"id\":\"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/877f061e-b79b-4424-a55d-89f4a0030794\",\"name\":\"877f061e-b79b-4424-a55d-89f4a0030794\",\"etag\":\"\\\"00005883-0000-0100-0000-69c392b90000\\\"\",\"type\":\"Microsoft.SecurityInsights/dataConnectors\",\"kind\":\"GenericUI\",\"properties\":{\"connectorUiConfig\":{\"availability\":{\"status\":1,\"isPreview\":true},\"permissions\":{\"customs\":[{\"name\":\"TestPermission\",\"description\":\"Test permission\"}]},\"title\":\"Test2\",\"publisher\":\"Test\",\"descriptionMarkdown\":\"Test\",\"graphQueriesTableName\":\"TestTable_CL\",\"graphQueries\":[{\"metricName\":\"Events\",\"legend\":\"Events\",\"baseQuery\":\"TestTable_CL\"}],\"sampleQueries\":[{\"description\":\"All\",\"query\":\"TestTable_CL\"}],\"dataTypes\":[{\"name\":\"TestTable_CL\",\"lastDataReceivedQuery\":\"TestTable_CL | summarize max(TimeGenerated)\"}],\"connectivityCriteria\":[{\"type\":\"IsConnectedQuery\",\"value\":[\"TestTable_CL | take 1\"]}],\"instructionSteps\":[{\"title\":\"Connect\",\"description\":\"Test\"}]}}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzSentinelDataConnector+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/e5723525-11fc-45ee-901a-09bef4dcf3df?api-version=2021-09-01-preview+2": {
+  "Remove-AzSentinelDataConnector+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/877f061e-b79b-4424-a55d-89f4a0030794?api-version=2021-09-01-preview+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/dataConnectors/e5723525-11fc-45ee-901a-09bef4dcf3df?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/dataConnectors/877f061e-b79b-4424-a55d-89f4a0030794?api-version=2021-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "272" ],
-        "x-ms-client-request-id": [ "e69209c0-e488-4cc2-8e2b-cbb15ec8a257" ],
+        "x-ms-unique-id": [ "115" ],
+        "x-ms-client-request-id": [ "63132379-452c-42f3-90ad-b5c3f66b5769" ],
         "CommandName": [ "Remove-AzSentinelDataConnector" ],
         "FullCommandName": [ "Remove-AzSentinelDataConnector_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.6.0", "Az.SecurityInsights/3.2.1" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -135,14 +141,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "498" ],
-        "x-ms-request-id": [ "74e34d89-e823-451e-bee7-4514f735fe6f" ],
-        "x-ms-correlation-request-id": [ "74e34d89-e823-451e-bee7-4514f735fe6f" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220816T160828Z:74e34d89-e823-451e-bee7-4514f735fe6f" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/63e6ceee-5f2d-4962-9784-b295d4034392" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "2a48e5f7-9bf6-48bb-9b5a-9baedb089327" ],
+        "x-ms-correlation-request-id": [ "2a48e5f7-9bf6-48bb-9b5a-9baedb089327" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260325T074602Z:2a48e5f7-9bf6-48bb-9b5a-9baedb089327" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Aug 2022 16:08:27 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AF21A86EE2E2460DAC566FB160DCDDB0 Ref B: AMS231020512027 Ref C: 2026-03-25T07:46:02Z" ],
+        "Date": [ "Wed, 25 Mar 2026 07:46:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2" ],
