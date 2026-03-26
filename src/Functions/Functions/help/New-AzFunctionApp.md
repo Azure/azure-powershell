@@ -132,11 +132,11 @@ This command creates a PowerShell function app hosted in a Flex Consumption plan
 ### -AlwaysReady
 Array of hashtables describing the AlwaysReady configuration.
 Each hashtable must include:
-- name: The function name or route name.
-- instanceCount: The number of pre-warmed instances for that function.
+            - name: The function name or route name.
+            - instanceCount: The number of pre-warmed instances for that function.
 
-Example:
-@(@{ name = "http"; instanceCount = 2 }).
+            Example:
+            @(@{ name = "http"; instanceCount = 2 }).
 
 ```yaml
 Type: System.Collections.Hashtable[]
