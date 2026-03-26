@@ -435,6 +435,41 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GetGroupIdListForLdapUserResponse,VolumesListGetGroupIdListForLdapUserHeaders>> ListGetGroupIdListForLdapUserWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, GetGroupIdListForLdapUserRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Get quota report for volume (with filter support)
+        /// </summary>
+        /// <remarks>
+        /// Get quota report for volume (with filter support)
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='body'>
+        /// The content of the action request
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ListQuotaReportResult,VolumesListQuotaReportHeaders>> ListQuotaReportWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// List all replications for a specified volume
         /// </summary>
         /// <remarks>
@@ -1242,6 +1277,41 @@ namespace Microsoft.Azure.Management.NetApp
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GetGroupIdListForLdapUserResponse,VolumesListGetGroupIdListForLdapUserHeaders>> BeginListGetGroupIdListForLdapUserWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, GetGroupIdListForLdapUserRequest body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get quota report for volume (with filter support)
+        /// </summary>
+        /// <remarks>
+        /// Get quota report for volume (with filter support)
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='body'>
+        /// The content of the action request
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ListQuotaReportResult,VolumesListQuotaReportHeaders>> BeginListQuotaReportWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Starts peering the external cluster for this migration volume

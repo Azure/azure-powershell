@@ -173,9 +173,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='keyName'>
         /// The name of the server key to be deleted.
         /// </param>
-        public static void Delete(this IServerKeysOperations operations, string resourceGroupName, string serverName, string keyName)
+        public static ServerKeysDeleteHeaders Delete(this IServerKeysOperations operations, string resourceGroupName, string serverName, string keyName)
         {
-                ((IServerKeysOperations)operations).DeleteAsync(resourceGroupName, serverName, keyName).GetAwaiter().GetResult();
+                return ((IServerKeysOperations)operations).DeleteAsync(resourceGroupName, serverName, keyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -197,9 +197,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IServerKeysOperations operations, string resourceGroupName, string serverName, string keyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ServerKeysDeleteHeaders> DeleteAsync(this IServerKeysOperations operations, string resourceGroupName, string serverName, string keyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, keyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, keyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Creates or updates a server key.
@@ -274,9 +277,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='keyName'>
         /// The name of the server key to be deleted.
         /// </param>
-        public static void BeginDelete(this IServerKeysOperations operations, string resourceGroupName, string serverName, string keyName)
+        public static ServerKeysDeleteHeaders BeginDelete(this IServerKeysOperations operations, string resourceGroupName, string serverName, string keyName)
         {
-                ((IServerKeysOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, keyName).GetAwaiter().GetResult();
+                return ((IServerKeysOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, keyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -298,9 +301,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IServerKeysOperations operations, string resourceGroupName, string serverName, string keyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ServerKeysDeleteHeaders> BeginDeleteAsync(this IServerKeysOperations operations, string resourceGroupName, string serverName, string keyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, keyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, keyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a list of server keys.

@@ -917,10 +917,6 @@
     "module": "Mdp"
   },
   {
-    "alias": "NeonPostgres",
-    "module": "NeonPostgres"
-  },
-  {
     "module": "ComputeFleet",
     "alias": "ComputeFleet"
   },
@@ -1003,5 +999,17 @@
   {
     "alias": "EdgeAction",
     "module": "EdgeAction"
+  },
+  {
+    "alias": "EdgeMarketplace",
+    "module": "EdgeMarketplace"
+  },
+  {
+    "alias": "ArtifactSigning",
+    "module": "ArtifactSigning"
+  },
+  {
+    "module": "FileShare",
+    "alias": "FileShare"
   }
 ]

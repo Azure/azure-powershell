@@ -79,7 +79,16 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Security.Cryptography.Cng",
-          "version": "4.4.0"
+          "version": "5.0.0"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "System.ValueTuple",
+          "version": "4.5.0"
         }
       }
     },
@@ -124,7 +133,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client.Broker",
-          "version": "4.65.0"
+          "version": "4.82.1"
         }
       }
     },
@@ -133,7 +142,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client",
-          "version": "4.65.0"
+          "version": "4.82.1"
         }
       }
     },
@@ -142,7 +151,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client.Extensions.Msal",
-          "version": "4.65.0"
+          "version": "4.82.1"
         }
       }
     },
@@ -151,7 +160,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client.NativeInterop",
-          "version": "0.16.2"
+          "version": "0.20.2"
         }
       }
     },
@@ -160,7 +169,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.IdentityModel.Abstractions",
-          "version": "6.35.0"
+          "version": "8.14.0"
         }
       }
     },
@@ -179,6 +188,15 @@
         "nuget": {
           "name": "System.ClientModel",
           "version": "1.8.0"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "System.Formats.Asn1",
+          "version": "8.0.1"
         }
       }
     },
