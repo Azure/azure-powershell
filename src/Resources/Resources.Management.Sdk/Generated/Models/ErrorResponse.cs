@@ -10,12 +10,12 @@ namespace Microsoft.Azure.Management.Resources.Models
     /// <summary>
     /// Common error response for all Azure Resource Manager APIs to return error
     /// details for failed operations. (This also follows the OData error response
-    /// format.).
+    /// format.)
     /// </summary>
     /// <remarks>
     /// Common error response for all Azure Resource Manager APIs to return error
     /// details for failed operations. (This also follows the OData error response
-    /// format.).
+    /// format.)
     /// </remarks>
     public partial class ErrorResponse
     {
