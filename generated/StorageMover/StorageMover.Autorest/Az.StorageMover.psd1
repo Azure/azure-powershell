@@ -1,7 +1,7 @@
 @{
   GUID = 'd6053d97-1a9b-4fc6-9bd2-09c5b23b34db'
   RootModule = './Az.StorageMover.psm1'
-  ModuleVersion = '1.2.0'
+  ModuleVersion = '1.6.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,8 +11,8 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.StorageMover.private.dll'
   FormatsToProcess = './Az.StorageMover.format.ps1xml'
-  FunctionsToExport = 'Get-AzStorageMover', 'Get-AzStorageMoverAgent', 'Get-AzStorageMoverEndpoint', 'Get-AzStorageMoverJobDefinition', 'Get-AzStorageMoverJobRun', 'Get-AzStorageMoverProject', 'New-AzStorageMover', 'New-AzStorageMoverAzSmbFileShareEndpoint', 'New-AzStorageMoverAzStorageContainerEndpoint', 'New-AzStorageMoverJobDefinition', 'New-AzStorageMoverNfsEndpoint', 'New-AzStorageMoverProject', 'New-AzStorageMoverSmbEndpoint', 'New-AzStorageMoverUploadLimitWeeklyRecurrenceObject', 'Remove-AzStorageMover', 'Remove-AzStorageMoverEndpoint', 'Remove-AzStorageMoverJobDefinition', 'Remove-AzStorageMoverProject', 'Start-AzStorageMoverJobDefinition', 'Stop-AzStorageMoverJobDefinition', 'Unregister-AzStorageMoverAgent', 'Update-AzStorageMover', 'Update-AzStorageMoverAgent', 'Update-AzStorageMoverAzSmbFileShareEndpoint', 'Update-AzStorageMoverAzStorageContainerEndpoint', 'Update-AzStorageMoverJobDefinition', 'Update-AzStorageMoverNfsEndpoint', 'Update-AzStorageMoverProject', 'Update-AzStorageMoverSmbEndpoint', '*'
-  AliasesToExport = 'New-AzStorageMoverSmbFileShareEndpoint', 'Update-AzStorageMoverSmbFileShareEndpoint', '*'
+  FunctionsToExport = 'Get-AzStorageMover', 'Get-AzStorageMoverAgent', 'Get-AzStorageMoverEndpoint', 'Get-AzStorageMoverJobDefinition', 'Get-AzStorageMoverJobRun', 'Get-AzStorageMoverProject', 'New-AzStorageMover', 'New-AzStorageMoverAzNfsFileShareEndpoint', 'New-AzStorageMoverAzSmbFileShareEndpoint', 'New-AzStorageMoverAzStorageContainerEndpoint', 'New-AzStorageMoverJobDefinition', 'New-AzStorageMoverMultiCloudConnectorEndpoint', 'New-AzStorageMoverNfsEndpoint', 'New-AzStorageMoverProject', 'New-AzStorageMoverSmbEndpoint', 'New-AzStorageMoverUploadLimitWeeklyRecurrenceObject', 'Remove-AzStorageMover', 'Remove-AzStorageMoverEndpoint', 'Remove-AzStorageMoverJobDefinition', 'Remove-AzStorageMoverProject', 'Start-AzStorageMoverJobDefinition', 'Stop-AzStorageMoverJobDefinition', 'Unregister-AzStorageMoverAgent', 'Update-AzStorageMover', 'Update-AzStorageMoverAgent', 'Update-AzStorageMoverAzNfsFileShareEndpoint', 'Update-AzStorageMoverAzSmbFileShareEndpoint', 'Update-AzStorageMoverAzStorageContainerEndpoint', 'Update-AzStorageMoverJobDefinition', 'Update-AzStorageMoverMultiCloudConnectorEndpoint', 'Update-AzStorageMoverNfsEndpoint', 'Update-AzStorageMoverProject', 'Update-AzStorageMoverSmbEndpoint'
+  AliasesToExport = 'New-AzStorageMoverSmbFileShareEndpoint', 'Update-AzStorageMoverSmbFileShareEndpoint'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'StorageMover'

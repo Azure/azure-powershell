@@ -60,6 +60,8 @@ From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.
 >
 > _Plural parameter names should be used only in those cases where the value of the parameter is always a multiple-element value. In these cases, the cmdlet should verify that multiple elements are supplied, and the cmdlet should display a warning to the user if multiple elements are not supplied._
 
+A common exception to this guideline is with units, e.g. `-IntervalInSeconds`, `-MaxSizeInMegabytes`.
+
 #### Parameter Alias
 
 If you there is a separate nomenclature for the parameter name, or if you would like to shorten the name of the parameter so it's easier to remember, you can add an alias attribute to your parameter to allow for this functionality.

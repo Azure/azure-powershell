@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Extensions;
 
-    /// <summary>A managed identity assigned by the user.</summary>
+    /// <summary>User assigned identity properties</summary>
     public partial class UserAssignedIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentity,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal
@@ -16,16 +16,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         /// <summary>Backing field for <see cref="ClientId" /> property.</summary>
         private string _clientId;
 
-        /// <summary>The active directory client identifier for this principal.</summary>
+        /// <summary>The client ID of the assigned identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Owned)]
-        public string ClientId { get => this._clientId; set => this._clientId = value; }
+        public string ClientId { get => this._clientId; }
+
+        /// <summary>Internal Acessors for ClientId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal.ClientId { get => this._clientId; set { {_clientId = value;} } }
+
+        /// <summary>Internal Acessors for PrincipalId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUserAssignedIdentityInternal.PrincipalId { get => this._principalId; set { {_principalId = value;} } }
 
         /// <summary>Backing field for <see cref="PrincipalId" /> property.</summary>
         private string _principalId;
 
-        /// <summary>The active directory identifier for this principal.</summary>
+        /// <summary>The principal ID of the assigned identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Owned)]
-        public string PrincipalId { get => this._principalId; set => this._principalId = value; }
+        public string PrincipalId { get => this._principalId; }
 
         /// <summary>Creates an new <see cref="UserAssignedIdentity" /> instance.</summary>
         public UserAssignedIdentity()
@@ -33,41 +39,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
 
         }
     }
-    /// A managed identity assigned by the user.
+    /// User assigned identity properties
     public partial interface IUserAssignedIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IJsonSerializable
     {
-        /// <summary>The active directory client identifier for this principal.</summary>
+        /// <summary>The client ID of the assigned identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
+        Required = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The active directory client identifier for this principal.",
+        Create = false,
+        Update = false,
+        Description = @"The client ID of the assigned identity.",
         SerializedName = @"clientId",
         PossibleTypes = new [] { typeof(string) })]
-        string ClientId { get; set; }
-        /// <summary>The active directory identifier for this principal.</summary>
+        string ClientId { get;  }
+        /// <summary>The principal ID of the assigned identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
+        Required = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The active directory identifier for this principal.",
+        Create = false,
+        Update = false,
+        Description = @"The principal ID of the assigned identity.",
         SerializedName = @"principalId",
         PossibleTypes = new [] { typeof(string) })]
-        string PrincipalId { get; set; }
+        string PrincipalId { get;  }
 
     }
-    /// A managed identity assigned by the user.
+    /// User assigned identity properties
     internal partial interface IUserAssignedIdentityInternal
 
     {
-        /// <summary>The active directory client identifier for this principal.</summary>
+        /// <summary>The client ID of the assigned identity.</summary>
         string ClientId { get; set; }
-        /// <summary>The active directory identifier for this principal.</summary>
+        /// <summary>The principal ID of the assigned identity.</summary>
         string PrincipalId { get; set; }
 
     }

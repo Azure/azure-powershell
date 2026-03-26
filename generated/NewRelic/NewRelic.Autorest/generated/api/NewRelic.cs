@@ -13,7 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
     public partial class NewRelic
     {
 
-        /// <summary>List all the existing accounts</summary>
+        /// <summary>
+        /// Lists all the New Relic accounts linked to your email address, helping you understand the existing accounts that have
+        /// been created
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="userEmail">User Email.</param>
         /// <param name="location">Location for NewRelic.</param>
@@ -27,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task AccountsList(string subscriptionId, string userEmail, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountsListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57,7 +60,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List all the existing accounts</summary>
+        /// <summary>
+        /// Lists all the New Relic accounts linked to your email address, helping you understand the existing accounts that have
+        /// been created
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="userEmail">User Email.</param>
         /// <param name="location">Location for NewRelic.</param>
@@ -71,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task AccountsListViaIdentity(global::System.String viaIdentity, string userEmail, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountsListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -111,7 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List all the existing accounts</summary>
+        /// <summary>
+        /// Lists all the New Relic accounts linked to your email address, helping you understand the existing accounts that have
+        /// been created
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="userEmail">User Email.</param>
         /// <param name="location">Location for NewRelic.</param>
@@ -123,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountsListResponse> AccountsListViaIdentityWithResult(global::System.String viaIdentity, string userEmail, string location, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -163,7 +172,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List all the existing accounts</summary>
+        /// <summary>
+        /// Lists all the New Relic accounts linked to your email address, helping you understand the existing accounts that have
+        /// been created
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="userEmail">User Email.</param>
         /// <param name="location">Location for NewRelic.</param>
@@ -175,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAccountsListResponse> AccountsListWithResult(string subscriptionId, string userEmail, string location, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -337,7 +349,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get marketplace info mapped to the given monitor.</summary>
+        /// <summary>
+        /// Retrieves marketplace and organization information mapped to the given New Relic monitor resource
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -351,7 +365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task BillingInfoGet(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -381,7 +395,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get marketplace info mapped to the given monitor.</summary>
+        /// <summary>
+        /// Retrieves marketplace and organization information mapped to the given New Relic monitor resource
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -393,7 +409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task BillingInfoGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -435,7 +451,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get marketplace info mapped to the given monitor.</summary>
+        /// <summary>
+        /// Retrieves marketplace and organization information mapped to the given New Relic monitor resource
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -445,7 +463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponse> BillingInfoGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -487,7 +505,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get marketplace info mapped to the given monitor.</summary>
+        /// <summary>
+        /// Retrieves marketplace and organization information mapped to the given New Relic monitor resource
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -499,7 +519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponse> BillingInfoGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -680,7 +700,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectedPartnerResourcesList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IConnectedPartnerResourcesListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -724,7 +744,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task ConnectedPartnerResourcesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IConnectedPartnerResourcesListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -778,7 +798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IConnectedPartnerResourcesListResponse> ConnectedPartnerResourcesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -834,7 +854,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IConnectedPartnerResourcesListResponse> ConnectedPartnerResourcesListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1002,7 +1022,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// Add the subscriptions that should be monitored by the NewRelic monitor resource.
+        /// Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -1020,7 +1040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         public async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
             var configurationName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1056,7 +1076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// Add the subscriptions that should be monitored by the NewRelic monitor resource.
+        /// Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The request to update subscriptions needed to be monitored by the NewRelic monitor resource.</param>
@@ -1071,7 +1091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1120,7 +1140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// Add the subscriptions that should be monitored by the NewRelic monitor resource.
+        /// Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The request to update subscriptions needed to be monitored by the NewRelic monitor resource.</param>
@@ -1133,7 +1153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1182,7 +1202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// Add the subscriptions that should be monitored by the NewRelic monitor resource.
+        /// Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -1199,7 +1219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         public async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
             var configurationName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1235,7 +1255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// Add the subscriptions that should be monitored by the NewRelic monitor resource.
+        /// Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -1250,7 +1270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
             var configurationName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1286,7 +1306,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// Add the subscriptions that should be monitored by the NewRelic monitor resource.
+        /// Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -1302,7 +1322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
             var configurationName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1354,16 +1374,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1376,7 +1397,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1509,16 +1533,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1531,7 +1556,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1662,12 +1690,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// Delete the subscriptions that are being monitored by the NewRelic monitor resource
+        /// Delete subscriptions being monitored by the New Relic monitor resource, removing their observability and monitoring capabilities
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1675,10 +1704,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsDelete(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsDelete(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
             var configurationName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1705,15 +1734,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.MonitoredSubscriptionsDelete_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.MonitoredSubscriptionsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Delete the subscriptions that are being monitored by the NewRelic monitor resource
+        /// Delete subscriptions being monitored by the New Relic monitor resource, removing their observability and monitoring capabilities
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1721,9 +1751,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1763,13 +1793,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.MonitoredSubscriptionsDelete_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.MonitoredSubscriptionsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "MonitoredSubscriptionsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1777,24 +1808,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1807,7 +1839,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1885,6 +1920,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1935,7 +1976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the subscriptions currently being monitored by the NewRelic monitor resource.
+        /// Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -1951,7 +1992,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         public async global::System.Threading.Tasks.Task MonitoredSubscriptionsGet(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
             var configurationName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1983,7 +2024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the subscriptions currently being monitored by the NewRelic monitor resource.
+        /// Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1996,7 +2037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitoredSubscriptionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2041,7 +2082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the subscriptions currently being monitored by the NewRelic monitor resource.
+        /// Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2052,7 +2093,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2097,7 +2138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the subscriptions currently being monitored by the NewRelic monitor resource.
+        /// Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -2111,7 +2152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
             var configurationName = @"default";
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2280,7 +2321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the subscriptions currently being monitored by the NewRelic monitor resource.
+        /// Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -2295,7 +2336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitoredSubscriptionsList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionPropertiesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2326,7 +2367,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the subscriptions currently being monitored by the NewRelic monitor resource.
+        /// Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2339,7 +2380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitoredSubscriptionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionPropertiesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2382,7 +2423,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the subscriptions currently being monitored by the NewRelic monitor resource.
+        /// Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2393,7 +2434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionPropertiesList> MonitoredSubscriptionsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2436,7 +2477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the subscriptions currently being monitored by the NewRelic monitor resource.
+        /// Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -2449,7 +2490,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredSubscriptionPropertiesList> MonitoredSubscriptionsListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2616,7 +2657,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// update a new or update an existing New Relic monitor resource in your Azure subscription. This sets up the integration
+        /// between Azure and your New Relic account, enabling observability and monitoring of your Azure resources through New Relic
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -2632,7 +2676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsCreateOrUpdate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2665,7 +2709,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// update a new or update an existing New Relic monitor resource in your Azure subscription. This sets up the integration
+        /// between Azure and your New Relic account, enabling observability and monitoring of your Azure resources through New Relic
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2679,7 +2726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2724,7 +2771,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// update a new or update an existing New Relic monitor resource in your Azure subscription. This sets up the integration
+        /// between Azure and your New Relic account, enabling observability and monitoring of your Azure resources through New Relic
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2736,7 +2786,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2781,7 +2831,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// update a new or update an existing New Relic monitor resource in your Azure subscription. This sets up the integration
+        /// between Azure and your New Relic account, enabling observability and monitoring of your Azure resources through New Relic
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -2796,7 +2849,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2829,7 +2882,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// update a new or update an existing New Relic monitor resource in your Azure subscription. This sets up the integration
+        /// between Azure and your New Relic account, enabling observability and monitoring of your Azure resources through New Relic
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -2842,7 +2898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2875,7 +2931,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// update a new or update an existing New Relic monitor resource in your Azure subscription. This sets up the integration
+        /// between Azure and your New Relic account, enabling observability and monitoring of your Azure resources through New Relic
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -2889,7 +2948,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2937,16 +2996,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2959,7 +3019,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3087,16 +3150,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3109,7 +3173,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3235,7 +3302,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Delete a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// Deletes an existing New Relic monitor resource from your Azure subscription, removing the integration and stopping the
+        /// observability of your Azure resources through New Relic
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -3251,7 +3321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsDelete(string subscriptionId, string resourceGroupName, string monitorName, string userEmail, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3282,7 +3352,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Delete a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// Deletes an existing New Relic monitor resource from your Azure subscription, removing the integration and stopping the
+        /// observability of your Azure resources through New Relic
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="userEmail">User Email.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3296,7 +3369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsDeleteViaIdentity(global::System.String viaIdentity, string userEmail, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3357,17 +3430,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3380,7 +3454,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3511,7 +3588,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// Retrieves the properties and configuration details of a specific New Relic monitor resource, providing insight into its
+        /// setup and status
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -3525,7 +3605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGet(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3554,7 +3634,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric rules</summary>
+        /// <summary>
+        /// Retrieves the metric rules that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -3570,7 +3652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetMetricRules(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricRules>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3604,7 +3686,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric rules</summary>
+        /// <summary>
+        /// Retrieves the metric rules that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The details of the get metrics status request.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3618,7 +3702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetMetricRulesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricRules>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3664,7 +3748,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric rules</summary>
+        /// <summary>
+        /// Retrieves the metric rules that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The details of the get metrics status request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3676,7 +3762,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricRules> MonitorsGetMetricRulesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3722,7 +3808,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric rules</summary>
+        /// <summary>
+        /// Retrieves the metric rules that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -3737,7 +3825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetMetricRulesViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricRules>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3771,7 +3859,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric rules</summary>
+        /// <summary>
+        /// Retrieves the metric rules that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -3784,7 +3874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricRules> MonitorsGetMetricRulesViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3818,7 +3908,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric rules</summary>
+        /// <summary>
+        /// Retrieves the metric rules that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -3832,7 +3924,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricRules> MonitorsGetMetricRulesWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4003,7 +4095,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric status</summary>
+        /// <summary>
+        /// Retrieves the metric status that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -4019,7 +4113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetMetricStatus(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4053,7 +4147,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric status</summary>
+        /// <summary>
+        /// Retrieves the metric status that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The details of the get metrics status request.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4067,7 +4163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetMetricStatusViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4113,7 +4209,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric status</summary>
+        /// <summary>
+        /// Retrieves the metric status that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The details of the get metrics status request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4125,7 +4223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusResponse> MonitorsGetMetricStatusViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4171,7 +4269,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric status</summary>
+        /// <summary>
+        /// Retrieves the metric status that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -4186,7 +4286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetMetricStatusViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4220,7 +4320,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric status</summary>
+        /// <summary>
+        /// Retrieves the metric status that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -4233,7 +4335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusResponse> MonitorsGetMetricStatusViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4267,7 +4369,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get metric status</summary>
+        /// <summary>
+        /// Retrieves the metric status that are configured in the New Relic monitor resource
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -4281,7 +4385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusResponse> MonitorsGetMetricStatusWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricsStatusRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4452,7 +4556,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// Retrieves the properties and configuration details of a specific New Relic monitor resource, providing insight into its
+        /// setup and status
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4464,7 +4571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4505,7 +4612,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// Retrieves the properties and configuration details of a specific New Relic monitor resource, providing insight into its
+        /// setup and status
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -4515,7 +4625,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4556,7 +4666,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get a NewRelicMonitorResource</summary>
+        /// <summary>
+        /// Retrieves the properties and configuration details of a specific New Relic monitor resource, providing insight into its
+        /// setup and status
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -4568,7 +4681,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4732,7 +4845,979 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the app service resources currently being monitored by the NewRelic resource.
+        /// Returns the latest SaaS linked to the newrelic organization of the underlying monitor.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsLatestLinkedSaaS(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILatestLinkedSaaSResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/latestLinkedSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsLatestLinkedSaaS_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Returns the latest SaaS linked to the newrelic organization of the underlying monitor.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsLatestLinkedSaaSViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILatestLinkedSaaSResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/NewRelic.Observability/monitors/(?<monitorName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + monitorName
+                        + "/latestLinkedSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsLatestLinkedSaaS_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Returns the latest SaaS linked to the newrelic organization of the underlying monitor.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILatestLinkedSaaSResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILatestLinkedSaaSResponse> MonitorsLatestLinkedSaaSViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/NewRelic.Observability/monitors/(?<monitorName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + monitorName
+                        + "/latestLinkedSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsLatestLinkedSaaSWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Returns the latest SaaS linked to the newrelic organization of the underlying monitor.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILatestLinkedSaaSResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILatestLinkedSaaSResponse> MonitorsLatestLinkedSaaSWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/latestLinkedSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsLatestLinkedSaaSWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitorsLatestLinkedSaaSWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILatestLinkedSaaSResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILatestLinkedSaaSResponse> MonitorsLatestLinkedSaaSWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.LatestLinkedSaaSResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitorsLatestLinkedSaaS" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsLatestLinkedSaaS_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILatestLinkedSaaSResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.LatestLinkedSaaSResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitorsLatestLinkedSaaS" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsLatestLinkedSaaS_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
+            }
+        }
+
+        /// <summary>Links a new SaaS to the newrelic organization of the underlying monitor.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">Link SaaS body parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsLinkSaaS(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/linkSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsLinkSaaS_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Links a new SaaS to the newrelic organization of the underlying monitor.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Link SaaS body parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsLinkSaaSViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/NewRelic.Observability/monitors/(?<monitorName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + monitorName
+                        + "/linkSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsLinkSaaS_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Links a new SaaS to the newrelic organization of the underlying monitor.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Link SaaS body parameter</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsLinkSaaSViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/NewRelic.Observability/monitors/(?<monitorName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + monitorName
+                        + "/linkSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsLinkSaaSWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Links a new SaaS to the newrelic organization of the underlying monitor.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsLinkSaaS operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsLinkSaaSViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/linkSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsLinkSaaS_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Links a new SaaS to the newrelic organization of the underlying monitor.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsLinkSaaS operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsLinkSaaSViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/linkSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsLinkSaaSWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Links a new SaaS to the newrelic organization of the underlying monitor.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">Link SaaS body parameter</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsLinkSaaSWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/linkSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsLinkSaaSWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitorsLinkSaaSWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsLinkSaaSWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: azure-async-operation
+                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.NewRelicMonitorResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitorsLinkSaaS" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsLinkSaaS_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.NewRelicMonitorResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitorsLinkSaaS" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">Link SaaS body parameter</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsLinkSaaS_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSData body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Lists the app service resources currently being monitored by the New Relic resource, helping you understand which app
+        /// services are under monitoring
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -4749,7 +5834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListAppServices(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServicesGetRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServicesListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4784,7 +5869,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the app service resources currently being monitored by the NewRelic resource.
+        /// Lists the app service resources currently being monitored by the New Relic resource, helping you understand which app
+        /// services are under monitoring
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The details of the app services get request.</param>
@@ -4799,7 +5885,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListAppServicesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServicesGetRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServicesListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4846,7 +5932,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the app service resources currently being monitored by the NewRelic resource.
+        /// Lists the app service resources currently being monitored by the New Relic resource, helping you understand which app
+        /// services are under monitoring
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The details of the app services get request.</param>
@@ -4859,7 +5946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServicesListResponse> MonitorsListAppServicesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServicesGetRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4906,7 +5993,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the app service resources currently being monitored by the NewRelic resource.
+        /// Lists the app service resources currently being monitored by the New Relic resource, helping you understand which app
+        /// services are under monitoring
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -4922,7 +6010,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListAppServicesViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServicesListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4957,7 +6045,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the app service resources currently being monitored by the NewRelic resource.
+        /// Lists the app service resources currently being monitored by the New Relic resource, helping you understand which app
+        /// services are under monitoring
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -4971,7 +6060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServicesListResponse> MonitorsListAppServicesViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5006,7 +6095,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the app service resources currently being monitored by the NewRelic resource.
+        /// Lists the app service resources currently being monitored by the New Relic resource, helping you understand which app
+        /// services are under monitoring
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -5021,7 +6111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServicesListResponse> MonitorsListAppServicesWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IAppServicesGetRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5192,7 +6282,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List NewRelicMonitorResource resources by resource group</summary>
+        /// <summary>
+        /// Retrieves a list of all New Relic monitor resources either a specific resource group
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5205,7 +6297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5233,7 +6325,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List NewRelicMonitorResource resources by resource group</summary>
+        /// <summary>
+        /// Retrieves a list of all New Relic monitor resources either a specific resource group
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5245,7 +6339,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5284,7 +6378,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List NewRelicMonitorResource resources by resource group</summary>
+        /// <summary>
+        /// Retrieves a list of all New Relic monitor resources either a specific resource group
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -5294,7 +6390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceListResult> MonitorsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5333,7 +6429,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List NewRelicMonitorResource resources by resource group</summary>
+        /// <summary>
+        /// Retrieves a list of all New Relic monitor resources either a specific resource group
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5344,7 +6442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceListResult> MonitorsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5506,7 +6604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List NewRelicMonitorResource resources by subscription ID</summary>
+        /// <summary>Lists all New Relic monitor resources either within a specific subscription</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5518,7 +6616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5544,7 +6642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List NewRelicMonitorResource resources by subscription ID</summary>
+        /// <summary>Lists all New Relic monitor resources either within a specific subscription</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -5556,7 +6654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5592,7 +6690,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List NewRelicMonitorResource resources by subscription ID</summary>
+        /// <summary>Lists all New Relic monitor resources either within a specific subscription</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -5602,7 +6700,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceListResult> MonitorsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5638,7 +6736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List NewRelicMonitorResource resources by subscription ID</summary>
+        /// <summary>Lists all New Relic monitor resources either within a specific subscription</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -5648,7 +6746,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceListResult> MonitorsListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5805,7 +6903,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the compute vm resources currently being monitored by the NewRelic resource.
+        /// Lists all VM resources currently being monitored by the New Relic monitor resource, helping you manage observability
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -5822,7 +6920,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListHosts(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IHostsGetRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMHostsListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5857,7 +6955,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the compute vm resources currently being monitored by the NewRelic resource.
+        /// Lists all VM resources currently being monitored by the New Relic monitor resource, helping you manage observability
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The details of the Hosts get request.</param>
@@ -5872,7 +6970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListHostsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IHostsGetRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMHostsListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5919,7 +7017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the compute vm resources currently being monitored by the NewRelic resource.
+        /// Lists all VM resources currently being monitored by the New Relic monitor resource, helping you manage observability
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The details of the Hosts get request.</param>
@@ -5932,7 +7030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMHostsListResponse> MonitorsListHostsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IHostsGetRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5979,7 +7077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the compute vm resources currently being monitored by the NewRelic resource.
+        /// Lists all VM resources currently being monitored by the New Relic monitor resource, helping you manage observability
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -5995,7 +7093,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListHostsViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMHostsListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6030,7 +7128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the compute vm resources currently being monitored by the NewRelic resource.
+        /// Lists all VM resources currently being monitored by the New Relic monitor resource, helping you manage observability
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -6044,7 +7142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMHostsListResponse> MonitorsListHostsViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6079,7 +7177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List the compute vm resources currently being monitored by the NewRelic resource.
+        /// Lists all VM resources currently being monitored by the New Relic monitor resource, helping you manage observability
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -6094,7 +7192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMHostsListResponse> MonitorsListHostsWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IHostsGetRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6266,7 +7364,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List all Azure resources associated to the same NewRelic organization and account as the target resource.
+        /// Lists all Azure resources that are linked to the same New Relic organization as the specified monitor resource, helping
+        /// you understand the scope of integration
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -6281,7 +7380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListLinkedResources(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILinkedResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6312,7 +7411,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List all Azure resources associated to the same NewRelic organization and account as the target resource.
+        /// Lists all Azure resources that are linked to the same New Relic organization as the specified monitor resource, helping
+        /// you understand the scope of integration
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6325,7 +7425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListLinkedResourcesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILinkedResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6368,7 +7468,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List all Azure resources associated to the same NewRelic organization and account as the target resource.
+        /// Lists all Azure resources that are linked to the same New Relic organization as the specified monitor resource, helping
+        /// you understand the scope of integration
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6379,7 +7480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILinkedResourceListResponse> MonitorsListLinkedResourcesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6422,7 +7523,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// List all Azure resources associated to the same NewRelic organization and account as the target resource.
+        /// Lists all Azure resources that are linked to the same New Relic organization as the specified monitor resource, helping
+        /// you understand the scope of integration
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -6435,7 +7537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ILinkedResourceListResponse> MonitorsListLinkedResourcesWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6602,7 +7704,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List the resources currently being monitored by the NewRelic monitor resource.</summary>
+        /// <summary>
+        /// Lists all Azure resources that are currently being monitored by the specified New Relic monitor resource, providing insight
+        /// into the coverage of your observability setup
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -6616,7 +7721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListMonitoredResources(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6646,7 +7751,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List the resources currently being monitored by the NewRelic monitor resource.</summary>
+        /// <summary>
+        /// Lists all Azure resources that are currently being monitored by the specified New Relic monitor resource, providing insight
+        /// into the coverage of your observability setup
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -6658,7 +7766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListMonitoredResourcesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6700,7 +7808,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List the resources currently being monitored by the NewRelic monitor resource.</summary>
+        /// <summary>
+        /// Lists all Azure resources that are currently being monitored by the specified New Relic monitor resource, providing insight
+        /// into the coverage of your observability setup
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -6710,7 +7821,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredResourceListResponse> MonitorsListMonitoredResourcesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6752,7 +7863,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List the resources currently being monitored by the NewRelic monitor resource.</summary>
+        /// <summary>
+        /// Lists all Azure resources that are currently being monitored by the specified New Relic monitor resource, providing insight
+        /// into the coverage of your observability setup
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -6764,7 +7878,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMonitoredResourceListResponse> MonitorsListMonitoredResourcesWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6930,7 +8044,833 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Switches the billing for NewRelic monitor resource.</summary>
+        /// <summary>
+        /// Refreshes the ingestion key for all monitors linked to the same account associated to the underlying monitor.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Name of the Monitors resource</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsRefreshIngestionKey(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/refreshIngestionKey"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsRefreshIngestionKey_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Refreshes the ingestion key for all monitors linked to the same account associated to the underlying monitor.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsRefreshIngestionKeyViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/NewRelic.Observability/monitors/(?<monitorName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + monitorName
+                        + "/refreshIngestionKey"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsRefreshIngestionKey_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitorsRefreshIngestionKey" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsRefreshIngestionKey_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitorsRefreshIngestionKey" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Name of the Monitors resource</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsRefreshIngestionKey_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+            }
+        }
+
+        /// <summary>
+        /// Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">Resubscribe Properties</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsResubscribe(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResubscribeProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsResubscribe_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resubscribe Properties</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsResubscribeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResubscribeProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/NewRelic.Observability/monitors/(?<monitorName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + monitorName
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsResubscribe_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resubscribe Properties</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsResubscribeViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResubscribeProperties body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/NewRelic.Observability/monitors/(?<monitorName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + monitorName
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsResubscribeWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsResubscribe operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsResubscribeViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsResubscribe_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsResubscribe operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsResubscribeViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsResubscribeWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Resubscribes the New Relic Organization of the underline Monitor Resource to be billed by Azure Marketplace
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">Resubscribe Properties</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsResubscribeWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResubscribeProperties body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/NewRelic.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/resubscribe"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsResubscribeWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitorsResubscribeWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsResubscribeWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: azure-async-operation
+                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.NewRelicMonitorResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitorsResubscribe" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsResubscribe_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: azure-async-operation
+                    var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.NewRelicMonitorResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitorsResubscribe" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">Resubscribe Properties</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsResubscribe_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IResubscribeProperties body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^.*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -6948,7 +8888,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsSwitchBilling(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6982,7 +8922,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Switches the billing for NewRelic monitor resource.</summary>
+        /// <summary>
+        /// Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The details of the switch billing request.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6998,7 +8940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsSwitchBillingViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7044,7 +8986,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Switches the billing for NewRelic monitor resource.</summary>
+        /// <summary>
+        /// Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The details of the switch billing request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7056,7 +9000,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsSwitchBillingViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7102,7 +9046,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Switches the billing for NewRelic monitor resource.</summary>
+        /// <summary>
+        /// Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -7119,7 +9065,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsSwitchBillingViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7153,7 +9099,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Switches the billing for NewRelic monitor resource.</summary>
+        /// <summary>
+        /// Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -7166,7 +9114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsSwitchBillingViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7200,7 +9148,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Switches the billing for NewRelic monitor resource.</summary>
+        /// <summary>
+        /// Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -7214,7 +9164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsSwitchBillingWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISwitchBillingRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7409,7 +9359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>Updates an existing New Relic monitor resource from your Azure subscription</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -7425,7 +9375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsUpdate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7458,7 +9408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>Updates an existing New Relic monitor resource from your Azure subscription</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7472,7 +9422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7517,7 +9467,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>Updates an existing New Relic monitor resource from your Azure subscription</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7529,7 +9479,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7574,7 +9524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>Updates an existing New Relic monitor resource from your Azure subscription</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -7589,7 +9539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7622,7 +9572,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>Updates an existing New Relic monitor resource from your Azure subscription</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -7635,7 +9585,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7668,7 +9618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a NewRelicMonitorResource</summary>
+        /// <summary>Updates an existing New Relic monitor resource from your Azure subscription</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -7682,7 +9632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> MonitorsUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7730,10 +9680,105 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            break;
+                        }
+                    }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -7792,10 +9837,105 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -7853,7 +9993,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// Returns the payload that needs to be passed in the request body for installing NewRelic agent on a VM.
+        /// Returns the payload that needs to be passed in the request body for installing the New Relic agent on a VM, providing
+        /// the necessary configuration details
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -7868,7 +10009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsVMHostPayload(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMExtensionPayload>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7899,7 +10040,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// Returns the payload that needs to be passed in the request body for installing NewRelic agent on a VM.
+        /// Returns the payload that needs to be passed in the request body for installing the New Relic agent on a VM, providing
+        /// the necessary configuration details
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7912,7 +10054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsVMHostPayloadViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMExtensionPayload>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7955,7 +10097,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// Returns the payload that needs to be passed in the request body for installing NewRelic agent on a VM.
+        /// Returns the payload that needs to be passed in the request body for installing the New Relic agent on a VM, providing
+        /// the necessary configuration details
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7966,7 +10109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMExtensionPayload> MonitorsVMHostPayloadViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8009,7 +10152,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         }
 
         /// <summary>
-        /// Returns the payload that needs to be passed in the request body for installing NewRelic agent on a VM.
+        /// Returns the payload that needs to be passed in the request body for installing the New Relic agent on a VM, providing
+        /// the necessary configuration details
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -8022,7 +10166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IVMExtensionPayload> MonitorsVMHostPayloadWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8197,7 +10341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8233,7 +10377,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8276,7 +10420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8318,7 +10462,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8468,7 +10612,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List all the existing organizations</summary>
+        /// <summary>
+        /// Lists all the New Relic organizations linked to your email address, helping you understand the existing organizations
+        /// that have been created
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="userEmail">User Email.</param>
         /// <param name="location">Location for NewRelic.</param>
@@ -8482,7 +10629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsList(string subscriptionId, string userEmail, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOrganizationsListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8512,7 +10659,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List all the existing organizations</summary>
+        /// <summary>
+        /// Lists all the New Relic organizations linked to your email address, helping you understand the existing organizations
+        /// that have been created
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="userEmail">User Email.</param>
         /// <param name="location">Location for NewRelic.</param>
@@ -8526,7 +10676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task OrganizationsListViaIdentity(global::System.String viaIdentity, string userEmail, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOrganizationsListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8566,7 +10716,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List all the existing organizations</summary>
+        /// <summary>
+        /// Lists all the New Relic organizations linked to your email address, helping you understand the existing organizations
+        /// that have been created
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="userEmail">User Email.</param>
         /// <param name="location">Location for NewRelic.</param>
@@ -8578,7 +10731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOrganizationsListResponse> OrganizationsListViaIdentityWithResult(global::System.String viaIdentity, string userEmail, string location, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8618,7 +10771,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List all the existing organizations</summary>
+        /// <summary>
+        /// Lists all the New Relic organizations linked to your email address, helping you understand the existing organizations
+        /// that have been created
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="userEmail">User Email.</param>
         /// <param name="location">Location for NewRelic.</param>
@@ -8630,7 +10786,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IOrganizationsListResponse> OrganizationsListWithResult(string subscriptionId, string userEmail, string location, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8792,7 +10948,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List plans data</summary>
+        /// <summary>
+        /// Lists the plans data linked to your organization, providing an overview of the available plans
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="accountId">Account Id.</param>
         /// <param name="organizationId">Organization Id.</param>
@@ -8806,7 +10964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task PlansList(string subscriptionId, string accountId, string organizationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8836,7 +10994,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List plans data</summary>
+        /// <summary>
+        /// Lists the plans data linked to your organization, providing an overview of the available plans
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="accountId">Account Id.</param>
         /// <param name="organizationId">Organization Id.</param>
@@ -8850,7 +11010,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task PlansListViaIdentity(global::System.String viaIdentity, string accountId, string organizationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8890,7 +11050,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List plans data</summary>
+        /// <summary>
+        /// Lists the plans data linked to your organization, providing an overview of the available plans
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="accountId">Account Id.</param>
         /// <param name="organizationId">Organization Id.</param>
@@ -8902,7 +11064,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataListResponse> PlansListViaIdentityWithResult(global::System.String viaIdentity, string accountId, string organizationId, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8942,7 +11104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List plans data</summary>
+        /// <summary>
+        /// Lists the plans data linked to your organization, providing an overview of the available plans
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="accountId">Account Id.</param>
         /// <param name="organizationId">Organization Id.</param>
@@ -8954,7 +11118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IPlanDataListResponse> PlansListWithResult(string subscriptionId, string accountId, string organizationId, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9116,7 +11280,417 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>Resolve the token to get the SaaS resource ID and activate the SaaS resource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The details for ActivateSaaSParameter request.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SaaSActivateResource(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IActivateSaaSParameterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/NewRelic.Observability/activateSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SaaSActivateResource_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Resolve the token to get the SaaS resource ID and activate the SaaS resource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The details for ActivateSaaSParameter request.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SaaSActivateResourceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IActivateSaaSParameterRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/NewRelic.Observability$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/NewRelic.Observability'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/NewRelic.Observability/activateSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SaaSActivateResource_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Resolve the token to get the SaaS resource ID and activate the SaaS resource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The details for ActivateSaaSParameter request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse> SaaSActivateResourceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IActivateSaaSParameterRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/NewRelic.Observability$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/NewRelic.Observability'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/NewRelic.Observability/activateSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SaaSActivateResourceWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Resolve the token to get the SaaS resource ID and activate the SaaS resource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="jsonString">Json string supplied to the SaaSActivateResource operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SaaSActivateResourceViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/NewRelic.Observability/activateSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SaaSActivateResource_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Resolve the token to get the SaaS resource ID and activate the SaaS resource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="jsonString">Json string supplied to the SaaSActivateResource operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse> SaaSActivateResourceViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/NewRelic.Observability/activateSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SaaSActivateResourceWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Resolve the token to get the SaaS resource ID and activate the SaaS resource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The details for ActivateSaaSParameter request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse> SaaSActivateResourceWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IActivateSaaSParameterRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2025-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/NewRelic.Observability/activateSaaS"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.SaaSActivateResourceWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "SaaSActivateResourceWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse> SaaSActivateResourceWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SaaSResourceDetailsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "SaaSActivateResource" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SaaSActivateResource_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ISaaSResourceDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.SaaSResourceDetailsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="SaaSActivateResource" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The details for ActivateSaaSParameter request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SaaSActivateResource_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IActivateSaaSParameterRequest body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// update a new set of tag rules for a specific New Relic monitor resource, determining which Azure resources are monitored
+        /// based on their tags
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -9133,7 +11707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9168,7 +11742,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>
+        /// update a new set of tag rules for a specific New Relic monitor resource, determining which Azure resources are monitored
+        /// based on their tags
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9182,7 +11759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9230,7 +11807,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>
+        /// update a new set of tag rules for a specific New Relic monitor resource, determining which Azure resources are monitored
+        /// based on their tags
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9242,7 +11822,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule> TagRulesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9290,7 +11870,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>
+        /// update a new set of tag rules for a specific New Relic monitor resource, determining which Azure resources are monitored
+        /// based on their tags
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -9306,7 +11889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9341,7 +11924,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>
+        /// update a new set of tag rules for a specific New Relic monitor resource, determining which Azure resources are monitored
+        /// based on their tags
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -9355,7 +11941,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule> TagRulesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9390,7 +11976,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>
+        /// update a new set of tag rules for a specific New Relic monitor resource, determining which Azure resources are monitored
+        /// based on their tags
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -9405,7 +11994,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule> TagRulesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9455,16 +12044,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9477,7 +12067,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9605,16 +12198,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9627,7 +12221,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9755,7 +12352,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Delete a TagRule</summary>
+        /// <summary>
+        /// Deletes a tag rule set for a given New Relic monitor resource, removing fine-grained control over observability based
+        /// on resource tags
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -9771,7 +12371,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesDelete(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9802,7 +12402,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Delete a TagRule</summary>
+        /// <summary>
+        /// Deletes a tag rule set for a given New Relic monitor resource, removing fine-grained control over observability based
+        /// on resource tags
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -9815,7 +12418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9877,17 +12480,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    // this operation supports x-ms-long-running-operation
-                    var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9900,7 +12504,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -10031,7 +12638,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get a TagRule</summary>
+        /// <summary>
+        /// Retrieves the details of the tag rules for a specific New Relic monitor resource, providing insight into its setup and
+        /// status
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -10046,7 +12656,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesGet(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10077,7 +12687,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get a TagRule</summary>
+        /// <summary>
+        /// Retrieves the details of the tag rules for a specific New Relic monitor resource, providing insight into its setup and
+        /// status
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -10089,7 +12702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10133,7 +12746,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get a TagRule</summary>
+        /// <summary>
+        /// Retrieves the details of the tag rules for a specific New Relic monitor resource, providing insight into its setup and
+        /// status
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -10143,7 +12759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule> TagRulesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10187,7 +12803,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Get a TagRule</summary>
+        /// <summary>
+        /// Retrieves the details of the tag rules for a specific New Relic monitor resource, providing insight into its setup and
+        /// status
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -10200,7 +12819,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule> TagRulesGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10367,7 +12986,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List TagRule resources by NewRelicMonitorResource</summary>
+        /// <summary>
+        /// Lists all tag rules associated with a specific New Relic monitor resource, helping you manage and audit the rules that
+        /// control resource monitoring
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -10381,7 +13003,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesListByNewRelicMonitorResource(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10411,7 +13033,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List TagRule resources by NewRelicMonitorResource</summary>
+        /// <summary>
+        /// Lists all tag rules associated with a specific New Relic monitor resource, helping you manage and audit the rules that
+        /// control resource monitoring
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -10423,7 +13048,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesListByNewRelicMonitorResourceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10465,7 +13090,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List TagRule resources by NewRelicMonitorResource</summary>
+        /// <summary>
+        /// Lists all tag rules associated with a specific New Relic monitor resource, helping you manage and audit the rules that
+        /// control resource monitoring
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -10475,7 +13103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleListResult> TagRulesListByNewRelicMonitorResourceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10517,7 +13145,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>List TagRule resources by NewRelicMonitorResource</summary>
+        /// <summary>
+        /// Lists all tag rules associated with a specific New Relic monitor resource, helping you manage and audit the rules that
+        /// control resource monitoring
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -10529,7 +13160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleListResult> TagRulesListByNewRelicMonitorResourceWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10697,7 +13328,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>
+        /// update the tag rules for a specific New Relic monitor resource, allowing you to modify the rules that control which Azure
+        /// resources are monitored
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -10714,7 +13348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesUpdate(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10749,7 +13383,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>
+        /// update the tag rules for a specific New Relic monitor resource, allowing you to modify the rules that control which Azure
+        /// resources are monitored
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10763,7 +13400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10811,7 +13448,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>
+        /// update the tag rules for a specific New Relic monitor resource, allowing you to modify the rules that control which Azure
+        /// resources are monitored
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The resource properties to be updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10823,7 +13463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule> TagRulesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdate body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10871,7 +13511,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>
+        /// update the tag rules for a specific New Relic monitor resource, allowing you to modify the rules that control which Azure
+        /// resources are monitored
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -10887,7 +13530,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10922,7 +13565,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>
+        /// update the tag rules for a specific New Relic monitor resource, allowing you to modify the rules that control which Azure
+        /// resources are monitored
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -10936,7 +13582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule> TagRulesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10971,7 +13617,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
             }
         }
 
-        /// <summary>Update a TagRule</summary>
+        /// <summary>
+        /// update the tag rules for a specific New Relic monitor resource, allowing you to modify the rules that control which Azure
+        /// resources are monitored
+        /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Name of the Monitors resource</param>
@@ -10986,7 +13635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule> TagRulesUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRuleUpdate body, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-01-01";
+            var apiVersion = @"2025-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

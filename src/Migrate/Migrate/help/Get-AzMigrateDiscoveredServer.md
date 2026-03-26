@@ -41,7 +41,7 @@ Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Get Azure migrate server cmdlet fetches all servers in a migrate project.
+Get Azure migrate server commandlet fetches all servers in a migrate project.
 
 ## EXAMPLES
 

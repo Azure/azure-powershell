@@ -24,6 +24,12 @@ function Test-ListServerAdvisors
 
 	try
 	{
+		Set-AzSqlServerAdvisorAutoExecuteStatus `
+			-ResourceGroupName $server.ResourceGroupName `
+			-ServerName $server.ServerName `
+			-AdvisorName ForceLastGoodPlan `
+			-AutoExecuteStatus Disabled
+
 		$response = Get-AzSqlServerAdvisor `
 			-ResourceGroupName $server.ResourceGroupName `
 			-ServerName $server.ServerName

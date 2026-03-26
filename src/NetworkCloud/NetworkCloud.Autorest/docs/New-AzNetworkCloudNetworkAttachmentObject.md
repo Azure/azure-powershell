@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudNetworkAttachmentObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudnetworkattachmentobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for NetworkAttachment.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudNetworkAttachmentObject -AttachedNetworkId <String>
- -IPAllocationMethod <VirtualMachineIPAllocationMethod> [-DefaultGateway <DefaultGateway>]
- [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>] [<CommonParameters>]
+New-AzNetworkCloudNetworkAttachmentObject -AttachedNetworkId <String> -IPAllocationMethod <String>
+ [-DefaultGateway <String>] [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +60,7 @@ The indicator of whether this is the default gateway.
         Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +77,7 @@ The IP allocation mechanism for the virtual machine.
         Otherwise, Disabled is the only permitted value.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIPAllocationMethod
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +157,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.NetworkAttachment
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.NetworkAttachment
 
 ## NOTES
 

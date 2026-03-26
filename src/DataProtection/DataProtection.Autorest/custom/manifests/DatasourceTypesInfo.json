@@ -13,6 +13,10 @@
       "clientDatasourceType": "AzureBlob"
     },
     {
+      "serviceDatasourceType": "Microsoft.Storage/storageAccounts/adlsBlobServices",
+      "clientDatasourceType": "AzureDataLakeStorage"
+    },
+    {
       "serviceDatasourceType": "Microsoft.ContainerService/managedClusters",
       "clientDatasourceType": "AzureKubernetesService"
     },

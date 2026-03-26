@@ -1,15 +1,15 @@
 {
-  "Remove-AzAksMaintenanceConfiguration+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01+1": {
+  "Remove-AzAksMaintenanceConfiguration+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/maintenanceConfigurations/aksManagedAutoUpgradeSchedule?api-version=2025-08-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"timeInWeek\": [\r\n      {\r\n        \"day\": \"Sunday\",\r\n        \"hourSlots\": [ 1, 2 ]\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/maintenanceConfigurations/aksManagedAutoUpgradeSchedule?api-version=2025-08-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"maintenanceWindow\": {\r\n      \"schedule\": {\r\n        \"weekly\": {\r\n          \"intervalWeeks\": 2,\r\n          \"dayOfWeek\": \"Friday\"\r\n        }\r\n      },\r\n      \"durationHours\": 6,\r\n      \"startTime\": \"01:00\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "131" ]
+        "Content-Length": [ "245" ]
       }
     },
     "Response": {
@@ -17,37 +17,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "6c52976f-50fa-46ee-adf9-e6135999a42d" ],
-        "x-ms-request-id": [ "5bad1ca7-3fe5-436a-b416-68e548fff03b" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/e221c6be-b29d-4e2d-9ecb-d7d685159b72" ],
+        "x-ms-correlation-request-id": [ "8b3ad37c-412c-4617-b23b-e79b343621ab" ],
+        "x-ms-request-id": [ "c1442173-739e-4fee-b477-07b91042a512" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251103T084649Z:8b3ad37c-412c-4617-b23b-e79b343621ab" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T094326Z:6c52976f-50fa-46ee-adf9-e6135999a42d" ],
-        "Date": [ "Thu, 30 Mar 2023 09:43:26 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B4C97A948680454C8022B1FA6FAAF151 Ref B: JKT201051406060 Ref C: 2025-11-03T08:46:48Z" ],
+        "Date": [ "Mon, 03 Nov 2025 08:46:49 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "357" ],
+        "Content-Length": [ "509" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config\",\n  \"name\": \"aks_maintenance_config\",\n  \"properties\": {\n   \"timeInWeek\": [\n    {\n     \"day\": \"Sunday\",\n     \"hourSlots\": [\n      1,\n      2\n     ]\n    }\n   ]\n  }\n }",
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/maintenanceConfigurations/aksManagedAutoUpgradeSchedule\",\n \"name\": \"aksManagedAutoUpgradeSchedule\",\n \"properties\": {\n  \"maintenanceWindow\": {\n   \"schedule\": {\n    \"weekly\": {\n     \"intervalWeeks\": 2,\n     \"dayOfWeek\": \"Friday\"\n    }\n   },\n   \"durationHours\": 6,\n   \"utcOffset\": \"+00:00\",\n   \"startDate\": \"2025-11-03\",\n   \"startTime\": \"01:00\"\n  }\n }\n}",
       "isContentBase64": false
     }
   },
-  "Remove-AzAksMaintenanceConfiguration+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01+2": {
+  "Remove-AzAksMaintenanceConfiguration+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/maintenanceConfigurations/aksManagedAutoUpgradeSchedule?api-version=2025-08-01+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/maintenanceConfigurations/aksManagedAutoUpgradeSchedule?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "c2509cf8-e65c-471f-ad7d-d3611a0643ab" ],
+        "x-ms-client-request-id": [ "57faed19-17db-4c0e-8c23-3d179d4f5a24" ],
         "CommandName": [ "Remove-AzAksMaintenanceConfiguration" ],
         "FullCommandName": [ "Remove-AzAksMaintenanceConfiguration_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -58,14 +61,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "e7d1ad7b-471f-4334-ac81-56edd77656b2" ],
-        "x-ms-request-id": [ "9ec620f2-f159-417b-b498-d38f02556c59" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/9a2670b7-2700-4eaa-8632-12961bc69b26" ],
+        "x-ms-correlation-request-id": [ "69b6e818-b408-4f6d-ae0c-1a7a480535ff" ],
+        "x-ms-request-id": [ "0faed68b-0205-4ea9-b03c-f0b162dc83cf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251103T084649Z:69b6e818-b408-4f6d-ae0c-1a7a480535ff" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T094327Z:e7d1ad7b-471f-4334-ac81-56edd77656b2" ],
-        "Date": [ "Thu, 30 Mar 2023 09:43:26 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3592455B784144A7ACD208E0A6A093B8 Ref B: JKT201051406060 Ref C: 2025-11-03T08:46:49Z" ],
+        "Date": [ "Mon, 03 Nov 2025 08:46:49 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -75,17 +81,17 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzAksMaintenanceConfiguration+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01+1": {
+  "Remove-AzAksMaintenanceConfiguration+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/maintenanceConfigurations/aksManagedAutoUpgradeSchedule?api-version=2025-08-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"timeInWeek\": [\r\n      {\r\n        \"day\": \"Sunday\",\r\n        \"hourSlots\": [ 1, 2 ]\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/maintenanceConfigurations/aksManagedAutoUpgradeSchedule?api-version=2025-08-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"maintenanceWindow\": {\r\n      \"schedule\": {\r\n        \"weekly\": {\r\n          \"intervalWeeks\": 2,\r\n          \"dayOfWeek\": \"Friday\"\r\n        }\r\n      },\r\n      \"durationHours\": 6,\r\n      \"startTime\": \"01:00\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "131" ]
+        "Content-Length": [ "245" ]
       }
     },
     "Response": {
@@ -93,37 +99,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-correlation-request-id": [ "710e1ecb-edd3-42c4-a4c3-16db8821f98e" ],
-        "x-ms-request-id": [ "2ff64d57-f991-4d3d-a5f7-19827de3bf4b" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/94b28911-a195-4c03-8f2a-452a6ab010f1" ],
+        "x-ms-correlation-request-id": [ "33bca39a-32b9-4b9e-8d77-2b226346cb2d" ],
+        "x-ms-request-id": [ "08a350cf-babc-4c58-acf7-e0a9322a300c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251103T084650Z:33bca39a-32b9-4b9e-8d77-2b226346cb2d" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T094328Z:710e1ecb-edd3-42c4-a4c3-16db8821f98e" ],
-        "Date": [ "Thu, 30 Mar 2023 09:43:27 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5648BF5948EF48E3A18F22D6BEBE4C7B Ref B: JKT201051406060 Ref C: 2025-11-03T08:46:50Z" ],
+        "Date": [ "Mon, 03 Nov 2025 08:46:50 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "357" ],
+        "Content-Length": [ "509" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config\",\n  \"name\": \"aks_maintenance_config\",\n  \"properties\": {\n   \"timeInWeek\": [\n    {\n     \"day\": \"Sunday\",\n     \"hourSlots\": [\n      1,\n      2\n     ]\n    }\n   ]\n  }\n }",
+      "Content": "{\n \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/maintenanceConfigurations/aksManagedAutoUpgradeSchedule\",\n \"name\": \"aksManagedAutoUpgradeSchedule\",\n \"properties\": {\n  \"maintenanceWindow\": {\n   \"schedule\": {\n    \"weekly\": {\n     \"intervalWeeks\": 2,\n     \"dayOfWeek\": \"Friday\"\n    }\n   },\n   \"durationHours\": 6,\n   \"utcOffset\": \"+00:00\",\n   \"startDate\": \"2025-11-03\",\n   \"startTime\": \"01:00\"\n  }\n }\n}",
       "isContentBase64": false
     }
   },
-  "Remove-AzAksMaintenanceConfiguration+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01+2": {
+  "Remove-AzAksMaintenanceConfiguration+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/maintenanceConfigurations/aksManagedAutoUpgradeSchedule?api-version=2025-08-01+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.ContainerService/managedClusters/AKS_Test_Cluster/maintenanceConfigurations/aksManagedAutoUpgradeSchedule?api-version=2025-08-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "67c1c290-bf8d-4119-afe7-cd90fd8d6059" ],
+        "x-ms-client-request-id": [ "06b0bf28-afe0-4a0d-956e-fe3d23c7eb02" ],
         "CommandName": [ "Remove-AzAksMaintenanceConfiguration" ],
         "FullCommandName": [ "Remove-AzAksMaintenanceConfiguration_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.4", "Az.Aks/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -134,14 +143,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-correlation-request-id": [ "f8182adb-6c32-4186-aa86-31493caf5e5e" ],
-        "x-ms-request-id": [ "2d91c3f8-0b7c-499f-9e96-3654e333f2c3" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=2fdc06a3-8018-46f5-ac20-cec39e684201/eastus/76bf18db-bd70-4b97-a6f7-9f02d4f585fe" ],
+        "x-ms-correlation-request-id": [ "8cd465cf-e497-42c0-867c-d1433a27c2c6" ],
+        "x-ms-request-id": [ "f1a538bb-a666-48e3-b19d-7837fbf3602a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251103T084650Z:8cd465cf-e497-42c0-867c-d1433a27c2c6" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T094329Z:f8182adb-6c32-4186-aa86-31493caf5e5e" ],
-        "Date": [ "Thu, 30 Mar 2023 09:43:28 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: ACC2853AFFCB4075AFFDDA3B5A2DF2A6 Ref B: JKT201051406060 Ref C: 2025-11-03T08:46:50Z" ],
+        "Date": [ "Mon, 03 Nov 2025 08:46:51 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

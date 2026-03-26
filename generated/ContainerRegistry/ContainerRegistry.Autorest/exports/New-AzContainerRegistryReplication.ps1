@@ -22,59 +22,79 @@ Creates a replication for a container registry with the specified parameters.
 .Example
  New-AzContainerRegistryReplication -ResourceGroupName "MyResourceGroup" -RegistryName "RegistryExample" -Name replication001 -Location 'west us' -Tag @{tagName='MyTag'}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplication
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 REGISTRY <IRegistry>: The Registry Object.
-  Location <String>: The location of the resource. This cannot be changed after the resource is created.
-  SkuName <SkuName>: The SKU name of the container registry. Required for registry creation.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource modification (UTC).
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <LastModifiedByType?>]: The type of identity that last modified the resource.
+  SkuName <String>: The SKU name of the container registry. Required for registry creation.
+  [Location <String>]: The location of the resource. This cannot be changed after the resource is created.
   [Tag <IResourceTags>]: The tags of the resource.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AdminUserEnabled <Boolean?>]: The value that indicates whether the admin user is enabled.
   [AnonymousPullEnabled <Boolean?>]: Enables registry-wide pull from unauthenticated clients.
-  [AzureAdAuthenticationAsArmPolicyStatus <AzureAdAuthenticationAsArmPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
+  [AzureAdAuthenticationAsArmPolicyStatus <String>]: The value that indicates whether the policy is enabled or not.
   [DataEndpointEnabled <Boolean?>]: Enable a single data endpoint per region for serving data.
-  [EncryptionStatus <EncryptionStatus?>]: Indicates whether or not the encryption is enabled for container registry.
-  [ExportPolicyStatus <ExportPolicyStatus?>]: The value that indicates whether the policy is enabled or not.
+  [EncryptionStatus <String>]: Indicates whether or not the encryption is enabled for container registry.
+  [ExportPolicyStatus <String>]: The value that indicates whether the policy is enabled or not.
   [IdentityPrincipalId <String>]: The principal ID of resource identity.
   [IdentityTenantId <String>]: The tenant ID of resource.
-  [IdentityType <ResourceIdentityType?>]: The identity type.
+  [IdentityType <String>]: The identity type.
   [IdentityUserAssignedIdentity <IIdentityPropertiesUserAssignedIdentities>]: The list of user identities associated with the resource. The user identity         dictionary key references will be ARM resource ids in the form:         '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/             providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
     [(Any) <IUserIdentityProperties>]: This indicates any property can be added to this object.
   [KeyVaultPropertyIdentity <String>]: The client id of the identity which will be used to access key vault.
   [KeyVaultPropertyKeyIdentifier <String>]: Key vault uri to access the encryption key.
-  [NetworkRuleBypassOption <NetworkRuleBypassOptions?>]: Whether to allow trusted Azure services to access a network restricted registry.
-  [NetworkRuleSetDefaultAction <DefaultAction?>]: The default action of allow or deny when no other rules match.
-  [NetworkRuleSetIPRule <IIPRule[]>]: The IP ACL rules.
+  [NetworkRuleBypassOption <String>]: Whether to allow trusted Azure services to access a network restricted registry.
+  [NetworkRuleSetDefaultAction <String>]: The default action of allow or deny when no other rules match.
+  [NetworkRuleSetIPRule <List<IIPRule>>]: The IP ACL rules.
     IPAddressOrRange <String>: Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
-    [Action <Action?>]: The action of IP ACL rule.
-  [PublicNetworkAccess <PublicNetworkAccess?>]: Whether or not public network access is allowed for the container registry.
-  [QuarantinePolicyStatus <PolicyStatus?>]: The value that indicates whether the policy is enabled or not.
+    [Action <String>]: The action of IP ACL rule.
+  [PublicNetworkAccess <String>]: Whether or not public network access is allowed for the container registry.
+  [QuarantinePolicyStatus <String>]: The value that indicates whether the policy is enabled or not.
   [RetentionPolicyDay <Int32?>]: The number of days to retain an untagged manifest after which it gets purged.
-  [RetentionPolicyStatus <PolicyStatus?>]: The value that indicates whether the policy is enabled or not.
+  [RetentionPolicyStatus <String>]: The value that indicates whether the policy is enabled or not.
   [SoftDeletePolicyRetentionDay <Int32?>]: The number of days after which a soft-deleted item is permanently deleted.
-  [SoftDeletePolicyStatus <PolicyStatus?>]: The value that indicates whether the policy is enabled or not.
-  [TrustPolicyStatus <PolicyStatus?>]: The value that indicates whether the policy is enabled or not.
-  [TrustPolicyType <TrustPolicyType?>]: The type of trust policy.
-  [ZoneRedundancy <ZoneRedundancy?>]: Whether or not zone redundancy is enabled for this container registry
+  [SoftDeletePolicyStatus <String>]: The value that indicates whether the policy is enabled or not.
+  [TrustPolicyStatus <String>]: The value that indicates whether the policy is enabled or not.
+  [TrustPolicyType <String>]: The type of trust policy.
+  [ZoneRedundancy <String>]: Whether or not zone redundancy is enabled for this container registry
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistryreplication
 #>
 function New-AzContainerRegistryReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IReplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IReplication])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Alias('ContainerRegistryName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -82,6 +102,8 @@ param(
     ${RegistryName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -95,7 +117,10 @@ param(
     # The name of the replication.
     ${Name},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateByRegistry')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -105,12 +130,19 @@ param(
 
     [Parameter(ParameterSetName='CreateByRegistry', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IRegistry]
     # The Registry Object.
-    # To construct, see NOTES section for REGISTRY properties and create a hash table.
     ${Registry},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateByRegistry', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory)]
     [Alias('ReplicationLocation')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
@@ -118,34 +150,53 @@ param(
     # This cannot be changed after the resource is created.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateByRegistry')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether the replication's regional endpoint is enabled.
     # Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications.
     ${RegionEndpointEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateByRegistry')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Alias('Tags')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # The tags of the resource.
     ${Tag},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ZoneRedundancy])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateByRegistry')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.ZoneRedundancy]
+    [System.String]
     # Whether or not zone redundancy is enabled for this container registry replication
     ${ZoneRedundancy},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -207,6 +258,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -227,11 +287,12 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ContainerRegistry.custom\New-AzContainerRegistryReplication';
+            CreateViaJsonString = 'Az.ContainerRegistry.custom\New-AzContainerRegistryReplication';
+            CreateViaJsonFilePath = 'Az.ContainerRegistry.custom\New-AzContainerRegistryReplication';
             CreateByRegistry = 'Az.ContainerRegistry.custom\New-AzContainerRegistryReplication';
+            CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.custom\New-AzContainerRegistryReplication';
         }
-        if (('CreateExpanded', 'CreateByRegistry') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonString', 'CreateViaJsonFilePath', 'CreateByRegistry') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -245,6 +306,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

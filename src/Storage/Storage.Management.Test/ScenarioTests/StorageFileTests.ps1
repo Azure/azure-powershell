@@ -382,6 +382,7 @@ function Test-FileServiceProperties
     {
         # Test
         $stoname = 'sto' + $rgname;
+		$stoname2 = 'sto2' + $rgname;
         $stotype = 'Premium_LRS';
         $loc = Get-ProviderLocation_Canary2 ResourceManagement;
         $kind = 'FileStorage'
@@ -403,32 +404,47 @@ function Test-FileServiceProperties
         # $loc = Get-ProviderLocation_Canary ResourceManagement;
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+
+		New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -SkuName $stotype -Kind $kind 
+
+		# Test Nfs encryption in transit setting 
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2 -NfsEncryptionInTransitRequired $true
+		$serviceProperty = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2
+		Assert-AreEqual $true $serviceProperty.ProtocolSettings.Nfs.EncryptionInTransit.Required
+
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2 -NfsEncryptionInTransitRequired $false
+		$serviceProperty = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname2
+		Assert-AreEqual $false $serviceProperty.ProtocolSettings.Nfs.EncryptionInTransit.Required
 		
 		# Enable MC, and set smb setting
 		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $true `
 					-SMBProtocolVersion SMB2.1,SMB3.0,SMB3.1.1 `
 					-SMBAuthenticationMethod Kerberos,NTLMv2 `
 					-SMBKerberosTicketEncryption RC4-HMAC,AES-256 `
-					-SMBChannelEncryption AES-128-CCM,AES-128-GCM,AES-256-GCM
+					-SMBChannelEncryption AES-128-CCM,AES-128-GCM,AES-256-GCM `
+					-SmbEncryptionInTransitRequired $true
 		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
 		Assert-AreEqual 3 $servicePropertie.ProtocolSettings.Smb.Versions.Count
 		Assert-AreEqual 2 $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods.Count
 		Assert-AreEqual 2 $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption.Count
 		Assert-AreEqual 3 $servicePropertie.ProtocolSettings.Smb.ChannelEncryption.Count
 		Assert-AreEqual $true $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
+		Assert-AreEqual $true $servicePropertie.ProtocolSettings.Smb.EncryptionInTransit.Required
 
 		# Disable MC, update smb setting
 		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableSmbMultichannel $false `
 					-SMBProtocolVersion SMB3.1.1 `
 					-SMBAuthenticationMethod Kerberos `
 					-SMBKerberosTicketEncryption AES-256 `
-					-SMBChannelEncryption AES-128-CCM
+					-SMBChannelEncryption AES-128-CCM `
+					-SmbEncryptionInTransitRequired $false 
 		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
 		Assert-AreEqual "SMB3.1.1" $servicePropertie.ProtocolSettings.Smb.Versions[0]
 		Assert-AreEqual "Kerberos" $servicePropertie.ProtocolSettings.Smb.AuthenticationMethods[0]
 		Assert-AreEqual "AES-256" $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption[0]
 		Assert-AreEqual "AES-128-CCM" $servicePropertie.ProtocolSettings.Smb.ChannelEncryption[0]
 		Assert-AreEqual $false $servicePropertie.ProtocolSettings.Smb.Multichannel.Enabled
+		Assert-AreEqual $false $servicePropertie.ProtocolSettings.Smb.EncryptionInTransit.Required
 
 		# remove smb setting
 		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname `

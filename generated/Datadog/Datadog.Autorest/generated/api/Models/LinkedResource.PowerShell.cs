@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILinkedResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILinkedResourceInternal)this).Id, global::System.Convert.ToString);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILinkedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILinkedResourceInternal)this).Location, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -133,6 +137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILinkedResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILinkedResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILinkedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILinkedResourceInternal)this).Location, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

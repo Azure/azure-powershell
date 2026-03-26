@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='storageSyncServiceName'>
         /// Name of Storage Sync Service resource.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<Workflow> ListByStorageSyncService(this IWorkflowsOperations operations, string resourceGroupName, string storageSyncServiceName)
+        public static Microsoft.Rest.Azure.IPage<Workflow> ListByStorageSyncService(this IWorkflowsOperations operations, string resourceGroupName, string storageSyncServiceName)
         {
                 return ((IWorkflowsOperations)operations).ListByStorageSyncServiceAsync(resourceGroupName, storageSyncServiceName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.StorageSync
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Workflow>> ListByStorageSyncServiceAsync(this IWorkflowsOperations operations, string resourceGroupName, string storageSyncServiceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Workflow>> ListByStorageSyncServiceAsync(this IWorkflowsOperations operations, string resourceGroupName, string storageSyncServiceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByStorageSyncServiceWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -139,6 +139,39 @@ namespace Microsoft.Azure.Management.StorageSync
             using (var _result = await operations.AbortWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, workflowId, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Get a Workflow List
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Workflow> ListByStorageSyncServiceNext(this IWorkflowsOperations operations, string nextPageLink)
+        {
+                return ((IWorkflowsOperations)operations).ListByStorageSyncServiceNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a Workflow List
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Workflow>> ListByStorageSyncServiceNextAsync(this IWorkflowsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByStorageSyncServiceNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
     }

@@ -137,6 +137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal)this).TrustedRange = (System.Collections.Generic.List<string>) content.GetValueForProperty("TrustedRange",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal)this).TrustedRange, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
+            if (content.Contains("PrivateSourceNatRulesDestination"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal)this).PrivateSourceNatRulesDestination = (System.Collections.Generic.List<string>) content.GetValueForProperty("PrivateSourceNatRulesDestination",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal)this).PrivateSourceNatRulesDestination, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             if (content.Contains("VnetConfigurationVnet"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal)this).VnetConfigurationVnet = (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddressSpace) content.GetValueForProperty("VnetConfigurationVnet",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal)this).VnetConfigurationVnet, Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddressSpaceTypeConverter.ConvertFrom);
@@ -281,6 +285,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             if (content.Contains("TrustedRange"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal)this).TrustedRange = (System.Collections.Generic.List<string>) content.GetValueForProperty("TrustedRange",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal)this).TrustedRange, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("PrivateSourceNatRulesDestination"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal)this).PrivateSourceNatRulesDestination = (System.Collections.Generic.List<string>) content.GetValueForProperty("PrivateSourceNatRulesDestination",((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfileInternal)this).PrivateSourceNatRulesDestination, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("VnetConfigurationVnet"))
             {

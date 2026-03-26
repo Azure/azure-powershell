@@ -33,7 +33,7 @@ Remove-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,6 +41,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -49,132 +50,140 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteruserenvironment
 #>
 function Remove-AzDevCenterUserEnvironment {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
-  [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-  [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.OutputBreakingChangeAttribute("OperationStatus", "15.0.0", "3.0.0", "2025/11/18", ReplacementCmdletOutputType = "OperationStatus", DeprecatedOutputProperties = ("Property"), NewOutputProperties = ("Property"))]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
+  [CmdletBinding(DefaultParameterSetName = 'Delete', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
-      [Parameter(ParameterSetName = 'Delete', Mandatory)]
-      [Parameter(ParameterSetName = 'DeleteViaIdentity', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
-      [System.String]
-      # The DevCenter-specific URI to operate on.
-      ${Endpoint},
+    [Parameter(ParameterSetName = 'Delete', Mandatory)]
+    [Parameter(ParameterSetName = 'DeleteViaIdentity', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
 
-      [Parameter(ParameterSetName = 'DeleteViaIdentityByDevCenter', Mandatory)]
-      [Parameter(ParameterSetName = 'DeleteByDevCenter', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
-      [Alias('DevCenter')]
-      [System.String]
-      # The DevCenter upon which to execute operations.
-      ${DevCenterName},
+    [Parameter(ParameterSetName = 'DeleteViaIdentityByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName = 'DeleteByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [Alias('DevCenter')]
+    [System.String]
+    # The DevCenter upon which to execute operations.
+    ${DevCenterName},
   
-      [Parameter(ParameterSetName='Delete', Mandatory)]
-      [Parameter(ParameterSetName = 'DeleteByDevCenter', Mandatory)]
-      [Alias('EnvironmentName')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-      [System.String]
-      # The name of the environment.
-      ${Name},
+    [Parameter(ParameterSetName = 'Delete', Mandatory)]
+    [Parameter(ParameterSetName = 'DeleteByDevCenter', Mandatory)]
+    [Alias('EnvironmentName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The name of the environment.
+    ${Name},
   
-      [Parameter(ParameterSetName='Delete', Mandatory)]
-      [Parameter(ParameterSetName = 'DeleteByDevCenter', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-      [System.String]
-      # The DevCenter Project upon which to execute operations.
-      ${ProjectName},
+    [Parameter(ParameterSetName = 'Delete', Mandatory)]
+    [Parameter(ParameterSetName = 'DeleteByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The DevCenter Project upon which to execute operations.
+    ${ProjectName},
   
-      [Parameter(ParameterSetName='Delete')]
-      [Parameter(ParameterSetName = 'DeleteByDevCenter')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
-      [System.String]
-      # The AAD object id of the user.
-      # If value is 'me', the identity is taken from the authentication context.
-      ${UserId},
+    [Parameter(ParameterSetName = 'Delete')]
+    [Parameter(ParameterSetName = 'DeleteByDevCenter')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script = '"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
   
-      [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-      [Parameter(ParameterSetName = 'DeleteViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
-      # Identity Parameter
-      # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-      ${InputObject},
-  
-      [Parameter()]
-      [Alias('AzureRMContext', 'AzureCredential')]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
-      [System.Management.Automation.PSObject]
-      # The DefaultProfile parameter is not functional.
-      # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-      ${DefaultProfile},
-  
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Run the command as a job
-      ${AsJob},
-  
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Wait for .NET debugger to attach
-      ${Break},
-  
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
-      # SendAsync Pipeline Steps to be appended to the front of the pipeline
-      ${HttpPipelineAppend},
-  
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
-      # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-      ${HttpPipelinePrepend},
-  
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Run the command asynchronously
-      ${NoWait},
-  
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Returns true when the command succeeds
-      ${PassThru},
-  
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Uri]
-      # The URI for the proxy server to use
-      ${Proxy},
-  
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Management.Automation.PSCredential]
-      # Credentials for a proxy server to use for the remote call
-      ${ProxyCredential},
-  
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Use the default credentials for the proxy
-      ${ProxyUseDefaultCredentials}
+    [Parameter(ParameterSetName = 'DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'DeleteViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # The query option to force environment deletion even if the environment definition does not exist.
+    # This is a best-effort delete, and anything custom that forces resource creation beyond the associated resource group may not be deleted.
+    ${Force},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
   )
 
   process {

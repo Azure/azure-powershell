@@ -8,9 +8,13 @@ namespace Microsoft.Azure.Management.SignalR.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource model definition for a ARM proxy resource. It will have
-    /// everything other than required location and tags
+    /// The resource model definition for a Azure Resource Manager proxy resource.
+    /// It will not have tags and a location
     /// </summary>
+    /// <remarks>
+    /// The resource model definition for a Azure Resource Manager proxy resource.
+    /// It will not have tags and a location
+    /// </remarks>
     public partial class ProxyResource : Resource
     {
         /// <summary>
@@ -25,17 +29,23 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the ProxyResource class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource - e.g. &#34;Microsoft.SignalRService/SignalR&#34;
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
-        public ProxyResource(string id = default(string), string name = default(string), string type = default(string))
 
-        : base(id, name, type)
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+        public ProxyResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
+
+        : base(id, name, type, systemData)
         {
             CustomInit();
         }

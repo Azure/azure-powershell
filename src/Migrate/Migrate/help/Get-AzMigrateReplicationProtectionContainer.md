@@ -164,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainer
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IProtectionContainer
 
 ## NOTES
 

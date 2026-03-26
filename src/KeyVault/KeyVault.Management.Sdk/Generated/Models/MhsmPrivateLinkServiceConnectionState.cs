@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="status">Indicates whether the connection has been approved, rejected or removed by
         /// the key vault owner.
-        /// Possible values include: 'Pending', 'Approved', 'Rejected', 'Disconnected'</param>
+        /// Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;</param>
 
         /// <param name="description">The reason for approval or rejection.
         /// </param>
 
         /// <param name="actionsRequired">A message indicating if changes on the service provider require any updates
         /// on the consumer.
-        /// Possible values include: 'None'</param>
+        /// Possible values include: &#39;None&#39;</param>
         public MhsmPrivateLinkServiceConnectionState(string status = default(string), string description = default(string), string actionsRequired = default(string))
 
         {

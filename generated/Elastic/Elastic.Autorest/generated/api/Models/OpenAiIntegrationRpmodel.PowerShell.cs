@@ -133,6 +133,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal)this).OpenAiResourceEndpoint = (string) content.GetValueForProperty("OpenAiResourceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal)this).OpenAiResourceEndpoint, global::System.Convert.ToString);
             }
+            if (content.Contains("OpenAiConnectorId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal)this).OpenAiConnectorId = (string) content.GetValueForProperty("OpenAiConnectorId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal)this).OpenAiConnectorId, global::System.Convert.ToString);
+            }
             if (content.Contains("Key"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal)this).Key = (string) content.GetValueForProperty("Key",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal)this).Key, global::System.Convert.ToString);
@@ -181,6 +185,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (content.Contains("OpenAiResourceEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal)this).OpenAiResourceEndpoint = (string) content.GetValueForProperty("OpenAiResourceEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal)this).OpenAiResourceEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("OpenAiConnectorId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal)this).OpenAiConnectorId = (string) content.GetValueForProperty("OpenAiConnectorId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodelInternal)this).OpenAiConnectorId, global::System.Convert.ToString);
             }
             if (content.Contains("Key"))
             {

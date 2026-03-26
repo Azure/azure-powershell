@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.PowerShell;
 
-    /// <summary>Result of GET request to list the Microsoft.Datadog operations.</summary>
+    /// <summary>Represents a paginated list of operation results.</summary>
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial class OperationListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             return ToJsonString();
         }
     }
-    /// Result of GET request to list the Microsoft.Datadog operations.
+    /// Represents a paginated list of operation results.
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial interface IOperationListResult
 

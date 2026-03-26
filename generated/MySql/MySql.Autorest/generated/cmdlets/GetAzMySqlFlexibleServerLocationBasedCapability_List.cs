@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMySqlFlexibleServerLocationBasedCapability_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released in May 2026. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.ICapabilityProperties))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Description(@"Get capabilities at specified location in a given subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Generated]

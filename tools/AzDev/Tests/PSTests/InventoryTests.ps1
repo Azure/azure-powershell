@@ -25,4 +25,10 @@ Describe 'Repo inventory' {
         $others = Get-DevProject -Type Other
         $others.Count | Should -BeLessOrEqual 8
     }
+
+    It 'AutoRest projects expose a valid SubType (AutoRest version)' {
+        $proj = Get-DevProject -Type AutoRestBased
+        $proj | Should -Not -BeNullOrEmpty
+        $proj.SubType | Should -Match '^(v3|v4)$'
+    }
 }

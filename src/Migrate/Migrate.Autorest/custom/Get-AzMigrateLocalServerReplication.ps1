@@ -132,7 +132,15 @@ function Get-AzMigrateLocalServerReplication {
     )
     
     process {
-        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonSettings.ps1")
+        Import-Module $helperPath
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
+        Import-Module $helperPath
+
+        $hasTargetObjectId = $PSBoundParameters.ContainsKey('TargetObjectID')
+        $hasDiscoveredMachineId = $PSBoundParameters.ContainsKey('DiscoveredMachineId')
+        $hasResourceGroupId = $PSBoundParameters.ContainsKey('ResourceGroupID')
+        $hasProjectId = $PSBoundParameters.ContainsKey('ProjectID')
 
         $parameterSet = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('TargetObjectID')
@@ -143,105 +151,161 @@ function Get-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Remove('ResourceGroupID')
         $null = $PSBoundParameters.Remove('ProjectID')
         $null = $PSBoundParameters.Remove('MachineName')
+
+        # Set common ErrorVariable and ErrorAction for get behaviors
+        $null = $PSBoundParameters.Add('ErrorVariable', 'notPresent')
+        $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
+
+        # Validate ARM ID format from inputs
+        if ($hasTargetObjectId -and !(Test-AzureResourceIdFormat -Data $TargetObjectID -Format $IdFormats.ProtectedItemArmIdTemplate))
+        {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $TargetObjectID `
+                -ResourceType "ProtectedItem" `
+                -Format $IdFormats.ProtectedItemArmIdTemplate
+        }
+
+        if ($hasDiscoveredMachineId -and !(Test-AzureResourceIdFormat -Data $DiscoveredMachineId -Format $IdFormats.MachineArmIdTemplate))
+        {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $DiscoveredMachineId `
+                -ResourceType "DiscoveredMachine" `
+                -Format $IdFormats.MachineArmIdTemplate
+        }
+
+        if ($hasResourceGroupId -and !(Test-AzureResourceIdFormat -Data $ResourceGroupID -Format $IdFormats.ResourceGroupArmIdTemplate))
+        {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $ResourceGroupID `
+                -ResourceType "ResourceGroup" `
+                -Format $IdFormats.ResourceGroupArmIdTemplate
+        }
+
+        if ($hasProjectId -and !(Test-AzureResourceIdFormat -Data $ProjectID -Format $IdFormats.MigrateProjectArmIdTemplate))
+        {
+            throw New-InvalidResourceIdProvidedException `
+                -ResourceId $ProjectID `
+                -ResourceType "MigrateProject" `
+                -Format $IdFormats.MigrateProjectArmIdTemplate
+        }
      
-        if ($parameterSet -eq 'GetBySDSID') {
+        if ($parameterSet -eq 'GetBySDSID')
+        {
+            # $DiscoveredMachineId is in the format of
+            # "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OffAzure/{2}/{3}/machines/{4}"
             $machineIdArray = $DiscoveredMachineId.Split("/")
-            if ($machineIdArray.Length -lt 11) {
-                throw "Invalid machine ARM ID '$DiscoveredMachineId'"
-            }
-            $siteType = $machineIdArray[7]
-            $siteName = $machineIdArray[8]
-            $ResourceGroupName = $machineIdArray[4]
-            $ProtectedItemName = $machineIdArray[10]
+            $ResourceGroupName = $machineIdArray[4] # {1}
+            $siteType = $machineIdArray[7] # {2}
+            $siteName = $machineIdArray[8] # {3}
+            $ProtectedItemName = $machineIdArray[10] # {4}
 
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
             $null = $PSBoundParameters.Add('SiteName', $siteName)
 
-            if (($siteType -ne $SiteTypes.HyperVSites) -and ($siteType -ne $SiteTypes.VMwareSites)) {
+            if (($siteType -ne $SiteTypes.HyperVSites) -and ($siteType -ne $SiteTypes.VMwareSites))
+            {
                 throw "Unknown machine site '$siteName' with Type '$siteType'."
             }
             
-            # Occasionally, Get Machine Site will not return machine site even when the site exist,
-            # hence retry get machine site.
-            if ($siteType -eq $SiteTypes.VMwareSites) {
-                $siteObject = InvokeAzMigrateGetCommandWithRetries `
-                    -CommandName 'Az.Migrate\Get-AzMigrateSite' `
-                    -Parameters $PSBoundParameters `
-                    -ErrorMessage "Machine site '$siteName' with Type '$siteType' not found."
-            } elseif ($siteType -eq $SiteTypes.HyperVSites) {
-                $siteObject = InvokeAzMigrateGetCommandWithRetries `
-                    -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVSite' `
-                    -Parameters $PSBoundParameters `
-                    -ErrorMessage "Machine site '$siteName' with Type '$siteType' not found."
+            # Get site with ResourceGroupName and SiteName
+            if ($siteType -eq $SiteTypes.VMwareSites)
+            {
+                $siteObject = Az.Migrate.private\Get-AzMigrateSite_Get @PSBoundParameters
+            } elseif ($siteType -eq $SiteTypes.HyperVSites)
+            {
+                $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters
             }
+
+            if ($null -eq $siteObject)
+            {
+                throw New-AzMigrateSiteNotFoundException `
+                    -Name $siteName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -SiteType $siteType
+            }
+            $null = $PSBoundParameters.Remove('SiteName')
 
             # $siteObject is not null or exception would have been thrown
             $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
 
-            $null = $PSBoundParameters.Remove('SiteName')
-
-            # Get the migrate solution.
-            $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
+            # Get the migrate solution with ResourceGroupName, Name, MigrateProjectName
+            $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
             $null = $PSBoundParameters.Add("Name", $amhSolutionName)
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
-
-            $solution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate\Get-AzMigrateSolution' `
-                -Parameters $PSBoundParameters `
-                -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
-
-            $null = $PSBoundParameters.Remove("Name")
-            $null = $PSBoundParameters.Remove("MigrateProjectName")
-
-            $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-            if ([string]::IsNullOrEmpty($VaultName)) {
-                throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateLocalReplicationInfrastructure script before proceeding."
+            $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
+            if ($null -eq $solution)
+            {
+                throw New-AzMigrateSolutionNotFoundException `
+                    -Name $amhSolutionName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -ProjectName $ProjectName
             }
+            $null = $PSBoundParameters.Remove("MigrateProjectName")
+            $null = $PSBoundParameters.Remove("Name")
+
+            $vaultId = $solution.DetailExtendedDetail["vaultId"]
+            $vaultIdArray = $vaultId.Split("/")
+            if ($vaultIdArray.Length -lt 9)
+            {
+                throw New-ReplicationVaultNotFoundInAMHSolutionException -VaultId $vaultId
+            }
+            $VaultName = $vaultIdArray[8]
+
+            # Remove common ErrorVariable and ErrorAction for get behaviors
+            $null = $PSBoundParameters.Remove('ErrorVariable')
+            $null = $PSBoundParameters.Remove('ErrorAction')
     
+            # Get protected item with ResourceGroupName, VaultName, ProtectedItemName
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
             $null = $PSBoundParameters.Add("Name", $ProtectedItemName)
-
             return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
         }
             
-        if (($parameterSet -match 'List') -or ($parameterSet -eq 'GetByMachineName')) {
+        if (($parameterSet -match 'List') -or ($parameterSet -eq 'GetByMachineName'))
+        {
              # Retrieve ResourceGroupName, ProjectName if ListByID
-            if ($parameterSet -eq 'ListByID') {
+            if ($parameterSet -eq 'ListByID')
+            {
+                # $ResourceGroupID is in the format of "/subscriptions/{0}/resourceGroups/{1}"
                 $resourceGroupIdArray = $ResourceGroupID.Split('/')
-                if ($resourceGroupIdArray.Length -lt 5) {
-                    throw "Invalid resource group Id '$ResourceGroupID'."
-                }
+                $ResourceGroupName = $resourceGroupIdArray[4] # {1}
 
-                $ResourceGroupName = $resourceGroupIdArray[4]
-
+                # ProjecyID is in the format of
+                # "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Migrate/MigrateProjects/{2}"
                 $projectIdArray = $ProjectID.Split('/')
-                if ($projectIdArray.Length -lt 9) {
-                    throw "Invalid migrate project Id '$ProjectID'."
-                }
-
-                $ProjectName = $projectIdArray[8]
+                $ProjectName = $projectIdArray[8] # {2}
             }
 
-            $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
+            # Get the migrate solution with ResourceGroupName, Name, MigrateProjectName
+            $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
             $null = $PSBoundParameters.Add("Name", $amhSolutionName)
             $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
-
-            $solution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate\Get-AzMigrateSolution' `
-                -Parameters $PSBoundParameters `
-                -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
-
-            $null = $PSBoundParameters.Remove("Name")
-            $null = $PSBoundParameters.Remove("MigrateProjectName")
-
-            $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-            if ([string]::IsNullOrEmpty($VaultName)) {
-                throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateLocalReplicationInfrastructure script before proceeding."
+            $solution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
+            if ($null -eq $solution)
+            {
+                throw New-AzMigrateSolutionNotFoundException `
+                    -Name $amhSolutionName `
+                    -ResourceGroupName $ResourceGroupName `
+                    -ProjectName $ProjectName
             }
+            $null = $PSBoundParameters.Remove("MigrateProjectName")
+            $null = $PSBoundParameters.Remove("Name")
 
+            $vaultId = $solution.DetailExtendedDetail["vaultId"]
+            $vaultIdArray = $vaultId.Split("/")
+            if ($vaultIdArray.Length -lt 9)
+            {
+                throw New-ReplicationVaultNotFoundInAMHSolutionException -VaultId $vaultId
+            }
+            $VaultName = $vaultIdArray[8]
+
+            # Remove common ErrorVariable and ErrorAction for get behaviors
+            $null = $PSBoundParameters.Remove('ErrorVariable')
+            $null = $PSBoundParameters.Remove('ErrorAction')
+    
+            # Get protected item with ResourceGroupName, VaultName then filter
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
-                
             $replicatingItems = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
 
             if ($parameterSet -eq "GetByMachineName") {
@@ -250,22 +314,28 @@ function Get-AzMigrateLocalServerReplication {
             return $replicatingItems
         }
 
-        if (($parameterSet -eq "GetByInputObject") -or ($parameterSet -eq "GetByItemID")) {
-            if ($parameterSet -eq 'GetByInputObject') {
+        if (($parameterSet -eq "GetByInputObject") -or ($parameterSet -eq "GetByItemID"))
+        {
+            if ($parameterSet -eq 'GetByInputObject')
+            {
                 $TargetObjectID = $InputObject.Id
             }
-            $objectIdArray = $TargetObjectID.Split("/")
-            if ($objectIdArray.Length -lt 11) {
-                throw "Invalid target object ID '$TargetObjectID'."
-            }
 
-            $ResourceGroupName = $objectIdArray[4]
-            $VaultName = $objectIdArray[8]
-            $ProtectedItemName = $objectIdArray[10]
+            # $TargetObjectID is in the format of
+            # "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
+            $objectIdArray = $TargetObjectID.Split("/")
+            $ResourceGroupName = $objectIdArray[4] # {1}
+            $VaultName = $objectIdArray[8] # {2}
+            $ProtectedItemName = $objectIdArray[10] # {3}
+
+            # Remove common ErrorVariable and ErrorAction for get behaviors
+            $null = $PSBoundParameters.Remove('ErrorVariable')
+            $null = $PSBoundParameters.Remove('ErrorAction')
+
+            # Get protected item with ResourceGroupName, VaultName, ProtectedItemName
             $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
             $null = $PSBoundParameters.Add("VaultName", $VaultName)
             $null = $PSBoundParameters.Add("Name", $ProtectedItemName)
-    
             return Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
         }
     }

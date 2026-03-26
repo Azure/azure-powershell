@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
                 return;
             }
             {_instanceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonString>("instanceType"), out var __jsonInstanceType) ? (string)__jsonInstanceType : (string)InstanceType;}
-            {_affectedObjectDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("affectedObjectDetails"), out var __jsonAffectedObjectDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.JobModelCustomPropertiesAffectedObjectDetails.FromJson(__jsonAffectedObjectDetails) : AffectedObjectDetail;}
+            {_affectedObjectDetail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonObject>("affectedObjectDetails"), out var __jsonAffectedObjectDetails) ? Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AffectedObjectDetails.FromJson(__jsonAffectedObjectDetails) : AffectedObjectDetail;}
             AfterFromJson(json);
         }
 

@@ -49,5 +49,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RemoveServerKeyVaultKey");
         }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestAddVersionlessServerKeyVaultKey()
+        {
+            TestRunner.RunTestScript("Test-AddVersionlessServerKeyVaultKey");
+        }
     }
 }

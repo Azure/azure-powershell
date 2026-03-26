@@ -115,6 +115,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).MonitoringStatus = (string) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).MonitoringStatus, global::System.Convert.ToString);
             }
+            if (content.Contains("Cspm"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).Cspm = (bool?) content.GetValueForProperty("Cspm",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).Cspm, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ResourceCollection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).ResourceCollection = (bool?) content.GetValueForProperty("ResourceCollection",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).ResourceCollection, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -135,6 +143,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("MonitoringStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).MonitoringStatus = (string) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).MonitoringStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("Cspm"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).Cspm = (bool?) content.GetValueForProperty("Cspm",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).Cspm, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ResourceCollection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).ResourceCollection = (bool?) content.GetValueForProperty("ResourceCollection",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitorUpdatePropertiesInternal)this).ResourceCollection, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

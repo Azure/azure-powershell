@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional basis. Specified in bytes.")]
+            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 50 GiB. Upper limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional basis. Specified in bytes.")]
         [ValidateNotNullOrEmpty]
         public long UsageThreshold { get; set; }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "The type of the ANF volume")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("DataProtection")]
+        [PSArgumentCompleter("DataProtection", "ShortTermClone")]
         public string VolumeType { get; set; }
 
         [Parameter(
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = true,
             HelpMessage = "The service level of the ANF volume")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra", "StandardZRS", "Flexible")]
         public string ServiceLevel { get; set; }
 
         [Parameter(
@@ -336,6 +336,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "While auto splitting the short term clone volume, if the parent pool does not have enough space to accommodate the volume after split, it will be automatically resized, which will lead to increased billing. To accept capacity pool size auto grow and create a short term clone volume, set the property as accepted")]
+        [PSArgumentCompleter("Accepted", "Declined")]
+        public string AcceptGrowCapacityPoolForShortTermCloneSplit { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The desired state of the Advanced Ransomware Protection (ARP) feature. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string DesiredRansomwareProtectionState { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -379,13 +391,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             //else
             //{
                 PSNetAppFilesVolumeDataProtection dataProtection = null;
-                if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
+                if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null || !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState))
                 {
                     dataProtection = new PSNetAppFilesVolumeDataProtection
                     {
                         Replication = ReplicationObject,
-                        Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
-                        Backup = Backup
+                        Snapshot = !string.IsNullOrWhiteSpace(SnapshotPolicyId) ? new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId } : null,
+                        Backup = Backup,
+                        RansomwareProtection = !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState) ? new PSNetAppFilesVolumeRansomwareProperties { DesiredRansomwareProtectionState = DesiredRansomwareProtectionState } : null
                     };
                 }
 
@@ -429,7 +442,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                     SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
                     SmbNonBrowsable = SmbNonBrowsable,
                     CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy,
-                    CoolAccessTieringPolicy = CoolAccessTieringPolicy
+                    CoolAccessTieringPolicy = CoolAccessTieringPolicy,
+                    AcceptGrowCapacityPoolForShortTermCloneSplit = AcceptGrowCapacityPoolForShortTermCloneSplit
                 };
                 if (IsLargeVolume.IsPresent)
                 {

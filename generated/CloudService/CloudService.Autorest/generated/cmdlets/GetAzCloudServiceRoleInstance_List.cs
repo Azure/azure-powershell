@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCloudServiceRoleInstance_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstance", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"NetworkProfileNetworkInterface","InstanceViewStatuses"}, NewOutputProperties=new string[] {"NetworkProfileNetworkInterface","InstanceViewStatuses"}, ChangeDescription="The types of the properties 'NetworkProfileNetworkInterface' and 'InstanceViewStatuses' will be changed from object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstance))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Description(@"Gets the list of all role instances in a cloud service. Use nextLink property in the response to get the next page of role instances. Do this till nextLink is null to fetch all the role instances.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Generated]

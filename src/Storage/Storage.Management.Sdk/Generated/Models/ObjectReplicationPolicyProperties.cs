@@ -43,7 +43,11 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="metrics">Optional. The object replication policy metrics feature options.
         /// </param>
-        public ObjectReplicationPolicyProperties(string sourceAccount, string destinationAccount, string policyId = default(string), System.DateTime? enabledTime = default(System.DateTime?), System.Collections.Generic.IList<ObjectReplicationPolicyRule> rules = default(System.Collections.Generic.IList<ObjectReplicationPolicyRule>), ObjectReplicationPolicyPropertiesMetrics metrics = default(ObjectReplicationPolicyPropertiesMetrics))
+
+        /// <param name="priorityReplication">Optional. The object replication policy priority replication feature
+        /// options.
+        /// </param>
+        public ObjectReplicationPolicyProperties(string sourceAccount, string destinationAccount, string policyId = default(string), System.DateTime? enabledTime = default(System.DateTime?), System.Collections.Generic.IList<ObjectReplicationPolicyRule> rules = default(System.Collections.Generic.IList<ObjectReplicationPolicyRule>), ObjectReplicationPolicyPropertiesMetrics metrics = default(ObjectReplicationPolicyPropertiesMetrics), ObjectReplicationPolicyPropertiesPriorityReplication priorityReplication = default(ObjectReplicationPolicyPropertiesPriorityReplication))
 
         {
             this.PolicyId = policyId;
@@ -52,6 +56,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.DestinationAccount = destinationAccount;
             this.Rules = rules;
             this.Metrics = metrics;
+            this.PriorityReplication = priorityReplication;
             CustomInit();
         }
 
@@ -99,6 +104,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "metrics")]
         public ObjectReplicationPolicyPropertiesMetrics Metrics {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional. The object replication policy priority replication
+        /// feature options.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "priorityReplication")]
+        public ObjectReplicationPolicyPropertiesPriorityReplication PriorityReplication {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -128,6 +140,7 @@ namespace Microsoft.Azure.Management.Storage.Models
                     }
                 }
             }
+
 
         }
     }

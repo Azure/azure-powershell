@@ -271,4 +271,18 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('public int StorageProfileBackupRetentionDay', '[System.Management.Automation.ValidateRangeAttribute(7,35)]\n        public int StorageProfileBackupRetentionDay');
+  - where:
+      verb: Get|New|Update|Remove|Restart|Start|Stop
+      subject: ^FlexibleServer
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released in May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Get|New|Update|Remove|Restart|Restore
+      subject: ^Configuration$|^FirewallRule$|^Replica$|^Server$|^VirtualNetworkRule$|ServerConfigurationsList
+    set:
+      breaking-change:
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
 ```

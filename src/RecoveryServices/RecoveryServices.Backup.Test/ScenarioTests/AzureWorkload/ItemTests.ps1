@@ -331,16 +331,17 @@ function Test-AzureVmWorkloadEnableAutoProtectableItem
 
 function Test-AzureVmWorkloadBackupProtectionItem
 {
-	$resourceGroupName = "hiagarg"
-	$vaultName = "hiagaVault"	
+	$resourceGroupName = "sqlcontainer-pstest-rg" #"hiagarg"
+	$vaultName = "sqlcontainer-pstest-vault"	
 	$sourceDBName = "master"
-	$containerFriendlyName = "sql-pstest-vm2"
+	$containerFriendlyName = "sql-pstest-vm" #"sql-pstest-vm2"
 
 	try
 	{   
 		# test trigger adhoc backup
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID | Where-Object { $_.Name -match $sourceDBName -and $_.ContainerName -match $containerFriendlyName}
+
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID | Where-Object { $_.Name.EndsWith($sourceDBName) -and $_.ContainerName -match $containerFriendlyName}
 
 		$backupJob = Backup-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `

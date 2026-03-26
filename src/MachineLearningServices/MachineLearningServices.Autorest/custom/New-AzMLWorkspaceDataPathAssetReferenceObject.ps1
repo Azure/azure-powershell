@@ -36,6 +36,7 @@ function New-AzMLWorkspaceDataPathAssetReferenceObject {
         [Parameter(HelpMessage="The path of the file/directory in the datastore.")]
         [string]
         $Path,
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.ParameterBreakingChangeAttribute("ReferenceType", "16.0.0", "1.3.0", "2026/05")]
         [Parameter(Mandatory, HelpMessage="[Required] Specifies the type of asset reference.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ReferenceType])]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ReferenceType]

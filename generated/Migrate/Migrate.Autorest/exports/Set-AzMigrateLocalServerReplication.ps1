@@ -35,7 +35,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-DYNAMICMEMORYCONFIG <ProtectedItemDynamicMemoryConfig>: Specifies the dynamic memory configration of RAM.
+DYNAMICMEMORYCONFIG <ProtectedItemDynamicMemoryConfig>: Specifies the dynamic memory configuration of RAM.
   MaximumMemoryInMegaByte <Int64>: Gets or sets maximum memory in MB.
   MinimumMemoryInMegaByte <Int64>: Gets or sets minimum memory in MB.
   TargetMemoryBufferPercentage <Int32>: Gets or sets target memory buffer in %.
@@ -69,7 +69,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]
-    # Specifies the dynamic memory configration of RAM.
+    # Specifies the dynamic memory configuration of RAM.
     # To construct, see NOTES section for DYNAMICMEMORYCONFIG properties and create a hash table.
     ${DynamicMemoryConfig},
 
@@ -84,6 +84,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]]
     # Specifies the nics on the source server to be included for replication.
     ${NicToInclude},
+
+    [Parameter()]
+    [ArgumentCompleter({ "WindowsGuest" , "LinuxGuest" })]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the OS type of the VM, either WindowsGuest or LinuxGuest.
+    ${OsType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]

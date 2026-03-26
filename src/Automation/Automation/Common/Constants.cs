@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             public const string Python3 = "Python3";
 
-            public const string Powershell72 = "Powershell72";
+            public const string PowerShell72 = "PowerShell72";
         }
 
         public static class RuntimeVersion

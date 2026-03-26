@@ -12,16 +12,9 @@ Get the child resources of a resource on which user has eligible access
 
 ## SYNTAX
 
-### Get (Default)
 ```
 Get-AzRoleEligibleChildResource -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzRoleEligibleChildResource -InputObject <IAuthorizationIdentity> [-Filter <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +42,7 @@ Get all child resources of a resource `scope` that the calling user has eligible
 ### Example 2: List all child resources filtered by resource type
 ```powershell
 $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-$filter = "resoureType eq 'resourcegroup'"
+$filter = "resourceType eq 'resourcegroup'"
 Get-AzRoleEligibleChildResource -Scope $scope -Filter $filter
 ```
 
@@ -99,28 +92,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Scope
 The scope of the role management policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -135,11 +112,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IEligibleChildResource
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IEligibleChildResource
 
 ## NOTES
 

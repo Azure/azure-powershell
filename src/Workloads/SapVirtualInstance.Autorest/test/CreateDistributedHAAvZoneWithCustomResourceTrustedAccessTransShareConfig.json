@@ -234,8 +234,8 @@
     "storageConfiguration": {
       "transportFileShareConfiguration": {
         "configurationType": "Mount",
-        "id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG/providers/Microsoft.Storage/storageAccounts/psclitfstorageaccount1/fileServices/default/shares/usrsaptransnonprod",
-        "privateEndpointId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG/providers/Microsoft.Network/privateEndpoints/psclitfstorageaccount1_pe"
+        "id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG1/providers/Microsoft.Storage/storageAccounts/psclitfstorageaccount2/fileServices/default/shares/usrsaptransnonprod",
+        "privateEndpointId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG1/providers/Microsoft.Network/privateEndpoints/psclitfstorageaccount2_pe"
       }
     }
   },

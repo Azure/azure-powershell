@@ -16,14 +16,14 @@
 
 <#
 .Synopsis
-Trigger the continuation of an update for a cluster with a matching update strategy that has paused after completing a segment of the update.
+Trigger the continuation of an continue for a cluster with a matching continue strategy that has paused after completing a segment of the continue
 .Description
-Trigger the continuation of an update for a cluster with a matching update strategy that has paused after completing a segment of the update.
+Trigger the continuation of an continue for a cluster with a matching continue strategy that has paused after completing a segment of the continue
 .Example
 Invoke-AzNetworkCloudClusterContinueVersionUpdate -ResourceGroupName resourceGroupName -ClusterName clusterName -SubscriptionId subscriptionId -MachineGroupTargetingMode "AlphaByRack"  
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterContinueUpdateVersionParameters
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterContinueUpdateVersionParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
@@ -34,7 +34,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CLUSTERCONTINUEUPDATEVERSIONPARAMETER <IClusterContinueUpdateVersionParameters>: ClusterContinueUpdateVersionParameters represents the body of the request to continue the update of a cluster version.
-  [MachineGroupTargetingMode <ClusterContinueUpdateVersionMachineGroupTargetingMode?>]: The mode by which the cluster will target the next grouping of servers to continue the update.
+  [MachineGroupTargetingMode <String>]: The mode by which the cluster will target the next grouping of servers to continue the update.
 
 INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the Kubernetes cluster agent pool.
@@ -68,6 +68,8 @@ function Invoke-AzNetworkCloudClusterContinueVersionUpdate {
 param(
     [Parameter(ParameterSetName='Continue', Mandatory)]
     [Parameter(ParameterSetName='ContinueExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ContinueViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ContinueViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the cluster.
@@ -75,6 +77,8 @@ param(
 
     [Parameter(ParameterSetName='Continue', Mandatory)]
     [Parameter(ParameterSetName='ContinueExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ContinueViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ContinueViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -83,6 +87,8 @@ param(
 
     [Parameter(ParameterSetName='Continue')]
     [Parameter(ParameterSetName='ContinueExpanded')]
+    [Parameter(ParameterSetName='ContinueViaJsonFilePath')]
+    [Parameter(ParameterSetName='ContinueViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -95,24 +101,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Continue', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ContinueViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterContinueUpdateVersionParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterContinueUpdateVersionParameters]
     # ClusterContinueUpdateVersionParameters represents the body of the request to continue the update of a cluster version.
-    # To construct, see NOTES section for CLUSTERCONTINUEUPDATEVERSIONPARAMETER properties and create a hash table.
     ${ClusterContinueUpdateVersionParameter},
 
     [Parameter(ParameterSetName='ContinueExpanded')]
     [Parameter(ParameterSetName='ContinueViaIdentityExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterContinueUpdateVersionMachineGroupTargetingMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("AlphaByRack")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterContinueUpdateVersionMachineGroupTargetingMode]
+    [System.String]
     # The mode by which the cluster will target the next grouping of servers to continue the update.
     ${MachineGroupTargetingMode},
+
+    [Parameter(ParameterSetName='ContinueViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Continue operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ContinueViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Continue operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -188,6 +204,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -211,10 +236,10 @@ begin {
             ContinueExpanded = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudClusterContinueVersionUpdate_ContinueExpanded';
             ContinueViaIdentity = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudClusterContinueVersionUpdate_ContinueViaIdentity';
             ContinueViaIdentityExpanded = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudClusterContinueVersionUpdate_ContinueViaIdentityExpanded';
+            ContinueViaJsonFilePath = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudClusterContinueVersionUpdate_ContinueViaJsonFilePath';
+            ContinueViaJsonString = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudClusterContinueVersionUpdate_ContinueViaJsonString';
         }
-        if (('Continue', 'ContinueExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Continue', 'ContinueExpanded', 'ContinueViaJsonFilePath', 'ContinueViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -228,6 +253,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

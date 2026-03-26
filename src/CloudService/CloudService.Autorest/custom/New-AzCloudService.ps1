@@ -22,6 +22,7 @@ Create a CloudService Resource
 
 function New-AzCloudService {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService", DeprecatedOutputProperties = ("Zone, Extension, LoadBalancerConfiguration, Secret, Role"), NewOutputProperties = ("Zone, Extension, LoadBalancerConfiguration, Secret, Role will be changed from object to 'List'."))]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='quickCreateParameterSetWithoutStorage', Mandatory)]

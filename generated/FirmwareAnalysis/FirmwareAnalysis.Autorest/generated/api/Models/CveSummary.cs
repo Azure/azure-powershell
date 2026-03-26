@@ -19,50 +19,57 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourceProperties __summaryResourceProperties = new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.SummaryResourceProperties();
 
-        /// <summary>Backing field for <see cref="Critical" /> property.</summary>
-        private long? _critical;
+        /// <summary>Backing field for <see cref="CriticalCveCount" /> property.</summary>
+        private long? _criticalCveCount;
 
         /// <summary>The total number of critical severity CVEs detected</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? Critical { get => this._critical; set => this._critical = value; }
+        public long? CriticalCveCount { get => this._criticalCveCount; set => this._criticalCveCount = value; }
 
-        /// <summary>Backing field for <see cref="High" /> property.</summary>
-        private long? _high;
+        /// <summary>Backing field for <see cref="HighCveCount" /> property.</summary>
+        private long? _highCveCount;
 
         /// <summary>The total number of high severity CVEs detected</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? High { get => this._high; set => this._high = value; }
+        public long? HighCveCount { get => this._highCveCount; set => this._highCveCount = value; }
 
-        /// <summary>Backing field for <see cref="Low" /> property.</summary>
-        private long? _low;
+        /// <summary>Backing field for <see cref="LowCveCount" /> property.</summary>
+        private long? _lowCveCount;
 
         /// <summary>The total number of low severity CVEs detected</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? Low { get => this._low; set => this._low = value; }
+        public long? LowCveCount { get => this._lowCveCount; set => this._lowCveCount = value; }
 
-        /// <summary>Backing field for <see cref="Medium" /> property.</summary>
-        private long? _medium;
+        /// <summary>Backing field for <see cref="MediumCveCount" /> property.</summary>
+        private long? _mediumCveCount;
 
         /// <summary>The total number of medium severity CVEs detected</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? Medium { get => this._medium; set => this._medium = value; }
+        public long? MediumCveCount { get => this._mediumCveCount; set => this._mediumCveCount = value; }
 
-        /// <summary>Describes the type of summary.</summary>
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState = value ?? null; }
+
+        /// <summary>The status of the last operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).ProvisioningState; }
+
+        /// <summary>The type of summary.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Inherited)]
-        public string SummaryType { get => "CVE"; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).SummaryType = "CVE"; }
+        public string SummaryType { get => "CommonVulnerabilitiesAndExposures"; set => ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)__summaryResourceProperties).SummaryType = "CommonVulnerabilitiesAndExposures"; }
 
-        /// <summary>Backing field for <see cref="Unknown" /> property.</summary>
-        private long? _unknown;
+        /// <summary>Backing field for <see cref="UnknownCveCount" /> property.</summary>
+        private long? _unknownCveCount;
 
         /// <summary>The total number of unknown severity CVEs detected</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Origin(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.PropertyOrigin.Owned)]
-        public long? Unknown { get => this._unknown; set => this._unknown = value; }
+        public long? UnknownCveCount { get => this._unknownCveCount; set => this._unknownCveCount = value; }
 
         /// <summary>Creates an new <see cref="CveSummary" /> instance.</summary>
         public CveSummary()
         {
-            this.__summaryResourceProperties.SummaryType = "CVE";
+            this.__summaryResourceProperties.SummaryType = "CommonVulnerabilitiesAndExposures";
         }
 
         /// <summary>Validates that this object meets the validation criteria.</summary>
@@ -90,9 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"The total number of critical severity CVEs detected",
-        SerializedName = @"critical",
+        SerializedName = @"criticalCveCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? Critical { get; set; }
+        long? CriticalCveCount { get; set; }
         /// <summary>The total number of high severity CVEs detected</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -101,9 +108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"The total number of high severity CVEs detected",
-        SerializedName = @"high",
+        SerializedName = @"highCveCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? High { get; set; }
+        long? HighCveCount { get; set; }
         /// <summary>The total number of low severity CVEs detected</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -112,9 +119,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"The total number of low severity CVEs detected",
-        SerializedName = @"low",
+        SerializedName = @"lowCveCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? Low { get; set; }
+        long? LowCveCount { get; set; }
         /// <summary>The total number of medium severity CVEs detected</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -123,9 +130,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"The total number of medium severity CVEs detected",
-        SerializedName = @"medium",
+        SerializedName = @"mediumCveCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? Medium { get; set; }
+        long? MediumCveCount { get; set; }
         /// <summary>The total number of unknown severity CVEs detected</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Info(
         Required = false,
@@ -134,9 +141,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Create = true,
         Update = true,
         Description = @"The total number of unknown severity CVEs detected",
-        SerializedName = @"unknown",
+        SerializedName = @"unknownCveCount",
         PossibleTypes = new [] { typeof(long) })]
-        long? Unknown { get; set; }
+        long? UnknownCveCount { get; set; }
 
     }
     /// Properties for a CVE analysis summary.
@@ -144,15 +151,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
         Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal
     {
         /// <summary>The total number of critical severity CVEs detected</summary>
-        long? Critical { get; set; }
+        long? CriticalCveCount { get; set; }
         /// <summary>The total number of high severity CVEs detected</summary>
-        long? High { get; set; }
+        long? HighCveCount { get; set; }
         /// <summary>The total number of low severity CVEs detected</summary>
-        long? Low { get; set; }
+        long? LowCveCount { get; set; }
         /// <summary>The total number of medium severity CVEs detected</summary>
-        long? Medium { get; set; }
+        long? MediumCveCount { get; set; }
         /// <summary>The total number of unknown severity CVEs detected</summary>
-        long? Unknown { get; set; }
+        long? UnknownCveCount { get; set; }
 
     }
 }

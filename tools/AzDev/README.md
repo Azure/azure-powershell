@@ -13,6 +13,8 @@ Like many other tools, this module targets `net8.0` so always run it in PowerShe
   - [Connect azure-powershell and azure-powershell-common](#connect-azure-powershell-and-azure-powershell-common)
   - [Autorest helper](#autorest-helper)
     - [Open swagger online](#open-swagger-online)
+  - [GitHub Helpers](#github-helpers)
+    - [Merge PRs](#merge-prs)
 - [Development](#development)
   - [Design](#design)
   - [Testing](#testing)
@@ -35,21 +37,23 @@ Set-DevContext -RepoRoot 'C:\repos\azure-powershell'
 `Get-DevModule` and `Get-DevProject` are the main cmdlets to get the inventory of the repo.
 
 ```powershell
+# Get first 10 modules
 PS /> Get-DevModule | Select-Object -First 10
 
-Name                 Type          Path
-----                 ----          ----
-Maps                 AutoRestBased /Users/azps/workspace/azure-powershell/src/Maps
-Kusto                AutoRestBased /Users/azps/workspace/azure-powershell/src/Kusto
-StorageMover         AutoRestBased /Users/azps/workspace/azure-powershell/src/StorageMover
-ResourceGraph        Hybrid        /Users/azps/workspace/azure-powershell/src/ResourceGraph
-Terraform            AutoRestBased /Users/azps/workspace/azure-powershell/src/Terraform
-PostgreSql           AutoRestBased /Users/azps/workspace/azure-powershell/src/PostgreSql
-SpringCloud          AutoRestBased /Users/azps/workspace/azure-powershell/src/SpringCloud
-ManagedNetworkFabric AutoRestBased /Users/azps/workspace/azure-powershell/src/ManagedNetworkFabric
-ServiceBus           Hybrid        /Users/azps/workspace/azure-powershell/src/ServiceBus
-Mdp                  AutoRestBased /Users/azps/workspace/azure-powershell/src/Mdp
+Name             Type          Path
+----             ----          ----
+Accounts         SdkBased      C:\azure-powershell\src\Accounts
+ADDomainServices AutoRestBased C:\azure-powershell\src\ADDomainServices
+Advisor          AutoRestBased C:\azure-powershell\src\Advisor
+Aks              Hybrid        C:\azure-powershell\src\Aks
+AksArc           AutoRestBased C:\azure-powershell\src\AksArc
+Alb              AutoRestBased C:\azure-powershell\src\Alb
+AlertsManagement Hybrid        C:\azure-powershell\src\AlertsManagement
+AnalysisServices SdkBased      C:\azure-powershell\src\AnalysisServices
+ApiManagement    SdkBased      C:\azure-powershell\src\ApiManagement
+App              AutoRestBased C:\azure-powershell\src\App
 
+# Group all projects by type
 PS /> Get-DevProject | Group-Object -Property Type | Select-Object -Property Name,Count | Sort-Object -Property Count -Descending
 
 Name          Count
@@ -61,15 +65,23 @@ Test             70
 Track1Sdk        48
 Other             8
 LegacyHelper      4
+
+# Get statistics of autorest v3/v4
+PS /> Get-DevProject -Type AutoRestBased | Group-Object -Property SubType
+
+Count Name                      Group
+----- ----                      -----
+   50 v3                        {Advisor.Autorest, ApplicationInsights.Autorest, ArcResourceBridge.Autorest, Attestation.Autorest…}
+  127 v4                        {ADDomainServices.Autorest, Aks.Autorest, AksArc.Autorest, Alb.Autorest…}
 ```
 
 ### Update Assemblies in `src/lib`
 
-`Update-DevDependency` is used to update the assemblies in the `src/lib` directory. This is useful because it saves you from having to manually download / extract / pick the correct one from the package.
+`Update-DevAssembly` is used to update the assemblies in the `src/lib` directory. This is useful because it saves you from having to manually download / extract / pick the correct one from the package.
 
 ```powershell
 # Update the assembly manifest manually, then
-Update-DevDependency
+Update-DevAssembly
 # Check in all the changes
 ```
 
@@ -104,6 +116,37 @@ Multiple swagger references found in [SapVirtualInstance.Autorest]
 Enter the number corresponding to your selection
 1
 Opening https://github.com/Azure/azure-rest-api-specs/blob/202321f386ea5b0c103b46902d43b3d3c50e029c/specification/workloads/resource-manager/Microsoft.Workloads/SAPVirtualInstance/readme.md in default browser...
+```
+
+### GitHub Helpers
+
+Prerequisite: You need to install [GitHub CLI](https://cli.github.com/) and set up GitHub authentication first with `gh auth login`.
+
+#### Merge PRs
+
+`Merge-DevPullRequest` (alias: `Merge-DevPR`) helps you merge pull requests in the azure-powershell repo. It supports two parameter sets: merging a specific PR by number, and merging all archive PRs.
+
+With the `-AllArchivePR` switch, the cmdlet lists all the matching PRs, ordered by CreatedAt ascending, and prompts you to confirm before merging. Use the `-Force` switch to skip the confirmation. For safety, this parameter set only supports merging PRs with the "[skip ci]" prefix in the title and created by the `azure-powershell-bot` user, which are the archive PRs for generated modules.
+
+The cmdlet returns the list of merged PRs. If any PR fails to merge, an error is thrown and no results are returned.
+
+```powershell
+PS C:\> Merge-DevPullRequest -Approve -Number 28690
+
+Do you want to approve and merge the following pull request?
+- 28690  [skip ci] Archive e36b0a91ac13ad8c173760dab2d1c038495d41cc
+Type Y to approve and merge, N to cancel: Y
+
+No.   Title                                      CreatedBy        CreatedAt                  Url
+---   -----                                      ---------        ---------                  ---
+28690     [skip ci] Archive e36b0a91ac13ad8c173760dab2d1c038495d41cc        azure-powershell-bot           6/10/2024 2:15:30 PM
+
+PS C:\> Merge-DevPullRequest -Approve -AllArchivePR -Force
+
+No.   Title                                      CreatedBy        CreatedAt                  Url
+---   -----                                      ---------        ---------                  ---
+28690    [skip ci] Archive e36b0a91ac13ad8c173760dab2d1c038495d41cc        azure-powershell-bot           6/10/2024 2:15:30 PM
+28689    [skip ci] Archive deed8db801365cc26557b46c7a8a01d134f0b524             azure-powershell-bot         6/29/2024 11:05:12 AM
 ```
 
 ## Development

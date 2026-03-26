@@ -99,10 +99,69 @@ function Remove-AzFunctionApp {
 
             # Set the name variable for the ShouldProcess and ShouldContinue calls
             $Name = $InputObject.Name
+            $ResourceGroupName = $InputObject.ResourceGroup
         }
 
-        # Set the option to not delete an empty App Service plan
-        $PSBoundParameters.Add("DeleteEmptyServerFarm", $false)  | Out-Null
+        # Determine if the function app is a Flex Consumption app
+        $deleteEmptyServerFarm = $false
+
+        try {
+            # Get the function app to retrieve its service plan
+            $params = @{
+                Name = $Name
+                ResourceGroupName = $ResourceGroupName
+            }
+
+            if ($PSBoundParameters.ContainsKey("SubscriptionId"))
+            {
+                $params['SubscriptionId'] = $SubscriptionId
+            }
+
+            if ($PSBoundParameters.ContainsKey("HttpPipelineAppend"))
+            {
+                $params['HttpPipelineAppend'] = $HttpPipelineAppend
+            }
+
+            if ($PSBoundParameters.ContainsKey("HttpPipelinePrepend"))
+            {
+                $params['HttpPipelinePrepend'] = $HttpPipelinePrepend
+            }
+
+            $functionApp = $null
+            $oldWarningPreference = $WarningPreference
+            $WarningPreference = 'SilentlyContinue'
+            try
+            {
+                $functionApp = Az.Functions\Get-AzFunctionApp @params -ErrorAction SilentlyContinue
+            }
+            finally
+            {
+                $WarningPreference = $oldWarningPreference
+            }
+
+            if ($functionApp -and $functionApp.ServerFarmId)
+            {
+                # Get the app service plan details
+                $planParams = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
+                                                     -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
+
+                $planInfo = GetFunctionAppServicePlanInfo -ServerFarmId $functionApp.ServerFarmId @planParams -ErrorAction SilentlyContinue
+
+                # Check if the plan is Flex Consumption
+                if ($planInfo -and $planInfo.SkuTier -eq "FlexConsumption")
+                {
+                    $message = "Flex Consumption plan '$($planInfo.Name)' will be removed along with the function app."
+                    Write-Warning $message
+                    $deleteEmptyServerFarm = $true
+                }
+            }
+        }
+        catch {
+            # If we can't determine the plan type, default to not deleting the server farm
+        }
+
+        # Set the option to delete the App Service plan for Flex Consumption, otherwise don't delete
+        $PSBoundParameters.Add("DeleteEmptyServerFarm", $deleteEmptyServerFarm)  | Out-Null
 
         if ($PsCmdlet.ShouldProcess($Name, "Deleting function app"))
         {

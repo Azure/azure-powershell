@@ -42,8 +42,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// Gets information about an available Service Fabric cluster code version.
         /// </summary>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         /// <param name='clusterVersion'>
         /// The cluster code version.
@@ -252,8 +251,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// environment.
         /// </summary>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         /// <param name='environment'>
         /// The operating system of the cluster. The default means all.
@@ -472,8 +470,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// location.
         /// </summary>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -672,8 +669,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// environment.
         /// </summary>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster
-        /// location.
+        /// The location parameter.
         /// </param>
         /// <param name='environment'>
         /// The operating system of the cluster. The default means all.

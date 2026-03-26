@@ -13,11 +13,11 @@ while(-not $mockingPath) {
 
 Describe 'Update-AzStreamAnalyticsFunction' {
     It 'UpdateExpanded' {
-        { Update-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.function01 -File (Join-Path $PSScriptRoot 'template-json\Function_JavascriptUdf.json') } | Should -Not -Throw
+        { Update-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.function01 -File (Join-Path $PSScriptRoot 'template-json' 'Function_JavascriptUdf.json') } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded'  {
       $result = Get-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job01 -Name $env.function01
-      { Update-AzStreamAnalyticsFunction -InputObject $result -File (Join-Path $PSScriptRoot 'template-json\Function_JavascriptUdf.json') } | Should -Not -Throw
+      { Update-AzStreamAnalyticsFunction -InputObject $result -File (Join-Path $PSScriptRoot 'template-json' 'Function_JavascriptUdf.json') } | Should -Not -Throw
     }
 }

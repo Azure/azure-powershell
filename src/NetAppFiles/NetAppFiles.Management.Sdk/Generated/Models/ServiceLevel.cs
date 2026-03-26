@@ -29,5 +29,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Zone redundant storage service level. This will be deprecated soon.
         /// </summary>
         public const string StandardZRS = "StandardZRS";
+        /// <summary>
+        /// Flexible service level
+        /// </summary>
+        public const string Flexible = "Flexible";
     }
 }

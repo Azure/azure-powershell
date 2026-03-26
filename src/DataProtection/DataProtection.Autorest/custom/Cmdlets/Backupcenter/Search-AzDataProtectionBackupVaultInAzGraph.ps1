@@ -94,7 +94,7 @@
         foreach($argVault in $argAllVaults)
         {
             $jsonStringResponse = $argVault | ConvertTo-Json -Depth 100                                                 
-            $backupVaults += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.BackupVaultResource]::FromJsonString($jsonStringResponse)
+            $backupVaults += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupVaultResource]::FromJsonString($jsonStringResponse)
         }
         return $backupVaults
     }

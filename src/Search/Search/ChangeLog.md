@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 0.11.0
+* Added support for 2025-05-01 RP API 
+* Added support for ACC compute type option
+* Added support for data exfiltration protection option
+* Added support for network bypass option
+* Added support for NSP configuration GET LIST commands
+
 ## Version 0.10.1
 * Upgraded nuget package to signed package.
 

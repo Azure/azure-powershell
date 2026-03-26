@@ -45,6 +45,9 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.).
         /// </param>
 
+        /// <param name="locationInfo">
+        /// </param>
+
         /// <param name="capabilities">The capability information in the specified SKU, including file encryption,
         /// network ACLs, change notification, etc.
         /// </param>
@@ -52,7 +55,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="restrictions">The restrictions because of which SKU cannot be used. This is empty if
         /// there are no restrictions.
         /// </param>
-        public SkuInformation(string name, SkuTier? tier = default(SkuTier?), string resourceType = default(string), string kind = default(string), System.Collections.Generic.IList<string> locations = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<SKUCapability> capabilities = default(System.Collections.Generic.IList<SKUCapability>), System.Collections.Generic.IList<Restriction> restrictions = default(System.Collections.Generic.IList<Restriction>))
+        public SkuInformation(string name, SkuTier? tier = default(SkuTier?), string resourceType = default(string), string kind = default(string), System.Collections.Generic.IList<string> locations = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<SkuInformationLocationInfoItem> locationInfo = default(System.Collections.Generic.IList<SkuInformationLocationInfoItem>), System.Collections.Generic.IList<SKUCapability> capabilities = default(System.Collections.Generic.IList<SKUCapability>), System.Collections.Generic.IList<Restriction> restrictions = default(System.Collections.Generic.IList<Restriction>))
 
         {
             this.Name = name;
@@ -60,6 +63,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.ResourceType = resourceType;
             this.Kind = kind;
             this.Locations = locations;
+            this.LocationInfo = locationInfo;
             this.Capabilities = capabilities;
             this.Restrictions = restrictions;
             CustomInit();
@@ -105,6 +109,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         public System.Collections.Generic.IList<string> Locations {get; private set; }
 
         /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "locationInfo")]
+        public System.Collections.Generic.IList<SkuInformationLocationInfoItem> LocationInfo {get; set; }
+
+        /// <summary>
         /// Gets the capability information in the specified SKU, including file
         /// encryption, network ACLs, change notification, etc.
         /// </summary>
@@ -129,6 +139,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Name");
             }
+
 
 
 

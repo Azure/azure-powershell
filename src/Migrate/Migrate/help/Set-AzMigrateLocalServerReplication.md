@@ -15,7 +15,7 @@ Updates the target properties for the replicating server.
 ```
 Set-AzMigrateLocalServerReplication -TargetObjectID <String> [-TargetVMCPUCore <Int32>]
  [-IsDynamicMemoryEnabled <String>] [-DynamicMemoryConfig <ProtectedItemDynamicMemoryConfig>]
- [-TargetVMRam <Int64>] [-NicToInclude <AzLocalNicInput[]>] [-SubscriptionId <String>]
+ [-TargetVMRam <Int64>] [-NicToInclude <AzLocalNicInput[]>] [-OsType <String>] [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -119,6 +119,21 @@ Specifies the nics on the source server to be included for replication.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OsType
+Specifies the OS type of the VM, either WindowsGuest or LinuxGuest.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

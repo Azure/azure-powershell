@@ -38,15 +38,19 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="ipRules">Sets the IP ACL rules
         /// </param>
 
+        /// <param name="ipv6Rules">Sets the IPv6 ACL rules.
+        /// </param>
+
         /// <param name="defaultAction">Specifies the default action of allow or deny when no other rules match.
         /// Possible values include: &#39;Allow&#39;, &#39;Deny&#39;</param>
-        public NetworkRuleSet(DefaultAction defaultAction, string bypass = default(string), System.Collections.Generic.IList<ResourceAccessRule> resourceAccessRules = default(System.Collections.Generic.IList<ResourceAccessRule>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), System.Collections.Generic.IList<IPRule> ipRules = default(System.Collections.Generic.IList<IPRule>))
+        public NetworkRuleSet(DefaultAction defaultAction, string bypass = default(string), System.Collections.Generic.IList<ResourceAccessRule> resourceAccessRules = default(System.Collections.Generic.IList<ResourceAccessRule>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), System.Collections.Generic.IList<IPRule> ipRules = default(System.Collections.Generic.IList<IPRule>), System.Collections.Generic.IList<IPRule> ipv6Rules = default(System.Collections.Generic.IList<IPRule>))
 
         {
             this.Bypass = bypass;
             this.ResourceAccessRules = resourceAccessRules;
             this.VirtualNetworkRules = virtualNetworkRules;
             this.IPRules = ipRules;
+            this.Ipv6Rules = ipv6Rules;
             this.DefaultAction = defaultAction;
             CustomInit();
         }
@@ -85,6 +89,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         public System.Collections.Generic.IList<IPRule> IPRules {get; set; }
 
         /// <summary>
+        /// Gets or sets sets the IPv6 ACL rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ipv6Rules")]
+        public System.Collections.Generic.IList<IPRule> Ipv6Rules {get; set; }
+
+        /// <summary>
         /// Gets or sets specifies the default action of allow or deny when no other
         /// rules match. Possible values include: &#39;Allow&#39;, &#39;Deny&#39;
         /// </summary>
@@ -113,6 +123,16 @@ namespace Microsoft.Azure.Management.Storage.Models
             if (this.IPRules != null)
             {
                 foreach (var element in this.IPRules)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+            if (this.Ipv6Rules != null)
+            {
+                foreach (var element in this.Ipv6Rules)
                 {
                     if (element != null)
                     {

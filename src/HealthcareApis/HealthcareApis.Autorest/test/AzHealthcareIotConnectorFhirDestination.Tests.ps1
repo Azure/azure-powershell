@@ -30,6 +30,14 @@ Describe 'AzHealthcareIotConnectorFhirDestination' {
         } | Should -Not -Throw
     }
 
+    It 'UpdateExpanded' -skip {
+        {
+            $arr = @()
+            $config = Update-AzHealthcareIotConnectorFhirDestination -FhirDestinationName $env.iotFhirDestination1 -IotConnectorName $env.iotConnector1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -FhirServiceResourceId "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.HealthcareApis/workspaces/$($env.apiWorkspace1)/fhirservices/$($env.fhirService1)" -ResourceIdentityResolutionType 'Create' -FhirMappingContent @{"templateType"="CollectionFhirTemplate";"template"=$arr}
+            $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.iotConnector1)/$($env.iotFhirDestination1)"
+        } | Should -Not -Throw
+    }
+
     It 'Delete' {
         {
             Remove-AzHealthcareIotConnectorFhirDestination -FhirDestinationName $env.iotFhirDestination1 -IotConnectorName $env.iotConnector1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1
@@ -48,6 +56,14 @@ Describe 'AzHealthcareIotConnectorFhirDestination' {
         {
             $config = Get-AzHealthcareFhirDestination -IotConnectorName $env.iotConnector1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1
             $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityWorkspaceExpanded' -skip {
+        {
+            $config = Get-AzHealthcareIotConnectorFhirDestination -FhirDestinationName $env.iotFhirDestination2 -IotConnectorName $env.iotConnector1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1
+            $config = Update-AzHealthcareIotConnectorFhirDestination -InputObject $config
+            $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.iotConnector1)/$($env.iotFhirDestination2)"
         } | Should -Not -Throw
     }
 

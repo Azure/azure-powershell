@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzScVmmVirtualNetwork
 
 ## SYNOPSIS
-update the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzScVmmVirtualNetwork -InputObject <IScVmmIdentity> [-Tag <Hashtable>] [-
 ```
 
 ## DESCRIPTION
-update the VirtualNetworks resource.
+Update the VirtualNetworks resource.
 
 ## EXAMPLES
 

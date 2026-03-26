@@ -286,7 +286,7 @@ Customer Managed Key details of the resource.
 To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IEncryptionSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IEncryptionSettings
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -554,7 +554,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource
 
 ## NOTES
 

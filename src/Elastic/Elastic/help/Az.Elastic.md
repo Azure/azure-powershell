@@ -12,104 +12,116 @@ Microsoft Azure PowerShell: Elastic cmdlets
 
 ## Az.Elastic Cmdlets
 ### [Get-AzElasticAllTrafficFilter](Get-AzElasticAllTrafficFilter.md)
-Get the list of all traffic filters for the account.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 
 ### [Get-AzElasticBillingInfo](Get-AzElasticBillingInfo.md)
-Get marketplace and organization info mapped to the given monitor.
+Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
 
 ### [Get-AzElasticConnectedPartnerResource](Get-AzElasticConnectedPartnerResource.md)
-List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
+List all active deployments associated with the marketplace subscription linked to the given Elastic monitor resource.
 
 ### [Get-AzElasticDeploymentInfo](Get-AzElasticDeploymentInfo.md)
-Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
+Fetch detailed information about Elastic cloud deployments corresponding to the Elastic monitor resource.
 
 ### [Get-AzElasticDetailUpgradableVersion](Get-AzElasticDetailUpgradableVersion.md)
-List of upgradable versions for a given monitor resource.
+List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
 
 ### [Get-AzElasticDetailVMIngestion](Get-AzElasticDetailVMIngestion.md)
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
+List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 
 ### [Get-AzElasticListAssociatedTrafficFilter](Get-AzElasticListAssociatedTrafficFilter.md)
-Get the list of all associated traffic filters for the given deployment.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 
 ### [Get-AzElasticMonitor](Get-AzElasticMonitor.md)
-Get the properties of a specific monitor resource.
+Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.
 
 ### [Get-AzElasticMonitoredResource](Get-AzElasticMonitoredResource.md)
-List the resources currently being monitored by the Elastic monitor resource.
+List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
+
+### [Get-AzElasticMonitoredSubscription](Get-AzElasticMonitoredSubscription.md)
+Get detailed information about all subscriptions currently being monitored by the Elastic monitor resource.
 
 ### [Get-AzElasticOpenAi](Get-AzElasticOpenAi.md)
-Get OpenAI integration rule for a given monitor resource.
+Get detailed information about OpenAI integration rules for a given Elastic monitor resource.
 
 ### [Get-AzElasticOpenAiStatus](Get-AzElasticOpenAiStatus.md)
-Get OpenAI integration status for a given integration.
+Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
 
 ### [Get-AzElasticOrganizationApiKey](Get-AzElasticOrganizationApiKey.md)
-Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch Organization.
 
 ### [Get-AzElasticOrganizationElasticToAzureSubscriptionMapping](Get-AzElasticOrganizationElasticToAzureSubscriptionMapping.md)
-Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
+Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
+
+### [Get-AzElasticResubscribeOrganization](Get-AzElasticResubscribeOrganization.md)
+Resubscribe the Elasticsearch Organization.
 
 ### [Get-AzElasticTagRule](Get-AzElasticTagRule.md)
-Get a tag rule set for a given monitor resource.
+Get detailed information about a tag rule set for a given Elastic monitor resource.
 
 ### [Get-AzElasticVersion](Get-AzElasticVersion.md)
-Get a list of available versions for a region.
+Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your deployment.
 
 ### [Get-AzElasticVMHost](Get-AzElasticVMHost.md)
-List the vm resources currently being monitored by the Elastic monitor resource.
+List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 
 ### [Join-AzElasticAssociateTrafficFilter](Join-AzElasticAssociateTrafficFilter.md)
-Associate traffic filter for the given deployment.
+Associate a traffic filter with your Elastic monitor resource to control and manage network traffic.
 
 ### [New-AzElasticCreateAndAssociateIPFilter](New-AzElasticCreateAndAssociateIPFilter.md)
-create and Associate IP traffic filter for the given deployment.
+Create and associate an IP filter with your Elastic monitor resource to control and manage network traffic.
 
 ### [New-AzElasticCreateAndAssociatePlFilter](New-AzElasticCreateAndAssociatePlFilter.md)
-create and Associate private link traffic filter for the given deployment.
+Create and associate a PL filter with your Elastic monitor resource to control and manage network traffic.
 
 ### [New-AzElasticExternalUser](New-AzElasticExternalUser.md)
-create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Create external user configurations for your Elastic monitor resource, enabling access and management by external users.
 
 ### [New-AzElasticFilteringTagObject](New-AzElasticFilteringTagObject.md)
 Create an in-memory object for FilteringTag.
 
 ### [New-AzElasticMonitor](New-AzElasticMonitor.md)
-create a monitor resource.
+Create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure resources through Elastic.
 
 ### [New-AzElasticOpenAi](New-AzElasticOpenAi.md)
-create a OpenAI integration rule for a given monitor resource.
+Create an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 
 ### [New-AzElasticTagRule](New-AzElasticTagRule.md)
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 
 ### [Remove-AzElasticDetachAndDeleteTrafficFilter](Remove-AzElasticDetachAndDeleteTrafficFilter.md)
-Detach and Delete traffic filter from the given deployment.
+Detach and delete an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 
 ### [Remove-AzElasticMonitor](Remove-AzElasticMonitor.md)
-Delete a monitor resource.
+Delete an existing Elastic monitor resource from your Azure subscription, removing its observability and monitoring capabilities.
+
+### [Remove-AzElasticMonitoredSubscription](Remove-AzElasticMonitoredSubscription.md)
+Delete subscriptions being monitored by the Elastic monitor resource, removing their observability and monitoring capabilities.
 
 ### [Remove-AzElasticOpenAi](Remove-AzElasticOpenAi.md)
-Delete OpenAI integration rule for a given monitor resource.
+Delete an OpenAI integration rule for a given Elastic monitor resource, removing AI-driven observability and monitoring capabilities.
 
 ### [Remove-AzElasticTrafficFilter](Remove-AzElasticTrafficFilter.md)
-Delete traffic filter from the account.
+Delete an existing traffic filter associated with your Elastic monitor resource, removing its network traffic control capabilities.
 
 ### [Update-AzElasticDetachTrafficFilter](Update-AzElasticDetachTrafficFilter.md)
-Detach traffic filter for the given deployment.
+Detach an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 
 ### [Update-AzElasticExternalUser](Update-AzElasticExternalUser.md)
-update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Update external user configurations for your Elastic monitor resource, enabling access and management by external users.
 
 ### [Update-AzElasticMonitor](Update-AzElasticMonitor.md)
-update a monitor resource.
+Update an existing Elastic monitor resource in your Azure subscription, ensuring optimal observability and performance.
+
+### [Update-AzElasticMonitoredSubscription](Update-AzElasticMonitoredSubscription.md)
+Update subscriptions to be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 
 ### [Update-AzElasticOpenAi](Update-AzElasticOpenAi.md)
-update a OpenAI integration rule for a given monitor resource.
+Update an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 
 ### [Update-AzElasticTagRule](Update-AzElasticTagRule.md)
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 
 ### [Update-AzElasticVMCollection](Update-AzElasticVMCollection.md)
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 

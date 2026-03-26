@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// [OpenAPI] ListAll=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/cloudServices"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCloudService_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Extension","LoadBalancerConfiguration","Secret","Role","Zone"}, NewOutputProperties=new string[] {"Extension","LoadBalancerConfiguration","Secret","Role","Zone"}, ChangeDescription="The types of the properties 'Extension', 'LoadBalancerConfiguration', 'Secret', 'Role', and 'Zone' will be changed from object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Description(@"Gets a list of all cloud services in the subscription, regardless of the associated resource group. Use nextLink property in the response to get the next page of Cloud Services. Do this till nextLink is null to fetch all the Cloud Services.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Generated]

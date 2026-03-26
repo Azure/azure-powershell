@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 .Description
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given monitor resource.
 .Example
 $ftobjArray = @()
 $ftobjArray += New-AzDatadogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
@@ -39,8 +39,13 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+AGENTRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+  [Action <String>]: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+  [Name <String>]: The name (also known as the key) of the tag.
+  [Value <String>]: The value of the tag.
+
 INPUTOBJECT <IDatadogIdentity>: Identity Parameter
-  [ConfigurationName <String>]: Configuration name
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Monitor resource name
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -58,7 +63,7 @@ METRICRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for 
   [Value <String>]: The value of the tag.
 
 MONITORINPUTOBJECT <IDatadogIdentity>: Identity Parameter
-  [ConfigurationName <String>]: Configuration name
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Monitor resource name
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -109,6 +114,35 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity]
     # Identity Parameter
     ${MonitorInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag specifying if agent monitoring should be enabled for the Monitor resource.
+    ${AgentRuleEnableAgentMonitoring},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag[]]
+    # List of filtering tags to be used for capturing metrics.
+    # If empty, all resources will be captured.
+    # If only Exclude action is specified, the rules will apply to the list of all available resources.
+    # If Include actions are specified, the rules will only include resources with the associated tags.
+    ${AgentRuleFilteringTag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Configuration to enable/disable auto-muting flag
+    ${Automuting},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Configuration to enable/disable custom metrics.
+    # If enabled, custom metrics from app insights will be sent.
+    ${CustomMetric},
 
     [Parameter()]
     [AllowEmptyCollection()]

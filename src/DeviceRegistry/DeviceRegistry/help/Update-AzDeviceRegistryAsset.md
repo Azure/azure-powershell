@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDeviceRegistryAsset
 
 ## SYNOPSIS
-update a Asset
+Update a Asset
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ Update-AzDeviceRegistryAsset -InputObject <IDeviceRegistryIdentity> [-Attribute 
 ```
 
 ## DESCRIPTION
-update a Asset
+Update a Asset
 
 ## EXAMPLES
 

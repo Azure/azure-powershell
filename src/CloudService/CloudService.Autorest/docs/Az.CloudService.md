@@ -1,6 +1,6 @@
 ---
 Module Name: Az.CloudService
-Module Guid: a41eb61d-c5a1-4e9b-81a7-b8905fff7f2c
+Module Guid: b17f5e3c-8402-4201-baa8-385dd3e406ff
 Download Help Link: https://learn.microsoft.com/powershell/module/az.cloudservice
 Help Version: 1.0.0.0
 Locale: en-US

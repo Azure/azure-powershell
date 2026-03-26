@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Authorization
-Module Guid: f91f515b-3470-413c-8ef0-db77a70595b9
+Module Guid: f1083436-3175-474b-a331-bbee5f693934
 Download Help Link: https://learn.microsoft.com/powershell/module/az.authorization
 Help Version: 1.0.0.0
 Locale: en-US
@@ -39,10 +39,10 @@ Get the specified role management policy for a resource scope
 Get the specified role management policy assignment for a resource scope
 
 ### [New-AzRoleAssignmentScheduleRequest](New-AzRoleAssignmentScheduleRequest.md)
-Creates a role assignment schedule request.
+Create a role assignment schedule request.
 
 ### [New-AzRoleEligibilityScheduleRequest](New-AzRoleEligibilityScheduleRequest.md)
-Creates a role eligibility schedule request.
+Create a role eligibility schedule request.
 
 ### [New-AzRoleManagementPolicyAssignment](New-AzRoleManagementPolicyAssignment.md)
 Create a role management policy assignment
@@ -59,6 +59,15 @@ Cancels a pending role assignment schedule request.
 ### [Stop-AzRoleEligibilityScheduleRequest](Stop-AzRoleEligibilityScheduleRequest.md)
 Cancels a pending role eligibility schedule request.
 
+### [Update-AzRoleAssignmentScheduleRequest](Update-AzRoleAssignmentScheduleRequest.md)
+Update a role assignment schedule request.
+
+### [Update-AzRoleEligibilityScheduleRequest](Update-AzRoleEligibilityScheduleRequest.md)
+Update a role eligibility schedule request.
+
 ### [Update-AzRoleManagementPolicy](Update-AzRoleManagementPolicy.md)
 Update a role management policy
+
+### [Update-AzRoleManagementPolicyAssignment](Update-AzRoleManagementPolicyAssignment.md)
+Update a role management policy assignment
 

@@ -18,6 +18,7 @@ Restore-AzCosmosDBAccount -RestoreTimestampInUtc <DateTime> -SourceDatabaseAccou
  [-DatabasesToRestore <PSDatabaseToRestore[]>] [-GremlinDatabasesToRestore <PSGremlinDatabaseToRestore[]>]
  [-TablesToRestore <PSTablesToRestore>] [-AsJob] [-PublicNetworkAccess <String>] [-DisableTtl <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SourceBackupLocation <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -212,6 +213,20 @@ The list of PSTableToRestore objects which specify the subset of tables to resto
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSTablesToRestore
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceBackupLocation
+This is the location of the source account where backups are located. Provide this value if the source and target are in different locations.
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

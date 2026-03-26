@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
     /// [OpenAPI] ListTriggeredWebJobs=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzWebAppTriggeredWebJob_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredWebJob))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Description(@"Description for List triggered web jobs for an app, or a deployment slot.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Generated]

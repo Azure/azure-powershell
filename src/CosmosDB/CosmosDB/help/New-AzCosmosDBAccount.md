@@ -20,7 +20,8 @@ New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations]
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-AsJob] [-NetworkAclBypass <String>]
+ [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
+ [-DefaultPriorityLevel <String>] [-AsJob] [-NetworkAclBypass <String>]
  [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
  [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
  [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
@@ -286,6 +287,37 @@ Bool to indicate if Burst Capacity is enabled on the account.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePriorityBasedExecution
+Bool to indicate if Priority Based Execution is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultPriorityLevel
+Default priority level of requests for Cosmos DB database account.
+Accepted values: High, Low
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

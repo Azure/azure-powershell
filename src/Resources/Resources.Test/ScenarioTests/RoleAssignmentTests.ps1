@@ -925,3 +925,34 @@ function Test-CreateRAWhenIdNotExist
 
     Assert-Throws $function $ExpectedError
 }
+
+<#
+.SYNOPSIS
+Validates that Get-AzRoleAssignment can filter client-side the role assignments by ObjectId in different GUID formats.
+#>
+function Test-RAGuidFormatHandling
+{
+    $subscription = $(Get-AzContext).Subscription
+    $scope = '/subscriptions/'+ $subscription[0].Id
+    $principalId = "35e5fdfa-e80b-49b9-abf3-4c9a54f6b7a3"
+    
+    $expected = @(Get-AzRoleAssignment -ObjectId $principalId -Scope $scope -AtScope)
+    $expectedIds = $expected | Select-Object -ExpandProperty RoleAssignmentId | Sort-Object
+
+    # when non-Guid result should be empty
+    $res = @(Get-AzRoleAssignment -ObjectId "abc" -Scope $scope -AtScope)
+    Assert-AreEqual ($res.Count) 0
+
+    $guid = [guid]::Parse($principalId)
+    $formats = @('N', 'D', 'B', 'P', 'X')
+    foreach ($format in $formats) {
+        $principalIdFormat = $guid.ToString($format)
+        $actual = @(Get-AzRoleAssignment -ObjectId $principalIdFormat -Scope $scope -AtScope)
+        Assert-AreEqual $expected.Count $actual.Count
+        
+        if ($actual) {
+            $actualIds = $actual | Select-Object -ExpandProperty RoleAssignmentId | Sort-Object
+            Assert-AreEqual (@($expectedIds) -join ',') (@($actualIds) -join ',')
+        }
+    }
+}

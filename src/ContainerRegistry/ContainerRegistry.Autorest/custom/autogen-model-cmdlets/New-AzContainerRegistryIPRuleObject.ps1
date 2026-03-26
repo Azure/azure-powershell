@@ -21,18 +21,19 @@ Create an in-memory object for IPRule.
 Create an in-memory object for IPRule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPRule
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPRule
 .Link
-https://learn.microsoft.com/powershell/module/Az.ContainerRegistry/new-AzContainerRegistryIPRuleObject
+https://learn.microsoft.com/powershell/module/Az.ContainerRegistry/new-azcontainerregistryipruleobject
 #>
 function New-AzContainerRegistryIPRuleObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPRule')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The action of IP ACL rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Action])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Action]
+        [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("Allow")]
+        [string]
         $Action,
         [Parameter(Mandatory, HelpMessage="Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.")]
         [string]
@@ -40,7 +41,7 @@ function New-AzContainerRegistryIPRuleObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPRule]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPRule]::New()
 
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action

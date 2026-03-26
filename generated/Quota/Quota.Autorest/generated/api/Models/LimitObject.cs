@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         public string LimitType { get => this._limitType; set => this._limitType = value; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ILimitJsonObjectInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ILimitJsonObjectInternal)__limitJsonObject).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ILimitJsonObjectInternal)__limitJsonObject).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ILimitJsonObjectInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ILimitJsonObjectInternal)__limitJsonObject).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ILimitJsonObjectInternal)__limitJsonObject).Type = value ; }
 
         /// <summary>The limit object type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Constant]

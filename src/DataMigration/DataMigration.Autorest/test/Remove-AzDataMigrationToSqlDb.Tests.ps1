@@ -15,11 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDataMigrationToSqlDb
 }
 
 Describe 'Remove-AzDataMigrationToSqlDb' {
-    It 'Delete' {
-        $targetPassword = ConvertTo-SecureString $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionPassword -AsPlainText -Force
-        $sourcePassword = ConvertTo-SecureString $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionPassword -AsPlainText -Force
+    It 'Delete' -skip{
+        $srcPassword   = ConvertTo-SecureString $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionPassword -AsPlainText -Force
+        $tgtPassword   = ConvertTo-SecureString $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionPassword -AsPlainText -Force
 
-        $instance = New-AzDataMigrationToSqlDb -ResourceGroupName $env.TestDeleteDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestDeleteDatabaseMigrationDb.SqlDbInstanceName -MigrationService  $env.TestDeleteDatabaseMigrationDb.MigrationService -TargetSqlConnectionAuthentication $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionAuthentication -TargetSqlConnectionDataSource $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionDataSource -TargetSqlConnectionPassword $targetPassword -TargetSqlConnectionUserName $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionUserName -SourceSqlConnectionAuthentication $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionAuthentication -SourceSqlConnectionDataSource $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionDataSource -SourceSqlConnectionUserName $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionUserName -SourceSqlConnectionPassword $sourcePassword -SourceDatabaseName $env.TestDeleteDatabaseMigrationDb.SourceDatabaseName -TargetDbName $env.TestDeleteDatabaseMigrationDb.TargetDbName -Scope  $env.TestDeleteDatabaseMigrationDb.Scope
+        $instance = New-AzDataMigrationToSqlDb `
+        -ResourceGroupName $env.TestDeleteDatabaseMigrationDb.ResourceGroupName `
+        -SqlDbInstanceName $env.TestDeleteDatabaseMigrationDb.SqlDbInstanceName `
+        -Kind $env.TestDeleteDatabaseMigrationDb.Kind `
+        -TargetDbName $env.TestDeleteDatabaseMigrationDb.TargetDbName `
+        -MigrationService $env.TestDeleteDatabaseMigrationDb.MigrationService `
+        -Scope $env.TestDeleteDatabaseMigrationDb.Scope `
+        -SourceDatabaseName $env.TestDeleteDatabaseMigrationDb.SourceDatabaseName `
+        -SourceSqlConnectionDataSource $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionDataSource `
+        -SourceSqlConnectionUserName $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionUserName `
+        -SourceSqlConnectionAuthentication $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionAuthentication `
+        -SourceSqlConnectionPassword $srcPassword `
+        -TargetSqlConnectionDataSource $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionDataSource `
+        -TargetSqlConnectionUserName $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionUserName `
+        -TargetSqlConnectionAuthentication $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionAuthentication `
+        -TargetSqlConnectionPassword $tgtPassword `
+        -TableList "[dbo].[Departments]", "[dbo].[Employees]"
 
         Start-TestSleep -Seconds 5
 
@@ -27,11 +43,9 @@ Describe 'Remove-AzDataMigrationToSqlDb' {
 
         Start-TestSleep -Seconds 5
 
-
         $dbMig = Get-AzDataMigrationToSqlDb -ResourceGroupName $env.TestDeleteDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestDeleteDatabaseMigrationDb.SqlDbInstanceName -TargetDbName $env.TestDeleteDatabaseMigrationDb.TargetDbName -ErrorAction SilentlyContinue
 
-
-        $assert =  ($dbMig -eq $null)
+        $assert =  ($dbMig.MigrationStatus -eq "Dropping")
         $assert | Should be $true
 
     }

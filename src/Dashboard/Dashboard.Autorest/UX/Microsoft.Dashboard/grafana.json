@@ -1,6 +1,6 @@
 {
   "resourceType": "grafana",
-  "apiVersion": "2022-08-01",
+  "apiVersion": "2025-08-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.dashboard"
   },
@@ -44,6 +44,44 @@
       ]
     },
     {
+      "name": "Invoke-AzGrafanaFetchGrafanaAvailablePlugin",
+      "description": "A synchronous resource action.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/fetchAvailablePlugins",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dashboard/invoke-azgrafanafetchgrafanaavailableplugin"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "A synchronous resource action.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Remove-AzGrafana",
       "description": "Delete a workspace for Grafana resource.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}",
@@ -76,6 +114,44 @@
             {
               "name": "-SubscriptionId",
               "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Test-AzGrafanaEnterpriseDetail",
+      "description": "Retrieve enterprise add-on details information",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Dashboard/grafana/{workspaceName}/checkEnterpriseDetails",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dashboard/test-azgrafanaenterprisedetail"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Retrieve enterprise add-on details information",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
             }
           ]
         }

@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Search.Models;
+
 namespace Microsoft.Azure.Commands.Management.Search.Models
 {
     public enum PSSharedPrivateLinkResourceStatus
@@ -20,5 +22,24 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         Approved = 1,
         Rejected = 2,
         Disconnected = 3
+    }
+
+    internal static class PSSharedPrivateLinkResourceStatusEnumExtension
+    {
+        internal static string ToString(this PSSharedPrivateLinkResourceStatus value)
+        {
+            switch (value)
+            {
+                case PSSharedPrivateLinkResourceStatus.Pending:
+                    return "Pending";
+                case PSSharedPrivateLinkResourceStatus.Approved:
+                    return "Approved";
+                case PSSharedPrivateLinkResourceStatus.Rejected:
+                    return "Rejected";
+                case PSSharedPrivateLinkResourceStatus.Disconnected:
+                    return "Disconnected";
+            }
+            return null;
+        }
     }
 }

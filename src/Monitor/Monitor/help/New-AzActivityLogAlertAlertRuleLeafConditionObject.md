@@ -1,7 +1,7 @@
 ---
 external help file: Az.ActivityLogAlert.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzActivityLogAlertAlertRuleLeafConditionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactivitylogalertalertruleleafconditionobject
 schema: 2.0.0
 ---
 
@@ -84,7 +84,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleLeafCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleLeafCondition
 
 ## NOTES
 

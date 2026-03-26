@@ -33,12 +33,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public NetworkManagerRoutingConfigurationPropertiesFormat(string description = default(string), string provisioningState = default(string), string resourceGuid = default(string))
+
+        /// <param name="routeTableUsageMode">Route table usage mode defines which route table will be used by the
+        /// configuration. If not defined, this will default to &#39;ManagedOnly&#39;.
+        /// Possible values include: &#39;ManagedOnly&#39;, &#39;UseExisting&#39;</param>
+        public NetworkManagerRoutingConfigurationPropertiesFormat(string description = default(string), string provisioningState = default(string), string resourceGuid = default(string), string routeTableUsageMode = default(string))
 
         {
             this.Description = description;
             this.ProvisioningState = provisioningState;
             this.ResourceGuid = resourceGuid;
+            this.RouteTableUsageMode = routeTableUsageMode;
             CustomInit();
         }
 
@@ -65,5 +70,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGuid")]
         public string ResourceGuid {get; private set; }
+
+        /// <summary>
+        /// Gets or sets route table usage mode defines which route table will be used
+        /// by the configuration. If not defined, this will default to &#39;ManagedOnly&#39;. Possible values include: &#39;ManagedOnly&#39;, &#39;UseExisting&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "routeTableUsageMode")]
+        public string RouteTableUsageMode {get; set; }
     }
 }

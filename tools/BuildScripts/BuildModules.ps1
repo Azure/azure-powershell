@@ -14,6 +14,10 @@
 [CmdletBinding(DefaultParameterSetName = "AllSet")]
 param (
     [string]$RepoRoot,
+    [ArgumentCompleter({
+        param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
+        @('Debug', 'Release') | Where-Object { $_ -like "$wordToComplete*" }
+    })]
     [string]$Configuration = 'Debug',
     [Parameter(ParameterSetName = "AllSet")]
     [string]$TestsToRun = 'All',
@@ -137,7 +141,7 @@ if ($InvokedByPipeline) {
 }
 foreach ($moduleRootName in $TargetModule) {
     Write-Host "Preparing $moduleRootName ..." -ForegroundColor DarkGreen
-    & $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate -InvokedByPipeline:$isInvokedByPipeline
+    & $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -Configuration $Configuration -ForceRegenerate:$ForceRegenerate -InvokedByPipeline:$isInvokedByPipeline
 }
 
 $buildCsprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -RepoRoot $RepoRoot -Configuration $Configuration
@@ -149,7 +153,7 @@ $buildSln = Join-Path $RepoArtifacts "Azure.PowerShell.sln"
 if (Test-Path $buildSln) {
     Remove-Item $buildSln -Force
 }
-& dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
+New-SlnFile -SolutionName Azure.PowerShell -SolutionPath $RepoArtifacts -Force
 
 foreach ($file in $buildCsprojFiles) {
     & dotnet sln $buildSln add "$file"
@@ -168,21 +172,22 @@ else {
     if (Test-Path $testSln) {
         Remove-Item $testSln -Force
     }
-    & dotnet new sln -n Azure.PowerShell.Test -o $RepoArtifacts --force
+    New-SlnFile -SolutionName Azure.PowerShell.Test -SolutionPath $RepoArtifacts -Force
     foreach ($file in $testCsprojFiles) {
         & dotnet sln $testSln add "$file"
     }
     Write-Output "Modules are added to test sln file"
 }
 
-$buildCmdResult = "dotnet $BuildAction $Buildsln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
+$buildCmdArgs = @("$BuildAction", "$Buildsln", "-c", "$Configuration", "-fl", "/flp1:logFile=$LogFile;verbosity=quiet")
 If ($GenerateDocumentationFile -eq "false") {
-    $buildCmdResult += " -p:GenerateDocumentationFile=false"
+    $buildCmdArgs += "-p:GenerateDocumentationFile=false"
 }
 if ($EnableTestCoverage -eq "true") {
-    $buildCmdResult += " -p:TestCoverage=TESTCOVERAGE"
+    $buildCmdArgs += "-p:TestCoverage=TESTCOVERAGE"
 }
-Invoke-Expression -Command $buildCmdResult
+# Use argument splatting to prevent injection
+& dotnet @buildCmdArgs
 
 $versionControllerCsprojPath = Join-Path $toolDirectory 'VersionController' 'VersionController.Netcore.csproj'
 dotnet build $versionControllerCsprojPath -c $Configuration

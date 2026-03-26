@@ -38,11 +38,9 @@ namespace Microsoft.Azure.Management.SignalR
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// Gets subscription Id which uniquely identify the Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -75,6 +73,14 @@ namespace Microsoft.Azure.Management.SignalR
         /// </summary>
         public virtual IUsagesOperations Usages { get; private set; }
         /// <summary>
+        /// Gets the ISignalRCustomCertificatesOperations
+        /// </summary>
+        public virtual ISignalRCustomCertificatesOperations SignalRCustomCertificates { get; private set; }
+        /// <summary>
+        /// Gets the ISignalRCustomDomainsOperations
+        /// </summary>
+        public virtual ISignalRCustomDomainsOperations SignalRCustomDomains { get; private set; }
+        /// <summary>
         /// Gets the ISignalRPrivateEndpointConnectionsOperations
         /// </summary>
         public virtual ISignalRPrivateEndpointConnectionsOperations SignalRPrivateEndpointConnections { get; private set; }
@@ -82,6 +88,14 @@ namespace Microsoft.Azure.Management.SignalR
         /// Gets the ISignalRPrivateLinkResourcesOperations
         /// </summary>
         public virtual ISignalRPrivateLinkResourcesOperations SignalRPrivateLinkResources { get; private set; }
+        /// <summary>
+        /// Gets the ISignalRReplicasOperations
+        /// </summary>
+        public virtual ISignalRReplicasOperations SignalRReplicas { get; private set; }
+        /// <summary>
+        /// Gets the ISignalRReplicaSharedPrivateLinkResourcesOperations
+        /// </summary>
+        public virtual ISignalRReplicaSharedPrivateLinkResourcesOperations SignalRReplicaSharedPrivateLinkResources { get; private set; }
         /// <summary>
         /// Gets the ISignalRSharedPrivateLinkResourcesOperations
         /// </summary>
@@ -290,6 +304,9 @@ namespace Microsoft.Azure.Management.SignalR
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -324,11 +341,15 @@ namespace Microsoft.Azure.Management.SignalR
             this.Operations = new Operations(this);
             this.SignalR = new SignalROperations(this);
             this.Usages = new UsagesOperations(this);
+            this.SignalRCustomCertificates = new SignalRCustomCertificatesOperations(this);
+            this.SignalRCustomDomains = new SignalRCustomDomainsOperations(this);
             this.SignalRPrivateEndpointConnections = new SignalRPrivateEndpointConnectionsOperations(this);
             this.SignalRPrivateLinkResources = new SignalRPrivateLinkResourcesOperations(this);
+            this.SignalRReplicas = new SignalRReplicasOperations(this);
+            this.SignalRReplicaSharedPrivateLinkResources = new SignalRReplicaSharedPrivateLinkResourcesOperations(this);
             this.SignalRSharedPrivateLinkResources = new SignalRSharedPrivateLinkResourcesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2021-04-01-preview";
+            this.ApiVersion = "2025-01-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -358,6 +379,10 @@ namespace Microsoft.Azure.Management.SignalR
                         new Microsoft.Rest.Serialization.Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ClientConnectionCountRule>("type"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ClientConnectionCountRule>("type"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ClientTrafficControlRule>("type"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ClientTrafficControlRule>("type"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Azure.CloudErrorJsonConverter());

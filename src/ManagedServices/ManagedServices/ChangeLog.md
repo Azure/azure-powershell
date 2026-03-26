@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.2
 * Update the outputs of breaking change announcements.
 
 ## Version 3.1.1

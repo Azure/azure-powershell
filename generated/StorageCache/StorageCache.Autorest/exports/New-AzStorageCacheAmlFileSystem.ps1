@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an AML file system.
+Create an AML file system.
 .Description
-create an AML file system.
+Create an AML file system.
 .Example
 New-AzStorageCacheAmlFileSystem -Name azps-cache-fs -ResourceGroupName azps_test_gp_storagecache -Location eastus -UserAssignedIdentity "/subscriptions/{subId}/resourcegroups/azps_test_gp_storagecache/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-management-identity" -KeyEncryptionKeyUrl "https://azps-keyvault.vault.azure.net/keys/azps-kv/4cc795e46f114ce2a65b82b312964e0e" -SourceVaultId "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.KeyVault/vaults/azps-keyvault" -MaintenanceWindowDayOfWeek 'Saturday' -MaintenanceWindowTimeOfDayUtc "03:00" -FilesystemSubnet "/subscriptions/{subId}/resourceGroups/azps_test_gp_storagecache/providers/Microsoft.Network/virtualNetworks/azps-virtual-network/subnets/azps-vnetwork-sub-kv" -SkuName "AMLFS-Durable-Premium-250" -StorageCapacityTiB 16 -Zone 1
 .Example
@@ -35,7 +35,10 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
@@ -126,6 +129,38 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("None", "RootOnly", "All")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Squash mode of the AML file system.
+    # 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems.
+    # 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems.
+    # 'None': No squashing of User and Group IDs is performed for any users on any systems.
+    ${RootSquashSettingMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String]
+    # Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
+    ${RootSquashSettingNoSquashNidList},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int64]
+    # Group ID to squash to.
+    ${RootSquashSettingSquashGid},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.Int64]
+    # User ID to squash to.
+    ${RootSquashSettingSquashUid},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
     # Resource ID of storage container used for hydrating the namespace and archiving from the namespace.
@@ -136,8 +171,20 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
     [System.String]
-    # Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+    # Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace.
+    # This is only used during initial creation of the AML file system.
+    # It automatically creates an import job resource that can be deleted.
     ${SettingImportPrefix},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category('Body')]
+    [System.String[]]
+    # Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace.
+    # This is only used during initial creation of the AML file system and has '/' as the default value.
+    # It automatically creates an import job resource that can be deleted.
+    ${SettingImportPrefixesInitial},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]

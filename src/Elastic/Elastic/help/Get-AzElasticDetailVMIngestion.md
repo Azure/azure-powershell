@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticDetailVMIngestion
 
 ## SYNOPSIS
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
+List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzElasticDetailVMIngestion -InputObject <IElasticIdentity> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
+List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 
 ## EXAMPLES
 

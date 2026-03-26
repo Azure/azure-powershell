@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
 
         /// <summary>The maximum number of concurrent HTTP trigger invocations per instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public float? HttpPerInstanceConcurrency { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)Http).PerInstanceConcurrency; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)Http).PerInstanceConcurrency = value ?? default(float); }
+        public int? HttpPerInstanceConcurrency { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)Http).PerInstanceConcurrency; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)Http).PerInstanceConcurrency = value ?? default(int); }
 
         /// <summary>Internal Acessors for Http</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttp Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersInternal.Http { get => (this._http = this._http ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.FunctionsScaleAndConcurrencyTriggersHttp()); set { {_http = value;} } }
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         ReadOnly = false,
         Description = @"The maximum number of concurrent HTTP trigger invocations per instance.",
         SerializedName = @"perInstanceConcurrency",
-        PossibleTypes = new [] { typeof(float) })]
-        float? HttpPerInstanceConcurrency { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? HttpPerInstanceConcurrency { get; set; }
 
     }
     /// Scale and concurrency settings for the function app triggers.
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         /// <summary>Scale and concurrency settings for the HTTP trigger.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttp Http { get; set; }
         /// <summary>The maximum number of concurrent HTTP trigger invocations per instance.</summary>
-        float? HttpPerInstanceConcurrency { get; set; }
+        int? HttpPerInstanceConcurrency { get; set; }
 
     }
 }

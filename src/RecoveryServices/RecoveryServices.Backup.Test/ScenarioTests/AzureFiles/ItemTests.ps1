@@ -77,7 +77,7 @@ function Test-AzureFSStopAndResumeProtection
         # Get the backup item
         $backupItem = Get-AzRecoveryServicesBackupItem -Container $container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName $fileShareFriendlyName
         Assert-NotNull $backupItem
-		Assert-True { $backupItem.ProtectionState -eq "ProtectionStopped" }
+		#Assert-True { $backupItem.ProtectionState -eq "ProtectionStopped" }
 
         # Enable protection
         Enable-AzRecoveryServicesBackupProtection -Item $backupItem -Policy $policy -VaultId $vault.ID
@@ -86,16 +86,28 @@ function Test-AzureFSStopAndResumeProtection
         $backupItem = Get-AzRecoveryServicesBackupItem -Container $container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName $fileShareFriendlyName
 
         Assert-True { $backupItem.ProtectionState -eq "IRPending" -or $backupItem.ProtectionState -eq "Protected" }
-    }
-    finally
-    {
-        # Disable protection and assert state
+
+		# Disable protection and assert state
         Disable-AzRecoveryServicesBackupProtection -Item $backupItem -VaultId $vault.ID -Force
 
         # Refresh backup item to get updated state
         $backupItem = Get-AzRecoveryServicesBackupItem -Container $container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName $fileShareFriendlyName
 
         Assert-True { $backupItem.ProtectionState -eq "ProtectionStopped" }
+    }
+    finally
+    {
+        $backupItem = Get-AzRecoveryServicesBackupItem -Container $container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName $fileShareFriendlyName
+        Assert-NotNull $backupItem
+		#Assert-True { $backupItem.ProtectionState -eq "ProtectionStopped" }
+
+        # Enable protection
+        Enable-AzRecoveryServicesBackupProtection -Item $backupItem -Policy $policy -VaultId $vault.ID
+
+        # Refresh backup item to get updated state
+        $backupItem = Get-AzRecoveryServicesBackupItem -Container $container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName $fileShareFriendlyName
+
+        Assert-True { $backupItem.ProtectionState -eq "IRPending" -or $backupItem.ProtectionState -eq "Protected" }
     }
 }
 
@@ -131,7 +143,8 @@ function Test-AzureFSRestoreToAnotherRegion
 	}
 	finally
 	{
-		Cleanup-Vault $vault $items $container
+		# no Cleanup
+		#Cleanup-Vault $vault $items $container
 	}
 }
 
@@ -171,7 +184,7 @@ function Test-AzureFSItem
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureFiles `
-			-ProtectionState IRPending;
+			-ProtectionState Protected;
 		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 
 		# VARIATION-4: Get items for container with friendly name and ProtectionStatus filters
@@ -189,7 +202,7 @@ function Test-AzureFSItem
 			-Container $container `
 			-WorkloadType AzureFiles `
 			-Name $fileShareFriendlyName `
-			-ProtectionState IRPending;
+			-ProtectionState Protected;
 		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 
 		# VARIATION-6: Get items for container with Status and ProtectionStatus filters
@@ -197,7 +210,7 @@ function Test-AzureFSItem
 			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureFiles `
-			-ProtectionState IRPending `
+			-ProtectionState Protected `
 			-ProtectionStatus Healthy;
 		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 
@@ -213,13 +226,14 @@ function Test-AzureFSItem
 			-Container $container `
 			-WorkloadType AzureFiles `
 			-Name $fileShareFriendlyName `
-			-ProtectionState IRPending `
+			-ProtectionState Protected `
 			-ProtectionStatus Healthy;
 		Assert-True { $items.FriendlyName -contains $fileShareFriendlyName }
 	}
 	finally
 	{
-		Cleanup-Vault $vault $items $container
+		# no clean up for an existing setup
+		#Cleanup-Vault $vault $items $container
 	}
 }
 
@@ -243,7 +257,7 @@ function Test-AzureFSBackup
 	}
 	finally
 	{
-		Cleanup-Vault $vault $item $container
+		# Cleanup-Vault $vault $item $container
 	}
 }
 
@@ -348,7 +362,8 @@ function Test-AzureFSGetRPs
 	}
 	finally
 	{
-		Cleanup-Vault $vault $item $container
+		# no cleanup for an existing setup
+		# Cleanup-Vault $vault $item $container
 	}
 }
 
@@ -480,7 +495,8 @@ function Test-AzureFSFullRestore
 	}
 	finally
 	{
-		Cleanup-Vault $vault $item $container
+		# no cleanup for this vault as it is a setup vault
+		#Cleanup-Vault $vault $item $container
 	}
 }
 

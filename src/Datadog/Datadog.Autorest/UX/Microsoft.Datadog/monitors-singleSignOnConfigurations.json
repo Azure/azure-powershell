@@ -1,6 +1,6 @@
 {
   "resourceType": "monitors/singleSignOnConfigurations",
-  "apiVersion": "2021-03-01",
+  "apiVersion": "2025-06-11",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.datadog"
   },

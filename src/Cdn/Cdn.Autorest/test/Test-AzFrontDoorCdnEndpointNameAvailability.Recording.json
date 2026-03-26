@@ -1,8 +1,8 @@
 {
-  "Test-AzFrontDoorCdnEndpointNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-fz5y/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2025-04-15+1": {
+  "Test-AzFrontDoorCdnEndpointNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-gnrb/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2025-06-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-fz5y/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2025-04-15",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-gnrb/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2025-06-01",
       "Content": "{\r\n  \"name\": \"e-clipstest140\",\r\n  \"type\": \"Microsoft.Cdn/Profiles/AfdEndpoints\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,17 +18,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "1e107510-8dda-413c-a0df-296922aa842f" ],
-        "x-ms-client-request-id": [ "8d355f19-5bdc-4cbc-8c85-4e93b87676f6" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/australiacentral2/c34b3e79-7ef1-4f74-bf7e-07a649402dfd" ],
+        "x-ms-request-id": [ "bbdaad65-5e37-4179-a9a5-ce3789fc8d15" ],
+        "x-ms-client-request-id": [ "eb5f84fe-2d2d-4fb8-867f-30647fd00a0e" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/20fe965e-85d7-46d4-8335-335416c63425" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "60216d23-b9c8-4fac-9a37-bfc0aec18992" ],
-        "x-ms-routing-request-id": [ "AUSTRALIACENTRAL2:20250508T092011Z:60216d23-b9c8-4fac-9a37-bfc0aec18992" ],
+        "x-ms-correlation-request-id": [ "ac20ec99-f1ed-408d-a2fc-1c4c30b5992a" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251106T131309Z:ac20ec99-f1ed-408d-a2fc-1c4c30b5992a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7A31F0702C844E678A3C895CDEA13723 Ref B: SYD03EDGE1408 Ref C: 2025-05-08T09:20:09Z" ],
-        "Date": [ "Thu, 08 May 2025 09:20:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 69E883920C884517A7D5A747F5D03791 Ref B: SYD03EDGE2107 Ref C: 2025-11-06T13:13:09Z" ],
+        "Date": [ "Thu, 06 Nov 2025 13:13:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "121" ],
@@ -39,11 +39,11 @@
       "isContentBase64": false
     }
   },
-  "Test-AzFrontDoorCdnEndpointNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-fz5y/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2025-04-15+2": {
+  "Test-AzFrontDoorCdnEndpointNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-gnrb/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2025-06-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-fz5y/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2025-04-15",
-      "Content": "{\r\n  \"name\": \"end-30n2el\",\r\n  \"type\": \"Microsoft.Cdn/Profiles/AfdEndpoints\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-gnrb/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2025-06-01",
+      "Content": "{\r\n  \"name\": \"end-s0gbf3\",\r\n  \"type\": \"Microsoft.Cdn/Profiles/AfdEndpoints\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -58,17 +58,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "947fb337-794e-4789-aa28-7187e19ed92f" ],
-        "x-ms-client-request-id": [ "bb86c5e6-3b26-4753-a4aa-cbc0392e73a9" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/australiacentral2/860a01d4-d8cb-4ed3-a1c3-3283f0d71b5e" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "d72e26a0-3acd-494a-8a5d-6460ebaef37d" ],
-        "x-ms-routing-request-id": [ "AUSTRALIACENTRAL2:20250508T092011Z:d72e26a0-3acd-494a-8a5d-6460ebaef37d" ],
+        "x-ms-request-id": [ "3e76f7be-4bee-4639-a037-d907df347eff" ],
+        "x-ms-client-request-id": [ "d8f7ec33-a256-42c0-9fc9-90c6abeda1c0" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/westus/585b8529-175c-4e68-81a9-40786994a69c" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
+        "x-ms-correlation-request-id": [ "4f07ae70-0942-4950-876f-7bfcbfe94abe" ],
+        "x-ms-routing-request-id": [ "WESTUS:20251106T131310Z:4f07ae70-0942-4950-876f-7bfcbfe94abe" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7F19EC7FDECC4BF0B1129797061EA81F Ref B: SYD03EDGE1408 Ref C: 2025-05-08T09:20:11Z" ],
-        "Date": [ "Thu, 08 May 2025 09:20:11 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7189AADD0B8A4002BEED14C828B2943C Ref B: SYD03EDGE2107 Ref C: 2025-11-06T13:13:09Z" ],
+        "Date": [ "Thu, 06 Nov 2025 13:13:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "113" ],

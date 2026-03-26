@@ -19,13 +19,13 @@ New-AzOracleAutonomousDatabase -Name <String> -ResourceGroupName <String> -Locat
  [-AutonomousMaintenanceScheduleType <String>] [-BackupRetentionPeriodInDay <Int32>] [-CharacterSet <String>]
  [-ComputeCount <Single>] [-ComputeModel <String>] [-CpuCoreCount <Int32>]
  [-CustomerContact <ICustomerContact[]>] [-DatabaseEdition <String>] [-DataBaseType <String>]
- [-DataStorageSizeInGb <Int32>] [-DataStorageSizeInTb <Int32>] [-DayOfWeekName <String>] [-DbVersion <String>]
- [-DbWorkload <String>] [-DisplayName <String>] [-IsAutoScalingEnabled] [-IsAutoScalingForStorageEnabled]
- [-IsLocalDataGuardEnabled] [-IsMtlsConnectionRequired] [-IsPreviewVersionWithServiceTermsAccepted]
- [-LicenseModel <String>] [-NcharacterSet <String>] [-PrivateEndpointIP <String>]
- [-PrivateEndpointLabel <String>] [-ScheduledStartTime <String>] [-ScheduledStopTime <String>]
- [-SubnetId <String>] [-Tag <Hashtable>] [-VnetId <String>] [-WhitelistedIP <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DataStorageSizeInGb <Int32>] [-DataStorageSizeInTb <Int32>] [-DbVersion <String>] [-DbWorkload <String>]
+ [-DisplayName <String>] [-IsAutoScalingEnabled] [-IsAutoScalingForStorageEnabled] [-IsLocalDataGuardEnabled]
+ [-IsMtlsConnectionRequired] [-IsPreviewVersionWithServiceTermsAccepted] [-LicenseModel <String>]
+ [-NcharacterSet <String>] [-PrivateEndpointIP <String>] [-PrivateEndpointLabel <String>]
+ [-ScheduledOperationsList <IScheduledOperationsType[]>] [-SubnetId <String>] [-Tag <Hashtable>]
+ [-VnetId <String>] [-WhitelistedIP <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -335,21 +335,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DayOfWeekName
-Name of the day of the week.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DbVersion
 A valid Oracle Database version for Autonomous Database.
 
@@ -638,28 +623,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScheduledStartTime
-auto start time.
-value must be of ISO-8601 format HH:mm
+### -ScheduledOperationsList
+The list of scheduled operations.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduledStopTime
-auto stop time.
-value must be of ISO-8601 format HH:mm
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType[]
 Parameter Sets: CreateExpanded
 Aliases:
 

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update the VirtualMachineTemplate resource.
+Update the VirtualMachineTemplate resource.
 .Description
-update the VirtualMachineTemplate resource.
+Update the VirtualMachineTemplate resource.
 .Example
 Update-AzScVmmVMTemplate -Name "test-vmt" -ResourceGroupName "test-rg-01" -SubscriptionId "00000000-abcd-0000-abcd-000000000000" -Tag @{"key-1"="value-1"}
 

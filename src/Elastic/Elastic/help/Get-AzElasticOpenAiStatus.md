@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticOpenAiStatus
 
 ## SYNOPSIS
-Get OpenAI integration status for a given integration.
+Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Get-AzElasticOpenAiStatus -InputObject <IElasticIdentity> [-DefaultProfile <PSOb
 ```
 
 ## DESCRIPTION
-Get OpenAI integration status for a given integration.
+Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
 
 ## EXAMPLES
 

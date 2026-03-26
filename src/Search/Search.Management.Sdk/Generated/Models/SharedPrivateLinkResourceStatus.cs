@@ -11,53 +11,23 @@ namespace Microsoft.Azure.Management.Search.Models
     /// </summary>
 
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SharedPrivateLinkResourceStatus
+    public static class SharedPrivateLinkResourceStatus
     {
-        [System.Runtime.Serialization.EnumMember(Value = "Pending")]
-        Pending,
-        [System.Runtime.Serialization.EnumMember(Value = "Approved")]
-        Approved,
-        [System.Runtime.Serialization.EnumMember(Value = "Rejected")]
-        Rejected,
-        [System.Runtime.Serialization.EnumMember(Value = "Disconnected")]
-        Disconnected
-    }
-    internal static class SharedPrivateLinkResourceStatusEnumExtension
-    {
-        internal static string ToSerializedValue(this SharedPrivateLinkResourceStatus? value)
-        {
-            return value == null ? null : ((SharedPrivateLinkResourceStatus)value).ToSerializedValue();
-        }
-        internal static string ToSerializedValue(this SharedPrivateLinkResourceStatus value)
-        {
-            switch( value )
-            {
-                case SharedPrivateLinkResourceStatus.Pending:
-                    return "Pending";
-                case SharedPrivateLinkResourceStatus.Approved:
-                    return "Approved";
-                case SharedPrivateLinkResourceStatus.Rejected:
-                    return "Rejected";
-                case SharedPrivateLinkResourceStatus.Disconnected:
-                    return "Disconnected";
-            }
-            return null;
-        }
-        internal static SharedPrivateLinkResourceStatus? ParseSharedPrivateLinkResourceStatus(this string value)
-        {
-            switch( value )
-            {
-                case "Pending":
-                    return SharedPrivateLinkResourceStatus.Pending;
-                case "Approved":
-                    return SharedPrivateLinkResourceStatus.Approved;
-                case "Rejected":
-                    return SharedPrivateLinkResourceStatus.Rejected;
-                case "Disconnected":
-                    return SharedPrivateLinkResourceStatus.Disconnected;
-            }
-            return null;
-        }
+        /// <summary>
+        /// The shared private link resource has been created and is pending approval.
+        /// </summary>
+        public const string Pending = "Pending";
+        /// <summary>
+        /// The shared private link resource is approved and is ready for use.
+        /// </summary>
+        public const string Approved = "Approved";
+        /// <summary>
+        /// The shared private link resource has been rejected and cannot be used.
+        /// </summary>
+        public const string Rejected = "Rejected";
+        /// <summary>
+        /// The shared private link resource has been removed from the service.
+        /// </summary>
+        public const string Disconnected = "Disconnected";
     }
 }

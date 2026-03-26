@@ -113,13 +113,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitorPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("SystemData"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.SystemDataTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IIdentityProperties) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IdentityPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -157,14 +181,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
-            if (content.Contains("SystemDataCreatedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
             if (content.Contains("DynatraceEnvironmentProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).DynatraceEnvironmentProperty = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentProperties) content.GetValueForProperty("DynatraceEnvironmentProperty",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).DynatraceEnvironmentProperty, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.DynatraceEnvironmentPropertiesTypeConverter.ConvertFrom);
@@ -172,6 +188,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             if (content.Contains("MarketplaceSubscriptionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).MarketplaceSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).MarketplaceSubscriptionStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceSaasAutoRenew"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).MarketplaceSaasAutoRenew = (string) content.GetValueForProperty("MarketplaceSaasAutoRenew",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).MarketplaceSaasAutoRenew, global::System.Convert.ToString);
             }
             if (content.Contains("LiftrResourceCategory"))
             {
@@ -229,22 +249,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).PlanDataEffectiveDate = (global::System.DateTime?) content.GetValueForProperty("PlanDataEffectiveDate",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).PlanDataEffectiveDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
             if (content.Contains("IdentityTenantId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
@@ -272,6 +276,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             if (content.Contains("AccountInfoRegionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).AccountInfoRegionId = (string) content.GetValueForProperty("AccountInfoRegionId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).AccountInfoRegionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccountInfoCompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).AccountInfoCompanyName = (string) content.GetValueForProperty("AccountInfoCompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).AccountInfoCompanyName, global::System.Convert.ToString);
             }
             if (content.Contains("EnvironmentInfoEnvironmentId"))
             {
@@ -330,13 +338,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitorPropertiesTypeConverter.ConvertFrom);
             }
-            if (content.Contains("SystemData"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.SystemDataTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IIdentityProperties) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IdentityPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -374,14 +406,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
-            if (content.Contains("SystemDataCreatedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataCreatedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
             if (content.Contains("DynatraceEnvironmentProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).DynatraceEnvironmentProperty = (Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentProperties) content.GetValueForProperty("DynatraceEnvironmentProperty",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).DynatraceEnvironmentProperty, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.DynatraceEnvironmentPropertiesTypeConverter.ConvertFrom);
@@ -389,6 +413,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             if (content.Contains("MarketplaceSubscriptionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).MarketplaceSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).MarketplaceSubscriptionStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarketplaceSaasAutoRenew"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).MarketplaceSaasAutoRenew = (string) content.GetValueForProperty("MarketplaceSaasAutoRenew",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).MarketplaceSaasAutoRenew, global::System.Convert.ToString);
             }
             if (content.Contains("LiftrResourceCategory"))
             {
@@ -446,22 +474,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).PlanDataEffectiveDate = (global::System.DateTime?) content.GetValueForProperty("PlanDataEffectiveDate",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).PlanDataEffectiveDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("SystemDataCreatedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedBy"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedByType"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
-            }
-            if (content.Contains("SystemDataLastModifiedAt"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
             if (content.Contains("IdentityTenantId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
@@ -489,6 +501,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             if (content.Contains("AccountInfoRegionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).AccountInfoRegionId = (string) content.GetValueForProperty("AccountInfoRegionId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).AccountInfoRegionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccountInfoCompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).AccountInfoCompanyName = (string) content.GetValueForProperty("AccountInfoCompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceInternal)this).AccountInfoCompanyName, global::System.Convert.ToString);
             }
             if (content.Contains("EnvironmentInfoEnvironmentId"))
             {

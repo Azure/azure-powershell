@@ -320,4 +320,203 @@ directive:
     transform: >-
       return "string"
 
+  - where:
+      verb: Get|Update
+      subject: CloudService
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Extension
+          - LoadBalancerConfiguration
+          - Secret
+          - Role
+          - Zone
+        new-output-properties:
+          - Extension
+          - LoadBalancerConfiguration
+          - Secret
+          - Role
+          - Zone
+        change-description: The types of the properties 'Extension', 'LoadBalancerConfiguration', 'Secret', 'Role', and 'Zone' will be changed from object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      verb: Get
+      subject: CloudServiceInstanceView
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Statuses
+          - RoleInstanceStatusesSummary
+          - PrivateId
+        new-output-properties:
+          - Statuses
+          - RoleInstanceStatusesSummary
+          - PrivateId
+        change-description: The types of the properties 'Statuses', 'RoleInstanceStatusesSummary', and 'PrivateId' will be changed from object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      verb: Get
+      subject: NetworkInterface
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - ApplicationSecurityGroup
+          - CustomDnsConfig
+          - FlowLog
+          - LoadBalancerFrontendIPConfiguration
+          - NetworkSecurityGroupPropertiesNetworkInterface
+          - PrivateEndpointPropertiesNetworkInterface
+          - PrivateLinkServicePropertiesNetworkInterface
+          - IPConfiguration
+          - TapConfiguration
+          - PrivateEndpointConnection
+          - PrivateEndpointPropertiesIPConfiguration
+          - PrivateLinkServiceConnection
+          - ManualPrivateLinkServiceConnection
+          - PrivateLinkServicePropertiesIPConfiguration
+          - SecurityRule
+          - DefaultSecurityRule
+          - ApplicationGatewayIPConfiguration
+          - Delegation
+          - FlowLog
+          - IPConfiguration
+          - IPConfigurationProfile
+          - NetworkInterface
+          - PrivateEndpoint
+          - ResourceNavigationLink
+          - Route
+          - DefaultSecurityRule
+          - SecurityRule
+          - ServiceAssociationLink
+          - ServiceEndpointPolicy
+          - ServiceEndpoint
+          - NetworkSecurityGroupPropertiesSubnet
+          - RouteTablePropertiesSubnet
+          - IPAllocation
+          - PropertiesAddressPrefixes
+          - PropertiesNetworkSecurityGroupPropertiesSubnets
+          - HostedWorkload
+          - VisibilitySubscription
+          - DnsSettingDnsServer
+          - DnsSettingAppliedDnsServer
+          - AutoApprovalSubscription
+          - Fqdn
+        new-output-properties:
+          - ApplicationSecurityGroup
+          - CustomDnsConfig
+          - FlowLog
+          - LoadBalancerFrontendIPConfiguration
+          - NetworkSecurityGroupPropertiesNetworkInterface
+          - PrivateEndpointPropertiesNetworkInterface
+          - PrivateLinkServicePropertiesNetworkInterface
+          - IPConfiguration
+          - TapConfiguration
+          - PrivateEndpointConnection
+          - PrivateEndpointPropertiesIPConfiguration
+          - PrivateLinkServiceConnection
+          - ManualPrivateLinkServiceConnection
+          - PrivateLinkServicePropertiesIPConfiguration
+          - SecurityRule
+          - DefaultSecurityRule
+          - ApplicationGatewayIPConfiguration
+          - Delegation
+          - FlowLog
+          - IPConfiguration
+          - IPConfigurationProfile
+          - NetworkInterface
+          - PrivateEndpoint
+          - ResourceNavigationLink
+          - Route
+          - DefaultSecurityRule
+          - SecurityRule
+          - ServiceAssociationLink
+          - ServiceEndpointPolicy
+          - ServiceEndpoint
+          - NetworkSecurityGroupPropertiesSubnet
+          - RouteTablePropertiesSubnet
+          - IPAllocation
+          - PropertiesAddressPrefixes
+          - PropertiesNetworkSecurityGroupPropertiesSubnets
+          - HostedWorkload
+          - VisibilitySubscription
+          - DnsSettingDnsServer
+          - DnsSettingAppliedDnsServer
+          - AutoApprovalSubscription
+          - Fqdn
+        change-description: The types of the properties 'ApplicationSecurityGroup', 'CustomDnsConfig', 'FlowLog', 'LoadBalancerFrontendIPConfiguration', 'NetworkSecurityGroupPropertiesNetworkInterface', 'PrivateEndpointPropertiesNetworkInterface', 'PrivateLinkServicePropertiesNetworkInterface', 'IPConfiguration', 'TapConfiguration', 'PrivateEndpointConnection', 'PrivateEndpointPropertiesIPConfiguration', 'PrivateLinkServiceConnection', 'ManualPrivateLinkServiceConnection', 'PrivateLinkServicePropertiesIPConfiguration', 'SecurityRule', 'DefaultSecurityRule', 'ApplicationGatewayIPConfiguration', 'Delegation', 'FlowLog', 'IPConfiguration', 'IPConfigurationProfile', 'NetworkInterface', 'PrivateEndpoint', 'ResourceNavigationLink', 'Route', 'DefaultSecurityRule', 'SecurityRule', 'ServiceAssociationLink', 'ServiceEndpointPolicy', 'ServiceEndpoint', 'NetworkSecurityGroupPropertiesSubnet', 'RouteTablePropertiesSubnet', 'IPAllocation', 'PropertiesAddressPrefixes', 'PropertiesNetworkSecurityGroupPropertiesSubnets', 'HostedWorkload', 'VisibilitySubscription', 'DnsSettingDnsServer', 'DnsSettingAppliedDnsServer', 'AutoApprovalSubscription', 'Fqdn' will be changed from object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      verb: Get
+      subject: CloudServiceOSFamily
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Version
+        new-output-properties:
+          - Version
+        change-description: The types of the properties 'Version' will be changed from object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      verb: Get
+      subject: PublicIPAddress
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Zone
+          - IPTag
+          - PublicIPAddress
+          - PublicIPPrefix
+          - Subnet
+        new-output-properties:
+          - Zone
+          - IPTag
+          - PublicIPAddress
+          - PublicIPPrefix
+          - Subnet
+        change-description: The types of the properties 'Zone', 'IPTag', 'PublicIPAddress', 'PublicIPPrefix', and 'Subnet' will be changed from object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      verb: Get
+      subject: CloudServiceRoleInstance
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - NetworkProfileNetworkInterface
+          - InstanceViewStatuses
+        new-output-properties:
+          - NetworkProfileNetworkInterface
+          - InstanceViewStatuses
+        change-description: The types of the properties 'NetworkProfileNetworkInterface' and 'InstanceViewStatuses' will be changed from object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
+
+  - where:
+      verb: Get
+      subject: CloudServiceRoleInstanceView
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Statuses
+        new-output-properties:
+          - Statuses
+        change-description: The types of the properties 'Statuses' will be changed from object to 'List'.
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 15.0.0
+        change-effective-date: 2025/11/03
 ```

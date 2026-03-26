@@ -23,7 +23,7 @@ Get-AzVMImage -Location <String> [-EdgeZone <String>] -PublisherName <String> -O
 ### GetVMImageDetail
 ```
 Get-AzVMImage -Location <String> [-EdgeZone <String>] -PublisherName <String> -Offer <String> -Skus <String>
- -Version <String> [-DefaultProfile <IAzureContextContainer>]
+ -Version <String> [-Expand <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -47,7 +47,6 @@ Version           Location  PublisherName          HyperVGeneration Architecture
 26100.3194.250210 centralus MicrosoftWindowsServer
 26100.3476.250306 centralus MicrosoftWindowsServer
 26100.3775.250406 centralus MicrosoftWindowsServer
-
 ```
 
 This command gets all the versions of VMImage that match the specified values.
@@ -155,7 +154,7 @@ The expand expression to apply on the operation. Possible values are: 'propertie
 
 ```yaml
 Type: System.String
-Parameter Sets: ListVMImage
+Parameter Sets: (All)
 Aliases:
 
 Required: False

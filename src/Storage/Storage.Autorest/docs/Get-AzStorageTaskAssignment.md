@@ -15,7 +15,7 @@ Get the storage task assignment properties
 ### List (Default)
 ```
 Get-AzStorageTaskAssignment -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Maxpagesize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -145,21 +145,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Maxpagesize
-Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the storage task assignment within the specified resource group.
 Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
@@ -209,6 +194,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -218,6 +204,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List
+Aliases: Maxpagesize
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -378,6 +378,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string Shape { get => this._shape; set => this._shape = value; }
 
+        /// <summary>Backing field for <see cref="ShapeAttribute" /> property.</summary>
+        private string _shapeAttribute;
+
+        /// <summary>The type of Exascale storage used for Exadata VM cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string ShapeAttribute { get => this._shapeAttribute; set => this._shapeAttribute = value; }
+
         /// <summary>Backing field for <see cref="SnapshotFileSystemStorage" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterStorageDetails _snapshotFileSystemStorage;
 
@@ -931,6 +938,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"shape",
         PossibleTypes = new [] { typeof(string) })]
         string Shape { get; set; }
+        /// <summary>The type of Exascale storage used for Exadata VM cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"The type of Exascale storage used for Exadata VM cluster.",
+        SerializedName = @"shapeAttribute",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("SMART_STORAGE", "BLOCK_STORAGE")]
+        string ShapeAttribute { get; set; }
         /// <summary>Total Capacity</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -1198,6 +1217,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         int? ScanListenerPortTcpSsl { get; set; }
         /// <summary>The shape of the Exadata VM cluster on Exascale Infrastructure resource</summary>
         string Shape { get; set; }
+        /// <summary>The type of Exascale storage used for Exadata VM cluster.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("SMART_STORAGE", "BLOCK_STORAGE")]
+        string ShapeAttribute { get; set; }
         /// <summary>Snapshot filesystem storage details.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExadbVMClusterStorageDetails SnapshotFileSystemStorage { get; set; }
         /// <summary>Total Capacity</summary>

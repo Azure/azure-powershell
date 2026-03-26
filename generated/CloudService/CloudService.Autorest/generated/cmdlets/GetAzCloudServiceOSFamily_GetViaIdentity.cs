@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// [OpenAPI] GetOSFamily=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/cloudServiceOsFamilies/{osFamilyName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCloudServiceOSFamily_GetViaIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSFamily", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Version"}, NewOutputProperties=new string[] {"Version"}, ChangeDescription="The types of the properties 'Version' will be changed from object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IOSFamily))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Description(@"Gets properties of a guest operating system family that can be specified in the XML service configuration (.cscfg) for a cloud service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Generated]

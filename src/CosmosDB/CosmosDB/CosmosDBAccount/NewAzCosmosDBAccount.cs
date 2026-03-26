@@ -171,6 +171,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             Collection<string> networkAclBypassResourceId = NetworkAclBypassResourceId != null ? new Collection<string>(NetworkAclBypassResourceId) : new Collection<string>();
             databaseAccountCreateUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
             databaseAccountCreateUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            databaseAccountCreateUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
+            databaseAccountCreateUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
             databaseAccountCreateUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
             databaseAccountCreateUpdateParameters.EnablePerRegionPerPartitionAutoscale = EnablePerRegionPerPartitionAutoscale;
 

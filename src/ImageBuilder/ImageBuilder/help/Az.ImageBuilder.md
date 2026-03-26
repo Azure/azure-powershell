@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.ImageBuilder Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: ImageBuilder cmdlets
 
 ## Az.ImageBuilder Cmdlets
 ### [Get-AzImageBuilderTemplate](Get-AzImageBuilderTemplate.md)

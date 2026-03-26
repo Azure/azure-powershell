@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Search.Models
 
     /// <summary>
     /// Describes the properties of a resource type that has been onboarded to
-    /// private link service, supported by Azure Cognitive Search.
+    /// private link service, supported by Azure AI Search.
     /// </summary>
     public partial class ShareablePrivateLinkResourceProperties
     {
@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Management.Search.Models
         /// </summary>
 
         /// <param name="type">The resource provider type for the resource that has been onboarded to
-        /// private link service, supported by Azure Cognitive Search.
+        /// private link service, supported by Azure AI Search.
         /// </param>
 
         /// <param name="groupId">The resource provider group id for the resource that has been onboarded to
-        /// private link service, supported by Azure Cognitive Search.
+        /// private link service, supported by Azure AI Search.
         /// </param>
 
         /// <param name="description">The description of the resource type that has been onboarded to private
-        /// link service, supported by Azure Cognitive Search.
+        /// link service, supported by Azure AI Search.
         /// </param>
         public ShareablePrivateLinkResourceProperties(string type = default(string), string groupId = default(string), string description = default(string))
 
@@ -53,21 +53,21 @@ namespace Microsoft.Azure.Management.Search.Models
 
         /// <summary>
         /// Gets the resource provider type for the resource that has been onboarded to
-        /// private link service, supported by Azure Cognitive Search.
+        /// private link service, supported by Azure AI Search.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; private set; }
 
         /// <summary>
         /// Gets the resource provider group id for the resource that has been
-        /// onboarded to private link service, supported by Azure Cognitive Search.
+        /// onboarded to private link service, supported by Azure AI Search.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "groupId")]
         public string GroupId {get; private set; }
 
         /// <summary>
         /// Gets the description of the resource type that has been onboarded to
-        /// private link service, supported by Azure Cognitive Search.
+        /// private link service, supported by Azure AI Search.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description {get; private set; }

@@ -15,7 +15,7 @@ Creates a local PSGalleryInVmAccessControlProfileVersion object.
 ```
 New-AzGalleryInVMAccessControlProfileVersionConfig -Name <String> -Location <String> -Mode <String>
  -DefaultAccess <String> -TargetLocation <String[]> [-ExcludeFromLatest]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ which then can be used with the **[New-AzGalleryInVMAccessControlProfileVersion]
 
 ### Example 1
 ```powershell
-New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocation @("West US", "West US 2") -ExcludeFromLatest 
+New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myProfileVersion" -Location "West US 2" -Mode "Audit" -DefaultAccess "Deny" -TargetLocation @("West US", "West US 2") -ExcludeFromLatest
 ```
 
 Creates a local PSGalleryInVmAccessControlProfileVersion object with the specified parameters.
@@ -39,11 +39,10 @@ $CPVersionConfig = New-AzGalleryInVMAccessControlProfileVersionConfig -Name "myP
 | Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege -PrivilegeName "GoalState" -Path "/machine" -QueryParameter @{ comp = "goalstate" } `
 | Add-AzGalleryInVMAccessControlProfileVersionRulesRole -RoleName "Provisioning" -Privilege @("GoalState") `
 | Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity -IdentityName "WinPA" -UserName "SYSTEM" -GroupName "Administrators" -ExePath "C:\Windows\System32\cscript.exe" -ProcessName "cscript" `
-| Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -Role "Provisioning" -Identity @("WinPA") 
+| Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment -Role "Provisioning" -Identity @("WinPA")
 ```
 
 Creates a local PSGalleryInVmAccessControlProfileVersion object then add rules.
-
 
 ## PARAMETERS
 
@@ -134,21 +133,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

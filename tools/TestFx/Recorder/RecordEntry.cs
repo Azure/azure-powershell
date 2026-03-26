@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
             HttpResponseMessage response = new HttpResponseMessage();
             response.StatusCode = StatusCode;
             ResponseHeaders.ForEach(h => response.Headers.TryAddWithoutValidation(h.Key, h.Value));
-            ResponseContentType = RecorderUtilities.GetContetTypeFromHeaders(ResponseHeaders);
+            ResponseContentType = RecorderUtilities.GetContentTypeFromHeaders(ResponseHeaders);
             response.Content = RecorderUtilities.CreateHttpContent(ResponseBody, ResponseContentType);
             ResponseHeaders.ForEach(h => response.Content.Headers.TryAddWithoutValidation(h.Key, h.Value));
             return response;

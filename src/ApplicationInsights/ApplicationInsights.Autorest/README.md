@@ -46,14 +46,6 @@ input-file:
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   - from: swagger-document
     where: $.info.title
@@ -403,10 +395,12 @@ directive:
     hide: true
 
   - model-cmdlet:
-    - WebTestGeolocation
-    - WorkbookTemplateGallery
-    # Hide for custom model cmdlet.
-    # - HeaderField
+    - model-name: WebTestGeolocation
+      cmdlet-name: New-AzApplicationInsightsWebTestGeolocationObject
+    - model-name: WorkbookTemplateGallery
+      cmdlet-name: New-AzApplicationInsightsWorkbookTemplateGalleryObject
+    - model-name: HeaderField
+      cmdlet-name: New-AzApplicationInsightsWebTestHeaderFieldObject
 
   # format output table
   - where:

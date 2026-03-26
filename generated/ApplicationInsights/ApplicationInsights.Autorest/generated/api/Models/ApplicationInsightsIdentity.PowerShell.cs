@@ -75,13 +75,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("ResourceGroupName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            }
             if (content.Contains("SubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("WebTestName"))
             {
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
             }
             if (content.Contains("StorageType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType = (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType?) content.GetValueForProperty("StorageType",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType = (string) content.GetValueForProperty("StorageType",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType, global::System.Convert.ToString);
             }
             if (content.Contains("RevisionId"))
             {
@@ -140,13 +140,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("ResourceGroupName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            }
             if (content.Contains("SubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
             if (content.Contains("WebTestName"))
             {
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
             }
             if (content.Contains("StorageType"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType = (Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType?) content.GetValueForProperty("StorageType",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType, Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.StorageType.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType = (string) content.GetValueForProperty("StorageType",((Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentityInternal)this).StorageType, global::System.Convert.ToString);
             }
             if (content.Contains("RevisionId"))
             {

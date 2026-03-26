@@ -27,7 +27,7 @@ Creates or updates a Dev Box definition.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IDevBoxDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,6 +35,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [AttachedNetworkConnectionName <String>]: The name of the attached NetworkConnection.
+  [BuildName <String>]: The ID of the Image Definition Build.
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
@@ -43,14 +44,14 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
+  [ImageDefinitionName <String>]: The name of the Image Definition.
   [ImageName <String>]: The name of the image.
   [Location <String>]: The Azure region
-  [MemberName <String>]: The name of a devcenter plan member.
   [NetworkConnectionName <String>]: Name of the Network Connection that can be applied to a Pool.
   [OperationId <String>]: The ID of an ongoing async operation
-  [PlanName <String>]: The name of the devcenter plan.
   [PoolName <String>]: Name of the pool.
   [ProjectName <String>]: The name of the project.
+  [ProjectPolicyName <String>]: The name of the project policy.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
   [SubscriptionId <String>]: The ID of the target subscription.
@@ -60,187 +61,186 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmindevboxdefinition
 #>
 function New-AzDevCenterAdminDevBoxDefinition {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevBoxDefinition])]
-  [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-  [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.GenericBreakingChangeAttribute("MemberName and PlanName will be removed from InputObject", "15.0.0", "3.0.0", "2025/11/18")]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IDevBoxDefinition])]
+  [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
   param(
-      [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-      [System.String]
-      # The name of the devcenter.
-      ${DevCenterName},
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the devcenter.
+    ${DevCenterName},
+
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Alias('DevBoxDefinitionName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the Dev Box definition.
+    ${Name},
+
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
   
-      [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-      [Alias('DevBoxDefinitionName')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-      [System.String]
-      # The name of the Dev Box definition.
-      ${Name},
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HibernateSupport])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HibernateSupport]
+    # Indicates whether Dev Boxes created with this definition are capable of hibernation.
+    # Not all images are capable of supporting hibernation.
+    # To find out more see https://aka.ms/devbox/hibernate
+    ${HibernateSupport},
   
-      [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-      [System.String]
-      # The name of the resource group.
-      # The name is case insensitive.
-      ${ResourceGroupName},
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Image ID, or Image version ID.
+    # When Image ID is provided, its latest version will be used.
+    ${ImageReferenceId},
   
-      [Parameter(ParameterSetName='CreateExpanded')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-      [System.String]
-      # The ID of the target subscription.
-      ${SubscriptionId},
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The storage type used for the Operating System disk of Dev Boxes created using this definition.
+    ${OSStorageType},
   
-      [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
-      # Identity Parameter
-      # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-      ${InputObject},
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.Int32]
+    # If the SKU supports scale out/in then the capacity integer should be included.
+    # If scale out/in is not possible for the resource this may be omitted.
+    ${SkuCapacity},
   
-      [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-      [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-      [System.String]
-      # The geo-location where the resource lives
-      ${Location},
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # If the service has different generations of hardware, for the same SKU, then that can be captured here.
+    ${SkuFamily},
   
-      [Parameter(ParameterSetName='CreateExpanded')]
-      [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HibernateSupport])]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.HibernateSupport]
-      # Indicates whether Dev Boxes created with this definition are capable of hibernation.
-      # Not all images are capable of supporting hibernation.
-      # To find out more see https://aka.ms/devbox/hibernate
-      ${HibernateSupport},
+    [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The name of the SKU.
+    # E.g.
+    # P3.
+    # It is typically a letter+number code
+    ${SkuName},
   
-      [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-      [System.String]
-      # Image ID, or Image version ID.
-      # When Image ID is provided, its latest version will be used.
-      ${ImageReferenceId},
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The SKU size.
+    # When the name field is the combination of tier and some other value, this would be the standalone code.
+    ${SkuSize},
   
-      [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-      [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-      [System.String]
-      # The storage type used for the Operating System disk of Dev Boxes created using this definition.
-      ${OSStorageType},
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier]
+    # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+    ${SkuTier},
   
-      [Parameter(ParameterSetName='CreateExpanded')]
-      [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-      [System.Int32]
-      # If the SKU supports scale out/in then the capacity integer should be included.
-      # If scale out/in is not possible for the resource this may be omitted.
-      ${SkuCapacity},
-  
-      [Parameter(ParameterSetName='CreateExpanded')]
-      [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-      [System.String]
-      # If the service has different generations of hardware, for the same SKU, then that can be captured here.
-      ${SkuFamily},
-  
-      [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-      [System.String]
-      # The name of the SKU.
-      # E.g.
-      # P3.
-      # It is typically a letter+number code
-      ${SkuName},
-  
-      [Parameter(ParameterSetName='CreateExpanded')]
-      [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-      [System.String]
-      # The SKU size.
-      # When the name field is the combination of tier and some other value, this would be the standalone code.
-      ${SkuSize},
-  
-      [Parameter(ParameterSetName='CreateExpanded')]
-      [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier])]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SkuTier]
-      # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-      ${SkuTier},
-  
-      [Parameter(ParameterSetName='CreateExpanded')]
-      [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.ITrackedResourceTags]))]
-      [System.Collections.Hashtable]
-      # Resource tags.
-      ${Tag},
-  
-      [Parameter()]
-      [Alias('AzureRMContext', 'AzureCredential')]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
-      [System.Management.Automation.PSObject]
-      # The DefaultProfile parameter is not functional.
-      # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-      ${DefaultProfile},
-  
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Run the command as a job
-      ${AsJob},
-  
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Wait for .NET debugger to attach
-      ${Break},
-  
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
-      # SendAsync Pipeline Steps to be appended to the front of the pipeline
-      ${HttpPipelineAppend},
-  
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
-      # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-      ${HttpPipelinePrepend},
-  
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Run the command asynchronously
-      ${NoWait},
-  
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-      [System.Uri]
-      # The URI for the proxy server to use
-      ${Proxy},
-  
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-      [System.Management.Automation.PSCredential]
-      # Credentials for a proxy server to use for the remote call
-      ${ProxyCredential},
-  
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Use the default credentials for the proxy
-      ${ProxyUseDefaultCredentials}
+    [Parameter(ParameterSetName = 'CreateExpanded')]
+    [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api50.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
   )
-process {
+  process {
     Az.DevCenter.internal\New-AzDevCenterAdminDevBoxDefinition @PSBoundParameters
-}
+  }
 
 }

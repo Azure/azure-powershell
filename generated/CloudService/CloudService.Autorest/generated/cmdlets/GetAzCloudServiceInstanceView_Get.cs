@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// [OpenAPI] GetInstanceView=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/instanceView"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzCloudServiceInstanceView_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceInstanceView", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Statuses","RoleInstanceStatusesSummary","PrivateId"}, NewOutputProperties=new string[] {"Statuses","RoleInstanceStatusesSummary","PrivateId"}, ChangeDescription="The types of the properties 'Statuses', 'RoleInstanceStatusesSummary', and 'PrivateId' will be changed from object to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceInstanceView))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Description(@"Gets the status of a cloud service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Generated]

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public const string ErrorFormat = "Error: Code={0}; Message={1}\r\n";
         public const string DefaultPublicDnsFormat = "{0}.{1}.cloudapp.azure.com";
 
-        private readonly string DefaultDurability = DurabilityLevel.Bronze.ToString();
+        private readonly string DefaultDurability = DurabilityLevel.Silver.ToString();
 
         private string adminUserName = string.Empty; 
         private string reliabilityLevel = ReliabilityLevel.Bronze.ToString();

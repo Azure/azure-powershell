@@ -428,6 +428,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies if managed identities can access SMB shares using OAuth. The default interpretation is false for this property.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSmbOAuth
+        {
+            get
+            {
+                return enableSmbOAuth.Value;
+            }
+            set
+            {
+                enableSmbOAuth = value;
+            }
+        }
+        private bool? enableSmbOAuth = null;
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Specifies the Active Directory account type for Azure Storage. Possible values include: 'User', 'Computer'.",
             ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
         [PSArgumentCompleter("User", "Computer")]
@@ -503,6 +520,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? allowBlobPublicAccess = null;
 
+        [CmdletParameterBreakingChangeWithVersion("MinimumTlsVersion", "15.4.0", "9.7.0", ChangeDescription = "The MinimumTlsVersion parameter will no longer allow TLS 1.0 or TLS 1.1. TLS 1.2 or later will be required.")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.")]
@@ -637,6 +655,36 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string DnsEndpointType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Describes the available zones for the product where storage account resource can be created.")]
+        [ValidateNotNullOrEmpty]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The availability zone pinning policy for the storage account.")]
+        [PSArgumentCompleter("None", "Any")]
+        [ValidateNotNullOrEmpty]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Status indicating whether Geo Priority Replication is enabled for the account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableBlobGeoPriorityReplication
+        {
+            get
+            {
+                return enableBlobGeoPriorityReplication != null ? enableBlobGeoPriorityReplication.Value : false;
+            }
+            set
+            {
+                enableBlobGeoPriorityReplication = value;
+            }
+        }
+        private bool? enableBlobGeoPriorityReplication = null;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -769,6 +817,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 createParameters.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
             }
+
+            if (this.enableSmbOAuth != null)
+            {
+                if (createParameters.AzureFilesIdentityBasedAuthentication == null)
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication
+                    {
+                        DirectoryServiceOptions = DirectoryServiceOptions.None
+                    };
+                }
+                createParameters.AzureFilesIdentityBasedAuthentication.SmbOAuthSettings = new SmbOAuthSettings(this.enableSmbOAuth.Value);
+            }
+
             if (this.EnableLargeFileShare.IsPresent)
             {
                 createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
@@ -843,6 +904,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             if (this.minimumTlsVersion != null)
             {
+                if (this.minimumTlsVersion == StorageModels.MinimumTlsVersion.TLS10 || this.minimumTlsVersion == StorageModels.MinimumTlsVersion.TLS11)
+                {
+                    WriteWarning("TLS 1.0 and TLS 1.1 are retired, so will use TLS 1.2");
+                    this.minimumTlsVersion = StorageModels.MinimumTlsVersion.TLS12;
+                }
                 createParameters.MinimumTlsVersion = this.minimumTlsVersion;
             }
             if (this.allowBlobPublicAccess != null)
@@ -936,6 +1002,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.DnsEndpointType != null)
             {
                 createParameters.DnsEndpointType = this.DnsEndpointType;
+            }
+            if (this.Zone != null)
+            {
+                createParameters.Zones = this.Zone;
+            }
+            if (this.ZonePlacementPolicy != null)
+            {
+                createParameters.Placement = new Placement(this.ZonePlacementPolicy);
+            }
+            if (this.enableBlobGeoPriorityReplication != null)
+            {
+                createParameters.GeoPriorityReplicationStatus = new GeoPriorityReplicationStatus(this.enableBlobGeoPriorityReplication);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
