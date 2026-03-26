@@ -474,7 +474,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' -Tag 'LiveOnly' {
                               -Runtime $runtime `
                               -FlexConsumptionLocation $flexLocation `
                               -DeploymentStorageAuthType "SystemAssignedIdentity" `
-                              -IdentityType "SystemAssigned" `
+                              -EnableSystemAssignedIdentity `
                               -EnableZoneRedundancy
 
             Write-Verbose "Validating SystemAssigned identity configuration..." -Verbose
@@ -545,8 +545,7 @@ Describe 'New-AzFunctionApp - Flex Consumption' -Tag 'LiveOnly' {
                               -FlexConsumptionLocation $flexLocation `
                               -DeploymentStorageAuthType "UserAssignedIdentity" `
                               -DeploymentStorageAuthValue $flexIdentityInfo.Id `
-                              -IdentityType "UserAssigned" `
-                              -IdentityID $flexIdentityInfo.Id
+                              -UserAssignedIdentity $flexIdentityInfo.Id
 
             # Validate basic properties using base test case expectations
             Write-Verbose "Validating Flex function app basic properties..." -Verbose

@@ -1,10 +1,5 @@
 function New-AzFunctionApp {
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PreviewMessage("**********************************************************************************************`n
-    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026.           *`n
-    * At least one change applies to this cmdlet.                                                     *`n
-    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
-    ***************************************************************************************************")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Creates a function app.')]
     [CmdletBinding(SupportsShouldProcess=$true, DefaultParametersetname="Consumption")]
     param(
@@ -159,7 +154,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [Parameter(ParameterSetName="FlexConsumption")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         [ValidateNotNull()]
         ${Tag},
@@ -173,30 +168,26 @@ function New-AzFunctionApp {
         [Hashtable]
         ${AppSetting},
 
-        [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage="Specifies the type of identity used for the function app.
-            The acceptable values for this parameter are:
-            - SystemAssigned
-            - UserAssigned
-            ")]
+        [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage="Determines whether to enable a system-assigned identity for the resource.")]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [Parameter(ParameterSetName="FlexConsumption")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityCreateType])]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
-        ${IdentityType},
+        [System.Management.Automation.SwitchParameter]
+        ${EnableSystemAssignedIdentity},
 
-        [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage="Specifies the list of user identities associated with the function app.
+        [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage="The array of user assigned identities associated with the function app.
             The user identity references will be ARM resource ids in the form:
-            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'")]
+            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'")]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Parameter(ParameterSetName="EnvironmentForContainerApp")]
         [Parameter(ParameterSetName="FlexConsumption")]
         [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
         [System.String[]]
-        ${IdentityID},
+        ${UserAssignedIdentity},
 
         [Parameter(Mandatory=$true,ParameterSetName="FlexConsumption", HelpMessage='Location to create Flex Consumption function app.')]
         [ValidateNotNullOrEmpty()]
@@ -225,12 +216,12 @@ function New-AzFunctionApp {
         ${DeploymentStorageAuthValue},
 
         [Parameter(ParameterSetName="FlexConsumption", HelpMessage=
-'Array of hashtables describing the AlwaysReady configuration. Each hashtable must include:
-- name: The function name or route name.
-- instanceCount: The number of pre-warmed instances for that function.
+            'Array of hashtables describing the AlwaysReady configuration. Each hashtable must include:
+            - name: The function name or route name.
+            - instanceCount: The number of pre-warmed instances for that function.
 
-Example:
-@(@{ name = "http"; instanceCount = 2 }).')]
+            Example:
+            @(@{ name = "http"; instanceCount = 2 }).')]
         [ValidateNotNullOrEmpty()]
         [Hashtable[]]
         ${AlwaysReady},
@@ -289,16 +280,12 @@ Example:
         [System.String]
         ${RegistryServer},
         
+        [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
         [System.Management.Automation.PSObject]
         ${DefaultProfile},
-
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Wait for .NET debugger to attach
         ${Break},
 
         [Parameter(DontShow)]
@@ -354,8 +341,6 @@ Example:
             "FunctionsVersion",
             "RuntimeVersion",
             "AppSetting",
-            "IdentityType",
-            "IdentityID",
             "Tag",
             "Environment",
             "RegistryServer",
@@ -373,7 +358,9 @@ Example:
             "MaximumInstanceCount",
             "InstanceMemoryMB",
             "HttpPerInstanceConcurrency",
-            "EnableZoneRedundancy"
+            "EnableZoneRedundancy",
+            "EnableSystemAssignedIdentity",
+            "UserAssignedIdentity"
         )
         foreach ($paramName in $paramsToRemove)
         {
@@ -393,9 +380,9 @@ Example:
         $appInsightCreated = $false
         $functionAppCreatedSuccessfully = $false
 
-        $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
-        $siteConfig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.SiteConfig
-        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.Site
+        $appSettings = New-Object -TypeName System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair]
+        $siteConfig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.SiteConfig
+        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Site
 
         $OSIsLinux = ($OSType -eq "Linux") -or $functionAppIsFlexConsumption
 
@@ -458,27 +445,31 @@ Example:
         }
 
         # Set function app managed identity
-        if ($IdentityType)
+        if ($null -ne $UserAssignedIdentity -and $UserAssignedIdentity.Count -eq 0)
         {
-            $functionAppDef.IdentityType = $IdentityType
+            $errorMessage = "At least one user-assigned identity resource ID must be provided via the -UserAssignedIdentity parameter."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "UserAssignedIdentityRequired" `
+                                    -ErrorMessage $errorMessage `
+                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                    -Exception $exception
+        }
 
-            if ($IdentityType -eq "UserAssigned")
-            {
-                # Set UserAssigned managed identiy
-                if (-not $IdentityID)
-                {
-                    $errorMessage = "IdentityID is required for UserAssigned identity"
-                    $exception = [System.InvalidOperationException]::New($errorMessage)
-                    ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
-                                            -ErrorMessage $errorMessage `
-                                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                            -Exception $exception
-
-                }
-
-                $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
-                $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
-            }
+        if ($EnableSystemAssignedIdentity.IsPresent -and $UserAssignedIdentity)
+        {
+            $functionAppDef.IdentityType = "SystemAssigned,UserAssigned"
+            $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $UserAssignedIdentity
+            $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+        }
+        elseif ($EnableSystemAssignedIdentity.IsPresent)
+        {
+            $functionAppDef.IdentityType = "SystemAssigned"
+        }
+        elseif ($UserAssignedIdentity)
+        {
+            $functionAppDef.IdentityType = "UserAssigned"
+            $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $UserAssignedIdentity
+            $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
         }
 
         $servicePlan = $null

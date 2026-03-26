@@ -18,8 +18,9 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
  -Runtime <String> [-SubscriptionId <String>] [-ApplicationInsightsName <String>]
  [-ApplicationInsightsKey <String>] [-OSType <String>] [-RuntimeVersion <String>] [-FunctionsVersion <String>]
  [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-Break <Object>]
+ [-DefaultProfile <PSObject>] [-NoWait] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByAppServicePlan
@@ -27,9 +28,9 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
 New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String> -Runtime <String>
  [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
  [-OSType <String>] [-RuntimeVersion <String>] [-FunctionsVersion <String>] [-DisableApplicationInsights]
- [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityID <String[]>] -PlanName <String> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>] [-EnableSystemAssignedIdentity]
+ [-UserAssignedIdentity <String[]>] [-Break <Object>] -PlanName <String> [-DefaultProfile <PSObject>] [-NoWait]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FlexConsumption
@@ -37,7 +38,7 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
 New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String> -Runtime <String>
  [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
  [-RuntimeVersion <String>] [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>]
- [-AppSetting <Hashtable>] [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>]
+ [-AppSetting <Hashtable>] [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-Break <Object>]
  -FlexConsumptionLocation <String> [-DeploymentStorageName <String>] [-DeploymentStorageContainerName <String>]
  [-DeploymentStorageAuthType <String>] [-DeploymentStorageAuthValue <String>] [-AlwaysReady <Hashtable[]>]
  [-MaximumInstanceCount <Int32>] [-InstanceMemoryMB <Int32>] [-HttpPerInstanceConcurrency <Int32>]
@@ -50,8 +51,8 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
 New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String>
  [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
  [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] -Environment <String> [-Image <String>]
- [-RegistryCredential <PSCredential>] [-WorkloadProfileName <String>] [-ResourceCpu <Double>]
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-Break <Object>] -Environment <String>
+ [-Image <String>] [-RegistryCredential <PSCredential>] [-WorkloadProfileName <String>] [-ResourceCpu <Double>]
  [-ResourceMemory <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>] [-RegistryServer <String>]
  [-DefaultProfile <PSObject>] [-NoWait] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -62,7 +63,7 @@ New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName
 New-AzFunctionApp -ResourceGroupName <String> -Name <String> -StorageAccountName <String>
  [-SubscriptionId <String>] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>]
  [-DisableApplicationInsights] [-PassThru] [-Tag <Hashtable>] [-AppSetting <Hashtable>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] -Image <String>
+ [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>] [-Break <Object>] -Image <String>
  [-RegistryCredential <PSCredential>] -PlanName <String> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -132,11 +133,11 @@ This command creates a PowerShell function app hosted in a Flex Consumption plan
 ### -AlwaysReady
 Array of hashtables describing the AlwaysReady configuration.
 Each hashtable must include:
-- name: The function name or route name.
-- instanceCount: The number of pre-warmed instances for that function.
+            - name: The function name or route name.
+            - instanceCount: The number of pre-warmed instances for that function.
 
-Example:
-@(@{ name = "http"; instanceCount = 2 }).
+            Example:
+            @(@{ name = "http"; instanceCount = 2 }).
 
 ```yaml
 Type: System.Collections.Hashtable[]
@@ -210,7 +211,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Break
+
+```yaml
+Type: System.Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -301,6 +317,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableZoneRedundancy
 Enable zone redundancy for high availability.
 Applies to Flex Consumption SKU only.
@@ -368,41 +399,6 @@ The maximum number of concurrent HTTP trigger invocations per instance.
 ```yaml
 Type: System.Int32
 Parameter Sets: FlexConsumption
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityID
-Specifies the list of user identities associated with the function app.
-            The user identity references will be ARM resource ids in the form:
-            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Specifies the type of identity used for the function app.
-            The acceptable values for this parameter are:
-            - SystemAssigned
-            - UserAssigned
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -744,6 +740,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The array of user assigned identities associated with the function app.
+            The user identity references will be ARM resource ids in the form:
+            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WorkloadProfileName
 The workload profile name to run the container app on.
 
@@ -797,7 +810,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 
 ## NOTES
 

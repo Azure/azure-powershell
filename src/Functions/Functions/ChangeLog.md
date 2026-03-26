@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated Az.Functions module from AutoRest PowerShell v3 to v4. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+    - Replaced `-IdentityType` parameter with `-EnableSystemAssignedIdentity` (Boolean/SwitchParameter) in `New-AzFunctionApp` and `Update-AzFunctionApp`
+    - Replaced `-IdentityID` parameter with `-UserAssignedIdentity` (String array of ARM resource IDs) in `New-AzFunctionApp` and `Update-AzFunctionApp`
+    - `New-AzFunctionApp` and `Update-AzFunctionApp` now support combining SystemAssigned and UserAssigned identities in a single call
+* Fixed error message in `Update-AzFunctionApp` to reference `-EnableSystemAssignedIdentity` instead of removed `-IdentityType`
+* Fixed error message in `New-AzFunctionApp` to reference `-EnableSystemAssignedIdentity` instead of removed `-IdentityType`
+* Added SKU validation guards in `Update-AzFunctionApp` to prevent unsupported operations on Flex Consumption and Container App plans
 
 ## Version 4.3.2
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229

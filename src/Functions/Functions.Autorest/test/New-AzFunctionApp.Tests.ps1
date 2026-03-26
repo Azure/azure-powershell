@@ -477,8 +477,7 @@ Describe 'New-AzFunctionApp' {
                               -Runtime $runtime `
                               -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
-                              -IdentityType UserAssigned `
-                              -IdentityID $identityInfo.Id `
+                              -UserAssignedIdentity $identityInfo.Id `
                               -OSType Windows
 
             Write-Verbose "Validating function app properties..." -Verbose
@@ -486,6 +485,9 @@ Describe 'New-AzFunctionApp' {
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be $runtime
             $functionApp.IdentityType | Should -Be "UserAssigned"
+
+            $userAssignedIdentity = $functionApp.IdentityUserAssignedIdentity.AdditionalProperties
+            $userAssignedIdentity.ContainsKey($identityInfo.Id) | Should -Be $true
         }
         finally
         {
@@ -533,7 +535,7 @@ Describe 'New-AzFunctionApp' {
                               -Runtime $runtime `
                               -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
-                              -IdentityType SystemAssigned `
+                              -EnableSystemAssignedIdentity `
                               -AppSetting $appSetting
 
             Write-Verbose "Validating function app properties..." -Verbose
@@ -563,10 +565,62 @@ Describe 'New-AzFunctionApp' {
         }
     }
 
+    It "Create a function app with both 'SystemAssigned' and 'UserAssigned' managed identities" {
+
+        $appName = $env.functionNamePowerShellNew6
+        $identityInfo = $env.identityInfo
+        $resourceGroupName = $env.resourceGroupNameWindowsPremium
+        $storageAccountName = $env.storageAccountWindows
+        $planName = $env.planNameWorkerTypeWindows
+        $runtime = "PowerShell"
+        $runtimeVersion = 7.4
+
+        Write-Verbose "App name: $appName" -Verbose
+        Write-Verbose "IdentityInfo id: $($identityInfo.Id)" -Verbose
+        Write-Verbose "Resource group name: $resourceGroupName" -Verbose
+        Write-Verbose "Storage account name: $storageAccountName" -Verbose
+        Write-Verbose "Plan name: $planName" -Verbose
+
+        try
+        {
+            Write-Verbose "Creating function app with both SystemAssigned and UserAssigned managed identities" -Verbose
+            New-AzFunctionApp -Name $appName `
+                              -ResourceGroupName $resourceGroupName `
+                              -PlanName $planName `
+                              -StorageAccount $storageAccountName `
+                              -Runtime $runtime `
+                              -RuntimeVersion $runtimeVersion `
+                              -FunctionsVersion 4 `
+                              -EnableSystemAssignedIdentity `
+                              -UserAssignedIdentity $identityInfo.Id `
+                              -OSType Windows
+
+            Write-Verbose "Validating function app properties..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
+            $functionApp.OSType | Should -Be "Windows"
+            $functionApp.Runtime | Should -Be $runtime
+            $functionApp.IdentityType | Should -Match "SystemAssigned"
+            $functionApp.IdentityType | Should -Match "UserAssigned"
+
+            $userAssignedIdentity = $functionApp.IdentityUserAssignedIdentity.AdditionalProperties
+            $userAssignedIdentity.ContainsKey($identityInfo.Id) | Should -Be $true
+        }
+        finally
+        {
+            Write-Verbose "Cleaning up the function app..." -Verbose
+            $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue
+            if ($functionApp)
+            {
+                Write-Verbose "Removing function app $appName using -InputObject" -Verbose
+                Remove-AzFunctionApp -InputObject $functionApp -Force
+            }
+        }
+    }
+
     It "Creating a function app with 'UserAssigned' managed identity should throw if IdentityID is not provided " {
 
         # Make sure user identiy is available
-        $expectedErrorId = "IdentityIDIsRequiredForUserAssignedIdentity"
+        $expectedErrorId = "UserAssignedIdentityRequired"
 
         $appName = $env.functionNamePowerShell
         Write-Verbose "App name: $appName" -Verbose
@@ -595,7 +649,7 @@ Describe 'New-AzFunctionApp' {
                               -Runtime $runtime `
                               -RuntimeVersion $runtimeVersion `
                               -FunctionsVersion 4 `
-                              -IdentityType UserAssigned
+                              -UserAssignedIdentity @()
         }
         Write-Verbose "Validate that the expected expetedErrorId is thrown" -Verbose
         $scriptblock | Should -Throw -ErrorId $expectedErrorId
@@ -655,7 +709,7 @@ Describe 'New-AzFunctionApp' {
 
     It "Validate that creating a function app with -DisableApplicationInsights does not create an Application Insights project." {
 
-        $appName = $env.functionNamePowerShell
+        $appName = $env.functionNamePowerShellNew8
         Write-Verbose "App name: $appName" -Verbose
 
         $resourceGroupName = $env.resourceGroupNameWindowsPremium
