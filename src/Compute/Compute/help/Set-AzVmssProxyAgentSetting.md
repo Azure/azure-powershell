@@ -13,9 +13,10 @@ Sets the Proxy Agent settings properties for a PSVirtualMachineScaleSet object.
 ## SYNTAX
 
 ```
-Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet <PSVirtualMachineScaleSet> [-EnableProxyAgent <Boolean>] [-AddProxyAgentExtension <Boolean>]
+Set-AzVmssProxyAgentSetting -VirtualMachineScaleSet <PSVirtualMachineScaleSet> [-EnableProxyAgent <Boolean>]
  [-WireServerMode <String>] [-WireServerProfile <String>] [-ImdsMode <String>] [-ImdsProfile <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AddProxyAgentExtension <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +35,21 @@ It enables the Proxy Agent, specifies the Wire Server profile, and specifies the
 
 ## PARAMETERS
 
+### -AddProxyAgentExtension
+Specifies whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux OS.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -51,21 +67,6 @@ Accept wildcard characters: False
 
 ### -EnableProxyAgent
 Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AddProxyAgentExtension
-Specifies whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux OS.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

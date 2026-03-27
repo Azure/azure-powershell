@@ -21,18 +21,19 @@ Create an in-memory object for UploadLimitWeeklyRecurrence.
 Create an in-memory object for UploadLimitWeeklyRecurrence.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.UploadLimitWeeklyRecurrence
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.UploadLimitWeeklyRecurrence
 .Link
 https://learn.microsoft.com/powershell/module/Az.StorageMover/new-AzStorageMoverUploadLimitWeeklyRecurrenceObject
 #>
 function New-AzStorageMoverUploadLimitWeeklyRecurrenceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.UploadLimitWeeklyRecurrence')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.UploadLimitWeeklyRecurrence')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.DayOfWeek])]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.DayOfWeek[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
+        [string[]]
         [ValidateSet("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", IgnoreCase = $true)]
         $Day,
         [Parameter(Mandatory, HelpMessage="The WAN-link upload bandwidth (maximum data transfer rate) in megabits per second. Value of 0 indicates no throughput is allowed and any running migration job is effectively paused for the duration of this recurrence. Only data plane operations are governed by this limit. Control plane operations ensure seamless functionality. The agent may exceed this limit with control messages, if necessary.")]
@@ -60,7 +61,7 @@ function New-AzStorageMoverUploadLimitWeeklyRecurrenceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.UploadLimitWeeklyRecurrence]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.UploadLimitWeeklyRecurrence]::New()
 
         if ($PSBoundParameters.ContainsKey('Day')) {
             $Object.Day = $Day

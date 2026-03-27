@@ -25,7 +25,7 @@ New-AzWorkloadsSapLandscapeMonitor -MonitorName suha-0202-ams9 -ResourceGroupNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitor
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitor
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -33,11 +33,11 @@ To create the parameters described below, construct a hash table containing the 
 
 GROUPINGLANDSCAPE <ISapLandscapeMonitorSidMapping[]>: Gets or sets the list of landscape to SID mappings.
   [Name <String>]: Gets or sets the name of the grouping.
-  [TopSid <String[]>]: Gets or sets the list of SID's.
+  [TopSid <List<String>>]: Gets or sets the list of SID's.
 
 GROUPINGSAPAPPLICATION <ISapLandscapeMonitorSidMapping[]>: Gets or sets the list of Sap Applications to SID mappings.
   [Name <String>]: Gets or sets the name of the grouping.
-  [TopSid <String[]>]: Gets or sets the list of SID's.
+  [TopSid <List<String>>]: Gets or sets the list of SID's.
 
 INPUTOBJECT <IMonitorsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
@@ -55,16 +55,20 @@ TOPMETRICSTHRESHOLD <ISapLandscapeMonitorMetricThresholds[]>: Gets or sets the l
 https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadssaplandscapemonitor
 #>
 function Update-AzWorkloadsSapLandscapeMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitor])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitor])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [System.String]
     # Name of the SAP monitor resource.
     ${MonitorName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -72,6 +76,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -82,32 +88,43 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorSidMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorSidMapping[]]
     # Gets or sets the list of landscape to SID mappings.
-    # To construct, see NOTES section for GROUPINGLANDSCAPE properties and create a hash table.
     ${GroupingLandscape},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorSidMapping[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorSidMapping[]]
     # Gets or sets the list of Sap Applications to SID mappings.
-    # To construct, see NOTES section for GROUPINGSAPAPPLICATION properties and create a hash table.
     ${GroupingSapApplication},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.ISapLandscapeMonitorMetricThresholds[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.ISapLandscapeMonitorMetricThresholds[]]
     # Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
-    # To construct, see NOTES section for TOPMETRICSTHRESHOLD properties and create a hash table.
     ${TopMetricsThreshold},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -165,6 +182,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -186,10 +212,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Monitors.private\Update-AzWorkloadsSapLandscapeMonitor_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Monitors.private\Update-AzWorkloadsSapLandscapeMonitor_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Monitors.private\Update-AzWorkloadsSapLandscapeMonitor_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Monitors.private\Update-AzWorkloadsSapLandscapeMonitor_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -203,6 +229,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

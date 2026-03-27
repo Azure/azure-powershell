@@ -1,0 +1,321 @@
+{
+  "Update-AzPaloAltoNetworksMetricsObjectFirewall+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08",
+      "Content": "{\r\n  \"properties\": {\r\n    \"applicationInsightsResourceId\": \"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/06Aug2025/providers/microsoft.insights/components/test-prakgupta3-metrics-ai\",\r\n    \"applicationInsightsConnectionString\": \"InstrumentationKey=95a645a2-898c-4e40-b285-3f38bbe02e5f;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b4834f2c-adb3-4319-9e71-0721e949f2df\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "498" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=182c644e-b9cf-4c15-b42c-07d1afd8c10b/eastus/00adcbbe-0020-44d9-8953-3ef8362fdacf" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "9a232f7a-3446-438f-bff3-228ba74609a0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "d711e3a3-a6e5-4f95-83cd-c26446c1b1e5" ],
+        "x-ms-correlation-request-id": [ "087efd9d-524b-4a39-9215-6b6d817570a6" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251112T113318Z:087efd9d-524b-4a39-9215-6b6d817570a6" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F7615C8290AD4568BFFC42DEB9E63115 Ref B: PNQ231110909052 Ref C: 2025-11-12T11:33:15Z" ],
+        "Date": [ "Wed, 12 Nov 2025 11:33:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1029" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default\",\"name\":\"default\",\"type\":\"paloaltonetworks.cloudngfw/firewalls/metrics\",\"systemData\":{\"createdBy\":\"prakgupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-12T11:33:15.8637703Z\",\"lastModifiedBy\":\"prakgupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-12T11:33:15.8637703Z\"},\"properties\":{\"applicationInsightsResourceId\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/06Aug2025/providers/microsoft.insights/components/test-prakgupta3-metrics-ai\",\"applicationInsightsConnectionString\":\"InstrumentationKey=95a645a2-898c-4e40-b285-3f38bbe02e5f;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b4834f2c-adb3-4319-9e71-0721e949f2df\",\"panEtag\":\"75886f91-823f-435c-bd13-6b59ad003c15\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzPaloAltoNetworksMetricsObjectFirewall+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "8d499889-c567-4cb4-8dfe-dde594b2b977" ],
+        "CommandName": [ "New-AzPaloAltoNetworksMetricsObjectFirewall" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksMetricsObjectFirewall_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.PaloAltoNetworks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=182c644e-b9cf-4c15-b42c-07d1afd8c10b/eastus/02d49f05-2d48-4f8d-8347-f80233f5358c" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "e70d3fc4-6971-415d-8f7b-37377981665a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "76a1a1c0-d283-44ee-8777-f55dfc3b821f" ],
+        "x-ms-correlation-request-id": [ "8b8aae1e-fbeb-4b65-88e9-47a5d56819d0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251112T113350Z:8b8aae1e-fbeb-4b65-88e9-47a5d56819d0" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F54A2AABBAD446B5BC131724461886BB Ref B: PNQ231110909052 Ref C: 2025-11-12T11:33:49Z" ],
+        "Date": [ "Wed, 12 Nov 2025 11:33:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "764" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default\",\"name\":\"default\",\"type\":\"firewalls/metrics\",\"properties\":{\"applicationInsightsResourceId\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/06Aug2025/providers/microsoft.insights/components/test-prakgupta3-metrics-ai\",\"applicationInsightsConnectionString\":\"InstrumentationKey=95a645a2-898c-4e40-b285-3f38bbe02e5f;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b4834f2c-adb3-4319-9e71-0721e949f2df\",\"panEtag\":\"75886f91-823f-435c-bd13-6b59ad003c15\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzPaloAltoNetworksMetricsObjectFirewall+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "58" ],
+        "x-ms-client-request-id": [ "8d499889-c567-4cb4-8dfe-dde594b2b977" ],
+        "CommandName": [ "New-AzPaloAltoNetworksMetricsObjectFirewall" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksMetricsObjectFirewall_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.PaloAltoNetworks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=182c644e-b9cf-4c15-b42c-07d1afd8c10b/eastus/b8aa23db-a88b-4431-98c7-d27c640edbc2" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "1a1f8718-4c92-4fee-acc1-725ebec305b4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5fa4be66-c2fe-4ca9-b513-b318725ae705" ],
+        "x-ms-correlation-request-id": [ "08be3883-a5d7-4e98-a06c-f74987020f98" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251112T113352Z:08be3883-a5d7-4e98-a06c-f74987020f98" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D63AA83108634437AF833EB63A4DAD69 Ref B: PNQ231110909052 Ref C: 2025-11-12T11:33:51Z" ],
+        "Date": [ "Wed, 12 Nov 2025 11:33:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "764" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default\",\"name\":\"default\",\"type\":\"firewalls/metrics\",\"properties\":{\"applicationInsightsResourceId\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/06Aug2025/providers/microsoft.insights/components/test-prakgupta3-metrics-ai\",\"applicationInsightsConnectionString\":\"InstrumentationKey=95a645a2-898c-4e40-b285-3f38bbe02e5f;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b4834f2c-adb3-4319-9e71-0721e949f2df\",\"panEtag\":\"75886f91-823f-435c-bd13-6b59ad003c15\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzPaloAltoNetworksMetricsObjectFirewall+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "59" ],
+        "x-ms-client-request-id": [ "c356c745-e601-4eac-87db-9bc40b8e059f" ],
+        "CommandName": [ "Update-AzPaloAltoNetworksMetricsObjectFirewall" ],
+        "FullCommandName": [ "Update-AzPaloAltoNetworksMetricsObjectFirewall_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.PaloAltoNetworks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=182c644e-b9cf-4c15-b42c-07d1afd8c10b/eastus/5c6f4a2f-e908-46a8-8391-ca66f3b22167" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "05fbf2d7-2db9-4c7e-af58-09a1f1e47452" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "df00a54a-0e16-4ba7-b974-c9cf6dedf972" ],
+        "x-ms-correlation-request-id": [ "a1579f56-49e3-4dab-a5a7-3bb9a92ec597" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251112T113354Z:a1579f56-49e3-4dab-a5a7-3bb9a92ec597" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A4F014D0F91B4F5D92AE6AD73A3FF794 Ref B: PNQ231110909052 Ref C: 2025-11-12T11:33:52Z" ],
+        "Date": [ "Wed, 12 Nov 2025 11:33:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "764" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default\",\"name\":\"default\",\"type\":\"firewalls/metrics\",\"properties\":{\"applicationInsightsResourceId\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/06Aug2025/providers/microsoft.insights/components/test-prakgupta3-metrics-ai\",\"applicationInsightsConnectionString\":\"InstrumentationKey=95a645a2-898c-4e40-b285-3f38bbe02e5f;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b4834f2c-adb3-4319-9e71-0721e949f2df\",\"panEtag\":\"75886f91-823f-435c-bd13-6b59ad003c15\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzPaloAltoNetworksMetricsObjectFirewall+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08",
+      "Content": "{\r\n  \"properties\": {\r\n    \"applicationInsightsResourceId\": \"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/06Aug2025/providers/microsoft.insights/components/test-prakgupta3-metrics-ai\",\r\n    \"applicationInsightsConnectionString\": \"InstrumentationKey=95a645a2-898c-4e40-b285-3f38bbe02e5f;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b4834f2c-adb3-4319-9e71-0721e949f2df\",\r\n    \"panEtag\": \"75886f91-823f-435c-bd13-6b59ad003c15\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "554" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=182c644e-b9cf-4c15-b42c-07d1afd8c10b/eastus/d3603f18-e98b-4bc0-b24b-8a7b43e692c9" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "c5fe413b-7ddb-4880-8c07-7c9f44feae33" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "2761ed24-2c9d-4bc4-8bdc-41a93431367b" ],
+        "x-ms-correlation-request-id": [ "2fac5a6c-49cb-45a2-ac5f-167e240a3194" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251112T113356Z:2fac5a6c-49cb-45a2-ac5f-167e240a3194" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BF1E54BEC3AE4C1EB6580CA4319416C5 Ref B: PNQ231110909052 Ref C: 2025-11-12T11:33:54Z" ],
+        "Date": [ "Wed, 12 Nov 2025 11:33:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1029" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default\",\"name\":\"default\",\"type\":\"paloaltonetworks.cloudngfw/firewalls/metrics\",\"systemData\":{\"createdBy\":\"prakgupta@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2025-11-12T11:33:54.6433758Z\",\"lastModifiedBy\":\"prakgupta@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2025-11-12T11:33:54.6433758Z\"},\"properties\":{\"applicationInsightsResourceId\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/06Aug2025/providers/microsoft.insights/components/test-prakgupta3-metrics-ai\",\"applicationInsightsConnectionString\":\"InstrumentationKey=95a645a2-898c-4e40-b285-3f38bbe02e5f;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b4834f2c-adb3-4319-9e71-0721e949f2df\",\"panEtag\":\"d3e02bc0-06c5-47fe-b240-881ab80822cd\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzPaloAltoNetworksMetricsObjectFirewall+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "61" ],
+        "x-ms-client-request-id": [ "c356c745-e601-4eac-87db-9bc40b8e059f" ],
+        "CommandName": [ "Update-AzPaloAltoNetworksMetricsObjectFirewall" ],
+        "FullCommandName": [ "Update-AzPaloAltoNetworksMetricsObjectFirewall_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.PaloAltoNetworks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=182c644e-b9cf-4c15-b42c-07d1afd8c10b/eastus/1440c6be-54a5-4615-941e-a84d4b323c85" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "419d3eed-819e-447c-b5eb-8fac524ed836" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "d4de1f88-1888-4679-82d5-72039314e965" ],
+        "x-ms-correlation-request-id": [ "c6839677-452c-48cc-83c8-d93fa767cd00" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251112T113428Z:c6839677-452c-48cc-83c8-d93fa767cd00" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0A9A4D0682684AC4BF2FB39E3E87EE40 Ref B: PNQ231110909052 Ref C: 2025-11-12T11:34:26Z" ],
+        "Date": [ "Wed, 12 Nov 2025 11:34:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "764" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default\",\"name\":\"default\",\"type\":\"firewalls/metrics\",\"properties\":{\"applicationInsightsResourceId\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/06Aug2025/providers/microsoft.insights/components/test-prakgupta3-metrics-ai\",\"applicationInsightsConnectionString\":\"InstrumentationKey=95a645a2-898c-4e40-b285-3f38bbe02e5f;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b4834f2c-adb3-4319-9e71-0721e949f2df\",\"panEtag\":\"d3e02bc0-06c5-47fe-b240-881ab80822cd\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzPaloAltoNetworksMetricsObjectFirewall+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default?api-version=2025-10-08",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "c356c745-e601-4eac-87db-9bc40b8e059f" ],
+        "CommandName": [ "Update-AzPaloAltoNetworksMetricsObjectFirewall" ],
+        "FullCommandName": [ "Update-AzPaloAltoNetworksMetricsObjectFirewall_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.PaloAltoNetworks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=182c644e-b9cf-4c15-b42c-07d1afd8c10b/eastus/4dc6c16e-59a0-4fc3-918e-01fd9a7713b6" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "9634a7b5-8898-4cba-b2e4-42937eb6b0ae" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "dd325651-65cf-43b3-bcaf-849e31383f75" ],
+        "x-ms-correlation-request-id": [ "9e032f92-2010-4838-8aa8-fbaaf27b77c4" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251112T113429Z:9e032f92-2010-4838-8aa8-fbaaf27b77c4" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2B2603BBB0B444B59E2F61B28FA60605 Ref B: PNQ231110909052 Ref C: 2025-11-12T11:34:28Z" ],
+        "Date": [ "Wed, 12 Nov 2025 11:34:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "764" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/eastus-rg/providers/PaloAltoNetworks.Cloudngfw/firewalls/italynorth-test-fw/metrics/default\",\"name\":\"default\",\"type\":\"firewalls/metrics\",\"properties\":{\"applicationInsightsResourceId\":\"/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/resourceGroups/06Aug2025/providers/microsoft.insights/components/test-prakgupta3-metrics-ai\",\"applicationInsightsConnectionString\":\"InstrumentationKey=95a645a2-898c-4e40-b285-3f38bbe02e5f;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=b4834f2c-adb3-4319-9e71-0721e949f2df\",\"panEtag\":\"d3e02bc0-06c5-47fe-b240-881ab80822cd\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

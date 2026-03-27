@@ -129,6 +129,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).MarketplaceSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).MarketplaceSubscriptionStatus, global::System.Convert.ToString);
             }
+            if (content.Contains("MarketplaceSaasAutoRenew"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).MarketplaceSaasAutoRenew = (string) content.GetValueForProperty("MarketplaceSaasAutoRenew",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).MarketplaceSaasAutoRenew, global::System.Convert.ToString);
+            }
             if (content.Contains("LiftrResourceCategory"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).LiftrResourceCategory = (string) content.GetValueForProperty("LiftrResourceCategory",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).LiftrResourceCategory, global::System.Convert.ToString);
@@ -200,6 +204,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             if (content.Contains("AccountInfoRegionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).AccountInfoRegionId = (string) content.GetValueForProperty("AccountInfoRegionId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).AccountInfoRegionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccountInfoCompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).AccountInfoCompanyName = (string) content.GetValueForProperty("AccountInfoCompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).AccountInfoCompanyName, global::System.Convert.ToString);
             }
             if (content.Contains("EnvironmentInfoEnvironmentId"))
             {
@@ -274,6 +282,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).MarketplaceSubscriptionStatus = (string) content.GetValueForProperty("MarketplaceSubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).MarketplaceSubscriptionStatus, global::System.Convert.ToString);
             }
+            if (content.Contains("MarketplaceSaasAutoRenew"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).MarketplaceSaasAutoRenew = (string) content.GetValueForProperty("MarketplaceSaasAutoRenew",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).MarketplaceSaasAutoRenew, global::System.Convert.ToString);
+            }
             if (content.Contains("LiftrResourceCategory"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).LiftrResourceCategory = (string) content.GetValueForProperty("LiftrResourceCategory",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).LiftrResourceCategory, global::System.Convert.ToString);
@@ -345,6 +357,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
             if (content.Contains("AccountInfoRegionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).AccountInfoRegionId = (string) content.GetValueForProperty("AccountInfoRegionId",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).AccountInfoRegionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccountInfoCompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).AccountInfoCompanyName = (string) content.GetValueForProperty("AccountInfoCompanyName",((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorPropertiesInternal)this).AccountInfoCompanyName, global::System.Convert.ToString);
             }
             if (content.Contains("EnvironmentInfoEnvironmentId"))
             {

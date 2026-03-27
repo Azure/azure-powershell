@@ -28,6 +28,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
         /// <summary>Dev Box is not provisioned.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.DevBoxProvisioningState NotProvisioned = @"NotProvisioned";
 
+        /// <summary>Dev Box is pending approval.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.DevBoxProvisioningState PendingApproval = @"PendingApproval";
+
         /// <summary>Dev Box was provisioned with warning.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.DevBoxProvisioningState ProvisionedWithWarning = @"ProvisionedWithWarning";
 

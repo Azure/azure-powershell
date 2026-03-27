@@ -34,8 +34,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.ComputeNode omObject;
         
-        private IReadOnlyList<PSCertificateReference> certificateReferences;
-        
         private PSComputeNodeEndpointConfiguration endpointConfiguration;
         
         private IReadOnlyList<PSComputeNodeError> errors;
@@ -72,29 +70,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.AllocationTime;
-            }
-        }
-        
-        public IReadOnlyList<PSCertificateReference> CertificateReferences
-        {
-            get
-            {
-                if (((this.certificateReferences == null) 
-                            && (this.omObject.CertificateReferences != null)))
-                {
-                    List<PSCertificateReference> list;
-                    list = new List<PSCertificateReference>();
-                    IEnumerator<Microsoft.Azure.Batch.CertificateReference> enumerator;
-                    enumerator = this.omObject.CertificateReferences.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(new PSCertificateReference(enumerator.Current));
-                    }
-                    this.certificateReferences = list;
-                }
-                return this.certificateReferences;
             }
         }
         

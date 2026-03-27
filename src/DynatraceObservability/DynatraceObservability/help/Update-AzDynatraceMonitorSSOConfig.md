@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDynatraceMonitorSSOConfig
 
 ## SYNOPSIS
-update a DynatraceSingleSignOnResource
+Update a DynatraceSingleSignOnResource
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzDynatraceMonitorSSOConfig -MonitorInputObject <IDynatraceObservabilityI
 ```
 
 ## DESCRIPTION
-update a DynatraceSingleSignOnResource
+Update a DynatraceSingleSignOnResource
 
 ## EXAMPLES
 
@@ -225,6 +225,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

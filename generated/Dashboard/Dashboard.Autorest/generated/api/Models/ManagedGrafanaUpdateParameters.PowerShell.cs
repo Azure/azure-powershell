@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IResourceSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ResourceSkuTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
@@ -125,6 +129,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaIntegration = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IGrafanaIntegrations) content.GetValueForProperty("GrafanaIntegration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaIntegration, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.GrafanaIntegrationsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("EnterpriseConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IEnterpriseConfigurations) content.GetValueForProperty("EnterpriseConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.EnterpriseConfigurationsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GrafanaConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IGrafanaConfigurations) content.GetValueForProperty("GrafanaConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.GrafanaConfigurationsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ZoneRedundancy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).ZoneRedundancy = (string) content.GetValueForProperty("ZoneRedundancy",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).ZoneRedundancy, global::System.Convert.ToString);
@@ -132,6 +144,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             if (content.Contains("ApiKey"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).ApiKey = (string) content.GetValueForProperty("ApiKey",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).ApiKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SkuName, global::System.Convert.ToString);
             }
             if (content.Contains("IdentityPrincipalId"))
             {
@@ -149,6 +165,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("CreatorCanAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).CreatorCanAdmin = (string) content.GetValueForProperty("CreatorCanAdmin",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).CreatorCanAdmin, global::System.Convert.ToString);
+            }
             if (content.Contains("DeterministicOutboundIP"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).DeterministicOutboundIP = (string) content.GetValueForProperty("DeterministicOutboundIP",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).DeterministicOutboundIP, global::System.Convert.ToString);
@@ -157,9 +177,97 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
+            if (content.Contains("GrafanaPlugin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaPlugin = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesUpdateParametersGrafanaPlugins) content.GetValueForProperty("GrafanaPlugin",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaPlugin, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ManagedGrafanaPropertiesUpdateParametersGrafanaPluginsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GrafanaMajorVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaMajorVersion = (string) content.GetValueForProperty("GrafanaMajorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaMajorVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("GrafanaConfigurationSmtp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSmtp = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISmtp) content.GetValueForProperty("GrafanaConfigurationSmtp",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSmtp, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.SmtpTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GrafanaConfigurationSnapshot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSnapshot = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISnapshots) content.GetValueForProperty("GrafanaConfigurationSnapshot",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSnapshot, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.SnapshotsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GrafanaConfigurationUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationUser = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IUsers) content.GetValueForProperty("GrafanaConfigurationUser",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationUser, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.UsersTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GrafanaConfigurationSecurity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSecurity = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISecurity) content.GetValueForProperty("GrafanaConfigurationSecurity",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSecurity, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.SecurityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("GrafanaIntegrationAzureMonitorWorkspaceIntegration"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaIntegrationAzureMonitorWorkspaceIntegration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IAzureMonitorWorkspaceIntegration>) content.GetValueForProperty("GrafanaIntegrationAzureMonitorWorkspaceIntegration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaIntegrationAzureMonitorWorkspaceIntegration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IAzureMonitorWorkspaceIntegration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.AzureMonitorWorkspaceIntegrationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("EnterpriseConfigurationMarketplacePlanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfigurationMarketplacePlanId = (string) content.GetValueForProperty("EnterpriseConfigurationMarketplacePlanId",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfigurationMarketplacePlanId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnterpriseConfigurationMarketplaceAutoRenew"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfigurationMarketplaceAutoRenew = (string) content.GetValueForProperty("EnterpriseConfigurationMarketplaceAutoRenew",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfigurationMarketplaceAutoRenew, global::System.Convert.ToString);
+            }
+            if (content.Contains("GrafanaConfigurationUnifiedAlertingScreenshot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationUnifiedAlertingScreenshot = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IUnifiedAlertingScreenshots) content.GetValueForProperty("GrafanaConfigurationUnifiedAlertingScreenshot",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationUnifiedAlertingScreenshot, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.UnifiedAlertingScreenshotsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SmtpHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpHost = (string) content.GetValueForProperty("SmtpHost",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpHost, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmtpUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpUser = (string) content.GetValueForProperty("SmtpUser",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpUser, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmtpPassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpPassword = (System.Security.SecureString) content.GetValueForProperty("SmtpPassword",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpPassword, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("SmtpFromAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpFromAddress = (string) content.GetValueForProperty("SmtpFromAddress",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpFromAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmtpFromName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpFromName = (string) content.GetValueForProperty("SmtpFromName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpFromName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmtpEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpEnabled = (bool?) content.GetValueForProperty("SmtpEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SmtpStartTlsPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpStartTlsPolicy = (string) content.GetValueForProperty("SmtpStartTlsPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpStartTlsPolicy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmtpSkipVerify"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpSkipVerify = (bool?) content.GetValueForProperty("SmtpSkipVerify",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpSkipVerify, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SnapshotExternalEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SnapshotExternalEnabled = (bool?) content.GetValueForProperty("SnapshotExternalEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SnapshotExternalEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("UserViewersCanEdit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UserViewersCanEdit = (bool?) content.GetValueForProperty("UserViewersCanEdit",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UserViewersCanEdit, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("UserEditorsCanAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UserEditorsCanAdmin = (bool?) content.GetValueForProperty("UserEditorsCanAdmin",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UserEditorsCanAdmin, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityCsrfAlwaysCheck"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SecurityCsrfAlwaysCheck = (bool?) content.GetValueForProperty("SecurityCsrfAlwaysCheck",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SecurityCsrfAlwaysCheck, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("UnifiedAlertingScreenshotCaptureEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UnifiedAlertingScreenshotCaptureEnabled = (bool?) content.GetValueForProperty("UnifiedAlertingScreenshotCaptureEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UnifiedAlertingScreenshotCaptureEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -178,6 +286,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IResourceSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ResourceSkuTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
@@ -194,6 +306,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaIntegration = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IGrafanaIntegrations) content.GetValueForProperty("GrafanaIntegration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaIntegration, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.GrafanaIntegrationsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("EnterpriseConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IEnterpriseConfigurations) content.GetValueForProperty("EnterpriseConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.EnterpriseConfigurationsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GrafanaConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IGrafanaConfigurations) content.GetValueForProperty("GrafanaConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.GrafanaConfigurationsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ZoneRedundancy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).ZoneRedundancy = (string) content.GetValueForProperty("ZoneRedundancy",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).ZoneRedundancy, global::System.Convert.ToString);
@@ -201,6 +321,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             if (content.Contains("ApiKey"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).ApiKey = (string) content.GetValueForProperty("ApiKey",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).ApiKey, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SkuName, global::System.Convert.ToString);
             }
             if (content.Contains("IdentityPrincipalId"))
             {
@@ -218,6 +342,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("CreatorCanAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).CreatorCanAdmin = (string) content.GetValueForProperty("CreatorCanAdmin",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).CreatorCanAdmin, global::System.Convert.ToString);
+            }
             if (content.Contains("DeterministicOutboundIP"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).DeterministicOutboundIP = (string) content.GetValueForProperty("DeterministicOutboundIP",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).DeterministicOutboundIP, global::System.Convert.ToString);
@@ -226,9 +354,97 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
+            if (content.Contains("GrafanaPlugin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaPlugin = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaPropertiesUpdateParametersGrafanaPlugins) content.GetValueForProperty("GrafanaPlugin",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaPlugin, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ManagedGrafanaPropertiesUpdateParametersGrafanaPluginsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GrafanaMajorVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaMajorVersion = (string) content.GetValueForProperty("GrafanaMajorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaMajorVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("GrafanaConfigurationSmtp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSmtp = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISmtp) content.GetValueForProperty("GrafanaConfigurationSmtp",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSmtp, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.SmtpTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GrafanaConfigurationSnapshot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSnapshot = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISnapshots) content.GetValueForProperty("GrafanaConfigurationSnapshot",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSnapshot, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.SnapshotsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GrafanaConfigurationUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationUser = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IUsers) content.GetValueForProperty("GrafanaConfigurationUser",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationUser, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.UsersTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GrafanaConfigurationSecurity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSecurity = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ISecurity) content.GetValueForProperty("GrafanaConfigurationSecurity",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationSecurity, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.SecurityTypeConverter.ConvertFrom);
+            }
             if (content.Contains("GrafanaIntegrationAzureMonitorWorkspaceIntegration"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaIntegrationAzureMonitorWorkspaceIntegration = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IAzureMonitorWorkspaceIntegration>) content.GetValueForProperty("GrafanaIntegrationAzureMonitorWorkspaceIntegration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaIntegrationAzureMonitorWorkspaceIntegration, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IAzureMonitorWorkspaceIntegration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.AzureMonitorWorkspaceIntegrationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("EnterpriseConfigurationMarketplacePlanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfigurationMarketplacePlanId = (string) content.GetValueForProperty("EnterpriseConfigurationMarketplacePlanId",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfigurationMarketplacePlanId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnterpriseConfigurationMarketplaceAutoRenew"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfigurationMarketplaceAutoRenew = (string) content.GetValueForProperty("EnterpriseConfigurationMarketplaceAutoRenew",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).EnterpriseConfigurationMarketplaceAutoRenew, global::System.Convert.ToString);
+            }
+            if (content.Contains("GrafanaConfigurationUnifiedAlertingScreenshot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationUnifiedAlertingScreenshot = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IUnifiedAlertingScreenshots) content.GetValueForProperty("GrafanaConfigurationUnifiedAlertingScreenshot",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).GrafanaConfigurationUnifiedAlertingScreenshot, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.UnifiedAlertingScreenshotsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SmtpHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpHost = (string) content.GetValueForProperty("SmtpHost",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpHost, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmtpUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpUser = (string) content.GetValueForProperty("SmtpUser",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpUser, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmtpPassword"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpPassword = (System.Security.SecureString) content.GetValueForProperty("SmtpPassword",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpPassword, (object ss) => (System.Security.SecureString)ss);
+            }
+            if (content.Contains("SmtpFromAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpFromAddress = (string) content.GetValueForProperty("SmtpFromAddress",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpFromAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmtpFromName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpFromName = (string) content.GetValueForProperty("SmtpFromName",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpFromName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmtpEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpEnabled = (bool?) content.GetValueForProperty("SmtpEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SmtpStartTlsPolicy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpStartTlsPolicy = (string) content.GetValueForProperty("SmtpStartTlsPolicy",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpStartTlsPolicy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SmtpSkipVerify"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpSkipVerify = (bool?) content.GetValueForProperty("SmtpSkipVerify",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SmtpSkipVerify, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SnapshotExternalEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SnapshotExternalEnabled = (bool?) content.GetValueForProperty("SnapshotExternalEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SnapshotExternalEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("UserViewersCanEdit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UserViewersCanEdit = (bool?) content.GetValueForProperty("UserViewersCanEdit",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UserViewersCanEdit, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("UserEditorsCanAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UserEditorsCanAdmin = (bool?) content.GetValueForProperty("UserEditorsCanAdmin",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UserEditorsCanAdmin, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecurityCsrfAlwaysCheck"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SecurityCsrfAlwaysCheck = (bool?) content.GetValueForProperty("SecurityCsrfAlwaysCheck",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).SecurityCsrfAlwaysCheck, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("UnifiedAlertingScreenshotCaptureEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UnifiedAlertingScreenshotCaptureEnabled = (bool?) content.GetValueForProperty("UnifiedAlertingScreenshotCaptureEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaUpdateParametersInternal)this).UnifiedAlertingScreenshotCaptureEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

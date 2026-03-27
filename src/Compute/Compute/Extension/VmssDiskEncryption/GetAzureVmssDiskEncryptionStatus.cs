@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 }
 
                 ext = vmssResult.VirtualMachineProfile.ExtensionProfile.Extensions.First(
-                         e => e.VirtualMachineScaleSetExtensionPropertiesType.Equals(this.ExtensionName));
+                         e => e.VirtualMachineExtensionType.Equals(this.ExtensionName));
             }
             catch (InvalidOperationException)
             {

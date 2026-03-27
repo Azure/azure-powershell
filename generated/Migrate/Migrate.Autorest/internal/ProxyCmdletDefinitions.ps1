@@ -47,6 +47,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -71,6 +72,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -261,6 +263,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -285,6 +288,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -480,6 +484,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -504,6 +509,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -1019,6 +1025,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -1043,6 +1050,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -1234,6 +1242,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -1258,6 +1267,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -1410,6 +1420,217 @@ begin {
             List1 = 'Az.Migrate.private\Get-AzMigrateLocalReplicationJob_List1';
         }
         if (('Get', 'Get1', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets the location based operation result.
+.Description
+Gets the location based operation result.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IOperationStatusAutoGenerated
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+.Link
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocationbasedoperationresult
+#>
+function Get-AzMigrateLocationBasedOperationResult {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IOperationStatusAutoGenerated])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the Azure region.
+    ${Location},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The ID of an ongoing async operation.
+    ${OperationId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Azure Subscription Id in which migrate project was created.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.Migrate.private\Get-AzMigrateLocationBasedOperationResult_Get';
+            GetViaIdentity = 'Az.Migrate.private\Get-AzMigrateLocationBasedOperationResult_GetViaIdentity';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
@@ -1633,14 +1854,14 @@ Get list of operations supported in the API.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IOperationsDiscovery
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IOperationsDiscovery
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IOperationAutoGenerated
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateoperation
 #>
 function Get-AzMigrateOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IOperationsDiscovery], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IOperationAutoGenerated])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IOperationsDiscovery], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api60.IOperationAutoGenerated])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='List2', Mandatory)]
@@ -1792,6 +2013,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -1816,6 +2038,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -2006,6 +2229,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -2030,6 +2254,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -2238,6 +2463,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -2262,6 +2488,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -2430,12 +2657,12 @@ Get the details of an Azure Site Recovery job.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationjob
 #>
 function Get-AzMigrateReplicationJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2581,12 +2808,12 @@ Gets the details of a migration item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationmigrationitem
 #>
 function Get-AzMigrateReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2753,6 +2980,480 @@ end {
 
 <#
 .Synopsis
+Track the results of an asynchronous operation on the replication protection cluster.
+.Description
+Track the results of an asynchronous operation on the replication protection cluster.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReplicationProtectionCluster
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+.Link
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectionclusteroperationresult
+#>
+function Get-AzMigrateReplicationProtectionClusterOperationResult {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReplicationProtectionCluster])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Fabric name.
+    ${FabricName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # job id to track.
+    ${JobId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Protection container name.
+    ${ProtectionContainerName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Replication protection cluster name.
+    ${ReplicationProtectionClusterName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group where the recovery services vault is present.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the recovery services vault.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Azure Subscription Id in which migrate project was created.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionClusterOperationResult_Get';
+            GetViaIdentity = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionClusterOperationResult_GetViaIdentity';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets the details of an ASR replication protection cluster.
+.Description
+Gets the details of an ASR replication protection cluster.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReplicationProtectionCluster
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+.Link
+https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncluster
+#>
+function Get-AzMigrateReplicationProtectionCluster {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReplicationProtectionCluster])]
+[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Fabric name.
+    ${FabricName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('ReplicationProtectionClusterName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Replication protection cluster name.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Protection container name.
+    ${ProtectionContainerName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group where the recovery services vault is present.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the recovery services vault.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Azure Subscription Id in which migrate project was created.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.String]
+    # OData filter options.
+    ${Filter},
+
+    [Parameter(ParameterSetName='List1')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
+    [System.String]
+    # The pagination token.
+    # Possible values: "FabricId" or "FabricId_CloudId" or null.
+    ${SkipToken},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionCluster_Get';
+            GetViaIdentity = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionCluster_GetViaIdentity';
+            List = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionCluster_List';
+            List1 = 'Az.Migrate.private\Get-AzMigrateReplicationProtectionCluster_List1';
+        }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets the details of the vault.
 .Description
 Gets the details of the vault.
@@ -2784,6 +3485,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -2808,6 +3510,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -2999,6 +3702,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -3023,6 +3727,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -3226,6 +3931,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -3250,6 +3956,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -3443,6 +4150,269 @@ end {
 
 <#
 .Synopsis
+The operation to reinstall the installed mobility service software on a replication protected item to the latest available version.
+.Description
+The operation to reinstall the installed mobility service software on a replication protected item to the latest available version.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReinstallMobilityServiceRequest
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReplicationProtectedItem
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMigrateIdentity>: Identity Parameter
+  [AccountName <String>]: Run as account ARM name.
+  [AlertSettingName <String>]: The name of the email notification configuration.
+  [ClusterName <String>]: Cluster ARM name.
+  [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
+  [DatabaseName <String>]: Unique name of a database in Azure migration hub.
+  [DeploymentId <String>]: Deployment Id.
+  [EmailConfigurationName <String>]: The email configuration name.
+  [EventName <String>]: Unique name of an event within a migrate project.
+  [FabricAgentName <String>]: The fabric agent name.
+  [FabricName <String>]: Fabric name.
+  [HostName <String>]: Host ARM name.
+  [Id <String>]: Resource identity path
+  [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
+  [JobName <String>]: Job ARM name.
+  [Location <String>]: The name of the Azure region.
+  [LogicalNetworkName <String>]: Logical network name.
+  [MachineName <String>]: Machine ARM name.
+  [MappingName <String>]: Protection Container mapping name.
+  [MigrateProjectName <String>]: Name of the Azure Migrate project.
+  [MigrationItemName <String>]: Migration item name.
+  [MigrationRecoveryPointName <String>]: The migration recovery point name.
+  [NetworkMappingName <String>]: Network mapping name.
+  [NetworkName <String>]: Primary network name.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [OperationStatusName <String>]: Operation status ARM name.
+  [PolicyName <String>]: Replication policy name.
+  [PrivateEndpointConnectionName <String>]: The private endpoint connection name.
+  [PrivateEndpointConnectionProxyName <String>]: The private endpoint connection proxy name.
+  [PrivateLinkResourceName <String>]: The private link name.
+  [ProtectableItemName <String>]: Protectable item name.
+  [ProtectedItemName <String>]: The protected item name.
+  [ProtectionContainerName <String>]: Protection container name.
+  [ProviderName <String>]: Recovery services provider name.
+  [RecoveryPlanName <String>]: Name of the recovery plan.
+  [RecoveryPointName <String>]: The recovery point name.
+  [ReplicatedProtectedItemName <String>]: Replication protected item name.
+  [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceName <String>]: The name of the recovery services vault.
+  [SiteName <String>]: Site name.
+  [SolutionName <String>]: Unique name of a migration solution within a migrate project.
+  [StorageClassificationMappingName <String>]: Storage classification mapping name.
+  [StorageClassificationName <String>]: Storage classification name.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VaultName <String>]: The vault name.
+  [VaultSettingName <String>]: Vault setting name.
+  [VcenterName <String>]: VCenter ARM name.
+  [VirtualMachineName <String>]: Virtual Machine name.
+
+UPDATEMOBILITYSERVICEREQUEST <IReinstallMobilityServiceRequest>: Request to Reinstall the mobility service on a protected item.
+  [RunAsAccountId <String>]: The CS run as account Id.
+.Link
+https://learn.microsoft.com/powershell/module/az.migrate/invoke-azmigratereinstallreplicationprotecteditemmobilityservice
+#>
+function Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReplicationProtectedItem])]
+[CmdletBinding(DefaultParameterSetName='ReinstallExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Reinstall', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the fabric containing the protected item.
+    ${FabricName},
+
+    [Parameter(ParameterSetName='Reinstall', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the container containing the protected item.
+    ${ProtectionContainerName},
+
+    [Parameter(ParameterSetName='Reinstall', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the protected item on which the agent is to be updated.
+    ${ReplicatedProtectedItemName},
+
+    [Parameter(ParameterSetName='Reinstall', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the resource group where the recovery services vault is present.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Reinstall', Mandatory)]
+    [Parameter(ParameterSetName='ReinstallExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # The name of the recovery services vault.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='Reinstall')]
+    [Parameter(ParameterSetName='ReinstallExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Azure Subscription Id in which migrate project was created.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ReinstallViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ReinstallViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Reinstall', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ReinstallViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IReinstallMobilityServiceRequest]
+    # Request to Reinstall the mobility service on a protected item.
+    # To construct, see NOTES section for UPDATEMOBILITYSERVICEREQUEST properties and create a hash table.
+    ${UpdateMobilityServiceRequest},
+
+    [Parameter(ParameterSetName='ReinstallExpanded')]
+    [Parameter(ParameterSetName='ReinstallViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # The CS run as account Id.
+    ${RunAsAccountId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Reinstall = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_Reinstall';
+            ReinstallExpanded = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallExpanded';
+            ReinstallViaIdentity = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaIdentity';
+            ReinstallViaIdentityExpanded = 'Az.Migrate.private\Invoke-AzMigrateReinstallReplicationProtectedItemMobilityService_ReinstallViaIdentityExpanded';
+        }
+        if (('Reinstall', 'ReinstallExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 The operation to resynchronize replication of an ASR migration item.
 .Description
 The operation to resynchronize replication of an ASR migration item.
@@ -3452,7 +4422,7 @@ The operation to resynchronize replication of an ASR migration item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3464,7 +4434,7 @@ PROVIDERSPECIFICDETAIL <IResyncProviderSpecificInput>: The provider specific det
 https://learn.microsoft.com/powershell/module/az.migrate/invoke-azmigrateresyncreplicationmigrationitem
 #>
 function Invoke-AzMigrateResyncReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='ResyncExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3506,7 +4476,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IResyncProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IResyncProviderSpecificInput]
     # The provider specific details.
     # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
     ${ProviderSpecificDetail},
@@ -3634,7 +4604,7 @@ The operation to initiate migration of the item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3646,7 +4616,7 @@ PROVIDERSPECIFICDETAIL <IMigrateProviderSpecificInput>: The provider specific de
 https://learn.microsoft.com/powershell/module/az.migrate/move-azmigratereplicationmigrationitem
 #>
 function Move-AzMigrateReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='MigrateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3688,7 +4658,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrateProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrateProviderSpecificInput]
     # The provider specific details.
     # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
     ${ProviderSpecificDetail},
@@ -3851,6 +4821,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -3875,6 +4846,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -4115,6 +5087,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -4139,6 +5112,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -4379,6 +5353,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -4403,6 +5378,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -4606,7 +5582,7 @@ The operation to create an ASR migration item (enable migration).
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4618,7 +5594,7 @@ PROVIDERSPECIFICDETAIL <IEnableMigrationProviderSpecificInput>: The provider spe
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationmigrationitem
 #>
 function New-AzMigrateReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4666,7 +5642,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IEnableMigrationProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IEnableMigrationProviderSpecificInput]
     # The provider specific details.
     # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
     ${ProviderSpecificDetail},
@@ -4816,6 +5792,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -4840,6 +5817,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -5044,6 +6022,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -5068,6 +6047,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -5272,6 +6252,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -5296,6 +6277,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -5506,6 +6488,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -5530,6 +6513,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -5914,6 +6898,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -5938,6 +6923,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -6114,7 +7100,7 @@ The operation to initiate resume replication of the item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6126,7 +7112,7 @@ PROVIDERSPECIFICDETAIL <IResumeReplicationProviderSpecificInput>: The provider s
 https://learn.microsoft.com/powershell/module/az.migrate/resume-azmigratereplicationmigrationitemreplication
 #>
 function Resume-AzMigrateReplicationMigrationItemReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='ResumeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6168,7 +7154,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IResumeReplicationProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IResumeReplicationProviderSpecificInput]
     # The provider specific input for resume replication.
     # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
     ${ProviderSpecificDetail},
@@ -7211,12 +8197,12 @@ The operation to initiate pause replication of the item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/suspend-azmigratereplicationmigrationitemreplication
 #>
 function Suspend-AzMigrateReplicationMigrationItemReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='PauseExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -7385,12 +8371,12 @@ The operation to initiate test migrate cleanup.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/test-azmigratereplicationmigrationitemmigratecleanup
 #>
 function Test-AzMigrateReplicationMigrationItemMigrateCleanup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='TestExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -7559,7 +8545,7 @@ The operation to initiate test migration of the item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7571,7 +8557,7 @@ PROVIDERSPECIFICDETAIL <ITestMigrateProviderSpecificInput>: The provider specifi
 https://learn.microsoft.com/powershell/module/az.migrate/test-azmigratereplicationmigrationitemmigrate
 #>
 function Test-AzMigrateReplicationMigrationItemMigrate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='TestExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -7613,7 +8599,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.ITestMigrateProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.ITestMigrateProviderSpecificInput]
     # The provider specific details.
     # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
     ${ProviderSpecificDetail},
@@ -7776,6 +8762,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -7800,6 +8787,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -8003,7 +8991,7 @@ The operation to update the recovery settings of an ASR migration item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -8015,7 +9003,7 @@ PROVIDERSPECIFICDETAIL <IUpdateMigrationItemProviderSpecificInput>: The provider
 https://learn.microsoft.com/powershell/module/az.migrate/update-azmigratereplicationmigrationitem
 #>
 function Update-AzMigrateReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -8057,7 +9045,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IUpdateMigrationItemProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IUpdateMigrationItemProviderSpecificInput]
     # The provider specific input to update migration item.
     # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
     ${ProviderSpecificDetail},

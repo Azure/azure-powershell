@@ -62,6 +62,8 @@ function Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement {
 [CmdletBinding(DefaultParameterSetName='EnableExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='EnableExpanded', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -69,12 +71,16 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='EnableExpanded', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the storage appliance.
     ${StorageApplianceName},
 
     [Parameter(ParameterSetName='EnableExpanded')]
+    [Parameter(ParameterSetName='EnableViaJsonFilePath')]
+    [Parameter(ParameterSetName='EnableViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -86,10 +92,10 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='EnableExpanded')]
+    [Parameter(ParameterSetName='EnableViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String[]]
@@ -97,6 +103,18 @@ param(
     # This field is not used and will be rejected if provided.
     # The list of IPv4 subnets (in CIDR format), IPv6 subnets (in CIDR format), or hostnames that the storage appliance needs accessible in order to turn on the remote vendor management.
     ${SupportEndpoint},
+
+    [Parameter(ParameterSetName='EnableViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Enable operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Enable operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -172,6 +190,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -193,10 +220,10 @@ begin {
         $mapping = @{
             EnableExpanded = 'Az.NetworkCloud.private\Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement_EnableExpanded';
             EnableViaIdentityExpanded = 'Az.NetworkCloud.private\Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement_EnableViaIdentityExpanded';
+            EnableViaJsonFilePath = 'Az.NetworkCloud.private\Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement_EnableViaJsonFilePath';
+            EnableViaJsonString = 'Az.NetworkCloud.private\Enable-AzNetworkCloudStorageApplianceRemoteVendorManagement_EnableViaJsonString';
         }
-        if (('EnableExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('EnableExpanded', 'EnableViaJsonFilePath', 'EnableViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -210,6 +237,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -175,7 +175,7 @@ function Test-AccountCrud
         $retrievedAccById = Get-AzNetAppFilesAccount -ResourceId $retrievedAcc.Id
         Assert-AreEqual $accName1 $retrievedAccById.Name
 
-        # update and check the account (tags) - the active directory test chceks this stuff
+        # update and check the account (tags) - the active directory test checks this stuff
 
         # delete one account retrieved by id and one by name and check removed
         Remove-AzNetAppFilesAccount -ResourceId $retrievedAccById.Id

@@ -28,6 +28,7 @@ https://learn.microsoft.com/powershell/module/Az.CloudService/new-azcloudservice
 function New-AzCloudServiceVaultSecretGroupObject {
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceVaultSecretGroup')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceVaultSecretGroup", "16.0.0", "9.0.0", "May 2026", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceVaultSecretGroup", DeprecatedOutputProperties = ("VaultCertificate Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceVaultCertificate"), NewOutputProperties = ("VaultCertificate System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceVaultCertificate]"))]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
         [Parameter(HelpMessage="Key Vault Resource Id.")]
@@ -43,12 +44,12 @@ function New-AzCloudServiceVaultSecretGroupObject {
               $certificateUrls = @()
               ForEach ($url in $CertificateUrl)
               {
-                     $cloudServiceVaultCertificate = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceVaultCertificate]::New()
+                     $cloudServiceVaultCertificate = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceVaultCertificate]::New()
                      $cloudServiceVaultCertificate.CertificateUrl = $url
                      $certificateUrls = $certificateUrls + $cloudServiceVaultCertificate
               }
 
-              $cloudServiceVaultSecretGroup = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudServiceVaultSecretGroup]::New()
+              $cloudServiceVaultSecretGroup = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.CloudServiceVaultSecretGroup]::New()
               $cloudServiceVaultSecretGroup.SourceVaultId = $Id
               $cloudServiceVaultSecretGroup.VaultCertificate = $certificateUrls
 

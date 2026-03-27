@@ -29,6 +29,12 @@ Get-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupNam
 Get-AzNginxCertificate -InputObject <INginxIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityNginxDeployment
+```
+Get-AzNginxCertificate -Name <String> -NginxDeploymentInputObject <INginxIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a certificate of given NGINX deployment
 
@@ -96,7 +102,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
@@ -115,13 +120,28 @@ The name of certificate
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityNginxDeployment
 Aliases: CertificateName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NginxDeploymentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
+Parameter Sets: GetViaIdentityNginxDeployment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -165,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxCertificate
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxCertificate
 
 ## NOTES
 

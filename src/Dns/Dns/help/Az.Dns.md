@@ -24,7 +24,7 @@ Gets a DNS record set.
 Gets a DNS zone.
 
 ### [New-AzDnsDnssecConfig](New-AzDnsDnssecConfig.md)
-Creates or updates the DNSSEC configuration on a DNS zone.
+Create the DNSSEC configuration on a DNS zone.
 
 ### [New-AzDnsRecordConfig](New-AzDnsRecordConfig.md)
 Creates a new DNS record local object.

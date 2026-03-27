@@ -26,12 +26,12 @@ $operationsToBeExcluded = $criticalOperations | Where-Object { $_ -match "backup
 Update-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "rgName" -Name $resourceGuard.Name -CriticalOperationExclusionList $operationsToBeExcluded
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IResourceGuardResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IResourceGuardResource
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionresourceguard
 #>
 function Update-AzDataProtectionResourceGuard {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IResourceGuardResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IResourceGuardResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateResourceGuardOperations', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

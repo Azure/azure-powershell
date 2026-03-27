@@ -56,7 +56,7 @@ function Test-AzureVmWorkloadUnDeleteContainer
 	$subscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiagaVault2"
-	$containerName = "sql-migration-vm2"
+	$containerName = "sql-clicloudtest-vm" # "sql-migration-vm2"
 
 	try
 	{   
@@ -75,7 +75,7 @@ function Test-AzureVmWorkloadUnDeleteContainer
 		# Reregister  
 		$reregisteredContainer = Register-AzRecoveryServicesBackupContainer -Container $container -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID -Force
 		
-		Assert-True {$reregisteredContainer.Status -eq "Registered"}		
+		Assert-True {$reregisteredContainer.Status -eq "Registered"}
 	}
 	finally	
 	{						
@@ -112,7 +112,7 @@ function Get-AzureVmWorkloadContainer
       $containers = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer;
-      Assert-True { $containers[1].FriendlyName -contains $containerName }
+      Assert-True { $containers.FriendlyName -contains $containerName }
 
       # VARIATION-2: Get Containers with friendly name filter
       $containers = Get-AzRecoveryServicesBackupContainer `
@@ -126,7 +126,7 @@ function Get-AzureVmWorkloadContainer
          -VaultId $vault.ID `
          -ContainerType AzureVMAppContainer `
          -ResourceGroupName $resourceGroupName;
-      Assert-True { $containers[1].FriendlyName -contains $containerName }
+      Assert-True { $containers.FriendlyName -contains $containerName }
    
       # VARIATION-4: Get Containers with friendly name and resource group filters
       $containers = Get-AzRecoveryServicesBackupContainer `

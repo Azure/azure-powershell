@@ -34,7 +34,7 @@ EnvironmentId IngestionKey
 ihx78752      dt0c01.C3A5JBXDZ4C3SCZDRBJ3D23I.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-This command gets the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
+This coammnd gets the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
 
 ## PARAMETERS
 
@@ -87,6 +87,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

@@ -241,6 +241,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public string[] EnabledHostName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).EnabledHostName; }
 
+        /// <summary>Whether to use end to end encryption between the FrontEnd and the Worker</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
+        public bool? EndToEndEncryptionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).EndToEndEncryptionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).EndToEndEncryptionEnabled = value ?? default(bool); }
+
         /// <summary>Backing field for <see cref="ExtendedLocation" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IExtendedLocation _extendedLocation;
 
@@ -285,7 +289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
 
         /// <summary>The maximum number of concurrent HTTP trigger invocations per instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public float? HttpPerInstanceConcurrency { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).HttpPerInstanceConcurrency; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).HttpPerInstanceConcurrency = value ?? default(float); }
+        public int? HttpPerInstanceConcurrency { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).HttpPerInstanceConcurrency; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).HttpPerInstanceConcurrency = value ?? default(int); }
 
         /// <summary>
         /// HttpsOnly: configures a web site to accept only https requests. Issues redirect for
@@ -584,11 +588,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         /// proportionally.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public float? ScaleAndConcurrencyInstanceMemoryMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).ScaleAndConcurrencyInstanceMemoryMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).ScaleAndConcurrencyInstanceMemoryMb = value ?? default(float); }
+        public int? ScaleAndConcurrencyInstanceMemoryMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).ScaleAndConcurrencyInstanceMemoryMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).ScaleAndConcurrencyInstanceMemoryMb = value ?? default(int); }
 
         /// <summary>The maximum number of instances for the function app.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public float? ScaleAndConcurrencyMaximumInstanceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).ScaleAndConcurrencyMaximumInstanceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).ScaleAndConcurrencyMaximumInstanceCount = value ?? default(float); }
+        public int? ScaleAndConcurrencyMaximumInstanceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).ScaleAndConcurrencyMaximumInstanceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISitePropertiesInternal)Property).ScaleAndConcurrencyMaximumInstanceCount = value ?? default(int); }
 
         /// <summary>
         /// <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
@@ -1103,6 +1107,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         SerializedName = @"enabledHostNames",
         PossibleTypes = new [] { typeof(string) })]
         string[] EnabledHostName { get;  }
+        /// <summary>Whether to use end to end encryption between the FrontEnd and the Worker</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether to use end to end encryption between the FrontEnd and the Worker",
+        SerializedName = @"endToEndEncryptionEnabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EndToEndEncryptionEnabled { get; set; }
         /// <summary>Name of extended location.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -1177,8 +1189,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         ReadOnly = false,
         Description = @"The maximum number of concurrent HTTP trigger invocations per instance.",
         SerializedName = @"perInstanceConcurrency",
-        PossibleTypes = new [] { typeof(float) })]
-        float? HttpPerInstanceConcurrency { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? HttpPerInstanceConcurrency { get; set; }
         /// <summary>
         /// HttpsOnly: configures a web site to accept only https requests. Issues redirect for
         /// http requests
@@ -1414,16 +1426,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         ReadOnly = false,
         Description = @"Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.",
         SerializedName = @"instanceMemoryMB",
-        PossibleTypes = new [] { typeof(float) })]
-        float? ScaleAndConcurrencyInstanceMemoryMb { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? ScaleAndConcurrencyInstanceMemoryMb { get; set; }
         /// <summary>The maximum number of instances for the function app.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"The maximum number of instances for the function app.",
         SerializedName = @"maximumInstanceCount",
-        PossibleTypes = new [] { typeof(float) })]
-        float? ScaleAndConcurrencyMaximumInstanceCount { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? ScaleAndConcurrencyMaximumInstanceCount { get; set; }
         /// <summary>
         /// <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
         /// </summary>
@@ -1745,6 +1757,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         /// the app is not served on those hostnames.
         /// </summary>
         string[] EnabledHostName { get; set; }
+        /// <summary>Whether to use end to end encryption between the FrontEnd and the Worker</summary>
+        bool? EndToEndEncryptionEnabled { get; set; }
         /// <summary>Extended Location.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IExtendedLocation ExtendedLocation { get; set; }
         /// <summary>Name of extended location.</summary>
@@ -1777,7 +1791,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         /// <summary>Resource type of the App Service Environment.</summary>
         string HostingEnvironmentProfileType { get; set; }
         /// <summary>The maximum number of concurrent HTTP trigger invocations per instance.</summary>
-        float? HttpPerInstanceConcurrency { get; set; }
+        int? HttpPerInstanceConcurrency { get; set; }
         /// <summary>
         /// HttpsOnly: configures a web site to accept only https requests. Issues redirect for
         /// http requests
@@ -1862,9 +1876,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         /// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated
         /// proportionally.
         /// </summary>
-        float? ScaleAndConcurrencyInstanceMemoryMb { get; set; }
+        int? ScaleAndConcurrencyInstanceMemoryMb { get; set; }
         /// <summary>The maximum number of instances for the function app.</summary>
-        float? ScaleAndConcurrencyMaximumInstanceCount { get; set; }
+        int? ScaleAndConcurrencyMaximumInstanceCount { get; set; }
         /// <summary>Scale and concurrency settings for the function app triggers.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggers ScaleAndConcurrencyTrigger { get; set; }
         /// <summary>

@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public const string MissingUpgradePath = "MissingUpgradePath";
         public const string InvalidAgentVersion = "InvalidAgentVersion";
         public const string InvalidDriverVersion = "InvalidDriverVersion";
+        public const string ReInstallRequired = "ReInstallRequired";
         public const string Unknown = "Unknown";
     }
 }

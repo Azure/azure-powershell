@@ -36,9 +36,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public string AzureKeyVaultKmKeyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAzureKeyVaultKmsInternal)AzureKeyVaultKm).KeyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAzureKeyVaultKmsInternal)AzureKeyVaultKm).KeyId = value ?? null; }
 
         /// <summary>
-        /// Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public
-        /// access from all networks. `Private` means the key vault disables public access and enables private link. The default value
-        /// is `Public`.
+        /// Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public`
+        /// means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables
+        /// private link. The default value is `Public`.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AzureKeyVaultKmKeyVaultNetworkAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAzureKeyVaultKmsInternal)AzureKeyVaultKm).KeyVaultNetworkAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAzureKeyVaultKmsInternal)AzureKeyVaultKm).KeyVaultNetworkAccess = value ?? null; }
@@ -49,6 +49,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AzureKeyVaultKmKeyVaultResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAzureKeyVaultKmsInternal)AzureKeyVaultKm).KeyVaultResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAzureKeyVaultKmsInternal)AzureKeyVaultKm).KeyVaultResourceId = value ?? null; }
+
+        /// <summary>Backing field for <see cref="CustomCaTrustCertificate" /> property.</summary>
+        private System.Collections.Generic.List<byte[]> _customCaTrustCertificate;
+
+        /// <summary>
+        /// A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information
+        /// see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<byte[]> CustomCaTrustCertificate { get => this._customCaTrustCertificate; set => this._customCaTrustCertificate = value; }
 
         /// <summary>Backing field for <see cref="Defender" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefender _defender;
@@ -87,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefender Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal.Defender { get => (this._defender = this._defender ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterSecurityProfileDefender()); set { {_defender = value;} } }
 
         /// <summary>Internal Acessors for DefenderSecurityMonitoring</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefenderSecurityMonitoring Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal.DefenderSecurityMonitoring { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefenderInternal)Defender).SecurityMonitoring; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefenderInternal)Defender).SecurityMonitoring = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefenderSecurityMonitoring Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal.DefenderSecurityMonitoring { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefenderInternal)Defender).SecurityMonitoring; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefenderInternal)Defender).SecurityMonitoring = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ImageCleaner</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileImageCleaner Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal.ImageCleaner { get => (this._imageCleaner = this._imageCleaner ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterSecurityProfileImageCleaner()); set { {_imageCleaner = value;} } }
@@ -150,9 +160,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string AzureKeyVaultKmKeyId { get; set; }
         /// <summary>
-        /// Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public
-        /// access from all networks. `Private` means the key vault disables public access and enables private link. The default value
-        /// is `Public`.
+        /// Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public`
+        /// means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables
+        /// private link. The default value is `Public`.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -160,7 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.",
+        Description = @"Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.",
         SerializedName = @"keyVaultNetworkAccess",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Public", "Private")]
@@ -179,6 +189,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"keyVaultResourceId",
         PossibleTypes = new [] { typeof(string) })]
         string AzureKeyVaultKmKeyVaultResourceId { get; set; }
+        /// <summary>
+        /// A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information
+        /// see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).",
+        SerializedName = @"customCATrustCertificates",
+        PossibleTypes = new [] { typeof(byte[]) })]
+        System.Collections.Generic.List<byte[]> CustomCaTrustCertificate { get; set; }
         /// <summary>
         /// Resource ID of the Log Analytics workspace to be associated with Microsoft Defender. When Microsoft Defender is enabled,
         /// this field is required and must be a valid workspace resource ID. When Microsoft Defender is disabled, leave the field
@@ -258,9 +282,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// </summary>
         string AzureKeyVaultKmKeyId { get; set; }
         /// <summary>
-        /// Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public
-        /// access from all networks. `Private` means the key vault disables public access and enables private link. The default value
-        /// is `Public`.
+        /// Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public`
+        /// means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables
+        /// private link. The default value is `Public`.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Public", "Private")]
         string AzureKeyVaultKmKeyVaultNetworkAccess { get; set; }
@@ -269,6 +293,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// ID. When keyVaultNetworkAccess is `Public`, leave the field empty.
         /// </summary>
         string AzureKeyVaultKmKeyVaultResourceId { get; set; }
+        /// <summary>
+        /// A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information
+        /// see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
+        /// </summary>
+        System.Collections.Generic.List<byte[]> CustomCaTrustCertificate { get; set; }
         /// <summary>Microsoft Defender settings for the security profile.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefender Defender { get; set; }
         /// <summary>

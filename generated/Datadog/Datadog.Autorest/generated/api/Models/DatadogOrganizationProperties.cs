@@ -7,25 +7,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Extensions;
 
-    /// <summary>Datadog organization properties</summary>
+    /// <summary>
+    /// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey
+    /// is required as well.
+    /// </summary>
     public partial class DatadogOrganizationProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationProperties,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationPropertiesInternal
     {
 
         /// <summary>Backing field for <see cref="ApiKey" /> property.</summary>
-        private string _apiKey;
+        private System.Security.SecureString _apiKey;
 
         /// <summary>Api key associated to the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string ApiKey { get => this._apiKey; set => this._apiKey = value; }
+        public System.Security.SecureString ApiKey { get => this._apiKey; set => this._apiKey = value; }
 
         /// <summary>Backing field for <see cref="ApplicationKey" /> property.</summary>
-        private string _applicationKey;
+        private System.Security.SecureString _applicationKey;
 
         /// <summary>Application key associated to the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string ApplicationKey { get => this._applicationKey; set => this._applicationKey = value; }
+        public System.Security.SecureString ApplicationKey { get => this._applicationKey; set => this._applicationKey = value; }
+
+        /// <summary>Backing field for <see cref="Cspm" /> property.</summary>
+        private bool? _cspm;
+
+        /// <summary>
+        /// The configuration which describes the state of cloud security posture management. This collects configuration information
+        /// for all resources in a subscription and track conformance to industry benchmarks.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
+        public bool? Cspm { get => this._cspm; set => this._cspm = value; }
 
         /// <summary>Backing field for <see cref="EnterpriseAppId" /> property.</summary>
         private string _enterpriseAppId;
@@ -39,43 +52,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 
         /// <summary>Id of the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Id { get => this._id; }
+        public string Id { get => this._id; set => this._id = value; }
 
         /// <summary>Backing field for <see cref="LinkingAuthCode" /> property.</summary>
-        private string _linkingAuthCode;
+        private System.Security.SecureString _linkingAuthCode;
 
-        /// <summary>The auth code used to linking to an existing datadog organization.</summary>
+        /// <summary>The auth code used to linking to an existing Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string LinkingAuthCode { get => this._linkingAuthCode; set => this._linkingAuthCode = value; }
+        public System.Security.SecureString LinkingAuthCode { get => this._linkingAuthCode; set => this._linkingAuthCode = value; }
 
         /// <summary>Backing field for <see cref="LinkingClientId" /> property.</summary>
-        private string _linkingClientId;
+        private System.Security.SecureString _linkingClientId;
 
         /// <summary>
         /// The client_id from an existing in exchange for an auth token to link organization.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string LinkingClientId { get => this._linkingClientId; set => this._linkingClientId = value; }
-
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationPropertiesInternal.Id { get => this._id; set { {_id = value;} } }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogOrganizationPropertiesInternal.Name { get => this._name; set { {_name = value;} } }
+        public System.Security.SecureString LinkingClientId { get => this._linkingClientId; set => this._linkingClientId = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
         /// <summary>Name of the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
-        public string Name { get => this._name; }
+        public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>Backing field for <see cref="RedirectUri" /> property.</summary>
         private string _redirectUri;
 
-        /// <summary>The redirect uri for linking.</summary>
+        /// <summary>The redirect URI for linking.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         public string RedirectUri { get => this._redirectUri; set => this._redirectUri = value; }
+
+        /// <summary>Backing field for <see cref="ResourceCollection" /> property.</summary>
+        private bool? _resourceCollection;
+
+        /// <summary>
+        /// The configuration which describes the state of resource collection. This collects configuration information for all resources
+        /// in a subscription.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
+        public bool? ResourceCollection { get => this._resourceCollection; set => this._resourceCollection = value; }
 
         /// <summary>Creates an new <see cref="DatadogOrganizationProperties" /> instance.</summary>
         public DatadogOrganizationProperties()
@@ -83,7 +100,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
 
         }
     }
-    /// Datadog organization properties
+    /// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey
+    /// is required as well.
     public partial interface IDatadogOrganizationProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IJsonSerializable
     {
@@ -96,8 +114,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Update = false,
         Description = @"Api key associated to the Datadog organization.",
         SerializedName = @"apiKey",
-        PossibleTypes = new [] { typeof(string) })]
-        string ApiKey { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString ApiKey { get; set; }
         /// <summary>Application key associated to the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -107,8 +125,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Update = false,
         Description = @"Application key associated to the Datadog organization.",
         SerializedName = @"applicationKey",
-        PossibleTypes = new [] { typeof(string) })]
-        string ApplicationKey { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString ApplicationKey { get; set; }
+        /// <summary>
+        /// The configuration which describes the state of cloud security posture management. This collects configuration information
+        /// for all resources in a subscription and track conformance to industry benchmarks.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.",
+        SerializedName = @"cspm",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? Cspm { get; set; }
         /// <summary>The Id of the Enterprise App used for Single sign on.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
@@ -123,25 +155,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// <summary>Id of the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
+        Create = true,
         Update = false,
         Description = @"Id of the Datadog organization.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
-        string Id { get;  }
-        /// <summary>The auth code used to linking to an existing datadog organization.</summary>
+        string Id { get; set; }
+        /// <summary>The auth code used to linking to an existing Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = false,
         Create = true,
         Update = false,
-        Description = @"The auth code used to linking to an existing datadog organization.",
+        Description = @"The auth code used to linking to an existing Datadog organization.",
         SerializedName = @"linkingAuthCode",
-        PossibleTypes = new [] { typeof(string) })]
-        string LinkingAuthCode { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString LinkingAuthCode { get; set; }
         /// <summary>
         /// The client_id from an existing in exchange for an auth token to link organization.
         /// </summary>
@@ -153,54 +185,79 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         Update = false,
         Description = @"The client_id from an existing in exchange for an auth token to link organization.",
         SerializedName = @"linkingClientId",
-        PossibleTypes = new [] { typeof(string) })]
-        string LinkingClientId { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString LinkingClientId { get; set; }
         /// <summary>Name of the Datadog organization.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
+        Create = true,
         Update = false,
         Description = @"Name of the Datadog organization.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        string Name { get;  }
-        /// <summary>The redirect uri for linking.</summary>
+        string Name { get; set; }
+        /// <summary>The redirect URI for linking.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = false,
         Create = true,
         Update = false,
-        Description = @"The redirect uri for linking.",
+        Description = @"The redirect URI for linking.",
         SerializedName = @"redirectUri",
         PossibleTypes = new [] { typeof(string) })]
         string RedirectUri { get; set; }
+        /// <summary>
+        /// The configuration which describes the state of resource collection. This collects configuration information for all resources
+        /// in a subscription.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The configuration which describes the state of resource collection. This collects configuration information for all resources in a subscription.",
+        SerializedName = @"resourceCollection",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ResourceCollection { get; set; }
 
     }
-    /// Datadog organization properties
+    /// Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey
+    /// is required as well.
     internal partial interface IDatadogOrganizationPropertiesInternal
 
     {
         /// <summary>Api key associated to the Datadog organization.</summary>
-        string ApiKey { get; set; }
+        System.Security.SecureString ApiKey { get; set; }
         /// <summary>Application key associated to the Datadog organization.</summary>
-        string ApplicationKey { get; set; }
+        System.Security.SecureString ApplicationKey { get; set; }
+        /// <summary>
+        /// The configuration which describes the state of cloud security posture management. This collects configuration information
+        /// for all resources in a subscription and track conformance to industry benchmarks.
+        /// </summary>
+        bool? Cspm { get; set; }
         /// <summary>The Id of the Enterprise App used for Single sign on.</summary>
         string EnterpriseAppId { get; set; }
         /// <summary>Id of the Datadog organization.</summary>
         string Id { get; set; }
-        /// <summary>The auth code used to linking to an existing datadog organization.</summary>
-        string LinkingAuthCode { get; set; }
+        /// <summary>The auth code used to linking to an existing Datadog organization.</summary>
+        System.Security.SecureString LinkingAuthCode { get; set; }
         /// <summary>
         /// The client_id from an existing in exchange for an auth token to link organization.
         /// </summary>
-        string LinkingClientId { get; set; }
+        System.Security.SecureString LinkingClientId { get; set; }
         /// <summary>Name of the Datadog organization.</summary>
         string Name { get; set; }
-        /// <summary>The redirect uri for linking.</summary>
+        /// <summary>The redirect URI for linking.</summary>
         string RedirectUri { get; set; }
+        /// <summary>
+        /// The configuration which describes the state of resource collection. This collects configuration information for all resources
+        /// in a subscription.
+        /// </summary>
+        bool? ResourceCollection { get; set; }
 
     }
 }

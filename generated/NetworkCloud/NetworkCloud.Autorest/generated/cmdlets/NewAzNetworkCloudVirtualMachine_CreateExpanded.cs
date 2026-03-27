@@ -6,22 +6,24 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Cmdlets;
     using System;
 
     /// <summary>
-    /// Create a new virtual machine or update the properties of the existing virtual machine.
+    /// create a new virtual machine or create the properties of the existing virtual machine.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNetworkCloudVirtualMachine_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine", "15.0.0", "2.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"NetworkAttachment","PlacementHint","SshPublicKey","StorageProfileVolumeAttachment","Volume"}, NewOutputProperties=new string[] {"NetworkAttachment","PlacementHint","SshPublicKey","StorageProfileVolumeAttachment","Volume"}, ChangeDescription="The types of properties will be changed from fixed array to 'List'.")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Create a new virtual machine or update the properties of the existing virtual machine.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"create a new virtual machine or create the properties of the existing virtual machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}", ApiVersion = "2025-02-01")]
     public partial class NewAzNetworkCloudVirtualMachine_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -37,8 +39,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>VirtualMachine represents the on-premises Network Cloud virtual machine.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine _virtualMachineParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.VirtualMachine();
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine _virtualMachineParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachine();
 
         /// <summary>
         /// The name of the administrator to which the ssh public keys will be added into the authorized keys.
@@ -66,14 +71,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"Selects the boot method for the virtual machine.",
         SerializedName = @"bootMethod",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineBootMethod) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineBootMethod))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineBootMethod BootMethod { get => _virtualMachineParametersBody.BootMethod ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineBootMethod)""); set => _virtualMachineParametersBody.BootMethod = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("UEFI", "BIOS")]
+        public string BootMethod { get => _virtualMachineParametersBody.BootMethod ?? null; set => _virtualMachineParametersBody.BootMethod = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.NetworkCloud Client => Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.ClientAPI;
@@ -103,9 +111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The indicator of whether this is the default gateway.Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.",
         SerializedName = @"defaultGateway",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway CloudServiceNetworkAttachmentDefaultGateway { get => _virtualMachineParametersBody.CloudServiceNetworkAttachmentDefaultGateway ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway)""); set => _virtualMachineParametersBody.CloudServiceNetworkAttachmentDefaultGateway = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
+        public string CloudServiceNetworkAttachmentDefaultGateway { get => _virtualMachineParametersBody.CloudServiceNetworkAttachmentDefaultGateway ?? null; set => _virtualMachineParametersBody.CloudServiceNetworkAttachmentDefaultGateway = value; }
 
         /// <summary>
         /// The IP allocation mechanism for the virtual machine.Dynamic and Static are only valid for l3Network which may also specify
@@ -118,9 +126,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The IP allocation mechanism for the virtual machine.Dynamic and Static are only valid for l3Network which may also specify Disabled.Otherwise, Disabled is the only permitted value.",
         SerializedName = @"ipAllocationMethod",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIPAllocationMethod) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIPAllocationMethod))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIPAllocationMethod CloudServiceNetworkAttachmentIPAllocationMethod { get => _virtualMachineParametersBody.CloudServiceNetworkAttachmentIPAllocationMethod; set => _virtualMachineParametersBody.CloudServiceNetworkAttachmentIPAllocationMethod = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Dynamic", "Static", "Disabled")]
+        public string CloudServiceNetworkAttachmentIPAllocationMethod { get => _virtualMachineParametersBody.CloudServiceNetworkAttachmentIPAllocationMethod ?? null; set => _virtualMachineParametersBody.CloudServiceNetworkAttachmentIPAllocationMethod = value; }
 
         /// <summary>
         /// The IPv4 address of the virtual machine.This field is used only if the attached network has IPAllocationType of IPV4 or
@@ -200,7 +208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The number of CPU cores in the virtual machine.",
         SerializedName = @"cpuCores",
         PossibleTypes = new [] { typeof(long) })]
-        public long CpuCore { get => _virtualMachineParametersBody.CpuCore; set => _virtualMachineParametersBody.CpuCore = value; }
+        public long CpuCore { get => _virtualMachineParametersBody.CpuCore ?? default(long); set => _virtualMachineParametersBody.CpuCore = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -233,6 +241,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         public string ExtendedLocationType { get => _virtualMachineParametersBody.ExtendedLocationType ?? null; set => _virtualMachineParametersBody.ExtendedLocationType = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -294,9 +305,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine.",
         SerializedName = @"isolateEmulatorThread",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIsolateEmulatorThread) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIsolateEmulatorThread))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIsolateEmulatorThread IsolateEmulatorThread { get => _virtualMachineParametersBody.IsolateEmulatorThread ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIsolateEmulatorThread)""); set => _virtualMachineParametersBody.IsolateEmulatorThread = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
+        public string IsolateEmulatorThread { get => _virtualMachineParametersBody.IsolateEmulatorThread ?? null; set => _virtualMachineParametersBody.IsolateEmulatorThread = value; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
@@ -318,7 +329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The memory size of the virtual machine. Allocations are measured in gibibytes.",
         SerializedName = @"memorySizeGB",
         PossibleTypes = new [] { typeof(long) })]
-        public long MemorySizeGb { get => _virtualMachineParametersBody.MemorySizeGb; set => _virtualMachineParametersBody.MemorySizeGb = value; }
+        public long MemorySizeGb { get => _virtualMachineParametersBody.MemorySizeGb ?? default(long); set => _virtualMachineParametersBody.MemorySizeGb = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -352,8 +363,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The list of network attachments to the virtual machine.",
         SerializedName = @"networkAttachments",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.INetworkAttachment) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.INetworkAttachment[] NetworkAttachment { get => _virtualMachineParametersBody.NetworkAttachment ?? null /* arrayOf */; set => _virtualMachineParametersBody.NetworkAttachment = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkAttachment) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkAttachment[] NetworkAttachment { get => _virtualMachineParametersBody.NetworkAttachment?.ToArray() ?? null /* fixedArrayOf */; set => _virtualMachineParametersBody.NetworkAttachment = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkAttachment>(value) : null); }
 
         /// <summary>The Base64 encoded cloud-init network data.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Base64 encoded cloud-init network data.")]
@@ -382,9 +393,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The strategy for creating the OS disk.",
         SerializedName = @"createOption",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskCreateOption) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskCreateOption))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskCreateOption OSDiskCreateOption { get => _virtualMachineParametersBody.OSDiskCreateOption ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskCreateOption)""); set => _virtualMachineParametersBody.OSDiskCreateOption = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Ephemeral", "Persistent")]
+        public string OSDiskCreateOption { get => _virtualMachineParametersBody.OSDiskCreateOption ?? null; set => _virtualMachineParametersBody.OSDiskCreateOption = value; }
 
         /// <summary>The strategy for deleting the OS disk.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The strategy for deleting the OS disk.")]
@@ -394,9 +405,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The strategy for deleting the OS disk.",
         SerializedName = @"deleteOption",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskDeleteOption) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskDeleteOption))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskDeleteOption OSDiskDeleteOption { get => _virtualMachineParametersBody.OSDiskDeleteOption ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskDeleteOption)""); set => _virtualMachineParametersBody.OSDiskDeleteOption = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Delete")]
+        public string OSDiskDeleteOption { get => _virtualMachineParametersBody.OSDiskDeleteOption ?? null; set => _virtualMachineParametersBody.OSDiskDeleteOption = value; }
 
         /// <summary>
         /// The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
@@ -409,12 +420,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.",
         SerializedName = @"diskSizeGB",
         PossibleTypes = new [] { typeof(long) })]
-        public long OSDiskSizeGb { get => _virtualMachineParametersBody.OSDiskSizeGb; set => _virtualMachineParametersBody.OSDiskSizeGb = value; }
+        public long OSDiskSizeGb { get => _virtualMachineParametersBody.OSDiskSizeGb ?? default(long); set => _virtualMachineParametersBody.OSDiskSizeGb = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The scheduling hints for the virtual machine.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -425,8 +436,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The scheduling hints for the virtual machine.",
         SerializedName = @"placementHints",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachinePlacementHint) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachinePlacementHint[] PlacementHint { get => _virtualMachineParametersBody.PlacementHint ?? null /* arrayOf */; set => _virtualMachineParametersBody.PlacementHint = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePlacementHint) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePlacementHint[] PlacementHint { get => _virtualMachineParametersBody.PlacementHint?.ToArray() ?? null /* fixedArrayOf */; set => _virtualMachineParametersBody.PlacementHint = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePlacementHint>(value) : null); }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -470,8 +481,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.",
         SerializedName = @"sshPublicKeys",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[] SshPublicKey { get => _virtualMachineParametersBody.SshPublicKey ?? null /* arrayOf */; set => _virtualMachineParametersBody.SshPublicKey = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[] SshPublicKey { get => _virtualMachineParametersBody.SshPublicKey?.ToArray() ?? null /* fixedArrayOf */; set => _virtualMachineParametersBody.SshPublicKey = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey>(value) : null); }
 
         /// <summary>
         /// The resource IDs of volumes that are requested to be attached to the virtual machine.
@@ -485,7 +496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         Description = @"The resource IDs of volumes that are requested to be attached to the virtual machine.",
         SerializedName = @"volumeAttachments",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] StorageProfileVolumeAttachment { get => _virtualMachineParametersBody.StorageProfileVolumeAttachment ?? null /* arrayOf */; set => _virtualMachineParametersBody.StorageProfileVolumeAttachment = value; }
+        public string[] StorageProfileVolumeAttachment { get => _virtualMachineParametersBody.StorageProfileVolumeAttachment?.ToArray() ?? null /* fixedArrayOf */; set => _virtualMachineParametersBody.StorageProfileVolumeAttachment = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -501,7 +512,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -514,8 +526,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags Tag { get => _virtualMachineParametersBody.Tag ?? null /* object */; set => _virtualMachineParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags Tag { get => _virtualMachineParametersBody.Tag ?? null /* object */; set => _virtualMachineParametersBody.Tag = value; }
 
         /// <summary>The Base64 encoded cloud-init user data.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Base64 encoded cloud-init user data.")]
@@ -536,9 +548,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"The type of the device model to use.",
         SerializedName = @"vmDeviceModel",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineDeviceModelType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineDeviceModelType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineDeviceModelType VMDeviceModel { get => _virtualMachineParametersBody.VMDeviceModel ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineDeviceModelType)""); set => _virtualMachineParametersBody.VMDeviceModel = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("T1", "T2", "T3")]
+        public string VMDeviceModel { get => _virtualMachineParametersBody.VMDeviceModel ?? null; set => _virtualMachineParametersBody.VMDeviceModel = value; }
 
         /// <summary>
         /// The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull
@@ -599,33 +611,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         ReadOnly = false,
         Description = @"Field Deprecated, use virtualizationModel instead. The type of the virtio interface.",
         SerializedName = @"virtioInterface",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineVirtioInterfaceType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineVirtioInterfaceType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineVirtioInterfaceType VirtioInterface { get => _virtualMachineParametersBody.VirtioInterface ?? ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineVirtioInterfaceType)""); set => _virtualMachineParametersBody.VirtioInterface = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Modern", "Transitional")]
+        public string VirtioInterface { get => _virtualMachineParametersBody.VirtioInterface ?? null; set => _virtualMachineParametersBody.VirtioInterface = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -738,11 +750,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -754,10 +791,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -767,7 +820,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzNetworkCloudVirtualMachine_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzNetworkCloudVirtualMachine_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzNetworkCloudVirtualMachine_CreateExpanded()
         {
@@ -833,7 +886,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -846,12 +899,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.VirtualMachinesCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _virtualMachineParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.VirtualMachinesCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _virtualMachineParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null,body=_virtualMachineParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -889,12 +942,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -911,15 +964,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, body=_virtualMachineParametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, body=_virtualMachineParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -929,12 +982,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine> response)
         {
             using( NoSynchronizationContext )
             {
@@ -946,8 +999,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

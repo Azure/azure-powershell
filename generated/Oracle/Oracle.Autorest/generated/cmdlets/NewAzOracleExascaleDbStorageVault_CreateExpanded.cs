@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IExascaleDbStorageVault))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Description(@"create a ExascaleDbStorageVault")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/exascaleDbStorageVaults/{exascaleDbStorageVaultName}", ApiVersion = "2025-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Oracle.Database/exascaleDbStorageVaults/{exascaleDbStorageVaultName}", ApiVersion = "2025-09-01")]
     public partial class NewAzOracleExascaleDbStorageVault_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.IContext
@@ -105,6 +105,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Cmdlets
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         public string DisplayName { get => _resourceBody.DisplayName ?? null; set => _resourceBody.DisplayName = value; }
+
+        /// <summary>Cloud Exadata infrastructure ID</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Cloud Exadata infrastructure ID")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Cloud Exadata infrastructure ID",
+        SerializedName = @"exadataInfrastructureId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExadataInfrastructureId { get => _resourceBody.ExadataInfrastructureId ?? null; set => _resourceBody.ExadataInfrastructureId = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }

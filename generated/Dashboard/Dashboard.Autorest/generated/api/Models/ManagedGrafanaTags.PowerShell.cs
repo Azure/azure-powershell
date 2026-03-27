@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.PowerShell;
 
-    /// <summary>The tags for grafana resource.</summary>
+    /// <summary>Resource tags.</summary>
     [System.ComponentModel.TypeConverter(typeof(ManagedGrafanaTagsTypeConverter))]
     public partial class ManagedGrafanaTags
     {
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
             return ToJsonString();
         }
     }
-    /// The tags for grafana resource.
+    /// Resource tags.
     [System.ComponentModel.TypeConverter(typeof(ManagedGrafanaTagsTypeConverter))]
     public partial interface IManagedGrafanaTags
 

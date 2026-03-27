@@ -8,13 +8,13 @@ schema: 2.0.0
 # Restore-AzSqlServer
 
 ## SYNOPSIS
-Restores a deleted Azure SQL Database server that is still within its soft-delete retention period
+Restores a deleted Azure SQL Database server that is still within its soft-delete retention period. (Server soft-delete feature is currently in Public Preview)
 
 ## SYNTAX
 
 ```
 Restore-AzSqlServer -ServerName <String> -Location <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location in which to create the server
+Location where the deleted server was originally located
 
 ```yaml
 Type: System.String
@@ -80,23 +80,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group where the server will be restored. This must be the same resource group where the server was originally located before deletion.
 
 ```yaml
 Type: System.String
@@ -170,6 +155,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSqlDeletedServer](./Get-AzSqlDeletedServer.md)
 
 [Get-AzSqlServer](./Get-AzSqlServer.md)
 

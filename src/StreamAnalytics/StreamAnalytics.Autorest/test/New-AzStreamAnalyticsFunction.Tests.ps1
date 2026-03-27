@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'New-AzStreamAnalyticsFunction' {
     It 'CreateExpanded' {
-      New-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.function01 -File (Join-Path $PSScriptRoot 'template-json\Function_JavascriptUdf.json')
+      New-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.function01 -File (Join-Path $PSScriptRoot 'template-json' 'Function_JavascriptUdf.json')
       $result = Get-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.function01
       $result.Name | Should -Be $env.function01
     }

@@ -1,7 +1,7 @@
 ---
 external help file: Az.ActivityLogAlert.psm1-help.xml
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactivitylogalertalertruleanyoforleafconditionobject
 schema: 2.0.0
 ---
 
@@ -42,10 +42,9 @@ Create alert rule condition with leaf condition
 
 ### -AnyOf
 An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
-To construct, see NOTES section for ANYOF properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleLeafCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAlertRuleLeafCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.AlertRuleAnyOfOrLeafCondition
 
 ## NOTES
 

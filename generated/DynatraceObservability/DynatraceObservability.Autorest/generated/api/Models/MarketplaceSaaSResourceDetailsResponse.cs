@@ -20,6 +20,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Owned)]
         public string MarketplaceSaaSResourceId { get => this._marketplaceSaaSResourceId; set => this._marketplaceSaaSResourceId = value; }
 
+        /// <summary>Backing field for <see cref="MarketplaceSaaSResourceName" /> property.</summary>
+        private string _marketplaceSaaSResourceName;
+
+        /// <summary>Name of the Marketplace SaaS Resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Owned)]
+        public string MarketplaceSaaSResourceName { get => this._marketplaceSaaSResourceName; set => this._marketplaceSaaSResourceName = value; }
+
         /// <summary>Backing field for <see cref="MarketplaceSubscriptionStatus" /> property.</summary>
         private string _marketplaceSubscriptionStatus;
 
@@ -55,6 +62,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         SerializedName = @"marketplaceSaaSResourceId",
         PossibleTypes = new [] { typeof(string) })]
         string MarketplaceSaaSResourceId { get; set; }
+        /// <summary>Name of the Marketplace SaaS Resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the Marketplace SaaS Resource",
+        SerializedName = @"marketplaceSaaSResourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceSaaSResourceName { get; set; }
         /// <summary>Marketplace subscription status</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
         Required = false,
@@ -65,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         Description = @"Marketplace subscription status",
         SerializedName = @"marketplaceSubscriptionStatus",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Active", "Suspended")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Active", "Suspended", "Unsubscribed")]
         string MarketplaceSubscriptionStatus { get; set; }
         /// <summary>Id of the plan</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
@@ -86,8 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
     {
         /// <summary>Id of the Marketplace SaaS Resource</summary>
         string MarketplaceSaaSResourceId { get; set; }
+        /// <summary>Name of the Marketplace SaaS Resource</summary>
+        string MarketplaceSaaSResourceName { get; set; }
         /// <summary>Marketplace subscription status</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Active", "Suspended")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PSArgumentCompleterAttribute("Active", "Suspended", "Unsubscribed")]
         string MarketplaceSubscriptionStatus { get; set; }
         /// <summary>Id of the plan</summary>
         string PlanId { get; set; }

@@ -14,7 +14,7 @@ Gets the location where a function app for the given os and plan type is availab
 
 ```
 Get-AzFunctionAppAvailableLocation [[-SubscriptionId] <String[]>] [[-PlanType] <String>] [[-OSType] <String>]
- [[-DefaultProfile] <PSObject>] [<CommonParameters>]
+ [[-DefaultProfile] <PSObject>] [-ZoneRedundancy] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,6 +147,92 @@ Germany West Central
 
 This command gets the locations where Consumption is available for Windows.
 
+### Example 4: Get the locations where Flex Consumption is available
+```powershell
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption
+```
+
+```output
+Name
+----
+Canada Central
+North Europe
+West Europe
+Southeast Asia
+East Asia
+West US
+Japan West
+Japan East
+East US 2
+North Central US
+South Central US
+Brazil South
+Australia East
+Australia Southeast
+Central US
+East US
+North Central US (Stage)
+Central India
+South India
+Canada East
+West Central US
+West US 2
+UK West
+UK South
+East US 2 EUAP
+Korea Central
+France South
+France Central
+South Africa North
+Switzerland North
+Germany West Central
+Switzerland West
+UAE North
+Norway East
+West US 3
+Sweden Central
+Poland Central
+Italy North
+Israel Central
+Spain Central
+Mexico Central
+Taiwan North
+Taiwan Northwest
+New Zealand North
+Indonesia Central
+Malaysia West
+```
+
+This command gets the locations where Flex Consumption is available.
+
+### Example 5: Get the locations where Flex Consumption supports Zone Redundancy
+```powershell
+Get-AzFunctionAppAvailableLocation -PlanType FlexConsumption -ZoneRedundancy
+```
+
+```output
+Name
+----
+Canada Central
+Southeast Asia
+East Asia
+Australia East
+East US
+Central India
+UK South
+East US 2 EUAP
+South Africa North
+Germany West Central
+UAE North
+Norway East
+West US 3
+Sweden Central
+Italy North
+Israel Central
+```
+
+This command retrieves the locations where Flex Consumption is available and zone redundancy is supported.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -206,6 +292,21 @@ Aliases:
 Required: False
 Position: 0
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneRedundancy
+Filter the list to return only locations which support zone redundancy.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -918,7 +918,18 @@ namespace Microsoft.Azure.Commands.Network.Properties
                 return ResourceManager.GetString("FlowLogFilteringCriteriaExceedsLimit", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to RecordType string can be maximum of 20 characters in length..
+        /// </summary>
+        internal static string FlowLogRecordTypeExceedsLimit
+        {
+            get
+            {
+                return ResourceManager.GetString("FlowLogRecordTypeExceedsLimit", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to A hub is required for HubAndSpoke connectivity topology..
         /// </summary>

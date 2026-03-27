@@ -64,10 +64,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_activityLogAlertName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Json.JsonString>("activityLogAlertName"), out var __jsonActivityLogAlertName) ? (string)__jsonActivityLogAlertName : (string)ActivityLogAlertName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_activityLogAlertName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Json.JsonString>("activityLogAlertName"), out var __jsonActivityLogAlertName) ? (string)__jsonActivityLogAlertName : (string)_activityLogAlertName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

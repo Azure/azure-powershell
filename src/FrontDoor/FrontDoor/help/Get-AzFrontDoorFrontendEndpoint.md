@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
 online version: https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorfrontendendpoint
 schema: 2.0.0
@@ -8,117 +8,85 @@ schema: 2.0.0
 # Get-AzFrontDoorFrontendEndpoint
 
 ## SYNOPSIS
-Get a front door frontend endpoint.
+Gets a Frontend endpoint with the specified name within the specified Front Door.
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzFrontDoorFrontendEndpoint -ResourceGroupName <String> -FrontDoorName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzFrontDoorFrontendEndpoint -FrontDoorName <String> -ResourceGroupName <String> [-Name <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzFrontDoorFrontendEndpoint -FrontDoorName <String> -ResourceGroupName <String> -Name <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List
+```
+Get-AzFrontDoorFrontendEndpoint -FrontDoorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityFrontDoor
+```
+Get-AzFrontDoorFrontendEndpoint -Name <String> -FrontDoorInputObject <IFrontDoorIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Get-AzFrontDoorFrontendEndpoint [-Name <String>] -FrontDoorObject <PSFrontDoor>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzFrontDoorFrontendEndpoint [-Name <String>] -FrontDoorInputObject <IFrontDoorIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
+### GetViaIdentity
 ```
-Get-AzFrontDoorFrontendEndpoint -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzFrontDoorFrontendEndpoint -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzFrontDoorFrontendEndpoint** cmdlet gets all existing frontend endpoints in the current Front Door resource that matches provided information.
+Gets a Frontend endpoint with the specified name within the specified Front Door.
 
 ## EXAMPLES
 
-### Example 1: Get all frontend endpoints in Front Door "frontdoor1" which is part of resource group "rg1".
+### Example 1: Get a specific frontend endpoint by name
 ```powershell
-Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "rg1" -FrontDoorName "frontdoor1"
+Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "myResourceGroup" -FrontDoorName "myFrontDoor" -Name "myFrontDoor-azurefd-net"
 ```
 
 ```output
-HostName                         : frontdoor1.azurefd.net
+HostName                         : myFrontDoor-azurefd.net
 SessionAffinityEnabledState      : Disabled
 SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     : Disabled
-CustomHttpsProvisioningSubstate  : None
-CertificateSource                :
-ProtocolType                     :
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
+WebApplicationFirewallPolicyLink : 
+CustomHttpsProvisioningState     : Enabled
+CustomHttpsProvisioningSubstate  : CertificateProvisioned
+CertificateSource                : FrontDoor
+MinimumTlsVersion                : 1.2
 ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontdoor1-azurefd-net
-Name                             : frontdoor1-azurefd-net
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
-
-HostName                         : frontendpointname1.custom.xyz
-SessionAffinityEnabledState      : Disabled
-SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     : Disabled
-CustomHttpsProvisioningSubstate  : None
-CertificateSource                :
-ProtocolType                     :
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
-ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontendpointname1-custom-xyz
-Name                             : frontendpointname1-custom-xyz
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
+Id                               : /subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myResourceGroup/providers/Microsoft.Network/frontDoors/myFrontDoor/frontendEndpoints/myFrontDoor-azurefd-net
+Name                             : myFrontDoor-azurefd-net
+Type                             : Microsoft.Network/frontDoors/frontendEndpoints
 ```
 
-Get all frontend endpoints in Front Door "frontdoor1" which is part of resource group "rg1".
-
-### Example 2: Get frontend endpoint with name "frontdoor1-azurefd-net" in Front Door "frontdoor1" which is part of resource group "rg1"
-```powershell
-Get-AzFrontDoorFrontendEndpoint -ResourceGroupName "rg1" -FrontDoorName "frontdoor1" -Name "frontdoor1-azurefd-net"
-```
-
-```output
-HostName                         : frontdoor1.azurefd.net
-SessionAffinityEnabledState      : Disabled
-SessionAffinityTtlSeconds        : 0
-WebApplicationFirewallPolicyLink :
-Backends                         :
-CustomHttpsProvisioningState     : Disabled
-CustomHttpsProvisioningSubstate  : None
-CertificateSource                :
-ProtocolType                     :
-Vault                            :
-SecretName                       :
-SecretVersion                    :
-CertificateType                  :
-ResourceState                    : Enabled
-Id                               : /subscriptions/{guid}/resourcegroups/resourcegroup1
-                                   /providers/Microsoft.Network/frontdoors/frontdoor1/frontendendpoints/frontdoor1-azurefd-net
-Name                             : frontdoor1-azurefd-net
-Type                             : Microsoft.Network/frontdoors/frontendendpoints
-```
-
-Get frontend endpoint with name "frontdoor1-azurefd-net" in Front Door "frontdoor1" which is part of resource group "rg1"
+Get details of a specific frontend endpoint from the Front Door configuration.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -127,12 +95,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FrontDoorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: GetViaIdentityFrontDoor
+Aliases: FrontDoorObject
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: ByObjectParameterSet
+Aliases: FrontDoorObject
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -FrontDoorName
-Front Door name.
+Name of the Front Door which is globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, Get, List
 Aliases:
 
 Required: True
@@ -142,12 +137,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FrontDoorObject
-The FrontDoor object.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor
-Parameter Sets: ByObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -158,12 +153,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Frontend endpoint name.
+Name of the Frontend endpoint which is unique within the Front Door.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet, ByObjectParameterSet
-Aliases:
+Aliases: FrontendEndpointName
 
 Required: False
 Position: Named
@@ -172,12 +167,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityFrontDoor
+Aliases: FrontendEndpointName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The resource group name.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, Get, List
 Aliases:
 
 Required: True
@@ -187,18 +194,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Resource Id of the Front Door
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceIdParameterSet
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -207,11 +215,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint
 
 ## NOTES
 

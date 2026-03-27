@@ -357,7 +357,7 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if the object of role assignment is not found or current account has insufficient privileges to get object type.
 
 ### [New-AzRoleAssignmentScheduleRequest](New-AzRoleAssignmentScheduleRequest.md)
-Creates a role assignment schedule request.
+Create a role assignment schedule request.
 
 ### [New-AzRoleDefinition](New-AzRoleDefinition.md)
 Creates a custom role in Azure RBAC.
@@ -367,7 +367,7 @@ Then, modify its properties as required.
 Finally, use this command to create a custom role using role definition.
 
 ### [New-AzRoleEligibilityScheduleRequest](New-AzRoleEligibilityScheduleRequest.md)
-Creates a role eligibility schedule request.
+Create a role eligibility schedule request.
 
 ### [New-AzRoleManagementPolicyAssignment](New-AzRoleManagementPolicyAssignment.md)
 Create a role management policy assignment
@@ -694,8 +694,17 @@ This operation updates a policy exemption with the given scope and name.
 ### [Update-AzPolicySetDefinition](Update-AzPolicySetDefinition.md)
 This operation updates an existing policy set definition in the given subscription or management group with the given name.
 
+### [Update-AzRoleAssignmentScheduleRequest](Update-AzRoleAssignmentScheduleRequest.md)
+Update a role assignment schedule request.
+
+### [Update-AzRoleEligibilityScheduleRequest](Update-AzRoleEligibilityScheduleRequest.md)
+Update a role eligibility schedule request.
+
 ### [Update-AzRoleManagementPolicy](Update-AzRoleManagementPolicy.md)
 Update a role management policy
+
+### [Update-AzRoleManagementPolicyAssignment](Update-AzRoleManagementPolicyAssignment.md)
+Update a role management policy assignment
 
 ### [Update-AzTag](Update-AzTag.md)
 Selectively updates the set of tags on a resource or subscription.

@@ -55,7 +55,7 @@ Describe 'New-AzDataProtectionBackupInstance' {
         $clusterName = $env.TestAksRestoreScenario.ClusterName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName -and $_.Property.FriendlyName -eq $friendlyName }
         $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $policyName}
 
         # remove permissions
@@ -88,17 +88,19 @@ Describe 'New-AzDataProtectionBackupInstance' {
         # }
 
         # validate bi created
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName -and $_.Property.FriendlyName -eq $friendlyName }
         ($backupInstance -ne $null) | Should be $true
 
         while($backupInstance.Property.ProtectionStatus.Status -ne "ProtectionConfigured")
         {
             Start-TestSleep -Seconds 10
-            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
+            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName -and $_.Property.FriendlyName -eq $friendlyName}
         }
 
+        $policyRule = $policy.Property.PolicyRule | Where-Object { $_.ObjectType -eq "AzureBackupRule"}
+
         # adhoc backup
-        Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $backupInstance.BackupInstanceName -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -BackupRuleOptionRuleName  $policy.Property.PolicyRule[0].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[0].Trigger.TaggingCriterion[0].TagInfoTagName
+        Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $backupInstance.BackupInstanceName -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -BackupRuleOptionRuleName  $policyRule.Name -TriggerOptionRetentionTagOverride $policyRule.Trigger.TaggingCriterion[0].TagInfoTagName
 
         Start-TestSleep -Seconds 30
 

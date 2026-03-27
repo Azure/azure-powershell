@@ -257,9 +257,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='subvolumeName'>
         /// The name of the subvolume.
         /// </param>
-        public static void Delete(this ISubvolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string subvolumeName)
+        public static SubvolumesDeleteHeaders Delete(this ISubvolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string subvolumeName)
         {
-                ((ISubvolumesOperations)operations).DeleteAsync(resourceGroupName, accountName, poolName, volumeName, subvolumeName).GetAwaiter().GetResult();
+                return ((ISubvolumesOperations)operations).DeleteAsync(resourceGroupName, accountName, poolName, volumeName, subvolumeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -286,9 +286,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ISubvolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string subvolumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SubvolumesDeleteHeaders> DeleteAsync(this ISubvolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string subvolumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, subvolumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, subvolumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Get details of the specified subvolume
@@ -484,9 +487,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='subvolumeName'>
         /// The name of the subvolume.
         /// </param>
-        public static void BeginDelete(this ISubvolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string subvolumeName)
+        public static SubvolumesDeleteHeaders BeginDelete(this ISubvolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string subvolumeName)
         {
-                ((ISubvolumesOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, poolName, volumeName, subvolumeName).GetAwaiter().GetResult();
+                return ((ISubvolumesOperations)operations).BeginDeleteAsync(resourceGroupName, accountName, poolName, volumeName, subvolumeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -513,9 +516,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ISubvolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string subvolumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SubvolumesDeleteHeaders> BeginDeleteAsync(this ISubvolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, string subvolumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, subvolumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, subvolumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Get details of the specified subvolume

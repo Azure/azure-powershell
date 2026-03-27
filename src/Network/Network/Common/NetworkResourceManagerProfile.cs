@@ -2365,11 +2365,25 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualApplianceNetworkProfile, MNM.NetworkVirtualAppliancePropertiesFormatNetworkProfile>();
                 cfg.CreateMap<CNM.PSNetworkVirtualApplianceDelegationProperties, MNM.DelegationProperties>();
                 cfg.CreateMap<CNM.PSNetworkVirtualAppliancePartnerManagedResourceProperties, MNM.PartnerManagedResourceProperties>();
+                cfg.CreateMap<CNM.PSNetworkVirtualApplianceInterfaceConfigProperties, MNM.NvaInterfaceConfigurationsProperties>()
+                    .ForMember(
+                        dest => dest.Subnet,
+                        opt => opt.MapFrom(src => new MNM.NvaInVnetSubnetReferenceProperties { Id = src.Subnet.Id})
+                    )
+                    .ForMember(
+                        dest => dest.Type,
+                        opt => opt.MapFrom(src => src.NicType != null ? src.NicType : new List<string>())
+                    )
+                    .ForMember(
+                        dest => dest.Name,
+                        opt => opt.MapFrom(src => src.Name)
+                    );
 
-                // MNM to CNM
-                // Where CNM - models from Powershell
-                //       MNM - models from Sdk
-                cfg.CreateMap<MNM.NetworkVirtualAppliance, CNM.PSNetworkVirtualAppliance>();
+
+                    // MNM to CNM
+                    // Where CNM - models from Powershell
+                    //       MNM - models from Sdk
+                    cfg.CreateMap<MNM.NetworkVirtualAppliance, CNM.PSNetworkVirtualAppliance>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceSku, CNM.PSNetworkVirtualApplianceSku>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceSkuInstances, CNM.PSNetworkVirtualApplianceSkuInstances>();
                 cfg.CreateMap<MNM.Office365PolicyProperties, CNM.PSOffice365PolicyProperties>();
@@ -2392,6 +2406,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.NetworkVirtualAppliancePropertiesFormatNetworkProfile, CNM.PSVirtualApplianceNetworkProfile>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceConnection,CNM.PSNetworkVirtualApplianceConnection>();
                 cfg.CreateMap<MNM.DelegationProperties, CNM.PSNetworkVirtualApplianceDelegationProperties>();
+                cfg.CreateMap<MNM.NvaInterfaceConfigurationsProperties, CNM.PSNetworkVirtualApplianceInterfaceConfigProperties>()
+                    .ForMember(
+                        dest => dest.Subnet,
+                        opt => opt.MapFrom(src => src.Subnet != null ? new CNM.PSResourceId { Id = src.Subnet.Id } : null))
+                    .ForMember(
+                        dest => dest.NicType,
+                        opt => opt.MapFrom(src => src.Type != null && src.Type.Count > 0 ? src.Type.ToList() : new List<string>()))
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
 
                 // NetworkManager
                 // CNM to MNMs
@@ -2534,6 +2556,15 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ReachabilityAnalysisIntent, ANM.PSReachabilityAnalysisIntent>();
                 cfg.CreateMap<MNM.ReachabilityAnalysisIntentProperties, ANM.PSReachabilityAnalysisIntentProperties>();
                 cfg.CreateMap<MNM.IPTraffic, ANM.PSIPTraffic>();
+
+                // Virtual Network Appliance
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetworkAppliance, MNM.VirtualNetworkAppliance>();
+                cfg.CreateMap<CNM.PSVirtualNetworkApplianceIpConfiguration, MNM.VirtualNetworkApplianceIpConfiguration>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.VirtualNetworkAppliance, CNM.PSVirtualNetworkAppliance>();
+                cfg.CreateMap<MNM.VirtualNetworkApplianceIpConfiguration, CNM.PSVirtualNetworkApplianceIpConfiguration>();
             });
             _mapper = config.CreateMapper();
         }

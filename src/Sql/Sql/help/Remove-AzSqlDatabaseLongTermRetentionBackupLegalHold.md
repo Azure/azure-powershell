@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqldatabaselongtermretentionbackuplegalhold
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Removes legal hold immutability on an LTR backup. (Public Preview)
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold [-Location] <String> [-ServerName] <String>
  [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force] [-ForceDropExpired]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold [-Location] <String> [-Serv
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold
  [-InputObject] <AzureSqlDatabaseLongTermRetentionBackupModel> [-Force] [-ForceDropExpired] [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RemoveBackupLegalHoldByResourceId
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackupLegalHold [-ResourceId] <String> [-Force] [-ForceDropExpired]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -193,21 +193,6 @@ Whether to output the model at the end of execution
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

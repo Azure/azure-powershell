@@ -25,7 +25,7 @@ Creates a Virtual Instance for SAP solutions (VIS) resource
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapVirtualInstance
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,12 +37,7 @@ CONFIGURATION <ISapConfiguration>: Defines if the SAP system is being created us
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssapvirtualinstance
 #>
 function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
-   [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PreviewMessage("**********************************************************************************************`n
-    * This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *`n
-    * At least one change applies to this cmdlet.                                                     *`n
-    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
-    ***************************************************************************************************")]
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapVirtualInstance])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance])]
   [Alias('New-AzVIS')]
   [CmdletBinding(DefaultParameterSetName='CreateWithDiscovery', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
@@ -74,9 +69,9 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
     ${Configuration},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("NonProd", "Prod")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType]
+    [System.String]
     # Defines the environment type - Production/Non Production.
     ${Environment},
 
@@ -87,18 +82,17 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
     ${Location},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("ECC", "S4HANA", "Other")]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType]
+    [System.String]
     # Defines the SAP Product type.
     ${SapProduct},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType]
-    # Type of manage identity
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
@@ -114,16 +108,17 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # User assigned identities dictionary
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter()]
@@ -203,14 +198,38 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
             }
 
             $bodyHashTable.identity = @{}
-            if($PSBoundParameters.ContainsKey('IdentityType')) {
-              $bodyHashTable.identity.type = $IdentityType.ToString()
-              $null = $PSBoundParameters.Remove('IdentityType');
-            }
-            
-            if($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
-              $bodyHashTable.identity.userAssignedIdentities = $UserAssignedIdentity
-              $null = $PSBoundParameters.Remove('UserAssignedIdentity');
+            if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity')){
+              $supportsSystemAssignedIdentity = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')
+              $supportsUserAssignedIdentity = $PSBoundParameters.ContainsKey("UserAssignedIdentity") -and $UserAssignedIdentity.Length -gt 0
+
+              # calculate IdentityType
+              if (($supportsSystemAssignedIdentity -and $supportsUserAssignedIdentity)) {
+                  $bodyHashTable.identity.type = "SystemAssigned,UserAssigned"
+              }
+              elseif ($supportsUserAssignedIdentity -and (-not $supportsSystemAssignedIdentity)) {
+                  $bodyHashTable.identity.type = "UserAssigned"
+              }
+              elseif ((-not $supportsUserAssignedIdentity) -and $supportsSystemAssignedIdentity) {
+                  $bodyHashTable.identity.type = "SystemAssigned"
+              }
+              else {
+                  $bodyHashTable.identity.type = "None"
+              }
+
+              # If user input UserAssignedIdentity
+              if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+                  $IdentityUserAssignedIdentity = @{}
+                  foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
+                      $IdentityUserAssignedIdentity.Add($item, @{})
+                  }
+                  $bodyHashTable.identity.userAssignedIdentities = $IdentityUserAssignedIdentity
+                  $null = $PSBoundParameters.Remove('UserAssignedIdentity')
+              }
+
+              # remove EnableSystemAssignedIdentity
+              if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
+                  $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
+              }
             }
 
             if ($bodyHashTable.identity.Count -eq 0) {
@@ -253,8 +272,7 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
 
             $JsonString = $bodyHashTable | ConvertTo-Json -Depth 100
             $null = $PSBoundParameters.Add("JsonString", $JsonString)
-            
-            
+
             Az.SapVirtualInstance.private\New-AzWorkloadsSapVirtualInstance_CreateWithJsonString @PSBoundParameters
         } catch {
           [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()

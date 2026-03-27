@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDatadogMarketplaceAgreement
 
 ## SYNOPSIS
-create Datadog marketplace agreement in the subscription.
+Create Datadog marketplace agreement in the subscription.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzDatadogMarketplaceAgreement -JsonString <String> [-SubscriptionId <String>
 ```
 
 ## DESCRIPTION
-create Datadog marketplace agreement in the subscription.
+Create Datadog marketplace agreement in the subscription.
 
 ## EXAMPLES
 

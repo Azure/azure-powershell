@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     /// <summary>
     /// Backup Vault information
     /// </summary>
-    public partial class BackupVaultPatch : Microsoft.Rest.Azure.IResource
+    public partial class BackupVaultPatch
     {
         /// <summary>
         /// Initializes a new instance of the BackupVaultPatch class.

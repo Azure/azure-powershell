@@ -43,6 +43,11 @@ To create the parameters described below, construct a hash table containing the 
 
 CUSTOMERCONTACT <ICustomerContact[]>: Customer Contacts.
   Email <String>: The email address used by Oracle to send notifications regarding databases and infrastructure.
+
+SCHEDULEDOPERATIONSLIST <IScheduledOperationsType[]>: The list of scheduled operations.
+  DayOfWeekName <String>: Name of the day of the week.
+  [ScheduledStartTime <String>]: auto start time. value must be of ISO-8601 format HH:mm
+  [ScheduledStopTime <String>]: auto stop time. value must be of ISO-8601 format HH:mm
 .Link
 https://learn.microsoft.com/powershell/module/az.oracle/new-azoracleautonomousdatabase
 #>
@@ -162,13 +167,6 @@ param(
     ${DatabaseEdition},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # Name of the day of the week.
-    ${DayOfWeekName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
     [System.String]
     # A valid Oracle Database version for Autonomous Database.
@@ -244,18 +242,11 @@ param(
     ${PrivateEndpointLabel},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # auto start time.
-    # value must be of ISO-8601 format HH:mm
-    ${ScheduledStartTime},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]
-    [System.String]
-    # auto stop time.
-    # value must be of ISO-8601 format HH:mm
-    ${ScheduledStopTime},
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType[]]
+    # The list of scheduled operations.
+    ${ScheduledOperationsList},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Body')]

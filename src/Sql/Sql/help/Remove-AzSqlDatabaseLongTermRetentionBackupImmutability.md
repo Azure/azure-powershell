@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqldatabaselongtermretentionbackupimmutability
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Removes an unlocked time-based immutability policy for an LTR backup.
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackupImmutability [-Location] <String> [-ServerName] <String>
  [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Remove-AzSqlDatabaseLongTermRetentionBackupImmutability [-Location] <String> [-S
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackupImmutability
  [-InputObject] <AzureSqlDatabaseLongTermRetentionBackupModel> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RemoveBackupImmutabilityByResourceId
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackupImmutability [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -188,21 +188,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -307,4 +292,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](./Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 
 [SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
-

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Extensions;
 
-    /// <summary>The tags for grafana resource.</summary>
+    /// <summary>Resource tags.</summary>
     public partial class ManagedGrafanaTags :
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaTags,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafanaTagsInternal
@@ -19,14 +19,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 
         }
     }
-    /// The tags for grafana resource.
+    /// Resource tags.
     public partial interface IManagedGrafanaTags :
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IAssociativeArray<string>
     {
 
     }
-    /// The tags for grafana resource.
+    /// Resource tags.
     internal partial interface IManagedGrafanaTagsInternal
 
     {

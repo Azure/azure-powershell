@@ -27,6 +27,19 @@ $task = @{
         PackageName = "vscode"
         PackageVersion = "1.0.0"
     }
+    RunAs = "System"
+    TimeoutInSecond = 120
+}
+$tasks = @($task)
+Test-AzDevCenterUserDevBoxCustomizationTaskAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -Task $tasks
+.Example
+$task = @{
+    Name = "catalogName/choco"
+    DisplayName = "choco"
+    Parameter = @{
+        PackageName = "vscode"
+        PackageVersion = "1.0.0"
+    }
     RunAs = "User"
     TimeoutInSecond = 120
 }
@@ -58,19 +71,6 @@ $task = @{
     TimeoutInSecond = 120
 }
 $tasks = @($task)
-Test-AzDevCenterUserDevBoxCustomizationTaskAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -Task $tasks
-.Example
-$task = @{
-    Name = "catalogName/choco"
-    DisplayName = "choco"
-    Parameter = @{
-        PackageName = "vscode"
-        PackageVersion = "1.0.0"
-    }
-    RunAs = "System"
-    TimeoutInSecond = 120
-}
-$tasks = @($task)
 $taskInput = @{"ProjectName" = "DevProject" }
 Test-AzDevCenterUserDevBoxCustomizationTaskAction -DevCenterName Contoso -InputObject $taskInput -Task $tasks
 
@@ -85,6 +85,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -93,10 +94,12 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
@@ -111,10 +114,10 @@ TASK <ICustomizationTask[]>: Tasks to apply.
 https://learn.microsoft.com/powershell/module/az.devcenter/test-azdevcenteruserdevboxcustomizationtaskaction
 #>
 function Test-AzDevCenterUserDevBoxCustomizationTaskAction {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+  [OutputType([System.Boolean])]
+  [CmdletBinding(DefaultParameterSetName = 'ValidateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+  param(
+    [Parameter(ParameterSetName = 'ValidateExpanded', Mandatory)]
     [Parameter(ParameterSetName = 'ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
@@ -129,15 +132,15 @@ param(
     # The DevCenter upon which to execute operations.
     ${DevCenterName},
 
-    [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName = 'ValidateExpanded', Mandatory)]
     [Parameter(ParameterSetName = 'ValidateExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
-    [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ValidateViaIdentityExpandedByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ValidateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName = 'ValidateViaIdentityExpandedByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
     # Identity Parameter
@@ -147,7 +150,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTask[]]
     # Tasks to apply.
     # To construct, see NOTES section for TASK properties and create a hash table.
     ${Task},
@@ -211,9 +214,9 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-)
+  )
 
-process {
+  process {
     if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
       $Endpoint = GetEndpointFromResourceGraph -DevCenterName $DevCenterName -Project $ProjectName
       $null = $PSBoundParameters.Add("Endpoint", $Endpoint)

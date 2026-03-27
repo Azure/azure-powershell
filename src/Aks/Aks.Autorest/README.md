@@ -27,11 +27,11 @@ For information on how to develop for `Az.Aks`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 6031674c73a95ffd60f58b5cdd633c94b3360467
+commit: c1a0abcedccb286ef44a03d6fb8363bc4e3dd560
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-02-01/managedClusters.json
+  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2025-08-01/managedClusters.json
   - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2019-08-01/location.json
 
 title: Aks
@@ -48,10 +48,10 @@ directive:
     remove: true
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Run$|^RunViaIdentity$|^UpdateViaIdentityManagedCluster$|^UpdateViaIdentityManagedClusterExpanded$|^CreateViaIdentityManagedCluster$|^CreateViaIdentityManagedClusterExpanded$
-      subject: ^MaintenanceConfiguration$|^Snapshot$|^ManagedClusterCommand$|^SnapshotTag$
+      subject: ^MaintenanceConfiguration$|^Snapshot$|^ManagedClusterCommand$|^SnapshotTag$|^TrustedAccessRoleBinding$
     remove: true
   - where:  
-      subject: ^MaintenanceConfiguration$|^Snapshot$
+      subject: ^MaintenanceConfiguration$|^Snapshot$|^TrustedAccessRoleBinding$
       verb: Set
     remove: true
 # this API (Update SnapshotTag) is defined in swagger but not supported by RP
@@ -101,6 +101,12 @@ directive:
     set:
       parameter-name: ClusterName
       alias: Name
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/deleteMachines"].post.responses
+    transform: >-
+      $["204"] = {
+          "description": "No content"
+      }
   - from: swagger-document
     where: $.definitions.ContainerServiceMasterProfile.properties.count
     transform: >-

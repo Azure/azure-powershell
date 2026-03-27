@@ -981,9 +981,6 @@
             <Label>DatabaseEdition</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DayOfWeekName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>DbVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1114,12 +1111,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Role</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ScheduledOperationScheduledStartTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ScheduledOperationScheduledStopTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ServiceConsoleUrl</Label>
@@ -1294,9 +1285,6 @@
                 <PropertyName>DatabaseEdition</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DayOfWeekName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DbVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1427,12 +1415,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Role</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ScheduledOperationScheduledStartTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ScheduledOperationScheduledStopTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ServiceConsoleUrl</PropertyName>
@@ -1615,9 +1597,6 @@
             <Label>DatabaseEdition</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DayOfWeekName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>DbVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1748,12 +1727,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Role</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ScheduledOperationScheduledStartTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ScheduledOperationScheduledStopTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ServiceConsoleUrl</Label>
@@ -1922,9 +1895,6 @@
                 <PropertyName>DatabaseEdition</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DayOfWeekName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DbVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2055,12 +2025,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Role</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ScheduledOperationScheduledStartTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ScheduledOperationScheduledStopTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ServiceConsoleUrl</PropertyName>
@@ -2237,9 +2201,6 @@
             <Label>DatabaseEdition</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DayOfWeekName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>DbVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2370,12 +2331,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Role</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ScheduledOperationScheduledStartTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ScheduledOperationScheduledStopTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ServiceConsoleUrl</Label>
@@ -2541,9 +2496,6 @@
                 <PropertyName>DatabaseEdition</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DayOfWeekName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DbVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2676,12 +2628,6 @@
                 <PropertyName>Role</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ScheduledOperationScheduledStartTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ScheduledOperationScheduledStopTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ServiceConsoleUrl</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2749,6 +2695,28 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>UseLatestAvailableBackupTimeStamp</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.AutonomousDatabaseLifecycleAction</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.AutonomousDatabaseLifecycleAction#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Action</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Action</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2983,9 +2951,6 @@
             <Label>DatabaseEdition</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DayOfWeekName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>DbVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -3116,12 +3081,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Role</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ScheduledOperationScheduledStartTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ScheduledOperationScheduledStopTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ServiceConsoleUrl</Label>
@@ -3272,9 +3231,6 @@
                 <PropertyName>DatabaseEdition</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DayOfWeekName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DbVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -3405,12 +3361,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Role</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ScheduledOperationScheduledStartTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ScheduledOperationScheduledStopTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ServiceConsoleUrl</PropertyName>
@@ -4337,6 +4287,9 @@
             <Label>Domain</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ExascaleDbStorageVaultId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>GiVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -4398,6 +4351,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Shape</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageManagementType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>StorageSizeInGb</Label>
@@ -4464,6 +4420,9 @@
                 <PropertyName>Domain</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ExascaleDbStorageVaultId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>GiVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -4525,6 +4484,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Shape</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageManagementType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StorageSizeInGb</PropertyName>
@@ -4635,6 +4597,28 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ConfigureExascaleCloudExadataInfrastructureDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ConfigureExascaleCloudExadataInfrastructureDetails#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>TotalStorageInGb</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>TotalStorageInGb</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -5418,6 +5402,500 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystem</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystem#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemBaseProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemBaseProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClusterName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ComputeCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ComputeModel</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DataStorageSizeInGb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DiskRedundancy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DomainV2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GridImageOcid</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Hostname</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InitialDataStorageSizeInGb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LicenseModelV2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LifecycleDetail</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LifecycleState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ListenerPort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MemorySizeInGb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetworkAnchorId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NodeCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OciUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Ocid</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceAnchorId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScanDnsName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Shape</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Source</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageVolumePerformanceMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TimeZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClusterName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComputeCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComputeModel</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DataStorageSizeInGb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DiskRedundancy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DomainV2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GridImageOcid</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Hostname</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InitialDataStorageSizeInGb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LicenseModelV2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LifecycleDetail</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LifecycleState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ListenerPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MemorySizeInGb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetworkAnchorId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NodeCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OciUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Ocid</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceAnchorId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScanDnsName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Shape</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Source</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageVolumePerformanceMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TimeZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemOptions</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemOptions#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>StorageManagement</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>StorageManagement</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClusterName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ComputeCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ComputeModel</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DataStorageSizeInGb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DbSystemOptionStorageManagement</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DiskRedundancy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DomainV2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GridImageOcid</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Hostname</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InitialDataStorageSizeInGb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LicenseModelV2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LifecycleDetail</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LifecycleState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ListenerPort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MemorySizeInGb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetworkAnchorId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NodeCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OciUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Ocid</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceAnchorId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScanDnsName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Shape</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Source</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StorageVolumePerformanceMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TimeZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DatabaseEdition</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DbVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PdbName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClusterName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComputeCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ComputeModel</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DataStorageSizeInGb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DbSystemOptionStorageManagement</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DiskRedundancy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DomainV2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GridImageOcid</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Hostname</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InitialDataStorageSizeInGb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LicenseModelV2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LifecycleDetail</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LifecycleState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ListenerPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MemorySizeInGb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetworkAnchorId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NodeCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OciUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Ocid</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceAnchorId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScanDnsName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Shape</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Source</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StorageVolumePerformanceMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TimeZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DatabaseEdition</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DbVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PdbName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemShape</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemShape#Multiple</TypeName>
@@ -5664,6 +6142,182 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemUpdateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemUpdateProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Source</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Source</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemUpdateTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbSystemUpdateTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbVersion</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbVersion#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbVersionListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbVersionListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbVersionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DbVersionProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsLatestForMajorVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsPreviewDbVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsUpgradeSupported</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SupportsPdb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsLatestForMajorVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsPreviewDbVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsUpgradeSupported</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SupportsPdb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DefinedFileSystemConfiguration</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DefinedFileSystemConfiguration#Multiple</TypeName>
@@ -5737,6 +6391,34 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TimeSnapshotStandbyEnabledTill</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DnsForwardingRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DnsForwardingRule#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DomainName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ForwardingIPAddress</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DomainName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ForwardingIPAddress</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -6344,6 +7026,9 @@
             <Label>Shape</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ShapeAttribute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SubnetId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -6450,6 +7135,9 @@
                 <PropertyName>Shape</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ShapeAttribute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SubnetId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -6535,6 +7223,34 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExascaleConfigDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExascaleConfigDetails#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AvailableStorageInGb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TotalStorageInGb</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AvailableStorageInGb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TotalStorageInGb</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -6880,6 +7596,9 @@
             <Label>DisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ExadataInfrastructureId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>LifecycleDetail</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -6912,6 +7631,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExadataInfrastructureId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LifecycleDetail</PropertyName>
@@ -7516,6 +8238,284 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NetworkAnchor</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NetworkAnchor#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NetworkAnchorListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NetworkAnchorListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NetworkAnchorProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NetworkAnchorProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CidrBlock</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DnsForwardingEndpointIPAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DnsForwardingEndpointNsgRulesUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DnsForwardingRulesUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DnsListeningEndpointAllowedCidr</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DnsListeningEndpointIPAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DnsListeningEndpointNsgRulesUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsOracleDnsForwardingEndpointEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsOracleDnsListeningEndpointEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsOracleToAzureDnsZoneSyncEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OciBackupCidrBlock</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OciSubnetId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OciVcnDnsLabel</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OciVcnId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceAnchorId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubnetId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VnetId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CidrBlock</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DnsForwardingEndpointIPAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DnsForwardingEndpointNsgRulesUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DnsForwardingRulesUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DnsListeningEndpointAllowedCidr</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DnsListeningEndpointIPAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DnsListeningEndpointNsgRulesUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsOracleDnsForwardingEndpointEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsOracleDnsListeningEndpointEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsOracleToAzureDnsZoneSyncEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OciBackupCidrBlock</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OciSubnetId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OciVcnDnsLabel</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OciVcnId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceAnchorId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubnetId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VnetId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NetworkAnchorUpdateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NetworkAnchorUpdateProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsOracleDnsForwardingEndpointEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsOracleDnsListeningEndpointEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsOracleToAzureDnsZoneSyncEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OciBackupCidrBlock</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsOracleDnsForwardingEndpointEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsOracleDnsListeningEndpointEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsOracleToAzureDnsZoneSyncEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OciBackupCidrBlock</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NetworkAnchorUpdateTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NetworkAnchorUpdateTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NsgCidr</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.NsgCidr#Multiple</TypeName>
@@ -7668,6 +8668,9 @@
             <Label>Cloudvmclustername</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DbSystemName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Dbnodeocid</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -7675,6 +8678,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Dbsystemshapename</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Dbversionsname</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Dnsprivateviewocid</Label>
@@ -7702,6 +8708,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NetworkAnchorName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceAnchorName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -7741,6 +8753,9 @@
                 <PropertyName>Cloudvmclustername</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DbSystemName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Dbnodeocid</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -7748,6 +8763,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Dbsystemshapename</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Dbversionsname</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Dnsprivateviewocid</PropertyName>
@@ -7775,6 +8793,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NetworkAnchorName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceAnchorName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -8349,6 +9373,148 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ResourceAnchor</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ResourceAnchor#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ResourceAnchorListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ResourceAnchorListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ResourceAnchorProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ResourceAnchorProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>LinkedCompartmentId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>LinkedCompartmentId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ResourceAnchorUpdateTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ResourceAnchorUpdateTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

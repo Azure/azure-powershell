@@ -16,9 +16,9 @@ Create a ExascaleDbStorageVault
 ```
 New-AzOracleExascaleDbStorageVault -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AdditionalFlashCacheInPercent <Int32>] [-Description <String>]
- [-DisplayName <String>] [-HighCapacityDatabaseStorageInputTotalSizeInGb <Int32>] [-Tag <Hashtable>]
- [-TimeZone <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DisplayName <String>] [-ExadataInfrastructureId <String>]
+ [-HighCapacityDatabaseStorageInputTotalSizeInGb <Int32>] [-Tag <Hashtable>] [-TimeZone <String>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -144,6 +144,21 @@ Accept wildcard characters: False
 ### -DisplayName
 The user-friendly name for the Exadata Database Storage Vault.
 The name does not need to be unique.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExadataInfrastructureId
+Cloud Exadata infrastructure ID
 
 ```yaml
 Type: System.String

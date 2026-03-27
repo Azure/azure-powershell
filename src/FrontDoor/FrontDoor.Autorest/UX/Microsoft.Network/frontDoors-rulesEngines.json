@@ -1,0 +1,95 @@
+{
+  "resourceType": "frontDoors/rulesEngines",
+  "apiVersion": "2025-10-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.frontdoor"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFrontDoorRulesEngine",
+      "description": "Gets a Rules Engine Configuration with the specified name within the specified Front Door.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorrulesengine"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FrontDoorName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Rules Engine Configuration with the specified name within the specified Front Door.",
+          "parameters": [
+            {
+              "name": "-FrontDoorName",
+              "value": "[Path.frontDoorName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.rulesEngineName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzFrontDoorRulesEngine",
+      "description": "Deletes an existing Rules Engine Configuration with the specified parameters.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorrulesengine"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FrontDoorName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an existing Rules Engine Configuration with the specified parameters.",
+          "parameters": [
+            {
+              "name": "-FrontDoorName",
+              "value": "[Path.frontDoorName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.rulesEngineName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

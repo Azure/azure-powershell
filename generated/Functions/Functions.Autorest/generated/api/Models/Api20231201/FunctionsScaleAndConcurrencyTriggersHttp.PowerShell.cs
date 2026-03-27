@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             // actually deserialize
             if (content.Contains("PerInstanceConcurrency"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)this).PerInstanceConcurrency = (float?) content.GetValueForProperty("PerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)this).PerInstanceConcurrency, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)this).PerInstanceConcurrency = (int?) content.GetValueForProperty("PerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)this).PerInstanceConcurrency, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
             // actually deserialize
             if (content.Contains("PerInstanceConcurrency"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)this).PerInstanceConcurrency = (float?) content.GetValueForProperty("PerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)this).PerInstanceConcurrency, (__y)=> (float) global::System.Convert.ChangeType(__y, typeof(float)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)this).PerInstanceConcurrency = (int?) content.GetValueForProperty("PerInstanceConcurrency",((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersHttpInternal)this).PerInstanceConcurrency, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

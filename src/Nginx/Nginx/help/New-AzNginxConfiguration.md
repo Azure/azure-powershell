@@ -8,20 +8,44 @@ schema: 2.0.0
 # New-AzNginxConfiguration
 
 ## SYNOPSIS
-Create or update the NGINX configuration for given NGINX deployment
+Create the NGINX configuration for given NGINX deployment
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzNginxConfiguration -DeploymentName <String> -Name <String> -ResourceGroupName <String>
+New-AzNginxConfiguration -Name <String> -DeploymentName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-File <INginxConfigurationFile[]>] [-Location <String>] [-PackageData <String>]
  [-PackageProtectedFile <String[]>] [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzNginxConfiguration -Name <String> -DeploymentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNginxConfiguration -Name <String> -DeploymentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityNginxDeploymentExpanded
+```
+New-AzNginxConfiguration -Name <String> -NginxDeploymentInputObject <INginxIdentity>
+ [-File <INginxConfigurationFile[]>] [-Location <String>] [-PackageData <String>]
+ [-PackageProtectedFile <String[]>] [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update the NGINX configuration for given NGINX deployment
+Create the NGINX configuration for given NGINX deployment
 
 ## EXAMPLES
 
@@ -76,7 +100,7 @@ The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -88,14 +112,43 @@ Accept wildcard characters: False
 
 ### -File
 .
-To construct, see NOTES section for FILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfigurationFile[]
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -107,7 +160,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: False
@@ -132,6 +185,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NginxDeploymentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
+Parameter Sets: CreateViaIdentityNginxDeploymentExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -152,7 +220,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: False
@@ -167,7 +235,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: False
@@ -179,11 +247,10 @@ Accept wildcard characters: False
 
 ### -ProtectedFile
 .
-To construct, see NOTES section for PROTECTEDFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfigurationFile[]
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: False
@@ -199,7 +266,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -214,7 +281,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: False
@@ -229,7 +296,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -275,9 +342,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfiguration
 
 ## NOTES
 

@@ -47,49 +47,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Start-AzWorkloadsSapDatabaseInstance",
-      "description": "Starts the database instance of the SAP system.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/start",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.workloads/start-azworkloadssapdatabaseinstance"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Name <String>",
-              "-ResourceGroupName <String>",
-              "-SapVirtualInstanceName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Starts the database instance of the SAP system.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.databaseInstanceName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SapVirtualInstanceName",
-              "value": "[Path.sapVirtualInstanceName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }

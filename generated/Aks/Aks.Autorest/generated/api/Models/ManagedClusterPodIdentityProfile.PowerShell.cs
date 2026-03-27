@@ -8,8 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     using Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell;
 
     /// <summary>
-    /// See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity
-    /// integration.
+    /// The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+    /// for more details on pod identity integration.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ManagedClusterPodIdentityProfileTypeConverter))]
     public partial class ManagedClusterPodIdentityProfile
@@ -181,8 +181,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             return ToJsonString();
         }
     }
-    /// See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity
-    /// integration.
+    /// The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+    /// for more details on pod identity integration.
     [System.ComponentModel.TypeConverter(typeof(ManagedClusterPodIdentityProfileTypeConverter))]
     public partial interface IManagedClusterPodIdentityProfile
 
