@@ -60,10 +60,10 @@ Please note some properties can be set only during cloud service creation.
 Create a in-memory object for Diagnostics Extension
 
 ### [New-AzCloudServiceExtensionObject](New-AzCloudServiceExtensionObject.md)
-Create an in-memory object for Extension.
+Create a in-memory object for Extension
 
 ### [New-AzCloudServiceLoadBalancerConfigurationObject](New-AzCloudServiceLoadBalancerConfigurationObject.md)
-Create an in-memory object for LoadBalancerConfiguration.
+Create a in-memory object for LoadBalancerConfiguration
 
 ### [New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject](New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject.md)
 Create an in-memory object for LoadBalancerFrontendIPConfiguration.
