@@ -27,7 +27,7 @@ For information on how to develop for `Az.Oracle`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ```yaml
-commit: d87c0a3d1abbd1d1aa1b487d99e77769b6895ef4
+commit: 0a626b790148b419c9b0bbbc7f4db746d4d886e4
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/oracle/resource-manager/readme.md

@@ -14,6 +14,82 @@ namespace Microsoft.Azure.Management.Storage
     public partial interface IEncryptionScopesOperations
     {
         /// <summary>
+        /// Lists all the encryption scopes available under the specified storage
+        /// account.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the encryption scopes available under the specified storage
+        /// account.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='maxpagesize'>
+        /// Optional, specifies the maximum number of encryption scopes that will be
+        /// included in the list response.
+        /// </param>
+        /// <param name='filter'>
+        /// Optional. When specified, only encryption scope names starting with the
+        /// filter will be listed.
+        /// </param>
+        /// <param name='include'>
+        /// Optional, when specified, will list encryption scopes with the specific
+        /// state. Defaults to All
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<EncryptionScope>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Returns the properties for the specified encryption scope.
+        /// </summary>
+        /// <remarks>
+        /// Returns the properties for the specified encryption scope.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='encryptionScopeName'>
+        /// The name of the encryption scope within the specified storage account.
+        /// Encryption scope names must be between 3 and 63 characters in length and
+        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
+        /// must be immediately preceded and followed by a letter or number.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<EncryptionScope>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string encryptionScopeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Synchronously creates or updates an encryption scope under the specified
         /// storage account. If an encryption scope is already created and a subsequent
         /// request is issued with different properties, the encryption scope
@@ -26,8 +102,7 @@ namespace Microsoft.Azure.Management.Storage
         /// properties will be updated per the specified request.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -66,8 +141,7 @@ namespace Microsoft.Azure.Management.Storage
         /// fails if the specified encryption scope does not already exist.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -96,84 +170,6 @@ namespace Microsoft.Azure.Management.Storage
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<EncryptionScope>> PatchWithHttpMessagesAsync(string resourceGroupName, string accountName, string encryptionScopeName, EncryptionScope encryptionScope, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Returns the properties for the specified encryption scope.
-        /// </summary>
-        /// <remarks>
-        /// Returns the properties for the specified encryption scope.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='encryptionScopeName'>
-        /// The name of the encryption scope within the specified storage account.
-        /// Encryption scope names must be between 3 and 63 characters in length and
-        /// use numbers, lower-case letters and dash (-) only. Every dash (-) character
-        /// must be immediately preceded and followed by a letter or number.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<EncryptionScope>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string encryptionScopeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists all the encryption scopes available under the specified storage
-        /// account.
-        /// </summary>
-        /// <remarks>
-        /// Lists all the encryption scopes available under the specified storage
-        /// account.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='maxpagesize'>
-        /// Optional, specifies the maximum number of encryption scopes that will be
-        /// included in the list response.
-        /// </param>
-        /// <param name='filter'>
-        /// Optional. When specified, only encryption scope names starting with the
-        /// filter will be listed.
-        /// </param>
-        /// <param name='include'>
-        /// Optional, when specified, will list encryption scopes with the specific
-        /// state. Defaults to All
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<EncryptionScope>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, int? maxpagesize = default(int?), string filter = default(string), string include = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all the encryption scopes available under the specified storage

@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             }
             {_config = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject>("config"), out var __jsonConfig) ? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.StatusConfig.FromJson(__jsonConfig) : _config;}
             {_dataset = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray>("datasets"), out var __jsonDatasets) ? If( __jsonDatasets as Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusDataset>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusDataset) (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusDataset.FromJson(__u) )) ))() : null : _dataset;}
-            {_event = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray>("events"), out var __jsonEvents) ? If( __jsonEvents as Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent) (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEvent.FromJson(__p) )) ))() : null : _event;}
+            {_eventGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray>("eventGroups"), out var __jsonEventGroups) ? If( __jsonEventGroups as Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup) (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusEventGroup.FromJson(__p) )) ))() : null : _eventGroup;}
             {_stream = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray>("streams"), out var __jsonStreams) ? If( __jsonStreams as Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusStream>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusStream) (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusStream.FromJson(__k) )) ))() : null : _stream;}
             {_managementGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray>("managementGroups"), out var __jsonManagementGroups) ? If( __jsonManagementGroups as Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusManagementGroup>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusManagementGroup) (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceAssetStatusManagementGroup.FromJson(__f) )) ))() : null : _managementGroup;}
             AfterFromJson(json);
@@ -122,14 +122,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeRead))
             {
-                if (null != this._event)
+                if (null != this._eventGroup)
                 {
                     var __r = new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.XNodeArray();
-                    foreach( var __s in this._event )
+                    foreach( var __s in this._eventGroup )
                     {
                         AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
                     }
-                    container.Add("events",__r);
+                    container.Add("eventGroups",__r);
                 }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeRead))

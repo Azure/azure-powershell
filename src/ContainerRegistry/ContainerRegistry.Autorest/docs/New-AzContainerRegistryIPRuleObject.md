@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerRegistry
-online version: https://learn.microsoft.com/powershell/module/Az.ContainerRegistry/new-AzContainerRegistryIPRuleObject
+online version: https://learn.microsoft.com/powershell/module/Az.ContainerRegistry/new-azcontainerregistryipruleobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for IPRule.
 ## SYNTAX
 
 ```
-New-AzContainerRegistryIPRuleObject -IPAddressOrRange <String> [-Action <Action>] [<CommonParameters>]
+New-AzContainerRegistryIPRuleObject -IPAddressOrRange <String> [-Action <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Create a IP network rule.
 The action of IP ACL rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.Action
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IPRule
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IPRule
 
 ## NOTES
 

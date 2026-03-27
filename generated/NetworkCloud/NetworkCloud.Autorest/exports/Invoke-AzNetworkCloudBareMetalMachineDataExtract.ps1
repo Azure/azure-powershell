@@ -40,7 +40,7 @@ To create the parameters described below, construct a hash table containing the 
 
 COMMAND <IBareMetalMachineCommandSpecification[]>: The list of curated data extraction commands to be executed directly against the target machine.
   Command <String>: The command to execute against the bare metal machine.
-  [Argument <String[]>]: The list of string arguments that will be passed to the script in order as separate arguments.
+  [Argument <List<String>>]: The list of string arguments that will be passed to the script in order as separate arguments.
 
 INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the Kubernetes cluster agent pool.
@@ -73,12 +73,16 @@ function Invoke-AzNetworkCloudBareMetalMachineDataExtract {
 [CmdletBinding(DefaultParameterSetName='RunViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RunExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RunViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RunViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the bare metal machine.
     ${BareMetalMachineName},
 
     [Parameter(ParameterSetName='RunExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RunViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RunViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -86,6 +90,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='RunExpanded')]
+    [Parameter(ParameterSetName='RunViaJsonFilePath')]
+    [Parameter(ParameterSetName='RunViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -97,22 +103,34 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='RunExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RunViaIdentityExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBareMetalMachineCommandSpecification[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCommandSpecification[]]
     # The list of curated data extraction commands to be executed directly against the target machine.
-    # To construct, see NOTES section for COMMAND properties and create a hash table.
     ${Command},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='RunExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RunViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Int64]
     # The maximum time the commands are allowed to run.If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
     ${LimitTimeSecond},
+
+    [Parameter(ParameterSetName='RunViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Run operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RunViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Run operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -188,6 +206,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -209,10 +236,10 @@ begin {
         $mapping = @{
             RunExpanded = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineDataExtract_RunExpanded';
             RunViaIdentityExpanded = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineDataExtract_RunViaIdentityExpanded';
+            RunViaJsonFilePath = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineDataExtract_RunViaJsonFilePath';
+            RunViaJsonString = 'Az.NetworkCloud.private\Invoke-AzNetworkCloudBareMetalMachineDataExtract_RunViaJsonString';
         }
-        if (('RunExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RunExpanded', 'RunViaJsonFilePath', 'RunViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -226,6 +253,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

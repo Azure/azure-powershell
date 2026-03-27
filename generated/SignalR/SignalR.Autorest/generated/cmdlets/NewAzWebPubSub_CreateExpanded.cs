@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzWebPubSub_CreateExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\r\n* At least one change applies to this cmdlet.                                                    *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Description(@"Create or update a resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Generated]

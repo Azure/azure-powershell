@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesCreateOrReplace(string subscriptionId, string resourceGroupName, string assetEndpointProfileName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesCreateOrReplaceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile> AssetEndpointProfilesCreateOrReplaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesCreateOrReplaceViaJsonString(string subscriptionId, string resourceGroupName, string assetEndpointProfileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile> AssetEndpointProfilesCreateOrReplaceViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string assetEndpointProfileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile> AssetEndpointProfilesCreateOrReplaceWithResult(string subscriptionId, string resourceGroupName, string assetEndpointProfileName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesDelete(string subscriptionId, string resourceGroupName, string assetEndpointProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesGet(string subscriptionId, string resourceGroupName, string assetEndpointProfileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -978,7 +978,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1029,7 +1029,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile> AssetEndpointProfilesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile> AssetEndpointProfilesGetWithResult(string subscriptionId, string resourceGroupName, string assetEndpointProfileName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1261,7 +1261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1301,7 +1301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1350,7 +1350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileListResult> AssetEndpointProfilesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1400,7 +1400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileListResult> AssetEndpointProfilesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1576,7 +1576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1614,7 +1614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1660,7 +1660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileListResult> AssetEndpointProfilesListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1706,7 +1706,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileListResult> AssetEndpointProfilesListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1880,7 +1880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesUpdate(string subscriptionId, string resourceGroupName, string assetEndpointProfileName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1927,7 +1927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1984,7 +1984,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile> AssetEndpointProfilesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2044,7 +2044,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetEndpointProfilesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string assetEndpointProfileName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2090,7 +2090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile> AssetEndpointProfilesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string assetEndpointProfileName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2137,7 +2137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfile> AssetEndpointProfilesUpdateWithResult(string subscriptionId, string resourceGroupName, string assetEndpointProfileName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetEndpointProfileUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2514,7 +2514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsCreateOrReplace(string subscriptionId, string resourceGroupName, string assetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2561,7 +2561,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsCreateOrReplaceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2618,7 +2618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset> AssetsCreateOrReplaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2678,7 +2678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsCreateOrReplaceViaJsonString(string subscriptionId, string resourceGroupName, string assetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2724,7 +2724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset> AssetsCreateOrReplaceViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string assetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2771,7 +2771,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset> AssetsCreateOrReplaceWithResult(string subscriptionId, string resourceGroupName, string assetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3143,7 +3143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsDelete(string subscriptionId, string resourceGroupName, string assetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3185,7 +3185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3417,7 +3417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsGet(string subscriptionId, string resourceGroupName, string assetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3458,7 +3458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3509,7 +3509,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset> AssetsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3562,7 +3562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset> AssetsGetWithResult(string subscriptionId, string resourceGroupName, string assetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3741,7 +3741,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3781,7 +3781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3830,7 +3830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetListResult> AssetsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3880,7 +3880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetListResult> AssetsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4054,7 +4054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4092,7 +4092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4138,7 +4138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetListResult> AssetsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4184,7 +4184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetListResult> AssetsListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4354,7 +4354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsUpdate(string subscriptionId, string resourceGroupName, string assetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4401,7 +4401,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4458,7 +4458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset> AssetsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4518,7 +4518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task AssetsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string assetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4564,7 +4564,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset> AssetsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string assetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4611,7 +4611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAsset> AssetsUpdateWithResult(string subscriptionId, string resourceGroupName, string assetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAssetUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4983,7 +4983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task BillingContainersGet(string subscriptionId, string billingContainerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IBillingContainer>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5022,7 +5022,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task BillingContainersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IBillingContainer>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5070,7 +5070,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IBillingContainer> BillingContainersGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5119,7 +5119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IBillingContainer> BillingContainersGetWithResult(string subscriptionId, string billingContainerName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5291,7 +5291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task BillingContainersListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IBillingContainerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5329,7 +5329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task BillingContainersListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IBillingContainerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5375,7 +5375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IBillingContainerListResult> BillingContainersListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5421,7 +5421,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IBillingContainerListResult> BillingContainersListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5596,7 +5596,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsCreateOrReplace(string subscriptionId, string resourceGroupName, string namespaceName, string assetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5645,7 +5645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsCreateOrReplaceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5705,7 +5705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset> NamespaceAssetsCreateOrReplaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5769,7 +5769,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsCreateOrReplaceViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string assetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5818,7 +5818,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset> NamespaceAssetsCreateOrReplaceViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string assetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5868,7 +5868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset> NamespaceAssetsCreateOrReplaceWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string assetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6250,7 +6250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsDelete(string subscriptionId, string resourceGroupName, string namespaceName, string assetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6294,7 +6294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6535,7 +6535,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsGet(string subscriptionId, string resourceGroupName, string namespaceName, string assetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6578,7 +6578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6632,7 +6632,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset> NamespaceAssetsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6689,7 +6689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset> NamespaceAssetsGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string assetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6876,7 +6876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsListByResourceGroup(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6918,7 +6918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6970,7 +6970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetListResult> NamespaceAssetsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7024,7 +7024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetListResult> NamespaceAssetsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7210,7 +7210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string assetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7259,7 +7259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7319,7 +7319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset> NamespaceAssetsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7383,7 +7383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceAssetsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string assetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7432,7 +7432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset> NamespaceAssetsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string assetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7482,7 +7482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset> NamespaceAssetsUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string assetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7865,7 +7865,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesCreateOrReplace(string subscriptionId, string resourceGroupName, string namespaceName, string deviceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7914,7 +7914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesCreateOrReplaceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7974,7 +7974,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice> NamespaceDevicesCreateOrReplaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8038,7 +8038,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesCreateOrReplaceViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string deviceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8087,7 +8087,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice> NamespaceDevicesCreateOrReplaceViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string deviceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8137,7 +8137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice> NamespaceDevicesCreateOrReplaceWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string deviceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8519,7 +8519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesDelete(string subscriptionId, string resourceGroupName, string namespaceName, string deviceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8563,7 +8563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8804,7 +8804,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesGet(string subscriptionId, string resourceGroupName, string namespaceName, string deviceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8847,7 +8847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8901,7 +8901,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice> NamespaceDevicesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8958,7 +8958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice> NamespaceDevicesGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string deviceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9145,7 +9145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesListByResourceGroup(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9187,7 +9187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9239,7 +9239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceListResult> NamespaceDevicesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9293,7 +9293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceListResult> NamespaceDevicesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9481,7 +9481,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string deviceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9530,7 +9530,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9590,7 +9590,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice> NamespaceDevicesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9654,7 +9654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDevicesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string deviceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9703,7 +9703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice> NamespaceDevicesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string deviceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9753,7 +9753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDevice> NamespaceDevicesUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string deviceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDeviceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10136,7 +10136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsCreateOrReplace(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredAssetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10185,7 +10185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsCreateOrReplaceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10245,7 +10245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset> NamespaceDiscoveredAssetsCreateOrReplaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10309,7 +10309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsCreateOrReplaceViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredAssetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10358,7 +10358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset> NamespaceDiscoveredAssetsCreateOrReplaceViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredAssetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10408,7 +10408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset> NamespaceDiscoveredAssetsCreateOrReplaceWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredAssetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10792,7 +10792,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsDelete(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredAssetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10836,7 +10836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11077,7 +11077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsGet(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredAssetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11120,7 +11120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11174,7 +11174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset> NamespaceDiscoveredAssetsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11231,7 +11231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset> NamespaceDiscoveredAssetsGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredAssetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11420,7 +11420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsListByResourceGroup(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11462,7 +11462,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11514,7 +11514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetListResult> NamespaceDiscoveredAssetsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11568,7 +11568,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetListResult> NamespaceDiscoveredAssetsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11756,7 +11756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredAssetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11805,7 +11805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11865,7 +11865,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset> NamespaceDiscoveredAssetsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11929,7 +11929,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredAssetsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredAssetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11978,7 +11978,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset> NamespaceDiscoveredAssetsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredAssetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12028,7 +12028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAsset> NamespaceDiscoveredAssetsUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredAssetName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12413,7 +12413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesCreateOrReplace(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredDeviceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12462,7 +12462,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesCreateOrReplaceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12522,7 +12522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice> NamespaceDiscoveredDevicesCreateOrReplaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12586,7 +12586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesCreateOrReplaceViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredDeviceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12635,7 +12635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice> NamespaceDiscoveredDevicesCreateOrReplaceViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredDeviceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12685,7 +12685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice> NamespaceDiscoveredDevicesCreateOrReplaceWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredDeviceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13069,7 +13069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesDelete(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredDeviceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13113,7 +13113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13354,7 +13354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesGet(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredDeviceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13397,7 +13397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13451,7 +13451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice> NamespaceDiscoveredDevicesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13508,7 +13508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice> NamespaceDiscoveredDevicesGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredDeviceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13697,7 +13697,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesListByResourceGroup(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDeviceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13739,7 +13739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDeviceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13791,7 +13791,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDeviceListResult> NamespaceDiscoveredDevicesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13845,7 +13845,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDeviceListResult> NamespaceDiscoveredDevicesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14033,7 +14033,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesUpdate(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredDeviceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDeviceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14082,7 +14082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDeviceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14142,7 +14142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice> NamespaceDiscoveredDevicesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDeviceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14206,7 +14206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespaceDiscoveredDevicesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredDeviceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14255,7 +14255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice> NamespaceDiscoveredDevicesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredDeviceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14305,7 +14305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDevice> NamespaceDiscoveredDevicesUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, string discoveredDeviceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredDeviceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14689,7 +14689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrReplace(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14736,7 +14736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrReplaceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14793,7 +14793,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace> NamespacesCreateOrReplaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14853,7 +14853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesCreateOrReplaceViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14899,7 +14899,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace> NamespacesCreateOrReplaceViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14946,7 +14946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace> NamespacesCreateOrReplaceWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15320,7 +15320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesDelete(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15362,7 +15362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15594,7 +15594,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGet(string subscriptionId, string resourceGroupName, string namespaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15635,7 +15635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15686,7 +15686,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace> NamespacesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15739,7 +15739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace> NamespacesGetWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15918,7 +15918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15958,7 +15958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16007,7 +16007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceListResult> NamespacesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16057,7 +16057,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceListResult> NamespacesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16231,7 +16231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16269,7 +16269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16315,7 +16315,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceListResult> NamespacesListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16361,7 +16361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceListResult> NamespacesListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16533,7 +16533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesMigrate(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceMigrateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceMigrateResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16581,7 +16581,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceMigrateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceMigrateResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16639,7 +16639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceMigrateResponse> NamespacesMigrateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceMigrateRequest body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16700,7 +16700,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesMigrateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceMigrateResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16747,7 +16747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceMigrateResponse> NamespacesMigrateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16795,7 +16795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceMigrateResponse> NamespacesMigrateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceMigrateRequest body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17171,7 +17171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesUpdate(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17218,7 +17218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17275,7 +17275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace> NamespacesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17335,7 +17335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task NamespacesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17381,7 +17381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace> NamespacesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string namespaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17428,7 +17428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespace> NamespacesUpdateWithResult(string subscriptionId, string resourceGroupName, string namespaceName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17801,7 +17801,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationStatusGet(string subscriptionId, string location, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17842,7 +17842,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationStatusGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17893,7 +17893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResult> OperationStatusGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17946,7 +17946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationStatusResult> OperationStatusGetWithResult(string subscriptionId, string location, string operationId, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18120,7 +18120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18156,7 +18156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18199,7 +18199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18241,7 +18241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18407,7 +18407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesCreateOrReplace(string subscriptionId, string resourceGroupName, string schemaRegistryName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18454,7 +18454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesCreateOrReplaceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18511,7 +18511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry> SchemaRegistriesCreateOrReplaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18571,7 +18571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesCreateOrReplaceViaJsonString(string subscriptionId, string resourceGroupName, string schemaRegistryName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18617,7 +18617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry> SchemaRegistriesCreateOrReplaceViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18664,7 +18664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry> SchemaRegistriesCreateOrReplaceWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19038,7 +19038,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesDelete(string subscriptionId, string resourceGroupName, string schemaRegistryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19080,7 +19080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19312,7 +19312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesGet(string subscriptionId, string resourceGroupName, string schemaRegistryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19353,7 +19353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19404,7 +19404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry> SchemaRegistriesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19457,7 +19457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry> SchemaRegistriesGetWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19636,7 +19636,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19676,7 +19676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19725,7 +19725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryListResult> SchemaRegistriesListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19775,7 +19775,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryListResult> SchemaRegistriesListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19951,7 +19951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19989,7 +19989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20035,7 +20035,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryListResult> SchemaRegistriesListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20081,7 +20081,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryListResult> SchemaRegistriesListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20253,7 +20253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesUpdate(string subscriptionId, string resourceGroupName, string schemaRegistryName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20300,7 +20300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20357,7 +20357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry> SchemaRegistriesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20417,7 +20417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaRegistriesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string schemaRegistryName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20463,7 +20463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry> SchemaRegistriesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20510,7 +20510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistry> SchemaRegistriesUpdateWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaRegistryUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20888,7 +20888,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaVersionsCreateOrReplace(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, string schemaVersionName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20940,7 +20940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaVersionsCreateOrReplaceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21003,7 +21003,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion> SchemaVersionsCreateOrReplaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21072,7 +21072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaVersionsCreateOrReplaceViaJsonString(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, string schemaVersionName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21124,7 +21124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion> SchemaVersionsCreateOrReplaceViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, string schemaVersionName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21177,7 +21177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion> SchemaVersionsCreateOrReplaceWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, string schemaVersionName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21385,8 +21385,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// <param name="schemaRegistryName">Schema registry name parameter.</param>
         /// <param name="schemaName">Schema name parameter.</param>
         /// <param name="schemaVersionName">Schema version name parameter.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -21394,9 +21394,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SchemaVersionsDelete(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, string schemaVersionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SchemaVersionsDelete(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, string schemaVersionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21425,14 +21425,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SchemaVersionsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+                await this.SchemaVersionsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Delete a SchemaVersion</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -21440,9 +21440,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SchemaVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SchemaVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21485,14 +21485,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SchemaVersionsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+                await this.SchemaVersionsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "SchemaVersionsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -21500,17 +21500,110 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SchemaVersionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SchemaVersionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -21599,7 +21692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaVersionsGet(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, string schemaVersionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21644,7 +21737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaVersionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21701,7 +21794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion> SchemaVersionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21762,7 +21855,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersion> SchemaVersionsGetWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, string schemaVersionName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21957,7 +22050,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaVersionsListBySchema(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22001,7 +22094,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemaVersionsListBySchemaViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22056,7 +22149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersionListResult> SchemaVersionsListBySchemaViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22114,7 +22207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaVersionListResult> SchemaVersionsListBySchemaWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22308,7 +22401,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemasCreateOrReplace(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22358,7 +22451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemasCreateOrReplaceViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22418,7 +22511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema> SchemasCreateOrReplaceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22483,7 +22576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemasCreateOrReplaceViaJsonString(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22532,7 +22625,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema> SchemasCreateOrReplaceViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22582,7 +22675,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema> SchemasCreateOrReplaceWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema body, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22780,8 +22873,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="schemaRegistryName">Schema registry name parameter.</param>
         /// <param name="schemaName">Schema name parameter.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -22789,9 +22882,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SchemasDelete(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SchemasDelete(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22818,14 +22911,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SchemasDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+                await this.SchemasDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Delete a Schema</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -22833,9 +22926,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SchemasDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SchemasDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22875,14 +22968,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.SchemasDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+                await this.SchemasDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "SchemasDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -22890,17 +22983,110 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SchemasDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SchemasDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
                 global::System.Net.Http.HttpResponseMessage _response = null;
                 try
                 {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -22983,7 +23169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemasGet(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23026,7 +23212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemasGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23080,7 +23266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema> SchemasGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23137,7 +23323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchema> SchemasGetWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, string schemaName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23324,7 +23510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemasListBySchemaRegistry(string subscriptionId, string resourceGroupName, string schemaRegistryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23366,7 +23552,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task SchemasListBySchemaRegistryViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23418,7 +23604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaListResult> SchemasListBySchemaRegistryViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23472,7 +23658,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.ISchemaListResult> SchemasListBySchemaRegistryWithResult(string subscriptionId, string resourceGroupName, string schemaRegistryName, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2025-07-01-preview";
+            var apiVersion = @"2025-10-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

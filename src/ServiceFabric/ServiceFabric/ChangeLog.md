@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated SFMC to latest api general version "2026-02-01"
+
+## Version 5.0.0
+* Removed `ReimageByName`, `ReimageById`, and `ReimageByObj` parameter sets from `Set-AzServiceFabricManagedNodeType`.
 
 ## Version 3.8.0
 * Changed from `Basic` to `Standard` SKUs for loadbalancers and public IP addresses for `New-AzServiceFabricCluster` and `Add-AzServiceFabricNodeType` as `Basic` SKUs are being deprecated.

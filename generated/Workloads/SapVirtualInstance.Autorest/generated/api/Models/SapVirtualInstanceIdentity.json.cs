@@ -76,14 +76,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models
             {
                 return;
             }
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_sapVirtualInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("sapVirtualInstanceName"), out var __jsonSapVirtualInstanceName) ? (string)__jsonSapVirtualInstanceName : (string)SapVirtualInstanceName;}
-            {_applicationInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("applicationInstanceName"), out var __jsonApplicationInstanceName) ? (string)__jsonApplicationInstanceName : (string)ApplicationInstanceName;}
-            {_centralInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("centralInstanceName"), out var __jsonCentralInstanceName) ? (string)__jsonCentralInstanceName : (string)CentralInstanceName;}
-            {_databaseInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("databaseInstanceName"), out var __jsonDatabaseInstanceName) ? (string)__jsonDatabaseInstanceName : (string)DatabaseInstanceName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_sapVirtualInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("sapVirtualInstanceName"), out var __jsonSapVirtualInstanceName) ? (string)__jsonSapVirtualInstanceName : (string)_sapVirtualInstanceName;}
+            {_applicationInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("applicationInstanceName"), out var __jsonApplicationInstanceName) ? (string)__jsonApplicationInstanceName : (string)_applicationInstanceName;}
+            {_centralInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("centralInstanceName"), out var __jsonCentralInstanceName) ? (string)__jsonCentralInstanceName : (string)_centralInstanceName;}
+            {_databaseInstanceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("databaseInstanceName"), out var __jsonDatabaseInstanceName) ? (string)__jsonDatabaseInstanceName : (string)_databaseInstanceName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

@@ -45,65 +45,25 @@ root-module-name: $(prefix).Workloads
 title: Monitors
 subject-prefix: Workloads
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors
-resourcegroup-append: true
-identity-correction-for-post: true
-nested-object-to-string: true
-#add-api-version-in-model-namespace: true
 inlining-threshold: 100
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
- "@autorest/powershell": "3.x"
-
 directive:
+- where:
+    variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
+  remove: true
+
 # Monitor
-- where:
-    verb: New
-    subject: ^Monitor$
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-  remove: true
-
-- where:
-    verb: Update
-    subject: ^Monitor$
-    variant: ^Update$|^UpdateViaIdentity$
-  remove: true
-
-- where:
-    subject: ^Monitor$
-    parameter-name: IdentityUserAssignedIdentity
-  set:
-    parameter-name: UserAssignedIdentity
-
 - where:
     subject: ^Monitor$
     parameter-name: ManagedResourceGroupConfigurationName
   set:
     parameter-name: ManagedResourceGroupName
 
-# ProviderInstance
-- where:
-    verb: New
-    subject: ^ProviderInstance$
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-  remove: true
-
 # SapLandscapeMonitor
-- where:
-    verb: New
-    subject: ^SapLandscapeMonitor$
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-  remove: true
-
 - where:
     verb: Get
     subject: ^SapLandscapeMonitor$
     variant: ^List$
-  remove: true
-- where:
-    verb: Update
-    subject: ^SapLandscapeMonitor$
-    variant: ^Update$|^UpdateViaIdentity$
   remove: true
 
 # Module Table Formatting
@@ -145,39 +105,23 @@ directive:
   - SAPConfiguration
   - ErrorInnerError
 - model-cmdlet:
-  - SapLandscapeMonitorSidMapping
-  - SapLandscapeMonitorMetricThresholds
+  - model-name: SapLandscapeMonitorSidMapping
+  - model-name: SapLandscapeMonitorMetricThresholds
+  - model-name: PrometheusHaClusterProviderInstanceProperties
+    cmdlet-name: New-AzWorkloadsProviderPrometheusHaClusterInstanceObject
+  - model-name: PrometheusOSProviderInstanceProperties
+    cmdlet-name: New-AzWorkloadsProviderPrometheusOSInstanceObject
+  - model-name: SapNetWeaverProviderInstanceProperties
+    cmdlet-name: New-AzWorkloadsProviderSapNetWeaverInstanceObject
 
 # remove System Data in module Monitor, ProviderInstance, SapApplicationServerInstance, SapCentralServerInstance, SapDatabaseInstance, SapLandscapeMonitor, SapVirtualInstance
 - from: Monitor.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData');
 - from: ProviderInstance.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData');
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData');
 - from: SapLandscapeMonitor.cs
   where: $
-  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ISystemData SystemData');
-
-- where:
-    verb: Get|New
-    subject: Monitor|ProviderInstance|SapLandscapeMonitor
-  set:
-    preview-announcement:
-      preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
-
-- where:
-    verb: Remove
-    subject: Monitor|ProviderInstance
-  set:
-    preview-announcement:
-      preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
-
-- where:
-    verb: Update
-    subject: Monitor|SapLandscapeMonitor
-  set:
-    preview-announcement:
-      preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
-
+  transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData', 'internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.ISystemData SystemData');
 ```

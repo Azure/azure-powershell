@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
-{
+{    
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeReplication",
@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
     [Alias("Get-AnfVolumeReplication")]
     public class GetNetAppFilesVolumeReplications : AzureNetAppFilesCmdletBase
     {
+        public const string DefaultExcludeFilterType = "None";
+
         [Parameter(
             Mandatory = true,
             ParameterSetName = FieldsParameterSet,
@@ -75,6 +77,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             nameof(PoolName))]
         public string Name { get; set; }
 
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "Exclude Replications filter. 'None' returns all replications, 'Deleted' excludes deleted replications. Default is "+ DefaultExcludeFilterType)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("None", "Deleted")]
+        public string ExcludeFilter { get; set; }
+
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -111,7 +122,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             try
             {
-                var volumeReplications = AzureNetAppFilesManagementClient.Volumes.ListReplications(ResourceGroupName, AccountName, PoolName, Name).Select(e => e.ConvertToPs());
+                ListReplicationsRequest listReplicationsRequest = new ListReplicationsRequest
+                {
+                    Exclude = string.IsNullOrEmpty(ExcludeFilter) ? DefaultExcludeFilterType : ExcludeFilter,
+                };
+                var volumeReplications = AzureNetAppFilesManagementClient.Volumes.ListReplications(ResourceGroupName, AccountName, PoolName, Name, listReplicationsRequest).Select(e => e.ConvertToPs());
                 WriteObject(volumeReplications, true);
             }
             catch (ErrorResponseException ex)

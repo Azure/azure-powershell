@@ -17,7 +17,7 @@ Update properties of a SignalR replica.
 Update-AzSignalRReplica [-ResourceGroupName <String>] -SignalRName <String> [-Name] <String> [-Sku <String>]
  [-UnitCount <Int32>] [-RegionEndpointEnabled <String>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzSignalRReplica [-ResourceGroupName <String>] -SignalRName <String> [-Na
 Update-AzSignalRReplica [-Name] <String> -SignalRObject <PSSignalRResource> [-Sku <String>]
  [-UnitCount <Int32>] [-RegionEndpointEnabled <String>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Update-AzSignalRReplica [-Name] <String> -SignalRObject <PSSignalRResource> [-Sk
 Update-AzSignalRReplica -InputObject <PSReplicaResource> [-Sku <String>] [-UnitCount <Int32>]
  [-RegionEndpointEnabled <String>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Update-AzSignalRReplica -InputObject <PSReplicaResource> [-Sku <String>] [-UnitC
 Update-AzSignalRReplica -ResourceId <String> [-Sku <String>] [-UnitCount <Int32>]
  [-RegionEndpointEnabled <String>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -138,21 +138,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -19,7 +19,7 @@ New-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <PSSku
  [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>] [-AadAuthFailureMode <PSAadAuthFailureMode>]
  [-SemanticSearchMode <PSSemanticSearchMode>] [-ComputeType <PSComputeType>]
  [-DataExfiltrationProtectionList <PSDataExfiltrationProtection[]>] [-Bypass <PSSearchBypass>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -243,21 +243,6 @@ Azure AI Search Service partition count.
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

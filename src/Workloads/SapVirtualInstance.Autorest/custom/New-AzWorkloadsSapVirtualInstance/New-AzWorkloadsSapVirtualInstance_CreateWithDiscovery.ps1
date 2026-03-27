@@ -25,7 +25,7 @@ Creates a Virtual Instance for SAP solutions (VIS) resource
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapVirtualInstance
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,12 +37,7 @@ CONFIGURATION <ISapConfiguration>: Defines if the SAP system is being created us
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssapvirtualinstance
 #>
 function New-AzWorkloadsSapVirtualInstance {
-  [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.PreviewMessage("**********************************************************************************************`n
-    * This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *`n
-    * At least one change applies to this cmdlet.                                                     *`n
-    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
-    ***************************************************************************************************")]
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapVirtualInstance])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstance])]
   [Alias('New-AzVIS')]
   [CmdletBinding(DefaultParameterSetName='CreateWithDiscovery', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
@@ -80,9 +75,9 @@ function New-AzWorkloadsSapVirtualInstance {
       ${ManagedRgStorageAccountName},
 
       [Parameter(Mandatory)]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType])]
+      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("NonProd", "Prod")]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType]
+      [System.String]
       # Defines the environment type - Production/Non Production.
       ${Environment},
   
@@ -93,18 +88,17 @@ function New-AzWorkloadsSapVirtualInstance {
       ${Location},
   
       [Parameter(Mandatory)]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType])]
+      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.PSArgumentCompleterAttribute("ECC", "S4HANA", "Other")]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType]
+      [System.String]
       # Defines the SAP Product type.
       ${SapProduct},
   
       [Parameter()]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType])]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType]
-      # Type of manage identity
-      ${IdentityType},
+      [System.Management.Automation.SwitchParameter]
+      # Determines whether to enable a system-assigned identity for the resource.
+      ${EnableSystemAssignedIdentity},
   
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
@@ -120,16 +114,17 @@ function New-AzWorkloadsSapVirtualInstance {
   
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.ITrackedResourceTags]))]
+      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ITrackedResourceTags]))]
       [System.Collections.Hashtable]
       # Resource tags.
       ${Tag},
-  
+
       [Parameter()]
+      [AllowEmptyCollection()]
       [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IUserAssignedIdentities]))]
-      [System.Collections.Hashtable]
-      # User assigned identities dictionary
+      [System.String[]]
+      # The array of user assigned identities associated with the resource.
+      # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
       ${UserAssignedIdentity},
   
       [Parameter()]
@@ -193,9 +188,42 @@ function New-AzWorkloadsSapVirtualInstance {
   )
   process {
       try {
-            $configuration = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapConfigurationType]::Discovery
-            $discoveryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.DiscoveryConfiguration]::new();
-            $discoveryConfiguration.ConfigurationType = $configuration
+            if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+              $supportsSystemAssignedIdentity = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')
+              $supportsUserAssignedIdentity = $PSBoundParameters.ContainsKey("UserAssignedIdentity") -and $UserAssignedIdentity.Length -gt 0
+
+              # calculate IdentityType
+              if (($supportsSystemAssignedIdentity -and $supportsUserAssignedIdentity)) {
+                  $PSBoundParameters.Add("IdentityType", "SystemAssigned,UserAssigned")
+              }
+              elseif ($supportsUserAssignedIdentity -and (-not $supportsSystemAssignedIdentity)) {
+                  $PSBoundParameters.Add("IdentityType", "UserAssigned")
+              }
+              elseif ((-not $supportsUserAssignedIdentity) -and $supportsSystemAssignedIdentity) {
+                  $PSBoundParameters.Add("IdentityType", "SystemAssigned")
+              }
+              else {
+                  $PSBoundParameters.Add("IdentityType", "None")
+              }
+
+              # If user input UserAssignedIdentity
+              if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+                  $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.UserAssignedIdentity]::New()
+                  $PSBoundParameters.IdentityUserAssignedIdentity = @{}
+                  foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
+                      $PSBoundParameters.IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
+                  }
+        
+                  $null = $PSBoundParameters.Remove('UserAssignedIdentity')
+              }
+        
+              # remove EnableSystemAssignedIdentity
+              if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
+                  $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
+              }
+            }
+
+            $discoveryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.DiscoveryConfiguration]::new();
             $discoveryConfiguration.CentralServerVMId = $CentralServerVmId
             $null = $PSBoundParameters.Remove('CentralServerVmId')
             if($PSBoundParameters.ContainsKey('ManagedRgStorageAccountName')) {
@@ -203,6 +231,7 @@ function New-AzWorkloadsSapVirtualInstance {
                 $null = $PSBoundParameters.Remove('ManagedRgStorageAccountName')
             }
             $null = $PSBoundParameters.Add('Configuration', $discoveryConfiguration)
+            
             Az.SapVirtualInstance.private\New-AzWorkloadsSapVirtualInstance_CreateExpanded @PSBoundParameters
         } catch {
   

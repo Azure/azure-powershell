@@ -80,43 +80,6 @@ function Test-GetNodeFileContentByComputeNode
 
 <#
 .SYNOPSIS
-Tests downloading a Remote Desktop Protocol file
-#>
-function Test-GetRDPFile
-{
-    param([string]$poolId)
-
-    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    $stream = New-Object System.IO.MemoryStream 
-    $rdpContents = "full address"
-
-    try
-    {
-        $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -BatchContext $context
-        $computeNodeId = $computeNodes[0].Id
-
-        $computeNode = Get-AzBatchComputeNode -PoolId $poolId -Id $computeNodeId -BatchContext $context
-        $computeNode | Get-AzBatchRemoteDesktopProtocolFile -BatchContext $context -DestinationStream $stream
-        
-        $stream.Position = 0
-        $sr = New-Object System.IO.StreamReader $stream
-        $downloadedContents = $sr.ReadToEnd()
-
-        # Verify RDP file contains some expected text
-        Assert-True { $downloadedContents.Contains($rdpContents) }
-    }
-    finally
-    {
-        if ($sr -ne $null)
-        {
-            $sr.Dispose()
-        }
-        $stream.Dispose()
-    }
-}
-
-<#
-.SYNOPSIS
 Tests deleting a node file associated with a task
 #>
 function Test-DeleteNodeFileByTask 

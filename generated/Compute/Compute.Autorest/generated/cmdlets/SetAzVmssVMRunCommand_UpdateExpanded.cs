@@ -6,20 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to create or update the VMSS VM run command.</summary>
+    /// <summary>The operation to update the VMSS VM run command.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzVmssVMRunCommand_UpdateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand", "15.0.0", "9.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"InstanceViewStatuses","ProtectedParameter","Parameter"}, NewOutputProperties=new string[] {"InstanceViewStatuses","ProtectedParameter","Parameter"}, ChangeDescription="The types of the properties 'InstanceViewStatuses', 'ProtectedParameter' and 'Parameter' will be changed from single object to 'List'.")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Description(@"The operation to create or update the VMSS VM run command.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Description(@"The operation to update the VMSS VM run command.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}", ApiVersion = "2023-07-01")]
     public partial class SetAzVmssVMRunCommand_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,8 +37,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Describes a Virtual Machine run command.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand _runCommandBody = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommand();
+        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand _runCommandBody = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.VirtualMachineRunCommand();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -60,6 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Compute.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Compute.Compute Client => Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.ClientAPI;
@@ -113,6 +121,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         SerializedName = @"errorBlobUri",
         PossibleTypes = new [] { typeof(string) })]
         public string ErrorBlobUri { get => _runCommandBody.ErrorBlobUri ?? null; set => _runCommandBody.ErrorBlobUri = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -219,13 +230,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         ReadOnly = false,
         Description = @"The parameters used by the script.",
         SerializedName = @"parameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[] Parameter { get => _runCommandBody.Parameter ?? null /* arrayOf */; set => _runCommandBody.Parameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[] Parameter { get => _runCommandBody.Parameter?.ToArray() ?? null /* fixedArrayOf */; set => _runCommandBody.Parameter = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter>(value) : null); }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The parameters used by the script.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -236,8 +247,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         ReadOnly = false,
         Description = @"The parameters used by the script.",
         SerializedName = @"protectedParameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[] ProtectedParameter { get => _runCommandBody.ProtectedParameter ?? null /* arrayOf */; set => _runCommandBody.ProtectedParameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[] ProtectedParameter { get => _runCommandBody.ProtectedParameter?.ToArray() ?? null /* fixedArrayOf */; set => _runCommandBody.ProtectedParameter = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter>(value) : null); }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -383,7 +394,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Compute.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Compute.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -396,8 +408,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags Tag { get => _runCommandBody.Tag ?? null /* object */; set => _runCommandBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags Tag { get => _runCommandBody.Tag ?? null /* object */; set => _runCommandBody.Tag = value; }
 
         /// <summary>The timeout in seconds to execute the run command.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The timeout in seconds to execute the run command.")]
@@ -445,24 +457,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -500,11 +512,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
             clone._runCommandBody = this._runCommandBody;
+            clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.VMScaleSetName = this.VMScaleSetName;
             clone.InstanceId = this.InstanceId;
             clone.RunCommandName = this.RunCommandName;
-            clone.SubscriptionId = this.SubscriptionId;
             return clone;
         }
 
@@ -575,11 +587,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -591,10 +628,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -662,7 +715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -675,12 +728,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.VirtualMachineScaleSetVMRunCommandsCreateOrUpdate(ResourceGroupName, VMScaleSetName, InstanceId, RunCommandName, SubscriptionId, _runCommandBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.VirtualMachineScaleSetVMRunCommandsCreateOrUpdate(SubscriptionId, ResourceGroupName, VMScaleSetName, InstanceId, RunCommandName, _runCommandBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,VMScaleSetName=VMScaleSetName,InstanceId=InstanceId,RunCommandName=RunCommandName,SubscriptionId=SubscriptionId,body=_runCommandBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,VMScaleSetName=VMScaleSetName,InstanceId=InstanceId,RunCommandName=RunCommandName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -693,7 +746,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="SetAzVmssVMRunCommand_UpdateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="SetAzVmssVMRunCommand_UpdateExpanded" /> cmdlet class.
         /// </summary>
         public SetAzVmssVMRunCommand_UpdateExpanded()
         {
@@ -726,12 +779,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -748,15 +801,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, VMScaleSetName=VMScaleSetName, InstanceId=InstanceId, RunCommandName=RunCommandName, SubscriptionId=SubscriptionId, body=_runCommandBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, VMScaleSetName=VMScaleSetName, InstanceId=InstanceId, RunCommandName=RunCommandName, SubscriptionId=SubscriptionId, body=_runCommandBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -766,12 +819,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand">Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand> response)
         {
             using( NoSynchronizationContext )
             {
@@ -783,8 +836,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json/text/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

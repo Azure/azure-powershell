@@ -18,7 +18,7 @@ Update-AzDevCenterAdminDevCenter -Name <String> -ResourceGroupName <String> [-Su
  [-DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus <InstallAzureMonitorAgentEnableStatus>]
  [-DisplayName <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>]
- [-NetworkSettingMicrosoftHostedNetworkEnableStatus <MicrosoftHostedNetworkEnableStatus>] [-PlanId <String>]
+ [-NetworkSettingMicrosoftHostedNetworkEnableStatus <MicrosoftHostedNetworkEnableStatus>]
  [-ProjectCatalogSettingCatalogItemSyncEnableStatus <CatalogItemSyncEnableStatus>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Update-AzDevCenterAdminDevCenter -InputObject <IDevCenterIdentity>
  [-DevBoxProvisioningSettingInstallAzureMonitorAgentEnableStatus <InstallAzureMonitorAgentEnableStatus>]
  [-DisplayName <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>]
- [-NetworkSettingMicrosoftHostedNetworkEnableStatus <MicrosoftHostedNetworkEnableStatus>] [-PlanId <String>]
+ [-NetworkSettingMicrosoftHostedNetworkEnableStatus <MicrosoftHostedNetworkEnableStatus>]
  [-ProjectCatalogSettingCatalogItemSyncEnableStatus <CatalogItemSyncEnableStatus>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -212,21 +212,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PlanId
-Resource Id of an associated Plan
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProjectCatalogSettingCatalogItemSyncEnableStatus
 Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
 
@@ -328,7 +313,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenter
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IDevCenter
 
 ## NOTES
 

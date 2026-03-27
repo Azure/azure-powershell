@@ -25,9 +25,10 @@ New-AzDiskConfig [[-SkuName] <String>] [-Tier <String>] [-LogicalSectorSize <Int
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>]
  [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>]
- [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>] [-SecurityMetadataUri <String>]
- [-SecurityDataUri <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>] [-ActionOnDiskDelay <String>]
+ [-SecurityMetadataUri <String>] [-SecurityDataUri <String>] [-SupportedSecurityOption <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,6 +94,17 @@ New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskCo
 
 Create a disk with OptimizedForFrequentAttach as true, to improves reliability and performance of the data disks that will be frequently (more than 5 times a day) detached from one virtual machine and attached to another.
 
+### Example 5
+```powershell
+$accountType = <Account Type>
+$sourceUri = <Source URI of the blob>
+$storageAccountId = <Storage Account ID>
+$diskConfig = New-AzDiskConfig -AccountType $accountType -CreateOption Import -SourceUri $sourceUri -StorageAccountId $storageAccountId -SupportedSecurityOption 'TrustedLaunchSupported'
+New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskConfig
+```
+
+Creation of managed disk using CreateOption of Import, with SupportedSecurityOption as TrustedLaunchSupported
+
 ## PARAMETERS
 
 ### -AcceleratedNetwork
@@ -100,6 +112,21 @@ True if the image from which the OS disk is created supports accelerated network
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ActionOnDiskDelay
+Determines how to handle disks with slow I/O. Allowed values include 'None' and 'AutomaticReattach'.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -631,6 +658,22 @@ Accept wildcard characters: False
 
 ### -StorageAccountId
 Specifies the storage account ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SupportedSecurityOption
+Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM.
+Possible values include: 'TrustedLaunchSupported', 'TrustedLaunchAndConfidentialVMSupported'
 
 ```yaml
 Type: System.String

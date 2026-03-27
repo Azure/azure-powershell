@@ -212,6 +212,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName = (string) content.GetValueForProperty("RecoveryPointName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName, global::System.Convert.ToString);
             }
+            if (content.Contains("ReplicationProtectionClusterName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName = (string) content.GetValueForProperty("ReplicationProtectionClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId, global::System.Convert.ToString);
+            }
             if (content.Contains("MappingName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).MappingName = (string) content.GetValueForProperty("MappingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).MappingName, global::System.Convert.ToString);
@@ -420,6 +428,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             if (content.Contains("RecoveryPointName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName = (string) content.GetValueForProperty("RecoveryPointName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReplicationProtectionClusterName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName = (string) content.GetValueForProperty("ReplicationProtectionClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId, global::System.Convert.ToString);
             }
             if (content.Contains("MappingName"))
             {

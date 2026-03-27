@@ -27,6 +27,7 @@ using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.ContainerService;
+using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
@@ -102,6 +103,35 @@ namespace Microsoft.Azure.Commands.Aks
                     if (!string.IsNullOrEmpty(ex.Body?.Code))
                     {
                         ex.Data[AzurePSErrorDataKeys.CloudErrorCodeKey] = ex.Body.Code;
+                    }
+                    throw;
+                }
+            }
+            catch (ErrorResponseException ex)
+            {
+                if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    var newEx = new AzPSResourceNotFoundCloudException(ex.Message, innerException: ex)
+                    {
+                        Request = ex.Request,
+                        Response = ex.Response
+                    };
+                    throw newEx;
+                }
+                else if (string.Equals(ex.Body?.Error?.Code, "AgentPoolK8sVersionNotSupported", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    var newEx = new AzPSCloudException(Resources.K8sVersionNotSupported, Resources.K8sVersionNotSupported, ex)
+                    {
+                        Request = ex.Request,
+                        Response = ex.Response
+                    };
+                    throw newEx;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(ex.Body?.Error?.Code))
+                    {
+                        ex.Data[AzurePSErrorDataKeys.CloudErrorCodeKey] = ex.Body.Error.Code;
                     }
                     throw;
                 }

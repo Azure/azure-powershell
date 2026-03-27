@@ -299,3 +299,16 @@ function GetBackupVaultARGQuery {
         return $query
     }
 }
+
+function GetSoftDeletedVaultBackupInstanceARGQuery {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+    param()
+
+    process {
+        $query = "RecoveryServicesResources | where type =~ 'Microsoft.DataProtection/locations/deletedvaults/deletedbackupinstances'"
+        $query += "| extend dataSourceType = strcat(properties.dataSourceSetInfo.datasourceType)"
+        $query += "| project id, type, name, location, resourceGroup, subscriptionId, dataSourceType, properties"
+
+        return $query
+    }
+}

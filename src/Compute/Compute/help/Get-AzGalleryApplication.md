@@ -25,6 +25,12 @@ Get-AzGalleryApplication -GalleryName <String> -Name <String> -ResourceGroupName
  [<CommonParameters>]
 ```
 
+### GetViaIdentityGallery
+```
+Get-AzGalleryApplication -Name <String> -GalleryInputObject <IComputeIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzGalleryApplication -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>]
@@ -68,6 +74,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GalleryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+Parameter Sets: GetViaIdentityGallery
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -GalleryName
 The name of the Shared Application Gallery from which the Application Definitions are to be retrieved.
 
@@ -85,7 +106,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
@@ -104,7 +124,7 @@ The name of the gallery Application Definition to be retrieved.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityGallery
 Aliases: GalleryApplicationName
 
 Required: True
@@ -154,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication
 
 ## NOTES
 

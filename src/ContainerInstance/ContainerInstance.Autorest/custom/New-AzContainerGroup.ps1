@@ -24,6 +24,8 @@ https://learn.microsoft.com/powershell/module/az.containerinstance/new-azcontain
 #>
 function New-AzContainerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroup])]
+[Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroup", "16.0.0", "9.0.0", "May 2026", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroup", DeprecatedOutputProperties = ("Port, EnvironmentVariable, InstanceViewEvent, LivenessProbeHttpGetHttpHeader, ReadinessProbeHttpGetHttpHeader, VolumeMount, ReadinessProbeExecCommand, Command, CapabilityDrop, LivenessProbeExecCommand, CapabilityAdd"), NewOutputProperties = ("Port, EnvironmentVariable, InstanceViewEvent, LivenessProbeHttpGetHttpHeader, ReadinessProbeHttpGetHttpHeader, VolumeMount, ReadinessProbeExecCommand, Command, CapabilityDrop, LivenessProbeExecCommand, CapabilityAdd. This parameter will be changed from single object to 'List'."))]
+[Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.GenericBreakingChangeAttribute("IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.", "16.0.0", "9.0.0", "May 2026")]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

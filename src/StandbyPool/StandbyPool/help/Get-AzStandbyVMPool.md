@@ -23,15 +23,15 @@ Get-AzStandbyVMPool -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzStandbyVMPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzStandbyVMPool -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzStandbyVMPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +39,7 @@ Get a StandbyVirtualMachinePoolResource
 
 ## EXAMPLES
 
-### Example 1: get a standby virtual machine pool
+### Example 1: get a standby virutal machine pool
 ```powershell
 Get-AzStandbyVMPool  `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
@@ -140,7 +140,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -164,3 +164,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

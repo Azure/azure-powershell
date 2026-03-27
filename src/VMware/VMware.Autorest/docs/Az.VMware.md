@@ -38,6 +38,15 @@ Get a Host
 ### [Get-AzVMwareIscsiPath](Get-AzVMwareIscsiPath.md)
 Get a IscsiPath
 
+### [Get-AzVMwareLicense](Get-AzVMwareLicense.md)
+Get a License
+
+### [Get-AzVMwareLicenseProperty](Get-AzVMwareLicenseProperty.md)
+Just like ArmResourceActionSync, but with no request body.
+
+### [Get-AzVMwareMaintenance](Get-AzVMwareMaintenance.md)
+Get a Maintenance
+
 ### [Get-AzVMwarePlacementPolicy](Get-AzVMwarePlacementPolicy.md)
 Get a PlacementPolicy
 
@@ -46,6 +55,9 @@ Get a PrivateCloud
 
 ### [Get-AzVMwarePrivateCloudAdminCredential](Get-AzVMwarePrivateCloudAdminCredential.md)
 List the admin credentials for the private cloud
+
+### [Get-AzVMwarePrivateCloudVcfLicense](Get-AzVMwarePrivateCloudVcfLicense.md)
+Get the license for the private cloud
 
 ### [Get-AzVMwareProvisionedNetwork](Get-AzVMwareProvisionedNetwork.md)
 Get a ProvisionedNetwork
@@ -58,6 +70,15 @@ A list of SKUs.
 
 ### [Get-AzVMwareVirtualMachine](Get-AzVMwareVirtualMachine.md)
 Get a VirtualMachine
+
+### [Invoke-AzVMwareInitiateMaintenanceCheck](Invoke-AzVMwareInitiateMaintenanceCheck.md)
+Initiate maintenance readiness checks
+
+### [Invoke-AzVMwareRescheduleMaintenance](Invoke-AzVMwareRescheduleMaintenance.md)
+Reschedule a maintenance
+
+### [Invoke-AzVMwareScheduleMaintenance](Invoke-AzVMwareScheduleMaintenance.md)
+Schedule a maintenance
 
 ### [New-AzVMwareAddon](New-AzVMwareAddon.md)
 Create or update a addon in a private cloud
@@ -85,6 +106,9 @@ Create a GlobalReachConnection
 
 ### [New-AzVMwareIscsiPath](New-AzVMwareIscsiPath.md)
 Create a IscsiPath
+
+### [New-AzVMwareLicense](New-AzVMwareLicense.md)
+Create a License
 
 ### [New-AzVMwarePlacementPolicy](New-AzVMwarePlacementPolicy.md)
 Create a PlacementPolicy
@@ -137,6 +161,9 @@ Delete a GlobalReachConnection
 ### [Remove-AzVMwareIscsiPath](Remove-AzVMwareIscsiPath.md)
 Delete a IscsiPath
 
+### [Remove-AzVMwareLicense](Remove-AzVMwareLicense.md)
+Delete a License
+
 ### [Remove-AzVMwarePlacementPolicy](Remove-AzVMwarePlacementPolicy.md)
 Delete a PlacementPolicy
 
@@ -151,6 +178,9 @@ Return quota for subscription by region
 
 ### [Test-AzVMwareLocationTrialAvailability](Test-AzVMwareLocationTrialAvailability.md)
 Return trial status for subscription by region
+
+### [Test-AzVMwareServiceComponentAvailability](Test-AzVMwareServiceComponentAvailability.md)
+Return service component availability
 
 ### [Update-AzVMwareAuthorization](Update-AzVMwareAuthorization.md)
 Update a ExpressRouteAuthorization
@@ -169,6 +199,9 @@ Update a GlobalReachConnection
 
 ### [Update-AzVMwareIscsiPath](Update-AzVMwareIscsiPath.md)
 Update a IscsiPath
+
+### [Update-AzVMwareLicense](Update-AzVMwareLicense.md)
+Update a License
 
 ### [Update-AzVMwarePlacementPolicy](Update-AzVMwarePlacementPolicy.md)
 Update a PlacementPolicy

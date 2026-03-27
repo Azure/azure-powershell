@@ -13,6 +13,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="DelegatedResource" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDelegatedResources _delegatedResource;
+
+        /// <summary>
+        /// The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider,
+        /// and managed cluster only accept one delegated identity resource. Internal use only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDelegatedResources DelegatedResource { get => (this._delegatedResource = this._delegatedResource ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DelegatedResources()); set => this._delegatedResource = value; }
+
         /// <summary>Internal Acessors for PrincipalId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal.PrincipalId { get => this._principalId; set { {_principalId = value;} } }
 
@@ -41,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _type;
 
         /// <summary>
-        /// For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
+        /// The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string Type { get => this._type; set => this._type = value; }
@@ -50,7 +60,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityUserAssignedIdentities _userAssignedIdentity;
 
         /// <summary>
-        /// The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned
+        /// identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityUserAssignedIdentities UserAssignedIdentity { get => (this._userAssignedIdentity = this._userAssignedIdentity ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterIdentityUserAssignedIdentities()); set => this._userAssignedIdentity = value; }
@@ -65,6 +76,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     public partial interface IManagedClusterIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider,
+        /// and managed cluster only accept one delegated identity resource. Internal use only.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.",
+        SerializedName = @"delegatedResources",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDelegatedResources) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDelegatedResources DelegatedResource { get; set; }
         /// <summary>
         /// The principal id of the system assigned identity which is used by master components.
         /// </summary>
@@ -92,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string TenantId { get;  }
         /// <summary>
-        /// For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
+        /// The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -100,13 +125,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).",
+        Description = @"The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "None")]
         string Type { get; set; }
         /// <summary>
-        /// The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned
+        /// identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -114,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.",
+        Description = @"The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.",
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityUserAssignedIdentities) })]
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
@@ -125,6 +151,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
     {
         /// <summary>
+        /// The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider,
+        /// and managed cluster only accept one delegated identity resource. Internal use only.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDelegatedResources DelegatedResource { get; set; }
+        /// <summary>
         /// The principal id of the system assigned identity which is used by master components.
         /// </summary>
         string PrincipalId { get; set; }
@@ -133,12 +164,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// </summary>
         string TenantId { get; set; }
         /// <summary>
-        /// For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
+        /// The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned", "None")]
         string Type { get; set; }
         /// <summary>
-        /// The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+        /// The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned
+        /// identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityUserAssignedIdentities UserAssignedIdentity { get; set; }
 

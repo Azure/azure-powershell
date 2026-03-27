@@ -28,6 +28,7 @@ https://learn.microsoft.com/powershell/module/Az.ContainerInstance/new-azcontain
 function New-AzContainerInstanceInitDefinitionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.InitContainerDefinition')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.InitContainerDefinition", "16.0.0", "9.0.0", "May 2026", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.InitContainerDefinition", DeprecatedOutputProperties = ("EnvironmentVariable, InstanceViewEvent, VolumeMount, Command, CapabilityDrop, CapabilityAdd"), NewOutputProperties = ("EnvironmentVariable, InstanceViewEvent, VolumeMount, Command, CapabilityDrop, CapabilityAdd. This parameter will be changed from single object to 'List'."))]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 

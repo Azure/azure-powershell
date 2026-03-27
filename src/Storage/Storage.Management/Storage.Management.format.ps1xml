@@ -447,6 +447,14 @@
                 <Label>ProtocolSettings.Smb.ChannelEncryption</Label>
                 <ScriptBlock>$_.ProtocolSettings.Smb.ChannelEncryption</ScriptBlock>
               </ListItem>
+                <ListItem>
+                  <Label>ProtocolSettings.Smb.EncryptionInTransit.Required</Label>
+                  <ScriptBlock>$_.ProtocolSettings.Smb.EncryptionInTransit.Required</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                  <Label>ProtocolSettings.Nfs.EncryptionInTransit.Required</Label>
+                  <ScriptBlock>$_.ProtocolSettings.Nfs.EncryptionInTransit.Required</ScriptBlock>
+              </ListItem> 
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -655,7 +663,11 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Metrics.Enabled</Label>
+            <Label>Metrics</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PriorityReplication</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
@@ -691,7 +703,11 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.Metrics.Enabled</ScriptBlock>
+                <ScriptBlock>if ($_.Metrics.Enabled -eq $true) {'Enabled'} else {if ($_.Metrics.Enabled -eq $false) {'Disabled'} } </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>if ($_.PriorityReplication.Enabled -eq $true) {"Enabled"} else {if ($_.PriorityReplication.Enabled -eq $false) {"Disabled"} } </ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>

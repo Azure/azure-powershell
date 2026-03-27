@@ -1,12 +1,17 @@
 ﻿function Edit-AzDataProtectionPolicyTriggerClientObject{
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupPolicy')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates Backup schedule of an existing backup policy.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                           *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486  *`n
+    ***************************************************************************************************")]
 
     param (
         [Parameter(ParameterSetName='ModifyBackupSchedule', Mandatory, HelpMessage='Backup Policy object.')]
         [Parameter(ParameterSetName='RemoveBackupSchedule', Mandatory, HelpMessage='Backup Policy object.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupPolicy]
         ${Policy},
 
         [Parameter(ParameterSetName='ModifyBackupSchedule', Mandatory, HelpMessage='Schedule to be associated to backup policy.')]

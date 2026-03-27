@@ -44,7 +44,7 @@ Gets the NSP logging configuration.
 
 ## EXAMPLES
 
-### Example 1: Get NetworkSecurityPerimeter LoggingConfiguration
+### Example 1: Get NetworkSsecurityPerimeter LoggingConfiguration
 ```powershell
 Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 ```
@@ -65,7 +65,7 @@ Type                         : Microsoft.Network/networkSecurityPerimeters/loggi
 Version                      : 4
 ```
 
-Get NetworkSecurityPerimeter LoggingConfiguration
+Get NetworkSsecurityPerimeter LoggingConfiguration
 
 ## PARAMETERS
 

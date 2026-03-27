@@ -8,7 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     using Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.PowerShell;
 
     /// <summary>
-    /// See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+    /// OS configurations of Linux agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration)
+    /// for more details.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(LinuxOSConfigTypeConverter))]
     public partial class LinuxOSConfig
@@ -180,7 +181,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             return ToJsonString();
         }
     }
-    /// See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+    /// OS configurations of Linux agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration)
+    /// for more details.
     [System.ComponentModel.TypeConverter(typeof(LinuxOSConfigTypeConverter))]
     public partial interface ILinuxOSConfig
 

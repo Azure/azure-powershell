@@ -31,6 +31,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
         public string Configuration { get => this._configuration; set => this._configuration = value; }
 
+        /// <summary>Backing field for <see cref="DataSource" /> property.</summary>
+        private string _dataSource;
+
+        /// <summary>Reference to a data source for a given management group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
+        public string DataSource { get => this._dataSource; set => this._dataSource = value; }
+
         /// <summary>Backing field for <see cref="DefaultTimeoutInSecond" /> property.</summary>
         private int? _defaultTimeoutInSecond;
 
@@ -97,6 +104,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"managementGroupConfiguration",
         PossibleTypes = new [] { typeof(string) })]
         string Configuration { get; set; }
+        /// <summary>Reference to a data source for a given management group.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Reference to a data source for a given management group.",
+        SerializedName = @"dataSource",
+        PossibleTypes = new [] { typeof(string) })]
+        string DataSource { get; set; }
         /// <summary>Default response timeout for all actions that are part of the management group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -157,6 +175,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// Stringified JSON that contains connector-specific configuration for the management group.
         /// </summary>
         string Configuration { get; set; }
+        /// <summary>Reference to a data source for a given management group.</summary>
+        string DataSource { get; set; }
         /// <summary>Default response timeout for all actions that are part of the management group.</summary>
         int? DefaultTimeoutInSecond { get; set; }
         /// <summary>

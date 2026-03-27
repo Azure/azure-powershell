@@ -117,14 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddingCertificate" xml:space="preserve">
-    <value>Adding a new certificate with thumbprint {0}. </value>
-  </data>
   <data name="BeginMAMLCall" xml:space="preserve">
     <value>Begin {0} call to RP</value>
-  </data>
-  <data name="CancelCertificateDelete" xml:space="preserve">
-    <value>Canceling deletion of the certificate with thumbprint {0}.</value>
   </data>
   <data name="ChangeOSVersion" xml:space="preserve">
     <value>Changing OS version of pool {0} to {1}.</value>
@@ -185,15 +179,6 @@
   </data>
   <data name="GetAllAccounts" xml:space="preserve">
     <value>Getting all accounts in subscription</value>
-  </data>
-  <data name="GetCertificateByThumbprint" xml:space="preserve">
-    <value>Getting the certificate with thumbprint {0}.</value>
-  </data>
-  <data name="GetCertificatesByFilter" xml:space="preserve">
-    <value>Getting certificates matching the specified OData filter.</value>
-  </data>
-  <data name="GetCertificatesNoFilter" xml:space="preserve">
-    <value>Getting all certificates that have been added to the Batch account.</value>
   </data>
   <data name="GetComputeNodeById" xml:space="preserve">
     <value>Getting compute node "{0}" from pool "{1}".</value>
@@ -300,9 +285,6 @@
   <data name="MissingResGroupName" xml:space="preserve">
     <value>Cannot find resource group name in ID property: {0}</value>
   </data>
-  <data name="NoCertificateData" xml:space="preserve">
-    <value>No certificate data was specified. Supply the path to a certificate file, or provide the raw certificate data.</value>
-  </data>
   <data name="NoComputeNode" xml:space="preserve">
     <value>No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id.</value>
   </data>
@@ -344,12 +326,6 @@
   </data>
   <data name="RemoveBatchAccount" xml:space="preserve">
     <value>Removing batch account ...</value>
-  </data>
-  <data name="RemoveCertificate" xml:space="preserve">
-    <value>Removing certificate ...</value>
-  </data>
-  <data name="RemoveCertificateConfirm" xml:space="preserve">
-    <value>Are you sure you want to remove the certificate with thumbprint {0}?</value>
   </data>
   <data name="RemoveComputeNode" xml:space="preserve">
     <value>Removing compute node(s) from pool...</value>

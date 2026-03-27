@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.0
 * General availability for module Az.DeviceRegistry
 
 * GA stable release of API version 2025-10-01 for Az.DeviceRegistry. New updates include:

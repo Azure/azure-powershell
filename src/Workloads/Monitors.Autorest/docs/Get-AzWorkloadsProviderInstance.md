@@ -30,6 +30,12 @@ Get-AzWorkloadsProviderInstance -InputObject <IMonitorsIdentity> [-DefaultProfil
  [<CommonParameters>]
 ```
 
+### GetViaIdentityMonitor
+```
+Get-AzWorkloadsProviderInstance -MonitorInputObject <IMonitorsIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets properties of a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 
@@ -103,11 +109,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IMonitorsIdentity
+Parameter Sets: GetViaIdentityMonitor
 Aliases:
 
 Required: True
@@ -137,7 +157,7 @@ Name of the provider instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityMonitor
 Aliases: ProviderInstanceName
 
 Required: True
@@ -187,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IProviderInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.IProviderInstance
 
 ## NOTES
 

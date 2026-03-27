@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.Network/dnsForwardingRulesets"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDnsForwardingRuleset_List1")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsForwardingRuleset))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Description(@"Lists DNS forwarding rulesets in all resource groups of a subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Generated]

@@ -1,17 +1,17 @@
 {
-  "Remove-AzStreamAnalyticsJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bp?api-version=2017-04-01-preview+1": {
+  "Remove-AzStreamAnalyticsJob+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfj?api-version=2017-04-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bp?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfj?api-version=2017-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "54" ],
-        "x-ms-client-request-id": [ "6a4fc195-5f8e-4536-b13c-92bdb08a9ba4" ],
+        "x-ms-unique-id": [ "332" ],
+        "x-ms-client-request-id": [ "92ae56e7-8466-41d9-97c8-dabb15fefd35" ],
         "CommandName": [ "Remove-AzStreamAnalyticsJob" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsJob_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,39 +22,39 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "6a4fc195-5f8e-4536-b13c-92bdb08a9ba4" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
-        "x-ms-correlation-request-id": [ "0c7f8683-a9aa-45c0-ae46-f5469ae71b61" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032105Z:0c7f8683-a9aa-45c0-ae46-f5469ae71b61" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "92ae56e7-8466-41d9-97c8-dabb15fefd35" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/6479a9fa-89ed-4fa4-bb99-102c72540af1" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "ebd529bb-1eb8-4dea-96f9-ecbf28d22a4d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T094754Z:ebd529bb-1eb8-4dea-96f9-ecbf28d22a4d" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:21:04 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 975AB180B204446AA049A142BBBA675E Ref B: MAA201060513019 Ref C: 2025-08-21T09:47:51Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:47:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Content-Length": [ "0" ]
       },
       "Content": null,
       "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs?api-version=2017-04-01-preview+2": {
+  "Remove-AzStreamAnalyticsJob+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs?api-version=2017-04-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs?api-version=2017-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "55" ],
-        "x-ms-client-request-id": [ "09d2827b-b571-4350-bce0-a2d1a03d4a21" ],
+        "x-ms-unique-id": [ "333" ],
+        "x-ms-client-request-id": [ "41cda2ed-68a9-4127-8ebd-b7f84e46a475" ],
         "CommandName": [ "Get-AzStreamAnalyticsJob" ],
         "FullCommandName": [ "Get-AzStreamAnalyticsJob_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -65,30 +65,29 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "09d2827b-b571-4350-bce0-a2d1a03d4a21" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11922" ],
-        "x-ms-correlation-request-id": [ "1a0d6f7e-fbe5-4131-80d3-90cca2186db0" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032106Z:1a0d6f7e-fbe5-4131-80d3-90cca2186db0" ],
+        "x-ms-original-request-ids": [ "41cda2ed-68a9-4127-8ebd-b7f84e46a475" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "b4864c9d-bff0-43f9-95e8-1b3de436eea8" ],
+        "x-ms-correlation-request-id": [ "b4864c9d-bff0-43f9-95e8-1b3de436eea8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T094756Z:b4864c9d-bff0-43f9-95e8-1b3de436eea8" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:21:05 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DB77D9A0E9844CBDBDC6381337A6073A Ref B: MAA201060513019 Ref C: 2025-08-21T09:47:54Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:47:56 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2150" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "1711" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6\",\"name\":\"job7nzqx6\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"35d207ca-6f98-4e69-8cb6-678e19ff7b39\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2021-03-16T03:09:38.41Z\",\"compatibilityLevel\":\"1.0\",\"package\":null,\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"etag\":\"77baffe9-2781-480a-8444-dc99ef29c796\",\"jobType\":\"Cloud\",\"subnetResourceId\":null,\"cluster\":{\"_clusterResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb\"}}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm\",\"name\":\"jobneqhcm\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"83c57e4a-4908-441e-b499-6a313f7ee693\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2021-03-16T03:10:13.927Z\",\"compatibilityLevel\":\"1.0\",\"package\":null,\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"etag\":\"a121403f-52ec-43d7-8c65-ac0365346a60\",\"jobType\":\"Cloud\",\"subnetResourceId\":null,\"cluster\":{\"_clusterResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb\"}}}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobo95jfz\",\"name\":\"jobo95jfz\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"a92ad4dc-d790-49f4-ba94-7e5aab406d1d\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2025-08-21T09:00:28.5Z\",\"compatibilityLevel\":\"1.0\",\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"etag\":\"f047ec7d-b405-4e32-9ba6-dedf5ee28d47\",\"jobType\":\"Cloud\",\"cluster\":{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/clusters/sac-irc1ue\"}}},{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq\",\"name\":\"jobl1t7aq\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"982e844a-b440-408b-80d7-df10e219f6fc\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2025-08-21T08:59:55.793Z\",\"compatibilityLevel\":\"1.0\",\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"etag\":\"7f7ba1e2-e6a2-48d2-9b42-2379a26d5bfd\",\"jobType\":\"Cloud\",\"cluster\":{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/clusters/sac-irc1ue\"}}}]}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew?api-version=2017-04-01-preview+1": {
+  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew?api-version=2017-04-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew?api-version=2017-04-01-preview",
       "Content": "{\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -103,41 +102,41 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "0a6c8214-8e0c-4a87-80b8-9079da537a1f" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "058074e1-71b5-4d67-9f3f-cf30dc0f3bfa" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
-        "x-ms-correlation-request-id": [ "a10030f9-941f-4c24-bf92-ce97a53d59be" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032110Z:a10030f9-941f-4c24-bf92-ce97a53d59be" ],
+        "ETag": [ "6bc77838-4a04-4df7-ad27-efdb27d9ab18" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "66df6952-48a0-42cd-983e-f395808d19bb" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/27c5baf5-62b0-42f3-92e8-64880fed7729" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "3fa0eb06-5c18-440c-bb94-629c61fa7cfa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T094801Z:3fa0eb06-5c18-440c-bb94-629c61fa7cfa" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:21:10 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A19FC340021B4B55952272A8394AED7C Ref B: MAA201060513019 Ref C: 2025-08-21T09:47:56Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:48:01 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "736" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "855" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew\",\"name\":\"jobcnh4bpnew\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"1393801e-670d-4c8c-bebd-5ee49f94f332\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2021-03-16T03:21:09.337Z\",\"compatibilityLevel\":\"1.0\",\"package\":null,\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"inputs\":[],\"functions\":[],\"outputs\":[],\"jobType\":\"Cloud\",\"subnetResourceId\":null,\"cluster\":null}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew\",\r\n  \"name\": \"joboy3kfjnew\",\r\n  \"type\": \"Microsoft.StreamAnalytics/streamingjobs\",\r\n  \"location\": \"West Central US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"jobId\": \"43c66b79-0faf-458c-8a5f-21509db3038f\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"jobState\": \"Created\",\r\n    \"outputErrorPolicy\": \"Stop\",\r\n    \"eventsLateArrivalMaxDelayInSeconds\": 5,\r\n    \"dataLocale\": \"en-US\",\r\n    \"createdDate\": \"2025-08-21T09:48:01.207Z\",\r\n    \"compatibilityLevel\": \"1.0\",\r\n    \"jobStorageAccount\": null,\r\n    \"contentStoragePolicy\": \"SystemAccount\",\r\n    \"inputs\": [],\r\n    \"functions\": [],\r\n    \"outputs\": [],\r\n    \"jobType\": \"Cloud\",\r\n    \"cluster\": null\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew?api-version=2017-04-01-preview+2": {
+  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew?api-version=2017-04-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew?api-version=2017-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "57" ],
-        "x-ms-client-request-id": [ "058074e1-71b5-4d67-9f3f-cf30dc0f3bfa" ],
+        "x-ms-unique-id": [ "335" ],
+        "x-ms-client-request-id": [ "66df6952-48a0-42cd-983e-f395808d19bb" ],
         "CommandName": [ "Az.StreamAnalytics.internal\\New-AzStreamAnalyticsJob" ],
         "FullCommandName": [ "New-AzStreamAnalyticsJob_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -147,41 +146,39 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "0a6c8214-8e0c-4a87-80b8-9079da537a1f" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "058074e1-71b5-4d67-9f3f-cf30dc0f3bfa" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11920" ],
-        "x-ms-correlation-request-id": [ "a0f07ad3-5b46-4092-9984-8c9e2d39ecc3" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032141Z:a0f07ad3-5b46-4092-9984-8c9e2d39ecc3" ],
+        "ETag": [ "6bc77838-4a04-4df7-ad27-efdb27d9ab18" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "66df6952-48a0-42cd-983e-f395808d19bb" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-correlation-request-id": [ "f8e8375f-9335-479a-914b-d691efb607b2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T094832Z:f8e8375f-9335-479a-914b-d691efb607b2" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:21:40 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DA0439BA92694032899759C52ABFDCC3 Ref B: MAA201060513019 Ref C: 2025-08-21T09:48:31Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:48:32 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "696" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "794" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew\",\"name\":\"jobcnh4bpnew\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"1393801e-670d-4c8c-bebd-5ee49f94f332\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2021-03-16T03:21:09.337Z\",\"compatibilityLevel\":\"1.0\",\"package\":null,\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"jobType\":\"Cloud\",\"subnetResourceId\":null,\"cluster\":null}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew\",\r\n  \"name\": \"joboy3kfjnew\",\r\n  \"type\": \"Microsoft.StreamAnalytics/streamingjobs\",\r\n  \"location\": \"West Central US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"jobId\": \"43c66b79-0faf-458c-8a5f-21509db3038f\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"jobState\": \"Created\",\r\n    \"outputErrorPolicy\": \"Stop\",\r\n    \"eventsLateArrivalMaxDelayInSeconds\": 5,\r\n    \"dataLocale\": \"en-US\",\r\n    \"createdDate\": \"2025-08-21T09:48:01.207Z\",\r\n    \"compatibilityLevel\": \"1.0\",\r\n    \"jobStorageAccount\": null,\r\n    \"contentStoragePolicy\": \"SystemAccount\",\r\n    \"jobType\": \"Cloud\",\r\n    \"cluster\": null\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew?api-version=2017-04-01-preview+3": {
+  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew?api-version=2017-04-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew?api-version=2017-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "58" ],
-        "x-ms-client-request-id": [ "058074e1-71b5-4d67-9f3f-cf30dc0f3bfa" ],
+        "x-ms-unique-id": [ "336" ],
+        "x-ms-client-request-id": [ "66df6952-48a0-42cd-983e-f395808d19bb" ],
         "CommandName": [ "Az.StreamAnalytics.internal\\New-AzStreamAnalyticsJob" ],
         "FullCommandName": [ "New-AzStreamAnalyticsJob_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -191,40 +188,38 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "0a6c8214-8e0c-4a87-80b8-9079da537a1f" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "058074e1-71b5-4d67-9f3f-cf30dc0f3bfa" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11919" ],
-        "x-ms-correlation-request-id": [ "c1fefa55-227d-409f-93b6-9796465dae30" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032141Z:c1fefa55-227d-409f-93b6-9796465dae30" ],
+        "ETag": [ "6bc77838-4a04-4df7-ad27-efdb27d9ab18" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "66df6952-48a0-42cd-983e-f395808d19bb" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-correlation-request-id": [ "c07fbdc6-481e-4665-9525-8614eccae442" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T094833Z:c07fbdc6-481e-4665-9525-8614eccae442" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:21:41 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3C4DA161A11C45878717AD15F39646C7 Ref B: MAA201060513019 Ref C: 2025-08-21T09:48:32Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:48:33 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "696" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "794" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew\",\"name\":\"jobcnh4bpnew\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"1393801e-670d-4c8c-bebd-5ee49f94f332\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2021-03-16T03:21:09.337Z\",\"compatibilityLevel\":\"1.0\",\"package\":null,\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"jobType\":\"Cloud\",\"subnetResourceId\":null,\"cluster\":null}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew\",\r\n  \"name\": \"joboy3kfjnew\",\r\n  \"type\": \"Microsoft.StreamAnalytics/streamingjobs\",\r\n  \"location\": \"West Central US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"jobId\": \"43c66b79-0faf-458c-8a5f-21509db3038f\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"jobState\": \"Created\",\r\n    \"outputErrorPolicy\": \"Stop\",\r\n    \"eventsLateArrivalMaxDelayInSeconds\": 5,\r\n    \"dataLocale\": \"en-US\",\r\n    \"createdDate\": \"2025-08-21T09:48:01.207Z\",\r\n    \"compatibilityLevel\": \"1.0\",\r\n    \"jobStorageAccount\": null,\r\n    \"contentStoragePolicy\": \"SystemAccount\",\r\n    \"jobType\": \"Cloud\",\r\n    \"cluster\": null\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew?api-version=2017-04-01-preview+4": {
+  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew?api-version=2017-04-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew?api-version=2017-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "59" ],
-        "x-ms-client-request-id": [ "6883111a-89d4-4976-a612-1511993427c8" ],
+        "x-ms-unique-id": [ "337" ],
+        "x-ms-client-request-id": [ "3084ee66-307d-470c-aa54-e1c43037cd3b" ],
         "CommandName": [ "Get-AzStreamAnalyticsJob" ],
         "FullCommandName": [ "Get-AzStreamAnalyticsJob_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -235,40 +230,38 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "0a6c8214-8e0c-4a87-80b8-9079da537a1f" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "6883111a-89d4-4976-a612-1511993427c8" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11918" ],
-        "x-ms-correlation-request-id": [ "f3940f09-5e12-4b1c-b066-6f822a3fed54" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032142Z:f3940f09-5e12-4b1c-b066-6f822a3fed54" ],
+        "ETag": [ "6bc77838-4a04-4df7-ad27-efdb27d9ab18" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "3084ee66-307d-470c-aa54-e1c43037cd3b" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-correlation-request-id": [ "5131d392-7630-4c68-bd88-fb37f78937da" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T094834Z:5131d392-7630-4c68-bd88-fb37f78937da" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:21:41 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C6111C30A7E743C8A4E950BEA37833EF Ref B: MAA201060513019 Ref C: 2025-08-21T09:48:34Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:48:34 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "696" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "794" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew\",\"name\":\"jobcnh4bpnew\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"1393801e-670d-4c8c-bebd-5ee49f94f332\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2021-03-16T03:21:09.337Z\",\"compatibilityLevel\":\"1.0\",\"package\":null,\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"jobType\":\"Cloud\",\"subnetResourceId\":null,\"cluster\":null}}",
+      "Content": "{\r\n  \"id\": \"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew\",\r\n  \"name\": \"joboy3kfjnew\",\r\n  \"type\": \"Microsoft.StreamAnalytics/streamingjobs\",\r\n  \"location\": \"West Central US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"jobId\": \"43c66b79-0faf-458c-8a5f-21509db3038f\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"jobState\": \"Created\",\r\n    \"outputErrorPolicy\": \"Stop\",\r\n    \"eventsLateArrivalMaxDelayInSeconds\": 5,\r\n    \"dataLocale\": \"en-US\",\r\n    \"createdDate\": \"2025-08-21T09:48:01.207Z\",\r\n    \"compatibilityLevel\": \"1.0\",\r\n    \"jobStorageAccount\": null,\r\n    \"contentStoragePolicy\": \"SystemAccount\",\r\n    \"jobType\": \"Cloud\",\r\n    \"cluster\": null\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew?api-version=2017-04-01-preview+5": {
+  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew?api-version=2017-04-01-preview+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bpnew?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/joboy3kfjnew?api-version=2017-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "60" ],
-        "x-ms-client-request-id": [ "4ee0ef67-112a-493f-88b5-16ffa5983d1a" ],
+        "x-ms-unique-id": [ "338" ],
+        "x-ms-client-request-id": [ "39b02f60-b229-4135-af02-361b60b29c83" ],
         "CommandName": [ "Remove-AzStreamAnalyticsJob" ],
         "FullCommandName": [ "Remove-AzStreamAnalyticsJob_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -279,39 +272,39 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "4ee0ef67-112a-493f-88b5-16ffa5983d1a" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14994" ],
-        "x-ms-correlation-request-id": [ "b1155c2b-4a71-434e-b653-65fea1b43d51" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032145Z:b1155c2b-4a71-434e-b653-65fea1b43d51" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "39b02f60-b229-4135-af02-361b60b29c83" ],
+        "x-ms-operation-identifier": [ "tenantId=213e87ed-8e08-4eb4-a63c-c073058f7b00,objectId=5dce0ce9-f0a7-437f-aea2-760d05c62ca9/southeastasia/e1f2c230-a8d6-4582-b504-e77adcd58eda" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "a1858ed1-5c1a-47e3-a92a-40a66e33d561" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T094839Z:a1858ed1-5c1a-47e3-a92a-40a66e33d561" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:21:44 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D14D1E4B629847B5989612CDD9FC6C57 Ref B: MAA201060513019 Ref C: 2025-08-21T09:48:35Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:48:39 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Expires": [ "-1" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Content-Length": [ "0" ]
       },
       "Content": null,
       "isContentBase64": false
     }
   },
-  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs?api-version=2017-04-01-preview+6": {
+  "Remove-AzStreamAnalyticsJob+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs?api-version=2017-04-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs?api-version=2017-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs?api-version=2017-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "61" ],
-        "x-ms-client-request-id": [ "291114bb-49a3-464c-bd8c-5c54caeb4769" ],
+        "x-ms-unique-id": [ "339" ],
+        "x-ms-client-request-id": [ "79c44d8c-68f9-4bcb-896b-ad347e020444" ],
         "CommandName": [ "Get-AzStreamAnalyticsJob" ],
         "FullCommandName": [ "Get-AzStreamAnalyticsJob_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.StreamAnalytics/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -322,23 +315,22 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Pragma": [ "no-cache" ],
-        "X-AspNetMvc-Version": [ "5.0" ],
-        "x-ms-request-id": [ "291114bb-49a3-464c-bd8c-5c54caeb4769" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11917" ],
-        "x-ms-correlation-request-id": [ "12a05275-ba69-4ca1-87f8-f2303e3a008c" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032145Z:12a05275-ba69-4ca1-87f8-f2303e3a008c" ],
+        "x-ms-original-request-ids": [ "79c44d8c-68f9-4bcb-896b-ad347e020444" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "b3f83af7-a012-42af-a31c-81683acac4ad" ],
+        "x-ms-correlation-request-id": [ "b3f83af7-a012-42af-a31c-81683acac4ad" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20250821T094840Z:b3f83af7-a012-42af-a31c-81683acac4ad" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 16 Mar 2021 03:21:45 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 452A478E856944A7BDB3B5FE6A011473 Ref B: MAA201060513019 Ref C: 2025-08-21T09:48:39Z" ],
+        "Date": [ "Thu, 21 Aug 2025 09:48:40 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2150" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "1711" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/job7nzqx6\",\"name\":\"job7nzqx6\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"35d207ca-6f98-4e69-8cb6-678e19ff7b39\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2021-03-16T03:09:38.41Z\",\"compatibilityLevel\":\"1.0\",\"package\":null,\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"etag\":\"77baffe9-2781-480a-8444-dc99ef29c796\",\"jobType\":\"Cloud\",\"subnetResourceId\":null,\"cluster\":{\"_clusterResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb\"}}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm\",\"name\":\"jobneqhcm\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"83c57e4a-4908-441e-b499-6a313f7ee693\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2021-03-16T03:10:13.927Z\",\"compatibilityLevel\":\"1.0\",\"package\":null,\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"etag\":\"a121403f-52ec-43d7-8c65-ac0365346a60\",\"jobType\":\"Cloud\",\"subnetResourceId\":null,\"cluster\":{\"_clusterResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb\"}}}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobo95jfz\",\"name\":\"jobo95jfz\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"a92ad4dc-d790-49f4-ba94-7e5aab406d1d\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2025-08-21T09:00:28.5Z\",\"compatibilityLevel\":\"1.0\",\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"etag\":\"f047ec7d-b405-4e32-9ba6-dedf5ee28d47\",\"jobType\":\"Cloud\",\"cluster\":{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/clusters/sac-irc1ue\"}}},{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/streamingjobs/jobl1t7aq\",\"name\":\"jobl1t7aq\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs\",\"location\":\"West Central US\",\"properties\":{\"sku\":{\"name\":\"Standard\"},\"jobId\":\"982e844a-b440-408b-80d7-df10e219f6fc\",\"provisioningState\":\"Succeeded\",\"jobState\":\"Created\",\"outputErrorPolicy\":\"Stop\",\"eventsLateArrivalMaxDelayInSeconds\":5,\"dataLocale\":\"en-US\",\"createdDate\":\"2025-08-21T08:59:55.793Z\",\"compatibilityLevel\":\"1.0\",\"jobStorageAccount\":null,\"contentStoragePolicy\":\"SystemAccount\",\"etag\":\"7f7ba1e2-e6a2-48d2-9b42-2379a26d5bfd\",\"jobType\":\"Cloud\",\"cluster\":{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/streamanalytics-rg-y9u3hp/providers/Microsoft.StreamAnalytics/clusters/sac-irc1ue\"}}}]}",
       "isContentBase64": false
     }
   }

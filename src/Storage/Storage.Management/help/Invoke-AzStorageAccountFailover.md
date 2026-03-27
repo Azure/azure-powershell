@@ -14,14 +14,14 @@ Invokes failover of a Storage account.
 
 ### AccountName (Default)
 ```
-Invoke-AzStorageAccountFailover [-ResourceGroupName] <String> [-Name] <String> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Invoke-AzStorageAccountFailover [-ResourceGroupName] <String> [-Name] <String> [-FailoverType <String>]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
  [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Invoke-AzStorageAccountFailover -InputObject <PSStorageAccount> [-Force] [-AsJob]
+Invoke-AzStorageAccountFailover [-FailoverType <String>] -InputObject <PSStorageAccount> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -36,7 +36,7 @@ Please understand the following impact to your storage account before you initia
 
 ## EXAMPLES
 
-### Example 1: Invoke failover of a Storage account
+### Example 1: Invoke an unplanned failover of a Storage account
 <!-- Skip: Output cannot be splitted from code -->
 
 
@@ -44,15 +44,55 @@ Please understand the following impact to your storage account before you initia
 $account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
 $account.GeoReplicationStats
 
-Status LastSyncTime
------- ------------
-Live   11/13/2018 2:44:22 AM
+Status                        : Live
+LastSyncTime                  : 10/21/2025 3:42:38 AM
+CanFailover                   : True
+CanPlannedFailover            : True
+PostFailoverRedundancy        : Standard_LRS
+PostPlannedFailoverRedundancy : Standard_GRS
 
 $job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Force -AsJob
 $job | Wait-Job
 ```
 
 This command check the last sync time of a Storage account then invokes failover of it, the secondary cluster will become primary after failover. Since failover takes a long time, suggest to run it in the backend with -Asjob parameter, and then wait for the job complete.
+
+### Example 2: Invoke a planned failover of a Storage account 
+<!-- Skip: Output cannot be splitted from code -->
+```
+PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
+PS C:\>$account.GeoReplicationStats
+
+Status                        : Live
+LastSyncTime                  : 10/21/2025 3:42:38 AM
+CanFailover                   : True
+CanPlannedFailover            : True
+PostFailoverRedundancy        : Standard_LRS
+PostPlannedFailoverRedundancy : Standard_GRS
+
+PS C:\>$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -FailoverType Planned -Force -AsJob
+PS C:\>$job | Wait-Job
+```
+This command check the last sync time and canFailover status of a Storage account and then invokes a planned failover of it. 
+
+### Example 3: Invoke an unplanned failover of a Storage account with FailoverType set to Unplanned 
+<!-- Skip: Output cannot be splitted from code -->
+```
+PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
+PS C:\>$account.GeoReplicationStats
+
+Status                        : Live
+LastSyncTime                  : 10/21/2025 3:42:38 AM
+CanFailover                   : True
+CanPlannedFailover            : True
+PostFailoverRedundancy        : Standard_LRS
+PostPlannedFailoverRedundancy : Standard_GRS
+
+PS C:\>$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -FailoverType Unplanned -Force -AsJob
+PS C:\>$job | Wait-Job
+```
+This command check the last sync time and canFailover status of a Storage account and then invokes an unplanned failover of it. 
+
 
 ## PARAMETERS
 
@@ -78,6 +118,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FailoverType
+Specify the failover type. Possible values are: Unplanned, Planned. If not specified, the default failover type is Unplanned.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -182,7 +237,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
 
 ## OUTPUTS
 

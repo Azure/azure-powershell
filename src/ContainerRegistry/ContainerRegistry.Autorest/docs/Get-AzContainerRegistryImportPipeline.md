@@ -30,6 +30,12 @@ Get-AzContainerRegistryImportPipeline -InputObject <IContainerRegistryIdentity> 
  [<CommonParameters>]
 ```
 
+### GetViaIdentityRegistry
+```
+Get-AzContainerRegistryImportPipeline -Name <String> -RegistryInputObject <IContainerRegistryIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the properties of the import pipeline.
 
@@ -68,7 +74,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
@@ -87,13 +92,28 @@ The name of the import pipeline.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityRegistry
 Aliases: ImportPipelineName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegistryInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
+Parameter Sets: GetViaIdentityRegistry
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -153,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IImportPipeline
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IImportPipeline
 
 ## NOTES
 

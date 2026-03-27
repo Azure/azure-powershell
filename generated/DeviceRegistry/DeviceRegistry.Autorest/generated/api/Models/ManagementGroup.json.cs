@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
                 return;
             }
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_dataSource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("dataSource"), out var __jsonDataSource) ? (string)__jsonDataSource : (string)_dataSource;}
             {_configuration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("managementGroupConfiguration"), out var __jsonManagementGroupConfiguration) ? (string)__jsonManagementGroupConfiguration : (string)_configuration;}
             {_typeRef = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("typeRef"), out var __jsonTypeRef) ? (string)__jsonTypeRef : (string)_typeRef;}
             {_defaultTopic = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("defaultTopic"), out var __jsonDefaultTopic) ? (string)__jsonDefaultTopic : (string)_defaultTopic;}
@@ -106,6 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
                 return container;
             }
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
+            AddIf( null != (((object)this._dataSource)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._dataSource.ToString()) : null, "dataSource" ,container.Add );
             AddIf( null != (((object)this._configuration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._configuration.ToString()) : null, "managementGroupConfiguration" ,container.Add );
             AddIf( null != (((object)this._typeRef)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._typeRef.ToString()) : null, "typeRef" ,container.Add );
             AddIf( null != (((object)this._defaultTopic)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._defaultTopic.ToString()) : null, "defaultTopic" ,container.Add );

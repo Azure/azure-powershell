@@ -29,9 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         private string _changeDecisionCallbackUrl;
 
         /// <summary>
-        /// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site
-        /// extension for the scaffold and contracts.
-        /// https://www.siteextensions.net/packages/TiPCallback/
+        /// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public string ChangeDecisionCallbackUrl { get => this._changeDecisionCallbackUrl; set => this._changeDecisionCallbackUrl = value; }
@@ -110,15 +108,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         PossibleTypes = new [] { typeof(string) })]
         string ActionHostName { get; set; }
         /// <summary>
-        /// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site
-        /// extension for the scaffold and contracts.
-        /// https://www.siteextensions.net/packages/TiPCallback/
+        /// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.
-        https://www.siteextensions.net/packages/TiPCallback/",
+        Description = @"Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.",
         SerializedName = @"changeDecisionCallbackUrl",
         PossibleTypes = new [] { typeof(string) })]
         string ChangeDecisionCallbackUrl { get; set; }
@@ -194,9 +189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         /// </summary>
         string ActionHostName { get; set; }
         /// <summary>
-        /// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site
-        /// extension for the scaffold and contracts.
-        /// https://www.siteextensions.net/packages/TiPCallback/
+        /// Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
         /// </summary>
         string ChangeDecisionCallbackUrl { get; set; }
         /// <summary>Specifies interval in minutes to reevaluate ReroutePercentage.</summary>

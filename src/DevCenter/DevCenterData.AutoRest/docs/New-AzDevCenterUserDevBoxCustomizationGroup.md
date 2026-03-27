@@ -200,7 +200,7 @@ To include them, use the `include=tasks` queryparameter.
 To construct, see NOTES section for TASK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTask[]
 Parameter Sets: (All)
 Aliases:
 
@@ -213,8 +213,7 @@ Accept wildcard characters: False
 
 ### -UserId
 The AAD object id of the user.
-If value is 'me', the identity is taken from the 
- authentication context.
+If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
@@ -268,7 +267,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup
 
 ## NOTES
 

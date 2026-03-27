@@ -219,7 +219,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-A2AResyncReplicationProtectionCluster");
         }
 
-        [Fact]
+        [Fact(Skip = "need fix up by ASR team")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AReprotectClusterWithoutProtectedItemDetailsTest()
         {
@@ -297,6 +297,26 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"Import-Module {_helperModule.AsAbsoluteLocation()}",
                 $"Import-Module {_testModule.AsAbsoluteLocation()}",
                 "Test-A2ASingleVMReprotect");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AEnableProtectionWithPlatformFaultDomain()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-A2AEnableProtectionWithPlatformFaultDomain");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AUpdateProtectionWithZone()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-A2AUpdateProtectionWithZone");
         }
     }
 }

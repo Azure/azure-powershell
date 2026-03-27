@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new virtual machine or update the properties of the existing virtual machine.
+Create a new virtual machine or create the properties of the existing virtual machine.
 .Description
-Create a new virtual machine or update the properties of the existing virtual machine.
+Create a new virtual machine or create the properties of the existing virtual machine.
 .Example
 $networkAttachment = @{
     AttachedNetworkId = "attachedNetworkID"
@@ -39,7 +39,7 @@ $securePassword = ConvertTo-SecureString "password" -asplaintext -force
 New-AzNetworkCloudVirtualMachine -Name vmName  -ResourceGroupName resourceGroup -AdminUsername adminUsername -CloudServiceNetworkAttachmentAttachedNetworkId csnAttachedNetworkId -CloudServiceNetworkAttachmentIPAllocationMethod ipAllocationMethod -CpuCore cpuCore -ExtendedLocationName extendedLocationName -ExtendedLocationType "Custom" -Location location -SubscriptionId subscriptionId -MemorySizeGb memorySizeGb -OSDiskSizeGb osDiskSizeGb -VMImage vmImage -BootMethod bootMethod -CloudServiceNetworkAttachmentDefaultGateway defaultGateway -CloudServiceNetworkAttachmentName csnAttachmentName -IsolateEmulatorThread isolateEmulatorThread -NetworkAttachment $networkAttachment -NetworkData networkData -OSDiskCreateOption osDiskCreationOption -OSDiskDeleteOption osDiskDeleteOption -PlacementHint $hint -SshPublicKey $sshPublicKey -Tag @{tags = "tags"} -UserData userData -VirtioInterface virtioInterface -VMDeviceModel vmDeviceModel -VMImageRepositoryCredentialsUsername registryUsername -VMImageRepositoryCredentialsPassword $securePassword -VMImageRepositoryCredentialsRegistryUrl registryUrl
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,17 +47,17 @@ To create the parameters described below, construct a hash table containing the 
 
 NETWORKATTACHMENT <INetworkAttachment[]>: The list of network attachments to the virtual machine.
   AttachedNetworkId <String>: The resource ID of the associated network attached to the virtual machine.         It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
-  IPAllocationMethod <VirtualMachineIPAllocationMethod>: The IP allocation mechanism for the virtual machine.         Dynamic and Static are only valid for l3Network which may also specify Disabled.         Otherwise, Disabled is the only permitted value.
-  [DefaultGateway <DefaultGateway?>]: The indicator of whether this is the default gateway.         Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
+  IPAllocationMethod <String>: The IP allocation mechanism for the virtual machine.         Dynamic and Static are only valid for l3Network which may also specify Disabled.         Otherwise, Disabled is the only permitted value.
+  [DefaultGateway <String>]: The indicator of whether this is the default gateway.         Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
   [Ipv4Address <String>]: The IPv4 address of the virtual machine.          This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.          If IPAllocationMethod is:         Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.         Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.         Disabled - this field will be empty.
   [Ipv6Address <String>]: The IPv6 address of the virtual machine.          This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.          If IPAllocationMethod is:         Static - this field must contain an IPv6 address range from within the range specified in the attached network.         Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.         Disabled - this field will be empty.
   [Name <String>]: The associated network's interface name.         If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.         If the user doesn’t specify this value, the default interface name of the network resource will be used.         For a CloudServicesNetwork resource, this name will be ignored.
 
 PLACEMENTHINT <IVirtualMachinePlacementHint[]>: The scheduling hints for the virtual machine.
-  HintType <VirtualMachinePlacementHintType>: The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
+  HintType <String>: The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
   ResourceId <String>: The resource ID of the target object that the placement hints will be checked against, e.g., the bare metal node to host the virtual machine.
-  SchedulingExecution <VirtualMachineSchedulingExecution>: The indicator of whether the hint is a hard or soft requirement during scheduling.
-  Scope <VirtualMachinePlacementHintPodAffinityScope>: The scope for the virtual machine affinity or anti-affinity placement hint. It should always be "Machine" in the case of node affinity.
+  SchedulingExecution <String>: The indicator of whether the hint is a hard or soft requirement during scheduling.
+  Scope <String>: The scope for the virtual machine affinity or anti-affinity placement hint. It should always be "Machine" in the case of node affinity.
 
 SSHPUBLICKEY <ISshPublicKey[]>: The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
   KeyData <String>: The SSH public key data.
@@ -65,7 +65,7 @@ SSHPUBLICKEY <ISshPublicKey[]>: The list of ssh public keys. Each key will be ad
 https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudvirtualmachine
 #>
 function New-AzNetworkCloudVirtualMachine {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -105,57 +105,57 @@ param(
     # Other values will result in error from server as they are not supported.
     ${IfNoneMatch},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The name of the administrator to which the ssh public keys will be added into the authorized keys.
     ${AdminUsername},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The resource ID of the associated network attached to the virtual machine.It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
     ${CloudServiceNetworkAttachmentAttachedNetworkId},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIPAllocationMethod])]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Dynamic", "Static", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIPAllocationMethod]
+    [System.String]
     # The IP allocation mechanism for the virtual machine.Dynamic and Static are only valid for l3Network which may also specify Disabled.Otherwise, Disabled is the only permitted value.
     ${CloudServiceNetworkAttachmentIPAllocationMethod},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Int64]
     # The number of CPU cores in the virtual machine.
     ${CpuCore},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The resource ID of the extended location on which the resource will be created.
     ${ExtendedLocationName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The extended location type, for example, CustomLocation.
     ${ExtendedLocationType},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Int64]
     # The memory size of the virtual machine.
     # Allocations are measured in gibibytes.
     ${MemorySizeGb},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Int64]
     # The size of the disk.
@@ -163,161 +163,170 @@ param(
     # Allocations are measured in gibibytes.
     ${OSDiskSizeGb},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The virtual machine image that is currently provisioned to the OS disk, using the full url and tag notation used to pull the image.
     ${VMImage},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineBootMethod])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("UEFI", "BIOS")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineBootMethod]
+    [System.String]
     # Selects the boot method for the virtual machine.
     ${BootMethod},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.DefaultGateway]
+    [System.String]
     # The indicator of whether this is the default gateway.Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
     ${CloudServiceNetworkAttachmentDefaultGateway},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The IPv4 address of the virtual machine.This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.If IPAllocationMethod is:Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.Disabled - this field will be empty.
     ${CloudServiceNetworkAttachmentIpv4Address},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The IPv6 address of the virtual machine.This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.If IPAllocationMethod is:Static - this field must contain an IPv6 address range from within the range specified in the attached network.Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.Disabled - this field will be empty.
     ${CloudServiceNetworkAttachmentIpv6Address},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The associated network's interface name.If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.If the user doesn’t specify this value, the default interface name of the network resource will be used.For a CloudServicesNetwork resource, this name will be ignored.
     ${CloudServiceNetworkAttachmentName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The resource ID of the extended location on which the resource will be created.
     ${ConsoleExtendedLocationName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The extended location type, for example, CustomLocation.
     ${ConsoleExtendedLocationType},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIsolateEmulatorThread])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineIsolateEmulatorThread]
+    [System.String]
     # Field Deprecated, the value will be ignored if provided.
     # The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine.
     ${IsolateEmulatorThread},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.INetworkAttachment[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkAttachment[]]
     # The list of network attachments to the virtual machine.
-    # To construct, see NOTES section for NETWORKATTACHMENT properties and create a hash table.
     ${NetworkAttachment},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The Base64 encoded cloud-init network data.
     ${NetworkData},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskCreateOption])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Ephemeral", "Persistent")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskCreateOption]
+    [System.String]
     # The strategy for creating the OS disk.
     ${OSDiskCreateOption},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskDeleteOption])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Delete")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.OSDiskDeleteOption]
+    [System.String]
     # The strategy for deleting the OS disk.
     ${OSDiskDeleteOption},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVirtualMachinePlacementHint[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePlacementHint[]]
     # The scheduling hints for the virtual machine.
-    # To construct, see NOTES section for PLACEMENTHINT properties and create a hash table.
     ${PlacementHint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]]
     # The list of ssh public keys.
     # Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
-    # To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
     ${SshPublicKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String[]]
     # The resource IDs of volumes that are requested to be attached to the virtual machine.
     ${StorageProfileVolumeAttachment},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The Base64 encoded cloud-init user data.
     ${UserData},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineDeviceModelType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("T1", "T2", "T3")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineDeviceModelType]
+    [System.String]
     # The type of the device model to use.
     ${VMDeviceModel},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Security.SecureString]
     # The password or token used to access an image in the target repository.
     ${VMImageRepositoryCredentialsPassword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The URL of the authentication server used to validate the repository credentials.
     ${VMImageRepositoryCredentialsRegistryUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The username used to access an image in the target repository.
     ${VMImageRepositoryCredentialsUsername},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineVirtioInterfaceType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Modern", "Transitional")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.VirtualMachineVirtioInterfaceType]
+    [System.String]
     # Field Deprecated, use virtualizationModel instead.
     # The type of the virtio interface.
     ${VirtioInterface},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -387,6 +396,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -407,10 +425,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.NetworkCloud.private\New-AzNetworkCloudVirtualMachine_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.NetworkCloud.private\New-AzNetworkCloudVirtualMachine_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.NetworkCloud.private\New-AzNetworkCloudVirtualMachine_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -424,6 +442,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

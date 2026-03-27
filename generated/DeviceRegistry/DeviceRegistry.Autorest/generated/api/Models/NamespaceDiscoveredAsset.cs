@@ -73,6 +73,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IStreamDestination> DefaultStreamsDestination { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).DefaultStreamsDestination; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).DefaultStreamsDestination = value ?? null /* arrayOf */; }
 
+        /// <summary>Human-readable description of the asset.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
+        public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).Description = value ?? null; }
+
         /// <summary>Name of the device resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
         public string DeviceRefDeviceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).DeviceRefDeviceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).DeviceRefDeviceName = value ?? null; }
@@ -85,15 +89,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
         public string DiscoveryId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).DiscoveryId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).DiscoveryId = value ?? null; }
 
+        /// <summary>Human-readable display name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
+        public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).DisplayName = value ?? null; }
+
         /// <summary>Asset documentation reference.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
         public string DocumentationUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).DocumentationUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).DocumentationUri = value ?? null; }
 
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent> Event { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).Event; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).Event = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup> EventGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).EventGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).EventGroup = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="ExtendedLocation" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IExtendedLocation _extendedLocation;
@@ -109,6 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <summary>The extended location type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
         public string ExtendedLocationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IExtendedLocationInternal)ExtendedLocation).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IExtendedLocationInternal)ExtendedLocation).Type = value ?? null; }
+
+        /// <summary>Asset ID provided by the customer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
+        public string ExternalAssetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).ExternalAssetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredAssetPropertiesInternal)Property).ExternalAssetId = value ?? null; }
 
         /// <summary>Asset hardware revision number.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
@@ -412,6 +424,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"defaultStreamsDestinations",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IStreamDestination) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IStreamDestination> DefaultStreamsDestination { get; set; }
+        /// <summary>Human-readable description of the asset.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Human-readable description of the asset.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        string Description { get; set; }
         /// <summary>Name of the device resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -445,6 +468,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"discoveryId",
         PossibleTypes = new [] { typeof(string) })]
         string DiscoveryId { get; set; }
+        /// <summary>Human-readable display name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Human-readable display name.",
+        SerializedName = @"displayName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DisplayName { get; set; }
         /// <summary>Asset documentation reference.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -457,7 +491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         PossibleTypes = new [] { typeof(string) })]
         string DocumentationUri { get; set; }
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -465,10 +499,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Array of events that are part of the asset. Each event can have per-event configuration.",
-        SerializedName = @"events",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent> Event { get; set; }
+        Description = @"Array of event groups that are part of the asset. Each event group can have per-event group configuration.",
+        SerializedName = @"eventGroups",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup> EventGroup { get; set; }
         /// <summary>The extended location name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -491,6 +525,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         string ExtendedLocationType { get; set; }
+        /// <summary>Asset ID provided by the customer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Asset ID provided by the customer.",
+        SerializedName = @"externalAssetId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExternalAssetId { get; set; }
         /// <summary>Asset hardware revision number.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -657,6 +702,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string DefaultStreamsConfiguration { get; set; }
         /// <summary>Default destinations for a stream.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IStreamDestination> DefaultStreamsDestination { get; set; }
+        /// <summary>Human-readable description of the asset.</summary>
+        string Description { get; set; }
         /// <summary>
         /// Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use.
         /// </summary>
@@ -667,18 +714,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         string DeviceRefEndpointName { get; set; }
         /// <summary>Identifier used to detect changes in the asset.</summary>
         string DiscoveryId { get; set; }
+        /// <summary>Human-readable display name.</summary>
+        string DisplayName { get; set; }
         /// <summary>Asset documentation reference.</summary>
         string DocumentationUri { get; set; }
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent> Event { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup> EventGroup { get; set; }
         /// <summary>The extended location.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IExtendedLocation ExtendedLocation { get; set; }
         /// <summary>The extended location name.</summary>
         string ExtendedLocationName { get; set; }
         /// <summary>The extended location type.</summary>
         string ExtendedLocationType { get; set; }
+        /// <summary>Asset ID provided by the customer.</summary>
+        string ExternalAssetId { get; set; }
         /// <summary>Asset hardware revision number.</summary>
         string HardwareRevision { get; set; }
         /// <summary>

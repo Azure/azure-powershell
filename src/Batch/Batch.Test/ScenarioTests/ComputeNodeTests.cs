@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Common;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using Xunit;
@@ -114,7 +116,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 2, targetLowPriority: 0);
+                    PSPoolEndpointConfiguration pSPoolEndpointConfiguration = new PSPoolEndpointConfiguration(new InboundNatPool[] {
+            new InboundNatPool(
+                name: "RDP",
+                protocol: InboundEndpointProtocol.Tcp,
+                backendPort: 3389,
+                frontendPortRangeStart: 1,
+                frontendPortRangeEnd: 1000,
+                networkSecurityGroupRules: null)
+            });
+
+                    PSNetworkConfiguration pSNetworkConfiguration = new PSNetworkConfiguration()
+                    {
+                        EndpointConfiguration = pSPoolEndpointConfiguration
+                    };
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 2, targetLowPriority: 0, networkConfiguration: pSNetworkConfiguration);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId);
                 },
                 $"Test-GetRemoteLoginSettings '{poolId}'"

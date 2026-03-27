@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The PSCloudPool object with changes to commit to the Batch Service.")]
         [ValidateNotNullOrEmpty]
-        [GenericBreakingChangeWithVersion("The following properties of PSCloudPool are being deprecated: CurrentNodeCommunicationMode, TargetNodeCommunicationMode, ResourceTags, CertificateReferences, ApplicationLicenses, CloudServiceConfiguration","15.0.0", "4.0.0")]
         public PSCloudPool Pool { get; set; }
 
         protected override void ExecuteCmdletImpl()

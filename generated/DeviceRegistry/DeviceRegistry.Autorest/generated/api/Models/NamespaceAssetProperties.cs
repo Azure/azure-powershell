@@ -175,14 +175,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
         public bool? Enabled { get => this._enabled; set => this._enabled = value; }
 
-        /// <summary>Backing field for <see cref="Event" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent> _event;
+        /// <summary>Backing field for <see cref="EventGroup" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup> _eventGroup;
 
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent> Event { get => this._event; set => this._event = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup> EventGroup { get => this._eventGroup; set => this._eventGroup = value; }
 
         /// <summary>Backing field for <see cref="ExternalAssetId" /> property.</summary>
         private string _externalAssetId;
@@ -270,8 +270,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <summary>Internal Acessors for StatusDataset</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusDataset> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal.StatusDataset { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusInternal)Status).Dataset; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusInternal)Status).Dataset = value ?? null /* arrayOf */; }
 
-        /// <summary>Internal Acessors for StatusEvent</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal.StatusEvent { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusInternal)Status).Event; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusInternal)Status).Event = value ?? null /* arrayOf */; }
+        /// <summary>Internal Acessors for StatusEventGroup</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal.StatusEventGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusInternal)Status).EventGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusInternal)Status).EventGroup = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for StatusManagementGroup</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusManagementGroup> Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetPropertiesInternal.StatusManagementGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusInternal)Status).ManagementGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusInternal)Status).ManagementGroup = value ?? null /* arrayOf */; }
@@ -333,9 +333,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusDataset> StatusDataset { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusInternal)Status).Dataset; }
 
-        /// <summary>Array of event statuses that describe the status of each event.</summary>
+        /// <summary>Array of event group statuses that describe the status of each event group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Origin(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent> StatusEvent { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusInternal)Status).Event; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup> StatusEventGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusInternal)Status).EventGroup; }
 
         /// <summary>
         /// Array of management group statuses that describe the status of each management group.
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? Enabled { get; set; }
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -644,10 +644,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Array of events that are part of the asset. Each event can have per-event configuration.",
-        SerializedName = @"events",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent> Event { get; set; }
+        Description = @"Array of event groups that are part of the asset. Each event group can have per-event group configuration.",
+        SerializedName = @"eventGroups",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup> EventGroup { get; set; }
         /// <summary>Asset ID provided by the customer.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
@@ -796,17 +796,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         SerializedName = @"datasets",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusDataset) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusDataset> StatusDataset { get;  }
-        /// <summary>Array of event statuses that describe the status of each event.</summary>
+        /// <summary>Array of event group statuses that describe the status of each event group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Array of event statuses that describe the status of each event.",
-        SerializedName = @"events",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent> StatusEvent { get;  }
+        Description = @"Array of event group statuses that describe the status of each event group.",
+        SerializedName = @"eventGroups",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup> StatusEventGroup { get;  }
         /// <summary>
         /// Array of management group statuses that describe the status of each management group.
         /// </summary>
@@ -945,9 +945,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         /// <summary>Enabled/disabled status of the asset.</summary>
         bool? Enabled { get; set; }
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent> Event { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup> EventGroup { get; set; }
         /// <summary>Asset ID provided by the customer.</summary>
         string ExternalAssetId { get; set; }
         /// <summary>Asset hardware revision number.</summary>
@@ -985,8 +985,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IStatusConfig StatusConfig { get; set; }
         /// <summary>Array of dataset statuses that describe the status of each dataset.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusDataset> StatusDataset { get; set; }
-        /// <summary>Array of event statuses that describe the status of each event.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEvent> StatusEvent { get; set; }
+        /// <summary>Array of event group statuses that describe the status of each event group.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAssetStatusEventGroup> StatusEventGroup { get; set; }
         /// <summary>
         /// Array of management group statuses that describe the status of each management group.
         /// </summary>

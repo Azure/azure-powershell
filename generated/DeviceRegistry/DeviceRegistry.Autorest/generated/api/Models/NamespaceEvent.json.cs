@@ -78,11 +78,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
                 return;
             }
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
-            {_eventNotifier = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("eventNotifier"), out var __jsonEventNotifier) ? (string)__jsonEventNotifier : (string)_eventNotifier;}
+            {_dataSource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("dataSource"), out var __jsonDataSource) ? (string)__jsonDataSource : (string)_dataSource;}
             {_eventConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("eventConfiguration"), out var __jsonEventConfiguration) ? (string)__jsonEventConfiguration : (string)_eventConfiguration;}
             {_destination = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray>("destinations"), out var __jsonDestinations) ? If( __jsonDestinations as Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventDestination>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventDestination) (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.EventDestination.FromJson(__u) )) ))() : null : _destination;}
             {_typeRef = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("typeRef"), out var __jsonTypeRef) ? (string)__jsonTypeRef : (string)_typeRef;}
-            {_dataPoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray>("dataPoints"), out var __jsonDataPoints) ? If( __jsonDataPoints as Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventDataPoint) (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.NamespaceEventDataPoint.FromJson(__p) )) ))() : null : _dataPoint;}
             AfterFromJson(json);
         }
 
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
                 return container;
             }
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
-            AddIf( null != (((object)this._eventNotifier)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._eventNotifier.ToString()) : null, "eventNotifier" ,container.Add );
+            AddIf( null != (((object)this._dataSource)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._dataSource.ToString()) : null, "dataSource" ,container.Add );
             AddIf( null != (((object)this._eventConfiguration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._eventConfiguration.ToString()) : null, "eventConfiguration" ,container.Add );
             if (null != this._destination)
             {
@@ -118,15 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
                 container.Add("destinations",__w);
             }
             AddIf( null != (((object)this._typeRef)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._typeRef.ToString()) : null, "typeRef" ,container.Add );
-            if (null != this._dataPoint)
-            {
-                var __r = new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.XNodeArray();
-                foreach( var __s in this._dataPoint )
-                {
-                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
-                }
-                container.Add("dataPoints",__r);
-            }
             AfterToJson(ref container);
             return container;
         }
