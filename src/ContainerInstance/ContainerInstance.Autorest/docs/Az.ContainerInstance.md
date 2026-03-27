@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ContainerInstance
-Module Guid: 28e34b68-2d28-4aec-8797-6db484c2f903
+Module Guid: 393cc40d-8cda-42fb-8517-e52ebc003c3f
 Download Help Link: https://learn.microsoft.com/powershell/module/az.containerinstance
 Help Version: 1.0.0.0
 Locale: en-US
