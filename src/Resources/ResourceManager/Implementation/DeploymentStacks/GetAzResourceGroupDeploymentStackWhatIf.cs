@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                 ResourcesCleanupAction = shouldDeleteResources ? "delete" : "detach",
                 ResourceGroupsCleanupAction = shouldDeleteResourceGroups ? "delete" : "detach",
                 ManagementGroupsCleanupAction = shouldDeleteManagementGroups ? "delete" : "detach",
-                DenySettingsMode = DenySettingsMode != 0 ? DenySettingsMode.ToString() : null,
+                DenySettingsMode = DenySettingsMode.ToString(),
                 DenySettingsExcludedPrincipals = DenySettingsExcludedPrincipal,
                 DenySettingsExcludedActions = DenySettingsExcludedAction,
                 DenySettingsApplyToChildScopes = DenySettingsApplyToChildScopes.IsPresent

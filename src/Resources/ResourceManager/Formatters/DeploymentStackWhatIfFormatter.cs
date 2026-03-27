@@ -526,8 +526,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 return (null, Color.Reset);
             }
 
-            string symbol = ChangeTypeSymbols.GetValueOrDefault(changeType, "?");
-            Color color = ChangeTypeColors.GetValueOrDefault(changeType, Color.Reset);
+            string symbol = ChangeTypeSymbols.ContainsKey(changeType) ? ChangeTypeSymbols[changeType] : "?";
+            Color color = ChangeTypeColors.ContainsKey(changeType) ? ChangeTypeColors[changeType] : Color.Reset;
 
             return (symbol, color);
         }
@@ -595,23 +595,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         private static int GetDiagnosticLevelPriority(string level)
         {
-            return level?.ToLowerInvariant() switch
-            {
-                "info" => 1,
-                "warning" => 2,
-                "error" => 3,
-                _ => 0
-            };
+            if (level == null)
+                return 0;
+
+            var levelLower = level.ToLowerInvariant();
+            if (levelLower == "info")
+                return 1;
+            if (levelLower == "warning")
+                return 2;
+            if (levelLower == "error")
+                return 3;
+            return 0;
         }
 
         private static Color GetDiagnosticColor(string level)
         {
-            return level?.ToLowerInvariant() switch
-            {
-                "warning" => Color.DarkYellow,
-                "error" => Color.Red,
-                _ => Color.Reset
-            };
+            if (level == null)
+                return Color.Reset;
+
+            var levelLower = level.ToLowerInvariant();
+            if (levelLower == "warning")
+                return Color.DarkYellow;
+            if (levelLower == "error")
+                return Color.Red;
+            return Color.Reset;
         }
     }
 }

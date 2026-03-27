@@ -102,6 +102,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     deploymentScope = "/subscriptions/" + DeploymentSubscriptionId;
                 }
 
+                // Handle WhatIf scenario
+                if (MyInvocation.BoundParameters.ContainsKey("WhatIf") && ((SwitchParameter)MyInvocation.BoundParameters["WhatIf"]).ToBool())
+                {
+                    var whatIfResult = DeploymentStacksSdkClient.ExecuteManagementGroupDeploymentStackWhatIf(
+                        deploymentStackName: Name,
+                        managementGroupId: ManagementGroupId,
+                        location: Location,
+                        templateFile: TemplateFile,
+                        templateUri: !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
+                        templateSpec: TemplateSpecId,
+                        templateObject: TemplateObject,
+                        parameterUri: TemplateParameterUri,
+                        parameters: GetTemplateParameterObject(),
+                        description: Description,
+                        resourcesCleanupAction: shouldDeleteResources ? "delete" : "detach",
+                        resourceGroupsCleanupAction: shouldDeleteResourceGroups ? "delete" : "detach",
+                        managementGroupsCleanupAction: shouldDeleteManagementGroups ? "delete" : "detach",
+                        deploymentScope: deploymentScope,
+                        denySettingsMode: DenySettingsMode.ToString(),
+                        denySettingsExcludedPrincipals: DenySettingsExcludedPrincipal,
+                        denySettingsExcludedActions: DenySettingsExcludedAction,
+                        denySettingsApplyToChildScopes: DenySettingsApplyToChildScopes.IsPresent,
+                        bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent
+                    );
+
+                    WriteObject(whatIfResult);
+                    return;
+                }
+
                 var currentStack = DeploymentStacksSdkClient.GetManagementGroupDeploymentStack(ManagementGroupId, Name, throwIfNotExists: false);
                 if (currentStack != null && Tag == null)
                 {

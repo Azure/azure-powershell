@@ -161,6 +161,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         throw new PSArgumentException(dex.Body.Error.Message);
                     }
                 }
+                else if (ex is ErrorResponseException erex)
+                {
+                    if (erex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        // Deployment Stack does not exist
+                        if (!throwIfNotExists)
+                            return null;
+                        else
+                            throw new PSArgumentException(
+                            $"DeploymentStack '{deploymentStackName}' in Resource Group '{resourceGroupName}' not found."
+                        );
+                    }
+                    else
+                    {
+                        throw new PSArgumentException(erex.Body.Error.Message);
+                    }
+                }
 
                 throw;
             }
@@ -328,6 +345,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         throw new PSArgumentException(dex.Body.Error.Message);
                     }
                 }
+                else if (ex is ErrorResponseException erex)
+                {
+                    if (erex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        // Deployment Stack does not exist
+                        if (!throwIfNotExists)
+                            return null;
+                        else
+                            throw new PSArgumentException(
+                            $"DeploymentStack '{stackName}' not found in current subscription scope."
+                        );
+                    }
+                    else
+                    {
+                        throw new PSArgumentException(erex.Body.Error.Message);
+                    }
+                }
 
                 throw;
             }
@@ -388,6 +422,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     else
                     {
                         throw new PSArgumentException(dex.Body.Error.Message);
+                    }
+                }
+                else if (ex is ErrorResponseException erex)
+                {
+                    if (erex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        // Deployment Stack does not exist
+                        if (!throwIfNotExists)
+                            return null;
+                        else
+                            throw new PSArgumentException(
+                            $"DeploymentStack '{deploymentStackName}' in Management Group '{managementGroupId}' not found."
+                        );
+                    }
+                    else
+                    {
+                        throw new PSArgumentException(erex.Body.Error.Message);
                     }
                 }
 
@@ -541,7 +592,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         )
         {
             var deleteResponse = DeploymentStacksClient.DeploymentStacks
-                .DeleteAtResourceGroupWithHttpMessagesAsync(resourceGroupName, name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, bypassStackOutOfSyncError)
+                .DeleteAtResourceGroupWithHttpMessagesAsync(
+                    resourceGroupName, 
+                    name, 
+                    resourcesCleanupAction, 
+                    resourceGroupsCleanupAction, 
+                    managementGroupsCleanupAction, 
+                    null, // unmanageActionResourcesWithoutDeleteSupport
+                    bypassStackOutOfSyncError ? (bool?)true : (bool?)false)
                 .GetAwaiter()
                 .GetResult();
 
@@ -563,7 +621,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             bool bypassStackOutOfSyncError
         )
         {
-            var deleteResponse = DeploymentStacksClient.DeploymentStacks.DeleteAtSubscriptionWithHttpMessagesAsync(name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, bypassStackOutOfSyncError)
+            var deleteResponse = DeploymentStacksClient.DeploymentStacks
+                .DeleteAtSubscriptionWithHttpMessagesAsync(
+                    name, 
+                    resourcesCleanupAction, 
+                    resourceGroupsCleanupAction, 
+                    managementGroupsCleanupAction, 
+                    null, // unmanageActionResourcesWithoutDeleteSupport
+                    bypassStackOutOfSyncError ? (bool?)true : (bool?)false)
                 .GetAwaiter()
                 .GetResult();
 
@@ -695,7 +760,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         )
         {
             var deleteResponse = DeploymentStacksClient.DeploymentStacks
-                    .DeleteAtManagementGroupWithHttpMessagesAsync(managementGroupId, name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, bypassStackOutOfSyncError)
+                    .DeleteAtManagementGroupWithHttpMessagesAsync(
+                        managementGroupId, 
+                        name, 
+                        resourcesCleanupAction, 
+                        resourceGroupsCleanupAction, 
+                        managementGroupsCleanupAction, 
+                        null, // unmanageActionResourcesWithoutDeleteSupport
+                        bypassStackOutOfSyncError ? (bool?)true : (bool?)false)
                     .GetAwaiter()
                     .GetResult();
 
@@ -888,12 +960,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 // NOTE(jcotillo): JsonExtensions.FromJson<> extension uses a custom serialization settings
                 // that preserves DateTime values as string (DateParseHandling = DateParseHandling.None),
                 // plus other custom settings (see: JsonExtensions.JsonObjectTypeSerializer)
-                deploymentStackModel.Template =
-                    FileUtilities.DataStore.ReadFileAsStream(templateFile).FromJson<JObject>();
+                var templateJObject = FileUtilities.DataStore.ReadFileAsStream(templateFile).FromJson<JObject>();
+                deploymentStackModel.Template = templateJObject.ToObject<Dictionary<string, object>>();
             }
             else
             {
-                deploymentStackModel.Template = templateObject.ToJToken();
+                var templateJToken = templateObject.ToJToken();
+                deploymentStackModel.Template = templateJToken.ToObject<Dictionary<string, object>>();
             }
 
             // Evaluate Template Parameters:
@@ -1210,20 +1283,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourceGroupName,
             string managementGroupId)
         {
-            var actionOnUnmanage = new ActionOnUnmanage
+            var psActionOnUnmanage = new Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.ActionOnUnmanage
             {
                 Resources = resourcesCleanupAction,
                 ResourceGroups = resourceGroupsCleanupAction,
                 ManagementGroups = managementGroupsCleanupAction
             };
 
-            var denySettings = new DenySettings
+            var psDenySettings = new Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.DenySettings
             {
                 Mode = denySettingsMode,
-                ExcludedPrincipals = denySettingsExcludedPrincipals,
-                ExcludedActions = denySettingsExcludedActions,
+                ExcludedPrincipals = denySettingsExcludedPrincipals?.ToList(),
+                ExcludedActions = denySettingsExcludedActions?.ToList(),
                 ApplyToChildScopes = denySettingsApplyToChildScopes
             };
+
+            // Convert PS models to SDK models
+            var actionOnUnmanage = new Microsoft.Azure.Management.Resources.Models.ActionOnUnmanage(
+                resources: psActionOnUnmanage.Resources,
+                resourceGroups: psActionOnUnmanage.ResourceGroups,
+                managementGroups: psActionOnUnmanage.ManagementGroups);
+
+            var denySettings = new Microsoft.Azure.Management.Resources.Models.DenySettings(
+                mode: psDenySettings.Mode,
+                excludedPrincipals: psDenySettings.ExcludedPrincipals,
+                excludedActions: psDenySettings.ExcludedActions,
+                applyToChildScopes: psDenySettings.ApplyToChildScopes);
 
             // Build the deployment stack resource ID for comparison
             string stackResourceId = null;
@@ -1267,11 +1352,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else if (!string.IsNullOrEmpty(templateFile))
             {
-                properties.Template = FileUtilities.DataStore.ReadFileAsStream(templateFile).FromJson<JObject>();
+                var templateJObject = FileUtilities.DataStore.ReadFileAsStream(templateFile).FromJson<JObject>();
+                properties.Template = templateJObject.ToObject<Dictionary<string, object>>();
             }
             else
             {
-                properties.Template = templateObject.ToJToken();
+                var templateJToken = templateObject.ToJToken();
+                properties.Template = templateJToken.ToObject<Dictionary<string, object>>();
             }
 
             // Evaluate Template Parameters
@@ -1382,6 +1469,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         /// <summary>
         /// Executes a what-if operation for a deployment stack at resource group scope.
+        /// This uses the two-step process: CreateOrUpdate the WhatIf result, then call WhatIf to get changes.
         /// </summary>
         public PSDeploymentStackWhatIfResult ExecuteResourceGroupDeploymentStackWhatIf(
             string deploymentStackName,
@@ -1406,7 +1494,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 WriteVerbose($"Executing What-If for deployment stack '{deploymentStackName}' in resource group '{resourceGroupName}'");
 
-                // Create what-if result object to submit
+                // Step 1: Create what-if result object to submit
                 var whatIfRequest = CreateDeploymentStacksWhatIfResult(
                     location: null,
                     templateFile,
@@ -1429,14 +1517,74 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     null
                 );
 
-                // Execute What-If operation using Track 1 SDK
-                var whatIfResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.CreateOrUpdate(
+                // Step 2: Submit the WhatIf request (CreateOrUpdate creates/updates a WhatIf result resource)
+                WriteVerbose("Creating What-If result resource...");
+                var createResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.CreateOrUpdate(
                     resourceGroupName,
                     deploymentStackName,
                     whatIfRequest);
 
+                // The createResult should already contain the changes - check if we need to poll or if it's complete
+                WriteVerbose($"Initial What-If result state: {createResult.Properties?.ProvisioningState}");
+                
+                // Poll for completion if the result is being computed asynchronously
+                DeploymentStacksWhatIfResult finalResult = createResult;
+                const int maxPollingAttempts = 60; // 5 minutes max
+                int pollingInterval = 5; // seconds
+                int attempts = 0;
+                
+                while (finalResult.Properties?.ProvisioningState == "Running" && attempts < maxPollingAttempts)
+                {
+                    WriteVerbose($"Polling What-If result... attempt {attempts + 1}");
+                    System.Threading.Thread.Sleep(pollingInterval * 1000);
+                    finalResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Get(
+                        resourceGroupName,
+                        deploymentStackName);
+                    attempts++;
+                }
+
+                WriteVerbose($"Final What-If result state: {finalResult.Properties?.ProvisioningState}");
+
                 // Convert SDK result to PowerShell model
-                return ConvertToPSDeploymentStackWhatIfResult(whatIfResult);
+                return ConvertToPSDeploymentStackWhatIfResult(finalResult);
+            }
+            catch (ErrorResponseException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound || 
+                                                     (ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
+                                                      ex.Body?.Error?.Message?.IndexOf("what-if result", StringComparison.OrdinalIgnoreCase) >= 0))
+            {
+                // What-If API not available - provide informational message
+                WriteWarning("Deployment Stacks What-If API is not yet available in this region or subscription.");
+                WriteWarning("The deployment stack would be created/updated with the following configuration:");
+                WriteWarning($"  Name: {deploymentStackName}");
+                WriteWarning($"  Resource Group: {resourceGroupName}");
+                WriteWarning($"  Action on unmanaged resources: {resourcesCleanupAction}");
+                WriteWarning($"  Action on unmanaged resource groups: {resourceGroupsCleanupAction}");
+                WriteWarning($"  Deny Settings Mode: {denySettingsMode}");
+                
+                // Return a basic result indicating What-If is not supported
+                var notSupportedResult = new PSDeploymentStackWhatIfResult
+                {
+                    Name = deploymentStackName,
+                    Type = "Microsoft.Resources/deploymentStacks",
+                    Properties = new DeploymentStackWhatIfProperties
+                    {
+                        ProvisioningState = "What-If API not available"
+                    }
+                };
+                
+                return notSupportedResult;
+            }
+            catch (ErrorResponseException ex)
+            {
+                WriteError($"Error executing What-If (HTTP {ex.Response?.StatusCode}): {ex.Body?.Error?.Message ?? ex.Message}");
+                if (ex.Body?.Error?.Details != null && ex.Body.Error.Details.Any())
+                {
+                    foreach (var detail in ex.Body.Error.Details)
+                    {
+                        WriteError($"  - {detail.Code}: {detail.Message}");
+                    }
+                }
+                throw;
             }
             catch (Exception ex)
             {
@@ -1496,12 +1644,69 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 );
 
                 // Execute What-If operation using Track 1 SDK
-                var whatIfResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.CreateOrUpdate(
+                WriteVerbose("Creating What-If result resource...");
+                var createResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.CreateOrUpdate(
                     deploymentStackName,
                     whatIfRequest);
 
+                // Poll for completion if needed
+                WriteVerbose($"Initial What-If result state: {createResult.Properties?.ProvisioningState}");
+                
+                DeploymentStacksWhatIfResult finalResult = createResult;
+                const int maxPollingAttempts = 60;
+                int pollingInterval = 5;
+                int attempts = 0;
+                
+                while (finalResult.Properties?.ProvisioningState == "Running" && attempts < maxPollingAttempts)
+                {
+                    WriteVerbose($"Polling What-If result... attempt {attempts + 1}");
+                    System.Threading.Thread.Sleep(pollingInterval * 1000);
+                    finalResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Get(deploymentStackName);
+                    attempts++;
+                }
+
+                WriteVerbose($"Final What-If result state: {finalResult.Properties?.ProvisioningState}");
+
                 // Convert SDK result to PowerShell model
-                return ConvertToPSDeploymentStackWhatIfResult(whatIfResult);
+                return ConvertToPSDeploymentStackWhatIfResult(finalResult);
+            }
+            catch (ErrorResponseException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound || 
+                                                     (ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
+                                                      ex.Body?.Error?.Message?.IndexOf("what-if result", StringComparison.OrdinalIgnoreCase) >= 0))
+            {
+                // What-If API not available - provide informational message
+                WriteWarning("Deployment Stacks What-If API is not yet available in this region or subscription.");
+                WriteWarning("The deployment stack would be created/updated with the following configuration:");
+                WriteWarning($"  Name: {deploymentStackName}");
+                WriteWarning($"  Location: {location}");
+                WriteWarning($"  Action on unmanaged resources: {resourcesCleanupAction}");
+                WriteWarning($"  Action on unmanaged resource groups: {resourceGroupsCleanupAction}");
+                WriteWarning($"  Deny Settings Mode: {denySettingsMode}");
+                
+                // Return a basic result indicating What-If is not supported
+                var notSupportedResult = new PSDeploymentStackWhatIfResult
+                {
+                    Name = deploymentStackName,
+                    Type = "Microsoft.Resources/deploymentStacks",
+                    Properties = new DeploymentStackWhatIfProperties
+                    {
+                        ProvisioningState = "What-If API not available"
+                    }
+                };
+                
+                return notSupportedResult;
+            }
+            catch (ErrorResponseException ex)
+            {
+                WriteError($"Error executing What-If (HTTP {ex.Response?.StatusCode}): {ex.Body?.Error?.Message ?? ex.Message}");
+                if (ex.Body?.Error?.Details != null && ex.Body.Error.Details.Any())
+                {
+                    foreach (var detail in ex.Body.Error.Details)
+                    {
+                        WriteError($"  - {detail.Code}: {detail.Message}");
+                    }
+                }
+                throw;
             }
             catch (Exception ex)
             {
@@ -1562,13 +1767,73 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 );
 
                 // Execute What-If operation using Track 1 SDK
-                var whatIfResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.CreateOrUpdate(
+                WriteVerbose("Creating What-If result resource...");
+                var createResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.CreateOrUpdate(
                     managementGroupId,
                     deploymentStackName,
                     whatIfRequest);
 
+                // Poll for completion if needed
+                WriteVerbose($"Initial What-If result state: {createResult.Properties?.ProvisioningState}");
+                
+                DeploymentStacksWhatIfResult finalResult = createResult;
+                const int maxPollingAttempts = 60;
+                int pollingInterval = 5;
+                int attempts = 0;
+                
+                while (finalResult.Properties?.ProvisioningState == "Running" && attempts < maxPollingAttempts)
+                {
+                    WriteVerbose($"Polling What-If result... attempt {attempts + 1}");
+                    System.Threading.Thread.Sleep(pollingInterval * 1000);
+                    finalResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Get(
+                        managementGroupId,
+                        deploymentStackName);
+                    attempts++;
+                }
+
+                WriteVerbose($"Final What-If result state: {finalResult.Properties?.ProvisioningState}");
+
                 // Convert SDK result to PowerShell model
-                return ConvertToPSDeploymentStackWhatIfResult(whatIfResult);
+                return ConvertToPSDeploymentStackWhatIfResult(finalResult);
+            }
+            catch (ErrorResponseException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound || 
+                                                     (ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
+                                                      ex.Body?.Error?.Message?.IndexOf("what-if result", StringComparison.OrdinalIgnoreCase) >= 0))
+            {
+                // What-If API not available - provide informational message
+                WriteWarning("Deployment Stacks What-If API is not yet available in this region or subscription.");
+                WriteWarning("The deployment stack would be created/updated with the following configuration:");
+                WriteWarning($"  Name: {deploymentStackName}");
+                WriteWarning($"  Management Group: {managementGroupId}");
+                WriteWarning($"  Location: {location}");
+                WriteWarning($"  Action on unmanaged resources: {resourcesCleanupAction}");
+                WriteWarning($"  Action on unmanaged resource groups: {resourceGroupsCleanupAction}");
+                WriteWarning($"  Deny Settings Mode: {denySettingsMode}");
+                
+                // Return a basic result indicating What-If is not supported
+                var notSupportedResult = new PSDeploymentStackWhatIfResult
+                {
+                    Name = deploymentStackName,
+                    Type = "Microsoft.Resources/deploymentStacks",
+                    Properties = new DeploymentStackWhatIfProperties
+                    {
+                        ProvisioningState = "What-If API not available"
+                    }
+                };
+                
+                return notSupportedResult;
+            }
+            catch (ErrorResponseException ex)
+            {
+                WriteError($"Error executing What-If (HTTP {ex.Response?.StatusCode}): {ex.Body?.Error?.Message ?? ex.Message}");
+                if (ex.Body?.Error?.Details != null && ex.Body.Error.Details.Any())
+                {
+                    foreach (var detail in ex.Body.Error.Details)
+                    {
+                        WriteError($"  - {detail.Code}: {detail.Message}");
+                    }
+                }
+                throw;
             }
             catch (Exception ex)
             {
@@ -1594,21 +1859,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
-            return GetTokenAsync(requestContext, cancellationToken).GetAwaiter().GetResult();
-        }
-
-        public override async ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
-        {
-            var accessToken = await AzureSession.Instance.AuthenticationFactory.Authenticate(
+            var accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
                 context.Account,
                 context.Environment,
                 context.Tenant.Id,
                 null,
                 ShowDialog.Never,
                 null,
-                requestContext.Scopes);
+                requestContext.Scopes?.FirstOrDefault());
 
-            return new AccessToken(accessToken.AccessToken, DateTimeOffset.Parse(accessToken.ExpiresOn));
+            // Try to get expiration time from the token
+            DateTimeOffset expiresOn = DateTimeOffset.UtcNow.AddHours(1); // Default to 1 hour from now
+            
+            // Try to get ExpiresOn from extended properties
+            if (accessToken.ExtendedProperties != null && accessToken.ExtendedProperties.TryGetValue("ExpiresOn", out string expiresOnStr))
+            {
+                if (DateTimeOffset.TryParse(expiresOnStr, out var parsedDate))
+                {
+                    expiresOn = parsedDate;
+                }
+            }
+            else
+            {
+                // Try to use reflection to get ExpiresOn property if it exists
+                var expiresOnProperty = accessToken.GetType().GetProperty("ExpiresOn");
+                if (expiresOnProperty != null && expiresOnProperty.PropertyType == typeof(DateTimeOffset))
+                {
+                    expiresOn = (DateTimeOffset)expiresOnProperty.GetValue(accessToken);
+                }
+            }
+
+            return new AccessToken(accessToken.AccessToken, expiresOn);
+        }
+
+        public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
+        {
+            return new ValueTask<AccessToken>(GetToken(requestContext, cancellationToken));
         }
     }
 }
