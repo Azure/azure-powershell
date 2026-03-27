@@ -25,7 +25,8 @@ Describe 'Remove-AzAppConfigurationReplica' {
         if ($TestRecordingFile -and (Test-Path $TestRecordingFile)) {
             $content = Get-Content $TestRecordingFile -Raw
             $sanitized = $content -replace '(?<=Secret=)[^\\"]+', 'SANITIZED' `
-                                  -replace '(?<=\\"connectionString\\":\\")(Endpoint=https://[^"\\]+)(?=\\")', 'Endpoint=https://sanitized.azconfig.io;Id=XXXX;Secret=SANITIZED'
+                                  -replace '(?<=\\"connectionString\\":\\")(Endpoint=https://[^"\\]+)(?=\\")', 'Endpoint=https://sanitized.azconfig.io;Id=XXXX;Secret=SANITIZED' `
+                                  -replace '(?<=\\"value\\":\\")[A-Za-z0-9+/]{20,}=*(?=\\")', 'SANITIZED'
             if ($content -ne $sanitized) {
                 Set-Content $TestRecordingFile $sanitized -NoNewline
             }
