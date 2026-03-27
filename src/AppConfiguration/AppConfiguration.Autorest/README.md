@@ -169,4 +169,10 @@ directive:
       subject: Replica
       parameter-name: Location
     hide: true
+
+  # Hide Update-AzAppConfigurationReplica; replicas have no updatable properties
+  - where:
+      verb: Update
+      subject: Replica
+    hide: true
 ```

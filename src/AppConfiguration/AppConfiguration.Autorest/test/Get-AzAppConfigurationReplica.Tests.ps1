@@ -24,6 +24,14 @@ Describe 'Get-AzAppConfigurationReplica' {
 
     AfterAll {
         Remove-AzAppConfigurationStore -Name $replicaTestStoreName -ResourceGroupName $env.resourceGroup -Confirm:$false
+        if ($TestRecordingFile -and (Test-Path $TestRecordingFile)) {
+            $content = Get-Content $TestRecordingFile -Raw
+            $sanitized = $content -replace '(?<=Secret=)[^\\"]+', 'SANITIZED' `
+                                  -replace '(?<=\\"connectionString\\":\\")(Endpoint=https://[^"\\]+)(?=\\")', 'Endpoint=https://sanitized.azconfig.io;Id=XXXX;Secret=SANITIZED'
+            if ($content -ne $sanitized) {
+                Set-Content $TestRecordingFile $sanitized -NoNewline
+            }
+        }
     }
 
     It 'List' {
