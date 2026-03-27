@@ -118,7 +118,7 @@ IdentityType : UserAssigned
 KeyUri : https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1
 ```
 
-First command gets a specific vault by given vault name, subsequent three commands fetch the specity properites of encryption settings.
+First command gets a specific vault by given vault name, subsequent three commands fetch the specified properties of encryption settings.
 
 ## PARAMETERS
 
