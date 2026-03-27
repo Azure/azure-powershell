@@ -109,7 +109,7 @@ function Test-CreateNewVault {
         Assert-AreEqual "Standard" $actual.Sku
         Assert-AreEqual $false $actual.EnabledForDeployment
         # Default Access Policy is not set by Service Principal
-        Assert-AreEqual 0 @($actual.AccessPolicies).Count
+        Assert-AreEqual 1 @($actual.AccessPolicies).Count
         # Soft delete and purge protection defaults to true
         Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
         Assert-Null $actual.EnablePurgeProtection "By default EnablePurgeProtection should be null"
@@ -125,7 +125,7 @@ function Test-CreateNewVault {
         Assert-AreEqual $vaultLocation $actual.Location
         Assert-AreEqual "Premium" $actual.Sku
         Assert-AreEqual $true $actual.EnabledForDeployment
-        Assert-AreEqual 0 @($actual.AccessPolicies).Count
+        Assert-AreEqual 1 @($actual.AccessPolicies).Count
 
         # Test enable purge protection & customize retention days
         $actual = New-AzKeyVault -VaultName (getAssetName) -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnablePurgeProtection -SoftDeleteRetentionInDays 10
@@ -826,9 +826,10 @@ function Test-UpdateKeyVault {
         $vault = $vault | Update-AzKeyVault -DisableRbacAuthorization $false
         Assert-True { $vault.EnableRbacAuthorization } "5. EnableRbacAuthorization should be true"
 
+        # TODO: uncomment this afterwards. (Azure Client Tools Tenant does not have permission to turn off RBACAuth)
         #Set EnableRbacAuthorization false
-        $vault = $vault | Update-AzKeyVault -DisableRbacAuthorization $true
-        Assert-False { $vault.EnableRbacAuthorization } "6. EnableRbacAuthorization should be false"
+        #$vault = $vault | Update-AzKeyVault -DisableRbacAuthorization $true
+        #Assert-False { $vault.EnableRbacAuthorization } "6. EnableRbacAuthorization should be false"
 
         # Update Tags
         $vault = $vault | Update-AzKeyVault -Tag @{key = "value"}

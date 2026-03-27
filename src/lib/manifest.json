@@ -1,7 +1,7 @@
 [
     {
         "PackageName": "Azure.Core",
-        "PackageVersion": "1.45.0",
+        "PackageVersion": "1.50.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -22,35 +22,35 @@
     },
     {
         "PackageName": "Microsoft.Bcl.AsyncInterfaces",
-        "PackageVersion": "6.0.0",
+        "PackageVersion": "8.0.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Identity.Client",
-        "PackageVersion": "4.65.0",
+        "PackageVersion": "4.83.1",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Identity.Client.Extensions.Msal",
-        "PackageVersion": "4.65.0",
+        "PackageVersion": "4.83.1",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Identity.Client.Broker",
-        "PackageVersion": "4.65.0",
+        "PackageVersion": "4.83.1",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Identity.Client.NativeInterop",
-        "PackageVersion": "0.16.2",
+        "PackageVersion": "0.20.2",
         "TargetFramework": "netstandard2.0",
         "CopyRuntimeAssemblies": true,
         "WindowsPowerShell": true,
@@ -58,10 +58,17 @@
     },
     {
         "PackageName": "Microsoft.IdentityModel.Abstractions",
-        "PackageVersion": "6.35.0",
+        "PackageVersion": "8.14.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
+    },
+    {
+        "PackageName": "System.Formats.Asn1",
+        "PackageVersion": "8.0.1",
+        "TargetFramework": "netstandard2.0",
+        "WindowsPowerShell": true,
+        "PowerShell7Plus": false
     },
     {
         "PackageName": "System.Buffers",
@@ -72,14 +79,14 @@
     },
     {
         "PackageName": "System.ClientModel",
-        "PackageVersion": "1.2.1",
+        "PackageVersion": "1.8.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "System.Memory.Data",
-        "PackageVersion": "6.0.1",
+        "PackageVersion": "8.0.1",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
@@ -135,14 +142,14 @@
     },
     {
         "PackageName": "System.Text.Json",
-        "PackageVersion": "6.0.11",
+        "PackageVersion": "8.0.6",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "System.Threading.Tasks.Extensions",
-        "PackageVersion": "4.5.4",
+        "PackageVersion": "4.6.0",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": false
@@ -156,8 +163,8 @@
     },
     {
         "PackageName": "System.Diagnostics.DiagnosticSource",
-        "PackageVersion": "6.0.1",
-        "TargetFramework": "net461",
+        "PackageVersion": "8.0.1",
+        "TargetFramework": "net462",
         "WindowsPowerShell": true,
         "PowerShell7Plus": false
     },
@@ -184,7 +191,7 @@
     },
     {
         "PackageName": "System.Security.Cryptography.Cng",
-        "PackageVersion": "4.4.0",
+        "PackageVersion": "5.0.0",
         "TargetFramework": "net47",
         "WindowsPowerShell": true,
         "PowerShell7Plus": false
@@ -198,8 +205,15 @@
     },
     {
         "PackageName": "System.Text.Encodings.Web",
-        "PackageVersion": "6.0.1",
-        "TargetFramework": "net461",
+        "PackageVersion": "8.0.0",
+        "TargetFramework": "net462",
+        "WindowsPowerShell": true,
+        "PowerShell7Plus": false
+    },
+    {
+        "PackageName": "System.ValueTuple",
+        "PackageVersion": "4.5.0",
+        "TargetFramework": "net47",
         "WindowsPowerShell": true,
         "PowerShell7Plus": false
     },

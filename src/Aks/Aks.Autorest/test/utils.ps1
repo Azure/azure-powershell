@@ -36,8 +36,8 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.ResourceGroupName = 'aks-test'
-    $env.AksName = 'aks'
+    $env.ResourceGroupName = 'AKS_TEST_RG'
+    $env.AksName = 'AKS_Test_Cluster'
     $env.location = 'eastus'
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

@@ -6,20 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Creates or updates an autoscale setting.</summary>
+    /// <summary>create an autoscale setting.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAutoscaleSetting_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties=new string[] {"Notification","Profile"}, NewOutputProperties=new string[] {"Notification","Profile"}, ChangeDescription="The types of the properties 'Notification' and 'Profile' of type 'IAutoscaleSettingResource' will be changed from single object to 'List'.")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Description(@"Creates or updates an autoscale setting.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Description(@"create an autoscale setting.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.HttpPath(Path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}", ApiVersion = "2022-10-01")]
     public partial class NewAzAutoscaleSetting_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,13 +37,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>The autoscale setting resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleSettingResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleSettingResource();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Autoscale Client => Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Module.Instance.ClientAPI;
@@ -68,6 +85,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter Enabled { get => _parametersBody.Enabled ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.Enabled = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -127,13 +147,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
         ReadOnly = false,
         Description = @"the collection of notifications.",
         SerializedName = @"notifications",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleNotification) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleNotification[] Notification { get => _parametersBody.Notification ?? null /* arrayOf */; set => _parametersBody.Notification = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleNotification) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleNotification[] Notification { get => _parametersBody.Notification?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.Notification = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleNotification>(value) : null); }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>
         /// the amount of time to specify by which instances are launched in advance. It must be between 1 minute and 60 minutes in
@@ -157,9 +177,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
         ReadOnly = false,
         Description = @"the predictive autoscale mode",
         SerializedName = @"scaleMode",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode PredictiveAutoscalePolicyScaleMode { get => _parametersBody.PredictiveAutoscalePolicyScaleMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode)""); set => _parametersBody.PredictiveAutoscalePolicyScaleMode = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.PSArgumentCompleterAttribute("Disabled", "ForecastOnly", "Enabled")]
+        public string PredictiveAutoscalePolicyScaleMode { get => _parametersBody.PredictiveAutoscalePolicyScaleMode ?? null; set => _parametersBody.PredictiveAutoscalePolicyScaleMode = value; }
 
         /// <summary>
         /// the collection of automatic scaling profiles that specify different scaling parameters for different time periods. A maximum
@@ -173,9 +193,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
         ReadOnly = false,
         Description = @"the collection of automatic scaling profiles that specify different scaling parameters for different time periods. A maximum of 20 profiles can be specified.",
         SerializedName = @"profiles",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfile) })]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.ParameterBreakingChange("Profile", "15.0.0", "7.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfile[] Profile { get => _parametersBody.Profile ?? null /* arrayOf */; set => _parametersBody.Profile = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleProfile) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleProfile[] Profile { get => _parametersBody.Profile?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.Profile = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleProfile>(value) : null); }
 
         /// <summary>the name of the autoscale setting.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "the name of the autoscale setting.")]
@@ -232,7 +251,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -249,8 +269,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
         ReadOnly = false,
         Description = @"Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>the location of the resource that the autoscale setting should be added to.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "the location of the resource that the autoscale setting should be added to.")]
@@ -281,36 +301,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -333,6 +353,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -397,8 +422,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -408,7 +458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzAutoscaleSetting_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzAutoscaleSetting_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzAutoscaleSetting_CreateExpanded()
         {
@@ -462,7 +512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -475,12 +525,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.AutoscaleSettingsCreateOrUpdate(ResourceGroupName, Name, SubscriptionId, _parametersBody, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.AutoscaleSettingsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _parametersBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=_parametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -516,12 +566,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -533,8 +583,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
                     return ;
                 }
                 // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
 
@@ -542,12 +610,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -564,15 +632,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_parametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_parametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -582,12 +650,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -599,8 +667,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleSettingResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

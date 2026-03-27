@@ -9,20 +9,20 @@ $outboundAssigned = @{
 $endpointsInbound = @{
     "my-inbound-endpoint1" = @{
         Address = "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
-        EndpointType = "Microsoft.IotHub"
+        EndpointType = "Microsoft.Devices/IotHubs"
         AuthenticationMethod = "Certificate"
         X509CredentialsCertificateSecretName = "my-certificate"
     }
     "my-inbound-endpoint2" = @{
         Address = "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
-        EndpointType = "Microsoft.IotHub"
+        EndpointType = "Microsoft.Devices/IotHubs"
         AuthenticationMethod = "UsernamePassword"
         UsernamePasswordCredentialsUsernameSecretName = "my-username"
         UsernamePasswordCredentialsPasswordSecretName = "my-password"
     }
 }
 
-New-AzDeviceRegistryNamespaceDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DeviceName "my-device" -Location "eastus" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4" -ExtendedLocationType "CustomLocation" -Manufacturer "Contoso" -Model "model123" -OperatingSystem "Linux" -OperatingSystemVersion "1000" -OutboundAssigned $outboundAssigned -EndpointsInbound $endpointsInbound -Enabled
+New-AzDeviceRegistryNamespaceDevice -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -DeviceName "my-device" -Location "eastus" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq" -ExtendedLocationType "CustomLocation" -Manufacturer "Contoso" -Model "model123" -OperatingSystem "Linux" -OperatingSystemVersion "1000" -OutboundAssigned $outboundAssigned -EndpointsInbound $endpointsInbound -Enabled
 ```
 
 ```output
@@ -47,7 +47,7 @@ EndpointsInbound             : {
                                      },
                                      "method": "Certificate"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "my-inbound-endpoint2": {
@@ -58,12 +58,12 @@ EndpointsInbound             : {
                                      },
                                      "method": "UsernamePassword"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
 Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/microsoft.deviceregistry/namespaces/my-namespace/devices/my-device
@@ -130,7 +130,7 @@ EndpointsInbound             : {
                                      },
                                      "method": "Certificate"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "my-inbound-endpoint2": {
@@ -141,12 +141,12 @@ EndpointsInbound             : {
                                      },
                                      "method": "UsernamePassword"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
 Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/microsoft.deviceregistry/namespaces/my-namespace/devices/my-device
@@ -214,7 +214,7 @@ EndpointsInbound             : {
                                      },
                                      "method": "Certificate"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
                                  },
                                  "my-inbound-endpoint2": {
@@ -225,12 +225,12 @@ EndpointsInbound             : {
                                      },
                                      "method": "UsernamePassword"
                                    },
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://my-inbound-endpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 Etag                         : "170395e0-0000-0200-0000-68812dd00000"
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             : 777f5f99-b81d-4db9-be6e-fcf0a325a085
 Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/microsoft.deviceregistry/namespaces/my-namespace/devices/my-device

@@ -72,7 +72,7 @@ Deallocate specific nodes from the node type.
 Redeploy nodes from the node type.
 
 ### [Invoke-AzServiceFabricReimageManagedNodeType](Invoke-AzServiceFabricReimageManagedNodeType.md)
-Reimage nodes from the node type.
+Reimage nodes from the node type. On reimage operation the service fabric nodes will be disabled before reimaging the vms and enabled them back again once they come back. If this is done on primary node types it might take a while as it might not reimage all the nodes at the same time. Use -ForceReimage to force the operation even if service fabric is unable to disable the nodes but use with caution as this might cause data loss if stateful workloads are running on the node.
 
 ### [New-AzServiceFabricApplication](New-AzServiceFabricApplication.md)
 Create new service fabric application under the specified resource group and cluster.
@@ -174,7 +174,7 @@ Update a service fabric managed application type version. This allows you to upd
 Update a managed service from the cluster. Only supports ARM deployed services.
 
 ### [Set-AzServiceFabricManagedNodeType](Set-AzServiceFabricManagedNodeType.md)
-Sets node type resource properties or run reimage actions on specific nodes of the node type with -Reimage parameter.
+Sets node type resource properties.
 
 ### [Set-AzServiceFabricSetting](Set-AzServiceFabricSetting.md)
 Add or update one or multiple Service Fabric settings to the cluster.

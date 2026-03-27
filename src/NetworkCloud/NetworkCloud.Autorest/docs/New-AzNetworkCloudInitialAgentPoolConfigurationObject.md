@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkCloud
-online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudInitialAgentPoolConfigurationObject
+online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-aznetworkcloudinitialagentpoolconfigurationobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,10 @@ Create an in-memory object for InitialAgentPoolConfiguration.
 ## SYNTAX
 
 ```
-New-AzNetworkCloudInitialAgentPoolConfigurationObject -Count <Int64> -Mode <AgentPoolMode> -Name <String>
+New-AzNetworkCloudInitialAgentPoolConfigurationObject -Count <Int64> -Mode <String> -Name <String>
  -VMSkuName <String> [-AdministratorConfigurationAdminUsername <String>]
  [-AdministratorConfigurationSshPublicKey <ISshPublicKey[]>] [-AgentOptionHugepagesCount <Int64>]
- [-AgentOptionHugepagesSize <HugepagesSize>]
+ [-AgentOptionHugepagesSize <String>]
  [-AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]>]
  [-AttachedNetworkConfigurationL3Network <IL3NetworkAttachmentConfiguration[]>]
  [-AttachedNetworkConfigurationTrunkedNetwork <ITrunkedNetworkAttachmentConfiguration[]>]
@@ -58,10 +58,9 @@ Accept wildcard characters: False
 ### -AdministratorConfigurationSshPublicKey
 The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster.
 In some cases, specification of public keys may be required to produce a working environment.
-To construct, see NOTES section for ADMINISTRATORCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +90,7 @@ Accept wildcard characters: False
 The size of the hugepages to allocate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.HugepagesSize
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,10 +103,9 @@ Accept wildcard characters: False
 
 ### -AttachedNetworkConfigurationL2Network
 The list of Layer 2 Networks and related configuration for attachment.
-To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL2NETWORK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2NetworkAttachmentConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2NetworkAttachmentConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -120,10 +118,9 @@ Accept wildcard characters: False
 
 ### -AttachedNetworkConfigurationL3Network
 The list of Layer 3 Networks and related configuration for attachment.
-To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL3NETWORK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkAttachmentConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3NetworkAttachmentConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -136,10 +133,9 @@ Accept wildcard characters: False
 
 ### -AttachedNetworkConfigurationTrunkedNetwork
 The list of Trunked Networks and related configuration for attachment.
-To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONTRUNKEDNETWORK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ITrunkedNetworkAttachmentConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrunkedNetworkAttachmentConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -183,10 +179,9 @@ Accept wildcard characters: False
 
 ### -Label
 The labels applied to the nodes in this agent pool.
-To construct, see NOTES section for LABEL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesLabel[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesLabel[]
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +198,7 @@ System pools run the features and critical services for the Kubernetes Cluster, 
 Every Kubernetes cluster must contain at least one system node pool with at least one node.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.AgentPoolMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -231,10 +226,9 @@ Accept wildcard characters: False
 
 ### -Taint
 The taints applied to the nodes in this agent pool.
-To construct, see NOTES section for TAINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesLabel[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesLabel[]
 Parameter Sets: (All)
 Aliases:
 
@@ -327,7 +321,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.InitialAgentPoolConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.InitialAgentPoolConfiguration
 
 ## NOTES
 

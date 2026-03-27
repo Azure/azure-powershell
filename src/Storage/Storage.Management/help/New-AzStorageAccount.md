@@ -30,8 +30,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-DefaultSharePermission <String>] [-EdgeZone <String>] [-PublicNetworkAccess <String>]
  [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>]
  [-AllowedCopyScope <String>] [-DnsEndpointType <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### AzureActiveDirectoryKerberosForFile
@@ -52,8 +52,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-EdgeZone <String>] [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability]
  [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>]
  [-DnsEndpointType <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -77,8 +77,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-EdgeZone <String>] [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability]
  [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>]
  [-DnsEndpointType <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-EnableBlobGeoPriorityReplication <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -428,6 +428,19 @@ None
 ```
 
 This command creates a Storage account that has zone placement policy as None, and then shows the ZonePlacementPolicy property of the created account.
+
+### Example 22: Create a Storage account with Blob Geo Priority Replication enabled
+```powershell
+$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName Standard_GRS -Location centraluseuap -EnableBlobGeoPriorityReplication $true
+
+$account.GeoPriorityReplicationStatus.IsBlobEnabled
+```
+
+```output
+True
+```
+
+This command creates a Storage account with Blob Geo Priority Replication enabled, which provides enhanced geo-replication with service level agreement for priority replication to improve recovery time objectives (RTO).
 
 ## PARAMETERS
 
@@ -798,6 +811,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableBlobGeoPriorityReplication
+Status indicating whether Geo Priority Replication is enabled for the account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableHierarchicalNamespace
 Indicates whether or not the Storage account enables Hierarchical Namespace.
 
@@ -960,7 +988,7 @@ Accept wildcard characters: False
 
 ### -ImmutabilityPeriod
 The immutability period for the blobs in the container since the policy creation in days. 
-This property can only be only be specified with '-EnableAccountLevelImmutability'.
+This property can only be only specified with '-EnableAccountLevelImmutability'.
 
 ```yaml
 Type: System.Int32
@@ -1159,21 +1187,6 @@ NetworkRuleSet is used to define a set of configuration rules for firewalls and 
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

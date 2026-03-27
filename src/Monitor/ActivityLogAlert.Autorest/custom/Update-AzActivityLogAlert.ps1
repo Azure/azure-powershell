@@ -24,14 +24,12 @@ Updates 'tags' and 'enabled' fields in an existing Alert rule.
 This method is used to update the Alert rule tags, and to enable or disable the Alert rule.
 To update other fields use CreateOrUpdate operation.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzActivityLogAlert -ResourceGroupName $ResourceGroupName -Name $AlertName -Tag @{"key"="val"} -Enabled $false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,10 +44,12 @@ INPUTOBJECT <IMonitorIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.monitor/update-azactivitylogalert
 #>
 function Update-AzActivityLogAlert {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Alias('ActivityLogAlertName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Path')]
         [System.String]
@@ -57,6 +57,8 @@ function Update-AzActivityLogAlert {
         ${Name},
     
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -64,6 +66,8 @@ function Update-AzActivityLogAlert {
         ${ResourceGroupName},
     
         [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+        [Parameter(ParameterSetName='UpdateViaJsonString')]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -77,26 +81,41 @@ function Update-AzActivityLogAlert {
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
     
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
         [System.Boolean]
         # Indicates whether this Activity Log Alert rule is enabled.
         # If an Activity Log Alert rule is not enabled, then none of its actions will be activated.
         ${Enabled},
     
-        [Parameter()]
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRulePatchObjectTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAlertRulePatchObjectTags]))]
         [System.Collections.Hashtable]
         # The resource tags
         ${Tag},
+
+        [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
+        [System.String]
+        # Path of Json file supplied to the Update operation
+        ${JsonFilePath},
+
+        [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
+        [System.String]
+        # Json string supplied to the Update operation
+        ${JsonString},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
     
         [Parameter(DontShow)]

@@ -73,6 +73,12 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Increase the value of this parameter allows users to reset the key used for securing communication channel between guest and host.")]
         public int? KeyIncarnationId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux Os.")]
+        public bool? AddProxyAgentExtension { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.SecurityProfile == null)
@@ -94,6 +100,11 @@ namespace Microsoft.Azure.Commands.Compute
                 }),
                 KeyIncarnationId = this.KeyIncarnationId
             };
+
+            if (this.MyInvocation.BoundParameters.ContainsKey(nameof(AddProxyAgentExtension)))
+            {
+                this.VM.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension = this.AddProxyAgentExtension;
+            }
 
             WriteObject(this.VM);
         }

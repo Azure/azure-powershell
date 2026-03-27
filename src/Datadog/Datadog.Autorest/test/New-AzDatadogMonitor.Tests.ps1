@@ -13,8 +13,8 @@ while(-not $mockingPath) {
 
 Describe 'New-AzDatadogMonitor' {
     It 'CreateExpanded' {
-        {    
-            New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName03 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'user@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber '11111111111' -EnableSystemAssignedIdentity:$true
+        {
+            New-AzDatadogMonitor -ResourceGroupName $env.resourceGroup -Name $($env.monitorName03) -SubscriptionId "b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c" -EnableSystemAssignedIdentity -Location "centraluseuap" -MonitoringStatus "Enabled" -SkuName "pro_testing_20200911_Monthly@TIDgmz7xq9ge3py" -UserInfoEmailAddress 'bhanuchandj@microsoft.com' -UserInfoName 'bhanuchand' -UserInfoPhoneNumber '11111111111' -OrganizationName "bhanu-test-env-dd1"
         } | Should -Not -Throw
     }
 }

@@ -10,8 +10,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
     public partial struct ProjectAbilityAsDeveloper :
         System.IEquatable<ProjectAbilityAsDeveloper>
     {
+        /// <summary>User can perform connect using DevBox tunnels.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ProjectAbilityAsDeveloper ConnectWithDevBoxTunnels = @"ConnectWithDevBoxTunnels";
+
+        /// <summary>User can create DevBox tunnels.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ProjectAbilityAsDeveloper CreateDevBoxTunnels = @"CreateDevBoxTunnels";
+
         /// <summary>User can customize their own dev boxes.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ProjectAbilityAsDeveloper CustomizeDevBoxes = @"CustomizeDevBoxes";
+
+        /// <summary>User can delete DevBox tunnels.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ProjectAbilityAsDeveloper DeleteDevBoxTunnels = @"DeleteDevBoxTunnels";
 
         /// <summary>User can delete their own dev boxes.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ProjectAbilityAsDeveloper DeleteDevBoxes = @"DeleteDevBoxes";

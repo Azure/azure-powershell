@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Extensions;
 
-    /// <summary>
-    /// List of private endpoint connection associated with the specified storage account
-    /// </summary>
+    /// <summary>The response of a PrivateEndpointConnection list operation.</summary>
     public partial class PrivateEndpointConnectionListResult
     {
 
@@ -113,10 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
                 }
                 container.Add("value",__w);
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
-            }
+            AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

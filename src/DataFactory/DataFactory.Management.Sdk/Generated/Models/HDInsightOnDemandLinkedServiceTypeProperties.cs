@@ -62,6 +62,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// with resultType string).
         /// </param>
 
+        /// <param name="clusterResourceGroupAuthType">HDInsight On-demand cluster resource group authentication type.
+        /// Possible values include: &#39;ServicePrincipalKey&#39;,
+        /// &#39;SystemAssignedManagedIdentity&#39;, &#39;UserAssignedManagedIdentity&#39;</param>
+
         /// <param name="clusterNamePrefix">The prefix of cluster name, postfix will be distinct with timestamp. Type:
         /// string (or Expression with resultType string).
         /// </param>
@@ -157,7 +161,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="credential">The credential reference containing authentication information.
         /// </param>
-        public HDInsightOnDemandLinkedServiceTypeProperties(object clusterSize, object timeToLive, object version, LinkedServiceReference linkedServiceName, object hostSubscriptionId, object tenant, object clusterResourceGroup, object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object clusterNamePrefix = default(object), object clusterUserName = default(object), SecretBase clusterPassword = default(SecretBase), object clusterSshUserName = default(object), SecretBase clusterSshPassword = default(SecretBase), System.Collections.Generic.IList<LinkedServiceReference> additionalLinkedServiceNames = default(System.Collections.Generic.IList<LinkedServiceReference>), LinkedServiceReference hcatalogLinkedServiceName = default(LinkedServiceReference), object clusterType = default(object), object sparkVersion = default(object), object coreConfiguration = default(object), object hBaseConfiguration = default(object), object hdfsConfiguration = default(object), object hiveConfiguration = default(object), object mapReduceConfiguration = default(object), object oozieConfiguration = default(object), object stormConfiguration = default(object), object yarnConfiguration = default(object), string encryptedCredential = default(string), object headNodeSize = default(object), object dataNodeSize = default(object), object zookeeperNodeSize = default(object), System.Collections.Generic.IList<ScriptAction> scriptActions = default(System.Collections.Generic.IList<ScriptAction>), object virtualNetworkId = default(object), object subnetName = default(object), CredentialReference credential = default(CredentialReference))
+        public HDInsightOnDemandLinkedServiceTypeProperties(object clusterSize, object timeToLive, object version, LinkedServiceReference linkedServiceName, object hostSubscriptionId, object tenant, object clusterResourceGroup, object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), string clusterResourceGroupAuthType = default(string), object clusterNamePrefix = default(object), object clusterUserName = default(object), SecretBase clusterPassword = default(SecretBase), object clusterSshUserName = default(object), SecretBase clusterSshPassword = default(SecretBase), System.Collections.Generic.IList<LinkedServiceReference> additionalLinkedServiceNames = default(System.Collections.Generic.IList<LinkedServiceReference>), LinkedServiceReference hcatalogLinkedServiceName = default(LinkedServiceReference), object clusterType = default(object), object sparkVersion = default(object), object coreConfiguration = default(object), object hBaseConfiguration = default(object), object hdfsConfiguration = default(object), object hiveConfiguration = default(object), object mapReduceConfiguration = default(object), object oozieConfiguration = default(object), object stormConfiguration = default(object), object yarnConfiguration = default(object), string encryptedCredential = default(string), object headNodeSize = default(object), object dataNodeSize = default(object), object zookeeperNodeSize = default(object), System.Collections.Generic.IList<ScriptAction> scriptActions = default(System.Collections.Generic.IList<ScriptAction>), object virtualNetworkId = default(object), object subnetName = default(object), CredentialReference credential = default(CredentialReference))
 
         {
             this.ClusterSize = clusterSize;
@@ -169,6 +173,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.ServicePrincipalKey = servicePrincipalKey;
             this.Tenant = tenant;
             this.ClusterResourceGroup = clusterResourceGroup;
+            this.ClusterResourceGroupAuthType = clusterResourceGroupAuthType;
             this.ClusterNamePrefix = clusterNamePrefix;
             this.ClusterUserName = clusterUserName;
             this.ClusterPassword = clusterPassword;
@@ -267,6 +272,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "clusterResourceGroup")]
         public object ClusterResourceGroup {get; set; }
+
+        /// <summary>
+        /// Gets or sets hDInsight On-demand cluster resource group authentication
+        /// type. Possible values include: &#39;ServicePrincipalKey&#39;, &#39;SystemAssignedManagedIdentity&#39;, &#39;UserAssignedManagedIdentity&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clusterResourceGroupAuthType")]
+        public string ClusterResourceGroupAuthType {get; set; }
 
         /// <summary>
         /// Gets or sets the prefix of cluster name, postfix will be distinct with
@@ -487,6 +499,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.LinkedServiceName.Validate();
             }
+
 
 
 

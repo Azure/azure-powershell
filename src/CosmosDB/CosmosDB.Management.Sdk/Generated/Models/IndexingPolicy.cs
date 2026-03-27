@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="vectorIndexes">List of paths to include in the vector indexing
         /// </param>
-        public IndexingPolicy(bool? automatic = default(bool?), string indexingMode = default(string), System.Collections.Generic.IList<IncludedPath> includedPaths = default(System.Collections.Generic.IList<IncludedPath>), System.Collections.Generic.IList<ExcludedPath> excludedPaths = default(System.Collections.Generic.IList<ExcludedPath>), System.Collections.Generic.IList<System.Collections.Generic.IList<CompositePath>> compositeIndexes = default(System.Collections.Generic.IList<System.Collections.Generic.IList<CompositePath>>), System.Collections.Generic.IList<SpatialSpec> spatialIndexes = default(System.Collections.Generic.IList<SpatialSpec>), System.Collections.Generic.IList<VectorIndex> vectorIndexes = default(System.Collections.Generic.IList<VectorIndex>))
+
+        /// <param name="fullTextIndexes">List of paths to include in the full text indexing
+        /// </param>
+        public IndexingPolicy(bool? automatic = default(bool?), string indexingMode = default(string), System.Collections.Generic.IList<IncludedPath> includedPaths = default(System.Collections.Generic.IList<IncludedPath>), System.Collections.Generic.IList<ExcludedPath> excludedPaths = default(System.Collections.Generic.IList<ExcludedPath>), System.Collections.Generic.IList<System.Collections.Generic.IList<CompositePath>> compositeIndexes = default(System.Collections.Generic.IList<System.Collections.Generic.IList<CompositePath>>), System.Collections.Generic.IList<SpatialSpec> spatialIndexes = default(System.Collections.Generic.IList<SpatialSpec>), System.Collections.Generic.IList<VectorIndex> vectorIndexes = default(System.Collections.Generic.IList<VectorIndex>), System.Collections.Generic.IList<FullTextIndexPath> fullTextIndexes = default(System.Collections.Generic.IList<FullTextIndexPath>))
 
         {
             this.Automatic = automatic;
@@ -54,6 +57,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.CompositeIndexes = compositeIndexes;
             this.SpatialIndexes = spatialIndexes;
             this.VectorIndexes = vectorIndexes;
+            this.FullTextIndexes = fullTextIndexes;
             CustomInit();
         }
 
@@ -104,5 +108,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vectorIndexes")]
         public System.Collections.Generic.IList<VectorIndex> VectorIndexes {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of paths to include in the full text indexing
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "fullTextIndexes")]
+        public System.Collections.Generic.IList<FullTextIndexPath> FullTextIndexes {get; set; }
     }
 }

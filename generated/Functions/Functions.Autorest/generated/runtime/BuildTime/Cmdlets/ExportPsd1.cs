@@ -131,9 +131,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell
 
                 var functionInfos = GetScriptCmdlets(ExportsFolder).ToArray();
                 // FunctionsToExport
-                if (!IsUndefined("'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppPlan', 'Get-AzFunctionAppSetting', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Remove-AzFunctionAppSetting', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp', 'Update-AzFunctionApp', 'Update-AzFunctionAppPlan', 'Update-AzFunctionAppSetting'"))
+                if (!IsUndefined("'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppFlexConsumptionRuntime', 'Get-AzFunctionAppPlan', 'Get-AzFunctionAppSetting', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Remove-AzFunctionAppSetting', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp', 'Update-AzFunctionApp', 'Update-AzFunctionAppPlan', 'Update-AzFunctionAppSetting'"))
                 {
-                    sb.AppendLine($@"{Indent}FunctionsToExport = @({"'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppPlan', 'Get-AzFunctionAppSetting', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Remove-AzFunctionAppSetting', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp', 'Update-AzFunctionApp', 'Update-AzFunctionAppPlan', 'Update-AzFunctionAppSetting'"})");
+                    sb.AppendLine($@"{Indent}FunctionsToExport = @({"'Get-AzFunctionApp', 'Get-AzFunctionAppAvailableLocation', 'Get-AzFunctionAppFlexConsumptionRuntime', 'Get-AzFunctionAppPlan', 'Get-AzFunctionAppSetting', 'New-AzFunctionApp', 'New-AzFunctionAppPlan', 'Remove-AzFunctionApp', 'Remove-AzFunctionAppPlan', 'Remove-AzFunctionAppSetting', 'Restart-AzFunctionApp', 'Start-AzFunctionApp', 'Stop-AzFunctionApp', 'Update-AzFunctionApp', 'Update-AzFunctionAppPlan', 'Update-AzFunctionAppSetting'"})");
                 }
                 else
                 {

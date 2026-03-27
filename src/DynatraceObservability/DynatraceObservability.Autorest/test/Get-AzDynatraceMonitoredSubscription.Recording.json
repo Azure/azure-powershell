@@ -1,0 +1,190 @@
+{
+  "Get-AzDynatraceMonitoredSubscription+[NoContext]+Get parameter set (single monitored subscription)+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "9acd3418-98a3-4f07-9e34-2b3b2f226129" ],
+        "CommandName": [ "Get-AzDynatraceMonitoredSubscription" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitoredSubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/dc05a990-1d1b-4618-99a2-828238993d7f" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "4870db8e-b726-4751-a823-d4479653a6d2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5a71a3e5-fb13-41bd-8329-a2a7710148ef" ],
+        "x-ms-correlation-request-id": [ "5b2f900c-bf52-4217-b7e6-f7bcd31c2cd9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T142857Z:5b2f900c-bf52-4217-b7e6-f7bcd31c2cd9" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1B53FF2E26EF48E98212CB16456DFCF2 Ref B: SG2AA1070306031 Ref C: 2025-11-13T14:28:56Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:28:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "324" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default\",\"name\":\"default\",\"type\":\"Dynatrace.Observability/monitors/monitoredSubscriptions\",\"properties\":{\"operation\":\"AddBegin\",\"monitoredSubscriptionList\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDynatraceMonitoredSubscription+[NoContext]+List parameter set (enumerates monitored subscriptions)+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "a2f6efbd-af13-4e43-a692-ca21fbfaf60f" ],
+        "CommandName": [ "Get-AzDynatraceMonitoredSubscription" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitoredSubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/ab9eb523-beb3-4aaa-8c95-3e38031b82f0" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "a37f269d-d395-415e-b059-2d217e3c21d3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "eb596796-a542-421b-99be-f2c052ee8202" ],
+        "x-ms-correlation-request-id": [ "ab190305-cd5c-4ee1-80a0-83c19d4d6ced" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T142859Z:ab190305-cd5c-4ee1-80a0-83c19d4d6ced" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1DA9DCED94FE417E980772A6013B8371 Ref B: SG2AA1070306031 Ref C: 2025-11-13T14:28:58Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:28:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "324" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default\",\"name\":\"default\",\"type\":\"Dynatrace.Observability/monitors/monitoredSubscriptions\",\"properties\":{\"operation\":\"AddBegin\",\"monitoredSubscriptionList\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDynatraceMonitoredSubscription+[NoContext]+GetViaIdentity parameter set+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "610d235c-8cda-4644-8dbd-0f503b9f3a07" ],
+        "CommandName": [ "Get-AzDynatraceMonitoredSubscription" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitoredSubscription_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/acc37b65-d343-4338-912c-5db13714a523" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "50a0c98f-65db-4168-b5ba-9163ce907dce" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "dc9c0a22-a8be-4de7-b8b0-fbe1356606fa" ],
+        "x-ms-correlation-request-id": [ "ea1d4542-b4d7-4e26-996c-667e92d6467a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T142859Z:ea1d4542-b4d7-4e26-996c-667e92d6467a" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CBA4F0481FDF420287B47EA05A268BF1 Ref B: SG2AA1070306031 Ref C: 2025-11-13T14:28:59Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:28:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "324" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default\",\"name\":\"default\",\"type\":\"Dynatrace.Observability/monitors/monitoredSubscriptions\",\"properties\":{\"operation\":\"AddBegin\",\"monitoredSubscriptionList\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDynatraceMonitoredSubscription+[NoContext]+GetViaIdentity parameter set+$GET+https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default?api-version=2024-04-24",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "97ab03f6-512b-47ee-8b6f-27d936243784" ],
+        "CommandName": [ "Get-AzDynatraceMonitoredSubscription" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitoredSubscription_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=5cd9a09c-ba05-4fc8-8c8a-6d4d17e49a6e/eastus/96707d58-310c-4aeb-8673-6feae28d2d5e" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "a7dd22d0-612f-4f17-ac7f-9fe7a49b96fc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "cba02c41-60d0-4734-b6f6-ee72aaafa472" ],
+        "x-ms-correlation-request-id": [ "48ce03a0-02f3-4f2e-aaf1-2632290128d7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251113T142900Z:48ce03a0-02f3-4f2e-aaf1-2632290128d7" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 500D249B49F3433BBC4EF340165875AA Ref B: SG2AA1070306031 Ref C: 2025-11-13T14:29:00Z" ],
+        "Date": [ "Thu, 13 Nov 2025 14:28:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "324" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b16e4b4e-2ed8-4f32-bac1-0e3eb56bef5c/resourceGroups/dyobrgdjgr25/providers/Dynatrace.Observability/monitors/dyobxdag4n/monitoredSubscriptions/default\",\"name\":\"default\",\"type\":\"Dynatrace.Observability/monitors/monitoredSubscriptions\",\"properties\":{\"operation\":\"AddBegin\",\"monitoredSubscriptionList\":[]}}",
+      "isContentBase64": false
+    }
+  }
+}

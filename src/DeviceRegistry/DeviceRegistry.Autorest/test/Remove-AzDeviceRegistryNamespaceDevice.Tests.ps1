@@ -18,30 +18,32 @@ Describe 'Remove-AzDeviceRegistryNamespaceDevice' {
     It 'Delete' {
         $testConfig = $env.namespaceDeviceTests.deleteTests.Delete
         $namespaceName = $env.namespaceDeviceTests.namespaceName
+        $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDeviceTests.deleteTests.jsonFilePath
         
         # Create test device to delete
-        New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
-        
+        New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
+
         # Delete the device
-        Remove-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name
-        
+        Remove-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name
+
         # Verify the device is deleted by trying to get it (should throw)
-        { Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name -ErrorAction Stop } | Should -Throw
+        { Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentityNamespace' {
         $testConfig = $env.namespaceDeviceTests.deleteTests.DeleteViaIdentityNamespace
         $namespaceName = $env.namespaceDeviceTests.namespaceName
+        $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDeviceTests.deleteTests.jsonFilePath
         
         # Create test device to delete
-        New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
-        
+        New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
+
         # Create namespace identity object
         $namespaceIdentity = @{
             SubscriptionId = $env.SubscriptionId
-            ResourceGroupName = $env.resourceGroup
+            ResourceGroupName = $resourceGroupName
             NamespaceName = $namespaceName
         }
         
@@ -49,17 +51,18 @@ Describe 'Remove-AzDeviceRegistryNamespaceDevice' {
         Remove-AzDeviceRegistryNamespaceDevice -NamespaceInputObject $namespaceIdentity -DeviceName $testConfig.name
         
         # Verify the device is deleted by trying to get it (should throw)
-        { Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name -ErrorAction Stop } | Should -Throw
+        { Get-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity' {
         $testConfig = $env.namespaceDeviceTests.deleteTests.DeleteViaIdentity
         $namespaceName = $env.namespaceDeviceTests.namespaceName
+        $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDeviceTests.deleteTests.jsonFilePath
         
         # Create test device to delete
-        $device = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
-        
+        $device = New-AzDeviceRegistryNamespaceDevice -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -DeviceName $testConfig.name -JsonFilePath $jsonFilePath
+
         # Delete the device using the device object as identity
         Remove-AzDeviceRegistryNamespaceDevice -InputObject $device
         

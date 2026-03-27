@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates or updates subscription diagnostic settings for the specified resource.
+Create subscription diagnostic settings for the specified resource.
 .Description
-Creates or updates subscription diagnostic settings for the specified resource.
+Create subscription diagnostic settings for the specified resource.
 .Example
 $subscriptionId = (Get-AzContext).Subscription.Id
 $log = @()
@@ -26,7 +26,7 @@ $log += New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommend
 New-AzSubscriptionDiagnosticSetting -Name test-setting -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ LOG <ISubscriptionLogSettings[]>: The list of logs settings.
 https://learn.microsoft.com/powershell/module/az.monitor/new-azsubscriptiondiagnosticsetting
 #>
 function New-AzSubscriptionDiagnosticSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -56,52 +56,63 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The resource Id for the event hub authorization rule.
     ${EventHubAuthorizationRuleId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The name of the event hub.
     # If none is specified, the default event hub will be selected.
     ${EventHubName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionLogSettings[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionLogSettings[]]
     # The list of logs settings.
-    # To construct, see NOTES section for LOG properties and create a hash table.
     ${Log},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
     ${MarketplacePartnerId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The service bus rule Id of the diagnostic setting.
     # This is here to maintain backwards compatibility.
     ${ServiceBusRuleId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The resource ID of the storage account to which you would like to send Diagnostic Logs.
     ${StorageAccountId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs.
     # Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
     ${WorkspaceId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -159,6 +170,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -179,10 +199,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DiagnosticSetting.private\New-AzSubscriptionDiagnosticSetting_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DiagnosticSetting.private\New-AzSubscriptionDiagnosticSetting_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DiagnosticSetting.private\New-AzSubscriptionDiagnosticSetting_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -196,6 +216,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

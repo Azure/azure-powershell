@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAksSnapshot
 
 ## SYNOPSIS
-create a snapshot.
+Create a snapshot.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzAksSnapshot -ResourceGroupName <String> -ResourceName <String> -JsonString
 ```
 
 ## DESCRIPTION
-create a snapshot.
+Create a snapshot.
 
 ## EXAMPLES
 
@@ -178,6 +178,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

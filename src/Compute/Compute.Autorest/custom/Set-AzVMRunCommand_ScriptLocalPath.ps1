@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------------
 
 function Set-AzVMRunCommand_ScriptLocalPath {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -78,17 +78,15 @@ function Set-AzVMRunCommand_ScriptLocalPath {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]]
         # The parameters used by the script.
-        # To construct, see NOTES section for PARAMETER properties and create a hash table.
         ${Parameter},
     
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]]
         # The parameters used by the script.
-        # To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
         ${ProtectedParameter},
     
         [Parameter()]
@@ -156,7 +154,7 @@ function Set-AzVMRunCommand_ScriptLocalPath {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},

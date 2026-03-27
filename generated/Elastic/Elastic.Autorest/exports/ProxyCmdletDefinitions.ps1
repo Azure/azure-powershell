@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get the list of all traffic filters for the account.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 .Description
-Get the list of all traffic filters for the account.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 .Example
 Get-AzElasticAllTrafficFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -200,9 +200,9 @@ end {
 
 <#
 .Synopsis
-Get marketplace and organization info mapped to the given monitor.
+Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
 .Description
-Get marketplace and organization info mapped to the given monitor.
+Retrieve marketplace and organization billing information mapped to the given Elastic monitor resource.
 .Example
 Get-AzElasticBillingInfo -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -216,6 +216,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -405,9 +406,9 @@ end {
 
 <#
 .Synopsis
-List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
+List all active deployments associated with the marketplace subscription linked to the given Elastic monitor resource.
 .Description
-List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
+List all active deployments associated with the marketplace subscription linked to the given Elastic monitor resource.
 .Example
 Get-AzElasticConnectedPartnerResource -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -589,9 +590,9 @@ end {
 
 <#
 .Synopsis
-Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
+Fetch detailed information about Elastic cloud deployments corresponding to the Elastic monitor resource.
 .Description
-Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
+Fetch detailed information about Elastic cloud deployments corresponding to the Elastic monitor resource.
 .Example
 Get-AzElasticDeploymentInfo -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
 
@@ -773,9 +774,9 @@ end {
 
 <#
 .Synopsis
-List of upgradable versions for a given monitor resource.
+List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
 .Description
-List of upgradable versions for a given monitor resource.
+List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
 .Example
 Get-AzElasticDetailUpgradableVersion -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -789,6 +790,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -978,9 +980,9 @@ end {
 
 <#
 .Synopsis
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
+List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 .Description
-List the vm ingestion details that will be monitored by the Elastic monitor resource.
+List detailed information about VM ingestion that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 .Example
 Get-AzElasticDetailVMIngestion -ResourceGroupName elastic-rg-3eytki -Name elastic-rhqz1v
 .Example
@@ -996,6 +998,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -1185,9 +1188,9 @@ end {
 
 <#
 .Synopsis
-Get the list of all associated traffic filters for the given deployment.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 .Description
-Get the list of all associated traffic filters for the given deployment.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 .Example
 Get-AzElasticListAssociatedTrafficFilter -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 
@@ -1369,9 +1372,9 @@ end {
 
 <#
 .Synopsis
-List the resources currently being monitored by the Elastic monitor resource.
+List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 .Description
-List the resources currently being monitored by the Elastic monitor resource.
+List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 .Example
 Get-AzElasticMonitoredResource -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 
@@ -1553,9 +1556,247 @@ end {
 
 <#
 .Synopsis
-Get the properties of a specific monitor resource.
+Get detailed information about all subscriptions currently being monitored by the Elastic monitor resource.
 .Description
-Get the properties of a specific monitor resource.
+Get detailed information about all subscriptions currently being monitored by the Elastic monitor resource.
+.Example
+Get-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor"
+.Example
+Get-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -SubscriptionId "12345678-1234-1234-1234-123456789012"
+.Example
+Get-AzElasticMonitor -ResourceGroupName "myResourceGroup" -Name "myElasticMonitor" | Get-AzElasticMonitoredSubscription
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
+  [Id <String>]: Resource identity path
+  [IntegrationName <String>]: OpenAI Integration name
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Tag Rule Set resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
+  [Id <String>]: Resource identity path
+  [IntegrationName <String>]: OpenAI Integration name
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Tag Rule Set resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticmonitoredsubscription
+#>
+function Get-AzElasticMonitoredSubscription {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityMonitor', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [System.String]
+    # The configuration name.
+    # Only 'default' value is supported.
+    ${ConfigurationName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMonitor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.Elastic.private\Get-AzElasticMonitoredSubscription_Get';
+            GetViaIdentity = 'Az.Elastic.private\Get-AzElasticMonitoredSubscription_GetViaIdentity';
+            GetViaIdentityMonitor = 'Az.Elastic.private\Get-AzElasticMonitoredSubscription_GetViaIdentityMonitor';
+            List = 'Az.Elastic.private\Get-AzElasticMonitoredSubscription_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.
+.Description
+Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.
 .Example
 Get-AzElasticMonitor
 .Example
@@ -1575,6 +1816,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -1770,9 +2012,9 @@ end {
 
 <#
 .Synopsis
-Get OpenAI integration status for a given integration.
+Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
 .Description
-Get OpenAI integration status for a given integration.
+Get the status of OpenAI integration for a given Elastic monitor resource, ensuring optimal observability and performance.
 .Example
 Get-AzElasticOpenAiStatus -IntegrationName default -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 
@@ -1786,6 +2028,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -1794,6 +2037,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -1997,9 +2241,9 @@ end {
 
 <#
 .Synopsis
-Get OpenAI integration rule for a given monitor resource.
+Get detailed information about OpenAI integration rules for a given Elastic monitor resource.
 .Description
-Get OpenAI integration rule for a given monitor resource.
+Get detailed information about OpenAI integration rules for a given Elastic monitor resource.
 .Example
 Get-AzElasticOpenAi -IntegrationName default -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 
@@ -2013,6 +2257,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -2021,6 +2266,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -2228,9 +2474,9 @@ end {
 
 <#
 .Synopsis
-Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch Organization.
 .Description
-Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch Organization.
 .Example
 Get-AzElasticOrganizationApiKey -EmailId "jkore@microsoft.com"
 
@@ -2419,9 +2665,9 @@ end {
 
 <#
 .Synopsis
-Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
+Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
 .Description
-Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
+Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
 .Example
 Get-AzElasticOrganizationElasticToAzureSubscriptionMapping 
 
@@ -2590,9 +2836,313 @@ end {
 
 <#
 .Synopsis
-Get a tag rule set for a given monitor resource.
+Resubscribe the Elasticsearch Organization.
 .Description
-Get a tag rule set for a given monitor resource.
+Resubscribe the Elasticsearch Organization.
+.Example
+Get-AzElasticResubscribeOrganization -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -TargetSubscriptionId "87654321-4321-4321-4321-210987654321"
+.Example
+Get-AzElasticMonitor -ResourceGroupName "myResourceGroup" -Name "myElasticMonitor" | Get-AzElasticResubscribeOrganization -TargetSubscriptionId "87654321-4321-4321-4321-210987654321"
+.Example
+$resubscribeParams = @{
+    ResourceGroupName = "myResourceGroup"
+    MonitorName = "myElasticMonitor"
+    TargetSubscriptionId = "87654321-4321-4321-4321-210987654321"
+}
+Get-AzElasticResubscribeOrganization @resubscribeParams
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResubscribeProperties
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IResubscribeProperties>: Resubscribe Properties
+  [OrganizationId <String>]: Organization Id of the Elastic Organization that needs to be resubscribed
+  [PlanId <String>]: Newly selected plan Id to create the new Marketplace subscription for Resubscribe
+  [ResourceGroup <String>]: Newly selected Azure resource group in which the new Marketplace subscription will be created for Resubscribe
+  [TargetSubscriptionId <String>]: Newly selected Azure Subscription Id in which the new Marketplace subscription will be created for Resubscribe
+  [Term <String>]: Newly selected term to create the new Marketplace subscription for Resubscribe
+
+INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
+  [Id <String>]: Resource identity path
+  [IntegrationName <String>]: OpenAI Integration name
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Tag Rule Set resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticresubscribeorganization
+#>
+function Get-AzElasticResubscribeOrganization {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticMonitorResource])]
+[CmdletBinding(DefaultParameterSetName='ResubscribeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Resubscribe', Mandatory)]
+    [Parameter(ParameterSetName='ResubscribeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResubscribeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ResubscribeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='Resubscribe', Mandatory)]
+    [Parameter(ParameterSetName='ResubscribeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResubscribeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ResubscribeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Resubscribe')]
+    [Parameter(ParameterSetName='ResubscribeExpanded')]
+    [Parameter(ParameterSetName='ResubscribeViaJsonFilePath')]
+    [Parameter(ParameterSetName='ResubscribeViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ResubscribeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ResubscribeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Resubscribe', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ResubscribeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IResubscribeProperties]
+    # Resubscribe Properties
+    ${Body},
+
+    [Parameter(ParameterSetName='ResubscribeExpanded')]
+    [Parameter(ParameterSetName='ResubscribeViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Organization Id of the Elastic Organization that needs to be resubscribed
+    ${OrganizationId},
+
+    [Parameter(ParameterSetName='ResubscribeExpanded')]
+    [Parameter(ParameterSetName='ResubscribeViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Newly selected plan Id to create the new Marketplace subscription for Resubscribe
+    ${PlanId},
+
+    [Parameter(ParameterSetName='ResubscribeExpanded')]
+    [Parameter(ParameterSetName='ResubscribeViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Newly selected Azure resource group in which the new Marketplace subscription will be created for Resubscribe
+    ${ResourceGroup},
+
+    [Parameter(ParameterSetName='ResubscribeExpanded')]
+    [Parameter(ParameterSetName='ResubscribeViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Newly selected Azure Subscription Id in which the new Marketplace subscription will be created for Resubscribe
+    ${TargetSubscriptionId},
+
+    [Parameter(ParameterSetName='ResubscribeExpanded')]
+    [Parameter(ParameterSetName='ResubscribeViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Newly selected term to create the new Marketplace subscription for Resubscribe
+    ${Term},
+
+    [Parameter(ParameterSetName='ResubscribeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Resubscribe operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ResubscribeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Json string supplied to the Resubscribe operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Resubscribe = 'Az.Elastic.private\Get-AzElasticResubscribeOrganization_Resubscribe';
+            ResubscribeExpanded = 'Az.Elastic.private\Get-AzElasticResubscribeOrganization_ResubscribeExpanded';
+            ResubscribeViaIdentity = 'Az.Elastic.private\Get-AzElasticResubscribeOrganization_ResubscribeViaIdentity';
+            ResubscribeViaIdentityExpanded = 'Az.Elastic.private\Get-AzElasticResubscribeOrganization_ResubscribeViaIdentityExpanded';
+            ResubscribeViaJsonFilePath = 'Az.Elastic.private\Get-AzElasticResubscribeOrganization_ResubscribeViaJsonFilePath';
+            ResubscribeViaJsonString = 'Az.Elastic.private\Get-AzElasticResubscribeOrganization_ResubscribeViaJsonString';
+        }
+        if (('Resubscribe', 'ResubscribeExpanded', 'ResubscribeViaJsonFilePath', 'ResubscribeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get detailed information about a tag rule set for a given Elastic monitor resource.
+.Description
+Get detailed information about a tag rule set for a given Elastic monitor resource.
 .Example
 Get-AzElasticTagRule -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 .Example
@@ -2608,6 +3158,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -2616,6 +3167,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -2815,9 +3367,9 @@ end {
 
 <#
 .Synopsis
-Get a list of available versions for a region.
+Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your deployment.
 .Description
-Get a list of available versions for a region.
+Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your deployment.
 .Example
 Get-AzElasticVersion -Region westus2
 
@@ -2992,9 +3544,9 @@ end {
 
 <#
 .Synopsis
-List the vm resources currently being monitored by the Elastic monitor resource.
+List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 .Description
-List the vm resources currently being monitored by the Elastic monitor resource.
+List all VM resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 .Example
 Get-AzElasticVMHost -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 
@@ -3176,9 +3728,9 @@ end {
 
 <#
 .Synopsis
-Associate traffic filter for the given deployment.
+Associate a traffic filter with your Elastic monitor resource to control and manage network traffic.
 .Description
-Associate traffic filter for the given deployment.
+Associate a traffic filter with your Elastic monitor resource to control and manage network traffic.
 .Example
 Join-AzElasticAssociateTrafficFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -3192,6 +3744,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -3278,6 +3831,12 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
@@ -3399,9 +3958,9 @@ end {
 
 <#
 .Synopsis
-create and Associate IP traffic filter for the given deployment.
+Create and associate an IP filter with your Elastic monitor resource to control and manage network traffic.
 .Description
-create and Associate IP traffic filter for the given deployment.
+Create and associate an IP filter with your Elastic monitor resource to control and manage network traffic.
 .Example
 New-AzElasticCreateAndAssociateIPFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -3415,6 +3974,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -3634,9 +4194,9 @@ end {
 
 <#
 .Synopsis
-create and Associate private link traffic filter for the given deployment.
+Create and associate a PL filter with your Elastic monitor resource to control and manage network traffic.
 .Description
-create and Associate private link traffic filter for the given deployment.
+Create and associate a PL filter with your Elastic monitor resource to control and manage network traffic.
 .Example
 New-AzElasticCreateAndAssociatePlFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -3650,6 +4210,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -3875,9 +4436,9 @@ end {
 
 <#
 .Synopsis
-create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Create external user configurations for your Elastic monitor resource, enabling access and management by external users.
 .Description
-create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Create external user configurations for your Elastic monitor resource, enabling access and management by external users.
 .Example
 New-AzElasticExternalUser -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -3891,6 +4452,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -4136,9 +4698,9 @@ end {
 
 <#
 .Synopsis
-create a monitor resource.
+Create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure resources through Elastic.
 .Description
-create a monitor resource.
+Create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure resources through Elastic.
 .Example
 New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-consumption-2024_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com'
 
@@ -4216,6 +4778,19 @@ param(
     ${GenerateApiKey},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Hosted", "Serverless")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects.
+    ${HostingType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # The kind of the Elastic resource - observability, security, search etc.
+    ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
     [System.String]
     # The location of the monitor resource
@@ -4257,6 +4832,20 @@ param(
     [System.String]
     # Term ID of the plan
     ${PlanDetailTermId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("GeneralPurpose", "Vector", "TimeSeries", "NotApplicable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Configuration type of the Elasticsearch project
+    ${ProjectDetailConfigurationType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Elasticsearch", "Observability", "Security", "NotApplicable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Project type; ex: Elasticsearch / Observability / Security
+    ${ProjectDetailProjectType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
@@ -4503,9 +5092,9 @@ end {
 
 <#
 .Synopsis
-create a OpenAI integration rule for a given monitor resource.
+Create an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 .Description
-create a OpenAI integration rule for a given monitor resource.
+Create an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 .Example
 New-AzElasticOpenAi -IntegrationName default -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -4519,6 +5108,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -4527,6 +5117,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -4595,6 +5186,14 @@ param(
     [System.String]
     # Value of API key for Open AI resource
     ${Key},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # The connector id of Open AI resource
+    ${OpenAiConnectorId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -4776,9 +5375,9 @@ end {
 
 <#
 .Synopsis
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 .Description
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 .Example
 New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
 
@@ -4797,6 +5396,7 @@ LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for cap
   [Value <String>]: The value of the tag.
 
 MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -5042,9 +5642,9 @@ end {
 
 <#
 .Synopsis
-Detach and Delete traffic filter from the given deployment.
+Detach and delete an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 .Description
-Detach and Delete traffic filter from the given deployment.
+Detach and delete an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 .Example
 Remove-AzElasticDetachAndDeleteTrafficFilter -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 
@@ -5058,6 +5658,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -5259,9 +5860,261 @@ end {
 
 <#
 .Synopsis
-Delete a monitor resource.
+Delete subscriptions being monitored by the Elastic monitor resource, removing their observability and monitoring capabilities.
 .Description
-Delete a monitor resource.
+Delete subscriptions being monitored by the Elastic monitor resource, removing their observability and monitoring capabilities.
+.Example
+Remove-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -ConfigurationName "12345678-1234-1234-1234-123456789012"
+.Example
+Remove-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -ConfigurationName "12345678-1234-1234-1234-123456789012" -Confirm
+.Example
+Get-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -ConfigurationName "12345678-1234-1234-1234-123456789012" | Remove-AzElasticMonitoredSubscription
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
+  [Id <String>]: Resource identity path
+  [IntegrationName <String>]: OpenAI Integration name
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Tag Rule Set resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
+  [Id <String>]: Resource identity path
+  [IntegrationName <String>]: OpenAI Integration name
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Tag Rule Set resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.elastic/remove-azelasticmonitoredsubscription
+#>
+function Remove-AzElasticMonitoredSubscription {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityMonitor', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [System.String]
+    # The configuration name.
+    # Only 'default' value is supported.
+    ${ConfigurationName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityMonitor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.Elastic.private\Remove-AzElasticMonitoredSubscription_Delete';
+            DeleteViaIdentity = 'Az.Elastic.private\Remove-AzElasticMonitoredSubscription_DeleteViaIdentity';
+            DeleteViaIdentityMonitor = 'Az.Elastic.private\Remove-AzElasticMonitoredSubscription_DeleteViaIdentityMonitor';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Delete an existing Elastic monitor resource from your Azure subscription, removing its observability and monitoring capabilities.
+.Description
+Delete an existing Elastic monitor resource from your Azure subscription, removing its observability and monitoring capabilities.
 .Example
 Remove-AzElasticMonitor -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 .Example
@@ -5277,6 +6130,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -5485,9 +6339,9 @@ end {
 
 <#
 .Synopsis
-Delete OpenAI integration rule for a given monitor resource.
+Delete an OpenAI integration rule for a given Elastic monitor resource, removing AI-driven observability and monitoring capabilities.
 .Description
-Delete OpenAI integration rule for a given monitor resource.
+Delete an OpenAI integration rule for a given Elastic monitor resource, removing AI-driven observability and monitoring capabilities.
 .Example
 Remove-AzElasticOpenAi -IntegrationName default -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 
@@ -5501,6 +6355,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -5509,6 +6364,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -5718,9 +6574,9 @@ end {
 
 <#
 .Synopsis
-Delete traffic filter from the account.
+Delete an existing traffic filter associated with your Elastic monitor resource, removing its network traffic control capabilities.
 .Description
-Delete traffic filter from the account.
+Delete an existing traffic filter associated with your Elastic monitor resource, removing its network traffic control capabilities.
 .Example
 Remove-AzElasticTrafficFilter -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 
@@ -5734,6 +6590,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -5935,9 +6792,9 @@ end {
 
 <#
 .Synopsis
-Detach traffic filter for the given deployment.
+Detach an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 .Description
-Detach traffic filter for the given deployment.
+Detach an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 .Example
 Update-AzElasticDetachTrafficFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -5951,6 +6808,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -6037,6 +6895,12 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
@@ -6158,9 +7022,9 @@ end {
 
 <#
 .Synopsis
-update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Update external user configurations for your Elastic monitor resource, enabling access and management by external users.
 .Description
-update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+Update external user configurations for your Elastic monitor resource, enabling access and management by external users.
 .Example
 Update-AzElasticExternalUser -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -6174,6 +7038,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -6419,9 +7284,312 @@ end {
 
 <#
 .Synopsis
-update a monitor resource.
+Update subscriptions to be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 .Description
-update a monitor resource.
+Update subscriptions to be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
+.Example
+Update-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -SubscriptionId "12345678-1234-1234-1234-123456789012" -Operation "Add"
+.Example
+Update-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -SubscriptionId "12345678-1234-1234-1234-123456789012" -Operation "Delete"
+.Example
+Get-AzElasticMonitor -ResourceGroupName "myResourceGroup" -Name "myElasticMonitor" | Update-AzElasticMonitoredSubscription -SubscriptionId "12345678-1234-1234-1234-123456789012" -Operation "Add"
+.Example
+$subscriptions = @("12345678-1234-1234-1234-123456789012", "87654321-4321-4321-4321-210987654321")
+foreach ($sub in $subscriptions) {
+    Update-AzElasticMonitoredSubscription -ResourceGroupName "myResourceGroup" -MonitorName "myElasticMonitor" -SubscriptionId $sub -Operation "Add"
+}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
+  [Id <String>]: Resource identity path
+  [IntegrationName <String>]: OpenAI Integration name
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Tag Rule Set resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+
+MONITOREDSUBSCRIPTIONLIST <IMonitoredSubscription[]>: List of subscriptions and the state of the monitoring.
+  [Error <String>]: The reason of not monitoring the subscription.
+  [LogRuleFilteringTag <List<IFilteringTag>>]: List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+    [Action <String>]: Valid actions for a filtering tag.
+    [Name <String>]: The name (also known as the key) of the tag.
+    [Value <String>]: The value of the tag.
+  [LogRuleSendAadLog <Boolean?>]: Flag specifying if AAD logs should be sent for the Monitor resource.
+  [LogRuleSendActivityLog <Boolean?>]: Flag specifying if activity logs from Azure resources should be sent for the Monitor resource.
+  [LogRuleSendSubscriptionLog <Boolean?>]: Flag specifying if subscription logs should be sent for the Monitor resource.
+  [Status <String>]: The state of monitoring.
+  [SubscriptionId <String>]: The subscriptionId to be monitored.
+
+MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
+  [Id <String>]: Resource identity path
+  [IntegrationName <String>]: OpenAI Integration name
+  [MonitorName <String>]: Monitor resource name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Tag Rule Set resource name
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+.Link
+https://learn.microsoft.com/powershell/module/az.elastic/update-azelasticmonitoredsubscription
+#>
+function Update-AzElasticMonitoredSubscription {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscriptionProperties])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [System.String]
+    # The configuration name.
+    # Only 'default' value is supported.
+    ${ConfigurationName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [System.String]
+    # Monitor resource name
+    ${MonitorName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoredSubscription[]]
+    # List of subscriptions and the state of the monitoring.
+    ${MonitoredSubscriptionList},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityMonitorExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("AddBegin", "AddComplete", "DeleteBegin", "DeleteComplete", "Active")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # The operation for the patch on the resource.
+    ${Operation},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Elastic.private\Update-AzElasticMonitoredSubscription_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.Elastic.private\Update-AzElasticMonitoredSubscription_UpdateViaIdentityExpanded';
+            UpdateViaIdentityMonitorExpanded = 'Az.Elastic.private\Update-AzElasticMonitoredSubscription_UpdateViaIdentityMonitorExpanded';
+            UpdateViaJsonFilePath = 'Az.Elastic.private\Update-AzElasticMonitoredSubscription_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Elastic.private\Update-AzElasticMonitoredSubscription_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Elastic.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an existing Elastic monitor resource in your Azure subscription, ensuring optimal observability and performance.
+.Description
+Update an existing Elastic monitor resource in your Azure subscription, ensuring optimal observability and performance.
 .Example
 Update-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -Tag @{'key01' = '1'; 'key2' = '2'; 'key3' = '3'}
 .Example
@@ -6444,6 +7612,7 @@ BODY <IElasticMonitorUpgrade>: Upgrade elastic monitor version
   [Version <String>]: Version to which the elastic monitor should be upgraded to
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -6540,6 +7709,12 @@ param(
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
@@ -6559,6 +7734,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
@@ -6584,16 +7765,8 @@ param(
     [Parameter(ParameterSetName='UpgradeViaIdentity')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(ParameterSetName='Upgrade')]
-    [Parameter(ParameterSetName='UpgradeExpanded')]
-    [Parameter(ParameterSetName='UpgradeViaIdentity')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait}
+    # Returns true when the command succeeds
+    ${PassThru}
 )
 
 begin {
@@ -6701,9 +7874,9 @@ end {
 
 <#
 .Synopsis
-update a OpenAI integration rule for a given monitor resource.
+Update an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 .Description
-update a OpenAI integration rule for a given monitor resource.
+Update an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 .Example
 Update-AzElasticOpenAi -IntegrationName default -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 
@@ -6717,6 +7890,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -6725,6 +7899,7 @@ INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -6783,6 +7958,12 @@ param(
     [System.String]
     # Value of API key for Open AI resource
     ${Key},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # The connector id of Open AI resource
+    ${OpenAiConnectorId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
@@ -6946,9 +8127,9 @@ end {
 
 <#
 .Synopsis
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 .Description
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 .Example
 Update-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
 
@@ -6962,6 +8143,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -6975,6 +8157,7 @@ LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for cap
   [Value <String>]: The value of the tag.
 
 MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -7207,9 +8390,9 @@ end {
 
 <#
 .Synopsis
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 .Description
-update the vm details that will be monitored by the Elastic monitor resource.
+Update the VM details that will be monitored by the Elastic monitor resource, ensuring optimal observability and performance.
 .Example
 Update-AzElasticVMCollection -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -OperationName Add -VMResourceId '/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxx/resourceGroups/VIDHI-RG/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS'
 .Example
@@ -7225,6 +8408,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name

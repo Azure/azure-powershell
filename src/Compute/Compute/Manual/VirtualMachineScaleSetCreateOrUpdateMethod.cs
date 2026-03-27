@@ -292,6 +292,42 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies whether Metadata Security Protocol(ProxyAgent) feature should be enabled or not.")]
         public SwitchParameter EnableProxyAgent { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specify whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux Os.")]
+        public SwitchParameter AddProxyAgentExtension { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ParameterSetName = SimpleParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Specifies the policy for resource's placement in availability zone. Possible values are: **Any** (used for Virtual Machines), **Auto** (used for Virtual Machine Scale Sets) - An availability zone will be automatically picked by system as part of resource creation.")]
+        [PSArgumentCompleter("Any", "Auto")]
+        public string ZonePlacementPolicy { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must be present in the list of availability zones passed with 'includeZones'. If 'includeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] IncludeZone { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false,
+            HelpMessage = "This property supplements the 'zonePlacementPolicy' property. If 'zonePlacementPolicy' is set to 'Any', availability zone selected by the system must not be present in the list of availability zones passed with 'excludeZones'. If 'excludeZones' is not provided, all availability zones in region will be considered for selection.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ExcludeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the high speed interconnect placement for the virtual machine scale set.")]
+        [PSArgumentCompleter("None", "Trunk")]
+        public string HighSpeedInterconnectPlacement { get; set; }
+
         private void ConfigureSecuritySettings()
         {
             if (SecurityType?.ToLower() == SecurityTypes.TrustedLaunch ||
@@ -552,7 +588,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ifNoneMatch: _cmdlet.IfNoneMatch,
                     securityPostureId: _cmdlet.SecurityPostureId,
                     securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
-                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null
+                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
+                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null,
+                    zonePlacementPolicy: _cmdlet.ZonePlacementPolicy,
+                    includeZone: _cmdlet.IncludeZone,
+                    excludeZone: _cmdlet.ExcludeZone,
+                    highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null
                     );
             }
 
@@ -692,7 +733,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ifNoneMatch: _cmdlet.IfNoneMatch,
                     securityPostureId: _cmdlet.SecurityPostureId,
                     securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension,
-                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null
+                    enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
+                    addProxyAgentExtension: _cmdlet.AddProxyAgentExtension.IsPresent ? true : (bool?)null,
+                    zonePlacementPolicy: _cmdlet.ZonePlacementPolicy,
+                    includeZone: _cmdlet.IncludeZone,
+                    excludeZone: _cmdlet.ExcludeZone,
+                    highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null
                 );
             }
         }

@@ -24,5 +24,8 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
     public class PSNetworkManagerRoutingConfiguration : PSNetworkManagerBaseResource
     {
         public string NetworkManagerName { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string RouteTableUsageMode { get; set; }
     }
 }

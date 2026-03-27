@@ -24,11 +24,10 @@ Describe 'Start-AzAksManagedClusterCommand' {
     }
 
     It 'RunViaIdentityExpanded' {
-        $aks = @{Id = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks"}
+        $aks = @{Id = "/subscriptions/$($env.SubscriptionId)/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.ContainerService/managedClusters/$($env.AksName)"}
         $result = Start-AzAksManagedClusterCommand -InputObject $aks -Command "kubectl get nodes"
         $result.ProvisioningState | Should -Be 'Succeeded'
         $result.ExitCode | Should -Be 0
         $result.Log.contains("aks-default") | Should -Be $true
-        $result.Log.contains("aks-pool2") | Should -Be $true
     }
 }

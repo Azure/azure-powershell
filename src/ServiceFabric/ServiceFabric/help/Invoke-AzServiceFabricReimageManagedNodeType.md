@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzServiceFabricReimageManagedNodeType
 
 ## SYNOPSIS
-Reimage nodes from the node type.
+Reimage nodes from the node type. On reimage operation the service fabric nodes will be disabled before reimaging the vms and enabled them back again once they come back. If this is done on primary node types it might take a while as it might not reimage all the nodes at the same time. Use -ForceReimage to force the operation even if service fabric is unable to disable the nodes but use with caution as this might cause data loss if stateful workloads are running on the node.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Invoke-AzServiceFabricReimageManagedNodeType [-ResourceGroupName] <String> [-Clu
 ```
 
 ## DESCRIPTION
-Reimage nodes from the node type. The nodes will be disabled, reimaged, then renabled.
+Reimage nodes from the node type. The nodes will be disabled, reimaged, then renabled. On reimage operation the service fabric nodes will be disabled before reimaging the vms and enabled them back again once they come back. If this is done on primary node types it might take a while as it might not reimage all the nodes at the same time. Use -ForceReimage to force the operation even if service fabric is unable to disable the nodes but use with caution as this might cause data loss if stateful workloads are running on the node.
 
 ## EXAMPLES
 

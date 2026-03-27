@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.KeyVault
         public KeyVaultManagementClient Client { get; private set; }
 
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of the resource group that contains the managed HSM pool.
@@ -247,7 +248,8 @@ namespace Microsoft.Azure.Management.KeyVault
 
         }
         /// <summary>
-        /// The List operation gets information about the regions associated with the managed HSM Pool.
+        /// The List operation gets information about the regions associated with the
+        /// managed HSM Pool.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -288,6 +290,7 @@ namespace Microsoft.Azure.Management.KeyVault
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
+               
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListByResourceNext", tracingParameters);

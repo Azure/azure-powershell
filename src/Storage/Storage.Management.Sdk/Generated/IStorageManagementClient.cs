@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Management.Storage
 
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -74,11 +74,6 @@ namespace Microsoft.Azure.Management.Storage
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the ISkusOperations
-        /// </summary>
-        ISkusOperations Skus { get; }
-
-        /// <summary>
         /// Gets the IStorageAccountsOperations
         /// </summary>
         IStorageAccountsOperations StorageAccounts { get; }
@@ -94,39 +89,9 @@ namespace Microsoft.Azure.Management.Storage
         IUsagesOperations Usages { get; }
 
         /// <summary>
-        /// Gets the IManagementPoliciesOperations
+        /// Gets the ISkusOperations
         /// </summary>
-        IManagementPoliciesOperations ManagementPolicies { get; }
-
-        /// <summary>
-        /// Gets the IBlobInventoryPoliciesOperations
-        /// </summary>
-        IBlobInventoryPoliciesOperations BlobInventoryPolicies { get; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations
-        /// </summary>
-        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations
-        /// </summary>
-        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
-
-        /// <summary>
-        /// Gets the IObjectReplicationPoliciesOperations
-        /// </summary>
-        IObjectReplicationPoliciesOperations ObjectReplicationPolicies { get; }
-
-        /// <summary>
-        /// Gets the ILocalUsersOperations
-        /// </summary>
-        ILocalUsersOperations LocalUsers { get; }
-
-        /// <summary>
-        /// Gets the IEncryptionScopesOperations
-        /// </summary>
-        IEncryptionScopesOperations EncryptionScopes { get; }
+        ISkusOperations Skus { get; }
 
         /// <summary>
         /// Gets the IBlobServicesOperations
@@ -139,6 +104,11 @@ namespace Microsoft.Azure.Management.Storage
         IBlobContainersOperations BlobContainers { get; }
 
         /// <summary>
+        /// Gets the IEncryptionScopesOperations
+        /// </summary>
+        IEncryptionScopesOperations EncryptionScopes { get; }
+
+        /// <summary>
         /// Gets the IFileServicesOperations
         /// </summary>
         IFileServicesOperations FileServices { get; }
@@ -147,6 +117,76 @@ namespace Microsoft.Azure.Management.Storage
         /// Gets the IFileSharesOperations
         /// </summary>
         IFileSharesOperations FileShares { get; }
+
+        /// <summary>
+        /// Gets the IBlobInventoryPoliciesOperations
+        /// </summary>
+        IBlobInventoryPoliciesOperations BlobInventoryPolicies { get; }
+
+        /// <summary>
+        /// Gets the ILocalUsersOperations
+        /// </summary>
+        ILocalUsersOperations LocalUsers { get; }
+
+        /// <summary>
+        /// Gets the IManagementPoliciesOperations
+        /// </summary>
+        IManagementPoliciesOperations ManagementPolicies { get; }
+
+        /// <summary>
+        /// Gets the INetworkSecurityPerimeterConfigurationsOperations
+        /// </summary>
+        INetworkSecurityPerimeterConfigurationsOperations NetworkSecurityPerimeterConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IObjectReplicationPoliciesOperations
+        /// </summary>
+        IObjectReplicationPoliciesOperations ObjectReplicationPolicies { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the IQueueServicesOperations
+        /// </summary>
+        IQueueServicesOperations QueueServices { get; }
+
+        /// <summary>
+        /// Gets the IQueueOperations
+        /// </summary>
+        IQueueOperations Queue { get; }
+
+        /// <summary>
+        /// Gets the IStorageTaskAssignmentsInstancesReportOperations
+        /// </summary>
+        IStorageTaskAssignmentsInstancesReportOperations StorageTaskAssignmentsInstancesReport { get; }
+
+        /// <summary>
+        /// Gets the IStorageTaskAssignmentsOperations
+        /// </summary>
+        IStorageTaskAssignmentsOperations StorageTaskAssignments { get; }
+
+        /// <summary>
+        /// Gets the IStorageTaskAssignmentInstancesReportOperations
+        /// </summary>
+        IStorageTaskAssignmentInstancesReportOperations StorageTaskAssignmentInstancesReport { get; }
+
+        /// <summary>
+        /// Gets the ITableServicesOperations
+        /// </summary>
+        ITableServicesOperations TableServices { get; }
+
+        /// <summary>
+        /// Gets the ITableOperations
+        /// </summary>
+        ITableOperations Table { get; }
 
     }
 }

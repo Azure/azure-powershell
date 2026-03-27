@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>next link</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountry> _value;
 
-        /// <summary>List of countries</summary>
+        /// <summary>The Country items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountry> Value { get => this._value; set => this._value = value; }
 
@@ -37,25 +37,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
     public partial interface ICountriesResponse :
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.IJsonSerializable
     {
-        /// <summary>next link</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"next link",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>List of countries</summary>
+        /// <summary>The Country items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of countries",
+        Description = @"The Country items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountry) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountry> Value { get; set; }
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
     internal partial interface ICountriesResponseInternal
 
     {
-        /// <summary>next link</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of countries</summary>
+        /// <summary>The Country items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICountry> Value { get; set; }
 
     }

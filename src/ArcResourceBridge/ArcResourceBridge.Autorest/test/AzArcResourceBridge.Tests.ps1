@@ -17,10 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzArcResourceBridge'))
 Describe 'AzArcResourceBridge' {
     It 'CreateExpanded' {
         {
-            $config = New-AzArcResourceBridge -Name $env.resourceBridge1 -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType 'SystemAssigned' -Distro 'AKSEdge' -InfrastructureConfigProvider 'HCI' -Tag @{"123"="abc"}
+            $config = New-AzArcResourceBridge -Name $env.resourceBridge1 -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity -Distro 'AKSEdge' -InfrastructureConfigProvider 'HCI' -Tag @{"123"="abc"}
             $config.Name | Should -Be $env.resourceBridge1
 
-            $config = New-AzArcResourceBridge -Name $env.resourceBridge2 -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType 'SystemAssigned' -Distro 'AKSEdge' -InfrastructureConfigProvider 'HCI' -Tag @{"123"="abc"}
+            $config = New-AzArcResourceBridge -Name $env.resourceBridge2 -ResourceGroupName $env.resourceGroup -Location $env.location -EnableSystemAssignedIdentity -Distro 'AKSEdge' -InfrastructureConfigProvider 'HCI' -Tag @{"123"="abc"}
             $config.Name | Should -Be $env.resourceBridge2
         } | Should -Not -Throw
     }

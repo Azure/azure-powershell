@@ -175,6 +175,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                             vaultCreateArgs.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();
                     }
 
+                    // Set default soft delete settings
+                    if (vaultCreateArgs.Properties.SecuritySettings == null) 
+                    { 
+                        vaultCreateArgs.Properties.SecuritySettings = new SecuritySettings(); 
+                    }
+                    if (vaultCreateArgs.Properties.SecuritySettings.SoftDeleteSettings == null) 
+                    { 
+                        vaultCreateArgs.Properties.SecuritySettings.SoftDeleteSettings = new ServiceClientModel.SoftDeleteSettings(); 
+                    }
+                    
+                    // Set default values for soft delete settings
+                    vaultCreateArgs.Properties.SecuritySettings.SoftDeleteSettings.SoftDeleteState = ServiceClientModel.SoftDeleteState.AlwaysON;
+                    vaultCreateArgs.Properties.SecuritySettings.SoftDeleteSettings.SoftDeleteRetentionPeriodInDays = 14;
+                    vaultCreateArgs.Properties.SecuritySettings.SoftDeleteSettings.EnhancedSecurityState = ServiceClientModel.EnhancedSecurityState.AlwaysON;
+
                     Vault response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
 
                     this.WriteObject(new ARSVault(response));

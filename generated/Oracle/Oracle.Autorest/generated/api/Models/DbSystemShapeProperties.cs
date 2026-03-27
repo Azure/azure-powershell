@@ -188,6 +188,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public int? RuntimeMinimumCoreCount { get => this._runtimeMinimumCoreCount; set => this._runtimeMinimumCoreCount = value; }
 
+        /// <summary>Backing field for <see cref="ShapeAttribute" /> property.</summary>
+        private System.Collections.Generic.List<string> _shapeAttribute;
+
+        /// <summary>The shapeAttributes of the DB system shape..</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> ShapeAttribute { get => this._shapeAttribute; set => this._shapeAttribute = value; }
+
         /// <summary>Backing field for <see cref="ShapeFamily" /> property.</summary>
         private string _shapeFamily;
 
@@ -476,6 +483,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"runtimeMinimumCoreCount",
         PossibleTypes = new [] { typeof(int) })]
         int? RuntimeMinimumCoreCount { get; set; }
+        /// <summary>The shapeAttributes of the DB system shape..</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"The shapeAttributes of the DB system shape..",
+        SerializedName = @"shapeAttributes",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ShapeAttribute { get; set; }
         /// <summary>The family of the shape used for the DB system.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -570,6 +588,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// The runtime minimum number of CPU cores that can be enabled on the DB system for this shape.
         /// </summary>
         int? RuntimeMinimumCoreCount { get; set; }
+        /// <summary>The shapeAttributes of the DB system shape..</summary>
+        System.Collections.Generic.List<string> ShapeAttribute { get; set; }
         /// <summary>The family of the shape used for the DB system.</summary>
         string ShapeFamily { get; set; }
         /// <summary>The shape used for the DB system.</summary>

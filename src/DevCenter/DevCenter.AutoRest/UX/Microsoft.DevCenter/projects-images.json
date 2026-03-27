@@ -1,0 +1,52 @@
+{
+  "resourceType": "projects/images",
+  "apiVersion": "2025-04-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDevCenterAdminImage",
+      "description": "Gets a gallery image.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/images/{imageName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminimage"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an image.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.imageName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

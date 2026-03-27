@@ -13,8 +13,2906 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
     public partial class DynatraceObservability
     {
 
+        /// <summary>
+        /// Informs if the current subscription is being already monitored for selected Dynatrace environment.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="dynatraceEnvironmentId">Dynatrace Environment Id</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task CreationSupportedGet(string subscriptionId, string dynatraceEnvironmentId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Dynatrace.Observability/subscriptionStatuses/"
+                        + global::System.Uri.EscapeDataString(dynatraceEnvironmentId)
+                        + "/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.CreationSupportedGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Informs if the current subscription is being already monitored for selected Dynatrace environment.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task CreationSupportedGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Dynatrace.Observability/subscriptionStatuses/(?<dynatraceEnvironmentId>[^/]+)/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Dynatrace.Observability/subscriptionStatuses/{dynatraceEnvironmentId}/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var dynatraceEnvironmentId = _match.Groups["dynatraceEnvironmentId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Dynatrace.Observability/subscriptionStatuses/"
+                        + dynatraceEnvironmentId
+                        + "/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.CreationSupportedGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Informs if the current subscription is being already monitored for selected Dynatrace environment.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse> CreationSupportedGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Dynatrace.Observability/subscriptionStatuses/(?<dynatraceEnvironmentId>[^/]+)/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Dynatrace.Observability/subscriptionStatuses/{dynatraceEnvironmentId}/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var dynatraceEnvironmentId = _match.Groups["dynatraceEnvironmentId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Dynatrace.Observability/subscriptionStatuses/"
+                        + dynatraceEnvironmentId
+                        + "/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.CreationSupportedGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Informs if the current subscription is being already monitored for selected Dynatrace environment.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="dynatraceEnvironmentId">Dynatrace Environment Id</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse> CreationSupportedGetWithResult(string subscriptionId, string dynatraceEnvironmentId, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Dynatrace.Observability/subscriptionStatuses/"
+                        + global::System.Uri.EscapeDataString(dynatraceEnvironmentId)
+                        + "/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.CreationSupportedGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "CreationSupportedGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse> CreationSupportedGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.CreateResourceSupportedResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "CreationSupportedGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task CreationSupportedGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.CreateResourceSupportedResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="CreationSupportedGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="dynatraceEnvironmentId">Dynatrace Environment Id</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task CreationSupportedGet_Validate(string subscriptionId, string dynatraceEnvironmentId, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(dynatraceEnvironmentId),dynatraceEnvironmentId);
+            }
+        }
+
+        /// <summary>
+        /// Informs if the current subscription is being already monitored for selected Dynatrace environment.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="dynatraceEnvironmentId">Dynatrace Environment Id</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task CreationSupportedList(string subscriptionId, string dynatraceEnvironmentId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Dynatrace.Observability/subscriptionStatuses/"
+                        + global::System.Uri.EscapeDataString(dynatraceEnvironmentId)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.CreationSupportedList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Informs if the current subscription is being already monitored for selected Dynatrace environment.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task CreationSupportedListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Dynatrace.Observability/subscriptionStatuses/(?<dynatraceEnvironmentId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Dynatrace.Observability/subscriptionStatuses/{dynatraceEnvironmentId}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var dynatraceEnvironmentId = _match.Groups["dynatraceEnvironmentId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Dynatrace.Observability/subscriptionStatuses/"
+                        + dynatraceEnvironmentId
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.CreationSupportedList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Informs if the current subscription is being already monitored for selected Dynatrace environment.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse> CreationSupportedListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Dynatrace.Observability/subscriptionStatuses/(?<dynatraceEnvironmentId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Dynatrace.Observability/subscriptionStatuses/{dynatraceEnvironmentId}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var dynatraceEnvironmentId = _match.Groups["dynatraceEnvironmentId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Dynatrace.Observability/subscriptionStatuses/"
+                        + dynatraceEnvironmentId
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.CreationSupportedListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Informs if the current subscription is being already monitored for selected Dynatrace environment.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="dynatraceEnvironmentId">Dynatrace Environment Id</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse> CreationSupportedListWithResult(string subscriptionId, string dynatraceEnvironmentId, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Dynatrace.Observability/subscriptionStatuses/"
+                        + global::System.Uri.EscapeDataString(dynatraceEnvironmentId)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.CreationSupportedListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "CreationSupportedListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse> CreationSupportedListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.CreateResourceSupportedResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "CreationSupportedList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task CreationSupportedList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ICreateResourceSupportedResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.CreateResourceSupportedResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="CreationSupportedList" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="dynatraceEnvironmentId">Dynatrace Environment Id</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task CreationSupportedList_Validate(string subscriptionId, string dynatraceEnvironmentId, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(dynatraceEnvironmentId),dynatraceEnvironmentId);
+            }
+        }
+
+        /// <summary>
+        /// Add the subscriptions that should be monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Dynatrace monitor resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Add the subscriptions that should be monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Dynatrace monitor resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Dynatrace.Observability/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/monitoredSubscriptions/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Add the subscriptions that should be monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Dynatrace monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Dynatrace.Observability/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/monitoredSubscriptions/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Add the subscriptions that should be monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitoredSubscriptionsCreateOrUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Add the subscriptions that should be monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitoredSubscriptionsCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Add the subscriptions that should be monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Dynatrace monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitoredSubscriptionsCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitoredSubscriptionsCreateOrUpdate" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitoredSubscriptionsCreateOrUpdate" /> method. Call this like the actual call, but
+        /// you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Dynatrace monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// delete the subscriptions that are being monitored by the Dynatrace monitor resource
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsDelete(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// delete the subscriptions that are being monitored by the Dynatrace monitor resource
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Dynatrace.Observability/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/monitoredSubscriptions/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitoredSubscriptionsDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitoredSubscriptionsDelete" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsDelete_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
+            }
+        }
+
+        /// <summary>
+        /// List the subscriptions currently being monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsGet(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List the subscriptions currently being monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Dynatrace.Observability/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/monitoredSubscriptions/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List the subscriptions currently being monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Dynatrace.Observability/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/monitoredSubscriptions/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List the subscriptions currently being monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitoredSubscriptionsGetWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitoredSubscriptionsGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitoredSubscriptionsGet" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsGet_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
+            }
+        }
+
+        /// <summary>
+        /// List the subscriptions currently being monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionPropertiesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List the subscriptions currently being monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionPropertiesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Dynatrace.Observability/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/monitoredSubscriptions'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List the subscriptions currently being monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionPropertiesList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionPropertiesList> MonitoredSubscriptionsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Dynatrace.Observability/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/monitoredSubscriptions'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List the subscriptions currently being monitored by the Dynatrace monitor resource.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionPropertiesList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionPropertiesList> MonitoredSubscriptionsListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitoredSubscriptionsListWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionPropertiesList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionPropertiesList> MonitoredSubscriptionsListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscriptionPropertiesList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitoredSubscriptionsList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionPropertiesList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscriptionPropertiesList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitoredSubscriptionsList" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsList_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
+            }
+        }
+
+        /// <summary>
+        /// update the subscriptions that are being monitored by the Dynatrace monitor resource
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Dynatrace monitor resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsUpdate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update the subscriptions that are being monitored by the Dynatrace monitor resource
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Dynatrace monitor resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Dynatrace.Observability/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/monitoredSubscriptions/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update the subscriptions that are being monitored by the Dynatrace monitor resource
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Dynatrace monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Dynatrace.Observability/monitors/(?<monitorName>[^/]+)/monitoredSubscriptions/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/monitoredSubscriptions/default'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + monitorName
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update the subscriptions that are being monitored by the Dynatrace monitor resource
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitoredSubscriptionsUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitoredSubscriptionsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitoredSubscriptionsUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update the subscriptions that are being monitored by the Dynatrace monitor resource
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitoredSubscriptionsUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// update the subscriptions that are being monitored by the Dynatrace monitor resource
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Dynatrace monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/monitoredSubscriptions/default"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitoredSubscriptionsUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitoredSubscriptionsUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties> MonitoredSubscriptionsUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitoredSubscriptionsUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.MonitoredSubscriptionProperties.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitoredSubscriptionsUpdate" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">The request to update subscriptions needed to be monitored by the Dynatrace monitor resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitoredSubscriptionsUpdate_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredSubscriptionProperties body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>update a MonitorResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -29,7 +2927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsCreateOrUpdate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -76,7 +2974,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -133,7 +3031,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource> MonitorsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -179,7 +3077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a MonitorResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="jsonString">Json string supplied to the MonitorsCreateOrUpdate operation</param>
@@ -193,7 +3091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -227,7 +3125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a MonitorResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="jsonString">Json string supplied to the MonitorsCreateOrUpdate operation</param>
@@ -239,7 +3137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource> MonitorsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -273,7 +3171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a MonitorResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -286,7 +3184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource> MonitorsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -617,7 +3515,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">Resource create parameters.</param>
@@ -630,22 +3528,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Delete a MonitorResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -653,9 +3552,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorsDelete(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MonitorsDelete(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -680,14 +3579,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.MonitorsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+                await this.MonitorsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Delete a MonitorResource</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -695,9 +3594,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MonitorsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -734,14 +3633,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.MonitorsDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+                await this.MonitorsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "MonitorsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -749,7 +3648,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MonitorsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MonitorsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -892,7 +3791,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -904,16 +3803,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
             }
         }
 
         /// <summary>Get a MonitorResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -926,7 +3826,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGet(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -955,8 +3855,431 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             }
         }
 
-        /// <summary>Get Marketplace SaaS resource details of a tenant under a specific subscription</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <summary>
+        /// Get the total number of connected resources for the given marketplace subscription Id
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="body">Marketplace Subscription Id</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsGetAllConnectedResourcesCount(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSubscriptionIdRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Dynatrace.Observability/getAllConnectedResourcesCount"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsGetAllConnectedResourcesCount_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Get the total number of connected resources for the given marketplace subscription Id
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Marketplace Subscription Id</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsGetAllConnectedResourcesCountViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSubscriptionIdRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Dynatrace.Observability$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Dynatrace.Observability'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Dynatrace.Observability/getAllConnectedResourcesCount"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsGetAllConnectedResourcesCount_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Get the total number of connected resources for the given marketplace subscription Id
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Marketplace Subscription Id</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse> MonitorsGetAllConnectedResourcesCountViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSubscriptionIdRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Dynatrace.Observability$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Dynatrace.Observability'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Dynatrace.Observability/getAllConnectedResourcesCount"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsGetAllConnectedResourcesCountWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Get the total number of connected resources for the given marketplace subscription Id
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsGetAllConnectedResourcesCount operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsGetAllConnectedResourcesCountViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Dynatrace.Observability/getAllConnectedResourcesCount"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsGetAllConnectedResourcesCount_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Get the total number of connected resources for the given marketplace subscription Id
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsGetAllConnectedResourcesCount operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse> MonitorsGetAllConnectedResourcesCountViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Dynatrace.Observability/getAllConnectedResourcesCount"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsGetAllConnectedResourcesCountWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Get the total number of connected resources for the given marketplace subscription Id
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="body">Marketplace Subscription Id</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse> MonitorsGetAllConnectedResourcesCountWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSubscriptionIdRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Dynatrace.Observability/getAllConnectedResourcesCount"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsGetAllConnectedResourcesCountWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitorsGetAllConnectedResourcesCountWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse> MonitorsGetAllConnectedResourcesCountWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ConnectedResourcesCountResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "MonitorsGetAllConnectedResourcesCount" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsGetAllConnectedResourcesCount_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IConnectedResourcesCountResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ConnectedResourcesCountResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitorsGetAllConnectedResourcesCount" /> method. Call this like the actual call, but
+        /// you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="body">Marketplace Subscription Id</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsGetAllConnectedResourcesCount_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSubscriptionIdRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Get Marketplace SaaS resource details</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="body">Tenant Id</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -969,7 +4292,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetMarketplaceSaaSResourceDetails(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -999,7 +4322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             }
         }
 
-        /// <summary>Get Marketplace SaaS resource details of a tenant under a specific subscription</summary>
+        /// <summary>Get Marketplace SaaS resource details</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Tenant Id</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1013,7 +4336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetMarketplaceSaaSResourceDetailsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1053,7 +4376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             }
         }
 
-        /// <summary>Get Marketplace SaaS resource details of a tenant under a specific subscription</summary>
+        /// <summary>Get Marketplace SaaS resource details</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Tenant Id</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1065,7 +4388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponse> MonitorsGetMarketplaceSaaSResourceDetailsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1105,8 +4428,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             }
         }
 
-        /// <summary>Get Marketplace SaaS resource details of a tenant under a specific subscription</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <summary>Get Marketplace SaaS resource details</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="jsonString">Json string supplied to the MonitorsGetMarketplaceSaaSResourceDetails operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1118,7 +4441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetMarketplaceSaaSResourceDetailsViaJsonString(string subscriptionId, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1148,8 +4471,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             }
         }
 
-        /// <summary>Get Marketplace SaaS resource details of a tenant under a specific subscription</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <summary>Get Marketplace SaaS resource details</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="jsonString">Json string supplied to the MonitorsGetMarketplaceSaaSResourceDetails operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -1159,7 +4482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponse> MonitorsGetMarketplaceSaaSResourceDetailsViaJsonStringWithResult(string subscriptionId, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1189,8 +4512,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             }
         }
 
-        /// <summary>Get Marketplace SaaS resource details of a tenant under a specific subscription</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <summary>Get Marketplace SaaS resource details</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="body">Tenant Id</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -1201,7 +4524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsResponse> MonitorsGetMarketplaceSaaSResourceDetailsWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMarketplaceSaaSResourceDetailsRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1349,7 +4672,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsGetMarketplaceSaaSResourceDetails" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="body">Tenant Id</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -1360,27 +4683,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Get metric status</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="monitorName">Name of the Monitor resource</param>
+        /// <param name="monitorName">Name of the Monitors resource</param>
+        /// <param name="body">The details of the metric status request.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorsGetMetricStatus(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MonitorsGetMetricStatus(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1405,6 +4730,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.MonitorsGetMetricStatus_Call (request, onOk,onDefault,eventListener,sender);
             }
@@ -1412,17 +4741,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
 
         /// <summary>Get metric status</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="body">The details of the metric status request.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorsGetMetricStatusViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MonitorsGetMetricStatusViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1459,6 +4790,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.MonitorsGetMetricStatus_Call (request, onOk,onDefault,eventListener,sender);
             }
@@ -1466,15 +4801,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
 
         /// <summary>Get metric status</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="body">The details of the metric status request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse> MonitorsGetMetricStatusViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse> MonitorsGetMetricStatusViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1511,24 +4848,78 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
                 // make the call
                 return await this.MonitorsGetMetricStatusWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>Get metric status</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="monitorName">Name of the Monitor resource</param>
+        /// <param name="monitorName">Name of the Monitors resource</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsGetMetricStatus operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsGetMetricStatusViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/getMetricStatus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsGetMetricStatus_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get metric status</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Name of the Monitors resource</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsGetMetricStatus operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse> MonitorsGetMetricStatusWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse> MonitorsGetMetricStatusViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1553,6 +4944,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsGetMetricStatusWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get metric status</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Name of the Monitors resource</param>
+        /// <param name="body">The details of the metric status request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricsStatusResponse> MonitorsGetMetricStatusWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/getMetricStatus"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
                 // make the call
                 return await this.MonitorsGetMetricStatusWithResult_Call (request, eventListener,sender);
             }
@@ -1672,28 +5115,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsGetMetricStatus" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="monitorName">Name of the Monitor resource</param>
+        /// <param name="monitorName">Name of the Monitors resource</param>
+        /// <param name="body">The details of the metric status request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MonitorsGetMetricStatus_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task MonitorsGetMetricStatus_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMetricStatusRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Gets the SSO configuration details from the partner.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">The details of the get sso details request.</param>
@@ -1708,7 +5155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetSsoDetails(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1756,7 +5203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetSsoDetailsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1814,7 +5261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsResponse> MonitorsGetSsoDetailsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1861,7 +5308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>Gets the SSO configuration details from the partner.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="jsonString">Json string supplied to the MonitorsGetSsoDetails operation</param>
@@ -1875,7 +5322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetSsoDetailsViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1910,7 +5357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>Gets the SSO configuration details from the partner.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="jsonString">Json string supplied to the MonitorsGetSsoDetails operation</param>
@@ -1922,7 +5369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsResponse> MonitorsGetSsoDetailsViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1957,7 +5404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>Gets the SSO configuration details from the partner.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">The details of the get sso details request.</param>
@@ -1970,7 +5417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsResponse> MonitorsGetSsoDetailsWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ISsoDetailsRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2118,7 +5565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsGetSsoDetails" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">The details of the get sso details request.</param>
@@ -2131,11 +5578,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -2144,7 +5592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// <summary>
         /// Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2157,7 +5605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetVMHostPayload(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMExtensionPayload>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2201,7 +5649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetVMHostPayloadViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMExtensionPayload>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2255,7 +5703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMExtensionPayload> MonitorsGetVMHostPayloadViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2300,7 +5748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// <summary>
         /// Returns the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2311,7 +5759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMExtensionPayload> MonitorsGetVMHostPayloadWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2455,7 +5903,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsGetVMHostPayload" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2467,11 +5915,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
             }
         }
 
@@ -2487,7 +5936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2538,7 +5987,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource> MonitorsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2580,7 +6029,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>Get a MonitorResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2591,7 +6040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource> MonitorsGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2734,7 +6183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsGet" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2746,16 +6195,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
             }
         }
 
         /// <summary>Gets list of App Services with Dynatrace PaaS OneAgent enabled</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2768,7 +6218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListAppServices(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAppServiceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2810,7 +6260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListAppServicesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAppServiceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2862,7 +6312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAppServiceListResponse> MonitorsListAppServicesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2905,7 +6355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>Gets list of App Services with Dynatrace PaaS OneAgent enabled</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2916,7 +6366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAppServiceListResponse> MonitorsListAppServicesWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3060,7 +6510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsListAppServices" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3072,16 +6522,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
             }
         }
 
         /// <summary>List MonitorResource resources by resource group</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3093,7 +6544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3133,7 +6584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3182,7 +6633,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceListResult> MonitorsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3222,7 +6673,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>List MonitorResource resources by resource group</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3232,7 +6683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceListResult> MonitorsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3376,7 +6827,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsListByResourceGroup" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -3387,7 +6838,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
@@ -3395,7 +6846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>List all MonitorResource by subscriptionId</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3406,7 +6857,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListBySubscriptionId(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3444,7 +6895,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListBySubscriptionIdViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3490,7 +6941,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceListResult> MonitorsListBySubscriptionIdViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3527,7 +6978,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>List all MonitorResource by subscriptionId</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -3536,7 +6987,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceListResult> MonitorsListBySubscriptionIdWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3678,7 +7129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsListBySubscriptionId" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -3688,12 +7139,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
             }
         }
 
         /// <summary>List the VM/VMSS resources currently being monitored by the Dynatrace resource.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3706,7 +7157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListHosts(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMHostsListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3748,7 +7199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListHostsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMHostsListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3800,7 +7251,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMHostsListResponse> MonitorsListHostsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3843,7 +7294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>List the VM/VMSS resources currently being monitored by the Dynatrace resource.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3854,7 +7305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMHostsListResponse> MonitorsListHostsWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3998,7 +7449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsListHosts" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4010,16 +7461,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
             }
         }
 
         /// <summary>Gets all the Dynatrace environments that a user can link a azure resource to</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">The details of the linkable environment request.</param>
@@ -4034,7 +7486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListLinkableEnvironments(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4082,7 +7534,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListLinkableEnvironmentsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4140,7 +7592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentListResponse> MonitorsListLinkableEnvironmentsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4187,7 +7639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>Gets all the Dynatrace environments that a user can link a azure resource to</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="jsonString">Json string supplied to the MonitorsListLinkableEnvironments operation</param>
@@ -4201,7 +7653,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsListLinkableEnvironmentsViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4236,7 +7688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>Gets all the Dynatrace environments that a user can link a azure resource to</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="jsonString">Json string supplied to the MonitorsListLinkableEnvironments operation</param>
@@ -4248,7 +7700,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentListResponse> MonitorsListLinkableEnvironmentsViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4283,7 +7735,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>Gets all the Dynatrace environments that a user can link a azure resource to</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">The details of the linkable environment request.</param>
@@ -4296,7 +7748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentListResponse> MonitorsListLinkableEnvironmentsWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILinkableEnvironmentRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4446,7 +7898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsListLinkableEnvironments" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">The details of the linkable environment request.</param>
@@ -4459,31 +7911,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>List the resources currently being monitored by the Dynatrace monitor resource.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">The details of the log status request.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorsListMonitoredResources(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MonitorsListMonitoredResources(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILogStatusRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4508,6 +7963,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.MonitorsListMonitoredResources_Call (request, onOk,onDefault,eventListener,sender);
             }
@@ -4515,17 +7974,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
 
         /// <summary>List the resources currently being monitored by the Dynatrace monitor resource.</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="body">The details of the log status request.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MonitorsListMonitoredResourcesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MonitorsListMonitoredResourcesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILogStatusRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4562,6 +8023,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
                 await this.MonitorsListMonitoredResources_Call (request, onOk,onDefault,eventListener,sender);
             }
@@ -4569,15 +8034,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
 
         /// <summary>List the resources currently being monitored by the Dynatrace monitor resource.</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="body">The details of the log status request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse> MonitorsListMonitoredResourcesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse> MonitorsListMonitoredResourcesViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILogStatusRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4614,24 +8081,78 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
                 // make the call
                 return await this.MonitorsListMonitoredResourcesWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>List the resources currently being monitored by the Dynatrace monitor resource.</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsListMonitoredResources operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsListMonitoredResourcesViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/listMonitoredResources"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsListMonitoredResources_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List the resources currently being monitored by the Dynatrace monitor resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsListMonitoredResources operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse> MonitorsListMonitoredResourcesWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse> MonitorsListMonitoredResourcesViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4656,6 +8177,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.MonitorsListMonitoredResourcesWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List the resources currently being monitored by the Dynatrace monitor resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">The details of the log status request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResourceListResponse> MonitorsListMonitoredResourcesWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILogStatusRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/listMonitoredResources"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
                 // make the call
                 return await this.MonitorsListMonitoredResourcesWithResult_Call (request, eventListener,sender);
             }
@@ -4777,28 +8350,275 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsListMonitoredResources" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">The details of the log status request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MonitorsListMonitoredResources_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task MonitorsListMonitoredResources_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILogStatusRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Performs Dynatrace agent install/uninstall action through the Azure Dynatrace resource on the provided list of resources.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">List of resources and action</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsManageAgentInstallation(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IManageAgentInstallationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/manageAgentInstallation"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsManageAgentInstallation_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Performs Dynatrace agent install/uninstall action through the Azure Dynatrace resource on the provided list of resources.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">List of resources and action</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsManageAgentInstallationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IManageAgentInstallationRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Dynatrace.Observability/monitors/(?<monitorName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + monitorName
+                        + "/manageAgentInstallation"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsManageAgentInstallation_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Performs Dynatrace agent install/uninstall action through the Azure Dynatrace resource on the provided list of resources.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsManageAgentInstallation operation</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsManageAgentInstallationViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/manageAgentInstallation"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsManageAgentInstallation_Call (request, onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitorsManageAgentInstallation" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsManageAgentInstallation_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitorsManageAgentInstallation" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">List of resources and action</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsManageAgentInstallation_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IManageAgentInstallationRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>update a MonitorResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">The resource properties to be updated.</param>
@@ -4813,7 +8633,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsUpdate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4860,7 +8680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4917,7 +8737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource> MonitorsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4963,7 +8783,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a MonitorResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="jsonString">Json string supplied to the MonitorsUpdate operation</param>
@@ -4977,7 +8797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task MonitorsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5011,7 +8831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a MonitorResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="jsonString">Json string supplied to the MonitorsUpdate operation</param>
@@ -5023,7 +8843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource> MonitorsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5057,7 +8877,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a MonitorResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">The resource properties to be updated.</param>
@@ -5070,7 +8890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResource> MonitorsUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitorResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5217,7 +9037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="MonitorsUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="body">The resource properties to be updated.</param>
@@ -5230,11 +9050,345 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Upgrades the billing Plan for Dynatrace monitor resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">The details of the upgrade plan request.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsUpgradePlan(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUpgradePlanRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/upgradePlan"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsUpgradePlan_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Upgrades the billing Plan for Dynatrace monitor resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The details of the upgrade plan request.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsUpgradePlanViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUpgradePlanRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Dynatrace.Observability/monitors/(?<monitorName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var monitorName = _match.Groups["monitorName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + monitorName
+                        + "/upgradePlan"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsUpgradePlan_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Upgrades the billing Plan for Dynatrace monitor resource.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="jsonString">Json string supplied to the MonitorsUpgradePlan operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task MonitorsUpgradePlanViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-04-24";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Dynatrace.Observability/monitors/"
+                        + global::System.Uri.EscapeDataString(monitorName)
+                        + "/upgradePlan"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.MonitorsUpgradePlan_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "MonitorsUpgradePlan" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsUpgradePlan_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="MonitorsUpgradePlan" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="monitorName">Monitor resource name</param>
+        /// <param name="body">The details of the upgrade plan request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task MonitorsUpgradePlan_Validate(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IUpgradePlanRequest body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -5251,7 +9405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5287,7 +9441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5330,7 +9484,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5372,7 +9526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5523,7 +9677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a DynatraceSingleSignOnResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="configurationName">Single Sign On Configuration Name</param>
@@ -5539,7 +9693,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task SingleSignOnCreateOrUpdate(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5588,7 +9742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task SingleSignOnCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5648,7 +9802,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource> SingleSignOnCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5697,7 +9851,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a DynatraceSingleSignOnResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="configurationName">Single Sign On Configuration Name</param>
@@ -5712,7 +9866,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task SingleSignOnCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5748,7 +9902,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a DynatraceSingleSignOnResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="configurationName">Single Sign On Configuration Name</param>
@@ -5761,7 +9915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource> SingleSignOnCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5797,7 +9951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a DynatraceSingleSignOnResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="configurationName">Single Sign On Configuration Name</param>
@@ -5811,7 +9965,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource> SingleSignOnCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6146,7 +10300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="SingleSignOnCreateOrUpdate" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="configurationName">Single Sign On Configuration Name</param>
@@ -6160,19 +10314,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
                 await eventListener.AssertNotNull(nameof(configurationName),configurationName);
+                await eventListener.AssertRegEx(nameof(configurationName), configurationName, @"^[a-zA-Z]*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Get a DynatraceSingleSignOnResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="configurationName">Single Sign On Configuration Name</param>
@@ -6186,7 +10342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task SingleSignOnGet(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6229,7 +10385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task SingleSignOnGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6283,7 +10439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource> SingleSignOnGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6328,7 +10484,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>Get a DynatraceSingleSignOnResource</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="configurationName">Single Sign On Configuration Name</param>
@@ -6340,7 +10496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResource> SingleSignOnGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, string configurationName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6485,7 +10641,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="SingleSignOnGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="configurationName">Single Sign On Configuration Name</param>
@@ -6498,17 +10654,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
                 await eventListener.AssertNotNull(nameof(configurationName),configurationName);
+                await eventListener.AssertRegEx(nameof(configurationName), configurationName, @"^[a-zA-Z]*$");
             }
         }
 
         /// <summary>List all DynatraceSingleSignOnResource by monitorName</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6521,7 +10679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task SingleSignOnList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6563,7 +10721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task SingleSignOnListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6615,7 +10773,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResourceListResult> SingleSignOnListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6658,7 +10816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>List all DynatraceSingleSignOnResource by monitorName</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6669,7 +10827,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnResourceListResult> SingleSignOnListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6813,7 +10971,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="SingleSignOnList" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6825,16 +10983,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
             }
         }
 
         /// <summary>update a TagRule</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="ruleSetName">Monitor resource name</param>
@@ -6850,7 +11009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6899,7 +11058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6959,7 +11118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule> TagRulesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7008,7 +11167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a TagRule</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="ruleSetName">Monitor resource name</param>
@@ -7023,7 +11182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7059,7 +11218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a TagRule</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="ruleSetName">Monitor resource name</param>
@@ -7072,7 +11231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule> TagRulesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7108,7 +11267,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>update a TagRule</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="ruleSetName">Monitor resource name</param>
@@ -7122,7 +11281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule> TagRulesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule body, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7455,7 +11614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="TagRulesCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="ruleSetName">Monitor resource name</param>
@@ -7469,24 +11628,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
                 await eventListener.AssertNotNull(nameof(ruleSetName),ruleSetName);
+                await eventListener.AssertRegEx(nameof(ruleSetName), ruleSetName, @"^[a-zA-Z]*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Delete a TagRule</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="ruleSetName">Monitor resource name</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7494,9 +11655,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TagRulesDelete(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TagRulesDelete(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7523,14 +11684,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TagRulesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+                await this.TagRulesDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Delete a TagRule</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7538,9 +11699,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TagRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TagRulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7580,14 +11741,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TagRulesDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
+                await this.TagRulesDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "TagRulesDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7595,7 +11756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TagRulesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TagRulesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7738,7 +11899,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="TagRulesDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="ruleSetName">Monitor resource name</param>
@@ -7751,17 +11912,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
                 await eventListener.AssertNotNull(nameof(ruleSetName),ruleSetName);
+                await eventListener.AssertRegEx(nameof(ruleSetName), ruleSetName, @"^[a-zA-Z]*$");
             }
         }
 
         /// <summary>Get a TagRule</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="ruleSetName">Monitor resource name</param>
@@ -7775,7 +11938,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesGet(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7818,7 +11981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7872,7 +12035,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule> TagRulesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7917,7 +12080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>Get a TagRule</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="ruleSetName">Monitor resource name</param>
@@ -7929,7 +12092,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRule> TagRulesGetWithResult(string subscriptionId, string resourceGroupName, string monitorName, string ruleSetName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8074,7 +12237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="TagRulesGet" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="ruleSetName">Monitor resource name</param>
@@ -8087,17 +12250,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
                 await eventListener.AssertNotNull(nameof(ruleSetName),ruleSetName);
+                await eventListener.AssertRegEx(nameof(ruleSetName), ruleSetName, @"^[a-zA-Z]*$");
             }
         }
 
         /// <summary>List all TagRule by monitorName</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8110,7 +12275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesList(string subscriptionId, string resourceGroupName, string monitorName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8152,7 +12317,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task TagRulesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8204,7 +12369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRuleListResult> TagRulesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8247,7 +12412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         }
 
         /// <summary>List all TagRule by monitorName</summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8258,7 +12423,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ITagRuleListResult> TagRulesListWithResult(string subscriptionId, string resourceGroupName, string monitorName, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-27";
+            var apiVersion = @"2024-04-24";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8402,7 +12567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
         /// Validation method for <see cref="TagRulesList" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="monitorName">Monitor resource name</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8414,11 +12579,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
-                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(monitorName),monitorName);
+                await eventListener.AssertRegEx(nameof(monitorName), monitorName, @"^[a-zA-Z0-9_-]*$");
             }
         }
     }

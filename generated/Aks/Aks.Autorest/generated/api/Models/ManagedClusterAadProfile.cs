@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
 
     /// <summary>
-    /// For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
+    /// AADProfile specifies attributes for Azure Active Directory integration. For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
     /// </summary>
     public partial class ManagedClusterAadProfile :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAadProfile,
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
         }
     }
-    /// For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
+    /// AADProfile specifies attributes for Azure Active Directory integration. For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
     public partial interface IManagedClusterAadProfile :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable
     {
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         string TenantId { get; set; }
 
     }
-    /// For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
+    /// AADProfile specifies attributes for Azure Active Directory integration. For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
     internal partial interface IManagedClusterAadProfileInternal
 
     {

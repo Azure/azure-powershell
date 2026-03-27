@@ -911,6 +911,9 @@ function Test-GetAzureStorageAccountGeoReplicationStats
         Assert-AreEqual $kind $sto.Kind; 
         Assert-NotNull $sto.GeoReplicationStats.Status
         Assert-NotNull $sto.GeoReplicationStats.LastSyncTime
+        Assert-AreEqual "false" $sto.GeoReplicationStats.CanPlannedFailover
+        Assert-AreEqual "Standard_LRS" $sto.GeoReplicationStats.PostFailoverRedundancy
+        Assert-AreEqual "Standard_RAGRS" $sto.GeoReplicationStats.PostPlannedFailoverRedundancy
         
         Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
         }
@@ -2782,6 +2785,67 @@ function Test-StorageAccountZonePlacement
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname2
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname3
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test StorageAccountGeoPriorityReplication
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountGeoPriorityReplication
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';  # Use geo-redundant storage for priority replication
+        $loc = 'centraluseuap';
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+        
+        # Create new account with EnableBlobGeoPriorityReplication enabled
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -EnableBlobGeoPriorityReplication $true;
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $true $sto.GeoPriorityReplicationStatus.IsBlobEnabled;
+        
+        # Test updating account to disable EnableBlobGeoPriorityReplication
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableBlobGeoPriorityReplication $false;
+        
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $false $sto.GeoPriorityReplicationStatus.IsBlobEnabled;
+        
+        # Test updating account to re-enable EnableBlobGeoPriorityReplication
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableBlobGeoPriorityReplication $true;
+        
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $true $sto.GeoPriorityReplicationStatus.IsBlobEnabled;
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
     finally
     {

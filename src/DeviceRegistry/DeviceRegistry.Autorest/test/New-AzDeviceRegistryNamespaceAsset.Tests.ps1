@@ -18,12 +18,14 @@ Describe 'New-AzDeviceRegistryNamespaceAsset' {
     It 'CreateExpanded'  {
         $testConfig = $env.namespaceAssetTests.createTests.CreateExpanded
         $namespaceName = $env.namespaceAssetTests.namespaceName
-        
-        $result = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -Location $env.location -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -DeviceRefDeviceName $testConfig.properties.deviceRef.deviceName -DeviceRefEndpointName $testConfig.properties.deviceRef.endpointName -ExternalAssetId $testConfig.properties.externalAssetId -DisplayName $testConfig.properties.displayName -Manufacturer $testConfig.properties.manufacturer -ManufacturerUri $testConfig.properties.manufacturerUri -Model $testConfig.properties.model -ProductCode $testConfig.properties.productCode -SoftwareRevision $testConfig.properties.softwareRevision -HardwareRevision $testConfig.properties.hardwareRevision -SerialNumber $testConfig.properties.serialNumber -DocumentationUri $testConfig.properties.documentationUri
-        
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
+        $extendedLocationName = $env.namespaceAssetTests.extendedLocationName
+
+        $result = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -Location $env.location -ExtendedLocationName $extendedLocationName -ExtendedLocationType $env.extendedLocationType -DeviceRefDeviceName $testConfig.properties.deviceRef.deviceName -DeviceRefEndpointName $testConfig.properties.deviceRef.endpointName -ExternalAssetId $testConfig.properties.externalAssetId -DisplayName $testConfig.properties.displayName -Manufacturer $testConfig.properties.manufacturer -ManufacturerUri $testConfig.properties.manufacturerUri -Model $testConfig.properties.model -ProductCode $testConfig.properties.productCode -SoftwareRevision $testConfig.properties.softwareRevision -HardwareRevision $testConfig.properties.hardwareRevision -SerialNumber $testConfig.properties.serialNumber -DocumentationUri $testConfig.properties.documentationUri
+
         $result.Name | Should -Be $testConfig.name
         $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.DeviceRefDeviceName | Should -Be $testConfig.properties.deviceRef.deviceName
         $result.DeviceRefEndpointName | Should -Be $testConfig.properties.deviceRef.endpointName
@@ -42,13 +44,15 @@ Describe 'New-AzDeviceRegistryNamespaceAsset' {
     It 'CreateViaJsonFilePath'  {
         $testConfig = $env.namespaceAssetTests.createTests.CreateViaJsonFilePath
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
+        $extendedLocationName = $env.namespaceAssetTests.extendedLocationName
         $jsonFilePath = Join-Path $PSScriptRoot $testConfig.jsonFilePath
-        
-        $result = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
-        
+
+        $result = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
+
         $result.Name | Should -Be $testConfig.name
         $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.DeviceRefDeviceName | Should -Be "myDeviceName"
         $result.DeviceRefEndpointName | Should -Be "myEndpointName"
@@ -61,7 +65,7 @@ Describe 'New-AzDeviceRegistryNamespaceAsset' {
         $result.SerialNumber | Should -Be "64-103816-519918-8"
         $result.DocumentationUri | Should -Be "https://www.example.com/manual/"
         $result.Dataset | Should -HaveCount 2
-        $result.Event | Should -HaveCount 2
+        $result.EventGroup | Should -HaveCount 2
         $result.Stream | Should -HaveCount 2
         $result.ManagementGroup | Should -HaveCount 1
     }
@@ -69,14 +73,16 @@ Describe 'New-AzDeviceRegistryNamespaceAsset' {
     It 'CreateViaJsonString'  {
         $testConfig = $env.namespaceAssetTests.createTests.CreateViaJsonString
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
+        $extendedLocationName = $env.namespaceAssetTests.extendedLocationName
         $jsonFilePath = Join-Path $PSScriptRoot $testConfig.jsonFilePath
         $jsonString = Get-Content -Path $jsonFilePath -Raw
-        
-        $result = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonString $jsonString
-        
+
+        $result = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonString $jsonString
+
         $result.Name | Should -Be $testConfig.name
         $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.DeviceRefDeviceName | Should -Be "myDeviceName"
         $result.DeviceRefEndpointName | Should -Be "myEndpointName"
@@ -89,7 +95,7 @@ Describe 'New-AzDeviceRegistryNamespaceAsset' {
         $result.SerialNumber | Should -Be "64-103816-519918-8"
         $result.DocumentationUri | Should -Be "https://www.example.com/manual/"
         $result.Dataset | Should -HaveCount 2
-        $result.Event | Should -HaveCount 2
+        $result.EventGroup | Should -HaveCount 2
         $result.Stream | Should -HaveCount 2
         $result.ManagementGroup | Should -HaveCount 1
     }

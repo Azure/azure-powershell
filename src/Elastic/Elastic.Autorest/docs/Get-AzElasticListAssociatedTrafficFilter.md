@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticListAssociatedTrafficFilter
 
 ## SYNOPSIS
-Get the list of all associated traffic filters for the given deployment.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzElasticListAssociatedTrafficFilter -MonitorName <String> -ResourceGroupNam
 ```
 
 ## DESCRIPTION
-Get the list of all associated traffic filters for the given deployment.
+List all traffic filters associated with your Elastic monitor resource, helping you manage network traffic control.
 
 ## EXAMPLES
 

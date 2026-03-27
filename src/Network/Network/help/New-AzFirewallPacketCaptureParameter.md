@@ -37,7 +37,7 @@ This creates the parameters used for starting a packet capture on the azure fire
 ### Example 2: Configuring Azure Firewall Packet Capture for status operation
 ```powershell
 # Create the firewall packet capture parameters to check Status operation
-$Params = New-AzFirewallPacketCaptureParameter -Operation "Status" 
+$Params = New-AzFirewallPacketCaptureParameter -Operation "Status"
 ```
 
 This creates the parameters used for getting the status of a packet capture operation on the azure firewall
@@ -45,7 +45,7 @@ This creates the parameters used for getting the status of a packet capture oper
 ### Example 3: Configuring Azure Firewall Packet Capture for stop operation
 ```powershell
 # Create the firewall packet capture parameters to check Status operation
-$Params = New-AzFirewallPacketCaptureParameter -Operation "Stop" 
+$Params = New-AzFirewallPacketCaptureParameter -Operation "Stop"
 ```
 
 This creates the parameters used for stopping a packet capture operation on the azure firewall 

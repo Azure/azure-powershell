@@ -15,11 +15,39 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAksArcVirtualNetwork
 }
 
 Describe 'Remove-AzAksArcVirtualNetwork' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $vnetName = "test-vnet"
+        $mocGroup = "test-group"
+        $mocLocation = "test-moclocation"
+    }
+    BeforeEach {
+        $vnet = New-AzAksArcVirtualNetwork -Name $vnetName `
+            -ResourceGroupName $env.resourceGroupName `
+            -CustomLocationName $env.customLocationName `
+            -MocVnetName $env.mocVnetName `
+            -MocGroup $mocGroup `
+	        -MocLocation $mocLocation `
+            -Location $env.location
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzAksArcVirtualNetwork -Name $vnetName `
+	        -ResourceGroupName $env.resourceGroupName
+        try {
+            Get-AzAksArcVirtualNetwork -Name $vnetName `
+	            -ResourceGroupName $env.resourceGroupName
+        } catch {
+            $_.Exception.Message -like "*ResourceNotFound*" | Should -BeTrue
+        }
+    }
+
+    It 'DeleteViaIdentity' {
+        $vnet | Remove-AzAksArcVirtualNetwork
+        try {
+            Get-AzAksArcVirtualNetwork -Name $vnetName `
+	            -ResourceGroupName $env.resourceGroupName
+        } catch {
+            $_.Exception.Message -like "*ResourceNotFound*" | Should -BeTrue
+        }
     }
 }

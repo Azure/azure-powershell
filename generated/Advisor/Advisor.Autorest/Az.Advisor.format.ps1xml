@@ -4,7 +4,7 @@
     <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.AdvisorIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.AdvisorIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.AdvisorIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -60,9 +60,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ArmErrorResponseBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ArmErrorResponseBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ArmErrorResponseBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ArmErrorResponseBody#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -88,9 +88,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ConfigData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ConfigData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ConfigData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ConfigData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -122,9 +122,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ConfigDataProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ConfigDataProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ConfigDataProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ConfigDataProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -150,9 +150,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ConfigurationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ConfigurationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ConfigurationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ConfigurationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -172,17 +172,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.DigestConfig</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.DigestConfig</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.DigestConfig</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.DigestConfig#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>ActionGroupResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Category</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Frequency</Label>
@@ -204,9 +201,6 @@
                 <PropertyName>ActionGroupResourceId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Category</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Frequency</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -224,9 +218,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.MetadataEntity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.MetadataEntity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.MetadataEntity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.MetadataEntity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -252,9 +246,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.MetadataEntityListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.MetadataEntityListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.MetadataEntityListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.MetadataEntityListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -274,43 +268,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.MetadataEntityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.MetadataEntityProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.MetadataEntityProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ApplicableScenario</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DependsOn</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DisplayName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ApplicableScenario</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DependsOn</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DisplayName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.MetadataSupportedValueDetail</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.MetadataSupportedValueDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.MetadataEntityProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -330,9 +290,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.OperationDisplayInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.MetadataSupportedValueDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.OperationDisplayInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.MetadataSupportedValueDetail#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.OperationDisplayInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.OperationDisplayInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -370,9 +352,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.OperationEntity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.OperationEntity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.OperationEntity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.OperationEntity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -392,9 +374,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.OperationEntityListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.OperationEntityListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.OperationEntityListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.OperationEntityListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -414,9 +396,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.RecommendationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.RecommendationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.RecommendationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.RecommendationProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -452,9 +434,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Risk</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SuppressionId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -493,18 +472,15 @@
               <TableColumnItem>
                 <PropertyName>Risk</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SuppressionId</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.RecommendationPropertiesExtendedProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.RecommendationPropertiesExtendedProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.RecommendationPropertiesExtendedProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.RecommendationPropertiesExtendedProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -524,9 +500,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -546,9 +522,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ResourceMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ResourceMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ResourceMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ResourceMetadata#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -586,9 +562,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ResourceRecommendationBase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ResourceRecommendationBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ResourceRecommendationBase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ResourceRecommendationBase#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -638,9 +614,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ResourceRecommendationBaseListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ResourceRecommendationBaseListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ResourceRecommendationBaseListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ResourceRecommendationBaseListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -660,9 +636,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ShortDescription</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ShortDescription</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.ShortDescription</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.ShortDescription#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -688,9 +664,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.SuppressionContract</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.SuppressionContract</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.SuppressionContract</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.SuppressionContract#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -728,9 +704,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.SuppressionContractListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.SuppressionContractListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.SuppressionContractListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.SuppressionContractListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -750,9 +726,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.SuppressionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.SuppressionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.SuppressionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.SuppressionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

@@ -21,7 +21,7 @@ Update-AzDeviceRegistryNamespaceAsset -AssetName <String> -NamespaceName <String
  [-DefaultEventsDestination <IEventDestination[]>] [-DefaultManagementGroupsConfiguration <String>]
  [-DefaultStreamsConfiguration <String>] [-DefaultStreamsDestination <IStreamDestination[]>]
  [-Description <String>] [-DisplayName <String>] [-DocumentationUri <String>] [-Enabled]
- [-Event <INamespaceEvent[]>] [-HardwareRevision <String>] [-ManagementGroup <IManagementGroup[]>]
+ [-EventGroup <INamespaceEventGroup[]>] [-HardwareRevision <String>] [-ManagementGroup <IManagementGroup[]>]
  [-Manufacturer <String>] [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>]
  [-SerialNumber <String>] [-SoftwareRevision <String>] [-Stream <INamespaceStream[]>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -35,7 +35,7 @@ Update-AzDeviceRegistryNamespaceAsset -InputObject <IDeviceRegistryIdentity> [-A
  [-DefaultEventsDestination <IEventDestination[]>] [-DefaultManagementGroupsConfiguration <String>]
  [-DefaultStreamsConfiguration <String>] [-DefaultStreamsDestination <IStreamDestination[]>]
  [-Description <String>] [-DisplayName <String>] [-DocumentationUri <String>] [-Enabled]
- [-Event <INamespaceEvent[]>] [-HardwareRevision <String>] [-ManagementGroup <IManagementGroup[]>]
+ [-EventGroup <INamespaceEventGroup[]>] [-HardwareRevision <String>] [-ManagementGroup <IManagementGroup[]>]
  [-Manufacturer <String>] [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>]
  [-SerialNumber <String>] [-SoftwareRevision <String>] [-Stream <INamespaceStream[]>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -49,7 +49,7 @@ Update-AzDeviceRegistryNamespaceAsset -AssetName <String> -NamespaceInputObject 
  [-DefaultEventsConfiguration <String>] [-DefaultEventsDestination <IEventDestination[]>]
  [-DefaultManagementGroupsConfiguration <String>] [-DefaultStreamsConfiguration <String>]
  [-DefaultStreamsDestination <IStreamDestination[]>] [-Description <String>] [-DisplayName <String>]
- [-DocumentationUri <String>] [-Enabled] [-Event <INamespaceEvent[]>] [-HardwareRevision <String>]
+ [-DocumentationUri <String>] [-Enabled] [-EventGroup <INamespaceEventGroup[]>] [-HardwareRevision <String>]
  [-ManagementGroup <IManagementGroup[]>] [-Manufacturer <String>] [-ManufacturerUri <String>]
  [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>] [-SoftwareRevision <String>]
  [-Stream <INamespaceStream[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -404,12 +404,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Event
-Array of events that are part of the asset.
-Each event can have per-event configuration.
+### -EventGroup
+Array of event groups that are part of the asset.
+Each event group can have per-event group configuration.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
 Aliases:
 

@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzMySqlServer_Delete", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.CmdletBreakingChange("16.0.0", "2.0.0", "2026/05")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Description(@"Deletes a server.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Generated]

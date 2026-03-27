@@ -31,6 +31,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string BlobInventoryPolicyName { get => this._blobInventoryPolicyName; set => this._blobInventoryPolicyName = value; }
 
+        /// <summary>Backing field for <see cref="ContainerName" /> property.</summary>
+        private string _containerName;
+
+        /// <summary>
+        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters
+        /// in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded
+        /// and followed by a letter or number.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string ContainerName { get => this._containerName; set => this._containerName = value; }
+
         /// <summary>Backing field for <see cref="DeletedAccountName" /> property.</summary>
         private string _deletedAccountName;
 
@@ -49,22 +60,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string EncryptionScopeName { get => this._encryptionScopeName; set => this._encryptionScopeName = value; }
 
-        /// <summary>Backing field for <see cref="FileServiceUsagesName" /> property.</summary>
-        private string _fileServiceUsagesName;
-
-        /// <summary>The name of the file service usage. File Service Usage Name must be "default"</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string FileServiceUsagesName { get => this._fileServiceUsagesName; set => this._fileServiceUsagesName = value; }
-
-        /// <summary>Backing field for <see cref="FileServicesName" /> property.</summary>
-        private string _fileServicesName;
-
-        /// <summary>
-        /// The name of the file Service within the specified storage account. File Service Name must be "default"
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string FileServicesName { get => this._fileServicesName; set => this._fileServicesName = value; }
-
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -75,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>The location of the deleted storage account.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
@@ -95,6 +90,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string MigrationName { get => this._migrationName; set => this._migrationName = value; }
 
+        /// <summary>
+        /// Backing field for <see cref="NetworkSecurityPerimeterConfigurationName" /> property.
+        /// </summary>
+        private string _networkSecurityPerimeterConfigurationName;
+
+        /// <summary>The name for Network Security Perimeter configuration</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string NetworkSecurityPerimeterConfigurationName { get => this._networkSecurityPerimeterConfigurationName; set => this._networkSecurityPerimeterConfigurationName = value; }
+
         /// <summary>Backing field for <see cref="ObjectReplicationPolicyId" /> property.</summary>
         private string _objectReplicationPolicyId;
 
@@ -113,12 +117,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
+        /// <summary>Backing field for <see cref="QueueName" /> property.</summary>
+        private string _queueName;
+
+        /// <summary>
+        /// A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of
+        /// lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot
+        /// have two consecutive dash(-) characters.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string QueueName { get => this._queueName; set => this._queueName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>
-        /// The name of the resource group within the user's subscription. The name is case insensitive.
-        /// </summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
@@ -146,9 +159,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>Backing field for <see cref="TableName" /> property.</summary>
+        private string _tableName;
+
+        /// <summary>
+        /// A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of
+        /// only alphanumeric characters and it cannot begin with a numeric character.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string TableName { get => this._tableName; set => this._tableName = value; }
 
         /// <summary>Backing field for <see cref="Username" /> property.</summary>
         private string _username;
@@ -197,6 +220,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
         string BlobInventoryPolicyName { get; set; }
+        /// <summary>
+        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters
+        /// in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded
+        /// and followed by a letter or number.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.",
+        SerializedName = @"containerName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ContainerName { get; set; }
         /// <summary>Name of the deleted storage account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -223,32 +261,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"encryptionScopeName",
         PossibleTypes = new [] { typeof(string) })]
         string EncryptionScopeName { get; set; }
-        /// <summary>The name of the file service usage. File Service Usage Name must be "default"</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the file service usage. File Service Usage Name must be ""default""",
-        SerializedName = @"fileServiceUsagesName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
-        string FileServiceUsagesName { get; set; }
-        /// <summary>
-        /// The name of the file Service within the specified storage account. File Service Name must be "default"
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the file Service within the specified storage account. File Service Name must be ""default""",
-        SerializedName = @"FileServicesName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
-        string FileServicesName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -260,14 +272,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>The location of the deleted storage account.</summary>
+        /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The location of the deleted storage account.",
+        Description = @"The name of the Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
@@ -297,6 +309,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
         string MigrationName { get; set; }
+        /// <summary>The name for Network Security Perimeter configuration</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name for Network Security Perimeter configuration",
+        SerializedName = @"networkSecurityPerimeterConfigurationName",
+        PossibleTypes = new [] { typeof(string) })]
+        string NetworkSecurityPerimeterConfigurationName { get; set; }
         /// <summary>
         /// For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the
         /// source account, provide the value of the policy ID that is returned when you download the policy that was defined on the
@@ -324,7 +347,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointConnectionName { get; set; }
         /// <summary>
-        /// The name of the resource group within the user's subscription. The name is case insensitive.
+        /// A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of
+        /// lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot
+        /// have two consecutive dash(-) characters.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -332,7 +357,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The name of the resource group within the user's subscription. The name is case insensitive.",
+        Description = @"A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters.",
+        SerializedName = @"queueName",
+        PossibleTypes = new [] { typeof(string) })]
+        string QueueName { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
@@ -365,17 +401,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"storageTaskAssignmentName",
         PossibleTypes = new [] { typeof(string) })]
         string StorageTaskAssignmentName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>
+        /// A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of
+        /// only alphanumeric characters and it cannot begin with a numeric character.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.",
+        SerializedName = @"tableName",
+        PossibleTypes = new [] { typeof(string) })]
+        string TableName { get; set; }
         /// <summary>
         /// The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the
         /// storage account.
@@ -405,6 +455,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
         string BlobInventoryPolicyName { get; set; }
+        /// <summary>
+        /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters
+        /// in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded
+        /// and followed by a letter or number.
+        /// </summary>
+        string ContainerName { get; set; }
         /// <summary>Name of the deleted storage account.</summary>
         string DeletedAccountName { get; set; }
         /// <summary>
@@ -413,17 +469,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// preceded and followed by a letter or number.
         /// </summary>
         string EncryptionScopeName { get; set; }
-        /// <summary>The name of the file service usage. File Service Usage Name must be "default"</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
-        string FileServiceUsagesName { get; set; }
-        /// <summary>
-        /// The name of the file Service within the specified storage account. File Service Name must be "default"
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
-        string FileServicesName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>The location of the deleted storage account.</summary>
+        /// <summary>The name of the Azure region.</summary>
         string Location { get; set; }
         /// <summary>
         /// The name of the Storage Account Management Policy. It should always be 'default'
@@ -433,6 +481,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The name of the Storage Account Migration. It should always be 'default'</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
         string MigrationName { get; set; }
+        /// <summary>The name for Network Security Perimeter configuration</summary>
+        string NetworkSecurityPerimeterConfigurationName { get; set; }
         /// <summary>
         /// For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the
         /// source account, provide the value of the policy ID that is returned when you download the policy that was defined on the
@@ -442,8 +492,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The name of the private endpoint connection associated with the Azure resource</summary>
         string PrivateEndpointConnectionName { get; set; }
         /// <summary>
-        /// The name of the resource group within the user's subscription. The name is case insensitive.
+        /// A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of
+        /// lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot
+        /// have two consecutive dash(-) characters.
         /// </summary>
+        string QueueName { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>
         /// The name of the file share within the specified storage account. File share names must be between 3 and 63 characters
@@ -456,8 +510,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// 3 and 24 characters in length and use numbers and lower-case letters only.
         /// </summary>
         string StorageTaskAssignmentName { get; set; }
-        /// <summary>The ID of the target subscription.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
+        /// <summary>
+        /// A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of
+        /// only alphanumeric characters and it cannot begin with a numeric character.
+        /// </summary>
+        string TableName { get; set; }
         /// <summary>
         /// The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the
         /// storage account.

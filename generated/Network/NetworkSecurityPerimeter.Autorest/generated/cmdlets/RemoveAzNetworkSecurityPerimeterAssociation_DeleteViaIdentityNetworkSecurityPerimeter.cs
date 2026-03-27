@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Description(@"Deletes an NSP association resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}", ApiVersion = "2024-07-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}", ApiVersion = "2025-05-01")]
     public partial class RemoveAzNetworkSecurityPerimeterAssociation_DeleteViaIdentityNetworkSecurityPerimeter : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.IContext

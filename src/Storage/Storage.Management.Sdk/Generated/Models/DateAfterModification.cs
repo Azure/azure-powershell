@@ -103,20 +103,12 @@ namespace Microsoft.Azure.Management.Storage.Models
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "DaysAfterModificationGreaterThan", 0);
                 }
-                if (this.DaysAfterModificationGreaterThan % 1 != 0)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MultipleOf, "DaysAfterModificationGreaterThan", 1);
-                }
             }
             if (this.DaysAfterLastAccessTimeGreaterThan != null)
             {
                 if (this.DaysAfterLastAccessTimeGreaterThan < 0)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "DaysAfterLastAccessTimeGreaterThan", 0);
-                }
-                if (this.DaysAfterLastAccessTimeGreaterThan % 1 != 0)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MultipleOf, "DaysAfterLastAccessTimeGreaterThan", 1);
                 }
             }
             if (this.DaysAfterLastTierChangeGreaterThan != null)
@@ -125,20 +117,12 @@ namespace Microsoft.Azure.Management.Storage.Models
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "DaysAfterLastTierChangeGreaterThan", 0);
                 }
-                if (this.DaysAfterLastTierChangeGreaterThan % 1 != 0)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MultipleOf, "DaysAfterLastTierChangeGreaterThan", 1);
-                }
             }
             if (this.DaysAfterCreationGreaterThan != null)
             {
                 if (this.DaysAfterCreationGreaterThan < 0)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "DaysAfterCreationGreaterThan", 0);
-                }
-                if (this.DaysAfterCreationGreaterThan % 1 != 0)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MultipleOf, "DaysAfterCreationGreaterThan", 1);
                 }
             }
         }

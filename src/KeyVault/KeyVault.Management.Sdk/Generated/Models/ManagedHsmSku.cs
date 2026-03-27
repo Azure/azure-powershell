@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
 
         /// <param name="family">SKU Family of the managed HSM Pool
-        /// Possible values include: 'B', 'C'</param>
+        /// Possible values include: &#39;B&#39;, &#39;C&#39;</param>
 
         /// <param name="name">SKU of the managed HSM Pool
-        /// Possible values include: 'Standard_B1', 'Custom_B32', 'Custom_B6',
-        /// 'Custom_C42', 'Custom_C10'</param>
+        /// Possible values include: &#39;Standard_B1&#39;, &#39;Custom_B32&#39;, &#39;Custom_B6&#39;,
+        /// &#39;Custom_C42&#39;, &#39;Custom_C10&#39;</param>
         public ManagedHsmSku(string family, ManagedHsmSkuName name)
 
         {

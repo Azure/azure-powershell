@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get the properties of a specific monitor resource.
+Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.
 .Description
-Get the properties of a specific monitor resource.
+Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.
 .Example
 Get-AzElasticMonitor
 .Example
@@ -38,6 +38,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name

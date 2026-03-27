@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ArcResourceBridge
-Module Guid: 6cd160c6-948f-43e5-b6c9-483d483f3a4b
+Module Guid: 72d873c3-b8fb-4c7f-8d95-0c84eb0c90cd
 Download Help Link: https://learn.microsoft.com/powershell/module/az.arcresourcebridge
 Help Version: 1.0.0.0
 Locale: en-US
@@ -27,11 +27,11 @@ Gets the telemetry config.
 Gets the upgrade graph of an Appliance with a specified resource group and name and specific release train.
 
 ### [New-AzArcResourceBridge](New-AzArcResourceBridge.md)
-Creates or updates an Appliance in the specified Subscription and Resource Group.
+Create an Appliance in the specified Subscription and Resource Group.
 
 ### [Remove-AzArcResourceBridge](Remove-AzArcResourceBridge.md)
 Deletes an Appliance with the specified Resource Name, Resource Group, and Subscription Id.
 
 ### [Update-AzArcResourceBridge](Update-AzArcResourceBridge.md)
-Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
+Update an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
 

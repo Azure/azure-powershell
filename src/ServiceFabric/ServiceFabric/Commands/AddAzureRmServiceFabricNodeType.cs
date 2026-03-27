@@ -510,9 +510,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 publicAddressName,
                 new PublicIPAddress()
                 {
-                    PublicIPAllocationMethod = "Dynamic",
+                    PublicIPAllocationMethod = "Static",
                     Location = GetLocation(),
-                    DnsSettings = new PublicIPAddressDnsSettings(dnsLabel)
+                    DnsSettings = new PublicIPAddressDnsSettings(dnsLabel),
+                    Sku = new PublicIPAddressSku()
+                    {
+                        Name = "Standard"
+                    }
                 });
 
             var backendAddressPoolName = "LoadBalancerBEAddressPool";
@@ -553,6 +557,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var newLoadBalancer = new LoadBalancer(newLoadBalancerId, lbName)
             {
                 Location = GetLocation(),
+                Sku = new LoadBalancerSku()
+                {
+                    Name = "Standard"
+                },
                 FrontendIPConfigurations = new List<FrontendIPConfiguration>()
                 {
                     new FrontendIPConfiguration()

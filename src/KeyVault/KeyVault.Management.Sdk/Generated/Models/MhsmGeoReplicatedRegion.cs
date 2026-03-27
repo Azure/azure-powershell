@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </param>
 
         /// <param name="provisioningState">Provisioning state of the geo replicated region.
-        /// Possible values include: 'Preprovisioning', 'Provisioning', 'Succeeded',
-        /// 'Failed', 'Deleting', 'Cleanup'</param>
+        /// Possible values include: &#39;Preprovisioning&#39;, &#39;Provisioning&#39;, &#39;Succeeded&#39;,
+        /// &#39;Failed&#39;, &#39;Deleting&#39;, &#39;Cleanup&#39;</param>
 
         /// <param name="isPrimary">A boolean value that indicates whether the region is the primary region or
         /// a secondary region.

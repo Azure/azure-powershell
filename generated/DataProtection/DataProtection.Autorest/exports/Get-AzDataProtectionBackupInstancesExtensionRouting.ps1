@@ -24,12 +24,12 @@ $diskARMID = "subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx/resourceGroups/test
 Get-AzDataProtectionBackupInstancesExtensionRouting -ResourceId $diskARMID
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupInstanceResource
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackupinstancesextensionrouting
 #>
 function Get-AzDataProtectionBackupInstancesExtensionRouting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupInstanceResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

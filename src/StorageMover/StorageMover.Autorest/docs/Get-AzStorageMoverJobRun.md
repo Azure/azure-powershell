@@ -31,6 +31,24 @@ Get-AzStorageMoverJobRun -InputObject <IStorageMoverIdentity> [-DefaultProfile <
  [<CommonParameters>]
 ```
 
+### GetViaIdentityJobDefinition
+```
+Get-AzStorageMoverJobRun -JobDefinitionInputObject <IStorageMoverIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityProject
+```
+Get-AzStorageMoverJobRun -JobDefinitionName <String> -Name <String>
+ -ProjectInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityStorageMover
+```
+Get-AzStorageMoverJobRun -JobDefinitionName <String> -Name <String> -ProjectName <String>
+ -StorageMoverInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a Job Run resource.
 
@@ -162,11 +180,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JobDefinitionInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: GetViaIdentityJobDefinition
 Aliases:
 
 Required: True
@@ -181,7 +213,7 @@ The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityProject, GetViaIdentityStorageMover, List
 Aliases:
 
 Required: True
@@ -196,7 +228,7 @@ The name of the Job Run resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityJobDefinition, GetViaIdentityProject, GetViaIdentityStorageMover
 Aliases: JobRunName
 
 Required: True
@@ -206,12 +238,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: GetViaIdentityProject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityStorageMover, List
 Aliases:
 
 Required: True
@@ -234,6 +281,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageMoverInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: GetViaIdentityStorageMover
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -276,7 +338,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IJobRun
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRun
 
 ## NOTES
 

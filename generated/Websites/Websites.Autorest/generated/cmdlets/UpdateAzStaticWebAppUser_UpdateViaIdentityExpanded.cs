@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
     /// [OpenAPI] UpdateStaticSiteUser=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzStaticWebAppUser_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v15.0.0, to be released on November 19th 2025. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserArmResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Description(@"Description for Updates a user entry with the listed roles")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Generated]

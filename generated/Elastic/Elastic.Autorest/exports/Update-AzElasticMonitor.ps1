@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a monitor resource.
+Update an existing Elastic monitor resource in your Azure subscription, ensuring optimal observability and performance.
 .Description
-update a monitor resource.
+Update an existing Elastic monitor resource in your Azure subscription, ensuring optimal observability and performance.
 .Example
 Update-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -Tag @{'key01' = '1'; 'key2' = '2'; 'key3' = '3'}
 .Example
@@ -41,6 +41,7 @@ BODY <IElasticMonitorUpgrade>: Upgrade elastic monitor version
   [Version <String>]: Version to which the elastic monitor should be upgraded to
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
@@ -137,6 +138,12 @@ param(
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
@@ -156,6 +163,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
@@ -181,16 +194,8 @@ param(
     [Parameter(ParameterSetName='UpgradeViaIdentity')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(ParameterSetName='Upgrade')]
-    [Parameter(ParameterSetName='UpgradeExpanded')]
-    [Parameter(ParameterSetName='UpgradeViaIdentity')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait}
+    # Returns true when the command succeeds
+    ${PassThru}
 )
 
 begin {

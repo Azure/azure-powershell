@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDnsResolverInboundEndpoint_List")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IInboundEndpoint))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Description(@"Lists inbound endpoints for a DNS resolver.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Generated]

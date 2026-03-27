@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Get-AzRedisEnterpriseCache' {
     It 'Get' {
         $splat = @{
-            Name = $env.ClusterName
+            Name = $env.ClusterName3
             ResourceGroupName = $env.ResourceGroupName
         }
         $cache = Get-AzRedisEnterpriseCache @splat

@@ -92,6 +92,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcePropertiesInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcePropertiesInternal)this).Location, global::System.Convert.ToString);
             }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcePropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcePropertiesInternal)this).Type, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,6 +128,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcePropertiesInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcePropertiesInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcePropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcePropertiesInternal)this).Type, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

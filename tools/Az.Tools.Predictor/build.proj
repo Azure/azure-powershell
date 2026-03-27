@@ -10,7 +10,7 @@
     <ModuleName>Az.Tools.Predictor</ModuleName>
     <ArtifactFolder>$(RepoArtifacts)Tools</ArtifactFolder>
     <ModuleSolutionFile>$(ModuleName).sln</ModuleSolutionFile>
-    <TestFramework>Net6.0</TestFramework>
+    <TestFramework>net8.0</TestFramework>
     <TestOutputDirectory>$(RepoArtifacts)/TestResults/$(ModuleName)</TestOutputDirectory>
   </PropertyGroup>
 

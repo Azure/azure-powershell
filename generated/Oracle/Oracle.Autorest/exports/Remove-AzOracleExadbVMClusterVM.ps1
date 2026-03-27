@@ -54,9 +54,11 @@ INPUTOBJECT <IOracleIdentity>: Identity Parameter
   [Autonomousdbversionsname <String>]: AutonomousDbVersion name
   [Cloudexadatainfrastructurename <String>]: CloudExadataInfrastructure name
   [Cloudvmclustername <String>]: CloudVmCluster name
+  [DbSystemName <String>]: The name of the DbSystem
   [Dbnodeocid <String>]: DbNode OCID.
   [Dbserverocid <String>]: DbServer OCID.
   [Dbsystemshapename <String>]: DbSystemShape name
+  [Dbversionsname <String>]: DbVersion name
   [Dnsprivateviewocid <String>]: DnsPrivateView OCID
   [Dnsprivatezonename <String>]: DnsPrivateZone name
   [ExadbVMClusterName <String>]: The name of the ExadbVmCluster
@@ -67,6 +69,8 @@ INPUTOBJECT <IOracleIdentity>: Identity Parameter
   [Giversionname <String>]: GiVersion name
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
+  [NetworkAnchorName <String>]: The name of the NetworkAnchor
+  [ResourceAnchorName <String>]: The name of the ResourceAnchor
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Systemversionname <String>]: SystemVersion name

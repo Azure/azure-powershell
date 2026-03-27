@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)this).UpgradeChannel = (string) content.GetValueForProperty("UpgradeChannel",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)this).UpgradeChannel, global::System.Convert.ToString);
             }
+            if (content.Contains("NodeOSUpgradeChannel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)this).NodeOSUpgradeChannel = (string) content.GetValueForProperty("NodeOSUpgradeChannel",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)this).NodeOSUpgradeChannel, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -133,6 +137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("UpgradeChannel"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)this).UpgradeChannel = (string) content.GetValueForProperty("UpgradeChannel",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)this).UpgradeChannel, global::System.Convert.ToString);
+            }
+            if (content.Contains("NodeOSUpgradeChannel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)this).NodeOSUpgradeChannel = (string) content.GetValueForProperty("NodeOSUpgradeChannel",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)this).NodeOSUpgradeChannel, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

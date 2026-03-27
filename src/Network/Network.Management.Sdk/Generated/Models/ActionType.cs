@@ -18,5 +18,6 @@ namespace Microsoft.Azure.Management.Network.Models
         public const string Block = "Block";
         public const string Log = "Log";
         public const string JSChallenge = "JSChallenge";
+        public const string Captcha = "CAPTCHA";
     }
 }

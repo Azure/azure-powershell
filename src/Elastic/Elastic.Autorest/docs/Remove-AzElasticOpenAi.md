@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzElasticOpenAi
 
 ## SYNOPSIS
-Delete OpenAI integration rule for a given monitor resource.
+Delete an OpenAI integration rule for a given Elastic monitor resource, removing AI-driven observability and monitoring capabilities.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzElasticOpenAi -IntegrationName <String> -MonitorInputObject <IElasticId
 ```
 
 ## DESCRIPTION
-Delete OpenAI integration rule for a given monitor resource.
+Delete an OpenAI integration rule for a given Elastic monitor resource, removing AI-driven observability and monitoring capabilities.
 
 ## EXAMPLES
 

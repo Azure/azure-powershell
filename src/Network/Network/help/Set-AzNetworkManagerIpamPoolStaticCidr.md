@@ -13,8 +13,9 @@ Updates a static CIDR allocation in an IPAM pool.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerIpamPoolStaticCidr -InputObject <PSStaticCidr> [-AsJob] 
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkManagerIpamPoolStaticCidr -InputObject <PSStaticCidr> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -33,28 +33,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public string Log { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).Log; }
 
         /// <summary>Internal Acessors for ExitCode</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.ExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).ExitCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).ExitCode = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.ExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).ExitCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).ExitCode = value ?? default(int); }
 
         /// <summary>Internal Acessors for FinishedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.FinishedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).FinishedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).FinishedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.FinishedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).FinishedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).FinishedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.Id { get => this._id; set { {_id = value;} } }
 
         /// <summary>Internal Acessors for Log</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.Log { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).Log; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).Log = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.Log { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).Log; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).Log = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultProperties Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.CommandResultProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for Reason</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.Reason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).Reason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).Reason = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.Reason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).Reason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).Reason = value ?? null; }
 
         /// <summary>Internal Acessors for StartedAt</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.StartedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).StartedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).StartedAt = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResultInternal.StartedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).StartedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultPropertiesInternal)Property).StartedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ICommandResultProperties _property;

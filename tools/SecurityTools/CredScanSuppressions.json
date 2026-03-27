@@ -466,6 +466,14 @@
       "_justification": "Legitimate test certificate file"
     },
     {
+      "file": "src\\Network\\Network.Test\\ScenarioTests\\Data\\VpnGatewayoutboundcert.pfx",
+      "_justification": "Legitimate test certificate file"
+    },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\\TestVirtualNetworkGatewayConnectionWithCertificateAuth.json",
+      "_justification": "Legitimate test session record, resources are deleted after the test run in Record mode."
+    },
+    {
       "file": "src\\Relay\\Relay.Test\\ScenarioTests\\RelayAuthorizationRulesTests.ps1",
       "_justification": "The Authorization rule is deleted Rule is"
     },

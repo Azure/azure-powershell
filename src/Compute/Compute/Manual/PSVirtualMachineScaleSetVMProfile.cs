@@ -41,5 +41,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public PSApplicationProfile ApplicationProfile { get; set; }
         public SecurityPostureReference SecurityPostureReference { get; set; }
         public System.DateTime? TimeCreated { get; private set; }
+        public bool? AddProxyAgentExtension { get; set; }
     }
 }

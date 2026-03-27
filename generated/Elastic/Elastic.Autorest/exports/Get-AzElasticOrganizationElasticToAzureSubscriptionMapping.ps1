@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
+Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
 .Description
-Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
+Retrieve mapping details between the Elastic Organization and Azure Subscription for the logged-in user.
 .Example
 Get-AzElasticOrganizationElasticToAzureSubscriptionMapping 
 

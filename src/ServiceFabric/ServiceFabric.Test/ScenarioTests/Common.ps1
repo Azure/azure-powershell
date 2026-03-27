@@ -68,24 +68,24 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs as well in ServiceFabricCmdletBase.TestThumbprint
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/6648a0d27b9044b0b437d0ccaca0204f"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/9d32304d6b1044d58b00f989f8bce73e"
 }
 
 function Get-InitialThumbprint
 {
-    return "27F73AA239055A16C9EA809B985CC3170E4A7EAB"
+    return "5472875FDA4D5578A3DAD037BBCE600015214C42"
 }
 
 function Get-Thumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
-    return "AFE6D1166D030CFDBAAEE74CA5A5F5256BE3FF49"
+    return "4D59A08F0039D124316D89680F89024C9E5EC9C4"
 }
 
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/af9f8cce090449bc9646cf40257ab19a"
+    return "https://azurermsfkvtest.vault.azure.net/secrets/AzureRMSFTestCertApp/af9f8cce090449bc9646cf40257ab19a"
 }
 
 function Get-CertAppThumbprint

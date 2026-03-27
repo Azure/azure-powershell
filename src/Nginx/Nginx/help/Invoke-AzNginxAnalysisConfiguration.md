@@ -21,11 +21,26 @@ Invoke-AzNginxAnalysisConfiguration -ConfigurationName <String> -DeploymentName 
  [-Confirm] [<CommonParameters>]
 ```
 
-### Analysis
+### AnalysisViaJsonString
 ```
 Invoke-AzNginxAnalysisConfiguration -ConfigurationName <String> -DeploymentName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Body <IAnalysisCreate> [-DefaultProfile <PSObject>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AnalysisViaJsonFilePath
+```
+Invoke-AzNginxAnalysisConfiguration -ConfigurationName <String> -DeploymentName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AnalysisViaIdentityNginxDeploymentExpanded
+```
+Invoke-AzNginxAnalysisConfiguration -ConfigurationName <String> -NginxDeploymentInputObject <INginxIdentity>
+ [-ConfigFile <INginxConfigurationFile[]>] [-ConfigProtectedFile <INginxConfigurationFile[]>]
+ [-ConfigRootFile <String>] [-PackageData <String>] [-PackageProtectedFile <String[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AnalysisViaIdentityExpanded
@@ -34,12 +49,6 @@ Invoke-AzNginxAnalysisConfiguration -InputObject <INginxIdentity> [-ConfigFile <
  [-ConfigProtectedFile <INginxConfigurationFile[]>] [-ConfigRootFile <String>] [-PackageData <String>]
  [-PackageProtectedFile <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
-```
-
-### AnalysisViaIdentity
-```
-Invoke-AzNginxAnalysisConfiguration -InputObject <INginxIdentity> -Body <IAnalysisCreate>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,29 +74,12 @@ This command analyzes the configuration before you submit to create your configu
 
 ## PARAMETERS
 
-### -Body
-The request body for creating an analysis for an NGINX configuration.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate
-Parameter Sets: Analysis, AnalysisViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ConfigFile
 .
-To construct, see NOTES section for CONFIGFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]
-Parameter Sets: AnalysisExpanded, AnalysisViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfigurationFile[]
+Parameter Sets: AnalysisExpanded, AnalysisViaIdentityNginxDeploymentExpanded, AnalysisViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -99,11 +91,10 @@ Accept wildcard characters: False
 
 ### -ConfigProtectedFile
 .
-To construct, see NOTES section for CONFIGPROTECTEDFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfigurationFile[]
-Parameter Sets: AnalysisExpanded, AnalysisViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfigurationFile[]
+Parameter Sets: AnalysisExpanded, AnalysisViaIdentityNginxDeploymentExpanded, AnalysisViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -119,7 +110,7 @@ It must match one of the files' filepath.
 
 ```yaml
 Type: System.String
-Parameter Sets: AnalysisExpanded, AnalysisViaIdentityExpanded
+Parameter Sets: AnalysisExpanded, AnalysisViaIdentityNginxDeploymentExpanded, AnalysisViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -134,7 +125,7 @@ The name of configuration, only 'default' is supported value due to the singleto
 
 ```yaml
 Type: System.String
-Parameter Sets: AnalysisExpanded, Analysis
+Parameter Sets: AnalysisExpanded, AnalysisViaJsonString, AnalysisViaJsonFilePath, AnalysisViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: True
@@ -165,7 +156,7 @@ The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
-Parameter Sets: AnalysisExpanded, Analysis
+Parameter Sets: AnalysisExpanded, AnalysisViaJsonString, AnalysisViaJsonFilePath
 Aliases:
 
 Required: True
@@ -177,11 +168,55 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
-Parameter Sets: AnalysisViaIdentityExpanded, AnalysisViaIdentity
+Parameter Sets: AnalysisViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Analysis operation
+
+```yaml
+Type: System.String
+Parameter Sets: AnalysisViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Analysis operation
+
+```yaml
+Type: System.String
+Parameter Sets: AnalysisViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NginxDeploymentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
+Parameter Sets: AnalysisViaIdentityNginxDeploymentExpanded
 Aliases:
 
 Required: True
@@ -196,7 +231,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: AnalysisExpanded, AnalysisViaIdentityExpanded
+Parameter Sets: AnalysisExpanded, AnalysisViaIdentityNginxDeploymentExpanded, AnalysisViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -211,7 +246,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: AnalysisExpanded, AnalysisViaIdentityExpanded
+Parameter Sets: AnalysisExpanded, AnalysisViaIdentityNginxDeploymentExpanded, AnalysisViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -227,7 +262,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: AnalysisExpanded, Analysis
+Parameter Sets: AnalysisExpanded, AnalysisViaJsonString, AnalysisViaJsonFilePath
 Aliases:
 
 Required: True
@@ -242,7 +277,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: AnalysisExpanded, Analysis
+Parameter Sets: AnalysisExpanded, AnalysisViaJsonString, AnalysisViaJsonFilePath
 Aliases:
 
 Required: False
@@ -288,13 +323,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisCreate
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IAnalysisResult
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.IAnalysisResult
 
 ## NOTES
 

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRules))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Description(@"create a tag rule set for a given monitor resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/tagRules/{ruleSetName}", ApiVersion = "2021-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}/tagRules/{ruleSetName}", ApiVersion = "2025-06-11")]
     public partial class NewAzDatadogTagRule_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IContext
@@ -52,6 +52,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
+        /// <summary>Flag specifying if agent monitoring should be enabled for the Monitor resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Flag specifying if agent monitoring should be enabled for the Monitor resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Flag specifying if agent monitoring should be enabled for the Monitor resource.",
+        SerializedName = @"enableAgentMonitoring",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter AgentRuleEnableAgentMonitoring { get => _body.AgentRuleEnableAgentMonitoring ?? default(global::System.Management.Automation.SwitchParameter); set => _body.AgentRuleEnableAgentMonitoring = value; }
+
+        /// <summary>
+        /// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action
+        /// is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules
+        /// will only include resources with the associated tags.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.",
+        SerializedName = @"filteringTags",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag[] AgentRuleFilteringTag { get => _body.AgentRuleFilteringTag?.ToArray() ?? null /* fixedArrayOf */; set => _body.AgentRuleFilteringTag = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IFilteringTag>(value) : null); }
+
+        /// <summary>Configuration to enable/disable auto-muting flag</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Configuration to enable/disable auto-muting flag")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Configuration to enable/disable auto-muting flag",
+        SerializedName = @"automuting",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter Automuting { get => _body.Automuting ?? default(global::System.Management.Automation.SwitchParameter); set => _body.Automuting = value; }
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Runtime)]
@@ -62,6 +100,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Datadog.Datadog Client => Microsoft.Azure.PowerShell.Cmdlets.Datadog.Module.Instance.ClientAPI;
+
+        /// <summary>
+        /// Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.",
+        SerializedName = @"customMetrics",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter CustomMetric { get => _body.CustomMetric ?? default(global::System.Management.Automation.SwitchParameter); set => _body.CustomMetric = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet

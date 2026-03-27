@@ -148,6 +148,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public string Domain { get => this._domain; set => this._domain = value; }
 
+        /// <summary>Backing field for <see cref="ExascaleDbStorageVaultId" /> property.</summary>
+        private string _exascaleDbStorageVaultId;
+
+        /// <summary>Exadata Database Storage Vault ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string ExascaleDbStorageVaultId { get => this._exascaleDbStorageVaultId; set => this._exascaleDbStorageVaultId = value; }
+
         /// <summary>Backing field for <see cref="FileSystemConfigurationDetail" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> _fileSystemConfigurationDetail;
 
@@ -321,6 +328,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// <summary>Internal Acessors for Shape</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.Shape { get => this._shape; set { {_shape = value;} } }
 
+        /// <summary>Internal Acessors for StorageManagementType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.StorageManagementType { get => this._storageManagementType; set { {_storageManagementType = value;} } }
+
         /// <summary>Internal Acessors for SubnetOcid</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICloudVMClusterPropertiesInternal.SubnetOcid { get => this._subnetOcid; set { {_subnetOcid = value;} } }
 
@@ -443,6 +453,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> SshPublicKey { get => this._sshPublicKey; set => this._sshPublicKey = value; }
+
+        /// <summary>Backing field for <see cref="StorageManagementType" /> property.</summary>
+        private string _storageManagementType;
+
+        /// <summary>
+        /// Specifies whether the type of storage management for the VM cluster is ASM or Exascale.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Origin(Microsoft.Azure.PowerShell.Cmdlets.Oracle.PropertyOrigin.Owned)]
+        public string StorageManagementType { get => this._storageManagementType; }
 
         /// <summary>Backing field for <see cref="StorageSizeInGb" /> property.</summary>
         private int? _storageSizeInGb;
@@ -728,6 +747,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"domain",
         PossibleTypes = new [] { typeof(string) })]
         string Domain { get; set; }
+        /// <summary>Exadata Database Storage Vault ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Exadata Database Storage Vault ID",
+        SerializedName = @"exascaleDbStorageVaultId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExascaleDbStorageVaultId { get; set; }
         /// <summary>Array of mount path and size.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -1075,6 +1105,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         SerializedName = @"sshPublicKeys",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> SshPublicKey { get; set; }
+        /// <summary>
+        /// Specifies whether the type of storage management for the VM cluster is ASM or Exascale.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Specifies whether the type of storage management for the VM cluster is ASM or Exascale.",
+        SerializedName = @"storageManagementType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ASM", "Exascale")]
+        string StorageManagementType { get;  }
         /// <summary>The data disk group size to be allocated in GBs per VM.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Info(
         Required = false,
@@ -1242,6 +1286,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         string DisplayName { get; set; }
         /// <summary>The domain name for the cloud VM cluster.</summary>
         string Domain { get; set; }
+        /// <summary>Exadata Database Storage Vault ID</summary>
+        string ExascaleDbStorageVaultId { get; set; }
         /// <summary>Array of mount path and size.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IFileSystemConfigurationDetails> FileSystemConfigurationDetail { get; set; }
         /// <summary>Oracle Grid Infrastructure (GI) software version</summary>
@@ -1330,6 +1376,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
         /// The public key portion of one or more key pairs used for SSH access to the cloud VM cluster.
         /// </summary>
         System.Collections.Generic.List<string> SshPublicKey { get; set; }
+        /// <summary>
+        /// Specifies whether the type of storage management for the VM cluster is ASM or Exascale.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Oracle.PSArgumentCompleterAttribute("ASM", "Exascale")]
+        string StorageManagementType { get; set; }
         /// <summary>The data disk group size to be allocated in GBs per VM.</summary>
         int? StorageSizeInGb { get; set; }
         /// <summary>Client subnet</summary>

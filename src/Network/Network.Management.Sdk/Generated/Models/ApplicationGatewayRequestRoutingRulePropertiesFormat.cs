@@ -51,10 +51,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="loadDistributionPolicy">Load Distribution Policy resource of the application gateway.
         /// </param>
 
+        /// <param name="entraJwtValidationConfig">Entra JWT validation configuration resource of the application gateway.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the request routing rule resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public ApplicationGatewayRequestRoutingRulePropertiesFormat(string ruleType = default(string), int? priority = default(int?), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource httpListener = default(SubResource), SubResource urlPathMap = default(SubResource), SubResource rewriteRuleSet = default(SubResource), SubResource redirectConfiguration = default(SubResource), SubResource loadDistributionPolicy = default(SubResource), string provisioningState = default(string))
+        public ApplicationGatewayRequestRoutingRulePropertiesFormat(string ruleType = default(string), int? priority = default(int?), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource httpListener = default(SubResource), SubResource urlPathMap = default(SubResource), SubResource rewriteRuleSet = default(SubResource), SubResource redirectConfiguration = default(SubResource), SubResource loadDistributionPolicy = default(SubResource), SubResource entraJwtValidationConfig = default(SubResource), string provisioningState = default(string))
 
         {
             this.RuleType = ruleType;
@@ -66,6 +69,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.RewriteRuleSet = rewriteRuleSet;
             this.RedirectConfiguration = redirectConfiguration;
             this.LoadDistributionPolicy = loadDistributionPolicy;
+            this.EntraJwtValidationConfig = entraJwtValidationConfig;
             this.ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -132,6 +136,13 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource LoadDistributionPolicy {get; set; }
 
         /// <summary>
+        /// Gets or sets entra JWT validation configuration resource of the application
+        /// gateway.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "entraJWTValidationConfig")]
+        public SubResource EntraJwtValidationConfig {get; set; }
+
+        /// <summary>
         /// Gets the provisioning state of the request routing rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
@@ -156,6 +167,7 @@ namespace Microsoft.Azure.Management.Network.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "Priority", 1);
                 }
             }
+
 
 
 

@@ -2,6 +2,46 @@
 <Configuration>
   <ViewDefinitions>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionAppFlexConsumptionRuntime</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDefault</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndOfLifeDate</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndOfLifeDate</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionsIdentity</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.FunctionsIdentity</TypeName>
@@ -3098,7 +3138,13 @@
             <Label>ApplicationType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ConnectionString</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>CreationDate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisableIPMasking</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>FlowType</Label>
@@ -3110,6 +3156,12 @@
             <Label>HockeyAppToken</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ImmediatePurgeDataOn30Day</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IngestionMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>InstrumentationKey</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -3117,6 +3169,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RequestSource</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RetentionInDay</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SamplingPercentage</Label>
@@ -3138,7 +3193,13 @@
                 <PropertyName>ApplicationType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ConnectionString</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>CreationDate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisableIPMasking</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>FlowType</PropertyName>
@@ -3150,6 +3211,12 @@
                 <PropertyName>HockeyAppToken</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ImmediatePurgeDataOn30Day</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IngestionMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>InstrumentationKey</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -3157,6 +3224,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RequestSource</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RetentionInDay</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SamplingPercentage</PropertyName>
@@ -3313,6 +3383,34 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.PrivateLinkScopedResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.PrivateLinkScopedResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScopeId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScopeId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -18996,6 +19094,9 @@
             <Label>EnabledHostName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>EndToEndEncryptionEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>HostName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -19127,6 +19228,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnabledHostName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndToEndEncryptionEnabled</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HostName</PropertyName>

@@ -9,13 +9,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "51a22085-2673-45d9-91da-30c4c65ff336"
+          "dcee8072-fa36-4336-a037-5bd12ac66d71"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/9.3.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/10.3.0"
         ]
       },
       "RequestBody": "",
@@ -27,10 +27,10 @@
           "no-cache"
         ],
         "ETag": [
-          "\"9\""
+          "\"11\""
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/LowCostGetSubscriptionMaximum;23998,Microsoft.Compute/LowCostGetResource;35"
+          "Microsoft.Compute/LowCostGetSubscriptionMaximum;23999,Microsoft.Compute/LowCostGetResource;35"
         ],
         "x-ms-need-to-refresh-epl-cache": [
           "False"
@@ -39,7 +39,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a5789686-3a83-466d-b978-b2f7cd1777bf"
+          "8e3adc69-de64-442f-aced-d48ef686d5fe"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "1099"
@@ -48,10 +48,10 @@
           "16499"
         ],
         "x-ms-correlation-request-id": [
-          "2447350d-406b-4f97-b11f-ee93c8579ee4"
+          "5b4530cd-a60f-482d-84e7-4024b3726b17"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20250506T172630Z:2447350d-406b-4f97-b11f-ee93c8579ee4"
+          "SOUTHEASTASIA:20251025T180853Z:5b4530cd-a60f-482d-84e7-4024b3726b17"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -60,13 +60,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 5AB74529E62E4C829E559AF34179B620 Ref B: MAA201060516021 Ref C: 2025-05-06T17:26:29Z"
+          "Ref A: F17CAB921A3C41D2BB111D29B29860C3 Ref B: JKT201051406034 Ref C: 2025-10-25T18:08:51Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:30 GMT"
+          "Sat, 25 Oct 2025 18:08:52 GMT"
         ],
         "Content-Length": [
-          "4153"
+          "4154"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -75,25 +75,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"pstest-ccy-vm\",\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"centraluseuap\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2031\",\r\n    \"AutoShutdown\": \"no\",\r\n    \"platformsettings.host_environment.service.platform_optedin_for_rootcerts\": \"true\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"principalId\": \"06b684ca-0286-4272-9f47-56c445ee3a12\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/AzSecPackAutoConfigRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AzSecPackAutoConfigUA-centraluseuap\": {\r\n        \"principalId\": \"944651cc-3534-4a12-9f2d-314bd35ab2bf\",\r\n        \"clientId\": \"ad181b19-3184-4446-8015-a4e28fdb4ad8\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_DS1_v2\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"vmId\": \"1f7d8748-6c85-4582-9912-4ea79db8f110\",\r\n    \"storageProfile\": {\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"name\": \"pstestccyvm-osdisk-20250112-162705\",\r\n        \"createOption\": \"Attach\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Premium_LRS\",\r\n          \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/pstestccyvm-osdisk-20250112-162705\"\r\n        },\r\n        \"deleteOption\": \"Detach\",\r\n        \"diskSizeGB\": 127\r\n      },\r\n      \"dataDisks\": [\r\n        {\r\n          \"lun\": 0,\r\n          \"name\": \"pstestccyvm-datadisk-000-20250112-162705\",\r\n          \"createOption\": \"Attach\",\r\n          \"caching\": \"ReadOnly\",\r\n          \"writeAcceleratorEnabled\": false,\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Premium_LRS\",\r\n            \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/pstestccyvm-datadisk-000-20250112-162705\"\r\n          },\r\n          \"deleteOption\": \"Detach\",\r\n          \"diskSizeGB\": 64,\r\n          \"toBeDetached\": false\r\n        }\r\n      ]\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Network/networkInterfaces/pstest-ccy-vm-nic-d50c5685d5a440d2b9d447a15cf16bb1\",\r\n          \"properties\": {\r\n            \"primary\": true\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"timeCreated\": \"2025-01-12T22:22:46.9447116+05:30\"\r\n  },\r\n  \"etag\": \"\\\"9\\\"\",\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"resources\": [\r\n    {\r\n      \"name\": \"AzurePolicyforWindows\",\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm/extensions/AzurePolicyforWindows\",\r\n      \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n      \"location\": \"centraluseuap\",\r\n      \"properties\": {\r\n        \"autoUpgradeMinorVersion\": true,\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"publisher\": \"Microsoft.GuestConfiguration\",\r\n        \"type\": \"ConfigurationforWindows\",\r\n        \"typeHandlerVersion\": \"1.1\",\r\n        \"settings\": {}\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"TLSCompliance\",\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm/extensions/TLSCompliance\",\r\n      \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n      \"location\": \"centraluseuap\",\r\n      \"properties\": {\r\n        \"autoUpgradeMinorVersion\": true,\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"publisher\": \"Microsoft.Compute\",\r\n        \"type\": \"CustomScriptExtension\",\r\n        \"typeHandlerVersion\": \"1.8\",\r\n        \"settings\": {\r\n          \"fileUris\": [\r\n            \"https://raw.githubusercontent.com/Azure/AzureBCDR_TLSSettings/main/src/scripts/TLSSettings.ps1\"\r\n          ],\r\n          \"commandToExecute\": \"powershell.exe -ExecutionPolicy Unrestricted -File TLSSettings.ps1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"pstest-ccy-vm\",\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"centraluseuap\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2031\",\r\n    \"AutoShutdown\": \"no\",\r\n    \"platformsettings.host_environment.service.platform_optedin_for_rootcerts\": \"true\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"principalId\": \"06b684ca-0286-4272-9f47-56c445ee3a12\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/AzSecPackAutoConfigRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AzSecPackAutoConfigUA-centraluseuap\": {\r\n        \"principalId\": \"944651cc-3534-4a12-9f2d-314bd35ab2bf\",\r\n        \"clientId\": \"ad181b19-3184-4446-8015-a4e28fdb4ad8\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_DS1_v2\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"vmId\": \"1f7d8748-6c85-4582-9912-4ea79db8f110\",\r\n    \"storageProfile\": {\r\n      \"osDisk\": {\r\n        \"osType\": \"Windows\",\r\n        \"name\": \"pstestccyvm-osdisk-20250112-162705\",\r\n        \"createOption\": \"Attach\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Premium_LRS\",\r\n          \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/pstestccyvm-osdisk-20250112-162705\"\r\n        },\r\n        \"deleteOption\": \"Detach\",\r\n        \"diskSizeGB\": 127\r\n      },\r\n      \"dataDisks\": [\r\n        {\r\n          \"lun\": 0,\r\n          \"name\": \"pstestccyvm-datadisk-000-20250112-162705\",\r\n          \"createOption\": \"Attach\",\r\n          \"caching\": \"ReadOnly\",\r\n          \"writeAcceleratorEnabled\": false,\r\n          \"managedDisk\": {\r\n            \"storageAccountType\": \"Premium_LRS\",\r\n            \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/disks/pstestccyvm-datadisk-000-20250112-162705\"\r\n          },\r\n          \"deleteOption\": \"Detach\",\r\n          \"diskSizeGB\": 64,\r\n          \"toBeDetached\": false\r\n        }\r\n      ]\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Network/networkInterfaces/pstest-ccy-vm-nic-d50c5685d5a440d2b9d447a15cf16bb1\",\r\n          \"properties\": {\r\n            \"primary\": true\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"timeCreated\": \"2025-01-12T22:22:46.9447116+05:30\"\r\n  },\r\n  \"etag\": \"\\\"11\\\"\",\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"resources\": [\r\n    {\r\n      \"name\": \"AzurePolicyforWindows\",\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm/extensions/AzurePolicyforWindows\",\r\n      \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n      \"location\": \"centraluseuap\",\r\n      \"properties\": {\r\n        \"autoUpgradeMinorVersion\": true,\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"publisher\": \"Microsoft.GuestConfiguration\",\r\n        \"type\": \"ConfigurationforWindows\",\r\n        \"typeHandlerVersion\": \"1.1\",\r\n        \"settings\": {}\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"TLSCompliance\",\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm/extensions/TLSCompliance\",\r\n      \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n      \"location\": \"centraluseuap\",\r\n      \"properties\": {\r\n        \"autoUpgradeMinorVersion\": true,\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"publisher\": \"Microsoft.Compute\",\r\n        \"type\": \"CustomScriptExtension\",\r\n        \"typeHandlerVersion\": \"1.8\",\r\n        \"settings\": {\r\n          \"fileUris\": [\r\n            \"https://raw.githubusercontent.com/Azure/AzureBCDR_TLSSettings/main/src/scripts/TLSSettings.ps1\"\r\n          ],\r\n          \"commandToExecute\": \"powershell.exe -ExecutionPolicy Unrestricted -File TLSSettings.ps1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault?api-version=2024-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdD9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault?api-version=2025-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS1hZGhvYy12YXVsdD9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "0707a189-e805-4d7c-ae53-e6d8c7657175"
+          "38406d0e-8e2a-4825-97b6-94733c43c9b3"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -104,26 +104,26 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "1099"
+        "x-ms-throttling-version": [
+          "v2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "62e96292-f91c-405b-bbea-81f181eb4326"
+          "68ea7ca6-0dd9-49ca-a4fc-5ff07ce65a47"
         ],
         "x-ms-client-request-id": [
-          "0707a189-e805-4d7c-ae53-e6d8c7657175"
+          "38406d0e-8e2a-4825-97b6-94733c43c9b3"
         ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [
-          "16499"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "62e96292-f91c-405b-bbea-81f181eb4326"
+          "68ea7ca6-0dd9-49ca-a4fc-5ff07ce65a47"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20250506T172633Z:62e96292-f91c-405b-bbea-81f181eb4326"
+          "CENTRALUSEUAP:20251025T180856Z:68ea7ca6-0dd9-49ca-a4fc-5ff07ce65a47"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -132,13 +132,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 9973DEF5DA024AC69852683F067B2EE8 Ref B: MAA201060515045 Ref C: 2025-05-06T17:26:31Z"
+          "Ref A: 8B2C4423626B44619E2EF3192BB9FFD7 Ref B: JKT201051406034 Ref C: 2025-10-25T18:08:55Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:33 GMT"
+          "Sat, 25 Oct 2025 18:08:55 GMT"
         ],
         "Content-Length": [
-          "1084"
+          "1131"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -147,7 +147,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"hiaga-adhoc-vault\",\r\n  \"etag\": \"W/\\\"datetime'2025-05-01T13%3A38%3A56.0589921Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2031\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Disabled\"\r\n      },\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Disabled\",\r\n        \"enhancedSecurityState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Enabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"hiaga-adhoc-vault\",\r\n  \"etag\": \"W/\\\"datetime'2025-08-14T12%3A46%3A56.0590492Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2031\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Disabled\"\r\n      },\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Disabled\",\r\n        \"enhancedSecurityState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Enabled\"\r\n    },\r\n    \"secureScore\": \"None\",\r\n    \"bcdrSecurityLevel\": \"Poor\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -159,13 +159,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "fb9300f8-481b-4775-bd39-287190c074ed"
+          "060e814b-b72d-4f19-b3cf-67d0125a55af"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -180,22 +180,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "cb2c7b5f-bc5e-4670-9737-da851c47de8d"
+          "090c1d06-84a9-44ba-97b6-78d241d24553"
         ],
         "x-ms-client-request-id": [
-          "fb9300f8-481b-4775-bd39-287190c074ed"
+          "060e814b-b72d-4f19-b3cf-67d0125a55af"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/southindia/dbe6379c-d127-4e14-aff2-0e7b35a60647"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/cebf6f8a-9fd0-489e-bb59-ee168e4bccbb"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "cb2c7b5f-bc5e-4670-9737-da851c47de8d"
+          "090c1d06-84a9-44ba-97b6-78d241d24553"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20250506T172634Z:cb2c7b5f-bc5e-4670-9737-da851c47de8d"
+          "CENTRALUSEUAP:20251025T180857Z:090c1d06-84a9-44ba-97b6-78d241d24553"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -204,10 +207,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 74BB89FEDA524B798B806A9081AFE2E5 Ref B: MAA201060515029 Ref C: 2025-05-06T17:26:33Z"
+          "Ref A: 8969126A9F4C41C589D5D00E66984F82 Ref B: JKT201051406031 Ref C: 2025-10-25T18:08:57Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:34 GMT"
+          "Sat, 25 Oct 2025 18:08:57 GMT"
         ],
         "Content-Length": [
           "409"
@@ -231,13 +234,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "fb9300f8-481b-4775-bd39-287190c074ed"
+          "060e814b-b72d-4f19-b3cf-67d0125a55af"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -258,25 +261,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "e2ee05b9-a205-4d1e-a0d6-00a30bedd198"
+          "a91e25f3-2058-4e7e-9a93-c6434eb9c4ad"
         ],
         "x-ms-client-request-id": [
-          "fb9300f8-481b-4775-bd39-287190c074ed"
+          "060e814b-b72d-4f19-b3cf-67d0125a55af"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/36e1d519-d7c9-4cc0-8871-4db1775ada07"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/f2fcd66c-f541-4880-b743-d545801b4539"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "799"
         ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [
-          "11999"
-        ],
         "x-ms-correlation-request-id": [
-          "e2ee05b9-a205-4d1e-a0d6-00a30bedd198"
+          "a91e25f3-2058-4e7e-9a93-c6434eb9c4ad"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20250506T172637Z:e2ee05b9-a205-4d1e-a0d6-00a30bedd198"
+          "CENTRALUSEUAP:20251025T180858Z:a91e25f3-2058-4e7e-9a93-c6434eb9c4ad"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -285,10 +288,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: A3DF576F02B441679E5B6C35FAB8B9F8 Ref B: MAA201060515029 Ref C: 2025-05-06T17:26:34Z"
+          "Ref A: 52B304CBD2534AB4BBFBE41850B6DB49 Ref B: JKT201051406031 Ref C: 2025-10-25T18:08:57Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:37 GMT"
+          "Sat, 25 Oct 2025 18:08:58 GMT"
         ],
         "Content-Length": [
           "409"
@@ -312,13 +315,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "3d879e87-7f22-4e48-80db-7bb4d2199d88"
+          "b0658523-f953-4ec5-a0ac-ab5617567e7e"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -333,22 +336,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "30c24fc9-a1a0-4abd-916f-a982857965e3"
+          "d4daa20f-4c52-4452-8787-2e7cdcd6b6dc"
         ],
         "x-ms-client-request-id": [
-          "3d879e87-7f22-4e48-80db-7bb4d2199d88"
+          "b0658523-f953-4ec5-a0ac-ab5617567e7e"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/b65f4546-12dc-4c2b-af0f-6fa1e0b84d44"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/6464eb15-0977-4a14-8031-a1154c1ac7d7"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "30c24fc9-a1a0-4abd-916f-a982857965e3"
+          "d4daa20f-4c52-4452-8787-2e7cdcd6b6dc"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20250506T172639Z:30c24fc9-a1a0-4abd-916f-a982857965e3"
+          "CENTRALUSEUAP:20251025T180859Z:d4daa20f-4c52-4452-8787-2e7cdcd6b6dc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -357,10 +363,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 94CC6D07D2884114A5783A9D07A400DC Ref B: MAA201060515029 Ref C: 2025-05-06T17:26:38Z"
+          "Ref A: 54E6C02FFFF946BEA952DDAD3F7707E1 Ref B: JKT201051407052 Ref C: 2025-10-25T18:08:59Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:39 GMT"
+          "Sat, 25 Oct 2025 18:08:58 GMT"
         ],
         "Content-Length": [
           "753"
@@ -384,13 +390,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "8bdce1d2-6858-4989-88ef-dc61a26b93b9"
+          "32f0070d-0e38-4584-9b9d-38ef7acfafcc"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -405,22 +411,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "8ebb8398-3673-4a31-a8b9-651f2f0d5d88"
+          "047a6c3f-ea4c-4163-9bde-c728019fabc5"
         ],
         "x-ms-client-request-id": [
-          "8bdce1d2-6858-4989-88ef-dc61a26b93b9"
+          "32f0070d-0e38-4584-9b9d-38ef7acfafcc"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/southindia/c93c5fda-5942-457f-8f50-6bfc648f0ebf"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/06b7627b-e462-48e4-a156-9303494280d9"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "8ebb8398-3673-4a31-a8b9-651f2f0d5d88"
+          "047a6c3f-ea4c-4163-9bde-c728019fabc5"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20250506T172640Z:8ebb8398-3673-4a31-a8b9-651f2f0d5d88"
+          "CENTRALUSEUAP:20251025T180901Z:047a6c3f-ea4c-4163-9bde-c728019fabc5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -429,10 +438,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: D8963CEAFB1E41809A85E4010E918A28 Ref B: MAA201060513045 Ref C: 2025-05-06T17:26:39Z"
+          "Ref A: 03E9938766C947C29D123682950253C9 Ref B: JKT201051407031 Ref C: 2025-10-25T18:09:00Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:40 GMT"
+          "Sat, 25 Oct 2025 18:09:00 GMT"
         ],
         "Content-Length": [
           "865"
@@ -456,13 +465,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "1333833e-9c11-43ec-a224-81dea06d2618"
+          "000bd5ef-2054-4754-ac0e-cb283ee02f61"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -477,22 +486,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "4e90240d-a9e3-4c06-9619-7ff399be4182"
+          "f98da931-4aa4-41f1-9615-640c73b6569e"
         ],
         "x-ms-client-request-id": [
-          "1333833e-9c11-43ec-a224-81dea06d2618"
+          "000bd5ef-2054-4754-ac0e-cb283ee02f61"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/a4f24fd4-a214-4022-ac70-a3747490d06f"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/7b264e93-e596-4bb9-847c-9d1731038b66"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "4e90240d-a9e3-4c06-9619-7ff399be4182"
+          "f98da931-4aa4-41f1-9615-640c73b6569e"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20250506T172641Z:4e90240d-a9e3-4c06-9619-7ff399be4182"
+          "CENTRALUSEUAP:20251025T180902Z:f98da931-4aa4-41f1-9615-640c73b6569e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -501,10 +513,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 28924690BB344255AED2E14EBA7A7E49 Ref B: MAA201060515017 Ref C: 2025-05-06T17:26:40Z"
+          "Ref A: BD3D9924A4B4471CAF7BA282B370D4D0 Ref B: JKT201051406042 Ref C: 2025-10-25T18:09:01Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:40 GMT"
+          "Sat, 25 Oct 2025 18:09:01 GMT"
         ],
         "Content-Length": [
           "3728"
@@ -516,7 +528,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T16:33:47.0015083Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:33:49.4452013Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:33:46.9624992Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:33:50.0954087Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -528,13 +540,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "953843fa-a756-49ff-879b-1f123404a3e1"
+          "7d2bce58-5382-4b19-adae-fbbba277fbf0"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -549,22 +561,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "da14fe6f-12e1-49b3-b03b-a52256b82a00"
+          "afdf00cb-3e87-49c2-89df-8d686c5b49e2"
         ],
         "x-ms-client-request-id": [
-          "953843fa-a756-49ff-879b-1f123404a3e1"
+          "7d2bce58-5382-4b19-adae-fbbba277fbf0"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/a2c15dce-ccb7-4130-848f-f72a6f7543f9"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/b174c2aa-f6a5-4ffe-805b-d5c2c93d8b4a"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "da14fe6f-12e1-49b3-b03b-a52256b82a00"
+          "afdf00cb-3e87-49c2-89df-8d686c5b49e2"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20250506T172642Z:da14fe6f-12e1-49b3-b03b-a52256b82a00"
+          "CENTRALUSEUAP:20251025T180903Z:afdf00cb-3e87-49c2-89df-8d686c5b49e2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -573,10 +588,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 200152201D37476DA94EF82290C0555E Ref B: MAA201060514045 Ref C: 2025-05-06T17:26:41Z"
+          "Ref A: 8093C4F3A40D4DCB9C2CA09E59E4801A Ref B: JKT201051407023 Ref C: 2025-10-25T18:09:03Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:42 GMT"
+          "Sat, 25 Oct 2025 18:09:03 GMT"
         ],
         "Content-Length": [
           "3728"
@@ -588,7 +603,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T16:33:47.0015083Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:33:49.4452013Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:33:46.9624992Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:33:50.0954087Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -600,13 +615,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "ff1ef02e-3a0d-4131-adb6-4cf8433f9f5c"
+          "2e419d34-61ce-43fa-a799-1374110a6aa9"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -621,22 +636,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "55af4ce6-114d-47ca-95f5-ee332bfbc505"
+          "74be73b7-fa98-44c7-9eca-3266fdbf9a29"
         ],
         "x-ms-client-request-id": [
-          "ff1ef02e-3a0d-4131-adb6-4cf8433f9f5c"
+          "2e419d34-61ce-43fa-a799-1374110a6aa9"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/04e656ec-f364-48ae-a9d2-1aebb48b1384"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/9af7f251-b84e-48cd-b2cd-c129d9b9e225"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "55af4ce6-114d-47ca-95f5-ee332bfbc505"
+          "74be73b7-fa98-44c7-9eca-3266fdbf9a29"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20250506T172645Z:55af4ce6-114d-47ca-95f5-ee332bfbc505"
+          "CENTRALUSEUAP:20251025T180905Z:74be73b7-fa98-44c7-9eca-3266fdbf9a29"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -645,10 +663,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 0C774268940A429CB8668C01C4663360 Ref B: MAA201060516023 Ref C: 2025-05-06T17:26:44Z"
+          "Ref A: B26344BFBCF44F9E9067A3D223C9989E Ref B: JKT201051407040 Ref C: 2025-10-25T18:09:05Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:44 GMT"
+          "Sat, 25 Oct 2025 18:09:05 GMT"
         ],
         "Content-Length": [
           "3728"
@@ -660,7 +678,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T16:33:47.0015083Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:33:49.4452013Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:33:46.9624992Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:33:50.0954087Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -672,13 +690,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "a7a9db20-53ca-424f-abd6-53b291798664"
+          "6fa4ba3d-4bee-42e0-8c73-822ac588d4ff"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -693,22 +711,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "065f78c6-a263-4146-870c-09cd823fb105"
+          "631136a0-e25c-42b3-97c5-4120b2a5117d"
         ],
         "x-ms-client-request-id": [
-          "a7a9db20-53ca-424f-abd6-53b291798664"
+          "6fa4ba3d-4bee-42e0-8c73-822ac588d4ff"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/d8f21053-51ac-455b-8ce6-0ad59aa792c0"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/38157139-da18-4049-8bf3-00de0fafbef4"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "065f78c6-a263-4146-870c-09cd823fb105"
+          "631136a0-e25c-42b3-97c5-4120b2a5117d"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20250506T172646Z:065f78c6-a263-4146-870c-09cd823fb105"
+          "CENTRALUSEUAP:20251025T180906Z:631136a0-e25c-42b3-97c5-4120b2a5117d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -717,10 +738,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 5C681DE8BF664CCAB5BB9101D1D78E54 Ref B: MAA201060514025 Ref C: 2025-05-06T17:26:45Z"
+          "Ref A: 0724792E38C8404A86D125F7DF308CCA Ref B: JKT201051406060 Ref C: 2025-10-25T18:09:06Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:45 GMT"
+          "Sat, 25 Oct 2025 18:09:06 GMT"
         ],
         "Content-Length": [
           "3728"
@@ -732,7 +753,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T16:33:47.0015083Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:33:49.4452013Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:33:46.9624992Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:33:50.0954087Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -744,13 +765,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "f137e384-30ae-4d35-b194-dbdfcd39aad3"
+          "74f26d6c-6d79-483e-b1a0-25cfaadeb3f9"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -765,22 +786,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "6de35f18-852f-4b90-b1e6-e7ccb87077d2"
+          "1df3c2a6-070e-4083-915e-eca31fbb91d2"
         ],
         "x-ms-client-request-id": [
-          "f137e384-30ae-4d35-b194-dbdfcd39aad3"
+          "74f26d6c-6d79-483e-b1a0-25cfaadeb3f9"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/centralindia/a94add14-9dd3-4bea-ad07-ee01282ecee3"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/3f3340be-4fa9-49c5-a4e8-2c8dba4a7e71"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "6de35f18-852f-4b90-b1e6-e7ccb87077d2"
+          "1df3c2a6-070e-4083-915e-eca31fbb91d2"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20250506T172648Z:6de35f18-852f-4b90-b1e6-e7ccb87077d2"
+          "CENTRALUSEUAP:20251025T180908Z:1df3c2a6-070e-4083-915e-eca31fbb91d2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -789,10 +813,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 90EA0F0041344C2CA7B1C97716B78EAC Ref B: MAA201060514037 Ref C: 2025-05-06T17:26:46Z"
+          "Ref A: 3967693AF9EF4FEEAA6E9E1547878A3B Ref B: JKT201051406054 Ref C: 2025-10-25T18:09:07Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:47 GMT"
+          "Sat, 25 Oct 2025 18:09:07 GMT"
         ],
         "Content-Length": [
           "3728"
@@ -804,7 +828,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T16:33:47.0015083Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:33:49.4452013Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:33:46.9624992Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:33:50.0954087Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -816,13 +840,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "a42acb66-1265-4158-99a5-204d2b71008b"
+          "cf32156c-3369-4dc7-bacd-57eb21b7c061"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -837,22 +861,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "2832fce9-f377-4f7f-962d-8262c7977c3b"
+          "76750bb8-e0c2-493f-9932-229222192b44"
         ],
         "x-ms-client-request-id": [
-          "a42acb66-1265-4158-99a5-204d2b71008b"
+          "cf32156c-3369-4dc7-bacd-57eb21b7c061"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/4f1257c2-3252-42c2-9343-ec98a289847d"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/2bb55620-81ea-4a4a-8b0e-1a92742d853a"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "2832fce9-f377-4f7f-962d-8262c7977c3b"
+          "76750bb8-e0c2-493f-9932-229222192b44"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20250506T172650Z:2832fce9-f377-4f7f-962d-8262c7977c3b"
+          "CENTRALUSEUAP:20251025T180909Z:76750bb8-e0c2-493f-9932-229222192b44"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -861,10 +888,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: CE77700840FE43D887D2618ADC73404E Ref B: MAA201060514037 Ref C: 2025-05-06T17:26:49Z"
+          "Ref A: 9BDE5478F05A447E94D63F5D0D02EB65 Ref B: JKT201051406029 Ref C: 2025-10-25T18:09:09Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:49 GMT"
+          "Sat, 25 Oct 2025 18:09:09 GMT"
         ],
         "Content-Length": [
           "3728"
@@ -876,7 +903,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T16:33:47.0015083Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:33:49.4452013Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:33:46.9624992Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:33:50.0954087Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -888,13 +915,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "b95fc946-9425-412e-afbe-4860636beb12"
+          "e97c2e91-cd20-4e8b-8730-c3c27373890d"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -909,22 +936,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "08e9855d-4380-40aa-861f-47593c2dd944"
+          "66ab955d-5ecd-4b7c-aad0-a5b068af22c9"
         ],
         "x-ms-client-request-id": [
-          "b95fc946-9425-412e-afbe-4860636beb12"
+          "e97c2e91-cd20-4e8b-8730-c3c27373890d"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/dd32e8e3-da7b-4d13-b061-8dd89d7f8bb8"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/f27a3210-1b0f-4028-9f30-6e3386e67f68"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "08e9855d-4380-40aa-861f-47593c2dd944"
+          "66ab955d-5ecd-4b7c-aad0-a5b068af22c9"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20250506T172702Z:08e9855d-4380-40aa-861f-47593c2dd944"
+          "CENTRALUSEUAP:20251025T180911Z:66ab955d-5ecd-4b7c-aad0-a5b068af22c9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -933,10 +963,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 4BE5894BE5C1420BBC26212F5F03D4FC Ref B: MAA201060515027 Ref C: 2025-05-06T17:27:01Z"
+          "Ref A: 5BD1807A048B4872BAAB780BED710E44 Ref B: JKT201051407036 Ref C: 2025-10-25T18:09:11Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:27:02 GMT"
+          "Sat, 25 Oct 2025 18:09:11 GMT"
         ],
         "Content-Length": [
           "3728"
@@ -948,7 +978,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T16:33:47.0015083Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:33:49.4452013Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:33:46.9624992Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:33:50.0954087Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -960,13 +990,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "03e2d0b4-17c2-4c2a-92ac-6935f76dea97"
+          "bf28774e-cc26-453a-b386-1379e3ac7f95"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -981,22 +1011,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "f68e0c12-f8f2-44b2-8be6-163ce48ec1bf"
+          "35ce40c6-21ef-4231-bd6b-8329e0a33fca"
         ],
         "x-ms-client-request-id": [
-          "03e2d0b4-17c2-4c2a-92ac-6935f76dea97"
+          "bf28774e-cc26-453a-b386-1379e3ac7f95"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/669fa09d-0e10-49ce-b441-e261894bce8c"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/36356b80-3142-4307-8736-06babbe491de"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "f68e0c12-f8f2-44b2-8be6-163ce48ec1bf"
+          "35ce40c6-21ef-4231-bd6b-8329e0a33fca"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20250506T172704Z:f68e0c12-f8f2-44b2-8be6-163ce48ec1bf"
+          "CENTRALUSEUAP:20251025T180912Z:35ce40c6-21ef-4231-bd6b-8329e0a33fca"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1005,10 +1038,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 0D0E14C370A84D11A6B58EA470940419 Ref B: MAA201060515039 Ref C: 2025-05-06T17:27:03Z"
+          "Ref A: E3CFDD17759F4B76BDCC78FE41873294 Ref B: JKT201051406023 Ref C: 2025-10-25T18:09:12Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:27:03 GMT"
+          "Sat, 25 Oct 2025 18:09:11 GMT"
         ],
         "Content-Length": [
           "3728"
@@ -1020,7 +1053,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T16:33:47.0015083Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:33:49.4452013Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:33:46.9624992Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:33:50.0954087Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -1032,13 +1065,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "953843fa-a756-49ff-879b-1f123404a3e1"
+          "7d2bce58-5382-4b19-adae-fbbba277fbf0"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -1053,22 +1086,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "72092224-8c06-4be4-9f9d-a65f91b45bc8"
+          "d554ccee-f969-4a9a-8b5d-018b2f9e0f92"
         ],
         "x-ms-client-request-id": [
-          "953843fa-a756-49ff-879b-1f123404a3e1"
+          "7d2bce58-5382-4b19-adae-fbbba277fbf0"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/centralindia/2b39ae9c-2a3a-482e-a975-d7ca9b017a12"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/134393de-8e82-40cd-b631-487da0ef5a0d"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "72092224-8c06-4be4-9f9d-a65f91b45bc8"
+          "d554ccee-f969-4a9a-8b5d-018b2f9e0f92"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20250506T172644Z:72092224-8c06-4be4-9f9d-a65f91b45bc8"
+          "CENTRALUSEUAP:20251025T180904Z:d554ccee-f969-4a9a-8b5d-018b2f9e0f92"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1077,13 +1113,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 9ED3327AB30240DAA9F293AE2584AAB0 Ref B: MAA201060514045 Ref C: 2025-05-06T17:26:42Z"
+          "Ref A: BF8E7073ED7540E39403176F34097B5E Ref B: JKT201051407023 Ref C: 2025-10-25T18:09:04Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:43 GMT"
+          "Sat, 25 Oct 2025 18:09:04 GMT"
         ],
         "Content-Length": [
-          "1975"
+          "1976"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1092,7 +1128,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"pstest-ccy-vm\",\r\n    \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"Protected\",\r\n    \"healthStatus\": \"Passed\",\r\n    \"healthDetails\": [\r\n      {\r\n        \"code\": 400239,\r\n        \"title\": \"IaasVmHealthGreenDefault\",\r\n        \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n        \"recommendations\": []\r\n      }\r\n    ],\r\n    \"lastBackupStatus\": \"Completed\",\r\n    \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n    \"protectedItemDataId\": \"1177045740\",\r\n    \"extendedInfo\": {\r\n      \"oldestRecoveryPoint\": \"2025-02-23T16:31:00.2170477Z\",\r\n      \"recoveryPointCount\": 4,\r\n      \"policyInconsistent\": false\r\n    },\r\n    \"extendedProperties\": {},\r\n    \"policyType\": \"\",\r\n    \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"workloadType\": \"VM\",\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n    \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n    \"policyName\": \"DefaultPolicy\",\r\n    \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n    \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n    \"isArchiveEnabled\": false,\r\n    \"softDeleteRetentionPeriod\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"pstest-ccy-vm\",\r\n    \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"Protected\",\r\n    \"healthStatus\": \"Passed\",\r\n    \"healthDetails\": [\r\n      {\r\n        \"code\": 400239,\r\n        \"title\": \"IaasVmHealthGreenDefault\",\r\n        \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n        \"recommendations\": []\r\n      }\r\n    ],\r\n    \"lastBackupStatus\": \"Completed\",\r\n    \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n    \"protectedItemDataId\": \"1177045740\",\r\n    \"extendedInfo\": {\r\n      \"oldestRecoveryPoint\": \"2025-09-14T16:38:06.6038072Z\",\r\n      \"recoveryPointCount\": 31,\r\n      \"policyInconsistent\": false\r\n    },\r\n    \"extendedProperties\": {},\r\n    \"policyType\": \"\",\r\n    \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"workloadType\": \"VM\",\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n    \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n    \"policyName\": \"DefaultPolicy\",\r\n    \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n    \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n    \"isArchiveEnabled\": false,\r\n    \"softDeleteRetentionPeriod\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1104,13 +1140,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "f137e384-30ae-4d35-b194-dbdfcd39aad3"
+          "74f26d6c-6d79-483e-b1a0-25cfaadeb3f9"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -1125,22 +1161,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "a63b99bb-294a-444b-b140-27c497657ff4"
+          "ea8940b6-4c7e-4440-b64c-d2a46464e61a"
         ],
         "x-ms-client-request-id": [
-          "f137e384-30ae-4d35-b194-dbdfcd39aad3"
+          "74f26d6c-6d79-483e-b1a0-25cfaadeb3f9"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/southindia/966a89cb-4954-4801-a6b6-84f3cba4009f"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/2be99ba8-2cd1-4ef3-b397-fea3bbf36f55"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "a63b99bb-294a-444b-b140-27c497657ff4"
+          "ea8940b6-4c7e-4440-b64c-d2a46464e61a"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20250506T172648Z:a63b99bb-294a-444b-b140-27c497657ff4"
+          "CENTRALUSEUAP:20251025T180908Z:ea8940b6-4c7e-4440-b64c-d2a46464e61a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1149,13 +1188,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 549F8310DB3543E98E5B256B2DD741C8 Ref B: MAA201060514037 Ref C: 2025-05-06T17:26:48Z"
+          "Ref A: C263A78968334594AFAB4F3284EEC855 Ref B: JKT201051406054 Ref C: 2025-10-25T18:09:08Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:26:48 GMT"
+          "Sat, 25 Oct 2025 18:09:08 GMT"
         ],
         "Content-Length": [
-          "1975"
+          "1976"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1164,7 +1203,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"pstest-ccy-vm\",\r\n    \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"Protected\",\r\n    \"healthStatus\": \"Passed\",\r\n    \"healthDetails\": [\r\n      {\r\n        \"code\": 400239,\r\n        \"title\": \"IaasVmHealthGreenDefault\",\r\n        \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n        \"recommendations\": []\r\n      }\r\n    ],\r\n    \"lastBackupStatus\": \"Completed\",\r\n    \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n    \"protectedItemDataId\": \"1177045740\",\r\n    \"extendedInfo\": {\r\n      \"oldestRecoveryPoint\": \"2025-02-23T16:31:00.2170477Z\",\r\n      \"recoveryPointCount\": 4,\r\n      \"policyInconsistent\": false\r\n    },\r\n    \"extendedProperties\": {},\r\n    \"policyType\": \"\",\r\n    \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"workloadType\": \"VM\",\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n    \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n    \"policyName\": \"DefaultPolicy\",\r\n    \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n    \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n    \"isArchiveEnabled\": false,\r\n    \"softDeleteRetentionPeriod\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"pstest-ccy-vm\",\r\n    \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"Protected\",\r\n    \"healthStatus\": \"Passed\",\r\n    \"healthDetails\": [\r\n      {\r\n        \"code\": 400239,\r\n        \"title\": \"IaasVmHealthGreenDefault\",\r\n        \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n        \"recommendations\": []\r\n      }\r\n    ],\r\n    \"lastBackupStatus\": \"Completed\",\r\n    \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n    \"protectedItemDataId\": \"1177045740\",\r\n    \"extendedInfo\": {\r\n      \"oldestRecoveryPoint\": \"2025-09-14T16:38:06.6038072Z\",\r\n      \"recoveryPointCount\": 31,\r\n      \"policyInconsistent\": false\r\n    },\r\n    \"extendedProperties\": {},\r\n    \"policyType\": \"\",\r\n    \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"workloadType\": \"VM\",\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n    \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n    \"policyName\": \"DefaultPolicy\",\r\n    \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n    \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n    \"isArchiveEnabled\": false,\r\n    \"softDeleteRetentionPeriod\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1176,13 +1215,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "a42acb66-1265-4158-99a5-204d2b71008b"
+          "cf32156c-3369-4dc7-bacd-57eb21b7c061"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -1197,22 +1236,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "f5a0d9c2-1e98-46be-9110-7949d57081c6"
+          "444975a5-b29f-40fa-9161-c7102eefa0de"
         ],
         "x-ms-client-request-id": [
-          "a42acb66-1265-4158-99a5-204d2b71008b"
+          "cf32156c-3369-4dc7-bacd-57eb21b7c061"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/jioindiacentral/806636a8-19a7-4af8-9e57-fa9e947d6bc1"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/6618d587-f0d9-47df-b6bc-9128d6008a28"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "f5a0d9c2-1e98-46be-9110-7949d57081c6"
+          "444975a5-b29f-40fa-9161-c7102eefa0de"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20250506T172701Z:f5a0d9c2-1e98-46be-9110-7949d57081c6"
+          "CENTRALUSEUAP:20251025T180910Z:444975a5-b29f-40fa-9161-c7102eefa0de"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1221,13 +1263,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 90119279464547A6B44A624B4B4F12B8 Ref B: MAA201060514037 Ref C: 2025-05-06T17:26:59Z"
+          "Ref A: 096BC822EDC24BB89917C4F7AE8F8584 Ref B: JKT201051406029 Ref C: 2025-10-25T18:09:10Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:27:00 GMT"
+          "Sat, 25 Oct 2025 18:09:10 GMT"
         ],
         "Content-Length": [
-          "1975"
+          "1976"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1236,7 +1278,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"pstest-ccy-vm\",\r\n    \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"Protected\",\r\n    \"healthStatus\": \"Passed\",\r\n    \"healthDetails\": [\r\n      {\r\n        \"code\": 400239,\r\n        \"title\": \"IaasVmHealthGreenDefault\",\r\n        \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n        \"recommendations\": []\r\n      }\r\n    ],\r\n    \"lastBackupStatus\": \"Completed\",\r\n    \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n    \"protectedItemDataId\": \"1177045740\",\r\n    \"extendedInfo\": {\r\n      \"oldestRecoveryPoint\": \"2025-02-23T16:31:00.2170477Z\",\r\n      \"recoveryPointCount\": 4,\r\n      \"policyInconsistent\": false\r\n    },\r\n    \"extendedProperties\": {},\r\n    \"policyType\": \"\",\r\n    \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"workloadType\": \"VM\",\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n    \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n    \"policyName\": \"DefaultPolicy\",\r\n    \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n    \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n    \"isArchiveEnabled\": false,\r\n    \"softDeleteRetentionPeriod\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"pstest-ccy-vm\",\r\n    \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"Protected\",\r\n    \"healthStatus\": \"Passed\",\r\n    \"healthDetails\": [\r\n      {\r\n        \"code\": 400239,\r\n        \"title\": \"IaasVmHealthGreenDefault\",\r\n        \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n        \"recommendations\": []\r\n      }\r\n    ],\r\n    \"lastBackupStatus\": \"Completed\",\r\n    \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n    \"protectedItemDataId\": \"1177045740\",\r\n    \"extendedInfo\": {\r\n      \"oldestRecoveryPoint\": \"2025-09-14T16:38:06.6038072Z\",\r\n      \"recoveryPointCount\": 31,\r\n      \"policyInconsistent\": false\r\n    },\r\n    \"extendedProperties\": {},\r\n    \"policyType\": \"\",\r\n    \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"workloadType\": \"VM\",\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n    \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n    \"policyName\": \"DefaultPolicy\",\r\n    \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n    \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n    \"isArchiveEnabled\": false,\r\n    \"softDeleteRetentionPeriod\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1248,13 +1290,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "03e2d0b4-17c2-4c2a-92ac-6935f76dea97"
+          "bf28774e-cc26-453a-b386-1379e3ac7f95"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -1269,22 +1311,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "5a80bb3d-449d-40b1-b670-e4b4fc5cea17"
+          "21efbabb-08b2-4df1-a9f0-60f355cf9836"
         ],
         "x-ms-client-request-id": [
-          "03e2d0b4-17c2-4c2a-92ac-6935f76dea97"
+          "bf28774e-cc26-453a-b386-1379e3ac7f95"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/9cdedb65-148c-4314-b6ef-ed4474a03ba5"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/d2007f3e-0c9b-482e-a7c0-c663a5916aa2"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1098"
         ],
         "x-ms-correlation-request-id": [
-          "5a80bb3d-449d-40b1-b670-e4b4fc5cea17"
+          "21efbabb-08b2-4df1-a9f0-60f355cf9836"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20250506T172705Z:5a80bb3d-449d-40b1-b670-e4b4fc5cea17"
+          "CENTRALUSEUAP:20251025T180913Z:21efbabb-08b2-4df1-a9f0-60f355cf9836"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1293,13 +1338,13 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 867C4174BF6F4FBAAF44C929D2583EA0 Ref B: MAA201060515039 Ref C: 2025-05-06T17:27:04Z"
+          "Ref A: CCE897966F634E74A1A408B7EA2A394F Ref B: JKT201051406023 Ref C: 2025-10-25T18:09:12Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:27:04 GMT"
+          "Sat, 25 Oct 2025 18:09:12 GMT"
         ],
         "Content-Length": [
-          "1975"
+          "1976"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1308,7 +1353,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"pstest-ccy-vm\",\r\n    \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"Protected\",\r\n    \"healthStatus\": \"Passed\",\r\n    \"healthDetails\": [\r\n      {\r\n        \"code\": 400239,\r\n        \"title\": \"IaasVmHealthGreenDefault\",\r\n        \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n        \"recommendations\": []\r\n      }\r\n    ],\r\n    \"lastBackupStatus\": \"Completed\",\r\n    \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n    \"protectedItemDataId\": \"1177045740\",\r\n    \"extendedInfo\": {\r\n      \"oldestRecoveryPoint\": \"2025-02-23T16:31:00.2170477Z\",\r\n      \"recoveryPointCount\": 4,\r\n      \"policyInconsistent\": false\r\n    },\r\n    \"extendedProperties\": {},\r\n    \"policyType\": \"\",\r\n    \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"workloadType\": \"VM\",\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n    \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n    \"policyName\": \"DefaultPolicy\",\r\n    \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n    \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n    \"isArchiveEnabled\": false,\r\n    \"softDeleteRetentionPeriod\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"friendlyName\": \"pstest-ccy-vm\",\r\n    \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"Protected\",\r\n    \"healthStatus\": \"Passed\",\r\n    \"healthDetails\": [\r\n      {\r\n        \"code\": 400239,\r\n        \"title\": \"IaasVmHealthGreenDefault\",\r\n        \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n        \"recommendations\": []\r\n      }\r\n    ],\r\n    \"lastBackupStatus\": \"Completed\",\r\n    \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n    \"protectedItemDataId\": \"1177045740\",\r\n    \"extendedInfo\": {\r\n      \"oldestRecoveryPoint\": \"2025-09-14T16:38:06.6038072Z\",\r\n      \"recoveryPointCount\": 31,\r\n      \"policyInconsistent\": false\r\n    },\r\n    \"extendedProperties\": {},\r\n    \"policyType\": \"\",\r\n    \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"workloadType\": \"VM\",\r\n    \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n    \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n    \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n    \"policyName\": \"DefaultPolicy\",\r\n    \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n    \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n    \"isArchiveEnabled\": false,\r\n    \"softDeleteRetentionPeriod\": 0\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1320,13 +1365,13 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "f01adaa1-16e5-4972-98fd-6243cb25ae3a"
+          "183d4c06-8710-4e2d-87b3-e28843918aec"
         ],
         "User-Agent": [
-          "FxVersion/8.0.1525.16413",
+          "FxVersion/8.0.2125.47513",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.26100",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.7.0"
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.8.0"
         ]
       },
       "RequestBody": "",
@@ -1341,22 +1386,25 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "c32900fc-b03f-4df8-97cc-7446a6a2bce5"
+          "20aeed40-abc4-4594-baef-5b7144420230"
         ],
         "x-ms-client-request-id": [
-          "f01adaa1-16e5-4972-98fd-6243cb25ae3a"
+          "183d4c06-8710-4e2d-87b3-e28843918aec"
         ],
         "x-ms-operation-identifier": [
-          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=72102622-0586-43fb-93d9-ab5dd29cabcc/westindia/a7898edc-33bf-4e0e-8710-f1075bc51adf"
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=8bf5ba20-c970-4c38-b2a6-95f5726c959a/centraluseuap/af926072-b31e-4c10-8b59-24b9bd5e0e65"
+        ],
+        "x-ms-throttling-version": [
+          "v1"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "1099"
         ],
         "x-ms-correlation-request-id": [
-          "c32900fc-b03f-4df8-97cc-7446a6a2bce5"
+          "20aeed40-abc4-4594-baef-5b7144420230"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20250506T172706Z:c32900fc-b03f-4df8-97cc-7446a6a2bce5"
+          "CENTRALUSEUAP:20251025T180914Z:20aeed40-abc4-4594-baef-5b7144420230"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1365,10 +1413,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: E8B2BA226A0945ACA5CE7851D5A1D493 Ref B: MAA201060516017 Ref C: 2025-05-06T17:27:05Z"
+          "Ref A: B40480296D0541688071A5B9B19F3127 Ref B: JKT201051407025 Ref C: 2025-10-25T18:09:14Z"
         ],
         "Date": [
-          "Tue, 06 May 2025 17:27:06 GMT"
+          "Sat, 25 Oct 2025 18:09:14 GMT"
         ],
         "Content-Length": [
           "3728"
@@ -1380,7 +1428,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T16:33:47.0015083Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:33:49.4452013Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-05-06T13:47:10.3520479Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-05-06T16:38:09.6007802Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:33:46.9624992Z\",\r\n        \"protectedItemDataId\": \"78070165\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm2\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:33:50.0954087Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;hiagarg;pstest-ccy-vm/protectedItems/VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"pstest-ccy-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2025-10-25T16:39:18.1195264Z\",\r\n        \"protectedItemDataId\": \"1177045740\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;hiagarg;pstest-ccy-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/pstest-ccy-vm\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2025-10-25T16:39:21.2246202Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-adhoc-vault\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],

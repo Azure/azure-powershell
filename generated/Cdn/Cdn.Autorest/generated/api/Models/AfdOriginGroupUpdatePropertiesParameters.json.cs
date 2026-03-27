@@ -65,6 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return;
             }
+            {_authentication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("authentication"), out var __jsonAuthentication) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginAuthenticationProperties.FromJson(__jsonAuthentication) : _authentication;}
             {_profileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("profileName"), out var __jsonProfileName) ? (string)__jsonProfileName : (string)_profileName;}
             {_loadBalancingSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("loadBalancingSettings"), out var __jsonLoadBalancingSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadBalancingSettingsParameters.FromJson(__jsonLoadBalancingSettings) : _loadBalancingSetting;}
             {_healthProbeSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("healthProbeSettings"), out var __jsonHealthProbeSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters.FromJson(__jsonHealthProbeSettings) : _healthProbeSetting;}
@@ -106,6 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return container;
             }
+            AddIf( null != this._authentication ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._authentication.ToJson(null,serializationMode) : null, "authentication" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._profileName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._profileName.ToString()) : null, "profileName" ,container.Add );

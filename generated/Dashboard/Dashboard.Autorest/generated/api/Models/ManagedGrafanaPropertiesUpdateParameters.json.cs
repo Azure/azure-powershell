@@ -78,10 +78,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
                 return;
             }
             {_grafanaIntegration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject>("grafanaIntegrations"), out var __jsonGrafanaIntegrations) ? Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.GrafanaIntegrations.FromJson(__jsonGrafanaIntegrations) : _grafanaIntegration;}
+            {_enterpriseConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject>("enterpriseConfigurations"), out var __jsonEnterpriseConfigurations) ? Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.EnterpriseConfigurations.FromJson(__jsonEnterpriseConfigurations) : _enterpriseConfiguration;}
+            {_grafanaConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject>("grafanaConfigurations"), out var __jsonGrafanaConfigurations) ? Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.GrafanaConfigurations.FromJson(__jsonGrafanaConfigurations) : _grafanaConfiguration;}
             {_zoneRedundancy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("zoneRedundancy"), out var __jsonZoneRedundancy) ? (string)__jsonZoneRedundancy : (string)_zoneRedundancy;}
             {_apiKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("apiKey"), out var __jsonApiKey) ? (string)__jsonApiKey : (string)_apiKey;}
+            {_creatorCanAdmin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("creatorCanAdmin"), out var __jsonCreatorCanAdmin) ? (string)__jsonCreatorCanAdmin : (string)_creatorCanAdmin;}
             {_deterministicOutboundIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("deterministicOutboundIP"), out var __jsonDeterministicOutboundIP) ? (string)__jsonDeterministicOutboundIP : (string)_deterministicOutboundIP;}
             {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)_publicNetworkAccess;}
+            {_grafanaPlugin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject>("grafanaPlugins"), out var __jsonGrafanaPlugins) ? Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.ManagedGrafanaPropertiesUpdateParametersGrafanaPlugins.FromJson(__jsonGrafanaPlugins) : _grafanaPlugin;}
+            {_grafanaMajorVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("grafanaMajorVersion"), out var __jsonGrafanaMajorVersion) ? (string)__jsonGrafanaMajorVersion : (string)_grafanaMajorVersion;}
             AfterFromJson(json);
         }
 
@@ -107,10 +112,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models
                 return container;
             }
             AddIf( null != this._grafanaIntegration ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) this._grafanaIntegration.ToJson(null,serializationMode) : null, "grafanaIntegrations" ,container.Add );
+            AddIf( null != this._enterpriseConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) this._enterpriseConfiguration.ToJson(null,serializationMode) : null, "enterpriseConfigurations" ,container.Add );
+            AddIf( null != this._grafanaConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) this._grafanaConfiguration.ToJson(null,serializationMode) : null, "grafanaConfigurations" ,container.Add );
             AddIf( null != (((object)this._zoneRedundancy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._zoneRedundancy.ToString()) : null, "zoneRedundancy" ,container.Add );
             AddIf( null != (((object)this._apiKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._apiKey.ToString()) : null, "apiKey" ,container.Add );
+            AddIf( null != (((object)this._creatorCanAdmin)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._creatorCanAdmin.ToString()) : null, "creatorCanAdmin" ,container.Add );
             AddIf( null != (((object)this._deterministicOutboundIP)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._deterministicOutboundIP.ToString()) : null, "deterministicOutboundIP" ,container.Add );
             AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
+            AddIf( null != this._grafanaPlugin ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) this._grafanaPlugin.ToJson(null,serializationMode) : null, "grafanaPlugins" ,container.Add );
+            AddIf( null != (((object)this._grafanaMajorVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._grafanaMajorVersion.ToString()) : null, "grafanaMajorVersion" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

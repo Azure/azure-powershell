@@ -190,7 +190,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="accountMigrationInProgress">If customer initiated account migration is in progress, the value will be
         /// true else it will be null.
         /// </param>
-        public StorageAccountProperties(ProvisioningState? provisioningState = default(ProvisioningState?), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), CustomDomain customDomain = default(CustomDomain), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), KeyCreationTime keyCreationTime = default(KeyCreationTime), Endpoints secondaryEndpoints = default(Endpoints), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?), string largeFileSharesState = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), RoutingPreference routingPreference = default(RoutingPreference), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), BlobRestoreStatus blobRestoreStatus = default(BlobRestoreStatus), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), StorageAccountSkuConversionStatus storageAccountSkuConversionStatus = default(StorageAccountSkuConversionStatus), string dnsEndpointType = default(string), bool? isSkuConversionBlocked = default(bool?), bool? accountMigrationInProgress = default(bool?))
+
+        /// <param name="geoPriorityReplicationStatus">Status indicating whether Geo Priority Replication is enabled for the
+        /// account.
+        /// </param>
+        public StorageAccountProperties(ProvisioningState? provisioningState = default(ProvisioningState?), Endpoints primaryEndpoints = default(Endpoints), string primaryLocation = default(string), AccountStatus? statusOfPrimary = default(AccountStatus?), System.DateTime? lastGeoFailoverTime = default(System.DateTime?), string secondaryLocation = default(string), AccountStatus? statusOfSecondary = default(AccountStatus?), System.DateTime? creationTime = default(System.DateTime?), CustomDomain customDomain = default(CustomDomain), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), KeyCreationTime keyCreationTime = default(KeyCreationTime), Endpoints secondaryEndpoints = default(Endpoints), Encryption encryption = default(Encryption), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), GeoReplicationStats geoReplicationStats = default(GeoReplicationStats), bool? failoverInProgress = default(bool?), string largeFileSharesState = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), RoutingPreference routingPreference = default(RoutingPreference), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), BlobRestoreStatus blobRestoreStatus = default(BlobRestoreStatus), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), string publicNetworkAccess = default(string), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string allowedCopyScope = default(string), StorageAccountSkuConversionStatus storageAccountSkuConversionStatus = default(StorageAccountSkuConversionStatus), string dnsEndpointType = default(string), bool? isSkuConversionBlocked = default(bool?), bool? accountMigrationInProgress = default(bool?), GeoPriorityReplicationStatus geoPriorityReplicationStatus = default(GeoPriorityReplicationStatus))
 
         {
             this.ProvisioningState = provisioningState;
@@ -235,6 +239,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.DnsEndpointType = dnsEndpointType;
             this.IsSkuConversionBlocked = isSkuConversionBlocked;
             this.AccountMigrationInProgress = accountMigrationInProgress;
+            this.GeoPriorityReplicationStatus = geoPriorityReplicationStatus;
             CustomInit();
         }
 
@@ -541,6 +546,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "accountMigrationInProgress")]
         public bool? AccountMigrationInProgress {get; private set; }
+
+        /// <summary>
+        /// Gets or sets status indicating whether Geo Priority Replication is enabled
+        /// for the account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "geoPriorityReplicationStatus")]
+        public GeoPriorityReplicationStatus GeoPriorityReplicationStatus {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -594,6 +606,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 this.ImmutableStorageWithVersioning.Validate();
             }
+
 
 
 

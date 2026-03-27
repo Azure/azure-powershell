@@ -69,6 +69,12 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specifies the InVMAccessControlProfileVersion resource id in the IMDS enpoint. Format of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/inVMAccessControlProfiles/{profile}/versions/{version}")]
         public string ImdsProfile { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify whether to implicitly install the ProxyAgent Extension. This option is currently applicable only for Linux Os.")]
+        public bool? AddProxyAgentExtension { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -95,6 +101,11 @@ namespace Microsoft.Azure.Commands.Compute
                     InVMAccessControlProfileReferenceId = this.ImdsProfile
                 })
             };
+
+            if (this.MyInvocation.BoundParameters.ContainsKey(nameof(AddProxyAgentExtension)))
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.AddProxyAgentExtension = this.AddProxyAgentExtension;
+            }
 
             WriteObject(this.VirtualMachineScaleSet);
         }

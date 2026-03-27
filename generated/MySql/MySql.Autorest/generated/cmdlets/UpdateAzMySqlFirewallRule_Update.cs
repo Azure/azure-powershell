@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzMySqlFirewallRule_Update", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.CmdletBreakingChange("16.0.0", "2.0.0", "2026/05")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Description(@"Creates a new firewall rule or updates an existing firewall rule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MySql.Generated]

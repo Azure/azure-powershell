@@ -1,0 +1,95 @@
+{
+  "resourceType": "monitors/monitoredSubscriptions",
+  "apiVersion": "2025-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.elastic"
+  },
+  "commands": [
+    {
+      "name": "Get-AzElasticMonitoredSubscription",
+      "description": "Get detailed information about all subscriptions currently being monitored by the Elastic monitor resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticmonitoredsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConfigurationName <String>",
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get detailed information about all subscriptions currently being monitored by the Elastic monitor resource.",
+          "parameters": [
+            {
+              "name": "-ConfigurationName",
+              "value": "[Path.configurationName]"
+            },
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzElasticMonitoredSubscription",
+      "description": "Delete subscriptions being monitored by the Elastic monitor resource, removing their observability and monitoring capabilities.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.elastic/remove-azelasticmonitoredsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConfigurationName <String>",
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete subscriptions being monitored by the Elastic monitor resource, removing their observability and monitoring capabilities.",
+          "parameters": [
+            {
+              "name": "-ConfigurationName",
+              "value": "[Path.configurationName]"
+            },
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

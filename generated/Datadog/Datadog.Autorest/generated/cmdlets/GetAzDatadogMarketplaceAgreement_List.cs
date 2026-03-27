@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogAgreementResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Description(@"List Datadog marketplace agreements in the subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/agreements", ApiVersion = "2021-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/agreements", ApiVersion = "2025-06-11")]
     public partial class GetAzDatadogMarketplaceAgreement_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IContext

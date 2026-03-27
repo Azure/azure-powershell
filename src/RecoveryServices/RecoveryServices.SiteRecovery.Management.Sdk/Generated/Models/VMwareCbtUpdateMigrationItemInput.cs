@@ -81,7 +81,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
         /// <param name="targetNicTags">The tags for the target NICs.
         /// </param>
-        public VMwareCbtUpdateMigrationItemInput(string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), System.Collections.Generic.IList<VMwareCbtNicInput> vmNics = default(System.Collections.Generic.IList<VMwareCbtNicInput>), System.Collections.Generic.IList<VMwareCbtUpdateDiskInput> vmDisks = default(System.Collections.Generic.IList<VMwareCbtUpdateDiskInput>), string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string userSelectedOSName = default(string), string performAutoResync = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>))
+
+        /// <param name="targetCapacityReservationGroupId">The target capacity reservation group ARM Id.
+        /// </param>
+        public VMwareCbtUpdateMigrationItemInput(string targetVMName = default(string), string targetVMSize = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string targetNetworkId = default(string), string testNetworkId = default(string), System.Collections.Generic.IList<VMwareCbtNicInput> vmNics = default(System.Collections.Generic.IList<VMwareCbtNicInput>), System.Collections.Generic.IList<VMwareCbtUpdateDiskInput> vmDisks = default(System.Collections.Generic.IList<VMwareCbtUpdateDiskInput>), string licenseType = default(string), string sqlServerLicenseType = default(string), string linuxLicenseType = default(string), string userSelectedOSName = default(string), string performAutoResync = default(string), System.Collections.Generic.IDictionary<string, string> targetVMTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetDiskTags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> targetNicTags = default(System.Collections.Generic.IDictionary<string, string>), string targetCapacityReservationGroupId = default(string))
 
         {
             this.TargetVMName = targetVMName;
@@ -103,6 +106,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.TargetVMTags = targetVMTags;
             this.TargetDiskTags = targetDiskTags;
             this.TargetNicTags = targetNicTags;
+            this.TargetCapacityReservationGroupId = targetCapacityReservationGroupId;
             CustomInit();
         }
 
@@ -225,5 +229,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetNicTags")]
         public System.Collections.Generic.IDictionary<string, string> TargetNicTags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target capacity reservation group ARM Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetCapacityReservationGroupId")]
+        public string TargetCapacityReservationGroupId {get; set; }
     }
 }

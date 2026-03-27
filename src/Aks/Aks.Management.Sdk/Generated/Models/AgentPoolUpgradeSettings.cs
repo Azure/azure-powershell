@@ -24,17 +24,49 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the AgentPoolUpgradeSettings class.
         /// </summary>
 
-        /// <param name="maxSurge">This can either be set to an integer (e.g. &#39;5&#39;) or a percentage (e.g.
+        /// <param name="maxSurge">The maximum number or percentage of nodes that are surged during upgrade.
+        /// This can either be set to an integer (e.g. &#39;5&#39;) or a percentage (e.g.
         /// &#39;50%&#39;). If a percentage is specified, it is the percentage of the total
         /// agent pool size at the time of the upgrade. For percentages, fractional
-        /// nodes are rounded up. If not specified, the default is 1. For more
+        /// nodes are rounded up. If not specified, the default is 10%. For more
         /// information, including best practices, see:
-        /// https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+        /// https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
         /// </param>
-        public AgentPoolUpgradeSettings(string maxSurge = default(string))
+
+        /// <param name="maxUnavailable">The maximum number or percentage of nodes that can be simultaneously
+        /// unavailable during upgrade. This can either be set to an integer (e.g. &#39;1&#39;)
+        /// or a percentage (e.g. &#39;5%&#39;). If a percentage is specified, it is the
+        /// percentage of the total agent pool size at the time of the upgrade. For
+        /// percentages, fractional nodes are rounded up. If not specified, the default
+        /// is 0. For more information, including best practices, see:
+        /// https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
+        /// </param>
+
+        /// <param name="drainTimeoutInMinutes">The drain timeout for a node. The amount of time (in minutes) to wait on
+        /// eviction of pods and graceful termination per node. This eviction wait time
+        /// honors waiting on pod disruption budgets. If this time is exceeded, the
+        /// upgrade fails. If not specified, the default is 30 minutes.
+        /// </param>
+
+        /// <param name="nodeSoakDurationInMinutes">The soak duration for a node. The amount of time (in minutes) to wait after
+        /// draining a node and before reimaging it and moving on to next node. If not
+        /// specified, the default is 0 minutes.
+        /// </param>
+
+        /// <param name="undrainableNodeBehavior">Defines the behavior for undrainable nodes during upgrade. The most common
+        /// cause of undrainable nodes is Pod Disruption Budgets (PDBs), but other
+        /// issues, such as pod termination grace period is exceeding the remaining
+        /// per-node drain timeout or pod is still being in a running state, can also
+        /// cause undrainable nodes.
+        /// Possible values include: &#39;Cordon&#39;, &#39;Schedule&#39;</param>
+        public AgentPoolUpgradeSettings(string maxSurge = default(string), string maxUnavailable = default(string), int? drainTimeoutInMinutes = default(int?), int? nodeSoakDurationInMinutes = default(int?), string undrainableNodeBehavior = default(string))
 
         {
             this.MaxSurge = maxSurge;
+            this.MaxUnavailable = maxUnavailable;
+            this.DrainTimeoutInMinutes = drainTimeoutInMinutes;
+            this.NodeSoakDurationInMinutes = nodeSoakDurationInMinutes;
+            this.UndrainableNodeBehavior = undrainableNodeBehavior;
             CustomInit();
         }
 
@@ -45,14 +77,89 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets or sets this can either be set to an integer (e.g. &#39;5&#39;) or a
+        /// Gets or sets the maximum number or percentage of nodes that are surged
+        /// during upgrade. This can either be set to an integer (e.g. &#39;5&#39;) or a
         /// percentage (e.g. &#39;50%&#39;). If a percentage is specified, it is the percentage
         /// of the total agent pool size at the time of the upgrade. For percentages,
-        /// fractional nodes are rounded up. If not specified, the default is 1. For
+        /// fractional nodes are rounded up. If not specified, the default is 10%. For
         /// more information, including best practices, see:
-        /// https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+        /// https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "maxSurge")]
         public string MaxSurge {get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum number or percentage of nodes that can be
+        /// simultaneously unavailable during upgrade. This can either be set to an
+        /// integer (e.g. &#39;1&#39;) or a percentage (e.g. &#39;5%&#39;). If a percentage is
+        /// specified, it is the percentage of the total agent pool size at the time of
+        /// the upgrade. For percentages, fractional nodes are rounded up. If not
+        /// specified, the default is 0. For more information, including best
+        /// practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxUnavailable")]
+        public string MaxUnavailable {get; set; }
+
+        /// <summary>
+        /// Gets or sets the drain timeout for a node. The amount of time (in minutes)
+        /// to wait on eviction of pods and graceful termination per node. This
+        /// eviction wait time honors waiting on pod disruption budgets. If this time
+        /// is exceeded, the upgrade fails. If not specified, the default is 30
+        /// minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "drainTimeoutInMinutes")]
+        public int? DrainTimeoutInMinutes {get; set; }
+
+        /// <summary>
+        /// Gets or sets the soak duration for a node. The amount of time (in minutes)
+        /// to wait after draining a node and before reimaging it and moving on to next
+        /// node. If not specified, the default is 0 minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "nodeSoakDurationInMinutes")]
+        public int? NodeSoakDurationInMinutes {get; set; }
+
+        /// <summary>
+        /// Gets or sets defines the behavior for undrainable nodes during upgrade. The
+        /// most common cause of undrainable nodes is Pod Disruption Budgets (PDBs),
+        /// but other issues, such as pod termination grace period is exceeding the
+        /// remaining per-node drain timeout or pod is still being in a running state,
+        /// can also cause undrainable nodes. Possible values include: &#39;Cordon&#39;, &#39;Schedule&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "undrainableNodeBehavior")]
+        public string UndrainableNodeBehavior {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+            if (this.DrainTimeoutInMinutes != null)
+            {
+                if (this.DrainTimeoutInMinutes > 1440)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "DrainTimeoutInMinutes", 1440);
+                }
+                if (this.DrainTimeoutInMinutes < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "DrainTimeoutInMinutes", 1);
+                }
+            }
+            if (this.NodeSoakDurationInMinutes != null)
+            {
+                if (this.NodeSoakDurationInMinutes > 30)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "NodeSoakDurationInMinutes", 30);
+                }
+                if (this.NodeSoakDurationInMinutes < 0)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "NodeSoakDurationInMinutes", 0);
+                }
+            }
+
+        }
     }
 }

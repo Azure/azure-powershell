@@ -39,6 +39,85 @@ module-version: 2.0.0
 subject-prefix: $(service-name)
 
 directive:
+  - where:
+      verb: New|Get
+      subject: RegistrationAssignment
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Authorization[]
+          - EligibleAuthorization[]
+        new-output-properties:
+          - List[Authorization]
+          - List[EligibleAuthorization]
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+  - where:
+      verb: New
+      subject: RegistrationDefinition
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Authorization
+          - EligibleAuthorization
+          - DelegatedRoleDefinitionId[]
+          - JustInTimeAccessPolicyManagedByTenantApprover[]
+        new-output-properties:
+          - List[Authorization]
+          - List[EligibleAuthorization]
+          - List[DelegatedRoleDefinitionId]
+          - List[JustInTimeAccessPolicyManagedByTenantApprover]
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+  - where:
+      verb: Get
+      subject: RegistrationDefinition
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Authorization[]
+          - EligibleAuthorization[]
+        new-output-properties:
+          - List[Authorization]
+          - List[EligibleAuthorization]
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+  - where:
+      verb: New|Get
+      subject: MarketplaceRegistrationDefinition
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Authorization[]
+          - EligibleAuthorization[]
+        new-output-properties:
+          - List[Authorization]
+          - List[EligibleAuthorization]
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+  - where:
+      parameter-name: Authorization
+    set:
+      breaking-change:
+        old-parameter-type: Array
+        new-parameter-type: List
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+  - where:
+      parameter-name: EligibleAuthorization
+    set:
+      breaking-change:
+        old-parameter-type: Array
+        new-parameter-type: List
+        deprecated-by-version: 9.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+
   # Remove unnecessary cmdlet.
   - where:
       verb: Set

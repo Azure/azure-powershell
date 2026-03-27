@@ -964,6 +964,7 @@ function Test-NetworkManagerRoutingRuleCRUD
     $subnetNetworkGroupName = Get-ResourceName
     $staticMemberName = Get-ResourceName
     $RoutingConfigurationName = Get-ResourceName
+    $RoutingConfigurationName2 = Get-ResourceName
     $RuleCollectionName = Get-ResourceName
     $RuleName1 = Get-ResourceName
     $rglocation = "centraluseuap"
@@ -1000,43 +1001,100 @@ function Test-NetworkManagerRoutingRuleCRUD
         $vnetNetworkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $vnetNetworkGroupName
         $subnetNetworkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $subnetNetworkGroupName
 
-        # Create a Routing Configuration
-        New-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName -Description "Sample Routing Configuration"
+        #region RouteTableUsageMode Tests - New Configuration
+
+        # Test 1: Create Routing Configuration with explicit ManagedOnly mode
+        New-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName -Description "Sample Routing Configuration" -RouteTableUsageMode "ManagedOnly"
         
         $routingConfig = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName
         Assert-NotNull $routingConfig;
         Assert-AreEqual $RoutingConfigurationName $routingConfig.Name;
+        Assert-AreEqual "ManagedOnly" $routingConfig.RouteTableUsageMode;
+        Assert-AreEqual "Sample Routing Configuration" $routingConfig.Description;
+
+        # Test 2: Create Routing Configuration without specifying RouteTableUsageMode (should default to ManagedOnly)
+        New-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName2 -Description "Default mode test"
+        
+        $routingConfig2 = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName2
+        Assert-NotNull $routingConfig2;
+        Assert-AreEqual $RoutingConfigurationName2 $routingConfig2.Name;
+        Assert-AreEqual "ManagedOnly" $routingConfig2.RouteTableUsageMode;
+        Assert-AreEqual "Default mode test" $routingConfig2.Description;
+
+        # Test 3: Create Routing Configuration with UseExisting mode
+        $RoutingConfigurationName3 = Get-ResourceName
+        New-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName3 -Description "UseExisting mode test" -RouteTableUsageMode "UseExisting"
+        
+        $routingConfig3 = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName3
+        Assert-NotNull $routingConfig3;
+        Assert-AreEqual "UseExisting" $routingConfig3.RouteTableUsageMode;
+
+        #endregion
 
         # Validate List Routing config command
         $routingConfigs = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName
         Assert-NotNull $routingConfigs
-        Assert-AreEqual 1 $routingConfigs.Count
+        Assert-AreEqual 3 $routingConfigs.Count
 
-        # Get by resourceId
+        #region RouteTableUsageMode Tests - Get by ResourceId
+
+        # Test 4: Get by resourceId and verify RouteTableUsageMode is preserved
         $resourceId = $routingConfig.Id
         $routingConfig = Get-AzNetworkManagerRoutingConfiguration -ResourceId $resourceId
         Assert-NotNull $routingConfig
         Assert-AreEqual $resourceId $routingConfig.Id
+        Assert-AreEqual "ManagedOnly" $routingConfig.RouteTableUsageMode
 
-        # Set by InputObject
+        #endregion
+
+        #region RouteTableUsageMode Tests - Set/Update Operations
+
+        # Test 5: Set by InputObject - update description and route table usage mode to UseExisting
         $routingConfig.Description = "A different description."
+        $routingConfig.RouteTableUsageMode = "UseExisting"
         $routingConfig = Set-AzNetworkManagerRoutingConfiguration -InputObject $routingConfig
         Assert-NotNull $routingConfig;
         Assert-AreEqual "A different description." $routingConfig.Description;
         Assert-AreEqual $RoutingConfigurationName $routingConfig.Name;
+        Assert-AreEqual "UseExisting" $routingConfig.RouteTableUsageMode;
 
-        # Set by resourceId
+        # Test 6: Set by resourceId - update description only (RouteTableUsageMode should be preserved as UseExisting)
         $resourceId = $routingConfig.Id
         $routingConfig = Set-AzNetworkManagerRoutingConfiguration -ResourceId $resourceId -Description "Updated description."
         Assert-NotNull $routingConfig;
         Assert-AreEqual "Updated description." $routingConfig.Description;
         Assert-AreEqual $RoutingConfigurationName $routingConfig.Name;
+        Assert-AreEqual "UseExisting" $routingConfig.RouteTableUsageMode;
 
-        # Set by Name
-        $routingConfig = Set-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName -Description "Updated description again."
+        # Test 7: Set by Name - update description and explicitly change back to ManagedOnly mode
+        $routingConfig = Set-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName -Description "Updated description again." -RouteTableUsageMode "ManagedOnly"
         Assert-NotNull $routingConfig;
         Assert-AreEqual "Updated description again." $routingConfig.Description;
         Assert-AreEqual $RoutingConfigurationName $routingConfig.Name;
+        Assert-AreEqual "ManagedOnly" $routingConfig.RouteTableUsageMode;
+
+        # Test 8: Set by Name - update only description (RouteTableUsageMode should remain ManagedOnly)
+        $routingConfig = Set-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName -Description "Description update without mode change"
+        Assert-NotNull $routingConfig;
+        Assert-AreEqual "Description update without mode change" $routingConfig.Description;
+        Assert-AreEqual "ManagedOnly" $routingConfig.RouteTableUsageMode;
+
+        # Test 9: Set by InputObject - change mode to UseExisting
+        $routingConfig.RouteTableUsageMode = "UseExisting"
+        $routingConfig = Set-AzNetworkManagerRoutingConfiguration -InputObject $routingConfig
+        Assert-AreEqual "UseExisting" $routingConfig.RouteTableUsageMode;
+
+        # Test 10: Set by resourceId - explicitly set mode to ManagedOnly
+        $resourceId = $routingConfig.Id
+        $routingConfig = Set-AzNetworkManagerRoutingConfiguration -ResourceId $resourceId -RouteTableUsageMode "ManagedOnly"
+        Assert-AreEqual "ManagedOnly" $routingConfig.RouteTableUsageMode;
+
+        # Test 11: Verify that the second config (created without explicit mode) can be updated
+        $routingConfig2 = Set-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName2 -RouteTableUsageMode "UseExisting"
+        Assert-AreEqual "UseExisting" $routingConfig2.RouteTableUsageMode;
+        Assert-AreEqual "Default mode test" $routingConfig2.Description;
+
+        #endregion
 
         # Create a Routing Rule Collection
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingGroupItem]]$configGroup  = @() 
@@ -1154,6 +1212,10 @@ function Test-NetworkManagerRoutingRuleCRUD
 
         #endregion - End Routing Rule Set-* cmdlets tests
 
+        # Verify RouteTableUsageMode persists through configuration operations
+        $finalRoutingConfig = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName
+        Assert-AreEqual "ManagedOnly" $finalRoutingConfig.RouteTableUsageMode;
+
         $configIds  = @($routingConfig.Id)
         $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configIds -CommitType "Routing" 
@@ -1184,6 +1246,15 @@ function Test-NetworkManagerRoutingRuleCRUD
         # Remove by InputObject
         $job = Remove-AzNetworkManagerRoutingConfiguration -InputObject $routingConfig -ForceDelete -PassThru -Force -AsJob;
 
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        # Remove additional routing configurations
+        $job = Remove-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName2 -ForceDelete -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        $job = Remove-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName3 -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 

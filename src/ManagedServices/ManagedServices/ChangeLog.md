@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
 
+* Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
+
 ## Version 3.1.2
 * Update the outputs of breaking change announcements.
 

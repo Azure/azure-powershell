@@ -78,11 +78,14 @@ Update the metadata of a service instance.
 Patch workspace details.
 
 ### [Update-AzHealthcareDicomService](Update-AzHealthcareDicomService.md)
-Patch DICOM Service details.
+Update a DICOM Service resource with the specified parameters.
 
 ### [Update-AzHealthcareFhirService](Update-AzHealthcareFhirService.md)
-Patch FHIR Service details.
+Update a FHIR Service resource with the specified parameters.
 
 ### [Update-AzHealthcareIotConnector](Update-AzHealthcareIotConnector.md)
-Patch an IoT Connector.
+Update an IoT Connector resource with the specified parameters.
+
+### [Update-AzHealthcareIotConnectorFhirDestination](Update-AzHealthcareIotConnectorFhirDestination.md)
+Update an IoT Connector FHIR destination resource with the specified parameters.
 

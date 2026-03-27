@@ -12,10 +12,10 @@ Microsoft Azure PowerShell: NewRelic cmdlets
 
 ## Az.NewRelic Cmdlets
 ### [Get-AzNewRelicAccount](Get-AzNewRelicAccount.md)
-List all the existing accounts
+Lists all the New Relic accounts linked to your email address, helping you understand the existing accounts that have been created
 
 ### [Get-AzNewRelicBillingInfo](Get-AzNewRelicBillingInfo.md)
-Get marketplace info mapped to the given monitor.
+Retrieves marketplace and organization information mapped to the given New Relic monitor resource
 
 ### [Get-AzNewRelicConnectedPartnerResource](Get-AzNewRelicConnectedPartnerResource.md)
 List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
@@ -24,34 +24,46 @@ List of all active deployments that are associated with the marketplace subscrip
 Get a NewRelicMonitorResource
 
 ### [Get-AzNewRelicMonitoredAppService](Get-AzNewRelicMonitoredAppService.md)
-List the app service resources currently being monitored by the NewRelic resource.
+Lists the app service resources currently being monitored by the New Relic resource, helping you understand which app services are under monitoring
 
 ### [Get-AzNewRelicMonitoredHost](Get-AzNewRelicMonitoredHost.md)
-List the compute vm resources currently being monitored by the NewRelic resource.
+Lists all VM resources currently being monitored by the New Relic monitor resource, helping you manage observability
 
 ### [Get-AzNewRelicMonitoredSubscription](Get-AzNewRelicMonitoredSubscription.md)
-List the subscriptions currently being monitored by the NewRelic monitor resource.
+Lists all the subscriptions currently being monitored by the NewRelic monitor resource.
 
 ### [Get-AzNewRelicMonitorMetricRule](Get-AzNewRelicMonitorMetricRule.md)
-Get metric rules
+Retrieves the metric rules that are configured in the New Relic monitor resource
 
 ### [Get-AzNewRelicMonitorMetricStatus](Get-AzNewRelicMonitorMetricStatus.md)
-Get metric status
+Retrieves the metric status that are configured in the New Relic monitor resource
 
 ### [Get-AzNewRelicMonitorMonitoredResource](Get-AzNewRelicMonitorMonitoredResource.md)
-List the resources currently being monitored by the NewRelic monitor resource.
+Lists all Azure resources that are currently being monitored by the specified New Relic monitor resource, providing insight into the coverage of your observability setup
 
 ### [Get-AzNewRelicMonitorTagRule](Get-AzNewRelicMonitorTagRule.md)
-Get a TagRule
+Retrieves the details of the tag rules for a specific New Relic monitor resource, providing insight into its setup and status
 
 ### [Get-AzNewRelicOrganization](Get-AzNewRelicOrganization.md)
-List all the existing organizations
+Lists all the New Relic organizations linked to your email address, helping you understand the existing organizations that have been created
 
 ### [Get-AzNewRelicPlan](Get-AzNewRelicPlan.md)
-List plans data
+Lists the plans data linked to your organization, providing an overview of the available plans
+
+### [Initialize-AzNewRelicSaaSResource](Initialize-AzNewRelicSaaSResource.md)
+Resolve the token to get the SaaS resource ID and activate the SaaS resource
 
 ### [Invoke-AzNewRelicHostMonitor](Invoke-AzNewRelicHostMonitor.md)
-Returns the payload that needs to be passed in the request body for installing NewRelic agent on a VM.
+Returns the payload that needs to be passed in the request body for installing the New Relic agent on a VM, providing the necessary configuration details
+
+### [Invoke-AzNewRelicLatestMonitorLinkedSaaS](Invoke-AzNewRelicLatestMonitorLinkedSaaS.md)
+Returns the latest SaaS linked to the newrelic organization of the underlying monitor.
+
+### [Invoke-AzNewRelicLinkMonitorSaaS](Invoke-AzNewRelicLinkMonitorSaaS.md)
+Links a new SaaS to the newrelic organization of the underlying monitor.
+
+### [Invoke-AzNewRelicResubscribeMonitor](Invoke-AzNewRelicResubscribeMonitor.md)
+Resubscribes the New Relic Organization of the underlying Monitor Resource to be billed by Azure Marketplace
 
 ### [New-AzNewRelicFilteringTagObject](New-AzNewRelicFilteringTagObject.md)
 Create an in-memory object for FilteringTag.
@@ -60,29 +72,32 @@ Create an in-memory object for FilteringTag.
 Create a NewRelicMonitorResource
 
 ### [New-AzNewRelicMonitoredSubscription](New-AzNewRelicMonitoredSubscription.md)
-Add the subscriptions that should be monitored by the NewRelic monitor resource.
+Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
 
 ### [New-AzNewRelicMonitoredSubscriptionObject](New-AzNewRelicMonitoredSubscriptionObject.md)
 Create an in-memory object for MonitoredSubscription.
 
 ### [New-AzNewRelicMonitorTagRule](New-AzNewRelicMonitorTagRule.md)
-Create a TagRule
+Create a new set of tag rules for a specific New Relic monitor resource, determining which Azure resources are monitored based on their tags
 
 ### [Remove-AzNewRelicMonitor](Remove-AzNewRelicMonitor.md)
-Delete a NewRelicMonitorResource
+Deletes an existing New Relic monitor resource from your Azure subscription, removing the integration and stopping the observability of your Azure resources through New Relic
 
 ### [Remove-AzNewRelicMonitoredSubscription](Remove-AzNewRelicMonitoredSubscription.md)
 Deletes the subscriptions that are being monitored by the NewRelic monitor resource
 
 ### [Remove-AzNewRelicMonitorTagRule](Remove-AzNewRelicMonitorTagRule.md)
-Delete a TagRule
+Deletes a tag rule set for a given New Relic monitor resource, removing fine-grained control over observability based on resource tags
 
 ### [Switch-AzNewRelicMonitorBilling](Switch-AzNewRelicMonitorBilling.md)
-Switches the billing for NewRelic monitor resource.
+Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
 
 ### [Update-AzNewRelicMonitoredSubscription](Update-AzNewRelicMonitoredSubscription.md)
-Add the subscriptions that should be monitored by the NewRelic monitor resource.
+Add subscriptions to be monitored by the New Relic monitor resource, enabling observability and monitoring.
+
+### [Update-AzNewRelicMonitorIngestionKey](Update-AzNewRelicMonitorIngestionKey.md)
+Refreshes the ingestion key for all monitors linked to the same account associated to the underlying monitor.
 
 ### [Update-AzNewRelicMonitorTagRule](Update-AzNewRelicMonitorTagRule.md)
-Update a TagRule
+Update the tag rules for a specific New Relic monitor resource, allowing you to modify the rules that control which Azure resources are monitored
 

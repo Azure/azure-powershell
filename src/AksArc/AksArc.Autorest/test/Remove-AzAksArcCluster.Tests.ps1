@@ -14,8 +14,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAksArcCluster'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzAksArcCluster' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+# This needs to run in live only because Az commands in the custom file cannot be recorded.
+Describe 'Remove-AzAksArcCluster' -Tag 'LiveOnly' {
+    BeforeEach {
+        $clusterNameForRemoveTest = "test-remove-cluster"
+        # SSH files should be created already.
+        $sshPath = Join-Path -Path $PSScriptRoot -ChildPath "test-rsa"
+        $ssh = Get-Content -Path "${sshPath}.pub"
+        # Create new provisioned cluster for the remove test. The cluster created in utils.ps1 is used for other tests.
+        New-AzAksArcCluster `
+            -ClusterName $clusterNameForRemoveTest `
+            -ResourceGroupName $env.resourceGroupName `
+            -CustomLocationName $env.customLocationName `
+            -VnetId $env.lnetID `
+            -SshKeyValue $ssh
+    }
+    It 'Delete' {
+        Remove-AzAksArcCluster -ClusterName $clusterNameForRemoveTest -ResourceGroupName $env.resourceGroupName
     }
 }

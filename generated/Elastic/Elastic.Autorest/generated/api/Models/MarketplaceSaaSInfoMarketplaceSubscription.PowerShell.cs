@@ -118,6 +118,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).Id, global::System.Convert.ToString);
             }
+            if (content.Contains("PublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).PublisherId = (string) content.GetValueForProperty("PublisherId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).PublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).OfferId = (string) content.GetValueForProperty("OfferId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).OfferId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -138,6 +146,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("PublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).PublisherId = (string) content.GetValueForProperty("PublisherId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).PublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfferId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).OfferId = (string) content.GetValueForProperty("OfferId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)this).OfferId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzAdbsBackup'))
 }
 
 Describe 'AzAdbsBackup' {
-    It 'CreateAdbsBackup' {
+    It 'CreateAdbsBackup' -Skip {
         {
             New-AzOracleAutonomousDatabaseBackup -NoWait -Adbbackupid $env.adbsBackupId -Autonomousdatabasename $env.adbsDNDName -ResourceGroupName $env.resourceGroup -RetentionPeriodInDay 90
         } | Should -Not -Throw

@@ -265,6 +265,20 @@ namespace Microsoft.Azure.Commands.Network
         public bool? AllowVirtualWanTraffic { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ResourceId of the user assigned identity to be assigned to virtual network gateway.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("UserAssignedIdentity")]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The managed identity configuration for the virtual network gateway.")]
+        public PSManagedServiceIdentity Identity { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server address.")]
@@ -609,6 +623,22 @@ namespace Microsoft.Azure.Commands.Network
             if (AllowVirtualWanTraffic.HasValue)
             {
                 this.VirtualNetworkGateway.AllowVirtualWanTraffic = AllowVirtualWanTraffic.Value;
+            }
+
+            if (this.UserAssignedIdentityId != null)
+            {
+                this.VirtualNetworkGateway.Identity = new PSManagedServiceIdentity
+                {
+                    Type = MNM.ResourceIdentityType.UserAssigned,
+                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
+                    {
+                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
+                    }
+                };
+            }
+            else if (this.Identity != null)
+            {
+                this.VirtualNetworkGateway.Identity = this.Identity;
             }
 
             // Map to the sdk object

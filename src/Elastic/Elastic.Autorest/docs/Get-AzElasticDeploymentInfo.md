@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticDeploymentInfo
 
 ## SYNOPSIS
-Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
+Fetch detailed information about Elastic cloud deployments corresponding to the Elastic monitor resource.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzElasticDeploymentInfo -Name <String> -ResourceGroupName <String> [-Subscri
 ```
 
 ## DESCRIPTION
-Fetch information regarding Elastic cloud deployment corresponding to the Elastic monitor resource.
+Fetch detailed information about Elastic cloud deployments corresponding to the Elastic monitor resource.
 
 ## EXAMPLES
 

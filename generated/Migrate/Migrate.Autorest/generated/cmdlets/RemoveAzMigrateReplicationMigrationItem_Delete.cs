@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"The operation to delete an ASR migration item.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}", ApiVersion = "2025-08-01")]
     public partial class RemoveAzMigrateReplicationMigrationItem_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener
     {
@@ -264,8 +264,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ResourceName = this.ResourceName;
             clone.ResourceGroupName = this.ResourceGroupName;
+            clone.ResourceName = this.ResourceName;
             clone.SubscriptionId = this.SubscriptionId;
             clone.FabricName = this.FabricName;
             clone.ProtectionContainerName = this.ProtectionContainerName;
@@ -441,12 +441,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ReplicationMigrationItemsDelete(ResourceName, ResourceGroupName, SubscriptionId, FabricName, ProtectionContainerName, MigrationItemName, this.InvocationInformation.BoundParameters.ContainsKey("DeleteOption") ? DeleteOption : null, onNoContent, this, Pipeline);
+                    await this.Client.ReplicationMigrationItemsDelete(ResourceGroupName, ResourceName, SubscriptionId, FabricName, ProtectionContainerName, MigrationItemName, this.InvocationInformation.BoundParameters.ContainsKey("DeleteOption") ? DeleteOption : null, onNoContent, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceName=ResourceName,ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId,FabricName=FabricName,ProtectionContainerName=ProtectionContainerName,MigrationItemName=MigrationItemName,DeleteOption=this.InvocationInformation.BoundParameters.ContainsKey("DeleteOption") ? DeleteOption : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,ResourceName=ResourceName,SubscriptionId=SubscriptionId,FabricName=FabricName,ProtectionContainerName=ProtectionContainerName,MigrationItemName=MigrationItemName,DeleteOption=this.InvocationInformation.BoundParameters.ContainsKey("DeleteOption") ? DeleteOption : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

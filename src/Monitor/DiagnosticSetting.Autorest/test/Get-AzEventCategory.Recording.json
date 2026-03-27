@@ -1,0 +1,49 @@
+{
+  "Get-AzEventCategory+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Insights/eventcategories?api-version=2015-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Insights/eventcategories?api-version=2015-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "d91db36e-f895-4f53-ae02-7867fec3d04a" ],
+        "CommandName": [ "Get-AzEventCategory" ],
+        "FullCommandName": [ "Get-AzEventCategory_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.1", "Az.DiagnosticSetting/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "249" ],
+        "x-ms-operation-identifier": [ "" ],
+        "Request-Context": [ "appId=cid-v1:e9ce6014-b708-4056-a18d-21dc38a7abb0" ],
+        "mise-correlation-id": [ "de9a20dd-897b-4176-bc11-367460cf7e70" ],
+        "api-supported-versions": [ "2015-04-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "x-ms-request-id": [ "d1ba5431-18ba-4a95-9c26-3f31f803803b" ],
+        "x-ms-correlation-request-id": [ "d1ba5431-18ba-4a95-9c26-3f31f803803b" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20250710T033743Z:d1ba5431-18ba-4a95-9c26-3f31f803803b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0AB3647A4C4B472E80B533D40C463AE1 Ref B: MAA201060514021 Ref C: 2025-07-10T03:37:43Z" ],
+        "Date": [ "Thu, 10 Jul 2025 03:37:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "443" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"value\":\"Administrative\",\"localizedValue\":\"Administrative\"},{\"value\":\"Security\",\"localizedValue\":\"Security\"},{\"value\":\"ServiceHealth\",\"localizedValue\":\"Service Health\"},{\"value\":\"Alert\",\"localizedValue\":\"Alert\"},{\"value\":\"Recommendation\",\"localizedValue\":\"Recommendation\"},{\"value\":\"Policy\",\"localizedValue\":\"Policy\"},{\"value\":\"Autoscale\",\"localizedValue\":\"Autoscale\"},{\"value\":\"ResourceHealth\",\"localizedValue\":\"Resource Health\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

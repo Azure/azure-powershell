@@ -67,6 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             }
             {_maintenanceWindow = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("maintenanceWindow"), out var __jsonMaintenanceWindow) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.MaintenanceWindow.FromJson(__jsonMaintenanceWindow) : _maintenanceWindow;}
             {_estimatedPatchingTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("estimatedPatchingTime"), out var __jsonEstimatedPatchingTime) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.EstimatedPatchingTime.FromJson(__jsonEstimatedPatchingTime) : _estimatedPatchingTime;}
+            {_exascaleConfig = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonObject>("exascaleConfig"), out var __jsonExascaleConfig) ? Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ExascaleConfigDetails.FromJson(__jsonExascaleConfig) : _exascaleConfig;}
             {_definedFileSystemConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray>("definedFileSystemConfiguration"), out var __jsonDefinedFileSystemConfiguration) ? If( __jsonDefinedFileSystemConfiguration as Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDefinedFileSystemConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DefinedFileSystemConfiguration.FromJson(__u) )) ))() : null : _definedFileSystemConfiguration;}
             {_ocid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("ocid"), out var __jsonOcid) ? (string)__jsonOcid : (string)_ocid;}
             {_computeCount = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNumber>("computeCount"), out var __jsonComputeCount) ? (int?)__jsonComputeCount : _computeCount;}
@@ -139,6 +140,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._estimatedPatchingTime ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) this._estimatedPatchingTime.ToJson(null,serializationMode) : null, "estimatedPatchingTime" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._exascaleConfig ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) this._exascaleConfig.ToJson(null,serializationMode) : null, "exascaleConfig" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {

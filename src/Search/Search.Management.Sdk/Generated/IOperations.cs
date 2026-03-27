@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Search
     public partial interface IOperations
     {
         /// <summary>
-        /// Lists all of the available REST API operations of the Microsoft.Search provider.
+        /// Lists all of the available REST API operations of the Microsoft.Search
+        /// provider.
         /// </summary>
         /// <remarks>
-        /// Lists all of the available REST API operations of the Microsoft.Search provider.
+        /// Lists all of the available REST API operations of the Microsoft.Search
+        /// provider.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

@@ -169,7 +169,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -186,7 +187,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -208,7 +210,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -222,7 +225,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -241,7 +245,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the deleted managed HSMs associated with the subscription.
+        /// The List operation gets information about the deleted managed HSMs
+        /// associated with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -252,7 +257,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the deleted managed HSMs associated with the subscription.
+        /// The List operation gets information about the deleted managed HSMs
+        /// associated with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -529,7 +535,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -543,7 +550,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription and within the specified resource group.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription and within the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -562,7 +570,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -576,7 +585,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the managed HSM Pools associated with the subscription.
+        /// The List operation gets information about the managed HSM Pools associated
+        /// with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -595,7 +605,8 @@ namespace Microsoft.Azure.Management.KeyVault
             }
         }
         /// <summary>
-        /// The List operation gets information about the deleted managed HSMs associated with the subscription.
+        /// The List operation gets information about the deleted managed HSMs
+        /// associated with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -609,7 +620,8 @@ namespace Microsoft.Azure.Management.KeyVault
         }
 
         /// <summary>
-        /// The List operation gets information about the deleted managed HSMs associated with the subscription.
+        /// The List operation gets information about the deleted managed HSMs
+        /// associated with the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

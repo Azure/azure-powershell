@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Management.Search.Models
         [System.Runtime.Serialization.EnumMember(Value = "deleting")]
         Deleting,
         /// <summary>
-        /// The search service is degraded because underlying search units are not healthy.
+        /// The search service is degraded because underlying search units are not
+        /// healthy.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "degraded")]
         Degraded,
@@ -40,10 +41,16 @@ namespace Microsoft.Azure.Management.Search.Models
         [System.Runtime.Serialization.EnumMember(Value = "disabled")]
         Disabled,
         /// <summary>
-        /// The search service is in error state, indicating either a failure to provision or to be deleted.
+        /// The search service is in error state, indicating either a failure to
+        /// provision or to be deleted.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "error")]
-        Error
+        Error,
+        /// <summary>
+        /// The search service is in a subscription that&#39;s disabled.
+        /// </summary>
+        [System.Runtime.Serialization.EnumMember(Value = "stopped")]
+        Stopped
     }
     internal static class SearchServiceStatusEnumExtension
     {
@@ -67,6 +74,8 @@ namespace Microsoft.Azure.Management.Search.Models
                     return "disabled";
                 case SearchServiceStatus.Error:
                     return "error";
+                case SearchServiceStatus.Stopped:
+                    return "stopped";
             }
             return null;
         }
@@ -86,6 +95,8 @@ namespace Microsoft.Azure.Management.Search.Models
                     return SearchServiceStatus.Disabled;
                 case "error":
                     return SearchServiceStatus.Error;
+                case "stopped":
+                    return SearchServiceStatus.Stopped;
             }
             return null;
         }

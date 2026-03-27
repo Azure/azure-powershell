@@ -19,10 +19,8 @@ New-AzApplicationGatewayBackendHttpSetting -Name <String> -Port <Int32> -Protoco
  [-Probe <PSApplicationGatewayProbe>]
  [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
  [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>] [-PickHostNameFromBackendAddress]
- [-HostName <String>] [-AffinityCookieName <String>] [-Path <String>]
- [-DedicatedBackendConnection <Boolean>] [-ValidateCertChainAndExpiry <Boolean>] 
- [-ValidateSNI <Boolean>]
- [-SniName <String>] 
+ [-HostName <String>] [-AffinityCookieName <String>] [-Path <String>] [-DedicatedBackendConnection <Boolean>]
+ [-ValidateCertChainAndExpiry <Boolean>] [-ValidateSNI <Boolean>] [-SniName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -110,6 +108,21 @@ Accepted values: Enabled, Disabled
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DedicatedBackendConnection
+Enable or disable dedicated connection per backend server. Default is set to false.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -267,6 +280,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SniName
+Specify an SNI value to match the common name of the certificate on the backend. By default, the application gateway uses the incoming request's host header as the SNI. Default value is null.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TrustedRootCertificate
 Application gateway Trusted Root Certificates
 
@@ -282,26 +310,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DedicatedBackendConnection
-Enable or disable dedicated connection per backend server. Default is set to false.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ValidateCertChainAndExpiry
 Verify or skip both chain and expiry validations of the certificate on the backend server. Default is set to true.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -316,28 +329,13 @@ Accept wildcard characters: False
 When enabled, verifies if the Common Name of the certificate provided by the backend server matches the Server Name Indication (SNI) value. Default value is true.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: True
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SniName
-Specify an SNI value to match the common name of the certificate on the backend. By default, the application gateway uses the incoming request's host header as the SNI. Default value is null.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

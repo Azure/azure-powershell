@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Switches the billing for NewRelic monitor resource.
+Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
 .Description
-Switches the billing for NewRelic monitor resource.
+Switches the billing for the New Relic Monitor resource to be billed by Azure Marketplace
 .Example
 Switch-AzNewRelicMonitorBilling -MonitorName test-03 -ResourceGroupName ps-test -UserEmail user1@outlook.com -PlanDataBillingCycle 'WEEKLY'
 
@@ -100,11 +100,9 @@ param(
 
     [Parameter(ParameterSetName='SwitchExpanded')]
     [Parameter(ParameterSetName='SwitchViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
-    # Different billing cycles like MONTHLY/WEEKLY.
-    # this could be enum
+    # Different billing cycles like Monthly/Weekly.
     ${PlanDataBillingCycle},
 
     [Parameter(ParameterSetName='SwitchExpanded')]
@@ -204,6 +202,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -229,8 +236,6 @@ begin {
             SwitchViaJsonString = 'Az.NewRelic.private\Switch-AzNewRelicMonitorBilling_SwitchViaJsonString';
         }
         if (('SwitchExpanded', 'SwitchViaJsonFilePath', 'SwitchViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -244,6 +249,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

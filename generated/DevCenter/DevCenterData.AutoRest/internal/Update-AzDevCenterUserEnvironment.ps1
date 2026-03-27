@@ -45,23 +45,22 @@ $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" =
 Update-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -ExpirationDate $dateIn8Months
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentUpdate
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentPatchProperties
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IEnvironmentUpdate>: Properties of an environment.
+BODY <IEnvironmentPatchProperties>: Properties of an environment. These properties can be updated via PATCH after the resource has been created.
   [ExpirationDate <DateTime?>]: The time the expiration date will be triggered (UTC), after which the         environment and associated resources will be deleted.
-  [Parameter <IEnvironmentUpdateParameters>]: Parameters object for the environment.
-    [(Any) <Object>]: This indicates any property can be added to this object.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -70,17 +69,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteruserenvironment
 #>
 function Update-AzDevCenterUserEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment])]
 [CmdletBinding(DefaultParameterSetName='PatchExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -124,8 +125,9 @@ param(
     [Parameter(ParameterSetName='Patch', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentUpdate]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentPatchProperties]
     # Properties of an environment.
+    # These properties can be updated via PATCH after the resource has been created.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
@@ -135,14 +137,6 @@ param(
     [System.DateTime]
     # The time the expiration date will be triggered (UTC), after which theenvironment and associated resources will be deleted.
     ${ExpirationDate},
-
-    [Parameter(ParameterSetName='PatchExpanded')]
-    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentUpdateParameters]))]
-    [System.Collections.Hashtable]
-    # Parameters object for the environment.
-    ${Parameter},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

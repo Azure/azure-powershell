@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="createMode">The create mode to indicate whether the resource is being created or is
         /// being recovered from a deleted resource.
-        /// Possible values include: 'recover', 'default'</param>
+        /// Possible values include: &#39;recover&#39;, &#39;default&#39;</param>
 
         /// <param name="statusMessage">Resource Status Message.
         /// </param>
 
         /// <param name="provisioningState">Provisioning state.
-        /// Possible values include: 'Succeeded', 'Provisioning', 'Failed', 'Updating',
-        /// 'Deleting', 'Activated', 'SecurityDomainRestore', 'Restoring'</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Provisioning&#39;, &#39;Failed&#39;, &#39;Updating&#39;,
+        /// &#39;Deleting&#39;, &#39;Activated&#39;, &#39;SecurityDomainRestore&#39;, &#39;Restoring&#39;</param>
 
         /// <param name="networkAcls">Rules governing the accessibility of the key vault from specific network
         /// locations.
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </param>
 
         /// <param name="publicNetworkAccess">Control permission to the managed HSM from public networks.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="scheduledPurgeDate">The scheduled purge date in UTC.
         /// </param>

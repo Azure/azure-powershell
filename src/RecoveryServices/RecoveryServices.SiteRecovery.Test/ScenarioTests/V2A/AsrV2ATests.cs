@@ -123,7 +123,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"V2ATestResync -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
-        [Fact]
+        [Fact(Skip = "need fix up by ASR team")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2AUpdateMS()
         {

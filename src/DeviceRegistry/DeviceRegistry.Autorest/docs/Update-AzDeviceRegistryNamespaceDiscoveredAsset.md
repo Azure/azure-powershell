@@ -20,8 +20,9 @@ Update-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String> -N
  [-DefaultDatasetsDestination <IDatasetDestination[]>] [-DefaultEventsConfiguration <String>]
  [-DefaultEventsDestination <IEventDestination[]>] [-DefaultManagementGroupsConfiguration <String>]
  [-DefaultStreamsConfiguration <String>] [-DefaultStreamsDestination <IStreamDestination[]>]
- [-DeviceRefDeviceName <String>] [-DeviceRefEndpointName <String>] [-DiscoveryId <String>]
- [-DocumentationUri <String>] [-Event <INamespaceDiscoveredEvent[]>] [-HardwareRevision <String>]
+ [-Description <String>] [-DeviceRefDeviceName <String>] [-DeviceRefEndpointName <String>]
+ [-DiscoveryId <String>] [-DisplayName <String>] [-DocumentationUri <String>]
+ [-EventGroup <INamespaceDiscoveredEventGroup[]>] [-HardwareRevision <String>]
  [-ManagementGroup <INamespaceDiscoveredManagementGroup[]>] [-Manufacturer <String>]
  [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>]
  [-SoftwareRevision <String>] [-Stream <INamespaceDiscoveredStream[]>] [-Tag <Hashtable>] [-Version <Int64>]
@@ -35,9 +36,9 @@ Update-AzDeviceRegistryNamespaceDiscoveredAsset -InputObject <IDeviceRegistryIde
  [-DefaultDatasetsConfiguration <String>] [-DefaultDatasetsDestination <IDatasetDestination[]>]
  [-DefaultEventsConfiguration <String>] [-DefaultEventsDestination <IEventDestination[]>]
  [-DefaultManagementGroupsConfiguration <String>] [-DefaultStreamsConfiguration <String>]
- [-DefaultStreamsDestination <IStreamDestination[]>] [-DeviceRefDeviceName <String>]
- [-DeviceRefEndpointName <String>] [-DiscoveryId <String>] [-DocumentationUri <String>]
- [-Event <INamespaceDiscoveredEvent[]>] [-HardwareRevision <String>]
+ [-DefaultStreamsDestination <IStreamDestination[]>] [-Description <String>] [-DeviceRefDeviceName <String>]
+ [-DeviceRefEndpointName <String>] [-DiscoveryId <String>] [-DisplayName <String>]
+ [-DocumentationUri <String>] [-EventGroup <INamespaceDiscoveredEventGroup[]>] [-HardwareRevision <String>]
  [-ManagementGroup <INamespaceDiscoveredManagementGroup[]>] [-Manufacturer <String>]
  [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>]
  [-SoftwareRevision <String>] [-Stream <INamespaceDiscoveredStream[]>] [-Tag <Hashtable>] [-Version <Int64>]
@@ -52,8 +53,9 @@ Update-AzDeviceRegistryNamespaceDiscoveredAsset -DiscoveredAssetName <String>
  [-DefaultDatasetsDestination <IDatasetDestination[]>] [-DefaultEventsConfiguration <String>]
  [-DefaultEventsDestination <IEventDestination[]>] [-DefaultManagementGroupsConfiguration <String>]
  [-DefaultStreamsConfiguration <String>] [-DefaultStreamsDestination <IStreamDestination[]>]
- [-DeviceRefDeviceName <String>] [-DeviceRefEndpointName <String>] [-DiscoveryId <String>]
- [-DocumentationUri <String>] [-Event <INamespaceDiscoveredEvent[]>] [-HardwareRevision <String>]
+ [-Description <String>] [-DeviceRefDeviceName <String>] [-DeviceRefEndpointName <String>]
+ [-DiscoveryId <String>] [-DisplayName <String>] [-DocumentationUri <String>]
+ [-EventGroup <INamespaceDiscoveredEventGroup[]>] [-HardwareRevision <String>]
  [-ManagementGroup <INamespaceDiscoveredManagementGroup[]>] [-Manufacturer <String>]
  [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>]
  [-SoftwareRevision <String>] [-Stream <INamespaceDiscoveredStream[]>] [-Tag <Hashtable>] [-Version <Int64>]
@@ -333,6 +335,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+Human-readable description of the asset.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DeviceRefDeviceName
 Name of the device resource
 
@@ -393,6 +410,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+Human-readable display name.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DocumentationUri
 Asset documentation reference.
 
@@ -408,12 +440,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Event
-Array of events that are part of the asset.
-Each event can have per-event configuration.
+### -EventGroup
+Array of event groups that are part of the asset.
+Each event group can have per-event group configuration.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEvent[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDiscoveredEventGroup[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
 Aliases:
 

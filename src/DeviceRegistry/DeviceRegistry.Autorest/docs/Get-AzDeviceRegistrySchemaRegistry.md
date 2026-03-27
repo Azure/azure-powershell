@@ -50,12 +50,12 @@ Get-AzDeviceRegistrySchemaRegistry -ResourceGroupName "my-resource-group"
 Description                  :
 DisplayName                  :
 Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/schemaRegistries/aio-sr-d179cdfcb7
+                               ft.DeviceRegistry/schemaRegistries/aio-sr-06f973e875
 IdentityPrincipalId          : 8a3685e2-3ae4-42da-8920-8d169722f032
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
 IdentityType                 : SystemAssigned
 Location                     : eastus2
-Name                         : aio-sr-d179cdfcb7
+Name                         : aio-sr-06f973e875
 Namespace                    : aio-sr-ns-d179cdfcb7
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group

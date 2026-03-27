@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get Marketplace SaaS resource details of a tenant under a specific subscription
+Get Marketplace SaaS resource details
 .Description
-Get Marketplace SaaS resource details of a tenant under a specific subscription
+Get Marketplace SaaS resource details
 .Example
 Get-AzDynatraceMonitorMarketplaceSaaSResourceDetail -TenantId 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
@@ -45,6 +45,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]

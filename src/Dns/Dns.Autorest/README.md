@@ -39,16 +39,6 @@ module-version: 0.1.0
 title: Dns
 subject-prefix: $(service-name)
 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
@@ -80,18 +70,4 @@ directive:
       model-name: (.*)
     set:
       suppress-format: true
-
-  - where:
-      verb: Get|New
-      subject: DnssecConfig
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - SigningKey
-        new-output-properties:
-          - SigningKey
-        change-description: The types of the properties 'SigningKey' will be changed from single object to 'List'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
 ```

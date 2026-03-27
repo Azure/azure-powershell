@@ -18,20 +18,22 @@ Describe 'Update-AzDeviceRegistryNamespaceAsset' {
     It 'UpdateExpanded' {
         $testConfig = $env.namespaceAssetTests.updateTests.UpdateExpanded
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
+        $extendedLocationName = $env.namespaceAssetTests.extendedLocationName
         $createJsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.updateTests.createJsonFilePath
         $commonProperties = $env.namespaceAssetTests.updateTests.commonProperties
         $commonPatchConfig = $env.namespaceAssetTests.updateTests.commonPatchConfig
         
         # Create test asset to update
-        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $createJsonFilePath
+        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $createJsonFilePath
         
         # Update the asset with expanded parameters
-        Update-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -DocumentationUri $commonPatchConfig.documentationUri -DisplayName $commonPatchConfig.displayName
-        $result = Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name
+        Update-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -DocumentationUri $commonPatchConfig.documentationUri -DisplayName $commonPatchConfig.displayName
+        $result = Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name
 
         $result.Name | Should -Be $testConfig.name
         $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.DeviceRefDeviceName | Should -Be $commonProperties.deviceRef.deviceName
         $result.DeviceRefEndpointName | Should -Be $commonProperties.deviceRef.endpointName
@@ -49,24 +51,26 @@ Describe 'Update-AzDeviceRegistryNamespaceAsset' {
     It 'UpdateViaJsonString' {
         $testConfig = $env.namespaceAssetTests.updateTests.UpdateViaJsonString
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
+        $extendedLocationName = $env.namespaceAssetTests.extendedLocationName
         $commonProperties = $env.namespaceAssetTests.updateTests.commonProperties
         $commonPatchConfig = $env.namespaceAssetTests.updateTests.commonPatchConfig
         $createJsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.updateTests.createJsonFilePath
         $updateJsonFilePath = Join-Path $PSScriptRoot $testConfig.updateJsonFilePath
         
         # Create test asset to update
-        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $createJsonFilePath
-        
+        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $createJsonFilePath
+
         # Prepare update JSON string
         $updateJson = Get-Content -Path $updateJsonFilePath -Raw
         
         # Update the asset using JSON string
-        Update-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonString $updateJson
-        $result = Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name
-        
+        Update-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonString $updateJson
+        $result = Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name
+
         $result.Name | Should -Be $testConfig.name
         $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.DeviceRefDeviceName | Should -Be $commonProperties.deviceRef.deviceName
         $result.DeviceRefEndpointName | Should -Be $commonProperties.deviceRef.endpointName
@@ -85,21 +89,23 @@ Describe 'Update-AzDeviceRegistryNamespaceAsset' {
     It 'UpdateViaJsonFilePath' {
         $testConfig = $env.namespaceAssetTests.updateTests.UpdateViaJsonFilePath
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
+        $extendedLocationName = $env.namespaceAssetTests.extendedLocationName
         $commonProperties = $env.namespaceAssetTests.updateTests.commonProperties
         $commonPatchConfig = $env.namespaceAssetTests.updateTests.commonPatchConfig
         $createJsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.updateTests.createJsonFilePath
         $updateJsonFilePath = Join-Path $PSScriptRoot $testConfig.updateJsonFilePath
         
         # Create test asset to update
-        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $createJsonFilePath
-        
+        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $createJsonFilePath
+
         # Update the asset using JSON file path
-        Update-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $updateJsonFilePath
-        $result = Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name
-        
+        Update-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $updateJsonFilePath
+        $result = Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name
+
         $result.Name | Should -Be $testConfig.name
         $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.DeviceRefDeviceName | Should -Be $commonProperties.deviceRef.deviceName
         $result.DeviceRefEndpointName | Should -Be $commonProperties.deviceRef.endpointName
@@ -117,17 +123,19 @@ Describe 'Update-AzDeviceRegistryNamespaceAsset' {
     It 'UpdateViaIdentityNamespaceExpanded' {
         $testConfig = $env.namespaceAssetTests.updateTests.UpdateViaIdentityNamespaceExpanded
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
+        $extendedLocationName = $env.namespaceAssetTests.extendedLocationName
         $commonProperties = $env.namespaceAssetTests.updateTests.commonProperties
         $createJsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.updateTests.createJsonFilePath
         $commonPatchConfig = $env.namespaceAssetTests.updateTests.commonPatchConfig
         
         # Create test asset to update
-        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $createJsonFilePath
-        
+        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $createJsonFilePath
+
         # Create namespace identity object
         $namespaceIdentity = @{
             SubscriptionId = $env.SubscriptionId
-            ResourceGroupName = $env.resourceGroup
+            ResourceGroupName = $resourceGroupName
             NamespaceName = $namespaceName
         }
         
@@ -137,7 +145,7 @@ Describe 'Update-AzDeviceRegistryNamespaceAsset' {
         
         $result.Name | Should -Be $testConfig.name
         $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.DeviceRefDeviceName | Should -Be $commonProperties.deviceRef.deviceName
         $result.DeviceRefEndpointName | Should -Be $commonProperties.deviceRef.endpointName
@@ -155,12 +163,14 @@ Describe 'Update-AzDeviceRegistryNamespaceAsset' {
     It 'UpdateViaIdentityExpanded' {
         $testConfig = $env.namespaceAssetTests.updateTests.UpdateViaIdentityExpanded
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
+        $extendedLocationName = $env.namespaceAssetTests.extendedLocationName
         $commonProperties = $env.namespaceAssetTests.updateTests.commonProperties
         $createJsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.updateTests.createJsonFilePath
         $commonPatchConfig = $env.namespaceAssetTests.updateTests.commonPatchConfig
         
         # Create test asset to update
-        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $createJsonFilePath
+        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $createJsonFilePath
         
         # Update the asset using the asset object as identity with expanded parameters
         Update-AzDeviceRegistryNamespaceAsset -InputObject $createdAsset -DocumentationUri $commonPatchConfig.documentationUri -DisplayName $commonPatchConfig.displayName
@@ -168,7 +178,7 @@ Describe 'Update-AzDeviceRegistryNamespaceAsset' {
         
         $result.Name | Should -Be $testConfig.name
         $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.DeviceRefDeviceName | Should -Be $commonProperties.deviceRef.deviceName
         $result.DeviceRefEndpointName | Should -Be $commonProperties.deviceRef.endpointName

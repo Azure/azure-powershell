@@ -42,20 +42,15 @@ module-version: 0.3.0
 title: Compute
 subject-prefix: ""
 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
   # Remove following verbs
   - select: command
@@ -281,58 +276,4 @@ directive:
       parameter-name: SpotPlacementScoresInput
     set:
       alias: SpotPlacementRecommenderInput
-
-  - where:
-      verb: Get
-      subject: GalleryApplicationVersion
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PublishingProfileTargetExtendedLocation
-          - ReplicationStatusSummary
-          - TargetRegion
-        new-output-properties:
-          - PublishingProfileTargetExtendedLocation
-          - ReplicationStatusSummary
-          - TargetRegion
-        change-description: The types of the properties 'PublishingProfileTargetExtendedLocation', 'ReplicationStatusSummary' and 'TargetRegion' will be changed from single object to 'List'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Invoke
-      subject: SpotPlacementScore
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - PlacementScore
-          - DesiredSize
-          - DesiredLocation
-        new-output-properties:
-          - PlacementScore
-          - DesiredSize
-          - DesiredLocation
-        change-description: The types of the properties 'PlacementScore', 'DesiredSize' and 'DesiredLocation' will be changed from single object to 'List'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
-
-  - where:
-      verb: Set
-      subject: VMRunCommand|VmssVMRunCommand
-    set:
-      breaking-change:
-        deprecated-output-properties:
-          - InstanceViewStatuses
-          - ProtectedParameter
-          - Parameter
-        new-output-properties:
-          - InstanceViewStatuses
-          - ProtectedParameter
-          - Parameter
-        change-description: The types of the properties 'InstanceViewStatuses', 'ProtectedParameter' and 'Parameter' will be changed from single object to 'List'.
-        deprecated-by-version: 9.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11/03
 ```

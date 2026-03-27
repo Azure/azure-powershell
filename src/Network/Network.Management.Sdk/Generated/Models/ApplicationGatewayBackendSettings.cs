@@ -64,7 +64,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="pickHostNameFromBackendAddress">Whether to pick server name indication from the host name of the backend
         /// server for Tls protocol. Default value is false.
         /// </param>
-        public ApplicationGatewayBackendSettings(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), int? port = default(int?), string protocol = default(string), int? timeout = default(int?), SubResource probe = default(SubResource), System.Collections.Generic.IList<SubResource> trustedRootCertificates = default(System.Collections.Generic.IList<SubResource>), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?))
+
+        /// <param name="enableL4ClientIPPreservation">Whether to send Proxy Protocol header to backend servers over TCP or TLS
+        /// protocols. Default value is false.
+        /// </param>
+        public ApplicationGatewayBackendSettings(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), int? port = default(int?), string protocol = default(string), int? timeout = default(int?), SubResource probe = default(SubResource), System.Collections.Generic.IList<SubResource> trustedRootCertificates = default(System.Collections.Generic.IList<SubResource>), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), bool? enableL4ClientIPPreservation = default(bool?))
 
         : base(id)
         {
@@ -79,6 +83,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.TrustedRootCertificates = trustedRootCertificates;
             this.HostName = hostName;
             this.PickHostNameFromBackendAddress = pickHostNameFromBackendAddress;
+            this.EnableL4ClientIPPreservation = enableL4ClientIPPreservation;
             CustomInit();
         }
 
@@ -160,5 +165,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.pickHostNameFromBackendAddress")]
         public bool? PickHostNameFromBackendAddress {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to send Proxy Protocol header to backend servers over
+        /// TCP or TLS protocols. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableL4ClientIpPreservation")]
+        public bool? EnableL4ClientIPPreservation {get; set; }
     }
 }

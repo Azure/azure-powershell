@@ -27,12 +27,12 @@ Get-AzApplicationInsightsMyWorkbook -ResourceGroupName appinsights-hkrs2v-test -
 Get-AzApplicationInsightsMyWorkbook -ResourceGroupName appinsights-hkrs2v-test -Category 'workbook'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IMyWorkbook
 .Link
 https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsmyworkbook
 #>
 function Get-AzApplicationInsightsMyWorkbook {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IMyWorkbook])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -58,9 +58,9 @@ param(
 
     [Parameter(ParameterSetName='List', Mandatory)]
     [Parameter(ParameterSetName='List1', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.CategoryType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("workbook", "TSG", "performance", "retention")]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.CategoryType]
+    [System.String]
     # Category of workbook to return.
     ${Category},
 
@@ -82,7 +82,8 @@ param(
     [Parameter(ParameterSetName='List1')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Query')]
-    [System.String[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
     # Tags presents on each workbook returned.
     ${Tag},
 
@@ -142,6 +143,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -165,9 +175,7 @@ begin {
             List = 'Az.ApplicationInsights.private\Get-AzApplicationInsightsMyWorkbook_List';
             List1 = 'Az.ApplicationInsights.private\Get-AzApplicationInsightsMyWorkbook_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -181,6 +189,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -30,6 +30,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'EnvironmentDefinition'", "EnvironmentDefinition", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnvironmentDefinition");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ImageDefinition".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ImageDefinition'", "ImageDefinition", global::System.Management.Automation.CompletionResultType.ParameterValue, "ImageDefinition");
+            }
         }
     }
 }

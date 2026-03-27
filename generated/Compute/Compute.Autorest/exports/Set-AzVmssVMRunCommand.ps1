@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to create or update the VMSS VM run command.
+The operation to update the VMSS VM run command.
 .Description
-The operation to create or update the VMSS VM run command.
+The operation to update the VMSS VM run command.
 .Example
 Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 0 -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=******"
 .Example
@@ -33,7 +33,7 @@ Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -Instance
 Set-AzVmssVMRunCommand -ResourceGroupName MyRG0 -VMScaleSetName MyVMSS -InstanceId 1 -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -RunAsUser myusername -RunAsPassword mypassword
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand
+Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +50,7 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
 https://learn.microsoft.com/powershell/module/az.compute/set-azvmssvmruncommand
 #>
 function Set-AzVmssVMRunCommand {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -85,34 +85,39 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Resource location
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Optional.
     # If set to true, provisioning will complete as soon as the script starts and will not wait for script to complete.
     ${AsyncExecution},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
     # ObjectId should not be used if this is provided.
     ${ErrorBlobManagedIdentityClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
     # ClientId should not be used if this is provided.
     ${ErrorBlobManagedIdentityObjectId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the Azure storage blob where script error stream will be uploaded.
@@ -120,21 +125,24 @@ param(
     # Refer errorBlobManagedIdentity parameter.
     ${ErrorBlobUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
     # ObjectId should not be used if this is provided.
     ${OutputBlobManagedIdentityClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
     # ClientId should not be used if this is provided.
     ${OutputBlobManagedIdentityObjectId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the Azure storage blob where script output stream will be uploaded.
@@ -142,42 +150,46 @@ param(
     # Refer outputBlobManagedIdentity parameter.
     ${OutputBlobUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]]
     # The parameters used by the script.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]]
     # The parameters used by the script.
-    # To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
     ${ProtectedParameter},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the user account password on the VM when executing the run command.
     ${RunAsPassword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Specifies the user account on the VM when executing the run command.
     ${RunAsUser},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
     # ObjectId should not be used if this is provided.
     ${ScriptUriManagedIdentityClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.String]
     # Object Id (GUID value) of the user-assigned managed identity.
@@ -203,20 +215,23 @@ param(
     # It can be either SAS URI of an Azure storage blob with read access or public URI.
     ${SourceScriptUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Int32]
     # The timeout in seconds to execute the run command.
     ${TimeoutInSecond},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='ScriptLocalPath')]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Optional.
@@ -224,6 +239,18 @@ param(
     # If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures.
     # See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
     ${TreatFailureAsDeploymentFailure},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter(ParameterSetName='ScriptLocalPath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
@@ -298,6 +325,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -318,11 +354,11 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.Compute.private\Set-AzVmssVMRunCommand_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Compute.private\Set-AzVmssVMRunCommand_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Compute.private\Set-AzVmssVMRunCommand_UpdateViaJsonString';
             ScriptLocalPath = 'Az.Compute.custom\Set-AzVmssVMRunCommand_ScriptLocalPath';
         }
-        if (('UpdateExpanded', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -336,6 +372,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -11,6 +11,9 @@ Locale: en-US
 Cmdlets to interact with the Azure SignalR service or Web PubSub service.
 
 ## Az.SignalR Cmdlets
+### [Add-AzSignalRNetworkIpRule](Add-AzSignalRNetworkIpRule.md)
+Add one or more IP rules to the Network ACLs of an Azure SignalR Service instance.
+
 ### [Get-AzSignalR](Get-AzSignalR.md)
 Get a specific SignalR service or all the SignalR services in a resource group or a subscription.
 
@@ -22,6 +25,9 @@ Get custom domain(s) for a SignalR service.
 
 ### [Get-AzSignalRKey](Get-AzSignalRKey.md)
 Get the access keys of a SignalR service.
+
+### [Get-AzSignalRReplica](Get-AzSignalRReplica.md)
+Get SignalR replica resources for a SignalR service or a specific replica by name or resource ID.
 
 ### [Get-AzSignalRUsage](Get-AzSignalRUsage.md)
 Get the usage quota of a subscription.
@@ -59,6 +65,12 @@ Create or replace a custom domain for a SignalR service.
 ### [New-AzSignalRKey](New-AzSignalRKey.md)
 Regenerate an access key for a SignalR service.
 
+### [New-AzSignalRNetworkIpRuleObject](New-AzSignalRNetworkIpRuleObject.md)
+Create an in-memory IP rule object for use with SignalR Network ACL Ip rule cmdlets.
+
+### [New-AzSignalRReplica](New-AzSignalRReplica.md)
+Create a new replica for an existing SignalR service.
+
 ### [New-AzWebPubSub](New-AzWebPubSub.md)
 Create or update a resource.
 
@@ -90,6 +102,12 @@ Remove a custom certificate from a SignalR service.
 ### [Remove-AzSignalRCustomDomain](Remove-AzSignalRCustomDomain.md)
 Remove a custom domain from a SignalR service.
 
+### [Remove-AzSignalRNetworkIpRule](Remove-AzSignalRNetworkIpRule.md)
+Remove one or more IP rules from the Network ACLs of an Azure SignalR Service instance.
+
+### [Remove-AzSignalRReplica](Remove-AzSignalRReplica.md)
+Delete a SignalR replica resource.
+
 ### [Remove-AzWebPubSub](Remove-AzWebPubSub.md)
 Operation to delete a resource.
 
@@ -105,11 +123,20 @@ Delete a hub setting.
 ### [Restart-AzSignalR](Restart-AzSignalR.md)
 Restart a SignalR service.
 
+### [Restart-AzSignalRReplica](Restart-AzSignalRReplica.md)
+Restart a SignalR replica.
+
 ### [Restart-AzWebPubSub](Restart-AzWebPubSub.md)
 Operation to restart a resource.
 
 ### [Set-AzSignalRUpstream](Set-AzSignalRUpstream.md)
 Set the upstream settings of a SignalR service.
+
+### [Start-AzSignalRReplica](Start-AzSignalRReplica.md)
+Start a stopped SignalR replica.
+
+### [Stop-AzSignalRReplica](Stop-AzSignalRReplica.md)
+Stop (disable) a running SignalR replica.
 
 ### [Test-AzSignalRName](Test-AzSignalRName.md)
 Check whether a name is available. Alias: Test-AzSignal.
@@ -125,6 +152,9 @@ Update a custom domain for a SignalR service.
 
 ### [Update-AzSignalRNetworkAcl](Update-AzSignalRNetworkAcl.md)
 Update the Network ACL of a SignalR service.
+
+### [Update-AzSignalRReplica](Update-AzSignalRReplica.md)
+Update properties of a SignalR replica.
 
 ### [Update-AzWebPubSub](Update-AzWebPubSub.md)
 Operation to update an exiting resource.

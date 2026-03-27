@@ -28,6 +28,20 @@ Invoke-AzNetworkCloudBareMetalMachineReplace -InputObject <INetworkCloudIdentity
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### ReplaceViaJsonFilePath
+```
+Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ReplaceViaJsonString
+```
+Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Replace the provided bare metal machine.
 
@@ -64,7 +78,7 @@ The password of the administrator of the device used during initialization.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -79,7 +93,7 @@ The username of the administrator of the device used during initialization.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -94,7 +108,7 @@ The MAC address of the BMC device.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -109,7 +123,7 @@ The MAC address of a NIC connected to the PXE network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,7 +151,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
@@ -151,12 +164,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Replace operation
+
+```yaml
+Type: System.String
+Parameter Sets: ReplaceViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Replace operation
+
+```yaml
+Type: System.String
+Parameter Sets: ReplaceViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MachineName
 The OS-level hostname assigned to this machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -171,7 +214,7 @@ The name of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded
+Parameter Sets: ReplaceExpanded, ReplaceViaJsonFilePath, ReplaceViaJsonString
 Aliases: BareMetalMachineName
 
 Required: True
@@ -217,7 +260,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded
+Parameter Sets: ReplaceExpanded, ReplaceViaJsonFilePath, ReplaceViaJsonString
 Aliases:
 
 Required: True
@@ -232,7 +275,7 @@ The serial number of the bare metal machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -248,7 +291,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded
+Parameter Sets: ReplaceExpanded, ReplaceViaJsonFilePath, ReplaceViaJsonString
 Aliases:
 
 Required: False

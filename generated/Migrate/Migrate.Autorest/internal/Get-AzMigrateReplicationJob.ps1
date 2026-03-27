@@ -25,12 +25,12 @@ Get the details of an Azure Site Recovery job.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationjob
 #>
 function Get-AzMigrateReplicationJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

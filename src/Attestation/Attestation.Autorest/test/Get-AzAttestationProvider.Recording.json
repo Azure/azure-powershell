@@ -1,17 +1,17 @@
 {
-  "Get-AzAttestationProvider+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Attestation/attestationProviders?api-version=2020-10-01+1": {
+  "Get-AzAttestationProvider+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Attestation/attestationProviders?api-version=2020-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Attestation/attestationProviders?api-version=2020-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/providers/Microsoft.Attestation/attestationProviders?api-version=2020-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "1338343f-74a4-41b3-abe1-80ada32d3ed2" ],
+        "x-ms-client-request-id": [ "42bfab2c-cd70-4ebb-826c-31d6c3dcc536" ],
         "CommandName": [ "Get-AzAttestationProvider" ],
         "FullCommandName": [ "Get-AzAttestationProvider_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Attestation/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Attestation/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,38 +22,40 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-request-id": [ "00-0d39c03c5e5c8a46282177aa7f1de8a3-9e15ebae761da4a4-01" ],
-        "x-ms-maa-service-version": [ "1.11.02043.302" ],
+        "x-ms-original-request-ids": [ "00-b96793bdad5df2b98ff16f7d531266ab-0000000000000000-00" ],
+        "x-ms-maa-service-version": [ "1.11.03127.4618" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "aa4d830f-7f35-40be-b671-fc28e659166a" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220920T020909Z:aa4d830f-7f35-40be-b671-fc28e659166a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "247" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3747" ],
+        "x-ms-request-id": [ "553935e9-883a-448a-97c1-ed3270e04fac" ],
+        "x-ms-correlation-request-id": [ "553935e9-883a-448a-97c1-ed3270e04fac" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250902T084220Z:553935e9-883a-448a-97c1-ed3270e04fac" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 20 Sep 2022 02:09:09 GMT" ]
+        "Date": [ "Tue, 02 Sep 2025 08:42:20 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1987" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Expires": [ "-1" ],
+        "Content-Length": [ "793" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Attestation/attestationProviders/beztest\",\"name\":\"beztest\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"East US\",\"tags\":{\"Test\":\"true\",\"CreationYear\":\"2020\"},\"properties\":{\"trustModel\":\"Isolated\",\"status\":\"Ready\",\"attestUri\":\"https://beztest.eus.attest.azure.net\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.Attestation/attestationProviders/beztest0918\",\"name\":\"beztest0918\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"East US\",\"tags\":{\"Test\":\"true\",\"CreationYear\":\"2020\"},\"properties\":{\"trustModel\":\"Isolated\",\"status\":\"Ready\",\"attestUri\":\"https://beztest0918.eus.attest.azure.net\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgarmb3t2vqyz8g/providers/Microsoft.Attestation/attestationProviders/provider63oyd8fj19m25\",\"name\":\"provider63oyd8fj19m25\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"tags\":{\"k1\":\"v1\"},\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://provider63oyd8fj19m25.eus.attest.azure.net\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerejrmugiwbxnq2\",\"name\":\"providerejrmugiwbxnq2\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://providerejrmugiwbxnq2.eus.attest.azure.net\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerhu192p0k874zl\",\"name\":\"providerhu192p0k874zl\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://providerhu192p0k874zl.eus.attest.azure.net\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/test-rgrsau2bpxy497c/providers/Microsoft.Attestation/attestationProviders/provider6im32k7tcxyfp\",\"name\":\"provider6im32k7tcxyfp\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://provider6im32k7tcxyfp.eus.attest.azure.net\"}},{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/test-rgrsau2bpxy497c/providers/Microsoft.Attestation/attestationProviders/providerdb960mgjt1ouf\",\"name\":\"providerdb960mgjt1ouf\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://providerdb960mgjt1ouf.eus.attest.azure.net\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzAttestationProvider+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerhu192p0k874zl?api-version=2020-10-01+1": {
+  "Get-AzAttestationProvider+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/test-rgrsau2bpxy497c/providers/Microsoft.Attestation/attestationProviders/provider6im32k7tcxyfp?api-version=2020-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerhu192p0k874zl?api-version=2020-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/test-rgrsau2bpxy497c/providers/Microsoft.Attestation/attestationProviders/provider6im32k7tcxyfp?api-version=2020-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "64b48a4a-6eb3-4992-afcf-0f2a1e3480f6" ],
+        "x-ms-client-request-id": [ "762a9884-4ae0-475f-91d2-826811cf429e" ],
         "CommandName": [ "Get-AzAttestationProvider" ],
         "FullCommandName": [ "Get-AzAttestationProvider_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Attestation/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Attestation/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -64,38 +66,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "00-03a3eaa81f56478b82c447b195ec8b7c-bfc9e7cfe6f3b3bc-01" ],
-        "x-ms-maa-service-version": [ "1.11.02043.302" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "246" ],
+        "x-ms-request-id": [ "00-67fde1a3dd3594fbbc81fa9953578bd6-0000000000000000-00" ],
+        "x-ms-maa-service-version": [ "1.11.03127.4618" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "c36b410b-f443-47bd-a7ad-d7ccca638ed1" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220920T020909Z:c36b410b-f443-47bd-a7ad-d7ccca638ed1" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3746" ],
+        "x-ms-correlation-request-id": [ "9d04f92d-bed9-4baa-afcb-fca09ccc1b8b" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250902T084221Z:9d04f92d-bed9-4baa-afcb-fca09ccc1b8b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 20 Sep 2022 02:09:09 GMT" ]
+        "Date": [ "Tue, 02 Sep 2025 08:42:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "390" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerhu192p0k874zl\",\"name\":\"providerhu192p0k874zl\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://providerhu192p0k874zl.eus.attest.azure.net\"}}",
+      "Content": "{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/test-rgrsau2bpxy497c/providers/Microsoft.Attestation/attestationProviders/provider6im32k7tcxyfp\",\"name\":\"provider6im32k7tcxyfp\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://provider6im32k7tcxyfp.eus.attest.azure.net\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzAttestationProvider+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders?api-version=2020-10-01+1": {
+  "Get-AzAttestationProvider+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/test-rgrsau2bpxy497c/providers/Microsoft.Attestation/attestationProviders?api-version=2020-10-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders?api-version=2020-10-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/test-rgrsau2bpxy497c/providers/Microsoft.Attestation/attestationProviders?api-version=2020-10-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "4612db35-5347-4c36-b4ab-89a73b27ce3b" ],
+        "x-ms-client-request-id": [ "c5414310-397f-460a-9990-c4ca79a98de7" ],
         "CommandName": [ "Get-AzAttestationProvider" ],
         "FullCommandName": [ "Get-AzAttestationProvider_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Attestation/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.2", "Az.Attestation/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -106,22 +109,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-request-id": [ "00-bc2dcafd4731a9c081d67bca02cd2e15-8e6c9a44c50161aa-01" ],
-        "x-ms-maa-service-version": [ "1.11.02043.302" ],
+        "x-ms-original-request-ids": [ "00-628bcf0818f2fd2ac439b45c97b2658e-0000000000000000-00" ],
+        "x-ms-maa-service-version": [ "1.11.03127.4618" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "a07e9c2b-746d-4ba8-8143-576bd50e4e99" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220920T020910Z:a07e9c2b-746d-4ba8-8143-576bd50e4e99" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "245" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3745" ],
+        "x-ms-request-id": [ "8c0d5624-1e3e-406c-84e6-f34cde97a578" ],
+        "x-ms-correlation-request-id": [ "8c0d5624-1e3e-406c-84e6-f34cde97a578" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20250902T084222Z:8c0d5624-1e3e-406c-84e6-f34cde97a578" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 20 Sep 2022 02:09:10 GMT" ]
+        "Date": [ "Tue, 02 Sep 2025 08:42:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "793" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Expires": [ "-1" ],
+        "Content-Length": [ "793" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerejrmugiwbxnq2\",\"name\":\"providerejrmugiwbxnq2\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://providerejrmugiwbxnq2.eus.attest.azure.net\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg8pdtz47hu0q1y/providers/Microsoft.Attestation/attestationProviders/providerhu192p0k874zl\",\"name\":\"providerhu192p0k874zl\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://providerhu192p0k874zl.eus.attest.azure.net\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/test-rgrsau2bpxy497c/providers/Microsoft.Attestation/attestationProviders/provider6im32k7tcxyfp\",\"name\":\"provider6im32k7tcxyfp\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://provider6im32k7tcxyfp.eus.attest.azure.net\"}},{\"id\":\"/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/test-rgrsau2bpxy497c/providers/Microsoft.Attestation/attestationProviders/providerdb960mgjt1ouf\",\"name\":\"providerdb960mgjt1ouf\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"eastus\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://providerdb960mgjt1ouf.eus.attest.azure.net\"}}]}",
       "isContentBase64": false
     }
   }
