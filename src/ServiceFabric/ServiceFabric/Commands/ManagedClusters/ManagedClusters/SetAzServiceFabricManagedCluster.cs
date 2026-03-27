@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Setting this to true enables outbound-only node types.")]
         [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "Setting this to true enables outbound-only node types.")]
-        public bool? EnableOutboundOnlyNodeTypes { get; set; }
+        public bool? EnableOutboundOnlyNodeType { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Setting this to true skips the assignment of managed NSG to the cluster's subnet.")]
         [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "Setting this to true skips the assignment of managed NSG to the cluster's subnet.")]
@@ -162,11 +162,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "The maximum allowed percentage of unhealthy applications before reporting an error.")]
         [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "The maximum allowed percentage of unhealthy applications before reporting an error.")]
-        public int? MaxPercentUnhealthyApplications { get; set; }
+        public int? MaxPercentUnhealthyApplication { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "The maximum allowed percentage of unhealthy nodes before reporting an error.")]
         [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "The maximum allowed percentage of unhealthy nodes before reporting an error.")]
-        public int? MaxPercentUnhealthyNodes { get; set; }
+        public int? MaxPercentUnhealthyNode { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Number of unused versions per application type to keep.")]
         [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "Number of unused versions per application type to keep.")]
@@ -300,9 +300,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 currentCluster.AllocatedOutboundPorts = this.AllocatedOutboundPort;
             }
 
-            if (this.IsParameterBound(c => c.EnableOutboundOnlyNodeTypes))
+            if (this.IsParameterBound(c => c.EnableOutboundOnlyNodeType))
             {
-                currentCluster.EnableOutboundOnlyNodeTypes = this.EnableOutboundOnlyNodeTypes;
+                currentCluster.EnableOutboundOnlyNodeTypes = this.EnableOutboundOnlyNodeType;
             }
 
             if (this.IsParameterBound(c => c.SkipManagedNsgAssignment))
@@ -347,8 +347,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             // Update Health Policy properties
-            if (this.IsParameterBound(c => c.MaxPercentUnhealthyApplications) ||
-                this.IsParameterBound(c => c.MaxPercentUnhealthyNodes))
+            if (this.IsParameterBound(c => c.MaxPercentUnhealthyApplication) ||
+                this.IsParameterBound(c => c.MaxPercentUnhealthyNode))
             {
                 if (currentCluster.UpgradeDescription == null)
                 {
@@ -360,14 +360,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     currentCluster.UpgradeDescription.HealthPolicy = new ClusterHealthPolicy();
                 }
 
-                if (this.IsParameterBound(c => c.MaxPercentUnhealthyApplications))
+                if (this.IsParameterBound(c => c.MaxPercentUnhealthyApplication))
                 {
-                    currentCluster.UpgradeDescription.HealthPolicy.MaxPercentUnhealthyApplications = this.MaxPercentUnhealthyApplications.Value;
+                    currentCluster.UpgradeDescription.HealthPolicy.MaxPercentUnhealthyApplications = this.MaxPercentUnhealthyApplication.Value;
                 }
 
-                if (this.IsParameterBound(c => c.MaxPercentUnhealthyNodes))
+                if (this.IsParameterBound(c => c.MaxPercentUnhealthyNode))
                 {
-                    currentCluster.UpgradeDescription.HealthPolicy.MaxPercentUnhealthyNodes = this.MaxPercentUnhealthyNodes.Value;
+                    currentCluster.UpgradeDescription.HealthPolicy.MaxPercentUnhealthyNodes = this.MaxPercentUnhealthyNode.Value;
                 }
             }
 

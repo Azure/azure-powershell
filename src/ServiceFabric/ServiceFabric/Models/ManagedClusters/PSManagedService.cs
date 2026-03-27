@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
         public string Type { get; set; }
         public string Location { get; set; }
         public IDictionary<string, string> Tags { get; set; }
+        public SystemData SystemData { get; }
         public string ProvisioningState { get; set; }
         public string ServiceTypeName { get; set; }
         public Partition PartitionDescription { get; set; }
@@ -44,8 +45,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
             Type = service.Type;
             Location = service.Location;
             Tags = service.Tags;
+            SystemData = service.SystemData;
 
-            ProvisioningState= service.Properties.ProvisioningState;
+            ProvisioningState = service.Properties.ProvisioningState;
             ServiceTypeName = service.Properties.ServiceTypeName;
             PartitionDescription = service.Properties.PartitionDescription;
             ServicePackageActivationMode = service.Properties.ServicePackageActivationMode;
