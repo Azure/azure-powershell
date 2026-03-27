@@ -17,7 +17,7 @@ resources:
 variables:
   Working_Directory: $(Build.SourcesDirectory)/azure-powershell
   WindowsName: windows
-  WindowsAgentPoolName: pool-windows-2019
+  WindowsAgentPoolName: pool-windows-2022
   WindowsAgentPoolVMImage: ''
   LinuxName: linux
   LinuxAgentPoolName: pool-ubuntu-2404
@@ -72,7 +72,7 @@ jobs:
   displayName: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-  pool: pool-windows-2019
+  pool: pool-windows-2022
 
   steps:
   - checkout: self
@@ -199,7 +199,7 @@ jobs:
   dependsOn: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
-  pool: pool-windows-2019
+  pool: pool-windows-2022
   steps:
   - template: util/download-build-steps.yml
     parameters:

@@ -20,6 +20,8 @@
 ## Upcoming Release
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## Version 2.9.0
 * Added support for Data Protection Platform vault soft delete feature
 

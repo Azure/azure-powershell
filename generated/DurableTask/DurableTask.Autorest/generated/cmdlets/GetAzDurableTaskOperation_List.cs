@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.HttpPath(Path = "/providers/Microsoft.DurableTask/operations", ApiVersion = "2025-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.HttpPath(Path = "/providers/Microsoft.DurableTask/operations", ApiVersion = "2026-02-01")]
     public partial class GetAzDurableTaskOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.IContext

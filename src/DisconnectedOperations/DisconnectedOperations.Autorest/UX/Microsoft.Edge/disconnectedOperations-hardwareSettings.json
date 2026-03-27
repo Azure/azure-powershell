@@ -1,0 +1,95 @@
+{
+  "resourceType": "disconnectedOperations/hardwareSettings",
+  "apiVersion": "2026-03-15",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.disconnectedoperations"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDisconnectedOperationsHardwareSetting",
+      "description": "Get the hardware settings resource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.disconnectedoperations/get-azdisconnectedoperationshardwaresetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HardwareSettingName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the hardware settings resource",
+          "parameters": [
+            {
+              "name": "-HardwareSettingName",
+              "value": "[Path.hardwareSettingName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDisconnectedOperationsHardwareSetting",
+      "description": "Delete hardware settings",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.disconnectedoperations/remove-azdisconnectedoperationshardwaresetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HardwareSettingName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete hardware settings",
+          "parameters": [
+            {
+              "name": "-HardwareSettingName",
+              "value": "[Path.hardwareSettingName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
