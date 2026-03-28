@@ -160,7 +160,13 @@ function GetEndpointSuffix
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param()
 
-    $storageEndpointSuffix = (Get-AzContext).Environment.StorageEndpointSuffix
+    $context = Get-AzContext
+    if ($null -eq $context -or $null -eq $context.Environment)
+    {
+        return ''
+    }
+
+    $storageEndpointSuffix = $context.Environment.StorageEndpointSuffix
 
     if ([string]::IsNullOrWhiteSpace($storageEndpointSuffix))
     {
