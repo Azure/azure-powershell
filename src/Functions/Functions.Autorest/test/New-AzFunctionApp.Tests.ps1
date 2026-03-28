@@ -617,7 +617,7 @@ Describe 'New-AzFunctionApp' {
         }
     }
 
-    It "Creating a function app with 'UserAssigned' managed identity should throw if IdentityID is not provided " {
+    It "Creating a function app with 'UserAssigned' managed identity should throw if UserAssignedIdentity is not provided " {
 
         # Make sure user identiy is available
         $expectedErrorId = "UserAssignedIdentityRequired"
@@ -641,7 +641,7 @@ Describe 'New-AzFunctionApp' {
         Write-Verbose "RuntimeVersion: $runtimeVersion" -Verbose
 
         $scriptblock = {
-            Write-Verbose "Creating function app with a UserAssigned managed identity but without IdentityID" -Verbose
+            Write-Verbose "Creating function app with a UserAssigned managed identity but without UserAssignedIdentity" -Verbose
             New-AzFunctionApp -Name $appName `
                               -ResourceGroupName $resourceGroupName `
                               -PlanName $planName `

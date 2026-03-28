@@ -248,7 +248,23 @@ function Update-AzFunctionApp {
         }
         elseif ($existingFunctionApp.IdentityType)
         {
-            if ($existingFunctionApp.IdentityType -eq "UserAssigned")
+            # Preserve the existing identity configuration when no identity params are supplied.
+            # IdentityType can be "SystemAssigned", "UserAssigned", or "SystemAssigned,UserAssigned".
+            $existingIdentityType = $existingFunctionApp.IdentityType.ToString().Trim()
+            $hasSystemAssigned = $existingIdentityType -match "SystemAssigned"
+            $hasUserAssigned = $existingIdentityType -match "UserAssigned"
+
+            if ($hasSystemAssigned -and $hasUserAssigned)
+            {
+                $functionAppDef.IdentityType = "SystemAssigned,UserAssigned"
+
+                if ($existingFunctionApp.IdentityUserAssignedIdentity -and $existingFunctionApp.IdentityUserAssignedIdentity.Count -gt 0)
+                {
+                    $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $existingFunctionApp.IdentityUserAssignedIdentity.Keys
+                    $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+                }
+            }
+            elseif ($hasUserAssigned)
             {
                 $functionAppDef.IdentityType = "UserAssigned"
 
@@ -258,18 +274,9 @@ function Update-AzFunctionApp {
                     $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
                 }
             }
-            elseif ($existingFunctionApp.IdentityType -eq "SystemAssigned")
+            elseif ($hasSystemAssigned)
             {
                 $functionAppDef.IdentityType = "SystemAssigned"
-            }
-            else
-            {
-                $errorMessage = "Unknown IdentityType '$($existingFunctionApp.IdentityType)'"
-                $exception = [System.InvalidOperationException]::New($errorMessage)
-                ThrowTerminatingError -ErrorId "UnknownIdentityType" `
-                                        -ErrorMessage $errorMessage `
-                                        -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                        -Exception $exception
             }
         }
         

@@ -5,7 +5,7 @@ Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResource
 This command updates function app hosting plan.
 ### Example 2: Set a SystemAssigned managed identity for a function app.
 ```powershell
-Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -EnableSystemAssignedIdentity 1 -Force
+Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -EnableSystemAssignedIdentity $true -Force
 ```
 This command sets a SystemAssigned managed identity for a function app.
 ### Example 3: Update function app Application Insights.
