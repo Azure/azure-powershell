@@ -160,15 +160,14 @@ function GetEndpointSuffix
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param()
 
-    $environmentName = (Get-AzContext).Environment.Name
+    $storageEndpointSuffix = (Get-AzContext).Environment.StorageEndpointSuffix
 
-    switch ($environmentName)
+    if ([string]::IsNullOrWhiteSpace($storageEndpointSuffix))
     {
-        "AzureUSGovernment" { ';EndpointSuffix=core.usgovcloudapi.net' }
-        "AzureChinaCloud"   { ';EndpointSuffix=core.chinacloudapi.cn' }
-        "AzureCloud"        { ';EndpointSuffix=core.windows.net' }
-        default { '' }
+        return ''
     }
+
+    return ";EndpointSuffix=$storageEndpointSuffix"
 }
 
 function NewAppSetting

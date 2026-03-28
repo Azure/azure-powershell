@@ -25,6 +25,7 @@
 * Fixed error message in `Update-AzFunctionApp` to reference `-EnableSystemAssignedIdentity` instead of removed `-IdentityType`
 * Fixed error message in `New-AzFunctionApp` to reference `-EnableSystemAssignedIdentity` instead of removed `-IdentityType`
 * Added SKU (stock keeping unit) validation guards in `Update-AzFunctionApp` to prevent unsupported operations on Flex Consumption and Container App plans
+* Fixed cloud portability in `New-AzFunctionApp` by using dynamic `StorageEndpointSuffix` from Azure context instead of hardcoded endpoint values [#29034]
 
 ## Version 4.3.2
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
