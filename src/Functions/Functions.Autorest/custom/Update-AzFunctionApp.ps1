@@ -131,7 +131,7 @@ function Update-AzFunctionApp {
         $hasEnableSystemAssignedIdentityParam = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')
         $hasUserAssignedIdentityParam = $PSBoundParameters.ContainsKey('UserAssignedIdentity')
 
-        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
+        # Remove bound parameters from the dictionary that cannot be processed by the internal cmdlets.
         $paramsToRemove = @(
             "PlanName",
             "ApplicationInsightsName",
