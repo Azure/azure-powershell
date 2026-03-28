@@ -803,7 +803,7 @@ function New-AzFunctionApp {
                     if ($WhatIfPreference.IsPresent)
                     {
                         Write-Verbose "WhatIf: Creating container '$DeploymentStorageContainerName' in storage account '$DeploymentStorageName'..."
-                        $container = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.BlobContainer
+                        $container = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.BlobContainer
                     }
                     else
                     {

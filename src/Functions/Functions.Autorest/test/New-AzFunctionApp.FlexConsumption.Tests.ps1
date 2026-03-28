@@ -16,7 +16,7 @@ $env:FunctionsTestMode = $true
 # Please note that these tests can run in Playback mode only when executed locally. They fail in the pipeline due to the environment.
 # However, they can be used for local deployment in Playback mode.
 # Describe 'New-AzFunctionApp - Flex Consumption' {
-Describe 'New-AzFunctionApp - Flex Consumption' -Tag 'LiveOnly' {
+Describe 'New-AzFunctionApp - Flex Consumption' {
 
     BeforeAll {
 
