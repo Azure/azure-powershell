@@ -22,7 +22,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/d03745b1-678a-4bf5-8a54-dda50d859273" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/d03745b1-678a-4bf5-8a54-dda50d859273" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
         "x-ms-request-id": [ "c4e82808-71e1-481a-9c2d-4eed709b949c" ],
@@ -67,7 +67,7 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/ed635c88-99ae-4c98-bb9d-b47458c76c36" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/ed635c88-99ae-4c98-bb9d-b47458c76c36" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-request-id": [ "f0e8fe3c-42d6-4d80-9c00-5f332424dc0d" ],
         "x-ms-correlation-request-id": [ "f0e8fe3c-42d6-4d80-9c00-5f332424dc0d" ],
@@ -109,7 +109,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/9e73f7f7-1a7c-4571-ae7e-fb46788c89d3" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/9e73f7f7-1a7c-4571-ae7e-fb46788c89d3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
         "x-ms-request-id": [ "54a16854-9e95-4762-983d-b0263e07b13f" ],
