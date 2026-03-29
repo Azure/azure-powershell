@@ -18,7 +18,7 @@
       "value": "/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.Logic/workflows/Block-AADUser-Alert"
     },
     "triggerUrl": {
-      "value": "https://prod-18.centralus.logic.azure.com:443/workflows/fdce5d8d4e914b7b99bd10b290075cc2/triggers/When_a_response_to_an_Azure_Sentinel_alert_is_triggered/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2FWhen_a_response_to_an_Azure_Sentinel_alert_is_triggered%2Frun&sv=1.0&sig=OV1Z3sQTFbx35g3KA-kqWwdvdY2DLKcq1wcLPj5VjRU"
+      "value": "REDACTED"
     }
   }
 }

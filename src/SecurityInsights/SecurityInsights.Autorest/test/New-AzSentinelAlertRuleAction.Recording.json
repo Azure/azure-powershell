@@ -42,7 +42,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/alertRules/b8a12f56-c73c-4650-a18f-76c331764148/actions/2acd3d9d-f30c-4b07-88af-821fa8edbad4?api-version=2021-09-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"logicAppResourceId\": \"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.Logic/workflows/Block-AADUser-Alert\",\r\n    \"triggerUri\": \"https://prod-18.centralus.logic.azure.com:443/workflows/fdce5d8d4e914b7b99bd10b290075cc2/triggers/When_a_response_to_an_Azure_Sentinel_alert_is_triggered/paths/invoke?api-version=2016-06-01\\u0026sp=%2Ftriggers%2FWhen_a_response_to_an_Azure_Sentinel_alert_is_triggered%2Frun\\u0026sv=1.0\\u0026sig=OV1Z3sQTFbx35g3KA-kqWwdvdY2DLKcq1wcLPj5VjRU\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"logicAppResourceId\": \"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.Logic/workflows/Block-AADUser-Alert\",\r\n    \"triggerUri\": \"REDACTED\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },

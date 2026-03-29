@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/alertRules/0a7c15c8-9257-4a34-9097-b53e070bf76d/actions/a5627b08-648e-4278-a68a-86c4f2ed6418?api-version=2021-09-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"logicAppResourceId\": \"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.Logic/workflows/Confirm-AADRiskyUser-Alert\",\r\n    \"triggerUri\": \"https://prod-08.centralus.logic.azure.com:443/workflows/18a59846385f49ef9c9711584ba6162c/triggers/When_a_response_to_an_Azure_Sentinel_alert_is_triggered/paths/invoke?api-version=2016-06-01\\u0026sp=%2Ftriggers%2FWhen_a_response_to_an_Azure_Sentinel_alert_is_triggered%2Frun\\u0026sv=1.0\\u0026sig=tBpcYwVJuUNVBAdwMq1K0kfjZJX6coxhaADovea_MMk\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"logicAppResourceId\": \"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.Logic/workflows/Confirm-AADRiskyUser-Alert\",\r\n    \"triggerUri\": \"REDACTED\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -87,7 +87,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.OperationalInsights/workspaces/asptest4yt0n3/providers/Microsoft.SecurityInsights/alertRules/c259c27b-4474-427f-8734-a99bee6d5d06/actions/e42abba3-1a7a-4b3c-b0c1-aec4c288b59c?api-version=2021-09-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"logicAppResourceId\": \"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.Logic/workflows/Confirm-AADRiskyUser-Alert\",\r\n    \"triggerUri\": \"https://prod-08.centralus.logic.azure.com:443/workflows/18a59846385f49ef9c9711584ba6162c/triggers/When_a_response_to_an_Azure_Sentinel_alert_is_triggered/paths/invoke?api-version=2016-06-01\\u0026sp=%2Ftriggers%2FWhen_a_response_to_an_Azure_Sentinel_alert_is_triggered%2Frun\\u0026sv=1.0\\u0026sig=tBpcYwVJuUNVBAdwMq1K0kfjZJX6coxhaADovea_MMk\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"logicAppResourceId\": \"/subscriptions/419581d6-4853-49bd-83b6-d94bb8a77887/resourceGroups/aspstest4pr7te/providers/Microsoft.Logic/workflows/Confirm-AADRiskyUser-Alert\",\r\n    \"triggerUri\": \"REDACTED\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
