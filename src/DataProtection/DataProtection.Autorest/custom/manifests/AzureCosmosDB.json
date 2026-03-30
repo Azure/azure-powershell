@@ -34,7 +34,7 @@
       "policyRules": [
         {
           "backupParameters": {
-            "backupType": "Full",
+            "backupType": "full",
             "objectType": "AzureBackupParams"
           },
           "trigger": {
