@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Updated SFMC to latest api general version "2026-02-01"
+* Added new OS options to `New-AzServiceFabricCluster` `-OS` parameter: `WindowsServer2019Datacenter`, `WindowsServer2019DatacenterGen2`, `WindowsServer2022Standard`, `WindowsServer2022Core`, `WindowsServer2022Gen2`, `WindowsServer2022Hotpatch`, `WindowsServer2025`, `WindowsServer2025AzureEdition`, `WindowsServer2025AzureEditionCore`, `WindowsServer2025Gen2`, `UbuntuServer2204`, and `UbuntuServer2404`
 
 ## Version 5.0.0
 * Removed `ReimageByName`, `ReimageById`, and `ReimageByObj` parameter sets from `Set-AzServiceFabricManagedNodeType`.
