@@ -23,15 +23,6 @@ Describe 'New-AzAppConfigurationReplica' {
     AfterAll {
         Remove-AzAppConfigurationReplica -ConfigStoreName $newReplicaStoreName -ResourceGroupName $env.resourceGroup -Name "westus2replica" -ErrorAction SilentlyContinue
         Remove-AzAppConfigurationStore -Name $newReplicaStoreName -ResourceGroupName $env.resourceGroup -Confirm:$false
-        if ($TestRecordingFile -and (Test-Path $TestRecordingFile)) {
-            $content = Get-Content $TestRecordingFile -Raw
-            $sanitized = $content -replace '(?<=Secret=)[^\\"]+', 'SANITIZED' `
-                                  -replace '(?<=\\"connectionString\\":\\")(Endpoint=https://[^"\\]+)(?=\\")', 'Endpoint=https://sanitized.azconfig.io;Id=XXXX;Secret=SANITIZED' `
-                                  -replace '(?<=\\"value\\":\\")[A-Za-z0-9+/]{20,}=*(?=\\")', 'SANITIZED'
-            if ($content -ne $sanitized) {
-                Set-Content $TestRecordingFile $sanitized -NoNewline
-            }
-        }
     }
 
     It 'CreateExpanded' {
