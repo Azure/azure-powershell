@@ -5023,5 +5023,173 @@ configuration:
       - addReply:
           reply: Hi ${contextualAuthor}, only the original author of the issue can ask that it be unresolved.  Please open a new issue with your scenario and details if you would like to discuss this topic with the team.
       description: '[Resolve Workflow] Unresolve Command Without Permissions'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-identity-squad
+      then:
+      - requestReview:
+          reviewer: act-identity-squad
+      - mentionUsers:
+          mentionees:
+          - act-identity-squad
+          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-identity-squad'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-observability-squad
+      then:
+      - requestReview:
+          reviewer: act-observability-squad
+      - mentionUsers:
+          mentionees:
+          - act-observability-squad
+          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-observability-squad'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-codegen-extensibility-squad
+      then:
+      - requestReview:
+          reviewer: act-codegen-extensibility-squad
+      - mentionUsers:
+          mentionees:
+          - act-codegen-extensibility-squad
+          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-codegen-extensibility-squad'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-quality-productivity-squad
+      then:
+      - requestReview:
+          reviewer: act-quality-productivity-squad
+      - mentionUsers:
+          mentionees:
+          - act-quality-productivity-squad
+          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-quality-productivity-squad'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-platform-engineering-squad
+      then:
+      - requestReview:
+          reviewer: act-platform-engineering-squad
+      - mentionUsers:
+          mentionees:
+          - act-platform-engineering-squad
+          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-platform-engineering-squad'
+    - if:
+      - payloadType: Pull_Request
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-experience-enablement-squad
+      then:
+      - requestReview:
+          reviewer: act-experience-enablement-squad
+      - mentionUsers:
+          mentionees:
+          - act-experience-enablement-squad
+          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Request review & mention when PR labeled act-experience-enablement-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-identity-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-identity-squad
+          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-identity-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-observability-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-observability-squad
+          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-observability-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-codegen-extensibility-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-codegen-extensibility-squad
+          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-codegen-extensibility-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-quality-productivity-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-quality-productivity-squad
+          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-quality-productivity-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-platform-engineering-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-platform-engineering-squad
+          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-platform-engineering-squad'
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Labeled
+      - hasLabel:
+          label: act-experience-enablement-squad
+      then:
+      - mentionUsers:
+          mentionees:
+          - act-experience-enablement-squad
+          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          assignMentionees: False
+      description: '[Squad Auto-Assign] Mention when issue labeled act-experience-enablement-squad'
 onFailure:
 onSuccess:
