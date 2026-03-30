@@ -63,7 +63,7 @@ function Update-AzFunctionApp {
         [Parameter(HelpMessage="The array of user assigned identities associated with the function app.
             The user identity references will be ARM resource ids in the form:
             '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'")]
-        [ValidateNotNullOrEmpty()]
+        [ValidateNotNull()]
         [System.String[]]
         ${UserAssignedIdentity},
 

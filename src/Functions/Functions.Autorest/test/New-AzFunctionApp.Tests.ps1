@@ -651,7 +651,7 @@ Describe 'New-AzFunctionApp' {
                               -FunctionsVersion 4 `
                               -UserAssignedIdentity @()
         }
-        Write-Verbose "Validate that the expected expetedErrorId is thrown" -Verbose
+        Write-Verbose "Validate that the expected expectedErrorId is thrown" -Verbose
         $scriptblock | Should -Throw -ErrorId $expectedErrorId
     }
 
