@@ -19,8 +19,6 @@ using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using System;
 using System.Management.Automation;
 
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Resources
 {
     /// <summary>
@@ -96,7 +94,9 @@ namespace Microsoft.Azure.Commands.Resources
             string target = denyAssignmentId ?? DenyAssignmentName;
 
             ConfirmAction(
-                string.Format("Remove deny assignment '{0}' at scope '{1}'", target, scope ?? "(subscription)"),
+                Force.IsPresent,
+                string.Format("Are you sure you want to remove deny assignment '{0}'?", target),
+                string.Format("Removing deny assignment '{0}'", target),
                 target,
                 () =>
                 {

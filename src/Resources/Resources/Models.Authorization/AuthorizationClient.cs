@@ -615,11 +615,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         }
 
         // =====================================================================
-        // Deny Assignment Create/Delete — scaffolded for post-SDK-regeneration
+        // Deny Assignment Create/Delete
         // =====================================================================
-        // TODO: After regenerating Authorization.Management.Sdk from updated swagger
-        // (which adds PUT/DELETE for deny assignments), uncomment and complete these methods.
-        // The swagger PR is https://github.com/Azure/azure-rest-api-specs/pull/41104
 
         /// <summary>
         /// Creates a deny assignment at the specified scope.
@@ -643,30 +640,35 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             };
 
             // PP1 model: principals must be Everyone (SystemDefined), actual targets go in excludePrincipals
-            List<DenyAssignmentPrincipal> principals;
-            if (options.PrincipalIds == null || options.PrincipalIds.Count == 0
-                || (options.PrincipalIds.Count == 1 && options.PrincipalIds[0] == Guid.Empty.ToString()))
+            if (options.PrincipalIds != null && options.PrincipalIds.Count > 0
+                && !(options.PrincipalIds.Count == 1 && options.PrincipalIds[0] == Guid.Empty.ToString()))
             {
-                // Default to Everyone principal for PP1
-                principals = new List<DenyAssignmentPrincipal>
-                {
-                    new DenyAssignmentPrincipal
-                    {
-                        Id = Guid.Empty.ToString(),
-                        Type = "SystemDefined"
-                    }
-                };
-            }
-            else
-            {
-                principals = options.PrincipalIds
-                    .Select(id => new DenyAssignmentPrincipal { Id = id, Type = "ServicePrincipal" })
-                    .ToList();
+                throw new ArgumentException(
+                    "PP1 deny assignments only support the Everyone principal (SystemDefined). " +
+                    "Custom principal IDs are not supported. Use ExcludePrincipalIds to exclude specific principals.");
             }
 
-            var excludePrincipals = (options.ExcludePrincipalIds ?? new List<string>())
-                .Select(id => new DenyAssignmentPrincipal { Id = id, Type = options.ExcludePrincipalType ?? "User" })
-                .ToList();
+            var principals = new List<DenyAssignmentPrincipal>
+            {
+                new DenyAssignmentPrincipal
+                {
+                    Id = Guid.Empty.ToString(),
+                    Type = "SystemDefined"
+                }
+            };
+
+            var excludePrincipals = new List<DenyAssignmentPrincipal>();
+            var excludeIds = options.ExcludePrincipalIds ?? new List<string>();
+            var excludeTypes = options.ExcludePrincipalTypes;
+            var defaultType = options.ExcludePrincipalType ?? "User";
+
+            for (int i = 0; i < excludeIds.Count; i++)
+            {
+                var type = (excludeTypes != null && i < excludeTypes.Count)
+                    ? excludeTypes[i]
+                    : defaultType;
+                excludePrincipals.Add(new DenyAssignmentPrincipal { Id = excludeIds[i], Type = type });
+            }
 
             var denyAssignment = new DenyAssignment
             {
@@ -715,6 +717,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 {
                     throw new KeyNotFoundException(
                         string.Format("No deny assignment named '{0}' found at scope '{1}'.", denyAssignmentName, scope));
+                }
+                if (matches.Count > 1)
+                {
+                    throw new InvalidOperationException(
+                        string.Format("Multiple deny assignments named '{0}' found at scope '{1}'. Use -Id to specify which one to remove.",
+                            denyAssignmentName, scope));
                 }
                 toDelete = matches[0];
             }

@@ -21,9 +21,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
-
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -73,19 +72,15 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "Data actions to exclude from the deny assignment.")]
         public string[] NotDataAction { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
-            HelpMessage = "Object IDs of principals to which the deny assignment applies. Defaults to Everyone (SystemDefined) for PP1.")]
-        public string[] PrincipalId { get; set; }
-
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
             HelpMessage = "Object IDs of principals to exclude from the deny assignment. Required when principal is Everyone.")]
         [ValidateNotNullOrEmpty]
         public string[] ExcludePrincipalId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
-            HelpMessage = "Type of the exclude principals (User, Group, ServicePrincipal). Defaults to User.")]
+            HelpMessage = "Type(s) of the exclude principals (User, Group, ServicePrincipal). One per ExcludePrincipalId, or a single value applied to all. Defaults to User.")]
         [ValidateSet("User", "Group", "ServicePrincipal")]
-        public string ExcludePrincipalType { get; set; } = "User";
+        public string[] ExcludePrincipalType { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
             HelpMessage = "If set, the deny assignment does not apply to child scopes.")]
@@ -123,6 +118,14 @@ namespace Microsoft.Azure.Commands.Resources
                 }
 
                 options.Scope = Scope;
+
+                // PP1 requires at least one excluded principal
+                if (options.ExcludePrincipalIds == null || options.ExcludePrincipalIds.Count == 0)
+                {
+                    throw new PSArgumentException(
+                        "Input file must specify at least one ExcludePrincipalIds entry. " +
+                        "PP1 deny assignments apply to Everyone and require at least one excluded principal.");
+                }
             }
             else
             {
@@ -135,9 +138,8 @@ namespace Microsoft.Azure.Commands.Resources
                     NotActions = NotAction != null ? new List<string>(NotAction) : new List<string>(),
                     DataActions = DataAction != null ? new List<string>(DataAction) : new List<string>(),
                     NotDataActions = NotDataAction != null ? new List<string>(NotDataAction) : new List<string>(),
-                    PrincipalIds = PrincipalId != null ? new List<string>(PrincipalId) : new List<string>(),
                     ExcludePrincipalIds = ExcludePrincipalId != null ? new List<string>(ExcludePrincipalId) : new List<string>(),
-                    ExcludePrincipalType = ExcludePrincipalType,
+                    ExcludePrincipalTypes = ExcludePrincipalType != null ? new List<string>(ExcludePrincipalType) : null,
                     DoNotApplyToChildScopes = DoNotApplyToChildScopes.IsPresent,
                 };
             }

@@ -128,23 +128,22 @@ function Test-NewDaWithExcludePrincipals
 {
     $subscriptionScope = "/subscriptions/$((Get-AzContext).Subscription.Id)"
     $excludeUser = Get-TestExcludePrincipalId
-    # Use the test SP as a second exclude principal with ServicePrincipal type
     $spId = "c090fe3f-66fa-4e18-8142-107d8f4cd0e4"  # DenyAssignmentTestApp
     $daName = "Test-DA-ExcludePrincipals-" + [Guid]::NewGuid().ToString().Substring(0, 8)
 
     try
     {
-        # First exclude: the user
+        # Exclude both the user and the test service principal
         $da = New-AzDenyAssignment `
             -DenyAssignmentName $daName `
             -Description "Test deny assignment with multiple exclude principals" `
             -Scope $subscriptionScope `
             -Action "Microsoft.Storage/storageAccounts/write" `
-            -ExcludePrincipalId $excludeUser `
-            -ExcludePrincipalType "User"
+            -ExcludePrincipalId @($excludeUser, $spId) `
+            -ExcludePrincipalType @("User", "ServicePrincipal")
 
         Assert-NotNull $da
-        Assert-True { $da.ExcludePrincipals.Count -ge 1 }
+        Assert-True { $da.ExcludePrincipals.Count -ge 2 }
     }
     finally
     {

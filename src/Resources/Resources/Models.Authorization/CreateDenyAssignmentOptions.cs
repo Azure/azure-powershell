@@ -50,6 +50,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         [JsonProperty("excludePrincipalIds")]
         public List<string> ExcludePrincipalIds { get; set; } = new List<string>();
 
+        [JsonProperty("excludePrincipalTypes")]
+        public List<string> ExcludePrincipalTypes { get; set; }
+
+        /// <summary>
+        /// Legacy single-value property for backward compatibility with input files.
+        /// When set, applies to all exclude principals unless ExcludePrincipalTypes is also provided.
+        /// </summary>
         [JsonProperty("excludePrincipalType")]
         public string ExcludePrincipalType { get; set; }
 
