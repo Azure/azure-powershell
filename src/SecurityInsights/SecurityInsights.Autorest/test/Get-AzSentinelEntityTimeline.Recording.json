@@ -24,7 +24,7 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
-        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/fa1eaea9-8789-49fc-83ef-16f1ddd17688" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/fa1eaea9-8789-49fc-83ef-16f1ddd17688" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
         "x-ms-request-id": [ "f5c6234e-9acc-4d19-8ac7-72a5f8ad71d2" ],
@@ -62,7 +62,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/9117cb9c-dd6b-446d-a878-6646ce444752" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/9117cb9c-dd6b-446d-a878-6646ce444752" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],

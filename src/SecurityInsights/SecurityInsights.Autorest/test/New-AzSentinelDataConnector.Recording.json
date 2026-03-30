@@ -17,7 +17,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/16a4677e-929a-465b-bd89-2343a8a9ba1c" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/16a4677e-929a-465b-bd89-2343a8a9ba1c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
         "x-ms-request-id": [ "3e21bcfe-7d8b-49fb-aa50-1403bc7abb10" ],
