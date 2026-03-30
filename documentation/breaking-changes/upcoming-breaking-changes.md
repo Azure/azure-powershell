@@ -317,14 +317,14 @@ Preview modules are not included in this list. Read more about [module version t
 - Cmdlet breaking-change will happen to all parameter sets
   - The parameter 'ActionBlockResponseCode' is being removed.
   - Change description: The block response code is no longer configurable in API version 2025-10-01-preview.
-  - This change will take effect on '05/01/2026'
+  - This change will take effect on '5/1/2026'
   - The change is expected to take effect from Az version : '16.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
 - Cmdlet breaking-change will happen to all parameter sets
   - The parameter 'DnsResolverDomainList' will no longer be mandatory.
-  - Change description: DNS security rules now support 'ManagedDomainList' as an alternative to user-defined domain lists.
-  - This change will take effect on '05/01/2026'
+  - Change description: DNS security rules will support managed domain lists as an alternative to user-defined domain lists.
+  - This change will take effect on '5/1/2026'
   - The change is expected to take effect from Az version : '16.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
@@ -333,7 +333,7 @@ Preview modules are not included in this list. Read more about [module version t
 - Cmdlet breaking-change will happen to all parameter sets
   - The parameter 'ActionBlockResponseCode' is being removed.
   - Change description: The block response code is no longer configurable in API version 2025-10-01-preview.
-  - This change will take effect on '05/01/2026'
+  - This change will take effect on '5/1/2026'
   - The change is expected to take effect from Az version : '16.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
@@ -341,8 +341,8 @@ Preview modules are not included in this list. Read more about [module version t
 
 - Cmdlet breaking-change will happen to all parameter sets
   - The parameter 'Domain' will no longer be mandatory.
-  - Change description: Domain lists now support bulk upload via 'Invoke-AzDnsResolverBulkDnsResolverDomainList' as an alternative to inline domain specification.
-  - This change will take effect on '05/01/2026'
+  - Change description: Domain lists will support bulk upload via the new cmdlet 'Invoke-AzDnsResolverBulkDnsResolverDomainList', which will be introduced in the upcoming release.
+  - This change will take effect on '5/1/2026'
   - The change is expected to take effect from Az version : '16.0.0'
   - The change is expected to take effect from version : '2.0.0'
 
