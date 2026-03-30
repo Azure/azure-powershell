@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: AppConfiguration cmdlets
 Permanently deletes the specified configuration store.
 
 ### [Get-AzAppConfigurationDeletedStore](Get-AzAppConfigurationDeletedStore.md)
-Gets a deleted Azure app configuration store.
+Gets a deleted Azure App Configuration store.
 
 ### [Get-AzAppConfigurationReplica](Get-AzAppConfigurationReplica.md)
 Gets the properties of the specified replica.

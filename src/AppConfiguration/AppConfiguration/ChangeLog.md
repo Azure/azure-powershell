@@ -22,7 +22,6 @@
 * Added support for App Configuration store replicas
     - Added `New-AzAppConfigurationReplica` cmdlet
     - Added `Get-AzAppConfigurationReplica` cmdlet
-    - Added `Update-AzAppConfigurationReplica` cmdlet
     - Added `Remove-AzAppConfigurationReplica` cmdlet
 * Added `DataPlaneProxyAuthenticationMode`, `DataPlaneProxyPrivateLinkDelegation`, and `DefaultKeyValueRevisionRetentionPeriodInSecond` parameters to `New-AzAppConfigurationStore` and `Update-AzAppConfigurationStore`
 * Removed `SoftDeleteRetentionInDay` parameter from `Update-AzAppConfigurationStore` as it is a create-only property
