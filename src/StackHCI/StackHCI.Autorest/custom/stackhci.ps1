@@ -413,6 +413,7 @@ Function Write-ErrorLog{
 }
 
 function Test-ComputerNameHasDnsSuffix {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     [OutputType([bool])]
     param(
@@ -2938,6 +2939,7 @@ param(
 }
 
 function Test-ClusterMsiSupport {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory)]
         [System.Management.Automation.Runspaces.PSSession]$ClusterNodeSession
@@ -2953,6 +2955,7 @@ function Test-ClusterMsiSupport {
 }
 
 function Enable-ArcOnNodes {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [array]$ClusterNodes,
@@ -3096,6 +3099,7 @@ Checks whether all nodes in the given cluster are Arc-enabled.
 Logs which nodes are not enabled for easier debugging.
 #>
 function Test-ClusterArcEnabled {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [array]$ClusterNodes,
@@ -3149,6 +3153,7 @@ function Test-ClusterArcEnabled {
 }
 
 function Test-ArcNodeClusterLink {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [array]$ClusterNodes,
@@ -3231,6 +3236,7 @@ function Test-ArcNodeClusterLink {
     Invoke-MSIFlow -ClusterNodes $nodes -ResourceId $resourceId -SubscriptionId $subscriptionId
 #>
 function Invoke-MSIFlow {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [array]$ClusterNodes,
@@ -5031,6 +5037,7 @@ function New-ClusterWithRetries {
 }
 
 function Invoke-MSIUnregistrationFlow {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [array]$ClusterNodes,
