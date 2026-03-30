@@ -244,6 +244,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         private static IEnumerable<PSPrincipal> ToPSPrincipals(this IEnumerable<Principal> principals, IEnumerable<PSADObject> adObjects)
         {
+            return principals.Select(p => new { p.Id, p.Type }).ToPSPrincipalsCore(adObjects);
+        }
+
+        private static IEnumerable<PSPrincipal> ToPSPrincipals(this IEnumerable<DenyAssignmentPrincipal> principals, IEnumerable<PSADObject> adObjects)
+        {
+            return principals.Select(p => new { p.Id, p.Type }).ToPSPrincipalsCore(adObjects);
+        }
+
+        private static IEnumerable<PSPrincipal> ToPSPrincipalsCore(this IEnumerable<dynamic> principals, IEnumerable<PSADObject> adObjects)
+        {
             var psPrincipals = new List<PSPrincipal>();
             foreach (var p in principals)
             {
