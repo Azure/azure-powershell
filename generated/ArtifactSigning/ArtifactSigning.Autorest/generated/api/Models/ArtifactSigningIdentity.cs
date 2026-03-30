@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         /// <summary>Backing field for <see cref="AccountName" /> property.</summary>
         private string _accountName;
 
-        /// <summary>Trusted Signing account name.</summary>
+        /// <summary>Artifact Signing account name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PropertyOrigin.Owned)]
         public string AccountName { get => this._accountName; set => this._accountName = value; }
 
@@ -56,14 +56,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
     public partial interface IArtifactSigningIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IJsonSerializable
     {
-        /// <summary>Trusted Signing account name.</summary>
+        /// <summary>Artifact Signing account name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Trusted Signing account name.",
+        Description = @"Artifact Signing account name.",
         SerializedName = @"accountName",
         PossibleTypes = new [] { typeof(string) })]
         string AccountName { get; set; }
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
     internal partial interface IArtifactSigningIdentityInternal
 
     {
-        /// <summary>Trusted Signing account name.</summary>
+        /// <summary>Artifact Signing account name.</summary>
         string AccountName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }

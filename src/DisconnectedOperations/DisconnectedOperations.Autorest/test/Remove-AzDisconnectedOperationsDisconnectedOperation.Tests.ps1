@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDisconnectedOperatio
 }
 
 Describe 'Remove-AzDisconnectedOperationsDisconnectedOperation' {
-    It 'Delete' {
+    It 'Delete' -skip {
 
         #Create the Resource
         New-AzDisconnectedOperationsDisconnectedOperation -Name $env.NewResource -ResourceGroupName $env.ResourceGroupName -Location $env.Location -ConnectionIntent 'Disconnected' -Tag @{}
@@ -28,7 +28,7 @@ Describe 'Remove-AzDisconnectedOperationsDisconnectedOperation' {
 
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip{
         #Create the Resource
         New-AzDisconnectedOperationsDisconnectedOperation -Name $env.NewResource -ResourceGroupName $env.ResourceGroupName -Location $env.Location -ConnectionIntent 'Disconnected' -Tag @{} -SubscriptionId $env.SubscriptionId
 

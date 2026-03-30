@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Extensions;
 
-    /// <summary>SKU of the trusted signing account.</summary>
+    /// <summary>SKU of the artifact signing account.</summary>
     public partial class AccountSkuPatch :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.IAccountSkuPatch,
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.IAccountSkuPatchInternal
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 
         }
     }
-    /// SKU of the trusted signing account.
+    /// SKU of the artifact signing account.
     public partial interface IAccountSkuPatch :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IJsonSerializable
     {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         string Name { get; set; }
 
     }
-    /// SKU of the trusted signing account.
+    /// SKU of the artifact signing account.
     internal partial interface IAccountSkuPatchInternal
 
     {

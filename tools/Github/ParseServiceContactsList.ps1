@@ -26,8 +26,8 @@ function InitializeRequiredPackages {
     [CmdletBinding()]
     param ()
 
-    $pkgYaml = Get-Package -Name YamlDotNet | Select-Object -ExpandProperty Source | Split-Path
-    $dllYaml = Join-Path -Path $pkgYaml -ChildPath "lib" | Join-Path -ChildPath "netstandard2.0" | Join-Path -ChildPath "YamlDotNet.dll"
+    $pkgDir = Join-Path -Path "$env:AGENT_TEMPDIRECTORY" -ChildPath "packages" | Join-Path -ChildPath "YamlDotNet.$env:YAMLDOTNETVERSION"
+    $dllYaml = Join-Path -Path $pkgDir -ChildPath "lib" | Join-Path -ChildPath "netstandard2.0" | Join-Path -ChildPath "YamlDotNet.dll"
     Add-Type -LiteralPath $dllYaml
 }
 

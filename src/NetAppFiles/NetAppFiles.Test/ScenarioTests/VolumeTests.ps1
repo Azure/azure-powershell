@@ -1306,3 +1306,89 @@ function Test-ExtenalReplicationFails
         Clean-ResourceGroup $resourceGroup
     }
 }
+
+<#
+.SYNOPSIS
+Test Volume Get-AzNetAppFilesVolumeQuotaReport operation
+#>
+function Test-VolumeQuotaReport
+{
+    $currentSub = (Get-AzureRmContext).Subscription
+    $subsid = $currentSub.SubscriptionId
+
+    $resourceGroup = Get-ResourceGroupName
+    $accName = Get-ResourceName
+    $poolName = Get-ResourceName
+    $volName1 = Get-ResourceName
+    $gibibyte = 1024 * 1024 * 1024
+    $usageThreshold = 100 * $gibibyte
+    $resourceLocation = "westus2"
+    $subnetName = "default"
+    $poolSize = 4398046511104
+    $serviceLevel = "Premium"
+    $vnetName = $resourceGroup + "-vnet"
+
+    $subnetId = "/subscriptions/$subsId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
+
+    $rule1 = @{
+        RuleIndex = 1
+        UnixReadOnly = $false
+        UnixReadWrite = $true
+        Cifs = $false
+        Nfsv3 = $true
+        Nfsv41 = $false
+        AllowedClients = '0.0.0.0/0'
+    }
+
+    $exportPolicy = @{
+        Rules = (
+            $rule1
+        )
+    }
+
+    # create the list of protocol types
+    $protocolTypes = New-Object string[] 1
+    $protocolTypes[0] = "NFSv3"
+
+    try
+    {
+        # create the resource group
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
+
+        # create virtual network
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
+
+        # create account
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
+
+        # create pool
+        $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -PoolSize $poolSize -ServiceLevel $serviceLevel
+
+        # create volume
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -ExportPolicy $exportPolicy -ProtocolType $protocolTypes
+        Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
+
+        # get quota report without filters
+        $quotaReport = Get-AzNetAppFilesVolumeQuotaReport -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
+        Assert-NotNull $quotaReport
+
+        # get quota report with UsageThresholdPercentage filter
+        $quotaReportFiltered = Get-AzNetAppFilesVolumeQuotaReport -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -UsageThresholdPercentage 1
+        Assert-NotNull $quotaReportFiltered
+
+        # get quota report using resource id
+        $quotaReportById = Get-AzNetAppFilesVolumeQuotaReport -ResourceId $retrievedVolume.Id
+        Assert-NotNull $quotaReportById
+
+        # get quota report using pipeline from volume
+        $quotaReportPiped = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 | Get-AzNetAppFilesVolumeQuotaReport
+        Assert-NotNull $quotaReportPiped
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroup
+    }
+}

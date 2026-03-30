@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Delete a trusted signing account.</summary>
+    /// <summary>Delete an artifact signing account.</summary>
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzArtifactSigningAccount_Delete", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Description(@"Delete a trusted signing account.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Description(@"Delete an artifact signing account.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}", ApiVersion = "2025-10-13")]
     public partial class RemoveAzArtifactSigningAccount_Delete : global::System.Management.Automation.PSCmdlet,
@@ -43,12 +43,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Cmdlets
         /// <summary>Backing field for <see cref="AccountName" /> property.</summary>
         private string _accountName;
 
-        /// <summary>Trusted Signing account name.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Trusted Signing account name.")]
+        /// <summary>Artifact Signing account name.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Artifact Signing account name.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Trusted Signing account name.",
+        Description = @"Artifact Signing account name.",
         SerializedName = @"accountName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.ParameterCategory.Path)]
