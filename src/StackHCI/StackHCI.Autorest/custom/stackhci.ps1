@@ -210,6 +210,8 @@ $AuthorityAzureLocal = "https://login.$DOMAINFQDNMACRO"
 $BillingServiceApiScopeAzureLocal = "https://dp.aszrp.$DOMAINFQDNMACRO/.default"
 $GraphServiceApiScopeAzureLocal = "https://graph.$DOMAINFQDNMACRO"
 
+$DefaultBillingServiceApiScope = "$UsageServiceFirstPartyAppId/.default"
+
 $RPAPIVersion = "2025-09-15-preview";
 $HCIArcAPIVersion = "2025-09-15-preview"
 $HCIArcExtensionAPIVersion = "2025-09-15-preview"
@@ -411,6 +413,7 @@ Function Write-ErrorLog{
 }
 
 function Test-ComputerNameHasDnsSuffix {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
     [OutputType([bool])]
     param(
@@ -721,7 +724,16 @@ $registerArcScript = {
             }
             else
             {
-                throw 'Invalid Azure Environment name'
+                $azEnv = Get-AzEnvironment -Name $EnvironmentName
+
+                if ($null -ne $azEnv)
+                {
+                    $managementUrl = $azEnv.ResourceManagerUrl
+                }
+                else
+                {
+                    throw 'Invalid Azure Environment name'
+                }
             }
 
             return $managementUrl
@@ -1020,7 +1032,16 @@ function Get-ManagementUrl {
     }
     else
     {
-        throw "Invalid Azure Environment name"
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+
+        if ($null -ne $azEnv)
+        {
+            $managementUrl = $azEnv.ResourceManagerUrl
+        }
+        else
+        {
+            throw "Invalid Azure Environment name"
+        }
     }
 
     return $managementUrl
@@ -1208,6 +1229,19 @@ param(
     {
         return $AzureLocalPortalDomain;
     }
+    else
+    {
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+        
+        if ($null -ne $azEnv)
+        {
+            return $azEnv.ManagementPortalUrl
+        }
+        else
+        {
+            throw 'Invalid Azure Environment name'
+        }
+    }
 }
 
 function Get-DefaultRegion{
@@ -1319,6 +1353,25 @@ param(
         $Authority.Value = $AuthorityAzureLocal
         $BillingServiceApiScope.Value = $BillingServiceApiScopeAzureLocal
         $GraphServiceApiScope.Value = $GraphServiceApiScopeAzureLocal
+    }
+    else
+    {
+        $azEnv = Get-AzEnvironment -Name $EnvironmentName
+        
+        if ($null -ne $azEnv)
+        {
+            # Use a dummy URL for custom Az environments. The Stack HCI service endpoint is not
+            # resolved from this value in this code path; only the authority and scopes taken
+            # from Get-AzEnvironment are used for authentication, so the exact URL does not matter.
+            $ServiceEndpoint.Value = "https://doesnotmatter/"
+            $Authority.Value = $azEnv.ActiveDirectoryAuthority
+            $BillingServiceApiScope.Value = $DefaultBillingServiceApiScope
+            $GraphServiceApiScope.Value = $azEnv.GraphEndpointResourceId + "/.default"
+        }
+        else
+        {
+            throw 'Invalid Azure Environment name'
+        }
     }
 }
 
@@ -2886,6 +2939,7 @@ param(
 }
 
 function Test-ClusterMsiSupport {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory)]
         [System.Management.Automation.Runspaces.PSSession]$ClusterNodeSession
@@ -2901,6 +2955,7 @@ function Test-ClusterMsiSupport {
 }
 
 function Enable-ArcOnNodes {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [array]$ClusterNodes,
@@ -3044,6 +3099,7 @@ Checks whether all nodes in the given cluster are Arc-enabled.
 Logs which nodes are not enabled for easier debugging.
 #>
 function Test-ClusterArcEnabled {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [array]$ClusterNodes,
@@ -3097,6 +3153,7 @@ function Test-ClusterArcEnabled {
 }
 
 function Test-ArcNodeClusterLink {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [array]$ClusterNodes,
@@ -3179,6 +3236,7 @@ function Test-ArcNodeClusterLink {
     Invoke-MSIFlow -ClusterNodes $nodes -ResourceId $resourceId -SubscriptionId $subscriptionId
 #>
 function Invoke-MSIFlow {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [array]$ClusterNodes,
@@ -3229,42 +3287,51 @@ function Invoke-MSIFlow {
         $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
         
         if (-not $allArcEnabled) {
-            Write-VerboseLog "[MSI Flow] Not all nodes are Arc-enabled. Attempting to enable Arc on nodes manually..."
-            
-            # 2. Retrieve Token Locally
-            try {
-                Write-VerboseLog "[MSI Flow] Requesting Access Token for Tenant '$TenantId'"
-                
-                $azToken = Get-AzAccessToken -TenantId $TenantId -ErrorAction Stop
-                $tokenString = $azToken.Token
+            # Check if this is a cloud deployment
+            if (ValidateCloudDeployment) {
+                # For cloud deployments, skip manual Arc enablement - let registration continue
+                Write-VerboseLog "[MSI Flow] Cloud deployment detected - skipping manual Arc enablement on nodes"
+                Write-NodeEventLog -Message "[MSI Flow] Cloud deployment detected - skipping manual Arc enablement for cloud deployment" -EventID 9136 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+            }
+            else {
+                # Non-cloud deployment - attempt manual Arc enablement
+                Write-VerboseLog "[MSI Flow] Non-cloud deployment detected - Not all nodes are Arc-enabled. Attempting to enable Arc on nodes manually..."
 
-                if ($tokenString -is [System.Security.SecureString]) {
-                    $tokenString = [System.Net.NetworkCredential]::new("", $tokenString).Password
+                # Retrieve Token Locally
+                try {
+                    Write-VerboseLog "[MSI Flow] Requesting Access Token for Tenant '$TenantId'"
+
+                    $azToken = Get-AzAccessToken -TenantId $TenantId -ErrorAction Stop
+                    $tokenString = $azToken.Token
+
+                    if ($tokenString -is [System.Security.SecureString]) {
+                        $tokenString = [System.Net.NetworkCredential]::new("", $tokenString).Password
+                    }
                 }
-            }
-            catch {
-                throw "Failed to retrieve Azure Access Token for Arc enablement. Error: $($_.Exception.Message)"
-            }
+                catch {
+                    throw "Failed to retrieve Azure Access Token for Arc enablement. Error: $($_.Exception.Message)"
+                }
 
-            # 3. Call the manual enablement function with the PlainText token
-            Enable-ArcOnNodes -ClusterNodes $ClusterNodes `
-                                    -Credential $Credential `
-                                    -ClusterDNSSuffix $ClusterDNSSuffix `
-                                    -SubscriptionId $SubscriptionId `
-                                    -ResourceGroupName $ArcServerResourceGroupName `
-                                    -TenantId $TenantId `
-                                    -Location $Region `
-                                    -EnvironmentName $EnvironmentName `
-                                    -AccessToken $tokenString `
-                                    -UseStableAgent $UseStableAgent `
-                                    -IsManagementNode $IsManagementNode `
-                                    -ComputerName $ComputerName
-            
-            # Re-verify enablement
-            $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
-            
-            if (-not $allArcEnabled) {
-                throw [System.InvalidOperationException]::new("Failed to enable Arc on all cluster nodes. Aborting registration.")
+                # Call the manual enablement function with the PlainText token
+                Enable-ArcOnNodes -ClusterNodes $ClusterNodes `
+                                        -Credential $Credential `
+                                        -ClusterDNSSuffix $ClusterDNSSuffix `
+                                        -SubscriptionId $SubscriptionId `
+                                        -ResourceGroupName $ArcServerResourceGroupName `
+                                        -TenantId $TenantId `
+                                        -Location $Region `
+                                        -EnvironmentName $EnvironmentName `
+                                        -AccessToken $tokenString `
+                                        -UseStableAgent $UseStableAgent `
+                                        -IsManagementNode $IsManagementNode `
+                                        -ComputerName $ComputerName
+
+                # Re-verify enablement
+                $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
+
+                if (-not $allArcEnabled) {
+                    throw [System.InvalidOperationException]::new("Failed to enable Arc on all cluster nodes. Aborting registration.")
+                }
             }
         }
 
@@ -4970,6 +5037,7 @@ function New-ClusterWithRetries {
 }
 
 function Invoke-MSIUnregistrationFlow {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory=$true)]
         [array]$ClusterNodes,

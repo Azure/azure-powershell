@@ -62,7 +62,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="jsChallengeCookieExpirationInMins">Web Application Firewall JavaScript Challenge Cookie Expiration time in
         /// minutes.
         /// </param>
-        public PolicySettings(string state = default(string), string mode = default(string), bool? requestBodyCheck = default(bool?), int? requestBodyInspectLimitInKb = default(int?), bool? requestBodyEnforcement = default(bool?), int? maxRequestBodySizeInKb = default(int?), bool? fileUploadEnforcement = default(bool?), int? fileUploadLimitInMb = default(int?), int? customBlockResponseStatusCode = default(int?), string customBlockResponseBody = default(string), PolicySettingsLogScrubbing logScrubbing = default(PolicySettingsLogScrubbing), int? jsChallengeCookieExpirationInMins = default(int?))
+
+        /// <param name="captchaCookieExpirationInMins">Web Application Firewall CAPTCHA Cookie Expiration time in minutes.
+        /// </param>
+        public PolicySettings(string state = default(string), string mode = default(string), bool? requestBodyCheck = default(bool?), int? requestBodyInspectLimitInKb = default(int?), bool? requestBodyEnforcement = default(bool?), int? maxRequestBodySizeInKb = default(int?), bool? fileUploadEnforcement = default(bool?), int? fileUploadLimitInMb = default(int?), int? customBlockResponseStatusCode = default(int?), string customBlockResponseBody = default(string), PolicySettingsLogScrubbing logScrubbing = default(PolicySettingsLogScrubbing), int? jsChallengeCookieExpirationInMins = default(int?), int? captchaCookieExpirationInMins = default(int?))
 
         {
             this.State = state;
@@ -77,6 +80,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.CustomBlockResponseBody = customBlockResponseBody;
             this.LogScrubbing = logScrubbing;
             this.JsChallengeCookieExpirationInMins = jsChallengeCookieExpirationInMins;
+            this.CaptchaCookieExpirationInMins = captchaCookieExpirationInMins;
             CustomInit();
         }
 
@@ -161,6 +165,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "jsChallengeCookieExpirationInMins")]
         public int? JsChallengeCookieExpirationInMins {get; set; }
+
+        /// <summary>
+        /// Gets or sets web Application Firewall CAPTCHA Cookie Expiration time in
+        /// minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "captchaCookieExpirationInMins")]
+        public int? CaptchaCookieExpirationInMins {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -213,6 +224,17 @@ namespace Microsoft.Azure.Management.Network.Models
                 if (this.JsChallengeCookieExpirationInMins < 5)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "JsChallengeCookieExpirationInMins", 5);
+                }
+            }
+            if (this.CaptchaCookieExpirationInMins != null)
+            {
+                if (this.CaptchaCookieExpirationInMins > 1440)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "CaptchaCookieExpirationInMins", 1440);
+                }
+                if (this.CaptchaCookieExpirationInMins < 5)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CaptchaCookieExpirationInMins", 5);
                 }
             }
         }

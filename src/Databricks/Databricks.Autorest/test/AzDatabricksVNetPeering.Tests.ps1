@@ -52,7 +52,7 @@ Describe 'AzDatabricksVNetPeering' {
 
     It 'Delete' {
         { 
-            Remove-AzDatabricksVNetPeering -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1
+            Remove-AzDatabricksVNetPeering -NoWait -WorkspaceName $env.workSpaceName3 -ResourceGroupName $env.resourceGroup -Name $env.vNetName1
         } | Should -Not -Throw
     }
 }
