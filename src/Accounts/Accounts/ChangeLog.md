@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated MSAL to 4.83.1 for bug fixes in IMDS endpoint cache.
 
 ## Version 5.3.3
 * Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
