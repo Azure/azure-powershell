@@ -630,7 +630,7 @@
         "provisioningState": "Default",
         "reliabilityLevel": "[parameters('reliabilityLevel')]",
         "upgradeMode": "Automatic",
-        "vmImage": "Ubuntu20_04"
+        "vmImage": "Ubuntu24_04"
       },
       "tags": {
         "resourceType": "Service Fabric",
