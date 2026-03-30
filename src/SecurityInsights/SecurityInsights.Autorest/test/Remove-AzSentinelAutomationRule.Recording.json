@@ -22,7 +22,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/2725fb21-f160-4180-ba01-fcb50837ce76" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/2725fb21-f160-4180-ba01-fcb50837ce76" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
@@ -68,7 +68,7 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/593c6c37-5aa0-4c00-bc9a-7367d71f5ee9" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/593c6c37-5aa0-4c00-bc9a-7367d71f5ee9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-request-id": [ "48308be9-6680-41c7-85c7-be5155a508e2" ],
         "x-ms-correlation-request-id": [ "48308be9-6680-41c7-85c7-be5155a508e2" ],
@@ -110,7 +110,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/7a9167b6-07d9-4167-9f60-c42eff954e91" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/7a9167b6-07d9-4167-9f60-c42eff954e91" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
