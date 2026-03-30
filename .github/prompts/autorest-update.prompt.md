@@ -46,11 +46,15 @@ The module's Autorest project lives at either:
    - Repeat until the build succeeds.
 3. After a successful build, note the list of exported cmdlets from the `exports/` folder.
 
-### Step 4: Identify New Cmdlets
+### Step 4: Identify New and Removed Cmdlets
 
 1. Compare the current exported cmdlets (in `exports/`) with the test files already present in `test/`.
 2. Any cmdlet that has an export but no corresponding `.Tests.ps1` file is considered **new**.
-3. List the new cmdlets and confirm with the user which ones need tests.
+3. Any test file whose corresponding cmdlet no longer exists in `exports/` indicates a **removed** cmdlet.
+4. List both new and removed cmdlets and confirm with the user:
+   - Which new cmdlets need tests.
+   - Whether orphaned test files for removed cmdlets should be cleaned up.
+5. For removed cmdlets, also check `test/utils.ps1` (and any other shared test helpers) for references to removed cmdlet names, parameters, or model objects. If found, propose fixes to the user.
 
 ### Step 5: Add Tests for New Cmdlets
 
@@ -92,13 +96,26 @@ Adapt the `It` blocks based on the cmdlet's parameter sets (check the export fil
 
 **Show each test file to the user and wait for approval before creating it.**
 
-### Step 6: Summary
+### Step 6: Run Tests
+
+1. In the `.Autorest` directory, run: `pwsh -File ./test-module.ps1 -Record`
+2. This will execute all Pester tests in Record mode, capturing HTTP interactions.
+3. If tests fail:
+   - Analyze the error output.
+   - Propose a fix **scoped only to files within the module directory**.
+   - Show the proposed fix to the user, wait for approval, apply it, and re-run.
+   - Repeat until tests pass.
+4. Note: This step may require Azure connectivity for recording. If the user is not connected, suggest running with `-Playback` instead to validate test structure.
+
+### Step 7: Summary
 
 After all steps are done, provide a summary:
 - Files modified (README.md, any fixes applied)
 - New cmdlets generated
+- Removed cmdlets (and whether orphaned test files were cleaned up)
 - Test files created
-- Any remaining manual steps the user should take (e.g., recording tests, updating ChangeLog.md)
+- Test execution results
+- Any remaining manual steps the user should take (e.g., updating ChangeLog.md)
 
 ## Error Fixing Rules
 
@@ -118,4 +135,5 @@ Before ANY of these actions, show the user what you plan to do and wait for thei
 - Editing README.md
 - Editing any source file to fix errors
 - Creating test files
-- Running `autorest` or `./build-module.ps1` (inform the user the command will be run, as they can take significant time)
+- Running `autorest`, `./build-module.ps1`, or `./test-module.ps1` (inform the user the command will be run, as they can take significant time)
+- Deleting orphaned test files for removed cmdlets

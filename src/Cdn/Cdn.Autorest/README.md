@@ -475,6 +475,25 @@ directive:
           }
       }
 
+  # Fix LRO for all operations with final-state-via: location - Azure doesn't always return Location header
+  # For PUT/PATCH change to original-uri, for POST/DELETE change to azure-async-operation
+  - from: swagger-document
+    where: $.paths
+    transform: >
+      for (const pathKey in $) {
+        for (const method of ['put','patch','post','delete']) {
+          const op = $[pathKey][method];
+          if (op && op['x-ms-long-running-operation'] && op['x-ms-long-running-operation-options'] && op['x-ms-long-running-operation-options']['final-state-via'] === 'location') {
+            if (method === 'put' || method === 'patch') {
+              op['x-ms-long-running-operation-options']['final-state-via'] = 'original-uri';
+            } else {
+              op['x-ms-long-running-operation-options']['final-state-via'] = 'azure-async-operation';
+            }
+          }
+        }
+      }
+      return $;
+
   # Delete 404
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}"].delete
