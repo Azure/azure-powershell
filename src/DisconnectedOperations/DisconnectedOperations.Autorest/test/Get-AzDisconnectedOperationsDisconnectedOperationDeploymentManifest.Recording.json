@@ -1,17 +1,17 @@
 {
-  "Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest+[NoContext]+List+$POST+https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/listDeploymentManifest?api-version=2025-06-01-preview+1": {
+  "Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest+[NoContext]+List+$POST+https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/listDeploymentManifest?api-version=2026-03-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedOperations/test-automation/listDeploymentManifest?api-version=2025-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/listDeploymentManifest?api-version=2026-03-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "26516ee6-818e-4fae-b709-439e48c17bed" ],
+        "x-ms-client-request-id": [ "073c3b6c-6be1-43ed-a38a-34611b20d2f9" ],
         "CommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest" ],
         "FullCommandName": [ "Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.6.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,27 +23,27 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Accept-Ranges": [ "bytes" ],
-        "Set-Cookie": [ "ASLBSA=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003812caa2667c538e5323e8b2f3769a37a67d1b5dc2c9f4b22e202f400018c0a9a; SameSite=none; Path=/; Secure; HttpOnly;" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/c617f12e-5869-4c6f-98ea-86e7fc54adc0" ],
+        "Set-Cookie": [ "ASLBSA=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/db39ab2f-f7f3-4731-8a0c-4256774c31f3" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-azure-ref": [ "20251114T085642Z-r15bc86d757gq2gbhC1PHXg3xs0000001vc000000000488g" ],
+        "x-azure-ref": [ "20260303T152552Z-15db5d65464qpfgchC1BN1cxp0000000151g00000000ha4a" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "7c6ab9a8-d52c-4c26-aa76-3b2c4330923a" ],
-        "x-ms-correlation-request-id": [ "f2451677-5107-4976-9fb4-419c6976d525" ],
+        "x-ms-request-id": [ "56724259-46ed-45c1-bf8b-baf975740f2f" ],
+        "x-ms-correlation-request-id": [ "e913b637-64bf-475e-b969-976834e4811d" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-routing-request-id": [ "WESTUS3:20251114T085643Z:f2451677-5107-4976-9fb4-419c6976d525" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260303T152552Z:e913b637-64bf-475e-b969-976834e4811d" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "X-MSEdge-Ref": [ "Ref A: 9E177ADB81664914A8BBD357FD50B5D4 Ref B: SIN221080712007 Ref C: 2025-11-14T08:56:42Z" ],
-        "Date": [ "Fri, 14 Nov 2025 08:56:42 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AB256229E56345DB8ED43C518F8B5661 Ref B: MAA201060513053 Ref C: 2026-03-03T15:25:52Z" ],
+        "Date": [ "Tue, 03 Mar 2026 15:25:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "353" ],
+        "Content-Length": [ "706" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"resourceId\":\"/subscriptions/82c4f715-0d39-4b14-bc1a-8d28a289472c/resourceGroups/bvt-test-automation/providers/Microsoft.Edge/disconnectedoperations/test-automation\",\"resourceName\":\"test-automation\",\"stampId\":\"594e3edd-b7e8-40f8-b350-68c9fccde5b6\",\"location\":\"West US 3\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"cloud\":\"AzureCloud\"}",
+      "Content": "{\"resourceId\":\"/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test\",\"resourceName\":\"winfield-ps-test\",\"stampId\":\"74f7c4d2-d834-4fa3-ab18-2ac1e0701441\",\"location\":\"eastus2euap\",\"billingModel\":\"Capacity\",\"connectionIntent\":\"Disconnected\",\"billingConfiguration\":{\"autoRenew\":\"Disabled\",\"billingStatus\":\"Enabled\",\"current\":{\"cores\":8,\"pricingModel\":\"Annual\",\"startDate\":\"2026-03-02\",\"endDate\":\"2027-03-01\"},\"upcoming\":{\"cores\":8,\"pricingModel\":\"Annual\",\"startDate\":\"2027-03-02\",\"endDate\":\"2028-03-01\"}},\"benefitPlans\":{\"azureHybridWindowsServerBenefit\":\"Enabled\",\"windowsServerVmCount\":10},\"cloud\":\"AzureCloud\"}",
       "isContentBase64": false
     }
   }

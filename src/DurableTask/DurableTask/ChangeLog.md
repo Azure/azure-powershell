@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to `2026-02-01`.
+    - Schedulers now support configuring `publicNetworkAccess`
+    - Scheduler details include `privateEndpointConnection` information.
 
 ## Version 0.1.0
 * First preview release for module Az.DurableTask
