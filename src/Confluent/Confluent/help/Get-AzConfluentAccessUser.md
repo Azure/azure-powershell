@@ -45,11 +45,6 @@ Organization users details
 
 ## EXAMPLES
 
-## DESCRIPTION
-Organization users details
-
-## EXAMPLES
-
 ### Example 1: Get Organization User Details
 ```powershell
 Get-AzConfluentAccessUser -OrganizationName sharedrp-scus-org -ResourceGroupName sharedrp-confluent

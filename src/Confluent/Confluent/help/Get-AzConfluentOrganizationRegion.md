@@ -54,7 +54,7 @@ Get-AzConfluentOrganizationRegion -OrganizationName sharedrp-scus-org -ResourceG
 Get-AzConfluentOrganizationRegion_ListExpanded: Expected '{' or '['. Was Null: null.
 ```
 
-This command lists all available regions for creating schema registry clusters.
+This commands lists all available regions for create schema registery clusters
 
 ## PARAMETERS
 

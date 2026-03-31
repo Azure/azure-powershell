@@ -49,7 +49,7 @@ Get-AzConfluentOrganizationEnvironment -OrganizationName sharedrp-scus-org -Reso
 ```
 
 ```output
- Get-AzConfluentOrganizationEnvironment -OrganizationName sharedrp-scus-org -ResourceGroupName sharedrp-confluent
+Get-AzConfluentOrganizationEnvironment -OrganizationName sharedrp-scus-org -ResourceGroupName sharedrp-confluent
 
 Name                  SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind        ResourceGroupName
 ----                  ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ----        -----------------
@@ -69,7 +69,7 @@ This commands list all environments in an organization
 
 ### Example 2: Get Environment details by environment ID
 ```powershell
- Get-AzConfluentOrganizationEnvironment -EnvironmentId 'shekarTest' -OrganizationName sharedrp-scus-org -ResourceGroupName sharedrp-confluent
+Get-AzConfluentOrganizationEnvironment -EnvironmentId 'shekarTest' -OrganizationName sharedrp-scus-org -ResourceGroupName sharedrp-confluent
 ```
 
 ```output

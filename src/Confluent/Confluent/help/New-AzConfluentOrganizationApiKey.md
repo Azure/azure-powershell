@@ -86,7 +86,7 @@ SpecName                 : my-kafka-api-key
 SpecSecret               :
 ```
 
-This command Create API Key for a schema registry cluster ID under a environment
+This command creates an API key for a Kafka cluster in a specified environment.
 
 ## PARAMETERS
 
