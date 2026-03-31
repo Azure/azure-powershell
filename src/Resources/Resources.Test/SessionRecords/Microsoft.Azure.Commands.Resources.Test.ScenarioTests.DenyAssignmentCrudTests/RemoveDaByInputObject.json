@@ -1,15 +1,15 @@
 {
   "Entries": [
     {
-      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/e3aa5b90-f47c-4824-950f-daf5723174fb?api-version=2024-07-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzL2UzYWE1YjkwLWY0N2MtNDgyNC05NTBmLWRhZjU3MjMxNzRmYj9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
+      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/09b73983-4ff5-4e80-8d2e-54d9f78adee6?api-version=2024-07-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzLzA5YjczOTgzLTRmZjUtNGU4MC04ZDJlLTU0ZDlmNzhhZGVlNj9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "635fb1d8-c42d-467b-bb95-4b3331be1b95"
+          "a7ca28bc-e491-4075-8ce4-9f25232e43cd"
         ],
         "User-Agent": [
           "FxVersion/8.0.2526.11203",
@@ -24,7 +24,7 @@
           "664"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RemoveByObj-599309a9\",\r\n    \"description\": \"Test removal by InputObject\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RemoveByObj-35886eb5\",\r\n    \"description\": \"Test removal by InputObject\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -33,7 +33,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "cc0d885c-00c0-4030-8bc3-1f161cd0ea63"
+          "de5e0623-4169-4daa-bc3b-3547c7885133"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -42,7 +42,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-operation-identifier": [
-          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/westeurope/35a70fc4-20e3-4908-b403-cd28247cf70a"
+          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/westeurope/e3ad4dd9-134c-4bd1-9b57-143786f82708"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "199"
@@ -51,19 +51,19 @@
           "2999"
         ],
         "x-ms-correlation-request-id": [
-          "9598443d-b1e7-4b0b-92ed-d6fda90d3317"
+          "830610f1-9197-4b76-b9ad-38793480b085"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20260330T114451Z:9598443d-b1e7-4b0b-92ed-d6fda90d3317"
+          "WESTEUROPE:20260331T213808Z:830610f1-9197-4b76-b9ad-38793480b085"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 228DF3486CD74304AC39B17969B78BF4 Ref B: DUB241062309042 Ref C: 2026-03-30T11:44:48Z"
+          "Ref A: 26923EFC90504D038EFD3BE6D54D649B Ref B: AMS231032607029 Ref C: 2026-03-31T21:38:05Z"
         ],
         "Date": [
-          "Mon, 30 Mar 2026 11:44:50 GMT"
+          "Tue, 31 Mar 2026 21:38:08 GMT"
         ],
         "Content-Length": [
           "959"
@@ -78,7 +78,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RemoveByObj-599309a9\",\r\n    \"description\": \"Test removal by InputObject\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"scope\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc\",\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ],\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"isSystemProtected\": false,\r\n    \"createdOn\": \"2026-03-30T11:44:49.577023Z\",\r\n    \"updatedOn\": \"2026-03-30T11:44:49.577023Z\",\r\n    \"createdBy\": null,\r\n    \"updatedBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\"\r\n  },\r\n  \"id\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/e3aa5b90-f47c-4824-950f-daf5723174fb\",\r\n  \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n  \"name\": \"e3aa5b90-f47c-4824-950f-daf5723174fb\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RemoveByObj-35886eb5\",\r\n    \"description\": \"Test removal by InputObject\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"scope\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc\",\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ],\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"isSystemProtected\": false,\r\n    \"createdOn\": \"2026-03-31T21:38:05.845425Z\",\r\n    \"updatedOn\": \"2026-03-31T21:38:05.845425Z\",\r\n    \"createdBy\": null,\r\n    \"updatedBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\"\r\n  },\r\n  \"id\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/09b73983-4ff5-4e80-8d2e-54d9f78adee6\",\r\n  \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n  \"name\": \"09b73983-4ff5-4e80-8d2e-54d9f78adee6\"\r\n}",
       "StatusCode": 201
     },
     {
@@ -90,7 +90,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "635fb1d8-c42d-467b-bb95-4b3331be1b95"
+          "a7ca28bc-e491-4075-8ce4-9f25232e43cd"
         ],
         "User-Agent": [
           "FxVersion/8.0.2526.11203",
@@ -111,19 +111,19 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "6d852d41-a52e-450d-9ab0-7f57660e7434"
+          "b8cb2c2d-9813-4595-be98-cd70e558576b"
         ],
         "client-request-id": [
-          "6d852d41-a52e-450d-9ab0-7f57660e7434"
+          "b8cb2c2d-9813-4595-be98-cd70e558576b"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West Europe\",\"Slice\":\"E\",\"Ring\":\"5\",\"ScaleUnit\":\"008\",\"RoleInstance\":\"AM2PEPF0005DE7C\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West Europe\",\"Slice\":\"E\",\"Ring\":\"5\",\"ScaleUnit\":\"006\",\"RoleInstance\":\"AM1PEPF00027E4A\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
         ],
         "Date": [
-          "Mon, 30 Mar 2026 11:44:51 GMT"
+          "Tue, 31 Mar 2026 21:38:08 GMT"
         ],
         "Content-Type": [
           "application/json"
@@ -132,7 +132,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Authorization_RequestDenied\",\r\n    \"message\": \"Insufficient privileges to complete the operation.\",\r\n    \"innerError\": {\r\n      \"date\": \"2026-03-30T11:44:51\",\r\n      \"request-id\": \"6d852d41-a52e-450d-9ab0-7f57660e7434\",\r\n      \"client-request-id\": \"6d852d41-a52e-450d-9ab0-7f57660e7434\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Authorization_RequestDenied\",\r\n    \"message\": \"Insufficient privileges to complete the operation.\",\r\n    \"innerError\": {\r\n      \"date\": \"2026-03-31T21:38:08\",\r\n      \"request-id\": \"b8cb2c2d-9813-4595-be98-cd70e558576b\",\r\n      \"client-request-id\": \"b8cb2c2d-9813-4595-be98-cd70e558576b\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 403
     },
     {
@@ -144,7 +144,7 @@
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "9300fae3-d305-40c1-9161-b7910d53fc5a"
+          "27ec39b9-1ece-4bfc-8cb9-7ce9e621d786"
         ],
         "User-Agent": [
           "FxVersion/8.0.2526.11203",
@@ -165,19 +165,19 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "1e227c0c-10c6-4e17-acb4-94083995c449"
+          "2d7d6486-e585-4bcc-b562-42d5de6262ab"
         ],
         "client-request-id": [
-          "1e227c0c-10c6-4e17-acb4-94083995c449"
+          "2d7d6486-e585-4bcc-b562-42d5de6262ab"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West Europe\",\"Slice\":\"E\",\"Ring\":\"5\",\"ScaleUnit\":\"007\",\"RoleInstance\":\"AM4PEPF000278EB\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West Europe\",\"Slice\":\"E\",\"Ring\":\"5\",\"ScaleUnit\":\"003\",\"RoleInstance\":\"AM1PEPF000105BE\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
         ],
         "Date": [
-          "Mon, 30 Mar 2026 11:44:52 GMT"
+          "Tue, 31 Mar 2026 21:38:09 GMT"
         ],
         "Content-Type": [
           "application/json"
@@ -186,19 +186,19 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Authorization_RequestDenied\",\r\n    \"message\": \"Insufficient privileges to complete the operation.\",\r\n    \"innerError\": {\r\n      \"date\": \"2026-03-30T11:44:52\",\r\n      \"request-id\": \"1e227c0c-10c6-4e17-acb4-94083995c449\",\r\n      \"client-request-id\": \"1e227c0c-10c6-4e17-acb4-94083995c449\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Authorization_RequestDenied\",\r\n    \"message\": \"Insufficient privileges to complete the operation.\",\r\n    \"innerError\": {\r\n      \"date\": \"2026-03-31T21:38:09\",\r\n      \"request-id\": \"2d7d6486-e585-4bcc-b562-42d5de6262ab\",\r\n      \"client-request-id\": \"2d7d6486-e585-4bcc-b562-42d5de6262ab\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 403
     },
     {
-      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/e3aa5b90-f47c-4824-950f-daf5723174fb?api-version=2024-07-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzL2UzYWE1YjkwLWY0N2MtNDgyNC05NTBmLWRhZjU3MjMxNzRmYj9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
+      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/09b73983-4ff5-4e80-8d2e-54d9f78adee6?api-version=2024-07-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzLzA5YjczOTgzLTRmZjUtNGU4MC04ZDJlLTU0ZDlmNzhhZGVlNj9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "9300fae3-d305-40c1-9161-b7910d53fc5a"
+          "27ec39b9-1ece-4bfc-8cb9-7ce9e621d786"
         ],
         "User-Agent": [
           "FxVersion/8.0.2526.11203",
@@ -216,7 +216,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "db524fcb-f2b0-4461-a4a2-77e8ca5f6ee2"
+          "f9807e33-1576-4fbe-a4ce-161f53155c5b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -225,7 +225,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-operation-identifier": [
-          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/westeurope/134df804-a5f3-4fea-8d57-e0042bfe1b28"
+          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/westeurope/b3d6c322-8567-43a5-8fa2-6ca7fb0f8b0b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "249"
@@ -234,19 +234,19 @@
           "3749"
         ],
         "x-ms-correlation-request-id": [
-          "2b238353-e3bc-4e94-8fd7-9a8959c549e2"
+          "64bb04ba-ab75-4b52-bebd-f8f907c2ad85"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20260330T114452Z:2b238353-e3bc-4e94-8fd7-9a8959c549e2"
+          "WESTEUROPE:20260331T213809Z:64bb04ba-ab75-4b52-bebd-f8f907c2ad85"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 1A8FAE6E3A18431E874A6410EE5DAAD3 Ref B: AMS231020615039 Ref C: 2026-03-30T11:44:51Z"
+          "Ref A: F24EA716EC3D43079206B928B514C104 Ref B: AMS231032609023 Ref C: 2026-03-31T21:38:09Z"
         ],
         "Date": [
-          "Mon, 30 Mar 2026 11:44:52 GMT"
+          "Tue, 31 Mar 2026 21:38:09 GMT"
         ],
         "Content-Length": [
           "993"
@@ -261,19 +261,19 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RemoveByObj-599309a9\",\r\n    \"description\": \"Test removal by InputObject\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"scope\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc\",\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ],\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"isSystemProtected\": false,\r\n    \"createdOn\": \"2026-03-30T11:44:49.7450304Z\",\r\n    \"updatedOn\": \"2026-03-30T11:44:49.7450304Z\",\r\n    \"createdBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\",\r\n    \"updatedBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\"\r\n  },\r\n  \"id\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/e3aa5b90-f47c-4824-950f-daf5723174fb\",\r\n  \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n  \"name\": \"e3aa5b90-f47c-4824-950f-daf5723174fb\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RemoveByObj-35886eb5\",\r\n    \"description\": \"Test removal by InputObject\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"scope\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc\",\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ],\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"isSystemProtected\": false,\r\n    \"createdOn\": \"2026-03-31T21:38:06.0494363Z\",\r\n    \"updatedOn\": \"2026-03-31T21:38:06.0494363Z\",\r\n    \"createdBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\",\r\n    \"updatedBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\"\r\n  },\r\n  \"id\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/09b73983-4ff5-4e80-8d2e-54d9f78adee6\",\r\n  \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n  \"name\": \"09b73983-4ff5-4e80-8d2e-54d9f78adee6\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/e3aa5b90-f47c-4824-950f-daf5723174fb?api-version=2024-07-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzL2UzYWE1YjkwLWY0N2MtNDgyNC05NTBmLWRhZjU3MjMxNzRmYj9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
+      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/09b73983-4ff5-4e80-8d2e-54d9f78adee6?api-version=2024-07-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzLzA5YjczOTgzLTRmZjUtNGU4MC04ZDJlLTU0ZDlmNzhhZGVlNj9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "c5975ac6-5722-4df2-91ee-c79844dbe14a"
+          "8185c67c-681c-4c75-b866-fa15f7db9940"
         ],
         "User-Agent": [
           "FxVersion/8.0.2526.11203",
@@ -291,7 +291,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "eb08e588-c379-4110-bb9d-a17817db864f"
+          "fe7eb090-b8bd-47b5-90a9-a481079136d2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -300,7 +300,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-operation-identifier": [
-          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/westeurope/8503f5bb-d38b-4735-8168-8922a771155d"
+          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/westeurope/b32d9a82-4e4c-435f-9ddc-c66208b30337"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "249"
@@ -309,19 +309,19 @@
           "3749"
         ],
         "x-ms-correlation-request-id": [
-          "59d39375-d4bf-4d39-907e-ac842b88e7eb"
+          "d176ef9f-9457-4487-81a2-66ef616bb021"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20260330T114455Z:59d39375-d4bf-4d39-907e-ac842b88e7eb"
+          "WESTEUROPE:20260331T213812Z:d176ef9f-9457-4487-81a2-66ef616bb021"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: B8B79BDB26124E118816131B7E97F7A3 Ref B: DUB601080514031 Ref C: 2026-03-30T11:44:55Z"
+          "Ref A: EF2DA5FDEF794D918B20C552A328E3E9 Ref B: AMS231020512027 Ref C: 2026-03-31T21:38:12Z"
         ],
         "Date": [
-          "Mon, 30 Mar 2026 11:44:55 GMT"
+          "Tue, 31 Mar 2026 21:38:11 GMT"
         ],
         "Content-Length": [
           "129"
@@ -336,19 +336,19 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"DenyAssignmentNotFound\",\r\n    \"message\": \"The deny assignment 'e3aa5b90-f47c-4824-950f-daf5723174fb' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"DenyAssignmentNotFound\",\r\n    \"message\": \"The deny assignment '09b73983-4ff5-4e80-8d2e-54d9f78adee6' was not found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/e3aa5b90-f47c-4824-950f-daf5723174fb?api-version=2024-07-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzL2UzYWE1YjkwLWY0N2MtNDgyNC05NTBmLWRhZjU3MjMxNzRmYj9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
+      "RequestUri": "//subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/09b73983-4ff5-4e80-8d2e-54d9f78adee6?api-version=2024-07-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzM0NTYwZTJjLTg5NTQtNDg0OC1hOGQyLWRjNDE5MzAxYjlmYy9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vZGVueUFzc2lnbm1lbnRzLzA5YjczOTgzLTRmZjUtNGU4MC04ZDJlLTU0ZDlmNzhhZGVlNj9hcGktdmVyc2lvbj0yMDI0LTA3LTAxLXByZXZpZXc=",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "Accept-Language": [
           "en-US"
         ],
         "x-ms-client-request-id": [
-          "9300fae3-d305-40c1-9161-b7910d53fc5a"
+          "27ec39b9-1ece-4bfc-8cb9-7ce9e621d786"
         ],
         "User-Agent": [
           "FxVersion/8.0.2526.11203",
@@ -366,7 +366,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c786c747-fea4-4776-a9c4-0c4f0f6b2f16"
+          "78a5de9f-340b-4d8e-8bea-d2da1ceb51fc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -375,7 +375,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-operation-identifier": [
-          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/westeurope/16d9d240-9fd3-44b2-a0b2-ca3570893f8b"
+          "appId=c090fe3f-66fa-4e18-8142-107d8f4cd0e4,tenantId=1ab18f38-ec79-4825-9410-1a4ff8e4fd0a,objectId=e01765f6-c2eb-4a00-91e1-ba65c17e4f5c/westeurope/019d3941-766c-4609-951a-748ffc392a5f"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "199"
@@ -384,19 +384,19 @@
           "2999"
         ],
         "x-ms-correlation-request-id": [
-          "eec14a33-eccc-462d-958c-34d9a8e7a61e"
+          "c0de52f5-e21d-4623-b6d3-874ba2c83107"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20260330T114455Z:eec14a33-eccc-462d-958c-34d9a8e7a61e"
+          "WESTEUROPE:20260331T213812Z:c0de52f5-e21d-4623-b6d3-874ba2c83107"
         ],
         "X-Cache": [
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: E2EB8453EC9441F69136D239966EFBC8 Ref B: AMS231020615039 Ref C: 2026-03-30T11:44:52Z"
+          "Ref A: 05095D3AF71649FD87AEC369300C2ECE Ref B: AMS231032609023 Ref C: 2026-03-31T21:38:09Z"
         ],
         "Date": [
-          "Mon, 30 Mar 2026 11:44:54 GMT"
+          "Tue, 31 Mar 2026 21:38:12 GMT"
         ],
         "Content-Length": [
           "993"
@@ -411,7 +411,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RemoveByObj-599309a9\",\r\n    \"description\": \"Test removal by InputObject\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"scope\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc\",\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ],\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"isSystemProtected\": false,\r\n    \"createdOn\": \"2026-03-30T11:44:49.7450304Z\",\r\n    \"updatedOn\": \"2026-03-30T11:44:53.3788282Z\",\r\n    \"createdBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\",\r\n    \"updatedBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\"\r\n  },\r\n  \"id\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/e3aa5b90-f47c-4824-950f-daf5723174fb\",\r\n  \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n  \"name\": \"e3aa5b90-f47c-4824-950f-daf5723174fb\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"denyAssignmentName\": \"Test-DA-RemoveByObj-35886eb5\",\r\n    \"description\": \"Test removal by InputObject\",\r\n    \"permissions\": [\r\n      {\r\n        \"actions\": [\r\n          \"Microsoft.Storage/storageAccounts/write\"\r\n        ],\r\n        \"notActions\": [],\r\n        \"dataActions\": [],\r\n        \"notDataActions\": []\r\n      }\r\n    ],\r\n    \"scope\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc\",\r\n    \"doNotApplyToChildScopes\": false,\r\n    \"principals\": [\r\n      {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\r\n        \"type\": \"SystemDefined\"\r\n      }\r\n    ],\r\n    \"excludePrincipals\": [\r\n      {\r\n        \"id\": \"1840cc0e-55b5-442d-bbf6-52c0c7e27302\",\r\n        \"type\": \"User\"\r\n      }\r\n    ],\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"isSystemProtected\": false,\r\n    \"createdOn\": \"2026-03-31T21:38:06.0494363Z\",\r\n    \"updatedOn\": \"2026-03-31T21:38:10.3625073Z\",\r\n    \"createdBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\",\r\n    \"updatedBy\": \"e01765f6-c2eb-4a00-91e1-ba65c17e4f5c\"\r\n  },\r\n  \"id\": \"/subscriptions/34560e2c-8954-4848-a8d2-dc419301b9fc/providers/Microsoft.Authorization/denyAssignments/09b73983-4ff5-4e80-8d2e-54d9f78adee6\",\r\n  \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n  \"name\": \"09b73983-4ff5-4e80-8d2e-54d9f78adee6\"\r\n}",
       "StatusCode": 200
     }
   ],
