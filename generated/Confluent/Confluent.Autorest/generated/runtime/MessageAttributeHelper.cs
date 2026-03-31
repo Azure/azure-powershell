@@ -11,9 +11,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.confluent.generated.runtime.Properties;
+    using Microsoft.Azure.PowerShell.Cmdlets.Confluent.generated.runtime.Properties;
     using System;
     using System.Collections.Generic;
     using System.Linq;

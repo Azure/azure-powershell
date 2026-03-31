@@ -2,9 +2,9 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.confluent.generated.runtime.Properties;
+    using Microsoft.Azure.PowerShell.Cmdlets.Confluent.generated.runtime.Properties;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -16,11 +16,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime
     public class GenericBreakingChangeAttribute : Attribute
     {
         private string _message;
-        //A description of what the change is about, non mandatory
+        //A dexcription of what the change is about, non mandatory
         public string ChangeDescription { get; set; } = null;
-
-        //Name of the module that is being deprecated
-        public string moduleName { get; set; } = String.IsNullOrEmpty(@"") ? @"Az.confluent" : @"";
 
         //The version the change is effective from, non mandatory
         public string DeprecateByVersion { get; }
@@ -85,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime
             }
 
             writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByAzVersion, this.DeprecateByAzVersion));
-            writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.moduleName, this.DeprecateByVersion));
+            writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion));
 
             if (OldWay != null && NewWay != null)
             {
@@ -194,11 +191,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime
                 this.IsEstimatedGaDateSet = true;
             }
         }
-
+        
         public void PrintCustomAttributeInfo(Action<string> writeOutput)
         {
             writeOutput(this._message);
-
+            
             if (IsEstimatedGaDateSet)
             {
                 writeOutput(string.Format(Resources.PreviewCmdletETAMessage, this.EstimatedGaDate.ToShortDateString()));

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.confluent
+namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class DescriptionAttribute : Attribute
