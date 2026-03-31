@@ -2,7 +2,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzPlanetaryComputerGeo
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+      $loadEnvPath = Join-Path $PSScriptRoot '..' 'loadEnv.ps1'
   }
   . ($loadEnvPath)
   $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzPlanetaryComputerGeoCatalog.Recording.json'
