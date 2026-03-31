@@ -29,6 +29,7 @@
     - `Get-AzDdosCustomPolicy`: Get a DDoS custom policy by name or resource group
     - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy resource
     - `Remove-AzDdosCustomPolicy`: Remove a DDoS custom policy resource
+* Onboarded `Microsoft.KubernetesConfiguration/privateLinkScopes` to Private Link Common Cmdlets
 * Added EdgeZone (Extended Location) parameter support for Azure Firewall
     - Added `-EdgeZone` parameter to `New-AzFirewall` cmdlet
     - When `-EdgeZone` is specified, availability zones are not supported for Azure Firewall resources
