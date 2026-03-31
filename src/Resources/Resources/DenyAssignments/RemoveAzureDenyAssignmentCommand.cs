@@ -110,10 +110,6 @@ namespace Microsoft.Azure.Commands.Resources
                     {
                         WriteObject(result);
                     }
-                    else
-                    {
-                        WriteObject(string.Format("Successfully removed deny assignment '{0}'.", target));
-                    }
                 });
         }
     }

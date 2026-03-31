@@ -22,8 +22,7 @@ function Get-TestExcludePrincipalId
     try {
         return (Get-AzADUser -SignedIn).Id
     } catch {
-        # SP auth fallback: known admin user in the test tenant
-        # admin@ruttlejgmailcom.onmicrosoft.com in tenant 1ab18f38-ec79-4825-9410-1a4ff8e4fd0a
+        # SP auth fallback: known user in the test tenant
         return "1840cc0e-55b5-442d-bbf6-52c0c7e27302"
     }
 }
@@ -169,7 +168,7 @@ function Test-NewDaDoNotApplyToChildScopes
             -Scope $subscriptionScope `
             -Action "Microsoft.Storage/storageAccounts/write" `
             -ExcludePrincipalId $excludePrincipalId `
-            -DoNotApplyToChildScopes
+            -DoNotApplyToChildScope
     }
 }
 

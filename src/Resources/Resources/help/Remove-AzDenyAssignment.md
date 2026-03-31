@@ -219,6 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Resources.Models.Authorization.PSDenyAssignment
+When the -PassThru parameter is specified, returns the deleted deny assignment object. Otherwise, this cmdlet does not generate any output.
 
 ## NOTES
 

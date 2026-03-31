@@ -19,9 +19,9 @@
 -->
 
 ## Upcoming Release
-* Added `New-AzDenyAssignment` cmdlet for creating user-assigned deny assignments (PP1 preview).
+* Added `New-AzDenyAssignment` cmdlet for creating user-assigned deny assignments (Public Preview 1, API version `2024-07-01-preview`). Deny assignments allow denying specific write/delete/action operations to all principals except specified exclusions.
 * Added `Remove-AzDenyAssignment` cmdlet for removing user-assigned deny assignments.
-* Regenerated Authorization Management SDK from `2024-07-01-preview` swagger specification to include deny assignment CRUD operations.
+* Regenerated Authorization Management SDK from `2024-07-01-preview` swagger specification to include deny assignment create and delete operations.
 
 ## Version 9.0.3
 * Updated the implementation of -Metadata parameter processing for cmdlets that use it for security. No behavior change.

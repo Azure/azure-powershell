@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Creates a new deny assignment at the specified scope.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DenyAssignment",
+        SupportsShouldProcess = true,
         DefaultParameterSetName = ScopeWithPrincipalsParameterSet),
         OutputType(typeof(PSDenyAssignment))]
     public class NewAzureDenyAssignmentCommand : ResourcesBaseCmdlet
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.Resources
         public string Scope { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
-            HelpMessage = "Actions to deny. Wildcards supported (e.g. */read, Microsoft.Storage/storageAccounts/*).")]
+            HelpMessage = "Actions to deny. Wildcards supported (e.g. */write, Microsoft.Storage/storageAccounts/*/delete). Note: read actions are not permitted in PP1 deny assignments.")]
         public string[] Action { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
             HelpMessage = "If set, the deny assignment does not apply to child scopes.")]
-        public SwitchParameter DoNotApplyToChildScopes { get; set; }
+        public SwitchParameter DoNotApplyToChildScope { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = InputFileParameterSet,
             HelpMessage = "Path to a JSON file containing the deny assignment definition.")]
@@ -140,7 +141,7 @@ namespace Microsoft.Azure.Commands.Resources
                     NotDataActions = NotDataAction != null ? new List<string>(NotDataAction) : new List<string>(),
                     ExcludePrincipalIds = ExcludePrincipalId != null ? new List<string>(ExcludePrincipalId) : new List<string>(),
                     ExcludePrincipalTypes = ExcludePrincipalType != null ? new List<string>(ExcludePrincipalType) : null,
-                    DoNotApplyToChildScopes = DoNotApplyToChildScopes.IsPresent,
+                    DoNotApplyToChildScopes = DoNotApplyToChildScope.IsPresent,
                 };
             }
 
@@ -148,8 +149,12 @@ namespace Microsoft.Azure.Commands.Resources
 
             Guid assignmentId = DenyAssignmentId == Guid.Empty ? Guid.NewGuid() : DenyAssignmentId;
 
-            PSDenyAssignment result = PoliciesClient.CreateDenyAssignment(options, assignmentId);
-            WriteObject(result);
+            if (ShouldProcess(options.Scope,
+                string.Format("Creating deny assignment '{0}'", options.DenyAssignmentName ?? assignmentId.ToString())))
+            {
+                PSDenyAssignment result = PoliciesClient.CreateDenyAssignment(options, assignmentId);
+                WriteObject(result);
+            }
         }
     }
 }

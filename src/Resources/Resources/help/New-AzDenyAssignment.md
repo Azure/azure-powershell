@@ -17,15 +17,15 @@ PP1 deny assignments apply to all principals (Everyone) and require at least one
 ```
 New-AzDenyAssignment -DenyAssignmentName <String> -Scope <String> -ExcludePrincipalId <String[]>
  [-Description <String>] [-Action <String[]>] [-NotAction <String[]>] [-DataAction <String[]>]
- [-NotDataAction <String[]>] [-ExcludePrincipalType <String[]>] [-DoNotApplyToChildScopes]
+ [-NotDataAction <String[]>] [-ExcludePrincipalType <String[]>] [-DoNotApplyToChildScope]
  [-DenyAssignmentId <Guid>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputFileParameterSet
 ```
 New-AzDenyAssignment -Scope <String> -InputFile <String> [-DenyAssignmentId <Guid>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataAction
-Data actions to deny.
+Data actions to deny. Note: Data actions are not supported in Public Preview 1 user-assigned deny assignments and will be rejected by the service.
 
 ```yaml
 Type: System.String[]
@@ -158,8 +158,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DoNotApplyToChildScopes
-If set, the deny assignment does not apply to child scopes.
+### -DoNotApplyToChildScope
+If set, the deny assignment does not apply to child scopes. Note: This property is not supported in Public Preview 1 user-assigned deny assignments and will be rejected by the service.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -235,7 +235,7 @@ Accept wildcard characters: False
 ```
 
 ### -NotDataAction
-Data actions to exclude from the deny assignment.
+Data actions to exclude from the deny assignment. Note: Data actions are not supported in Public Preview 1 user-assigned deny assignments.
 
 ```yaml
 Type: System.String[]
@@ -261,6 +261,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
