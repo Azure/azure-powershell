@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Attestation",
-  "ModuleVersion": "2.1.1",
+  "ModuleVersion": "3.0.0",
   "Cmdlets": [
     {
       "VerbName": "Add",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
             "Name": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateCount": "System.Int32",
               "Jwt": "System.String",
@@ -389,7 +389,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
             "Name": "Microsoft.Azure.Commands.Attestation.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "TextLength": "System.Int32",
               "JwtLength": "System.Int32",
@@ -874,7 +874,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
             "Name": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateCount": "System.Int32",
               "Jwt": "System.String",
@@ -1290,7 +1290,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
             "Name": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateCount": "System.Int32",
               "Jwt": "System.String",
@@ -2593,19 +2593,19 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection[]",
-              "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus]",
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
+              "PrivateEndpointConnection": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "AttestUri": "System.String",
+              "Status": "System.String",
               "SystemDataCreatedBy": "System.String",
+              "SystemDataCreatedByType": "System.String",
               "SystemDataLastModifiedBy": "System.String",
+              "SystemDataLastModifiedByType": "System.String",
               "TrustModel": "System.String"
             }
           },
@@ -2615,17 +2615,17 @@
         },
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProviderListResult",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProviderListResult, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Value": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider[]",
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
+              "Value": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataCreatedBy": "System.String",
-              "SystemDataLastModifiedBy": "System.String"
+              "SystemDataCreatedByType": "System.String",
+              "SystemDataLastModifiedBy": "System.String",
+              "SystemDataLastModifiedByType": "System.String"
             }
           },
           "ParameterSets": [
@@ -2658,7 +2658,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -2697,7 +2697,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2707,7 +2707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -2827,7 +2827,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2843,7 +2843,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2977,7 +2977,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -2993,7 +2993,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3077,7 +3077,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -3134,7 +3134,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3150,7 +3150,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3268,7 +3268,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3284,7 +3284,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3373,19 +3373,19 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection[]",
-              "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus]",
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
+              "PrivateEndpointConnection": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "AttestUri": "System.String",
+              "Status": "System.String",
               "SystemDataCreatedBy": "System.String",
+              "SystemDataCreatedByType": "System.String",
               "SystemDataLastModifiedBy": "System.String",
+              "SystemDataLastModifiedByType": "System.String",
               "TrustModel": "System.String"
             }
           },
@@ -3395,17 +3395,17 @@
         },
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProviderListResult",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProviderListResult, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Value": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider[]",
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
+              "Value": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataCreatedBy": "System.String",
-              "SystemDataLastModifiedBy": "System.String"
+              "SystemDataCreatedByType": "System.String",
+              "SystemDataLastModifiedBy": "System.String",
+              "SystemDataLastModifiedByType": "System.String"
             }
           },
           "ParameterSets": [
@@ -3450,7 +3450,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -3489,7 +3489,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3499,7 +3499,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -3637,7 +3637,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3653,7 +3653,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3802,7 +3802,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3818,7 +3818,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3952,7 +3952,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -3968,7 +3968,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4052,7 +4052,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -4109,7 +4109,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4125,7 +4125,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4243,7 +4243,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4259,7 +4259,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4348,19 +4348,19 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection[]",
-              "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus]",
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
+              "PrivateEndpointConnection": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "AttestUri": "System.String",
+              "Status": "System.String",
               "SystemDataCreatedBy": "System.String",
+              "SystemDataCreatedByType": "System.String",
               "SystemDataLastModifiedBy": "System.String",
+              "SystemDataLastModifiedByType": "System.String",
               "TrustModel": "System.String"
             }
           },
@@ -4428,6 +4428,24 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "JsonFilePath",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JsonString",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzureRMContext",
@@ -4454,7 +4472,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4464,7 +4482,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4563,6 +4581,140 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "CreateExpanded",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
                 "Name": "Location",
                 "Type": {
                   "Namespace": "System",
@@ -4598,6 +4750,54 @@
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "ProviderName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4646,7 +4846,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4662,7 +4862,401 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "CreateViaJsonFilePath",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JsonFilePath",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "ProviderName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "CreateViaJsonString",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JsonString",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "ProviderName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -4796,7 +5390,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -4835,7 +5429,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4845,7 +5439,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -4991,7 +5585,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5007,7 +5601,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5106,7 +5700,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -5163,7 +5757,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5179,7 +5773,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5312,7 +5906,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5328,7 +5922,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5432,19 +6026,19 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection[]",
-              "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus]",
-              "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
-              "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
+              "PrivateEndpointConnection": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection]",
               "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
               "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
               "AttestUri": "System.String",
+              "Status": "System.String",
               "SystemDataCreatedBy": "System.String",
+              "SystemDataCreatedByType": "System.String",
               "SystemDataLastModifiedBy": "System.String",
+              "SystemDataLastModifiedByType": "System.String",
               "TrustModel": "System.String"
             }
           },
@@ -5489,7 +6083,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Location": "System.String",
@@ -5507,6 +6101,24 @@
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JsonFilePath",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "JsonString",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5537,7 +6149,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5547,7 +6159,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
           },
           "ValidateNotNullOrEmpty": false
@@ -5593,6 +6205,400 @@
         }
       ],
       "ParameterSets": [
+        {
+          "Name": "UpdateViaJsonString",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "ProviderName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "JsonString",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "UpdateViaJsonFilePath",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "ProviderName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SubscriptionId",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "JsonFilePath",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRMContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSObject",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Break",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelineAppend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "HttpPipelinePrepend",
+                "Type": {
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Proxy",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Uri",
+                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyCredential",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProxyUseDefaultCredentials",
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProgressAction",
+                "AliasList": [
+                  "proga"
+                ],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ActionPreference",
+                  "AssemblyQualifiedName": "System.Management.Automation.ActionPreference, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
         {
           "Name": "UpdateExpanded",
           "Parameters": [
@@ -5699,7 +6705,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5715,7 +6721,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5799,7 +6805,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationIdentity, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Location": "System.String",
@@ -5871,7 +6877,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5887,7 +6893,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -5967,21 +6973,6 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "Tag",
-                "Type": {
-                  "Namespace": "System.Collections",
-                  "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRMContext",
@@ -6020,7 +7011,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6036,7 +7027,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep[], Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6306,328 +7297,25 @@
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription"
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection"
+    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection"
+      ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointConnectionProvisioningState]",
-        "PrivateLinkServiceConnectionStateStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointServiceConnectionStatus]",
         "PrivateEndpointId": "System.String",
         "PrivateLinkServiceConnectionStateActionsRequired": "System.String",
-        "PrivateLinkServiceConnectionStateDescription": "System.String"
+        "PrivateLinkServiceConnectionStateDescription": "System.String",
+        "PrivateLinkServiceConnectionStateStatus": "System.String",
+        "ProvisioningState": "System.String"
       }
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointConnectionProvisioningState]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointConnectionProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointConnectionProvisioningState, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointConnectionProvisioningState"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointConnectionProvisioningState": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointConnectionProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointConnectionProvisioningState, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointConnectionProvisioningState"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "System.Management.Automation.CompletionResult"
-      ]
-    },
-    "System.Management.Automation.CompletionResult": {
-      "Namespace": "System.Management.Automation",
-      "Name": "System.Management.Automation.CompletionResult",
-      "AssemblyQualifiedName": "System.Management.Automation.CompletionResult, System.Management.Automation, Version=7.4.6.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointServiceConnectionStatus]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointServiceConnectionStatus]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointServiceConnectionStatus, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointServiceConnectionStatus"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointServiceConnectionStatus": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointServiceConnectionStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointServiceConnectionStatus, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.PrivateEndpointServiceConnectionStatus"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
-    },
-    "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "GenericTypeArguments": [
-        "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType"
-      ]
-    },
-    "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Methods": [
-        {
-          "Name": "CompleteArgument",
-          "Parameters": [
-            {
-              "Name": "commandName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "parameterName",
-              "Type": "System.String"
-            },
-            {
-              "Name": "wordToComplete",
-              "Type": "System.String"
-            },
-            {
-              "Name": "commandAst",
-              "Type": "System.Management.Automation.Language.CommandAst"
-            },
-            {
-              "Name": "fakeBoundParameters",
-              "Type": "System.Collections.IDictionary"
-            }
-          ],
-          "ReturnType": "System.Collections.Generic.IEnumerable`1[System.Management.Automation.CompletionResult]"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "e",
-              "Type": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Object"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "GetType",
-          "ReturnType": "System.Type"
-        }
-      ]
     },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
@@ -6642,33 +7330,35 @@
       "Name": "System.DateTime",
       "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider[], Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider"
+    "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "GenericTypeArguments": [
+        "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider"
+      ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.IPrivateEndpointConnection[]",
-        "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.AttestationServiceStatus]",
-        "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
-        "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Support.CreatedByType]",
+        "PrivateEndpointConnection": "System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IPrivateEndpointConnection]",
         "SystemDataCreatedAt": "System.Nullable`1[System.DateTime]",
         "SystemDataLastModifiedAt": "System.Nullable`1[System.DateTime]",
         "AttestUri": "System.String",
+        "Status": "System.String",
         "SystemDataCreatedBy": "System.String",
+        "SystemDataCreatedByType": "System.String",
         "SystemDataLastModifiedBy": "System.String",
+        "SystemDataLastModifiedByType": "System.String",
         "TrustModel": "System.String"
       }
     },
     "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep, Az.Attestation.private, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.SendAsyncStep, Az.Attestation.private, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"

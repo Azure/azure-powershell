@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFunctionApp_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\r\n* At least one change applies to this cmdlet.                                                    *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
@@ -496,6 +497,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter Enabled { get => _siteEnvelopeBody.Enabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.Enabled = value; }
 
+        /// <summary>Whether to use end to end encryption between the FrontEnd and the Worker</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether to use end to end encryption between the FrontEnd and the Worker")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether to use end to end encryption between the FrontEnd and the Worker",
+        SerializedName = @"endToEndEncryptionEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter EndToEndEncryptionEnabled { get => _siteEnvelopeBody.EndToEndEncryptionEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _siteEnvelopeBody.EndToEndEncryptionEnabled = value; }
+
         /// <summary>Name of extended location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of extended location.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
@@ -552,8 +564,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"The maximum number of concurrent HTTP trigger invocations per instance.",
         SerializedName = @"perInstanceConcurrency",
-        PossibleTypes = new [] { typeof(float) })]
-        public float HttpPerInstanceConcurrency { get => _siteEnvelopeBody.HttpPerInstanceConcurrency ?? default(float); set => _siteEnvelopeBody.HttpPerInstanceConcurrency = value; }
+        PossibleTypes = new [] { typeof(int) })]
+        public int HttpPerInstanceConcurrency { get => _siteEnvelopeBody.HttpPerInstanceConcurrency ?? default(int); set => _siteEnvelopeBody.HttpPerInstanceConcurrency = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -830,8 +842,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.",
         SerializedName = @"instanceMemoryMB",
-        PossibleTypes = new [] { typeof(float) })]
-        public float ScaleAndConcurrencyInstanceMemoryMb { get => _siteEnvelopeBody.ScaleAndConcurrencyInstanceMemoryMb ?? default(float); set => _siteEnvelopeBody.ScaleAndConcurrencyInstanceMemoryMb = value; }
+        PossibleTypes = new [] { typeof(int) })]
+        public int ScaleAndConcurrencyInstanceMemoryMb { get => _siteEnvelopeBody.ScaleAndConcurrencyInstanceMemoryMb ?? default(int); set => _siteEnvelopeBody.ScaleAndConcurrencyInstanceMemoryMb = value; }
 
         /// <summary>The maximum number of instances for the function app.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum number of instances for the function app.")]
@@ -841,8 +853,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"The maximum number of instances for the function app.",
         SerializedName = @"maximumInstanceCount",
-        PossibleTypes = new [] { typeof(float) })]
-        public float ScaleAndConcurrencyMaximumInstanceCount { get => _siteEnvelopeBody.ScaleAndConcurrencyMaximumInstanceCount ?? default(float); set => _siteEnvelopeBody.ScaleAndConcurrencyMaximumInstanceCount = value; }
+        PossibleTypes = new [] { typeof(int) })]
+        public int ScaleAndConcurrencyMaximumInstanceCount { get => _siteEnvelopeBody.ScaleAndConcurrencyMaximumInstanceCount ?? default(int); set => _siteEnvelopeBody.ScaleAndConcurrencyMaximumInstanceCount = value; }
 
         /// <summary>
         /// <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _tier;
 
         /// <summary>
-        /// If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
+        /// The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
         /// for more details.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Description = @"The name of a managed cluster SKU.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Base")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Base", "Automatic")]
         string Name { get; set; }
         /// <summary>
-        /// If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
+        /// The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
         /// for more details.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -62,10 +62,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.",
+        Description = @"The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Standard", "Free")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Premium", "Standard", "Free")]
         string Tier { get; set; }
 
     }
@@ -74,13 +74,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
     {
         /// <summary>The name of a managed cluster SKU.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Base")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Base", "Automatic")]
         string Name { get; set; }
         /// <summary>
-        /// If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
+        /// The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
         /// for more details.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Standard", "Free")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Premium", "Standard", "Free")]
         string Tier { get; set; }
 
     }

@@ -149,7 +149,7 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
   [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -342,7 +342,7 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.

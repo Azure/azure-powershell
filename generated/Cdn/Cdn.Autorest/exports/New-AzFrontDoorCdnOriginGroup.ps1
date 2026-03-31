@@ -47,6 +47,8 @@ LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings
   [SuccessfulSamplesRequired <Int32?>]: The number of samples within the sample period that must succeed
 
 ORIGINGROUP <IAfdOriginGroup>: AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door.
+  [AuthenticationScope <String>]: The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
+  [AuthenticationType <String>]: The type of the authentication for the origin.
   [HealthProbeSetting <IHealthProbeParameters>]: Health probe settings to the origin that is used to determine the health of the origin.
     [ProbeIntervalInSecond <Int32?>]: The number of seconds between health probes.Default is 240sec.
     [ProbePath <String>]: The path relative to the origin that is used to determine the health of the origin.
@@ -59,6 +61,7 @@ ORIGINGROUP <IAfdOriginGroup>: AFDOrigin group comprising of origins is used for
   [Location <String>]: 
   [SessionAffinityState <String>]: Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
   [TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32?>]: Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
+  [UserAssignedIdentityId <String>]: Resource ID.
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
@@ -69,13 +72,13 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigingroup
@@ -103,7 +106,8 @@ param(
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -112,7 +116,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
@@ -121,6 +126,22 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
     ${ProfileInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # The scope used when requesting token from Microsoft Entra.
+    # For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
+    ${AuthenticationScope},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # The type of the authentication for the origin.
+    ${AuthenticationType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
@@ -153,6 +174,13 @@ param(
     # Default is 10 mins.
     # This property is currently not supported.
     ${TrafficRestorationTimeToHealedOrNewEndpointsInMinute},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Resource ID.
+    ${UserAssignedIdentityId},
 
     [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]

@@ -165,13 +165,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("SkuName"))
             {
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             }
             if (content.Contains("IdentityUserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("LogScrubbing"))
             {
@@ -298,13 +298,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("SkuName"))
             {
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             }
             if (content.Contains("IdentityUserAssignedIdentity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.UserAssignedIdentitiesTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities) content.GetValueForProperty("IdentityUserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileInternal)this).IdentityUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedServiceIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
             }
             if (content.Contains("LogScrubbing"))
             {

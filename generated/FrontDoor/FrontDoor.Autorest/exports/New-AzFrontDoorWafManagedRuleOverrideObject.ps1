@@ -65,7 +65,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]]
     # Describes the exclusions that are applied to this specific rule.
-    ${Exclusion}
+    ${Exclusion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Low", "Medium", "High")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Describes the override sensitivity to be applied when rule matches.
+    ${Sensitivity}
 )
 
 begin {

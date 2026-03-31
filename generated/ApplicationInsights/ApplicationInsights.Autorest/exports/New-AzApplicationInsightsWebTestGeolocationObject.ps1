@@ -23,12 +23,12 @@ Create an in-memory object for WebTestGeolocation.
 New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.WebTestGeolocation
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.WebTestGeolocation
 .Link
-https://learn.microsoft.com/powershell/module/Az.ApplicationInsights/new-AzApplicationInsightsWebTestGeolocationObject
+https://learn.microsoft.com/powershell/module/Az.ApplicationInsights/new-azapplicationinsightswebtestgeolocationobject
 #>
 function New-AzApplicationInsightsWebTestGeolocationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.WebTestGeolocation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.WebTestGeolocation])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -45,6 +45,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -73,6 +76,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

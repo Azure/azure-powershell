@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}", ApiVersion = "2025-04-15")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}", ApiVersion = "2025-06-01")]
     public partial class UpdateAzCdnProfile_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
         public string IdentityType { get => _profileUpdateParametersBody.IdentityType ?? null; set => _profileUpdateParametersBody.IdentityType = value; }
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         ReadOnly = false,
         Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _profileUpdateParametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _profileUpdateParametersBody.IdentityUserAssignedIdentity = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => _profileUpdateParametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _profileUpdateParametersBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity _inputObject;

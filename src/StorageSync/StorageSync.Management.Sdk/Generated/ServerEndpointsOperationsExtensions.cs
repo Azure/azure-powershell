@@ -13,6 +13,102 @@ namespace Microsoft.Azure.Management.StorageSync
     public static partial class ServerEndpointsOperationsExtensions
     {
         /// <summary>
+        /// Get a ServerEndpoint list.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ServerEndpoint> ListBySyncGroup(this IServerEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName)
+        {
+                return ((IServerEndpointsOperations)operations).ListBySyncGroupAsync(resourceGroupName, storageSyncServiceName, syncGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a ServerEndpoint list.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServerEndpoint>> ListBySyncGroupAsync(this IServerEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBySyncGroupWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get a ServerEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='serverEndpointName'>
+        /// Name of Server Endpoint object.
+        /// </param>
+        public static ServerEndpoint Get(this IServerEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string serverEndpointName)
+        {
+                return ((IServerEndpointsOperations)operations).GetAsync(resourceGroupName, storageSyncServiceName, syncGroupName, serverEndpointName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a ServerEndpoint.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='storageSyncServiceName'>
+        /// Name of Storage Sync Service resource.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// Name of Sync Group resource.
+        /// </param>
+        /// <param name='serverEndpointName'>
+        /// Name of Server Endpoint object.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ServerEndpoint> GetAsync(this IServerEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string serverEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, serverEndpointName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Create a new ServerEndpoint.
         /// </summary>
         /// <param name='operations'>
@@ -115,57 +211,6 @@ namespace Microsoft.Azure.Management.StorageSync
             }
         }
         /// <summary>
-        /// Get a ServerEndpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='serverEndpointName'>
-        /// Name of Server Endpoint object.
-        /// </param>
-        public static ServerEndpoint Get(this IServerEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string serverEndpointName)
-        {
-                return ((IServerEndpointsOperations)operations).GetAsync(resourceGroupName, storageSyncServiceName, syncGroupName, serverEndpointName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get a ServerEndpoint.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='serverEndpointName'>
-        /// Name of Server Endpoint object.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ServerEndpoint> GetAsync(this IServerEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, string serverEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, serverEndpointName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Delete a given ServerEndpoint.
         /// </summary>
         /// <param name='operations'>
@@ -214,51 +259,6 @@ namespace Microsoft.Azure.Management.StorageSync
             using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, serverEndpointName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Get a ServerEndpoint list.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<ServerEndpoint> ListBySyncGroup(this IServerEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName)
-        {
-                return ((IServerEndpointsOperations)operations).ListBySyncGroupAsync(resourceGroupName, storageSyncServiceName, syncGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Get a ServerEndpoint list.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='storageSyncServiceName'>
-        /// Name of Storage Sync Service resource.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// Name of Sync Group resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<ServerEndpoint>> ListBySyncGroupAsync(this IServerEndpointsOperations operations, string resourceGroupName, string storageSyncServiceName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListBySyncGroupWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
             }
         }
         /// <summary>
@@ -514,6 +514,39 @@ namespace Microsoft.Azure.Management.StorageSync
             using (var _result = await operations.BeginRecallActionWithHttpMessagesAsync(resourceGroupName, storageSyncServiceName, syncGroupName, serverEndpointName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Get a ServerEndpoint list.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ServerEndpoint> ListBySyncGroupNext(this IServerEndpointsOperations operations, string nextPageLink)
+        {
+                return ((IServerEndpointsOperations)operations).ListBySyncGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a ServerEndpoint list.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServerEndpoint>> ListBySyncGroupNextAsync(this IServerEndpointsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBySyncGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
     }

@@ -114,9 +114,13 @@ INSIGHTPROPERTY <IApplicationInsightsComponent>: An Application Insights compone
   [Tag <IComponentsResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
   [ApplicationType <ApplicationType?>]: Type of application being monitored.
+  [DisableIPMasking <Boolean?>]: Disable IP masking.
   [FlowType <FlowType?>]: Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
   [HockeyAppId <String>]: The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
+  [ImmediatePurgeDataOn30Day <Boolean?>]: Purge data immediately after 30 days.
+  [IngestionMode <IngestionMode?>]: Indicates the flow of the ingestion.
   [RequestSource <RequestSource?>]: Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
+  [RetentionInDay <Int32?>]: Retention period in days.
   [SamplingPercentage <Double?>]: Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/new-azappinsights
@@ -191,6 +195,13 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Disable IP masking.
+    ${DisableIPMasking},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType]
@@ -207,12 +218,34 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Purge data immediately after 30 days.
+    ${ImmediatePurgeDataOn30Day},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.IngestionMode]
+    # Indicates the flow of the ingestion.
+    ${IngestionMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource]
     # Describes what tool created this Application Insights component.
     # Customers using this API should set this to the default 'rest'.
     ${RequestSource},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # Retention period in days.
+    ${RetentionInDay},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]

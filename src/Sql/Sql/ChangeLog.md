@@ -19,6 +19,19 @@
 -->
 ## Upcoming Release
 
+## Version 6.4.1
+* Add support for the versionless AKV keys.
+    - The cmdlets supported are `Add-AzSqlServerKeyVaultKey`, `Get-AzSqlServerKeyVaultKey`, `Set-AzSqlServerTransparentDataEncryptionProtector`, `Get-AzSqlServerTransparentDataEncryptionProtector`, `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase`
+* Added public preview tag for `EnableSoftDelete` and `SoftDeleteRetentionDays` properties in `New-AzSqlServer` and `Set-AzSqlServer` cmdlets
+* Added public preview tag for `Get-AzSqlDeletedServer` and `Restore-AzSqlServer` cmdlets
+
+
+## Version 6.4.0
+* Added 'Get-AzSqlDeletedServer' cmdlet to retrieve soft deleted Azure SQL servers
+    - Supports retrieving deleted servers by location or specific deleted server by name
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* The EnableSoftDelete parameter is deprecated from `New-AzSqlServer` and `Set-AzSqlServer` cmdlets and will be removed by May 2026.
+
 ## Version 6.3.0
 * Updated with support for Immutable Long-Term Retention Backups
     - Updated `Set-AzSqlDatabaseBackupLongTermRetentionPolicy` cmdlet to expose `TimeBasedImmutability` and `TimeBasedImmutabilityMode` parameters.

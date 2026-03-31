@@ -46,6 +46,18 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [TransformationName <String>]: The name of the transformation.
+
+STREAMINGJOBINPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
+  [ClusterName <String>]: The name of the cluster.
+  [FunctionName <String>]: The name of the function.
+  [Id <String>]: Resource identity path
+  [InputName <String>]: The name of the input.
+  [JobName <String>]: The name of the streaming job.
+  [Location <String>]: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
+  [OutputName <String>]: The name of the output.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TransformationName <String>]: The name of the transformation.
 .Link
 https://learn.microsoft.com/powershell/module/az.streamanalytics/remove-azstreamanalyticsinput
 #>
@@ -60,6 +72,7 @@ param(
     ${JobName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityStreamingjob', Mandatory)]
     [Alias('InputName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
@@ -84,8 +97,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityStreamingjob', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity]
+    # Identity Parameter
+    ${StreamingjobInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -149,6 +167,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -170,10 +197,9 @@ begin {
         $mapping = @{
             Delete = 'Az.StreamAnalytics.private\Remove-AzStreamAnalyticsInput_Delete';
             DeleteViaIdentity = 'Az.StreamAnalytics.private\Remove-AzStreamAnalyticsInput_DeleteViaIdentity';
+            DeleteViaIdentityStreamingjob = 'Az.StreamAnalytics.private\Remove-AzStreamAnalyticsInput_DeleteViaIdentityStreamingjob';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -187,6 +213,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

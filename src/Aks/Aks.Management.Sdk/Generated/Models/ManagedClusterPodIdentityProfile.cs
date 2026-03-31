@@ -8,15 +8,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     using System.Linq;
 
     /// <summary>
-    /// See [use AAD pod
+    /// The pod identity profile of the Managed Cluster. See [use AAD pod
     /// identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
     /// for more details on pod identity integration.
     /// </summary>
-    /// <remarks>
-    /// See [use AAD pod
-    /// identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
-    /// for more details on pod identity integration.
-    /// </remarks>
     public partial class ManagedClusterPodIdentityProfile
     {
         /// <summary>
@@ -34,7 +29,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="enabled">Whether the pod identity addon is enabled.
         /// </param>
 
-        /// <param name="allowNetworkPluginKubenet">Running in Kubenet is disabled by default due to the security related
+        /// <param name="allowNetworkPluginKubenet">Whether pod identity is allowed to run on clusters with Kubenet networking.
+        /// Running in Kubenet is disabled by default due to the security related
         /// nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet
         /// network plugin with AAD Pod
         /// Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
@@ -69,9 +65,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public bool? Enabled {get; set; }
 
         /// <summary>
-        /// Gets or sets running in Kubenet is disabled by default due to the security
-        /// related nature of AAD Pod Identity and the risks of IP spoofing. See [using
-        /// Kubenet network plugin with AAD Pod
+        /// Gets or sets whether pod identity is allowed to run on clusters with
+        /// Kubenet networking. Running in Kubenet is disabled by default due to the
+        /// security related nature of AAD Pod Identity and the risks of IP spoofing.
+        /// See [using Kubenet network plugin with AAD Pod
         /// Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
         /// for more information.
         /// </summary>

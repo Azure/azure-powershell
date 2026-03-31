@@ -30,16 +30,20 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="capabilities">Capabilities on this Kubernetes version.
         /// </param>
 
+        /// <param name="isDefault">Whether this version is default.
+        /// </param>
+
         /// <param name="isPreview">Whether this version is in preview mode.
         /// </param>
 
         /// <param name="patchVersions">Patch versions of Kubernetes release
         /// </param>
-        public KubernetesVersion(string version = default(string), KubernetesVersionCapabilities capabilities = default(KubernetesVersionCapabilities), bool? isPreview = default(bool?), System.Collections.Generic.IDictionary<string, KubernetesPatchVersion> patchVersions = default(System.Collections.Generic.IDictionary<string, KubernetesPatchVersion>))
+        public KubernetesVersion(string version = default(string), KubernetesVersionCapabilities capabilities = default(KubernetesVersionCapabilities), bool? isDefault = default(bool?), bool? isPreview = default(bool?), System.Collections.Generic.IDictionary<string, KubernetesPatchVersion> patchVersions = default(System.Collections.Generic.IDictionary<string, KubernetesPatchVersion>))
 
         {
             this.Version = version;
             this.Capabilities = capabilities;
+            this.IsDefault = isDefault;
             this.IsPreview = isPreview;
             this.PatchVersions = patchVersions;
             CustomInit();
@@ -62,6 +66,12 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "capabilities")]
         public KubernetesVersionCapabilities Capabilities {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether this version is default.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isDefault")]
+        public bool? IsDefault {get; set; }
 
         /// <summary>
         /// Gets or sets whether this version is in preview mode.

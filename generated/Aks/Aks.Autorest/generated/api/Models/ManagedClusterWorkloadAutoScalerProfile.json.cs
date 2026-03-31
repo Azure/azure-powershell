@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return;
             }
             {_keda = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("keda"), out var __jsonKeda) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfileKeda.FromJson(__jsonKeda) : _keda;}
+            {_verticalPodAutoscaler = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonObject>("verticalPodAutoscaler"), out var __jsonVerticalPodAutoscaler) ? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler.FromJson(__jsonVerticalPodAutoscaler) : _verticalPodAutoscaler;}
             AfterFromJson(json);
         }
 
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return container;
             }
             AddIf( null != this._keda ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._keda.ToJson(null,serializationMode) : null, "keda" ,container.Add );
+            AddIf( null != this._verticalPodAutoscaler ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._verticalPodAutoscaler.ToJson(null,serializationMode) : null, "verticalPodAutoscaler" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -20,15 +20,14 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
         /// Storage account names must be between 3 and 24 characters in length and use
         /// numbers and lower-case letters only.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<BlobServiceProperties> List(this IBlobServicesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<BlobServiceProperties> List(this IBlobServicesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((IBlobServicesOperations)operations).ListAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -41,8 +40,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -52,58 +50,9 @@ namespace Microsoft.Azure.Management.Storage
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<BlobServiceProperties>> ListAsync(this IBlobServicesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BlobServiceProperties>> ListAsync(this IBlobServicesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Sets the properties of a storage account’s Blob service, including
-        /// properties for Storage Analytics and CORS (Cross-Origin Resource Sharing)
-        /// rules.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        public static BlobServiceProperties SetServiceProperties(this IBlobServicesOperations operations, string resourceGroupName, string accountName, BlobServiceProperties parameters)
-        {
-                return ((IBlobServicesOperations)operations).SetServicePropertiesAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Sets the properties of a storage account’s Blob service, including
-        /// properties for Storage Analytics and CORS (Cross-Origin Resource Sharing)
-        /// rules.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of the storage account within the specified resource group.
-        /// Storage account names must be between 3 and 24 characters in length and use
-        /// numbers and lower-case letters only.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<BlobServiceProperties> SetServicePropertiesAsync(this IBlobServicesOperations operations, string resourceGroupName, string accountName, BlobServiceProperties parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.SetServicePropertiesWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -117,8 +66,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -139,8 +87,7 @@ namespace Microsoft.Azure.Management.Storage
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is
-        /// case insensitive.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the storage account within the specified resource group.
@@ -153,6 +100,88 @@ namespace Microsoft.Azure.Management.Storage
         public static async System.Threading.Tasks.Task<BlobServiceProperties> GetServicePropertiesAsync(this IBlobServicesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetServicePropertiesWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Sets the properties of a storage account’s Blob service, including
+        /// properties for Storage Analytics and CORS (Cross-Origin Resource Sharing)
+        /// rules.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        public static BlobServiceProperties SetServiceProperties(this IBlobServicesOperations operations, string resourceGroupName, string accountName, BlobServiceProperties parameters)
+        {
+                return ((IBlobServicesOperations)operations).SetServicePropertiesAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Sets the properties of a storage account’s Blob service, including
+        /// properties for Storage Analytics and CORS (Cross-Origin Resource Sharing)
+        /// rules.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the storage account within the specified resource group.
+        /// Storage account names must be between 3 and 24 characters in length and use
+        /// numbers and lower-case letters only.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BlobServiceProperties> SetServicePropertiesAsync(this IBlobServicesOperations operations, string resourceGroupName, string accountName, BlobServiceProperties parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.SetServicePropertiesWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// List blob services of storage account. It returns a collection of one
+        /// object named default.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<BlobServiceProperties> ListNext(this IBlobServicesOperations operations, string nextPageLink)
+        {
+                return ((IBlobServicesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List blob services of storage account. It returns a collection of one
+        /// object named default.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BlobServiceProperties>> ListNextAsync(this IBlobServicesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

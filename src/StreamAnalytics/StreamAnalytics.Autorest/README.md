@@ -43,16 +43,13 @@ input-file:
 title: StreamAnalytics
 module-version: 2.0.0
 subject-prefix: StreamAnalytics
-identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+disable-transform-identity-type-for-operation:
+  - StreamingJobs_Update
 
 directive:
   - from: swagger-document
     where: $
-    transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourcegroups\/\{resourceGroupName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}")
+    transform: $ = $.replace(/\/subscriptions\/\{subscriptionId\}\/resourcegroups\/\{resourceGroupName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}")
 
   # Deleted etag of the properties, because the etag exist in the response header.
   - from: swagger-document
@@ -91,6 +88,7 @@ directive:
           "description": "Resource type"
         }
       }
+  # Renaming executeEndpoint to endpoint
   - from: swagger-document
     where: $.definitions.AzureMachineLearningServiceFunctionBindingRetrievalProperties.properties
     transform: >-
@@ -133,7 +131,7 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/case "canceled":/g, 'case "canceled":\ncase "testsucceeded":\ncase "deleting":')
-
+  
 # Remove cmdlets
   - where:
       verb: Set
@@ -191,25 +189,10 @@ directive:
       subject: Job$
       variant: ^Start$|^StartViaIdentity$
     remove: true
+# Remove Create and update unexpanded variant of cmdlets
   - where:
-      verb: New
-      subject: Cluster$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    remove: true
-  - where:
-      verb: Update
-      subject: Cluster$
-      variant: ^Update$|^UpdateViaIdentity$
-    remove: true
-  - where:
-      verb: New
-      subject: Transformation$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-    remove: true
-  - where:
-      verb: Update
-      subject: Transformation$
-      variant: ^Update$|^UpdateViaIdentity$
+      subject: ^Job$|Cluster$|Transformation$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true
 
 # Rename parameter name

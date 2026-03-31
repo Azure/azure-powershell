@@ -1,6 +1,6 @@
 variables:
   WindowsName: windows
-  WindowsAgentPoolName: pool-windows-2019
+  WindowsAgentPoolName: pool-windows-2022
   WindowsAgentPoolVMImage: ''
   LinuxName: linux
   LinuxAgentPoolName: pool-ubuntu-2404
@@ -36,7 +36,7 @@ jobs:
   displayName: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-  pool: pool-windows-2019
+  pool: pool-windows-2022
   steps:
   - checkout: self
   - task: UseDotNet@2
@@ -47,7 +47,7 @@ jobs:
   - task: NodeTool@0
     displayName: Install Autorest
     inputs:
-      versionSpec: '18.20.8'
+      versionSpec: '20.19.6'
       command: custom
       verbose: false
       customCommand: install autorest@latest
@@ -57,11 +57,6 @@ jobs:
       targetType: inline
       script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
       pwsh: true
-  - task: Npm@1
-    displayName: Install tsp client
-    inputs:
-      command: custom
-      customCommand: install -g @azure-tools/typespec-client-generator-cli@0.15.x
   - task: PowerShell@2
     displayName: 'Build'
     inputs:
@@ -99,7 +94,7 @@ jobs:
   dependsOn: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
-  pool: pool-windows-2019
+  pool: pool-windows-2022
   steps:
   - template: util/download-build-steps.yml
     parameters:
@@ -107,7 +102,7 @@ jobs:
   - task: NodeTool@0
     displayName: Install autorest
     inputs:
-      versionSpec: '18.20.8'
+      versionSpec: '20.19.6'
       command: custom
       verbose: false
       customCommand: install autorest@latest

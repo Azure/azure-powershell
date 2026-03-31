@@ -121,6 +121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("DelegatedResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal)this).DelegatedResource = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDelegatedResources) content.GetValueForProperty("DelegatedResource",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal)this).DelegatedResource, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DelegatedResourcesTypeConverter.ConvertFrom);
+            }
             if (content.Contains("UserAssignedIdentity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal)this).UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityUserAssignedIdentities) content.GetValueForProperty("UserAssignedIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal)this).UserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterIdentityUserAssignedIdentitiesTypeConverter.ConvertFrom);
@@ -153,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("DelegatedResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal)this).DelegatedResource = (Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IDelegatedResources) content.GetValueForProperty("DelegatedResource",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIdentityInternal)this).DelegatedResource, Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.DelegatedResourcesTypeConverter.ConvertFrom);
             }
             if (content.Contains("UserAssignedIdentity"))
             {

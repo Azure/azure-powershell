@@ -42,13 +42,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticlocation
@@ -67,14 +67,16 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -216,13 +218,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticmetric
@@ -241,14 +243,16 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -459,13 +463,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticranking
@@ -484,14 +488,16 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -677,13 +683,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticresource
@@ -702,14 +708,16 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -851,13 +859,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticwafloganalyticmetric
@@ -876,14 +884,16 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1080,13 +1090,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticwafloganalyticranking
@@ -1105,14 +1115,16 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1428,13 +1440,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
@@ -1454,7 +1466,8 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -1463,7 +1476,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1610,14 +1624,16 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Can', Mandatory, ValueFromPipeline)]
@@ -1791,13 +1807,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdncommitprofilemigration
@@ -1815,14 +1831,16 @@ param(
     [Parameter(ParameterSetName='Commit', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Commit')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CommitViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1996,14 +2014,16 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Migrate', Mandatory, ValueFromPipeline)]
@@ -2201,13 +2221,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 
 MIGRATIONENDPOINTMAPPING <IMigrationEndpointMapping[]>: A name map between classic CDN endpoints and AFD Premium/Standard endpoints.
@@ -2252,7 +2272,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='MigrateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2450,13 +2471,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnprofilessouri
@@ -2474,14 +2495,16 @@ param(
     [Parameter(ParameterSetName='Generate', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Generate')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GenerateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2631,24 +2654,26 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
-    # Resource location.
+    # The geo-location where the resource lives
     ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -2656,7 +2681,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The set of user assigned identities associated with the resource.
     # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
@@ -2865,13 +2890,13 @@ AFDENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 
 CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoint.
@@ -2886,13 +2911,13 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 
 ROUTE <IRoute>: Friendly Routes name mapping to the any Routes or secret related information.
@@ -2953,7 +2978,8 @@ param(
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2962,7 +2988,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpoint', Mandatory, ValueFromPipeline)]
@@ -3281,13 +3308,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnprofile
@@ -3306,14 +3333,16 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -3473,13 +3502,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofileendpointnameavailability
@@ -3501,7 +3530,8 @@ param(
     [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CheckExpanded')]
@@ -3510,7 +3540,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -3690,13 +3721,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilesecret
@@ -3718,7 +3749,8 @@ param(
     [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ValidateExpanded')]
@@ -3727,7 +3759,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -3913,13 +3946,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 
 LOGSCRUBBINGRULE <IProfileScrubbingRules[]>: List of log scrubbing rules applied to the Azure Front Door profile logs.
@@ -3947,7 +3980,8 @@ param(
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -3956,7 +3990,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -3967,7 +4002,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -3976,7 +4011,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The set of user assigned identities associated with the resource.
     # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
@@ -4192,13 +4227,13 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
   [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: Azure Subscription ID.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Version <String>]: The name of the Edge Action version
 
 PROFILEUPGRADEPARAMETER <IProfileUpgradeParameters>: Parameters required for profile upgrade.
@@ -4231,7 +4266,8 @@ param(
     [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Upgrade')]
@@ -4241,7 +4277,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Azure Subscription ID.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]

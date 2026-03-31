@@ -16,20 +16,18 @@
 
 <#
 .Synopsis
-Updates properties for a Storage Mover resource.
+Update properties for a Storage Mover resource.
 Properties not specified in the request body will be unchanged.
 .Description
-Updates properties for a Storage Mover resource.
+Update properties for a Storage Mover resource.
 Properties not specified in the request body will be unchanged.
 .Example
 Update-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover -Description "Update description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMover
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,57 +43,45 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
-
-STORAGEMOVER <IStorageMoverUpdateParameters>: The Storage Mover resource.
-  [Description <String>]: A description for the Storage Mover.
-  [Tag <IStorageMoverUpdateParametersTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemover
 #>
 function Update-AzStorageMover {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMover])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMover])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('StorageMoverName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the Storage Mover resource.
     ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParameters]
-    # The Storage Mover resource.
-    # To construct, see NOTES section for STORAGEMOVER properties and create a hash table.
-    ${StorageMover},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -107,10 +93,22 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20250701.IStorageMoverUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -168,6 +166,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -187,14 +194,12 @@ begin {
         }
 
         $mapping = @{
-            Update = 'Az.StorageMover.private\Update-AzStorageMover_Update';
             UpdateExpanded = 'Az.StorageMover.private\Update-AzStorageMover_UpdateExpanded';
-            UpdateViaIdentity = 'Az.StorageMover.private\Update-AzStorageMover_UpdateViaIdentity';
             UpdateViaIdentityExpanded = 'Az.StorageMover.private\Update-AzStorageMover_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.StorageMover.private\Update-AzStorageMover_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.StorageMover.private\Update-AzStorageMover_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -208,6 +213,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -16,27 +16,53 @@
 
 <#
 .Synopsis
-Create a new Kubernetes cluster feature or update properties of the Kubernetes cluster feature if it exists.
+Create a new Kubernetes cluster feature or create properties of the Kubernetes cluster feature if it exists.
 .Description
-Create a new Kubernetes cluster feature or update properties of the Kubernetes cluster feature if it exists.
+Create a new Kubernetes cluster feature or create properties of the Kubernetes cluster feature if it exists.
 .Example
 New-AzNetworkCloudKubernetesClusterFeature -FeatureName featureName -KubernetesClusterName kubernetesClusterName -ResourceGroupName resourceGroup -SubscriptionId subscriptionId -Location location -Tag @{"key"="value"}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesClusterFeature
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterFeature
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+KUBERNETESCLUSTERINPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the Kubernetes cluster agent pool.
+  [BareMetalMachineKeySetName <String>]: The name of the bare metal machine key set.
+  [BareMetalMachineName <String>]: The name of the bare metal machine.
+  [BmcKeySetName <String>]: The name of the baseboard management controller key set.
+  [CloudServicesNetworkName <String>]: The name of the cloud services network.
+  [ClusterManagerName <String>]: The name of the cluster manager.
+  [ClusterName <String>]: The name of the cluster.
+  [ConsoleName <String>]: The name of the virtual machine console.
+  [FeatureName <String>]: The name of the feature.
+  [Id <String>]: Resource identity path
+  [KubernetesClusterName <String>]: The name of the Kubernetes cluster.
+  [L2NetworkName <String>]: The name of the L2 network.
+  [L3NetworkName <String>]: The name of the L3 network.
+  [MetricsConfigurationName <String>]: The name of the metrics configuration for the cluster.
+  [RackName <String>]: The name of the rack.
+  [RackSkuName <String>]: The name of the rack SKU.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [StorageApplianceName <String>]: The name of the storage appliance.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TrunkedNetworkName <String>]: The name of the trunked network.
+  [VirtualMachineName <String>]: The name of the virtual machine.
+  [VolumeName <String>]: The name of the volume.
+
 OPTION <IStringKeyValuePair[]>: The configured options for the feature.
-  Key <String>: The key to the mapped value.
-  Value <String>: The value of the mapping key.
+  [Key <String>]: The key to the mapped value.
+  [Value <String>]: The value of the mapping key.
 .Link
 https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudkubernetesclusterfeature
 #>
 function New-AzNetworkCloudKubernetesClusterFeature {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesClusterFeature])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesClusterFeature])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -45,26 +71,38 @@ param(
     # The name of the feature.
     ${FeatureName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the Kubernetes cluster.
     ${KubernetesClusterName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
+    # Identity Parameter
+    ${KubernetesClusterInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Header')]
@@ -81,26 +119,40 @@ param(
     # Other values will result in error from server as they are not supported.
     ${IfNoneMatch},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IStringKeyValuePair[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStringKeyValuePair[]]
     # The configured options for the feature.
-    # To construct, see NOTES section for OPTION properties and create a hash table.
     ${Option},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityKubernetesClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -170,6 +222,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -190,10 +251,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.NetworkCloud.private\New-AzNetworkCloudKubernetesClusterFeature_CreateExpanded';
+            CreateViaIdentityKubernetesClusterExpanded = 'Az.NetworkCloud.private\New-AzNetworkCloudKubernetesClusterFeature_CreateViaIdentityKubernetesClusterExpanded';
+            CreateViaJsonFilePath = 'Az.NetworkCloud.private\New-AzNetworkCloudKubernetesClusterFeature_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.NetworkCloud.private\New-AzNetworkCloudKubernetesClusterFeature_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -207,6 +269,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -100,7 +100,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         [Parameter(ParameterSetName='CreateExpanded')]
         [Parameter(ParameterSetName='MigrateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities]))]
         [System.Collections.Hashtable]
         # The set of user assigned identities associated with the resource.
         # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
@@ -222,7 +222,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         $allPoliciesWithWAF = New-Object System.Collections.Generic.HashSet[string]
         $allPoliciesWithVault = New-Object System.Collections.Generic.HashSet[string]
         foreach ($info in $frontDoorInfos) {
-            $wafInfo = $info.WebApplicationFirewallPolicyLink
+            $wafInfo = $info.WebApplicationFirewallPolicyLinkId
             if ($wafInfo) {
                 $allPoliciesWithWAF.Add($wafInfo.ToLower())  | Out-Null
             }

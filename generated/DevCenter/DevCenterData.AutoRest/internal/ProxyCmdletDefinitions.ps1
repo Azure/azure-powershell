@@ -16,6 +16,821 @@
 
 <#
 .Synopsis
+Approves the creation of a Dev Box.
+.Description
+Approves the creation of a Dev Box.
+.Example
+Approve-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0 -Name myDevBox
+.Example
+Approve-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0" -Name myDevBox
+.Example
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
+Approve-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
+.Example
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
+Approve-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput 
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/approve-azdevcenteruserdevbox
+#>
+function Approve-AzDevCenterUserDevBox {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
+[CmdletBinding(DefaultParameterSetName='Approve', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Approve', Mandatory)]
+    [Alias('DevBoxName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Display name for the Dev Box.
+    ${Name},
+
+    [Parameter(ParameterSetName='Approve', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Approve', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='ApproveViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Approve = 'Az.DevCenterdata.private\Approve-AzDevCenterUserDevBox_Approve';
+            ApproveViaIdentity = 'Az.DevCenterdata.private\Approve-AzDevCenterUserDevBox_ApproveViaIdentity';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Disable a Dev Box addon.
+.Description
+Disable a Dev Box addon.
+.Example
+Disable-AzDevCenterUserDevBoxAddOn `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0" `
+  -DevBoxName "myDevBox" `
+  -AddOnName "devboxtunnel-sys-default"
+.Example
+Disable-AzDevCenterUserDevBoxAddOn `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0" `
+  -DevBoxName "myDevBox" `
+  -AddOnName "devboxtunnel-sys-default"
+.Example
+$addOnInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "786a823c-8037-48ab-89b8-8599901e67d0"
+    ProjectName = "DevProject"
+    AddOnName = "devboxtunnel-sys-default"
+}
+Disable-AzDevCenterUserDevBoxAddOn `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $addOnInput
+.Example
+$addOnInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "786a823c-8037-48ab-89b8-8599901e67d0"
+    ProjectName = "DevProject"
+    AddOnName = "devboxtunnel-sys-default"
+}
+Disable-AzDevCenterUserDevBoxAddOn `
+  -DevCenterName "ContosoDevCenter" `
+  -InputObject $addOnInput
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/disable-azdevcenteruserdevboxaddon
+#>
+function Disable-AzDevCenterUserDevBoxAddOn {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
+[CmdletBinding(DefaultParameterSetName='Disable', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Disable', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the dev box addon.
+    ${AddOnName},
+
+    [Parameter(ParameterSetName='Disable', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Display name for the Dev Box.
+    ${DevBoxName},
+
+    [Parameter(ParameterSetName='Disable', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Disable')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='DisableViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Disable = 'Az.DevCenterdata.private\Disable-AzDevCenterUserDevBoxAddOn_Disable';
+            DisableViaIdentity = 'Az.DevCenterdata.private\Disable-AzDevCenterUserDevBoxAddOn_DisableViaIdentity';
+        }
+        if (('Disable') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('UserId')) {
+            $PSBoundParameters['UserId'] = "me"
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Enable a Dev Box addon.
+.Description
+Enable a Dev Box addon.
+.Example
+Enable-AzDevCenterUserDevBoxAddOn `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0" `
+  -DevBoxName "myDevBox" `
+  -AddOnName "devboxtunnel-sys-default"
+.Example
+Enable-AzDevCenterUserDevBoxAddOn `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0" `
+  -DevBoxName "myDevBox" `
+  -AddOnName "devboxtunnel-sys-default"
+.Example
+$addOnInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "786a823c-8037-48ab-89b8-8599901e67d0"
+    ProjectName = "DevProject"
+    AddOnName = "devboxtunnel-sys-default"
+}
+Enable-AzDevCenterUserDevBoxAddOn `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $addOnInput
+.Example
+$addOnInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "786a823c-8037-48ab-89b8-8599901e67d0"
+    ProjectName = "DevProject"
+    AddOnName = "devboxtunnel-sys-default"
+}
+Enable-AzDevCenterUserDevBoxAddOn `
+  -DevCenterName "ContosoDevCenter" `
+  -InputObject $addOnInput
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/enable-azdevcenteruserdevboxaddon
+#>
+function Enable-AzDevCenterUserDevBoxAddOn {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
+[CmdletBinding(DefaultParameterSetName='Enable', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Enable', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the dev box addon.
+    ${AddOnName},
+
+    [Parameter(ParameterSetName='Enable', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Display name for the Dev Box.
+    ${DevBoxName},
+
+    [Parameter(ParameterSetName='Enable', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Enable')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='EnableViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Enable = 'Az.DevCenterdata.private\Enable-AzDevCenterUserDevBoxAddOn_Enable';
+            EnableViaIdentity = 'Az.DevCenterdata.private\Enable-AzDevCenterUserDevBoxAddOn_EnableViaIdentity';
+        }
+        if (('Enable') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('UserId')) {
+            $PSBoundParameters['UserId'] = "me"
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Captures a manual snapshot of the Dev Box.\nUpon completion, a snapshotId will be generated.\nTo retrieve all snapshots and their corresponding IDs, use the list snapshots endpoint.
+.Description
+Captures a manual snapshot of the Dev Box.\nUpon completion, a snapshotId will be generated.\nTo retrieve all snapshots and their corresponding IDs, use the list snapshots endpoint.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/export-azdevcenteruserdevboxsnapshot
+#>
+function Export-AzDevCenterUserDevBoxSnapshot {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
+[CmdletBinding(DefaultParameterSetName='Capture', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Capture', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Display name for the Dev Box.
+    ${DevBoxName},
+
+    [Parameter(ParameterSetName='Capture', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Capture')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='CaptureViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Capture = 'Az.DevCenterdata.private\Export-AzDevCenterUserDevBoxSnapshot_Capture';
+            CaptureViaIdentity = 'Az.DevCenterdata.private\Export-AzDevCenterUserDevBoxSnapshot_CaptureViaIdentity';
+        }
+        if (('Capture') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('UserId')) {
+            $PSBoundParameters['UserId'] = "me"
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets the specified catalog within the project.
 .Description
 Gets the specified catalog within the project.
@@ -37,7 +852,7 @@ Get-AzDevCenterUserCatalog -DevCenterName Contoso -InputObject $catalogInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICatalog
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICatalog
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,6 +860,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -53,17 +869,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterusercatalog
 #>
 function Get-AzDevCenterUserCatalog {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICatalog])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICatalog])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -208,7 +1026,7 @@ Get-AzDevCenterUserDevBoxAction -DevCenterName Contoso -InputObject $devBoxInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxAction
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -216,6 +1034,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -224,17 +1043,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxaction
 #>
 function Get-AzDevCenterUserDevBoxAction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAction])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -378,6 +1199,221 @@ end {
 
 <#
 .Synopsis
+Gets a Dev Box addon by Dev Box addon id.
+.Description
+Gets a Dev Box addon by Dev Box addon id.
+.Example
+Get-AzDevCenterUserDevBoxAddon `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0"
+.Example
+Get-AzDevCenterUserDevBoxAddon `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "me"
+.Example
+Get-AzDevCenterUserDevBoxAddon `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0" `
+  -AddOnName "devboxtunnel-sys-default"
+.Example
+Get-AzDevCenterUserDevBoxAddon `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "me" `
+  -AddOnName "devboxtunnel-sys-default"
+.Example
+$addonInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "786a823c-8037-48ab-89b8-8599901e67d0"
+    ProjectName = "DevProject"
+    AddOnName = "devboxtunnel-sys-default"
+}
+Get-AzDevCenterUserDevBoxAddon `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $addonInput
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAddOn
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxaddon
+#>
+function Get-AzDevCenterUserDevBoxAddon {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAddOn])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the dev box addon.
+    ${AddOnName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Display name for the Dev Box.
+    ${DevBoxName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.DevCenterdata.private\Get-AzDevCenterUserDevBoxAddon_Get';
+            GetViaIdentity = 'Az.DevCenterdata.private\Get-AzDevCenterUserDevBoxAddon_GetViaIdentity';
+            List = 'Az.DevCenterdata.private\Get-AzDevCenterUserDevBoxAddon_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('UserId')) {
+            $PSBoundParameters['UserId'] = "me"
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets a customization group.
 .Description
 Gets a customization group.
@@ -399,7 +1435,7 @@ Get-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName Contoso -InputObject 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -407,6 +1443,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -415,17 +1452,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxcustomizationgroup
 #>
 function Get-AzDevCenterUserDevBoxCustomizationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -596,7 +1635,7 @@ Get-AzDevCenterUserDevBoxCustomizationTaskDefinition -DevCenterName Contoso -Inp
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTaskDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTaskDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -604,6 +1643,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -612,17 +1652,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxcustomizationtaskdefinition
 #>
 function Get-AzDevCenterUserDevBoxCustomizationTaskDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTaskDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTaskDefinition])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -777,6 +1819,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -785,10 +1828,12 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
@@ -833,8 +1878,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
     [System.String]
     # The AAD object id of the user.
-    # If value is 'me', the identity is taken from the 
-    #  authentication context.
+    # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -941,6 +1985,190 @@ end {
 
 <#
 .Synopsis
+Gets the log for an imaging build task.
+.Description
+Gets the log for an imaging build task.
+.Example
+Get-AzDevCenterUserDevBoxImagingTaskLog `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -ImageBuildLogId "12345678-aaaa-bbbb-cccc-1234567890ab"
+.Example
+Get-AzDevCenterUserDevBoxImagingTaskLog `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -ImageBuildLogId "12345678-aaaa-bbbb-cccc-1234567890ab"
+.Example
+$logInput = @{
+    ProjectName = "DevProject"
+    ImageBuildLogId = "12345678-aaaa-bbbb-cccc-1234567890ab"
+}
+Get-AzDevCenterUserDevBoxImagingTaskLog `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $logInput
+.Example
+$logInput = @{
+    ProjectName = "DevProject"
+    ImageBuildLogId = "12345678-aaaa-bbbb-cccc-1234567890ab"
+}
+Get-AzDevCenterUserDevBoxImagingTaskLog `
+  -DevCenterName "ContosoDevCenter" `
+  -InputObject $logInput
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+System.String
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboximagingtasklog
+#>
+function Get-AzDevCenterUserDevBoxImagingTaskLog {
+[OutputType([System.String])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # An imaging build log id.
+    ${ImageBuildLogId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The DevCenter Project upon which to execute operations.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.DevCenterdata.private\Get-AzDevCenterUserDevBoxImagingTaskLog_Get';
+            GetViaIdentity = 'Az.DevCenterdata.private\Get-AzDevCenterUserDevBoxImagingTaskLog_GetViaIdentity';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets an operation on a Dev Box.
 .Description
 Gets an operation on a Dev Box.
@@ -962,7 +2190,7 @@ Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -InputObject $devBoxIn
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxOperation
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxOperation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -970,6 +2198,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -978,17 +2207,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxoperation
 #>
 function Get-AzDevCenterUserDevBoxOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1148,7 +2379,7 @@ Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName Contoso -InputObject $d
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IRemoteConnection
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IRemoteConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1156,6 +2387,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -1164,17 +2396,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxremoteconnection
 #>
 function Get-AzDevCenterUserDevBoxRemoteConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IRemoteConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IRemoteConnection])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1307,6 +2541,222 @@ end {
 
 <#
 .Synopsis
+Gets a snapshot by snapshot id.
+.Description
+Gets a snapshot by snapshot id.
+.Example
+Get-AzDevCenterUserDevBoxSnapshot `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0"
+.Example
+Get-AzDevCenterUserDevBoxSnapshot `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0" `
+  -SnapshotId "snapshot-1234"
+.Example
+Get-AzDevCenterUserDevBoxSnapshot `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "me"
+.Example
+Get-AzDevCenterUserDevBoxSnapshot `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "me" `
+  -SnapshotId "snapshot-1234"
+.Example
+$snapshotInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "786a823c-8037-48ab-89b8-8599901e67d0"
+    ProjectName = "DevProject"
+    SnapshotId = "snapshot-1234"
+}
+Get-AzDevCenterUserDevBoxSnapshot `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $snapshotInput
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxSnapshot
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxsnapshot
+#>
+function Get-AzDevCenterUserDevBoxSnapshot {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxSnapshot])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Display name for the Dev Box.
+    ${DevBoxName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The id of the snapshot.
+    # Should be treated as opaque string.
+    ${SnapshotId},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.DevCenterdata.private\Get-AzDevCenterUserDevBoxSnapshot_Get';
+            GetViaIdentity = 'Az.DevCenterdata.private\Get-AzDevCenterUserDevBoxSnapshot_GetViaIdentity';
+            List = 'Az.DevCenterdata.private\Get-AzDevCenterUserDevBoxSnapshot_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('UserId')) {
+            $PSBoundParameters['UserId'] = "me"
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Gets a Dev Box.
 .Description
 Gets a Dev Box.
@@ -1336,7 +2786,7 @@ Get-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBox
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBox
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1344,6 +2794,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -1352,17 +2803,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevbox
 #>
 function Get-AzDevCenterUserDevBox {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBox])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBox])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1498,6 +2951,151 @@ end {
 
 <#
 .Synopsis
+Gets a list of Dev Box creations that are pending approval.
+.Description
+Gets a list of Dev Box creations that are pending approval.
+.Example
+Get-AzDevCenterUserDevCenterApproval `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject"
+.Example
+Get-AzDevCenterUserDevCenterApproval `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject"
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IApproval
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevcenterapproval
+#>
+function Get-AzDevCenterUserDevCenterApproval {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IApproval])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the project.
+    ${ProjectName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
+    [System.Int32]
+    # The maximum number of result items per page.
+    ${Maxpagesize},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
+    [System.String[]]
+    # Select the specified fields to be included in the response.
+    ${Select},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
+    [System.Int32]
+    # The number of result items to skip.
+    ${Skip},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            List = 'Az.DevCenterdata.private\Get-AzDevCenterUserDevCenterApproval_List';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Retrieve a specific environment action.
 .Description
 Retrieve a specific environment action.
@@ -1519,7 +3117,7 @@ Get-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -InputObject $enviro
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentAction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1527,6 +3125,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -1535,17 +3134,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentaction
 #>
 function Get-AzDevCenterUserEnvironmentAction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentAction])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1714,7 +3315,7 @@ Get-AzDevCenterUserEnvironmentDefinition -DevCenterName Contoso -InputObject $en
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1722,6 +3323,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -1730,17 +3332,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentdefinition
 #>
 function Get-AzDevCenterUserEnvironmentDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentDefinition])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1892,6 +3496,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -1900,10 +3505,12 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
@@ -2070,7 +3677,7 @@ Get-AzDevCenterUserEnvironmentOperation -DevCenterName Contoso -InputObject $env
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentOperation
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentOperation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2078,6 +3685,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -2086,17 +3694,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentoperation
 #>
 function Get-AzDevCenterUserEnvironmentOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2256,7 +3866,7 @@ Get-AzDevCenterUserEnvironmentOutput -DevCenterName Contoso -InputObject $enviro
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentOutputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentOutputs
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2264,6 +3874,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -2272,17 +3883,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentoutput
 #>
 function Get-AzDevCenterUserEnvironmentOutput {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentOutputs])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentOutputs])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2419,14 +4032,37 @@ Gets the signed-in user's permitted abilities in an environment type.
 .Description
 Gets the signed-in user's permitted abilities in an environment type.
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserEnvironmentTypeAbility `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -EnvironmentTypeName "DevTest"
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserEnvironmentTypeAbility `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -EnvironmentTypeName "DevTest" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0"
+.Example
+$envTypeInput = @{
+    ProjectName = "DevProject"
+    EnvironmentTypeName = "DevTest"
+}
+Get-AzDevCenterUserEnvironmentTypeAbility `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $envTypeInput
+.Example
+$envTypeInput = @{
+    ProjectName = "DevProject"
+    EnvironmentTypeName = "DevTest"
+}
+Get-AzDevCenterUserEnvironmentTypeAbility `
+  -DevCenterName "ContosoDevCenter" `
+  -InputObject $envTypeInput
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentTypeAbilities
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentTypeAbilities
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2434,6 +4070,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -2442,17 +4079,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmenttypeability
 #>
 function Get-AzDevCenterUserEnvironmentTypeAbility {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentTypeAbilities])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentTypeAbilities])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2478,8 +4117,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
     [System.String]
     # The AAD object id of the user.
-    # If value is 'me', the identity is taken from the
-    #  authentication context.
+    # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2597,7 +4235,7 @@ Get-AzDevCenterUserEnvironmentType -DevCenterName Contoso -ProjectName DevProjec
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentType
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2605,6 +4243,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -2613,17 +4252,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmenttype
 #>
 function Get-AzDevCenterUserEnvironmentType {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentType])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentType])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2773,7 +4414,7 @@ Get-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2781,6 +4422,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -2789,17 +4431,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironment
 #>
 function Get-AzDevCenterUserEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -2945,7 +4589,7 @@ Get the status of an operation.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2953,6 +4597,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -2961,17 +4606,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruseroperationstatuses
 #>
 function Get-AzDevCenterUserOperationStatuses {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3114,7 +4761,7 @@ Get-AzDevCenterUserPool -DevCenterName Contoso -InputObject $devBoxInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IPool
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3122,6 +4769,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -3130,17 +4778,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserpool
 #>
 function Get-AzDevCenterUserPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IPool])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3268,14 +4918,33 @@ Gets the signed-in user's permitted abilities in a project.
 .Description
 Gets the signed-in user's permitted abilities in a project.
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserProjectAbility `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject"
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserProjectAbility `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0"
+.Example
+$projectInput = @{
+    ProjectName = "DevProject"
+}
+Get-AzDevCenterUserProjectAbility `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $projectInput
+.Example
+$projectInput = @{
+    ProjectName = "DevProject"
+}
+Get-AzDevCenterUserProjectAbility `
+  -DevCenterName "ContosoDevCenter" `
+  -InputObject $projectInput
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProjectAbilities
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IProjectAbilities
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3283,6 +4952,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -3291,17 +4961,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserprojectability
 #>
 function Get-AzDevCenterUserProjectAbility {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProjectAbilities])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IProjectAbilities])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3321,8 +4993,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
     [System.String]
     # The AAD object id of the user.
-    # If value is 'me', the identity is taken from the
-    #  authentication context.
+    # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -3450,7 +5121,7 @@ Get-AzDevCenterUserProject -DevCenterName Contoso -InputObject $devBoxInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3458,6 +5129,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -3466,17 +5138,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserproject
 #>
 function Get-AzDevCenterUserProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IProject])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3619,7 +5293,7 @@ Get-AzDevCenterUserSchedule -DevCenterName Contoso -ProjectName DevProject -Pool
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3627,6 +5301,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -3635,17 +5310,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserschedule
 #>
 function Get-AzDevCenterUserSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ISchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ISchedule])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -3778,6 +5455,446 @@ end {
 
 <#
 .Synopsis
+Aligns a Dev Box to the pools current pool configuration.
+.Description
+Aligns a Dev Box to the pools current pool configuration.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IPoolAlignBody
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IPoolAlignBody>: Indicates which pool properties to align on.
+  Target <PoolAlignTarget[]>: The targets to align on.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruseraligndevbox
+#>
+function Invoke-AzDevCenterUserAlignDevBox {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
+[CmdletBinding(DefaultParameterSetName='AlignExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Align', Mandatory)]
+    [Parameter(ParameterSetName='AlignExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Display name for the Dev Box.
+    ${DevBoxName},
+
+    [Parameter(ParameterSetName='Align', Mandatory)]
+    [Parameter(ParameterSetName='AlignExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Align')]
+    [Parameter(ParameterSetName='AlignExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='AlignViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='AlignViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Align', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='AlignViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IPoolAlignBody]
+    # Indicates which pool properties to align on.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='AlignExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AlignViaIdentityExpanded', Mandatory)]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.PoolAlignTarget])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.PoolAlignTarget[]]
+    # The targets to align on.
+    ${Target},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Align = 'Az.DevCenterdata.private\Invoke-AzDevCenterUserAlignDevBox_Align';
+            AlignExpanded = 'Az.DevCenterdata.private\Invoke-AzDevCenterUserAlignDevBox_AlignExpanded';
+            AlignViaIdentity = 'Az.DevCenterdata.private\Invoke-AzDevCenterUserAlignDevBox_AlignViaIdentity';
+            AlignViaIdentityExpanded = 'Az.DevCenterdata.private\Invoke-AzDevCenterUserAlignDevBox_AlignViaIdentityExpanded';
+        }
+        if (('Align', 'AlignExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('UserId')) {
+            $PSBoundParameters['UserId'] = "me"
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Aligns all Dev Boxes in the pool with the current configuration.
+.Description
+Aligns all Dev Boxes in the pool with the current configuration.
+.Example
+Invoke-AzDevCenterUserAlignPool `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -PoolName "DevPool01" `
+  -Target "NetworkProperties"
+.Example
+Invoke-AzDevCenterUserAlignPool `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -PoolName "DevPool01" `
+  -Target "NetworkProperties"
+.Example
+$poolInput = @{
+    ProjectName = "DevProject"
+    PoolName = "DevPool01"
+}
+Invoke-AzDevCenterUserAlignPool `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $poolInput `
+  -Target "NetworkProperties"
+.Example
+$body = @{
+    Target = @("NetworkProperties")
+}
+Invoke-AzDevCenterUserAlignPool `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -PoolName "DevPool01" `
+  -Body $body
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IPoolAlignBody
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IPoolAlignBody>: Indicates which pool properties to align on.
+  Target <PoolAlignTarget[]>: The targets to align on.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruseralignpool
+#>
+function Invoke-AzDevCenterUserAlignPool {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='AlignExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Align', Mandatory)]
+    [Parameter(ParameterSetName='AlignExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Pool name.
+    ${PoolName},
+
+    [Parameter(ParameterSetName='Align', Mandatory)]
+    [Parameter(ParameterSetName='AlignExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='AlignViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='AlignViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Align', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='AlignViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IPoolAlignBody]
+    # Indicates which pool properties to align on.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='AlignExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AlignViaIdentityExpanded', Mandatory)]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.PoolAlignTarget])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.PoolAlignTarget[]]
+    # The targets to align on.
+    ${Target},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Align = 'Az.DevCenterdata.private\Invoke-AzDevCenterUserAlignPool_Align';
+            AlignExpanded = 'Az.DevCenterdata.private\Invoke-AzDevCenterUserAlignPool_AlignExpanded';
+            AlignViaIdentity = 'Az.DevCenterdata.private\Invoke-AzDevCenterUserAlignPool_AlignViaIdentity';
+            AlignViaIdentityExpanded = 'Az.DevCenterdata.private\Invoke-AzDevCenterUserAlignPool_AlignViaIdentityExpanded';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Delays the occurrence of an action.
 .Description
 Delays the occurrence of an action.
@@ -3793,9 +5910,9 @@ Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDev
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxAction
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAction
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxActionDelayResult
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxActionDelayResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3803,6 +5920,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -3811,17 +5929,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelaydevboxaction
 #>
 function Invoke-AzDevCenterUserDelayDevBoxAction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxActionDelayResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxActionDelayResult])]
 [CmdletBinding(DefaultParameterSetName='Delay1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3871,7 +5991,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
     [System.DateTime]
-    # The time to delay the Dev Box action or actions until.
+    # The time to delay the Dev Box action or actions until, in RFC3339 format.
     ${DelayUntil},
 
     [Parameter()]
@@ -3984,7 +6104,7 @@ Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName Contoso -Environment
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentAction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3992,6 +6112,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -4000,17 +6121,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelayenvironmentaction
 #>
 function Invoke-AzDevCenterUserDelayEnvironmentAction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentAction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentAction])]
 [CmdletBinding(DefaultParameterSetName='Delay', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4056,7 +6179,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
     [System.DateTime]
-    # The time to delay the Environment action until.
+    # The time to delay the Environment action until, in RFC3339 format.
     ${Until},
 
     [Parameter()]
@@ -4156,6 +6279,227 @@ end {
 
 <#
 .Synopsis
+Creates a Dev Box addon.
+.Description
+Creates a Dev Box addon.
+.Example
+New-AzDevCenterUserDevBoxAddOn `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -AddOnName "devboxtunnel-sys-default" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0"
+.Example
+New-AzDevCenterUserDevBoxAddOn `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -AddOnName "devboxtunnel-sys-default" `
+  -UserId "me"
+.Example
+$addOnInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "786a823c-8037-48ab-89b8-8599901e67d0"
+    ProjectName = "DevProject"
+    AddOnName = "devboxtunnel-sys-default"
+}
+New-AzDevCenterUserDevBoxAddOn `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $addOnInput
+.Example
+$addOnInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "me"
+    ProjectName = "DevProject"
+    AddOnName = "devboxtunnel-sys-default"
+}
+New-AzDevCenterUserDevBoxAddOn `
+  -DevCenterName "ContosoDevCenter" `
+  -InputObject $addOnInput
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAddOn
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserdevboxaddon
+#>
+function New-AzDevCenterUserDevBoxAddOn {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAddOn])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The name of the Dev Box addon.
+    ${AddOnName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The name of a Dev Box.
+    ${DevBoxName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The DevCenter Project upon which to execute operations.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            CreateExpanded = 'Az.DevCenterdata.private\New-AzDevCenterUserDevBoxAddOn_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.DevCenterdata.private\New-AzDevCenterUserDevBoxAddOn_CreateViaIdentityExpanded';
+        }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('UserId')) {
+            $PSBoundParameters['UserId'] = "me"
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Applies customizations to the Dev Box.
 .Description
 Applies customizations to the Dev Box.
@@ -4184,7 +6528,7 @@ New-AzDevCenterUserDevBoxCustomizationGroup -DevCenterName Contoso -InputObject 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4192,6 +6536,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -4200,10 +6545,12 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
@@ -4218,7 +6565,7 @@ TASK <ICustomizationTask[]>: Tasks to apply. Note by default tasks are excluded 
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserdevboxcustomizationgroup
 #>
 function New-AzDevCenterUserDevBoxCustomizationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4250,8 +6597,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
     [System.String]
     # The AAD object id of the user.
-    # If value is 'me', the identity is taken from the 
-    #  authentication context.
+    # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -4264,7 +6610,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTask[]]
     # Tasks to apply.
     # Note by default tasks are excluded from the response whenlisting customization groups.
     # To include them, use the `include=tasks` queryparameter.
@@ -4385,7 +6731,7 @@ New-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput -Pool
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBox
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBox
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4393,6 +6739,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -4401,17 +6748,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserdevbox
 #>
 function New-AzDevCenterUserDevBox {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBox])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBox])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4430,7 +6779,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The DevCenter Project upon which to execute the operation.
+    # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4453,13 +6802,6 @@ param(
     [System.String]
     # The name of the Dev Box pool this machine belongs to.
     ${PoolName},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.LocalAdminStatus]
-    # Indicates whether the owner of the Dev Box is a local administrator.
-    ${LocalAdministrator},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4601,7 +6943,7 @@ New-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -Ca
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4609,6 +6951,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -4617,17 +6960,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserenvironment
 #>
 function New-AzDevCenterUserEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4690,7 +7035,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentParameters]))]
     [System.Collections.Hashtable]
     # Parameters object for the environment.
     ${Parameter},
@@ -4804,6 +7149,233 @@ end {
 
 <#
 .Synopsis
+Deletes a Dev Box addon.
+.Description
+Deletes a Dev Box addon.
+.Example
+Remove-AzDevCenterUserDevBoxAddOn `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -AddOnName "devboxtunnel-sys-default" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0"
+.Example
+Remove-AzDevCenterUserDevBoxAddOn `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -AddOnName "devboxtunnel-sys-default" `
+  -UserId "me"
+.Example
+$addOnInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "786a823c-8037-48ab-89b8-8599901e67d0"
+    ProjectName = "DevProject"
+    AddOnName = "devboxtunnel-sys-default"
+}
+Remove-AzDevCenterUserDevBoxAddOn `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $addOnInput
+.Example
+$addOnInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "me"
+    ProjectName = "DevProject"
+    AddOnName = "devboxtunnel-sys-default"
+}
+Remove-AzDevCenterUserDevBoxAddOn `
+  -DevCenterName "ContosoDevCenter" `
+  -InputObject $addOnInput
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteruserdevboxaddon
+#>
+function Remove-AzDevCenterUserDevBoxAddOn {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The name of the Dev Box addon.
+    ${AddOnName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The name of a Dev Box.
+    ${DevBoxName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The DevCenter Project upon which to execute operations.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Delete = 'Az.DevCenterdata.private\Remove-AzDevCenterUserDevBoxAddOn_Delete';
+            DeleteViaIdentity = 'Az.DevCenterdata.private\Remove-AzDevCenterUserDevBoxAddOn_DeleteViaIdentity';
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('UserId')) {
+            $PSBoundParameters['UserId'] = "me"
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Deletes a Dev Box.
 .Description
 Deletes a Dev Box.
@@ -4821,7 +7393,7 @@ Remove-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -4829,6 +7401,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -4837,17 +7410,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteruserdevbox
 #>
 function Remove-AzDevCenterUserDevBox {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5016,7 +7591,7 @@ Remove-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5024,6 +7599,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -5032,17 +7608,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteruserenvironment
 #>
 function Remove-AzDevCenterUserEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5078,6 +7656,13 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # The query option to force environment deletion even if the environment definition does not exist.
+    # This is a best-effort delete, and anything custom that forces resource creation beyond the associated resource group may not be deleted.
+    ${Force},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -5213,7 +7798,7 @@ Repair-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5221,6 +7806,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -5229,17 +7815,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/repair-azdevcenteruserdevbox
 #>
 function Repair-AzDevCenterUserDevBox {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Repair', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5402,7 +7990,7 @@ Restart-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5410,6 +7998,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -5418,17 +8007,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/restart-azdevcenteruserdevbox
 #>
 function Restart-AzDevCenterUserDevBox {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Restart', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5574,6 +8165,627 @@ end {
 
 <#
 .Synopsis
+Restores a Dev Box to a specified snapshot.
+.Description
+Restores a Dev Box to a specified snapshot.
+.Example
+Restore-AzDevCenterUserDevBoxSnapshot `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0" `
+  -SnapshotId "snapshot-1234"
+.Example
+Restore-AzDevCenterUserDevBoxSnapshot `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "me" `
+  -SnapshotId "snapshot-1234"
+.Example
+$snapshotInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "786a823c-8037-48ab-89b8-8599901e67d0"
+    ProjectName = "DevProject"
+}
+Restore-AzDevCenterUserDevBoxSnapshot `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -InputObject $snapshotInput `
+  -SnapshotId "snapshot-1234"
+.Example
+$snapshotInput = @{
+    DevBoxName = "myDevBox"
+    UserId = "me"
+    ProjectName = "DevProject"
+}
+Restore-AzDevCenterUserDevBoxSnapshot `
+  -DevCenterName "ContosoDevCenter" `
+  -InputObject $snapshotInput `
+  -SnapshotId "snapshot-1234"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
+  [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
+  [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
+  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/restore-azdevcenteruserdevboxsnapshot
+#>
+function Restore-AzDevCenterUserDevBoxSnapshot {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
+[CmdletBinding(DefaultParameterSetName='Restore', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Restore', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Display name for the Dev Box.
+    ${DevBoxName},
+
+    [Parameter(ParameterSetName='Restore', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the project.
+    ${ProjectName},
+
+    [Parameter(ParameterSetName='Restore')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='RestoreViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
+    [System.String]
+    # Required parameter that specifies the snapshot id to use for the restore operation.
+    ${SnapshotId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Restore = 'Az.DevCenterdata.private\Restore-AzDevCenterUserDevBoxSnapshot_Restore';
+            RestoreViaIdentity = 'Az.DevCenterdata.private\Restore-AzDevCenterUserDevBoxSnapshot_RestoreViaIdentity';
+        }
+        if (('Restore') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('UserId')) {
+            $PSBoundParameters['UserId'] = "me"
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Lets a user set their own active hours for their Dev Box, overriding the defaults set at the pool level.
+.Description
+Lets a user set their own active hours for their Dev Box, overriding the defaults set at the pool level.
+.Example
+Set-AzDevCenterUserDevBoxActiveHour `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0" `
+  -StartTimeHour 9 `
+  -EndTimeHour 17 `
+  -TimeZone "America/Los_Angeles"
+.Example
+Set-AzDevCenterUserDevBoxActiveHour `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "me" `
+  -StartTimeHour 8 `
+  -EndTimeHour 16 `
+  -TimeZone "America/New_York"
+.Example
+$activeHours = @{
+    StartTimeHour = 10
+    EndTimeHour = 18
+    TimeZone = "America/Chicago"
+}
+Set-AzDevCenterUserDevBoxActiveHour `
+  -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "me" `
+  -Body $activeHours
+.Example
+$activeHours = @{
+    StartTimeHour = 7
+    EndTimeHour = 15
+    TimeZone = "America/Los_Angeles"
+}
+Set-AzDevCenterUserDevBoxActiveHour `
+  -DevCenterName "ContosoDevCenter" `
+  -ProjectName "DevProject" `
+  -DevBoxName "myDevBox" `
+  -UserId "786a823c-8037-48ab-89b8-8599901e67d0" `
+  -Body $activeHours
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IUserActiveHoursConfiguration
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBox
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IUserActiveHoursConfiguration>: Manual user set active hours configuration.
+  [EndTimeHour <Int32?>]: The end time of the active hours.
+  [StartTimeHour <Int32?>]: The start time of the active hours.
+  [TimeZone <String>]: The timezone of the active hours.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/set-azdevcenteruserdevboxactivehour
+#>
+function Set-AzDevCenterUserDevBoxActiveHour {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBox])]
+[CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Display name for the Dev Box.
+    ${DevBoxName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # Name of the project.
+    ${ProjectName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='Set', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IUserActiveHoursConfiguration]
+    # Manual user set active hours configuration.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='SetExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [System.Int32]
+    # The end time of the active hours.
+    ${EndTimeHour},
+
+    [Parameter(ParameterSetName='SetExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [System.Int32]
+    # The start time of the active hours.
+    ${StartTimeHour},
+
+    [Parameter(ParameterSetName='SetExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [System.String]
+    # The timezone of the active hours.
+    ${TimeZone},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Set = 'Az.DevCenterdata.private\Set-AzDevCenterUserDevBoxActiveHour_Set';
+            SetExpanded = 'Az.DevCenterdata.private\Set-AzDevCenterUserDevBoxActiveHour_SetExpanded';
+        }
+        if (('Set', 'SetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('UserId')) {
+            $PSBoundParameters['UserId'] = "me"
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Creates a Dev Box addon.
+.Description
+Creates a Dev Box addon.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAddOn
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAddOn
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IDevBoxAddOn>: A Dev Box addon.
+  [Code <String>]: One of a server-defined set of error codes.
+  [Detail <IAzureCoreFoundationsError[]>]: An array of details about specific errors that led to this reported error.
+    Code <String>: One of a server-defined set of error codes.
+    Message <String>: A human-readable representation of the error.
+    [Detail <IAzureCoreFoundationsError[]>]: An array of details about specific errors that led to this reported error.
+    [Innererror <IAzureCoreFoundationsInnerError>]: An object containing more specific information than the current object about the error.
+      [Code <String>]: One of a server-defined set of error codes.
+      [Innererror <IAzureCoreFoundationsInnerError>]: Inner error.
+    [Target <String>]: The target of the error.
+  [Innererror <IAzureCoreFoundationsInnerError>]: An object containing more specific information than the current object about the error.
+  [Message <String>]: A human-readable representation of the error.
+  [OperationLocation <String>]: 
+  [Target <String>]: The target of the error.
+.Link
+https://learn.microsoft.com/powershell/module/az.devcenter/set-azdevcenteruserdevboxaddon
+#>
+function Set-AzDevCenterUserDevBoxAddOn {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAddOn])]
+[CmdletBinding(DefaultParameterSetName='ReplaceExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [System.String]
+    # The DevCenter-specific URI to operate on.
+    ${Endpoint},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The name of the Dev Box addon.
+    ${AddOnName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The name of a Dev Box.
+    ${DevBoxName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The DevCenter Project upon which to execute operations.
+    ${ProjectName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='Replace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IDevBoxAddOn]
+    # A Dev Box addon.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Replace = 'Az.DevCenterdata.private\Set-AzDevCenterUserDevBoxAddOn_Replace';
+            ReplaceExpanded = 'Az.DevCenterdata.private\Set-AzDevCenterUserDevBoxAddOn_ReplaceExpanded';
+        }
+        if (('Replace', 'ReplaceExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('UserId')) {
+            $PSBoundParameters['UserId'] = "me"
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Creates or updates an environment.
 .Description
 Creates or updates an environment.
@@ -5583,9 +8795,9 @@ Creates or updates an environment.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -5615,7 +8827,7 @@ BODY <IEnvironment>: Properties of an environment.
 https://learn.microsoft.com/powershell/module/az.devcenter/set-azdevcenteruserenvironment
 #>
 function Set-AzDevCenterUserEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment])]
 [CmdletBinding(DefaultParameterSetName='ReplaceExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -5647,7 +8859,7 @@ param(
 
     [Parameter(ParameterSetName='Replace', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment]
     # Properties of an environment.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
@@ -5678,7 +8890,7 @@ param(
 
     [Parameter(ParameterSetName='ReplaceExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentParameters]))]
     [System.Collections.Hashtable]
     # Parameters object for the environment.
     ${Parameter},
@@ -5817,6 +9029,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -5825,10 +9038,12 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
@@ -6006,6 +9221,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -6014,10 +9230,12 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
@@ -6187,7 +9405,7 @@ Start-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6195,6 +9413,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -6203,17 +9422,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/start-azdevcenteruserdevbox
 #>
 function Start-AzDevCenterUserDevBox {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Start', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6376,7 +9597,7 @@ Stop-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6384,6 +9605,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -6392,17 +9614,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/stop-azdevcenteruserdevbox
 #>
 function Stop-AzDevCenterUserDevBox {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Stop', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6623,6 +9847,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -6631,10 +9856,12 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
@@ -6674,7 +9901,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ICustomizationTask[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.ICustomizationTask[]]
     # Tasks to apply.
     # To construct, see NOTES section for TASK properties and create a hash table.
     ${Task},
@@ -6814,23 +10041,22 @@ $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" =
 Update-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -ExpirationDate $dateIn8Months
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentUpdate
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentPatchProperties
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IEnvironmentUpdate>: Properties of an environment.
+BODY <IEnvironmentPatchProperties>: Properties of an environment. These properties can be updated via PATCH after the resource has been created.
   [ExpirationDate <DateTime?>]: The time the expiration date will be triggered (UTC), after which the         environment and associated resources will be deleted.
-  [Parameter <IEnvironmentUpdateParameters>]: Parameters object for the environment.
-    [(Any) <Object>]: This indicates any property can be added to this object.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of the action.
+  [AddOnName <String>]: Name of the dev box addon.
   [CatalogName <String>]: Name of the catalog.
   [CustomizationGroupName <String>]: Name of the customization group.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -6839,17 +10065,19 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [EnvironmentName <String>]: Environment name.
   [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
+  [ImageBuildLogId <String>]: An imaging build log id.
   [OperationId <String>]: Unique identifier for the Dev Box operation.
   [PoolName <String>]: Pool name.
   [ProjectName <String>]: Name of the project.
   [ScheduleName <String>]: Display name for the Schedule.
+  [SnapshotId <String>]: The id of the snapshot. Should be treated as opaque string.
   [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/update-azdevcenteruserenvironment
 #>
 function Update-AzDevCenterUserEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironment])]
 [CmdletBinding(DefaultParameterSetName='PatchExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -6893,8 +10121,9 @@ param(
     [Parameter(ParameterSetName='Patch', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentUpdate]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IEnvironmentPatchProperties]
     # Properties of an environment.
+    # These properties can be updated via PATCH after the resource has been created.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
@@ -6904,14 +10133,6 @@ param(
     [System.DateTime]
     # The time the expiration date will be triggered (UTC), after which theenvironment and associated resources will be deleted.
     ${ExpirationDate},
-
-    [Parameter(ParameterSetName='PatchExpanded')]
-    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironmentUpdateParameters]))]
-    [System.Collections.Hashtable]
-    # Parameters object for the environment.
-    ${Parameter},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

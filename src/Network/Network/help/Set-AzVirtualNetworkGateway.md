@@ -535,7 +535,6 @@ $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Na
 
 # Set the identity using the UserAssignedIdentityId parameter
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -UserAssignedIdentityId $identity.Id
-
 ```
 
 This example demonstrates how to configure a virtual network gateway with a user-assigned managed identity. This uses the UserAssignedIdentityId parameter to create the managed identity object. User-assigned identities are useful for accessing Azure Key Vault certificates for gateway authentication.

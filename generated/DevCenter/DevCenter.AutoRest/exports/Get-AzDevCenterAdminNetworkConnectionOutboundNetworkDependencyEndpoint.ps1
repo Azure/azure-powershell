@@ -25,12 +25,12 @@ These FQDNs should be allowed for outbound access in order for the Dev Box servi
 Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint -ResourceGroupName testRg -NetworkConnectionName eastusNetwork
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IOutboundEnvironmentEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IOutboundEnvironmentEndpoint
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminnetworkconnectionoutboundnetworkdependencyendpoint
 #>
 function Get-AzDevCenterAdminNetworkConnectionOutboundNetworkDependencyEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IOutboundEnvironmentEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IOutboundEnvironmentEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

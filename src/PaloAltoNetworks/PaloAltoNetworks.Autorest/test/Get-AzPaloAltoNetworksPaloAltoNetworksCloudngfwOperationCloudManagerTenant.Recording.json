@@ -1,0 +1,49 @@
+{
+  "Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationCloudManagerTenant+[NoContext]+List+$POST+https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/providers/PaloAltoNetworks.Cloudngfw/listCloudManagerTenants?api-version=2025-10-08+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/2bf4a339-294d-4c25-b0b2-ef649e9f5c27/providers/PaloAltoNetworks.Cloudngfw/listCloudManagerTenants?api-version=2025-10-08",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "13ad679a-cb66-442e-9012-8efe42a7bf97" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationCloudManagerTenant" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationCloudManagerTenant_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.4", "Az.PaloAltoNetworks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=182c644e-b9cf-4c15-b42c-07d1afd8c10b/eastus/8a4222c4-67e8-487e-82dd-674bec1165fc" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "07f1da66-68a9-41ad-a8f4-4bda807adeb0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "7f7595e4-4b59-47c3-97f1-337bad878385" ],
+        "x-ms-correlation-request-id": [ "bfab98af-451c-4ca7-9e7f-b835e149339d" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "EASTUS:20251112T113139Z:bfab98af-451c-4ca7-9e7f-b835e149339d" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 83A213F8F98D421EA1C8558FA94C576C Ref B: PNQ231110909052 Ref C: 2025-11-12T11:31:33Z" ],
+        "Date": [ "Wed, 12 Nov 2025 11:31:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1938" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[\"dbr-ess-3849213-tenant - Prisma Access (1157428280)\",\"AWS-CNGFW-SO-V2-API-TESTING-5 - Prisma Access (1292604180)\",\"3849213 - fwaasqadevclient - Prisma Access (1623817188)\",\"scm-ess-demo - Prisma Access (1903043489)\",\"AWS-CNGFW-SO-V2-API-TESTING-4 - Prisma Access (1128794313)\",\"3849213 - fwaasqadevclient - 1 - Prisma Access (1605050033)\",\"tsg-3849213 - Prisma Access (1075568041)\",\"3849213 - fwaasqadevclient - 1 - Prisma Access (1749251292)\",\"AWS-CNGFW-SO-V2-API-TESTING - Prisma Access (1576050749)\",\"cNGFW-FUN-Azure_CSP3849213 - Prisma Access (1228258003)\",\"PASLS_CNGFWAutomation - Prisma Access (1246880478)\",\"dbr-ess-3849213-tenant - Prisma Access (1423354763)\",\"SCMEssentialswithSLS-CNGFWAutomation - Prisma Access (1458605471)\",\"SLS_CNFW_Automation - Prisma Access (1855302132)\",\"AWS-CNGFW-SO-V2-API-TESTING-3 - Prisma Access (1532259055)\",\"BrownfieldAutomation - Prisma Access (1983641518)\",\"AWS-CNGFW-SO-V2-API-TESTING-2 - Prisma Access (1053540296)\",\"3849213 - fwaasqadevclient - 1 - Prisma Access (1032369262)\",\"3849213 - fwaasqadevclient - 1 - Prisma Access (1114848443)\",\"CASB-X-AI - Prisma Access (1339734017)\",\"3849213 - fwaasqadevclient - Prisma Access (1796790368)\",\"3849213 - fwaasqadevclient - Prisma Access (1432024275)\",\"CNGFW DAS automation - Prisma Access (1331636865)\",\"CNGFW-SCM-PRA-3849213-tenant - Prisma Access (1308953227)\",\"PASCMPro_SCMCGFW_Automation - Prisma Access (1266529716)\",\"SCM-ess-3849213-0127 - Prisma Access (1764321744)\",\"3849213 - fwaasqadevclient - Prisma Access (1625663320)\",\"SCMEssentialsCNGFW - Prisma Access (1914458642)\",\"3849213 - fwaasqadevclient - 1 - Prisma Access (1841445409)\",\"SCM_CNGFW_AutomationwithCDL - Prisma Access (1580810747)\",\"CNGFW_SCM Pro - Prisma Access (1988630009)\",\"CNGFW-SCM-PRA-3849213-Europe-tenant - Prisma Access (1040274969)\",\"3849213 - fwaasqadevclient - Prisma Access (1369703717)\",\"3849213 - fwaasqadevclient - 1 - Prisma Access (1092786364)\"]}",
+      "isContentBase64": false
+    }
+  }
+}

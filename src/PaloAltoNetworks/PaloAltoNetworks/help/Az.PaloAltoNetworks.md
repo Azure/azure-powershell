@@ -42,7 +42,19 @@ Get changelog
 List of Firewalls associated with Rulestack
 
 ### [Get-AzPaloAltoNetworksLocalRulestackSupportInfo](Get-AzPaloAltoNetworksLocalRulestackSupportInfo.md)
-support info for rulestack.
+Support info for rulestack.
+
+### [Get-AzPaloAltoNetworksMetricsObjectFirewall](Get-AzPaloAltoNetworksMetricsObjectFirewall.md)
+Get a MetricsObjectFirewallResource
+
+### [Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationCloudManagerTenant](Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationCloudManagerTenant.md)
+
+
+### [Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus](Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumberStatus.md)
+
+
+### [Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationSupportInfo](Get-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationSupportInfo.md)
+
 
 ### [Get-AzPaloAltoNetworksPrefixListLocalRulestack](Get-AzPaloAltoNetworksPrefixListLocalRulestack.md)
 Get a PrefixListResource
@@ -74,6 +86,12 @@ Create a LocalRulesResource
 ### [New-AzPaloAltoNetworksLocalRulestack](New-AzPaloAltoNetworksLocalRulestack.md)
 Create a LocalRulestackResource
 
+### [New-AzPaloAltoNetworksMetricsObjectFirewall](New-AzPaloAltoNetworksMetricsObjectFirewall.md)
+Create a MetricsObjectFirewallResource
+
+### [New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber](New-AzPaloAltoNetworksPaloAltoNetworksCloudngfwOperationProductSerialNumber.md)
+
+
 ### [New-AzPaloAltoNetworksPrefixListLocalRulestack](New-AzPaloAltoNetworksPrefixListLocalRulestack.md)
 Create a PrefixListResource
 
@@ -98,6 +116,9 @@ Delete a LocalRulesResource
 ### [Remove-AzPaloAltoNetworksLocalRulestack](Remove-AzPaloAltoNetworksLocalRulestack.md)
 Delete a LocalRulestackResource
 
+### [Remove-AzPaloAltoNetworksMetricsObjectFirewall](Remove-AzPaloAltoNetworksMetricsObjectFirewall.md)
+Delete a MetricsObjectFirewallResource
+
 ### [Remove-AzPaloAltoNetworksPrefixListLocalRulestack](Remove-AzPaloAltoNetworksPrefixListLocalRulestack.md)
 Delete a PrefixListResource
 
@@ -115,4 +136,7 @@ Refresh counters
 
 ### [Update-AzPaloAltoNetworksLocalRulestack](Update-AzPaloAltoNetworksLocalRulestack.md)
 Update a LocalRulestackResource
+
+### [Update-AzPaloAltoNetworksMetricsObjectFirewall](Update-AzPaloAltoNetworksMetricsObjectFirewall.md)
+Update a MetricsObjectFirewallResource
 

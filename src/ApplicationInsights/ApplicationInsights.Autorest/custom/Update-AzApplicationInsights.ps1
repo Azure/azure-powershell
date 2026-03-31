@@ -25,8 +25,7 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsights
 #>
 function Update-AzApplicationInsights {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent", DeprecatedOutputProperties = ("PrivateLinkScopedResource Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IPrivateLinkScopedResource"), NewOutputProperties = ("PrivateLinkScopedResource System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IPrivateLinkScopedResource]"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponent])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -51,9 +50,9 @@ function Update-AzApplicationInsights {
         ${SubscriptionId},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("web", "other")]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType]
+        [System.String]
         # Type of application being monitored.
         ${ApplicationType},
     
@@ -76,9 +75,9 @@ function Update-AzApplicationInsights {
         ${Etag},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("Bluefield")]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType]
+        [System.String]
         # Used by the Application Insights system to determine what kind of flow this component was created by.
         # This is to be set to 'Bluefield' when creating/updating a component via the REST API.
         ${FlowType},
@@ -102,30 +101,30 @@ function Update-AzApplicationInsights {
         ${ImmediatePurgeDataOn30Day},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("ApplicationInsights", "ApplicationInsightsWithDiagnosticSettings", "LogAnalytics")]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode]
+        [System.String]
         # Indicates the flow of the ingestion.
         ${IngestionMode},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType]
+        [System.String]
         # The network access type for accessing Application Insights ingestion.
         ${PublicNetworkAccessForIngestion},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType]
+        [System.String]
         # The network access type for accessing Application Insights query.
         ${PublicNetworkAccessForQuery},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource])]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.PSArgumentCompleterAttribute("rest")]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource]
+        [System.String]
         # Describes what tool created this Application Insights component.
         # Customers using this API should set this to the default 'rest'.
         ${RequestSource},
@@ -145,7 +144,7 @@ function Update-AzApplicationInsights {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [Alias("Tags")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IComponentsResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IComponentsResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},

@@ -42,7 +42,7 @@ BACKEND <IBackend[]>: The set of backends for this pool.
   [PrivateLinkResourceId <String>]: The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
   [Weight <Int32?>]: Weight of this endpoint for load balancing purposes.
 .Link
-https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolobject
+https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendpoolobject
 #>
 function New-AzFrontDoorBackendPoolObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPool])]

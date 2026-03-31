@@ -22,24 +22,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
 
         /// <summary>The maximum number of concurrent HTTP trigger invocations per instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public float? HttpPerInstanceConcurrency { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersInternal)Trigger).HttpPerInstanceConcurrency; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersInternal)Trigger).HttpPerInstanceConcurrency = value ?? default(float); }
+        public int? HttpPerInstanceConcurrency { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersInternal)Trigger).HttpPerInstanceConcurrency; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggersInternal)Trigger).HttpPerInstanceConcurrency = value ?? default(int); }
 
         /// <summary>Backing field for <see cref="InstanceMemoryMb" /> property.</summary>
-        private float? _instanceMemoryMb;
+        private int? _instanceMemoryMb;
 
         /// <summary>
         /// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated
         /// proportionally.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
-        public float? InstanceMemoryMb { get => this._instanceMemoryMb; set => this._instanceMemoryMb = value; }
+        public int? InstanceMemoryMb { get => this._instanceMemoryMb; set => this._instanceMemoryMb = value; }
 
         /// <summary>Backing field for <see cref="MaximumInstanceCount" /> property.</summary>
-        private float? _maximumInstanceCount;
+        private int? _maximumInstanceCount;
 
         /// <summary>The maximum number of instances for the function app.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
-        public float? MaximumInstanceCount { get => this._maximumInstanceCount; set => this._maximumInstanceCount = value; }
+        public int? MaximumInstanceCount { get => this._maximumInstanceCount; set => this._maximumInstanceCount = value; }
 
         /// <summary>Internal Acessors for Trigger</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggers Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal.Trigger { get => (this._trigger = this._trigger ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.FunctionsScaleAndConcurrencyTriggers()); set { {_trigger = value;} } }
@@ -78,8 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         ReadOnly = false,
         Description = @"The maximum number of concurrent HTTP trigger invocations per instance.",
         SerializedName = @"perInstanceConcurrency",
-        PossibleTypes = new [] { typeof(float) })]
-        float? HttpPerInstanceConcurrency { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? HttpPerInstanceConcurrency { get; set; }
         /// <summary>
         /// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated
         /// proportionally.
@@ -89,16 +89,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         ReadOnly = false,
         Description = @"Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.",
         SerializedName = @"instanceMemoryMB",
-        PossibleTypes = new [] { typeof(float) })]
-        float? InstanceMemoryMb { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? InstanceMemoryMb { get; set; }
         /// <summary>The maximum number of instances for the function app.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"The maximum number of instances for the function app.",
         SerializedName = @"maximumInstanceCount",
-        PossibleTypes = new [] { typeof(float) })]
-        float? MaximumInstanceCount { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? MaximumInstanceCount { get; set; }
 
     }
     /// Scale and concurrency settings for the function app.
@@ -108,14 +108,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         /// <summary>'Always Ready' configuration for the function app.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfig[] AlwaysReady { get; set; }
         /// <summary>The maximum number of concurrent HTTP trigger invocations per instance.</summary>
-        float? HttpPerInstanceConcurrency { get; set; }
+        int? HttpPerInstanceConcurrency { get; set; }
         /// <summary>
         /// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated
         /// proportionally.
         /// </summary>
-        float? InstanceMemoryMb { get; set; }
+        int? InstanceMemoryMb { get; set; }
         /// <summary>The maximum number of instances for the function app.</summary>
-        float? MaximumInstanceCount { get; set; }
+        int? MaximumInstanceCount { get; set; }
         /// <summary>Scale and concurrency settings for the function app triggers.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggers Trigger { get; set; }
         /// <summary>Scale and concurrency settings for the HTTP trigger.</summary>

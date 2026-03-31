@@ -46,7 +46,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="location">The geo-location where the resource lives
         /// </param>
 
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// <param name="etag">&#34;If etag is provided in the response body, it may also be provided as a
+        /// header per the normal etag convention.  Entity tags are used for comparing
+        /// two or more entities from the same requested resource. HTTP/1.1 uses entity
+        /// tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match
+        /// (section 14.26), and If-Range (section 14.27) header fields.&#34;)
         /// </param>
 
         /// <param name="serviceLevel">The service level of the file system
@@ -55,11 +59,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="qosType">The qos type of the pool
         /// Possible values include: &#39;Auto&#39;, &#39;Manual&#39;</param>
-
-        /// <param name="encryptionType">Encryption type of the capacity pool, set encryption type for data at rest
-        /// for this pool and all volumes in it. This value can only be set when
-        /// creating new pool.
-        /// Possible values include: &#39;Single&#39;, &#39;Double&#39;</param>
 
         /// <param name="poolId">UUID v4 used to identify the Pool
         /// </param>
@@ -84,14 +83,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="coolAccess">If enabled (true) the pool can contain cool Access enabled volumes.
         /// </param>
-        public CapacityPool(string location, string serviceLevel, long size, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string qosType = default(string), string encryptionType = default(string), string poolId = default(string), string provisioningState = default(string), double? totalThroughputMibps = default(double?), double? utilizedThroughputMibps = default(double?), double? customThroughputMibps = default(double?), bool? coolAccess = default(bool?))
+
+        /// <param name="encryptionType">Encryption type of the capacity pool, set encryption type for data at rest
+        /// for this pool and all volumes in it. This value can only be set when
+        /// creating new pool.
+        /// Possible values include: &#39;Single&#39;, &#39;Double&#39;</param>
+        public CapacityPool(string location, string serviceLevel, long size, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string qosType = default(string), string poolId = default(string), string provisioningState = default(string), double? totalThroughputMibps = default(double?), double? utilizedThroughputMibps = default(double?), int? customThroughputMibps = default(int?), bool? coolAccess = default(bool?), string encryptionType = default(string))
 
         : base(location, id, name, type, systemData, tags)
         {
             this.Etag = etag;
             this.ServiceLevel = serviceLevel;
             this.QosType = qosType;
-            this.EncryptionType = encryptionType;
             this.PoolId = poolId;
             this.Size = size;
             this.ProvisioningState = provisioningState;
@@ -99,6 +102,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.UtilizedThroughputMibps = utilizedThroughputMibps;
             this.CustomThroughputMibps = customThroughputMibps;
             this.CoolAccess = coolAccess;
+            this.EncryptionType = encryptionType;
             CustomInit();
         }
 
@@ -109,8 +113,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets a unique read-only string that changes whenever the resource is
-        /// updated.
+        /// Gets &#34;If etag is provided in the response body, it may also be provided as
+        /// a header per the normal etag convention.  Entity tags are used for
+        /// comparing two or more entities from the same requested resource. HTTP/1.1
+        /// uses entity tags in the etag (section 14.19), If-Match (section 14.24),
+        /// If-None-Match (section 14.26), and If-Range (section 14.27) header
+        /// fields.&#34;)
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
@@ -126,14 +134,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.qosType")]
         public string QosType {get; set; }
-
-        /// <summary>
-        /// Gets or sets encryption type of the capacity pool, set encryption type for
-        /// data at rest for this pool and all volumes in it. This value can only be
-        /// set when creating new pool. Possible values include: &#39;Single&#39;, &#39;Double&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.encryptionType")]
-        public string EncryptionType {get; set; }
 
         /// <summary>
         /// Gets uUID v4 used to identify the Pool
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Flexible service level
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customThroughputMibps")]
-        public double? CustomThroughputMibps {get; set; }
+        public int? CustomThroughputMibps {get; set; }
 
         /// <summary>
         /// Gets or sets if enabled (true) the pool can contain cool Access enabled
@@ -180,6 +180,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.coolAccess")]
         public bool? CoolAccess {get; set; }
+
+        /// <summary>
+        /// Gets or sets encryption type of the capacity pool, set encryption type for
+        /// data at rest for this pool and all volumes in it. This value can only be
+        /// set when creating new pool. Possible values include: &#39;Single&#39;, &#39;Double&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.encryptionType")]
+        public string EncryptionType {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -193,7 +201,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ServiceLevel");
             }
-
 
 
 
@@ -212,6 +219,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "PoolId", "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$");
                 }
             }
+
 
         }
     }

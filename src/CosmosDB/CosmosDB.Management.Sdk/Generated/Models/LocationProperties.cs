@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="status">Enum to indicate current buildout status of the region.
         /// Possible values include: &#39;Uninitialized&#39;, &#39;Initializing&#39;,
-        /// &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;</param>
+        /// &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;, &#39;Creating&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
+        /// &#39;Canceled&#39;, &#39;Updating&#39;</param>
         public LocationProperties(bool? supportsAvailabilityZone = default(bool?), bool? isResidencyRestricted = default(bool?), System.Collections.Generic.IList<string> backupStorageRedundancies = default(System.Collections.Generic.IList<string>), bool? isSubscriptionRegionAccessAllowedForRegular = default(bool?), bool? isSubscriptionRegionAccessAllowedForAz = default(bool?), string status = default(string))
 
         {
@@ -96,7 +97,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public bool? IsSubscriptionRegionAccessAllowedForAz {get; private set; }
 
         /// <summary>
-        /// Gets enum to indicate current buildout status of the region. Possible values include: &#39;Uninitialized&#39;, &#39;Initializing&#39;, &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;
+        /// Gets enum to indicate current buildout status of the region. Possible values include: &#39;Uninitialized&#39;, &#39;Initializing&#39;, &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;, &#39;Creating&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Updating&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public string Status {get; private set; }

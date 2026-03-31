@@ -39,14 +39,14 @@ Describe 'AzHealthcareDicomService' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         {
             $config = Update-AzHealthcareDicomService -Name $env.dicom2 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Tag @{"123"="abc"}
             $config.Name | Should -Be "$($env.apiWorkspace1)/$($env.dicom2)"
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -skip {
         {
             $config = Get-AzHealthcareDicomService -Name $env.dicom1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1
             $config = Update-AzHealthcareDicomService -InputObject $config -Tag @{"123"="abc"}

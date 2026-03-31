@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new cluster manager or update properties of the cluster manager if it exists.
+Create a new cluster manager or create properties of the cluster manager if it exists.
 .Description
-Create a new cluster manager or update properties of the cluster manager if it exists.
+Create a new cluster manager or create properties of the cluster manager if it exists.
 .Example
 $tagHash = @{
      tag1 = "true"
@@ -28,12 +28,12 @@ $tagHash = @{
 New-AzNetworkCloudClusterManager -Name cnName -Location location -ResourceGroupName resourceGroupName -SubscriptionId subscriptionId -AnalyticsWorkspaceId "" -ManagedResourceGroupConfigurationName mrgName -FabricControllerId fabricControllerID -Tag $tagHash
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterManager
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterManager
 .Link
 https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudclustermanager
 #>
 function New-AzNetworkCloudClusterManager {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IClusterManager])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterManager])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -73,25 +73,25 @@ param(
     # Other values will result in error from server as they are not supported.
     ${IfNoneMatch},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The resource ID of the fabric controller that has one to one mapping with the cluster manager.
     ${FabricControllerId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The resource ID of the Log Analytics workspace that is used for the logs collection.
     ${AnalyticsWorkspaceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String[]]
@@ -99,49 +99,59 @@ param(
     # The Azure availability zones within the region that will be used to support the cluster manager resource.
     ${AvailabilityZone},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The location of the managed resource group.
     # If not specified, the location of the parent resource is chosen.
     ${ManagedResourceGroupConfigurationLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The name for the managed resource group.
     # If not specified, the unique name is automatically generated.
     ${ManagedResourceGroupConfigurationName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version.
     # The size of the Azure virtual machines to use for hosting the cluster manager resource.
     ${VMSize},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -211,6 +221,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -231,10 +250,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.NetworkCloud.private\New-AzNetworkCloudClusterManager_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.NetworkCloud.private\New-AzNetworkCloudClusterManager_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.NetworkCloud.private\New-AzNetworkCloudClusterManager_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -248,6 +267,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

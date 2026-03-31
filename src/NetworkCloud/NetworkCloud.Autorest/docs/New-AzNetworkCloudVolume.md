@@ -8,10 +8,11 @@ schema: 2.0.0
 # New-AzNetworkCloudVolume
 
 ## SYNOPSIS
-Create a new volume or update the properties of the existing one.
+Create a new volume or create the properties of the existing one.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> -ExtendedLocationName <String>
  -ExtendedLocationType <String> -Location <String> -SizeMiB <Int64> [-SubscriptionId <String>]
@@ -19,8 +20,22 @@ New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> -ExtendedLoc
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzNetworkCloudVolume -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create a new volume or update the properties of the existing one.
+Create a new volume or create the properties of the existing one.
 
 ## EXAMPLES
 
@@ -75,7 +90,7 @@ The resource ID of the extended location on which the resource will be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -90,7 +105,7 @@ The extended location type, for example, CustomLocation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -133,12 +148,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -199,7 +244,7 @@ The size of the allocation for this volume in Mebibytes.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -230,7 +275,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -278,7 +323,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IVolume
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolume
 
 ## NOTES
 

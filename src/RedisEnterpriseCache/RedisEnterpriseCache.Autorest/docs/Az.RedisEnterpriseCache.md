@@ -1,6 +1,6 @@
 ---
 Module Name: Az.RedisEnterpriseCache
-Module Guid: ab7dc412-93d5-4dfd-8289-12ad97aaf949
+Module Guid: cddc4755-5511-445a-a323-f449e436bf6e
 Download Help Link: https://learn.microsoft.com/powershell/module/az.redisenterprisecache
 Help Version: 1.0.0.0
 Locale: en-US

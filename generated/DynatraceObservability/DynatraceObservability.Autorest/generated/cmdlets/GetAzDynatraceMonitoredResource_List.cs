@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IMonitoredResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Description(@"List the resources currently being monitored by the Dynatrace monitor resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/listMonitoredResources", ApiVersion = "2023-04-27")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/listMonitoredResources", ApiVersion = "2024-04-24")]
     public partial class GetAzDynatraceMonitoredResource_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IContext
@@ -137,6 +137,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Backing field for <see cref="Request" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILogStatusRequest _request;
+
+        /// <summary>Request for getting log status for given monitored resource Ids</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Request for getting log status for given monitored resource Ids", ValueFromPipeline = true)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Request for getting log status for given monitored resource Ids",
+        SerializedName = @"request",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILogStatusRequest) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.ParameterCategory.Body)]
+        public Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.ILogStatusRequest Request { get => this._request; set => this._request = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -154,12 +168,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.DefaultInfo(
@@ -389,7 +403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.MonitorsListMonitoredResources(SubscriptionId, ResourceGroupName, MonitorName, onOk, onDefault, this, Pipeline);
+                        await this.Client.MonitorsListMonitoredResources(SubscriptionId, ResourceGroupName, MonitorName, Request, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }

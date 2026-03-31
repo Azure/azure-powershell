@@ -4,13 +4,17 @@ Update-AzStandbyVMPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
 -ResourceGroupName test-standbypool `
 -Name testPool `
--MaxReadyCapacity 2
+-MaxReadyCapacity 2 `
+-DynamicSizingEnabled `
+-PostProvisioningDelay "PT5S"
 ```
 
 ```output
 AttachedVirtualMachineScaleSetId  : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss
+DynamicSizingEnabled              : True
 ElasticityProfileMaxReadyCapacity : 2
 ElasticityProfileMinReadyCapacity : 2
+ElasticityProfilePostProvisioningDelay : PT5S
 Id                                : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool
 Location                          : eastus
 Name                              : testPool

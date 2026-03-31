@@ -29,7 +29,7 @@ Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksworkspace
 #>
 function Get-AzDatabricksWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

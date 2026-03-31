@@ -22,8 +22,7 @@ Obtains details of a cached recommendation.
 https://learn.microsoft.com/powershell/module/az.advisor/Get-AzAdvisorRecommendation
 #>
 function Get-AzAdvisorRecommendation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase", DeprecatedOutputProperties = ("Action Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationPropertiesActionsItem[]", "SuppressionId System.String[]"), NewOutputProperties = ("Action System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationPropertiesActionsItem].", "SuppressionId System.Collections.Generic.List`1[System.String]"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase])]
     [CmdletBinding(DefaultParameterSetName='ListByFilter', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ListByName', Mandatory)]

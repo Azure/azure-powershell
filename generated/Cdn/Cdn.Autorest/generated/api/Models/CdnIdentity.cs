@@ -73,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>Azure Subscription ID.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -225,14 +225,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"profileName",
         PossibleTypes = new [] { typeof(string) })]
         string ProfileName { get; set; }
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the Resource group within the Azure subscription.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
@@ -291,14 +291,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"securityPolicyName",
         PossibleTypes = new [] { typeof(string) })]
         string SecurityPolicyName { get; set; }
-        /// <summary>Azure Subscription ID.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Azure Subscription ID.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
         /// </summary>
         string ProfileName { get; set; }
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>Name of the routing rule.</summary>
         string RouteName { get; set; }
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string SecretName { get; set; }
         /// <summary>Name of the security policy under the profile.</summary>
         string SecurityPolicyName { get; set; }
-        /// <summary>Azure Subscription ID.</summary>
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The name of the Edge Action version</summary>
         string Version { get; set; }

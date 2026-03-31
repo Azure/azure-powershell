@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
             Path = vectorIndex.Path;
             Type = vectorIndex.Type;
+            QuantizationByteSize = vectorIndex.QuantizationByteSize;
+            IndexingSearchListSize = vectorIndex.IndexingSearchListSize;
+            VectorIndexShardKey = vectorIndex.VectorIndexShardKey;
         }
         //
         // Summary:
@@ -43,7 +46,32 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //      The index type of the vector. 
         //      Currently, flat, diskANN, and quantizedFlat are supported.
-         public string Type { get; set; }
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of bytes used in product quantization of the
+        /// vectors. A larger value may result in better recall for vector searches at
+        /// the expense of latency. This is only applicable for the quantizedFlat and
+        /// diskANN vector index types.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "quantizationByteSize")]
+        public long? QuantizationByteSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets this is the size of the candidate list of approximate
+        /// neighbors stored while building the DiskANN index as part of the
+        /// optimization processes. Large values may improve recall at the expense of
+        /// latency. This is only applicable for the diskANN vector index type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "indexingSearchListSize")]
+        public long? IndexingSearchListSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets array of shard keys for the vector index. This is only
+        /// applicable for the quantizedFlat and diskANN vector index types.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "vectorIndexShardKey")]
+        public System.Collections.Generic.IList<string> VectorIndexShardKey { get; set; }
 
         static public VectorIndex ToSDKModel(PSVectorIndex pSVectorIndex)
         {
@@ -55,7 +83,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             return new VectorIndex
             {
                 Path = pSVectorIndex.Path,
-                Type = pSVectorIndex.Type
+                Type = pSVectorIndex.Type,
+                QuantizationByteSize = pSVectorIndex.QuantizationByteSize,
+                IndexingSearchListSize = pSVectorIndex.IndexingSearchListSize,
+                VectorIndexShardKey = pSVectorIndex.VectorIndexShardKey
             };
         }
     }

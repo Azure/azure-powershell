@@ -25,13 +25,12 @@
   <ItemGroup>
     <None Update="Resources\*.*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.48.0" />
     <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageReference Update="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Update="xunit.runner.visualstudio" Version="3.1.4">

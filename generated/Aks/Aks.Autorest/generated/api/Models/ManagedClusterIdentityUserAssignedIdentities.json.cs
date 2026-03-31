@@ -8,7 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
 
     /// <summary>
-    /// The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    /// The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned
+    /// identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
     /// </summary>
     public partial class ManagedClusterIdentityUserAssignedIdentities
     {

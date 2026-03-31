@@ -1,8 +1,8 @@
 {
-  "Update-AzDevCenterUserEnvironment+[NoContext]+PatchExpanded+$PATCH+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh?api-version=2024-05-01-preview+1": {
+  "Update-AzDevCenterUserEnvironment+[NoContext]+PatchExpanded+$PATCH+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh?api-version=2025-04-01-preview",
       "Content": "{\r\n  \"expirationDate\": \"2024-07-12T22:02:04.3117922-07:00\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -35,10 +35,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDevCenterUserEnvironment+[NoContext]+PatchViaIdentityExpanded+$PATCH+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh?api-version=2024-05-01-preview+1": {
+  "Update-AzDevCenterUserEnvironment+[NoContext]+PatchViaIdentityExpanded+$PATCH+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh?api-version=2025-04-01-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh?api-version=2024-05-01-preview",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh?api-version=2025-04-01-preview",
       "Content": "{\r\n  \"expirationDate\": \"2024-08-12T22:02:04.7642679-07:00\"\r\n}",
       "isContentBase64": false,
       "Headers": {

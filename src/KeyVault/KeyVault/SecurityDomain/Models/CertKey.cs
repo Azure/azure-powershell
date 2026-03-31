@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         public RSA GetKey() { return _key; }
         public X509Certificate2 GetCert() { return _cert; }
 
-        static RSAParameters RsaParamsFromPem(string path, string password)
+        static RSAParameters RsaParamsFromPem(string path, string password)  // CodeQL [SM02205] BouncyCastle is the only API available since netstandard v2 is forced
         {
             using (var stream = File.OpenText(path))
             {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             }
         }
 
-        static RSAParameters ToRSAParameters(RsaPrivateCrtKeyParameters privKey)
+        static RSAParameters ToRSAParameters(RsaPrivateCrtKeyParameters privKey)  // CodeQL [SM02205] BouncyCastle is the only API available since netstandard v2 is forced
         {
             RSAParameters rp = new RSAParameters
             {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         }
 
 
-        static byte[] ConvertRSAParametersField(Org.BouncyCastle.Math.BigInteger n, int size)
+        static byte[] ConvertRSAParametersField(Org.BouncyCastle.Math.BigInteger n, int size)  // CodeQL [SM02205] BouncyCastle is the only API available since netstandard v2 is forced
         {
             byte[] bs = n.ToByteArrayUnsigned();
             if (bs.Length == size)

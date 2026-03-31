@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a monitor resource.
+Update a monitor resource.
 .Description
-update a monitor resource.
+Update a monitor resource.
 .Example
 Update-AzDatadogMonitor -ResourceGroupName azure-rg-Datadog -Name Datadog -Tag @{'key1'='value1'; 'key2'='value2'}
 .Example
@@ -34,7 +34,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDatadogIdentity>: Identity Parameter
-  [ConfigurationName <String>]: Configuration name
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Monitor resource name
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -82,6 +82,14 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The new cloud security posture management value of the monitor resource.
+    # This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
+    ${Cspm},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
     [System.String]
@@ -91,8 +99,17 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The new resource collection value of the monitor resource.
+    # This collects configuration information for all resources in a subscription.
+    ${ResourceCollection},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category('Body')]
     [System.String]
-    # Name of the SKU.
+    # Name of the SKU in {PlanId} format.
+    # For Terraform, the only allowed value is 'Linked'.
     ${SkuName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]

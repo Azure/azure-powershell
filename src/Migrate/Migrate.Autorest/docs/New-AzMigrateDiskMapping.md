@@ -117,7 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtDiskInput
 
 ## NOTES
 

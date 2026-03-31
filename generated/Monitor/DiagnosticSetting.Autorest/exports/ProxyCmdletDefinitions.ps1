@@ -26,7 +26,7 @@ Get-AzDiagnosticSettingCategory -ResourceId /subscriptions/$subscriptionId/resou
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,7 +41,7 @@ INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsettingcategory
 #>
 function Get-AzDiagnosticSettingCategory {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsCategoryResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsCategoryResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -61,7 +61,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -120,6 +119,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -150,6 +158,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -208,7 +219,7 @@ Get-AzDiagnosticSetting -ResourceId /subscriptions/$subscriptionId/resourceGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -223,7 +234,7 @@ INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting
 #>
 function Get-AzDiagnosticSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -243,7 +254,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -302,6 +312,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -332,6 +351,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -386,12 +408,12 @@ The current list includes the following: Administrative, Security, ServiceHealth
 Get-AzEventCategory
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ILocalizableString
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ILocalizableString
 .Link
 https://learn.microsoft.com/powershell/module/az.monitor/get-azeventcategory
 #>
 function Get-AzEventCategory {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ILocalizableString])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ILocalizableString])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -450,6 +472,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -478,6 +509,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -534,7 +568,7 @@ Get-AzSubscriptionDiagnosticSetting -Name test-setting
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -549,7 +583,7 @@ INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.monitor/get-azsubscriptiondiagnosticsetting
 #>
 function Get-AzSubscriptionDiagnosticSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -570,7 +604,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -629,6 +662,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -652,9 +694,7 @@ begin {
             GetViaIdentity = 'Az.DiagnosticSetting.private\Get-AzSubscriptionDiagnosticSetting_GetViaIdentity';
             List = 'Az.DiagnosticSetting.private\Get-AzSubscriptionDiagnosticSetting_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -668,6 +708,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -713,9 +756,9 @@ end {
 
 <#
 .Synopsis
-Creates or updates diagnostic settings for the specified resource.
+Create diagnostic settings for the specified resource.
 .Description
-Creates or updates diagnostic settings for the specified resource.
+Create diagnostic settings for the specified resource.
 .Example
 $subscriptionId = (Get-AzContext).Subscription.Id
 $metric = @()
@@ -732,7 +775,7 @@ $categories | ForEach-Object {if($_.CategoryType -eq "Metrics"){$metric+=New-AzD
 New-AzDiagnosticSetting -Name test-setting -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001 -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log -Metric $metric
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -755,7 +798,7 @@ METRIC <IMetricSettings[]>: The list of metric settings.
 https://learn.microsoft.com/powershell/module/az.monitor/new-azdiagnosticsetting
 #>
 function New-AzDiagnosticSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -770,28 +813,27 @@ param(
     # The identifier of the resource.
     ${ResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The resource Id for the event hub authorization rule.
     ${EventHubAuthorizationRuleId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The name of the event hub.
     # If none is specified, the default event hub will be selected.
     ${EventHubName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ILogSettings[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ILogSettings[]]
     # The list of logs settings.
-    # To construct, see NOTES section for LOG properties and create a hash table.
     ${Log},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # A string indicating whether the export to Log Analytics should use the default destination type, i.e.
@@ -799,39 +841,50 @@ param(
     # Possible values are: Dedicated and null (null is default.)
     ${LogAnalyticsDestinationType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
     ${MarketplacePartnerId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IMetricSettings[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IMetricSettings[]]
     # The list of metric settings.
-    # To construct, see NOTES section for METRIC properties and create a hash table.
     ${Metric},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The service bus rule Id of the diagnostic setting.
     # This is here to maintain backwards compatibility.
     ${ServiceBusRuleId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The resource ID of the storage account to which you would like to send Diagnostic Logs.
     ${StorageAccountId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs.
     # Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
     ${WorkspaceId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -889,6 +942,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -909,6 +971,8 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DiagnosticSetting.private\New-AzDiagnosticSetting_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DiagnosticSetting.private\New-AzDiagnosticSetting_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DiagnosticSetting.private\New-AzDiagnosticSetting_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -917,6 +981,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -962,9 +1029,9 @@ end {
 
 <#
 .Synopsis
-Creates or updates subscription diagnostic settings for the specified resource.
+Create subscription diagnostic settings for the specified resource.
 .Description
-Creates or updates subscription diagnostic settings for the specified resource.
+Create subscription diagnostic settings for the specified resource.
 .Example
 $subscriptionId = (Get-AzContext).Subscription.Id
 $log = @()
@@ -972,7 +1039,7 @@ $log += New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommend
 New-AzSubscriptionDiagnosticSetting -Name test-setting -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -986,7 +1053,7 @@ LOG <ISubscriptionLogSettings[]>: The list of logs settings.
 https://learn.microsoft.com/powershell/module/az.monitor/new-azsubscriptiondiagnosticsetting
 #>
 function New-AzSubscriptionDiagnosticSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1002,52 +1069,63 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The resource Id for the event hub authorization rule.
     ${EventHubAuthorizationRuleId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The name of the event hub.
     # If none is specified, the default event hub will be selected.
     ${EventHubName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionLogSettings[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionLogSettings[]]
     # The list of logs settings.
-    # To construct, see NOTES section for LOG properties and create a hash table.
     ${Log},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
     ${MarketplacePartnerId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The service bus rule Id of the diagnostic setting.
     # This is here to maintain backwards compatibility.
     ${ServiceBusRuleId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The resource ID of the storage account to which you would like to send Diagnostic Logs.
     ${StorageAccountId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
     [System.String]
     # The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs.
     # Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
     ${WorkspaceId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1105,6 +1183,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1125,10 +1212,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DiagnosticSetting.private\New-AzSubscriptionDiagnosticSetting_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DiagnosticSetting.private\New-AzSubscriptionDiagnosticSetting_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DiagnosticSetting.private\New-AzSubscriptionDiagnosticSetting_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1142,6 +1229,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1231,7 +1321,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1296,6 +1385,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1325,6 +1423,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1414,7 +1515,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1479,6 +1579,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1501,9 +1610,7 @@ begin {
             Delete = 'Az.DiagnosticSetting.private\Remove-AzSubscriptionDiagnosticSetting_Delete';
             DeleteViaIdentity = 'Az.DiagnosticSetting.private\Remove-AzSubscriptionDiagnosticSetting_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1517,6 +1624,520 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update diagnostic settings for the specified resource.
+.Description
+Update diagnostic settings for the specified resource.
+.Example
+$newlog = New-AzDiagnosticSettingLogSettingsObject -Enabled $false -Category 'VMProtectionAlerts'
+$newmetric = New-AzDiagnosticSettingMetricSettingsObject -Enabled $false -Category 'AllMetrics'
+Update-AzDiagnosticSetting -Name diagnosticSettingName -ResourceId 'vnetId' -Log $newlog -Metric $newmetric
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [Name <String>]: The name of the diagnostic setting.
+  [ResourceUri <String>]: The identifier of the resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+LOG <ILogSettings[]>: The list of logs settings.
+  Enabled <Boolean>: a value indicating whether this log is enabled.
+  [Category <String>]: Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+  [CategoryGroup <String>]: Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+  [RetentionPolicyDay <Int32?>]: the number of days for the retention in days. A value of 0 will retain the events indefinitely.
+  [RetentionPolicyEnabled <Boolean?>]: a value indicating whether the retention policy is enabled.
+
+METRIC <IMetricSettings[]>: The list of metric settings.
+  Enabled <Boolean>: a value indicating whether this category is enabled.
+  [Category <String>]: Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
+  [RetentionPolicyDay <Int32?>]: the number of days for the retention in days. A value of 0 will retain the events indefinitely.
+  [RetentionPolicyEnabled <Boolean?>]: a value indicating whether the retention policy is enabled.
+  [TimeGrain <TimeSpan?>]: the timegrain of the metric in ISO8601 format.
+.Link
+https://learn.microsoft.com/powershell/module/az.monitor/update-azdiagnosticsetting
+#>
+function Update-AzDiagnosticSetting {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingsResource])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Path')]
+    [System.String]
+    # The name of the diagnostic setting.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Path')]
+    [System.String]
+    # The identifier of the resource.
+    ${ResourceId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The resource Id for the event hub authorization rule.
+    ${EventHubAuthorizationRuleId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The name of the event hub.
+    # If none is specified, the default event hub will be selected.
+    ${EventHubName},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ILogSettings[]]
+    # The list of logs settings.
+    ${Log},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # A string indicating whether the export to Log Analytics should use the default destination type, i.e.
+    # AzureDiagnostics, or use a destination type constructed as follows: <normalized service identity>_<normalized category name>.
+    # Possible values are: Dedicated and null (null is default.)
+    ${LogAnalyticsDestinationType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+    ${MarketplacePartnerId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IMetricSettings[]]
+    # The list of metric settings.
+    ${Metric},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The service bus rule Id of the diagnostic setting.
+    # This is here to maintain backwards compatibility.
+    ${ServiceBusRuleId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The resource ID of the storage account to which you would like to send Diagnostic Logs.
+    ${StorageAccountId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs.
+    # Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
+    ${WorkspaceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.DiagnosticSetting.private\Update-AzDiagnosticSetting_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.DiagnosticSetting.private\Update-AzDiagnosticSetting_UpdateViaIdentityExpanded';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update subscription diagnostic settings for the specified resource.
+.Description
+Update subscription diagnostic settings for the specified resource.
+.Example
+$log = New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
+Update-AzSubscriptionDiagnosticSetting -Name settingname -WorkspaceId 'workspaceid' -Log $log
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IDiagnosticSettingIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [Name <String>]: The name of the diagnostic setting.
+  [ResourceUri <String>]: The identifier of the resource.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+LOG <ISubscriptionLogSettings[]>: The list of logs settings.
+  Enabled <Boolean>: a value indicating whether this log is enabled.
+  [Category <String>]: Name of a Subscription Diagnostic Log category for a resource type this setting is applied to.
+  [CategoryGroup <String>]: Name of a Subscription Diagnostic Log category group for a resource type this setting is applied to.
+.Link
+https://learn.microsoft.com/powershell/module/az.monitor/update-azsubscriptiondiagnosticsetting
+#>
+function Update-AzSubscriptionDiagnosticSetting {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionDiagnosticSettingsResource])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Path')]
+    [System.String]
+    # The name of the diagnostic setting.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.IDiagnosticSettingIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The resource Id for the event hub authorization rule.
+    ${EventHubAuthorizationRuleId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The name of the event hub.
+    # If none is specified, the default event hub will be selected.
+    ${EventHubName},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.ISubscriptionLogSettings[]]
+    # The list of logs settings.
+    ${Log},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
+    ${MarketplacePartnerId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The service bus rule Id of the diagnostic setting.
+    # This is here to maintain backwards compatibility.
+    ${ServiceBusRuleId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The resource ID of the storage account to which you would like to send Diagnostic Logs.
+    ${StorageAccountId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Body')]
+    [System.String]
+    # The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs.
+    # Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
+    ${WorkspaceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.DiagnosticSetting.private\Update-AzSubscriptionDiagnosticSetting_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.DiagnosticSetting.private\Update-AzSubscriptionDiagnosticSetting_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1569,12 +2190,12 @@ Create an in-memory object for LogSettings.
 New-AzDiagnosticSettingLogSettingsObject -Enabled $true -Category ContainerEventLogs -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.LogSettings
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingLogSettingsObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdiagnosticsettinglogsettingsobject
 #>
 function New-AzDiagnosticSettingLogSettingsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.LogSettings])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1618,6 +2239,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1646,6 +2270,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1698,12 +2325,12 @@ Create an in-memory object for MetricSettings.
 New-AzDiagnosticSettingMetricSettingsObject -Enabled $true -Category AllMetrics -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.MetricSettings
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingMetricSettingsObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdiagnosticsettingmetricsettingsobject
 #>
 function New-AzDiagnosticSettingMetricSettingsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.MetricSettings])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1746,6 +2373,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1774,6 +2404,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1826,12 +2459,12 @@ Create an in-memory object for SubscriptionLogSettings.
 New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionLogSettings
 .Link
-https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingSubscriptionLogSettingsObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdiagnosticsettingsubscriptionlogsettingsobject
 #>
 function New-AzDiagnosticSettingSubscriptionLogSettingsObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.SubscriptionLogSettings])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1860,6 +2493,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1888,6 +2524,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

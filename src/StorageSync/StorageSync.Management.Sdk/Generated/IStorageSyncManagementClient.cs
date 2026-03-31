@@ -80,14 +80,24 @@ namespace Microsoft.Azure.Management.StorageSync
         IStorageSyncServicesOperations StorageSyncServices { get; }
 
         /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations
+        /// Gets the IOperationStatusOperations
         /// </summary>
-        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
+        IOperationStatusOperations OperationStatus { get; }
 
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
         /// </summary>
         IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the IRegisteredServersOperations
+        /// </summary>
+        IRegisteredServersOperations RegisteredServers { get; }
 
         /// <summary>
         /// Gets the ISyncGroupsOperations
@@ -105,19 +115,9 @@ namespace Microsoft.Azure.Management.StorageSync
         IServerEndpointsOperations ServerEndpoints { get; }
 
         /// <summary>
-        /// Gets the IRegisteredServersOperations
-        /// </summary>
-        IRegisteredServersOperations RegisteredServers { get; }
-
-        /// <summary>
         /// Gets the IWorkflowsOperations
         /// </summary>
         IWorkflowsOperations Workflows { get; }
-
-        /// <summary>
-        /// Gets the IOperationStatusOperations
-        /// </summary>
-        IOperationStatusOperations OperationStatus { get; }
 
         /// <summary>
         /// Get Operation status

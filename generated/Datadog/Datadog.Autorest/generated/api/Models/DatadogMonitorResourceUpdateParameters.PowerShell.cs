@@ -92,6 +92,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).MonitoringStatus = (string) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).MonitoringStatus, global::System.Convert.ToString);
             }
+            if (content.Contains("Cspm"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).Cspm = (bool?) content.GetValueForProperty("Cspm",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).Cspm, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ResourceCollection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).ResourceCollection = (bool?) content.GetValueForProperty("ResourceCollection",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).ResourceCollection, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("SkuName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).SkuName, global::System.Convert.ToString);
@@ -128,6 +136,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
             if (content.Contains("MonitoringStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).MonitoringStatus = (string) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).MonitoringStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("Cspm"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).Cspm = (bool?) content.GetValueForProperty("Cspm",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).Cspm, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ResourceCollection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).ResourceCollection = (bool?) content.GetValueForProperty("ResourceCollection",((Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceUpdateParametersInternal)this).ResourceCollection, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("SkuName"))
             {

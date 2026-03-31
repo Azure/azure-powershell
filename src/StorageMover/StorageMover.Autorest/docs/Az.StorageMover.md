@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StorageMover
-Module Guid: ccf19870-3e0a-46b9-8739-0b5b083ebd23
+Module Guid: 6ada34e0-8668-4ac4-b5fe-753062600db9
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storagemover
 Help Version: 1.0.0.0
 Locale: en-US
@@ -30,7 +30,7 @@ Gets a Job Run resource.
 Gets a Project resource.
 
 ### [New-AzStorageMover](New-AzStorageMover.md)
-Creates or updates a top-level Storage Mover resource.
+Create a top-level Storage Mover resource.
 
 ### [New-AzStorageMoverAzNfsFileShareEndpoint](New-AzStorageMoverAzNfsFileShareEndpoint.md)
 Creates a Nfs file share endpoint resource, which represents a data transfer source or destination.
@@ -42,7 +42,7 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
 
 ### [New-AzStorageMoverJobDefinition](New-AzStorageMoverJobDefinition.md)
-Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
 ### [New-AzStorageMoverMultiCloudConnectorEndpoint](New-AzStorageMoverMultiCloudConnectorEndpoint.md)
 Creates a multicloud connector endpoint resource, which represents a data transfer source or destination.
@@ -51,7 +51,7 @@ Creates a multicloud connector endpoint resource, which represents a data transf
 Creates a Nfs endpoint resource, which represents a data transfer source or destination.
 
 ### [New-AzStorageMoverProject](New-AzStorageMoverProject.md)
-Creates or updates a Project resource, which is a logical grouping of related jobs.
+Create a Project resource, which is a logical grouping of related jobs.
 
 ### [New-AzStorageMoverSmbEndpoint](New-AzStorageMoverSmbEndpoint.md)
 Creates an SMB endpoint resource, which represents a data transfer source or destination.
@@ -72,7 +72,7 @@ Deletes a Job Definition resource.
 Deletes a Project resource.
 
 ### [Start-AzStorageMoverJobDefinition](Start-AzStorageMoverJobDefinition.md)
-Creates a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
+Start a new Job Run resource for the specified Job Definition and passes it to the Agent for execution.
 
 ### [Stop-AzStorageMoverJobDefinition](Stop-AzStorageMoverJobDefinition.md)
 Requests the Agent of any active instance of this Job Definition to stop.
@@ -81,11 +81,11 @@ Requests the Agent of any active instance of this Job Definition to stop.
 Deletes an agent resource.
 
 ### [Update-AzStorageMover](Update-AzStorageMover.md)
-Updates properties for a Storage Mover resource.
+Update properties for a Storage Mover resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverAgent](Update-AzStorageMoverAgent.md)
-Creates or updates an Agent resource.
+Update an Agent resource.
 
 ### [Update-AzStorageMoverAzNfsFileShareEndpoint](Update-AzStorageMoverAzNfsFileShareEndpoint.md)
 Updates properties for a Nfs File Share endpoint resource.
@@ -100,7 +100,7 @@ Updates properties for an AzStorageContainer endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverJobDefinition](Update-AzStorageMoverJobDefinition.md)
-Updates properties for a Job Definition resource.
+Update properties for a Job Definition resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverMultiCloudConnectorEndpoint](Update-AzStorageMoverMultiCloudConnectorEndpoint.md)
@@ -112,7 +112,7 @@ Updates properties for a Nfs endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverProject](Update-AzStorageMoverProject.md)
-Updates properties for a Project resource.
+Update properties for a Project resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverSmbEndpoint](Update-AzStorageMoverSmbEndpoint.md)

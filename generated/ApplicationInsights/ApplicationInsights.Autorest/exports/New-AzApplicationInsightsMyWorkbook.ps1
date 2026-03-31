@@ -25,12 +25,12 @@ $name = (New-Guid).ToString()
 New-AzApplicationInsightsMyWorkbook -ResourceGroupName appinsights-hkrs2v-test -Name $name -Location westus2  -DisplayName "$name-display" -SourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/appinsights-hkrs2v-test/providers/microsoft.insights/components/appinsights-48mah3-pwsh" -Category 'workbook' -SerializedData $null
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IMyWorkbook
 .Link
 https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsmyworkbook
 #>
 function New-AzApplicationInsightsMyWorkbook {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IMyWorkbook])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -59,88 +59,100 @@ param(
     # Azure Resource Id that will fetch all linked workbooks.
     ${LinkedSourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Workbook category, as defined by the user at creation time.
     ${Category},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # The user-defined name of the private workbook.
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbookResourceEtag]))]
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IMyWorkbookResourceEtag]))]
     [System.Collections.Hashtable]
     # Resource etag
     ${Etag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Azure resource Id
     ${Id},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-    [System.String]
-    # The identity type.
-    ${IdentityType},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Resource location
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Configuration of this particular private workbook.
     # Configuration data is a string containing valid JSON
     ${SerializedData},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Optional resourceId for a source resource.
     ${SourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String[]]
     # A list of 0 or more tags that are associated with this private workbook definition
     ${SourceTag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # BYOS Storage Account URI
     ${StorageUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbookResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IMyWorkbookResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # Azure resource type
     ${Type},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
     [System.String]
     # This instance's version of the data model.
     # This can change as new features are added that can be marked private workbook.
     ${Version},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -198,6 +210,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -218,17 +239,17 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ApplicationInsights.private\New-AzApplicationInsightsMyWorkbook_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ApplicationInsights.private\New-AzApplicationInsightsMyWorkbook_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ApplicationInsights.private\New-AzApplicationInsightsMyWorkbook_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Kind')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Kind') ) {
             $PSBoundParameters['Kind'] = "user"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -238,6 +259,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

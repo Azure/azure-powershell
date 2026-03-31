@@ -3467,7 +3467,7 @@ New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.Backend
 .Link
-https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendobject
+https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendobject
 #>
 function New-AzFrontDoorBackendObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.Backend])]
@@ -3661,7 +3661,7 @@ BACKEND <IBackend[]>: The set of backends for this pool.
   [PrivateLinkResourceId <String>]: The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
   [Weight <Int32?>]: Weight of this endpoint for load balancing purposes.
 .Link
-https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolobject
+https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendpoolobject
 #>
 function New-AzFrontDoorBackendPoolObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPool])]
@@ -3807,7 +3807,7 @@ New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings
 .Link
-https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendbackendpoolssettingsobject
+https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorbackendpoolssettingobject
 #>
 function New-AzFrontDoorBackendPoolsSettingObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.BackendPoolsSettings])]
@@ -6825,7 +6825,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]]
     # Describes the exclusions that are applied to this specific rule.
-    ${Exclusion}
+    ${Exclusion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Low", "Medium", "High")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [System.String]
+    # Describes the override sensitivity to be applied when rule matches.
+    ${Sensitivity}
 )
 
 begin {
