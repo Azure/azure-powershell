@@ -41,27 +41,32 @@ Get a GeoCatalog
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all GeoCatalogs in the subscription
 ```powershell
-{{ Add code here }}
+Get-AzPlanetaryComputerGeoCatalog
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         Location    ResourceGroupName ProvisioningState
+----         --------    ----------------- -----------------
+mycatalog1   centralus   myResourceGroup   Succeeded
+mycatalog2   eastus      testRG            Succeeded
 ```
 
-{{ Add description here }}
+Lists all GeoCatalog resources in the current subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific GeoCatalog by name
 ```powershell
-{{ Add code here }}
+Get-AzPlanetaryComputerGeoCatalog -CatalogName 'mycatalog1' -ResourceGroupName 'myResourceGroup'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         Location    ResourceGroupName ProvisioningState
+----         --------    ----------------- -----------------
+mycatalog1   centralus   myResourceGroup   Succeeded
 ```
 
-{{ Add description here }}
+Gets a specific GeoCatalog resource by catalog name and resource group.
 
 ## PARAMETERS
 

@@ -48,6 +48,7 @@ function setupEnv() {
     $env.AddWithCache("ResourceGroupName", "internal-testing", $UsePreviousConfigForRecord)
     $env.AddWithCache("CatalogName", "PE-03-20-2", $UsePreviousConfigForRecord)
     $env.AddWithCache("Location", "centralus", $UsePreviousConfigForRecord)
+    $env.AddWithCache("UserAssignedIdentityId", "/subscriptions/$($env.SubscriptionId)/resourcegroups/internal-testing/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aopc-mi-fix-test", $UsePreviousConfigForRecord)
 
     # Resource group and catalog name for create test
     $newRgName = "pctestRg" + (RandomString -allChars $false -len 6)

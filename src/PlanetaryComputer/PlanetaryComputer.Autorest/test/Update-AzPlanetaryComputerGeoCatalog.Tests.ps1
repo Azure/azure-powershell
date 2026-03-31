@@ -21,6 +21,12 @@ Describe 'Update-AzPlanetaryComputerGeoCatalog' {
         $result.Tag["testKey"] | Should -Be "testValue"
     }
 
+    It 'UpdateExpandedWithIdentity' {
+        $result = Update-AzPlanetaryComputerGeoCatalog -CatalogName $env.CatalogName -ResourceGroupName $env.ResourceGroupName -UserAssignedIdentity @($env.UserAssignedIdentityId)
+        $result.Name | Should -Be $env.CatalogName
+        $result.IdentityType | Should -Match 'UserAssigned'
+    }
+
     It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

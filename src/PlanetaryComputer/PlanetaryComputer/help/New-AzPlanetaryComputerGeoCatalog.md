@@ -50,7 +50,8 @@ Name        Location    ResourceGroupName ProvisioningState
 mycatalog   centralus   myResourceGroup   Succeeded
 ```
 
-Creates a new GeoCatalog resource in the specified resource group and location. This is a long-running operation that may take several minutes to complete.
+Creates a new GeoCatalog resource in the specified resource group and location.
+This is a long-running operation that may take several minutes to complete.
 
 ### Example 2: Create a new GeoCatalog with tags
 ```powershell

@@ -46,9 +46,9 @@ mycatalog   centralus   myResourceGroup   Succeeded
 
 Updates the tags on an existing GeoCatalog resource.
 
-### Example 2: Enable system-assigned managed identity on a GeoCatalog
+### Example 2: Assign a user-assigned managed identity to a GeoCatalog
 ```powershell
-Update-AzPlanetaryComputerGeoCatalog -CatalogName 'mycatalog' -ResourceGroupName 'myResourceGroup' -EnableSystemAssignedIdentity $true
+Update-AzPlanetaryComputerGeoCatalog -CatalogName 'mycatalog' -ResourceGroupName 'myResourceGroup' -UserAssignedIdentity @('/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity')
 ```
 
 ```output
@@ -57,7 +57,7 @@ Name        Location    ResourceGroupName ProvisioningState
 mycatalog   centralus   myResourceGroup   Succeeded
 ```
 
-Enables system-assigned managed identity on the specified GeoCatalog.
+Assigns a user-assigned managed identity to the specified GeoCatalog.
 
 ## PARAMETERS
 
