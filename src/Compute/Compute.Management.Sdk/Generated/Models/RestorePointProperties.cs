@@ -50,7 +50,12 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="instanceView">The restore point instance view.
         /// </param>
-        public RestorePointProperties(System.Collections.Generic.IList<ApiEntityReference> excludeDisks = default(System.Collections.Generic.IList<ApiEntityReference>), RestorePointSourceMetadata sourceMetadata = default(RestorePointSourceMetadata), string provisioningState = default(string), string consistencyMode = default(string), System.DateTime? timeCreated = default(System.DateTime?), ApiEntityReference sourceRestorePoint = default(ApiEntityReference), RestorePointInstanceView instanceView = default(RestorePointInstanceView))
+
+        /// <param name="instantAccessDurationMinutes">This property determines the time in minutes the snapshot is retained as
+        /// instant access for restoring Premium SSD v2 or Ultra disk with fast restore
+        /// performance in this restore point.
+        /// </param>
+        public RestorePointProperties(System.Collections.Generic.IList<ApiEntityReference> excludeDisks = default(System.Collections.Generic.IList<ApiEntityReference>), RestorePointSourceMetadata sourceMetadata = default(RestorePointSourceMetadata), string provisioningState = default(string), string consistencyMode = default(string), System.DateTime? timeCreated = default(System.DateTime?), ApiEntityReference sourceRestorePoint = default(ApiEntityReference), RestorePointInstanceView instanceView = default(RestorePointInstanceView), int? instantAccessDurationMinutes = default(int?))
 
         {
             this.ExcludeDisks = excludeDisks;
@@ -60,6 +65,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.TimeCreated = timeCreated;
             this.SourceRestorePoint = sourceRestorePoint;
             this.InstanceView = instanceView;
+            this.InstantAccessDurationMinutes = instantAccessDurationMinutes;
             CustomInit();
         }
 
@@ -117,6 +123,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "instanceView")]
         public RestorePointInstanceView InstanceView {get; private set; }
+
+        /// <summary>
+        /// Gets or sets this property determines the time in minutes the snapshot is
+        /// retained as instant access for restoring Premium SSD v2 or Ultra disk with
+        /// fast restore performance in this restore point.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "instantAccessDurationMinutes")]
+        public int? InstantAccessDurationMinutes {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

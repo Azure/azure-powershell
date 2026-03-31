@@ -1,7 +1,12 @@
 ﻿function New-AzDataProtectionPolicyTagCriteriaClientObject{
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IScheduleBasedBackupCriteria')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IScheduleBasedBackupCriteria')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates a new criteria object')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                           *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486  *`n
+    ***************************************************************************************************")]
 
     param(
         [Parameter(ParameterSetName='AbsoluteCriteria', Mandatory, HelpMessage='Absolute criteria')]
@@ -32,7 +37,7 @@
     )
 
     process {
-        $criteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.ScheduleBasedBackupCriteria]::new()
+        $criteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ScheduleBasedBackupCriteria]::new()
         $criteria.ObjectType = "ScheduleBasedBackupCriteria"
         if($AbsoluteCriteria -ne $null){
             $criteria.AbsoluteCriterion = $AbsoluteCriteria
@@ -61,7 +66,7 @@
                     {
                         throw "Day of month should be between 1 and 28."
                     }
-                    $day = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.Day]::new()
+                    $day = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.Day]::new()
                     $day.Date = $dayOfMonthNumber
                     $day.IsLast = $false
                     $criteria.DaysOfMonth += $day
@@ -72,7 +77,7 @@
                     {
                         throw "Day of month should either be between 1 and 28 or it should be last"
                     }
-                    $day = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.Day]::new()
+                    $day = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.Day]::new()
                     $day.IsLast = $true
                     $criteria.DaysOfMonth += $day
                 }

@@ -26,7 +26,7 @@ $mapping | fl
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IResourceGuardProxyBaseResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IResourceGuardProxyBaseResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,12 +35,13 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [BackupInstanceName <String>]: The name of the backup instance.
   [BackupPolicyName <String>]: 
+  [DeletedVaultName <String>]: The name of the DeletedBackupVaultResource
   [Id <String>]: Resource identity path
   [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [Location <String>]: The location in which uniqueness will be verified.
+  [Location <String>]: The name of the Azure region.
   [OperationId <String>]: 
   [RecoveryPointId <String>]: 
-  [RequestName <String>]: 
+  [RequestName <String>]: The name of the DppBaseResource
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceGuardProxyName <String>]: name of the resource guard proxy
   [ResourceGuardsName <String>]: The name of ResourceGuard
@@ -51,7 +52,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionresourceguardmapping
 #>
 function Get-AzDataProtectionResourceGuardMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IResourceGuardProxyBaseResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IResourceGuardProxyBaseResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

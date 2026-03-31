@@ -33,9 +33,7 @@ namespace Microsoft.Azure.Management.Compute
         public Microsoft.Rest.ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription.
         /// </summary>
         public string SubscriptionId { get; set;}
 
@@ -233,6 +231,14 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IGalleryInVMAccessControlProfileVersionsOperations
         /// </summary>
         public virtual IGalleryInVMAccessControlProfileVersionsOperations GalleryInVMAccessControlProfileVersions { get; private set; }
+        /// <summary>
+        /// Gets the IGalleryScriptsOperations
+        /// </summary>
+        public virtual IGalleryScriptsOperations GalleryScripts { get; private set; }
+        /// <summary>
+        /// Gets the IGalleryScriptVersionsOperations
+        /// </summary>
+        public virtual IGalleryScriptVersionsOperations GalleryScriptVersions { get; private set; }
         /// <summary>
         /// Gets the IGallerySharingProfileOperations
         /// </summary>
@@ -527,6 +533,8 @@ namespace Microsoft.Azure.Management.Compute
             this.GalleryImageVersions = new GalleryImageVersionsOperations(this);
             this.GalleryInVMAccessControlProfiles = new GalleryInVMAccessControlProfilesOperations(this);
             this.GalleryInVMAccessControlProfileVersions = new GalleryInVMAccessControlProfileVersionsOperations(this);
+            this.GalleryScripts = new GalleryScriptsOperations(this);
+            this.GalleryScriptVersions = new GalleryScriptVersionsOperations(this);
             this.GallerySharingProfile = new GallerySharingProfileOperations(this);
             this.SoftDeletedResource = new SoftDeletedResourceOperations(this);
             this.ResourceSkus = new ResourceSkusOperations(this);

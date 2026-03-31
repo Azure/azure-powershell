@@ -1,3 +1,40 @@
+## 15.4.0 - March 2026
+#### Az.Compute 11.4.0 
+* Modified cmdlet `Add-AzVMDataDisk`
+   - Added parameters `-DiskIOPSReadWrite`, `-DiskMBpsReadWrite`
+* Modified cmdlet `New-AzDiskConfig`
+   - Added parameter `-ActionOnDiskDelay`
+* Modified cmdlet `New-AzDiskUpdateConfig`
+   - Added parameter `-ActionOnDiskDelay`
+* Modified cmdlet `New-AzSshKey`
+   - Added parameters `-Location`, `-Tag`
+* Modified cmdlet `Update-AzSshKey`
+   - Added parameter `-Tag`
+#### Az.Databricks 1.11.0 
+* Modified cmdlet `New-AzDatabricksWorkspace`
+   - Added parameter `-ComputeMode`
+   - Changed the type of parameter `-ComplianceStandard` from `ComplianceStandard[]` to `String[]`
+* Modified cmdlet `Update-AzDatabricksWorkspace`
+   - Changed the type of parameter `-ComplianceStandard` from `ComplianceStandard[]` to `String[]`
+#### Az.ElasticSan 1.7.0 
+* Modified cmdlet `New-AzElasticSan`
+   - Added parameters `-AutoScalePolicyEnforcement`, `-CapacityUnitScaleUpLimitTiB`, `-IncreaseCapacityUnitByTiB`, `-UnusedSizeTiB`
+* Modified cmdlet `Update-AzElasticSan`
+   - Added parameters `-AutoScalePolicyEnforcement`, `-CapacityUnitScaleUpLimitTiB`, `-IncreaseCapacityUnitByTiB`, `-UnusedSizeTiB`
+* Added cmdlet `Test-AzElasticSanVolumeBackup`, `Test-AzElasticSanVolumeRestore`
+
+## 15.3.0 - February 2026
+#### Az.Compute 11.3.0 
+* Added cmdlet `Convert-AzAvailabilitySet`, `Move-AzVirtualMachineToVmss`, `Start-AzAvailabilitySetMigration`, `Stop-AzAvailabilitySetMigration`, `Test-AzAvailabilitySetMigration`#### Az.DataProtection 2.9.0 
+, `Get-AzDataProtectionSoftDeletedBackupVault`, `Search-AzDataProtectionSoftDeletedVaultBackupInstanceInAzGraph`, `Undo-AzDataProtectionVaultDeletion`
+#### Az.Network 7.25.0 
+* Modified cmdlet `New-AzPrivateEndpoint`
+   - Added parameter `-IpVersionType`
+* Added cmdlet `Get-AzVirtualNetworkAppliance`, `New-AzVirtualNetworkAppliance`, `Remove-AzVirtualNetworkAppliance`, `Update-AzVirtualNetworkAppliance`
+#### Az.Storage 9.6.0 
+* Modified cmdlet `Update-AzStorageFileServiceProperty`
+   - Added parameters `-SmbEncryptionInTransitRequired`, `-NfsEncryptionInTransitRequired`
+
 ## 15.2.0 - January 2026
 #### Az.Aks 7.1.0 
 * Modified cmdlet `New-AzAksCluster`
@@ -1203,6 +1240,8 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
+
 
 
 

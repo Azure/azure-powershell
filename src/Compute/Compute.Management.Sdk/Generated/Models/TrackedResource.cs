@@ -8,9 +8,14 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Linq;
 
     /// <summary>
-    /// The Resource model definition.
+    /// The resource model definition for an Azure Resource Manager tracked top
+    /// level resource which has &#39;tags&#39; and a &#39;location&#39;
     /// </summary>
-    public partial class TrackedResource : Microsoft.Rest.Azure.IResource
+    /// <remarks>
+    /// The resource model definition for an Azure Resource Manager tracked top
+    /// level resource which has &#39;tags&#39; and a &#39;location&#39;
+    /// </remarks>
+    public partial class TrackedResource : Resource
     {
         /// <summary>
         /// Initializes a new instance of the TrackedResource class.
@@ -24,28 +29,28 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the TrackedResource class.
         /// </summary>
 
-        /// <param name="id">Resource Id
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location
+        /// <param name="tags">Resource tags.
         /// </param>
 
-        /// <param name="tags">Resource tags
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
         public TrackedResource(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
+        : base(id, name, type)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
-            this.Location = location;
             this.Tags = tags;
+            this.Location = location;
             CustomInit();
         }
 
@@ -56,34 +61,16 @@ namespace Microsoft.Azure.Management.Compute.Models
 
 
         /// <summary>
-        /// Gets resource Id
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets resource name
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
-        /// Gets or sets resource location
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; set; }
-
-        /// <summary>
-        /// Gets or sets resource tags
+        /// Gets or sets resource tags.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -96,9 +83,6 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Location");
             }
-
-
-
 
 
         }

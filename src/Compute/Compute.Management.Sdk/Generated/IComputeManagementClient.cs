@@ -36,9 +36,7 @@ namespace Microsoft.Azure.Management.Compute
 
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set;}
 
@@ -283,6 +281,16 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the IGalleryInVMAccessControlProfileVersionsOperations
         /// </summary>
         IGalleryInVMAccessControlProfileVersionsOperations GalleryInVMAccessControlProfileVersions { get; }
+
+        /// <summary>
+        /// Gets the IGalleryScriptsOperations
+        /// </summary>
+        IGalleryScriptsOperations GalleryScripts { get; }
+
+        /// <summary>
+        /// Gets the IGalleryScriptVersionsOperations
+        /// </summary>
+        IGalleryScriptVersionsOperations GalleryScriptVersions { get; }
 
         /// <summary>
         /// Gets the IGallerySharingProfileOperations

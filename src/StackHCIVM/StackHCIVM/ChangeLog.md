@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change announcements for upcoming SecureString parameter type changes in `New-AzStackHCIVMImage` and `New-AzStackHCIVMVirtualMachine`
 
 ## Version 1.1.0
 * Upgraded nuget package to signed package.

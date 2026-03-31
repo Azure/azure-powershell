@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Fixed an issue where New-AzFunctionApp fails due to duplicate -Name parameter binding. [#29166]
+
+## Version 4.3.1
 
 * Fixed cloud portability by using dynamic endpoints for storage [#29034]
 

@@ -16,10 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaUsage'))
 
 Describe 'Get-AzQuotaUsage' {
     It 'List' {
-        { Get-AzQuotaUsage -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus"  } | Should -Not -Throw
+        { Get-AzQuotaUsage -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus"  } | Should -Not -Throw
     }
 
     It 'Get' {
-        { Get-AzQuotaUsage -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Network/locations/eastus" -Name "MinPublicIpInterNetworkPrefixLength" } | Should -Not -Throw
+        { Get-AzQuotaUsage -Scope "subscriptions/$($env.SubscriptionId)/providers/Microsoft.Compute/locations/eastus" -Name "standardFSv2Family" } | Should -Not -Throw
     }
 }

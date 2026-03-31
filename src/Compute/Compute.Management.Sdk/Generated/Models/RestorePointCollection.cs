@@ -25,19 +25,21 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the RestorePointCollection class.
         /// </summary>
 
-        /// <param name="id">Resource Id
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">Resource name
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location
+        /// <param name="tags">Resource tags.
         /// </param>
 
-        /// <param name="tags">Resource tags
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="source">The properties of the source resource that this restore point collection is
@@ -53,7 +55,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="restorePoints">A list containing all restore points created under this restore point
         /// collection.
         /// </param>
-        public RestorePointCollection(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), RestorePointCollectionSourceProperties source = default(RestorePointCollectionSourceProperties), string provisioningState = default(string), string restorePointCollectionId = default(string), System.Collections.Generic.IList<RestorePoint> restorePoints = default(System.Collections.Generic.IList<RestorePoint>))
+
+        /// <param name="instantAccess">This property determines whether instant access snapshot is enabled for
+        /// restore points created under this restore point collection for Premium SSD
+        /// v2 or Ultra disk. Instant access snapshot for Premium SSD v2 or Ultra disk
+        /// is instantaneously available for restoring disk with fast restore
+        /// performance.
+        /// </param>
+        public RestorePointCollection(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), RestorePointCollectionSourceProperties source = default(RestorePointCollectionSourceProperties), string provisioningState = default(string), string restorePointCollectionId = default(string), System.Collections.Generic.IList<RestorePoint> restorePoints = default(System.Collections.Generic.IList<RestorePoint>), bool? instantAccess = default(bool?))
 
         : base(location, id, name, type, tags)
         {
@@ -61,6 +70,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.ProvisioningState = provisioningState;
             this.RestorePointCollectionId = restorePointCollectionId;
             this.RestorePoints = restorePoints;
+            this.InstantAccess = instantAccess;
             CustomInit();
         }
 
@@ -95,6 +105,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.restorePoints")]
         public System.Collections.Generic.IList<RestorePoint> RestorePoints {get; private set; }
+
+        /// <summary>
+        /// Gets or sets this property determines whether instant access snapshot is
+        /// enabled for restore points created under this restore point collection for
+        /// Premium SSD v2 or Ultra disk. Instant access snapshot for Premium SSD v2 or
+        /// Ultra disk is instantaneously available for restoring disk with fast
+        /// restore performance.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.instantAccess")]
+        public bool? InstantAccess {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

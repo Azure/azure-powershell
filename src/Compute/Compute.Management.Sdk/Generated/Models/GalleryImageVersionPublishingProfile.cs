@@ -44,8 +44,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// used for decommissioning purposes. This property is updatable.
         /// </param>
 
-        /// <param name="storageAccountType">Specifies the storage account type to be used to store the image. This
-        /// property is not updatable.
+        /// <param name="storageAccountType">Specifies the storage account type to be used to store the image. Cannot be
+        /// specified along with storageAccountStrategy. This property is not
+        /// updatable.
         /// Possible values include: &#39;Standard_LRS&#39;, &#39;Standard_ZRS&#39;, &#39;Premium_LRS&#39;,
         /// &#39;PremiumV2_LRS&#39;</param>
 
@@ -56,9 +57,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="targetExtendedLocations">The target extended locations where the Image Version is going to be
         /// replicated to. This property is updatable.
         /// </param>
-        public GalleryImageVersionPublishingProfile(System.Collections.Generic.IList<TargetRegion> targetRegions = default(System.Collections.Generic.IList<TargetRegion>), int? replicaCount = default(int?), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?), string storageAccountType = default(string), string replicationMode = default(string), System.Collections.Generic.IList<GalleryTargetExtendedLocation> targetExtendedLocations = default(System.Collections.Generic.IList<GalleryTargetExtendedLocation>))
 
-        : base(targetRegions, replicaCount, excludeFromLatest, publishedDate, endOfLifeDate, storageAccountType, replicationMode, targetExtendedLocations)
+        /// <param name="storageAccountStrategy">Specifies the strategy to be used when selecting the storage account type.
+        /// Cannot be specified along with storageAccountType, but can be overridden
+        /// per region by specifying targetRegions[].storageAccountType. This property
+        /// is not updatable.
+        /// Possible values include: &#39;PreferStandard_ZRS&#39;, &#39;DefaultStandard_LRS&#39;</param>
+        public GalleryImageVersionPublishingProfile(System.Collections.Generic.IList<TargetRegion> targetRegions = default(System.Collections.Generic.IList<TargetRegion>), int? replicaCount = default(int?), bool? excludeFromLatest = default(bool?), System.DateTime? publishedDate = default(System.DateTime?), System.DateTime? endOfLifeDate = default(System.DateTime?), string storageAccountType = default(string), string replicationMode = default(string), System.Collections.Generic.IList<GalleryTargetExtendedLocation> targetExtendedLocations = default(System.Collections.Generic.IList<GalleryTargetExtendedLocation>), string storageAccountStrategy = default(string))
+
+        : base(targetRegions, replicaCount, excludeFromLatest, publishedDate, endOfLifeDate, storageAccountType, replicationMode, targetExtendedLocations, storageAccountStrategy)
         {
             CustomInit();
         }

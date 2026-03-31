@@ -1,8 +1,13 @@
 ﻿function Update-AzDataProtectionBackupVault
 {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IBackupVaultResource')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource')]
     [CmdletBinding(DefaultParameterSetName="UpdateExpanded", PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a BackupVault resource belonging to a resource group. For example updating tags for a resource.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                           *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486  *`n
+    ***************************************************************************************************")]
 
     param(
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='The ID of the target subscription. The value must be an UUID.')]
@@ -184,9 +189,9 @@
 
         if ($vault.EncryptionSetting -ne $null) { $encryptionSettings = $vault.EncryptionSetting }
         else { 
-            $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.EncryptionSettings]::new()
-            $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CmkKekIdentity]::new()
-            $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.CmkKeyVaultProperties]::new()
+            $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.EncryptionSettings]::new()
+            $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CmkKekIdentity]::new()
+            $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CmkKeyVaultProperties]::new()
         }
 
         if ($hasCmkEncryptionState) { $encryptionSettings.State = $CmkEncryptionState }

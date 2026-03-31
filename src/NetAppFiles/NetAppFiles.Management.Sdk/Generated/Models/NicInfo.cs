@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
     /// <summary>
     /// NIC information and list of volumes for which the NIC has the primary mount
-    /// ip address.
+    /// IP Address.
     /// </summary>
     public partial class NicInfo
     {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the NicInfo class.
         /// </summary>
 
-        /// <param name="ipAddress">ipAddress
+        /// <param name="ipAddress">IP Address
         /// </param>
 
         /// <param name="volumeResourceIds">Volume resource Ids
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets ipAddress
+        /// Gets iP Address
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipAddress")]
         public string IPAddress {get; private set; }

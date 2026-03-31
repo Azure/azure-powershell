@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Boolean for enabling Soft Delete Retention for server
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specify whether to enable soft-delete retention for the server. When enabled, a dropped server can be restored within the retention window (defaults to 7 days if not specified).")]
+            HelpMessage = "[Public Preview] Specify whether to enable soft-delete retention for the server. When enabled, a dropped server can be restored within the retention window (defaults to 7 days if not specified).")]
         [PSArgumentCompleter("true", "false")]
         [GenericBreakingChangeWithVersion("The EnableSoftDelete parameter will be removed. Please use SoftDeleteRetentionDays parameter instead. Setting SoftDeleteRetentionDays to 1-7 enables soft-delete, and setting it to 0 disables soft-delete.", "16.0.0", "7.0.0")]
         public bool? EnableSoftDelete { get; set; }
@@ -139,8 +139,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Value for soft-delete retention days for the server.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the number of days to retain a deleted server for possible restoration. Valid values are 0-7. A value of 0 disables soft-delete retention.")]
-            public int? SoftDeleteRetentionDays { get; set; }
+            HelpMessage = "[Public Preview] Specifies the number of days to retain a deleted server for possible restoration. Valid values are 0-7. A value of 0 disables soft-delete retention.")]
+        public int? SoftDeleteRetentionDays { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
