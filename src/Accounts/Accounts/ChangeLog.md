@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Improved SSH certificate authentication for Az SSH cmdlets across all Azure clouds.
+    - SSH certificate authentication now works across all Azure clouds without configuring the `-SshAuthScope` parameter.
+    - The `-SshAuthScope` parameter in `Set-AzEnvironment` and `Add-AzEnvironment` does not take any effect.
 * Updated MSAL to 4.83.1 for bug fixes in IMDS endpoint cache.
 
 ## Version 5.3.3

@@ -5035,7 +5035,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-identity-squad
-          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Request review & mention when PR labeled act-identity-squad'
     - if:
@@ -5050,7 +5050,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-observability-squad
-          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Request review & mention when PR labeled act-observability-squad'
     - if:
@@ -5065,7 +5065,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-codegen-extensibility-squad
-          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Request review & mention when PR labeled act-codegen-extensibility-squad'
     - if:
@@ -5080,7 +5080,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-quality-productivity-squad
-          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Request review & mention when PR labeled act-quality-productivity-squad'
     - if:
@@ -5095,7 +5095,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-platform-engineering-squad
-          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Request review & mention when PR labeled act-platform-engineering-squad'
     - if:
@@ -5110,7 +5110,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-experience-enablement-squad
-          replyTemplate: ":bell: Routing this PR to ${mentionees}."
+          replyTemplate: ':bell: Routing this PR to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Request review & mention when PR labeled act-experience-enablement-squad'
     - if:
@@ -5123,7 +5123,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-identity-squad
-          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Mention when issue labeled act-identity-squad'
     - if:
@@ -5136,7 +5136,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-observability-squad
-          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Mention when issue labeled act-observability-squad'
     - if:
@@ -5149,7 +5149,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-codegen-extensibility-squad
-          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Mention when issue labeled act-codegen-extensibility-squad'
     - if:
@@ -5162,7 +5162,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-quality-productivity-squad
-          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Mention when issue labeled act-quality-productivity-squad'
     - if:
@@ -5175,7 +5175,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-platform-engineering-squad
-          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Mention when issue labeled act-platform-engineering-squad'
     - if:
@@ -5188,7 +5188,7 @@ configuration:
       - mentionUsers:
           mentionees:
           - act-experience-enablement-squad
-          replyTemplate: ":bell: Routing this issue to ${mentionees}."
+          replyTemplate: ':bell: Routing this issue to ${mentionees}.'
           assignMentionees: False
       description: '[Squad Auto-Assign] Mention when issue labeled act-experience-enablement-squad'
 onFailure:
