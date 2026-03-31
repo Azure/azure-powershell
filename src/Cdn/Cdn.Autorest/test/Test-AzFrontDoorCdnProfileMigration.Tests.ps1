@@ -19,6 +19,6 @@ Describe 'Test-AzFrontDoorCdnProfileMigration' {
         $subId = $env.SubscriptionId
         $canMigrate = Test-AzFrontDoorCdnProfileMigration -SubscriptionId $subId -ResourceGroupName $env.ResourceGroupName -ClassicResourceReferenceId $env.ClassicResourceId03
     
-        $canMigrate.CanMigrate | Should -Be "True"
+        $canMigrate.CanMigrate | Should -Be $true
     }
 }

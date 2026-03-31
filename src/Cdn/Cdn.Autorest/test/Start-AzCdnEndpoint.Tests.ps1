@@ -26,7 +26,8 @@ Describe 'Start-AzCdnEndpoint'  {
     It 'StartViaIdentity' {
         Stop-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
         $endpointObject = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $endpoint = Start-AzCdnEndpoint -InputObject $endpointObject
+        Start-AzCdnEndpoint -InputObject $endpointObject
+        $endpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
 
         $endpoint.ResourceState | Should -Be "Running"
     }

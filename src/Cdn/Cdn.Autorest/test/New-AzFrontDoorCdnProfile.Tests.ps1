@@ -34,8 +34,8 @@ Describe 'New-AzFrontDoorCdnProfile'  {
         $frontDoorCdnProfileName = 'fdp-pstest011'
         Write-Host -ForegroundColor Green "New AzFrontDoorCdnProfile: $($frontDoorCdnProfileName), with using profile logScrubbing"
 
-        $rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled 
-        $rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -State Enabled
+        $rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny -State Enabled 
+        $rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -SelectorMatchOperator EqualsAny -State Enabled
         $rules = New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($rule1, $rule2) -State Enabled
 
         $frontDoorCdnProfile = New-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LogScrubbingRule $rules.ScrubbingRule -LogScrubbingState Enabled -Location Global  -SkuName $profileSku

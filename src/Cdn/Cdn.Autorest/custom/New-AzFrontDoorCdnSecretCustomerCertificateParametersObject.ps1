@@ -37,9 +37,6 @@ function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
         [Parameter(HelpMessage="Version of the secret to be used.")]
         [string]
         $SecretVersion,
-        [Parameter(HelpMessage="The list of SANs.")]
-        [string[]]
-        $SubjectAlternativeName,
         [Parameter(HelpMessage="Whether to use the latest version for the certificate.")]
         [bool]
         $UseLatestVersion,
@@ -56,9 +53,6 @@ function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
         }
         if ($PSBoundParameters.ContainsKey('SecretVersion')) {
             $Object.SecretVersion = $SecretVersion
-        }
-        if ($PSBoundParameters.ContainsKey('SubjectAlternativeName')) {
-            $Object.SubjectAlternativeName = $SubjectAlternativeName
         }
         if ($PSBoundParameters.ContainsKey('UseLatestVersion')) {
             $Object.UseLatestVersion = $UseLatestVersion

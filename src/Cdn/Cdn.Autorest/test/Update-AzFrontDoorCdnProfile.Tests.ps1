@@ -58,8 +58,8 @@ Describe 'Update-AzFrontDoorCdnProfile' {
     It 'UpdateExpanded' {
         Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile: add profile logScrubbing"
 
-        $rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled 
-        $rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -State Enabled
+        $rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny -State Enabled 
+        $rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -SelectorMatchOperator EqualsAny -State Enabled
         $rules = New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($rule1, $rule2) -State Enabled
 
         $profileObject = Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LogScrubbingRule $rules.ScrubbingRule -LogScrubbingState Enabled

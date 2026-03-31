@@ -22,7 +22,7 @@ Describe 'Get-AzFrontDoorCdnSecret'  {
         $secretName = "kvsecret-test01"
         Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -Type "CustomerCertificate"`
         -SecretSourceId "/subscriptions/$subId/resourceGroups/huaiyiz/providers/Microsoft.KeyVault/vaults/huaiyizkvtest/secrets/wildcard-huaiyiz-azfdtest-xyz"
         
         New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter

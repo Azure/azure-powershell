@@ -34,10 +34,11 @@ Describe 'Stop-AzCdnEndpoint'  {
     }
 
     It 'StopViaIdentity' {
-        $endpoint1 =  Start-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
-        Write-Host -ForegroundColor Green "Endpoint status: $($endpoint1.ResourceState)" 
+        Start-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName
         $resObject = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName
-        $res = Stop-AzCdnEndpoint -InputObject $resObject
+        Write-Host -ForegroundColor Green "Endpoint status: $($resObject.ResourceState)"
+        Stop-AzCdnEndpoint -InputObject $resObject
+        $res = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName
 
         $res.ResourceState | Should -Be "Stopped"
     }

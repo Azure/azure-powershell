@@ -47,8 +47,15 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $subId = $env.SubscriptionId
-    $env.Tenant = $res.Tenant.Id
+    $env.Tenant = (Get-AzContext).Tenant.Id
     $env.location = 'westus'
+
+    # If UsePreviousConfigForRecord is set, reuse existing resources from env.json
+    # This allows re-running individual failed tests without recreating all resources
+    if ($UsePreviousConfigForRecord -and $env.ResourceGroupName) {
+        Write-Host -ForegroundColor Green "Reusing previous environment from env.json (ResourceGroup: $($env.ResourceGroupName))"
+        return
+    }
 
     # For any resources you created for test, you should add it to $env here.
     # Create the test group
