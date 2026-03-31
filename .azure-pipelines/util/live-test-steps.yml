@@ -130,7 +130,7 @@ jobs:
 
   - task: PublishPipelineArtifact@1
     displayName: Publish live test results to pipeline artifact
-    condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
+    condition: and(always(), ne(variables['skipLatest'], 'true'))
     inputs:
       artifact: livetest-os-${{ parameters.vmImage }}-ps-${{ replace(parameters.psVersion, '*', 'x') }}
       targetPath: $(DataLocation)

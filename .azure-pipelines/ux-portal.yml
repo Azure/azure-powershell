@@ -12,7 +12,7 @@ jobs:
 - job: Job_1
   displayName: "Sync latest UX metadata files to Storage Blob"
   timeoutInMinutes: 90
-  pool: pool-windows-2019
+  pool: pool-windows-2022
   steps:
   - checkout: self
   - task: PowerShell@2

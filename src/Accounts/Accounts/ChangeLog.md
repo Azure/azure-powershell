@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 5.3.3
+* Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
+
 ## Version 5.3.2
 * Updated Azure.Core from 1.47.3 to 1.50.0
 * Fixed telemetry to capture client request ID instead of server response ID for AutoRest-generated cmdlets [#23555]

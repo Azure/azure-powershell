@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 9.6.0
+* Supported encryption in transit in file service properties 
+    - `Update-AzStorageFileServiceProperty`
+* When users input TLS 1.0 or TLS 1.1 to create or update a Storage account, automatically upgrade to TLS 1.2
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Added breaking change warnings for TLS 1.0 and TLS 1.1 deprecation when creating or updating a Storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+
 ## Version 9.5.1
 * Supported publishing IPv6 endpoints when creating/updating a storage account and IPv6 rules in network rule set
     - `New-AzStorageAccount`

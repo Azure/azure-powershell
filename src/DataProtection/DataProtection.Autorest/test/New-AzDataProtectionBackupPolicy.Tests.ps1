@@ -183,6 +183,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
           (Get-Date -Year 2023 -Month 03 -Day 18 -Hour 16 -Minute 0 -Second 0)
         ))
         $trigger =  New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $schDates -IntervalType Daily -IntervalCount 1
+
         Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $pol   
 
         # add retention rules
@@ -198,6 +199,11 @@ Describe 'New-AzDataProtectionBackupPolicy' {
 
         $tagCriteriaWeekly = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfWeek 
         Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -Criteria $tagCriteriaWeekly
+
+        #edit timezone as required
+        # $timezone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -eq "Central Standard Time" }
+        $policyRule = $pol.PolicyRule | Where-Object { $_.ObjectType -eq "AzureBackupRule"}
+        $policyRule.Trigger.ScheduleTimeZone = "Central Standard Time" # $timeZone[0].Id
 
         $newPolicy = New-AzDataProtectionBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName -Policy $pol -SubscriptionId $sub
 
@@ -381,8 +387,8 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         
         $defaultPol.PolicyRule[0].Trigger.ScheduleRepeatingTimeInterval[0] = "R/2023-05-09T02:30:00+01:00/P1W"
 
-        $timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Europe" }
-        $defaultPol.PolicyRule[0].Trigger.ScheduleTimeZone = $timeZone[0].Id
+        # $timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Europe" }
+        $defaultPol.PolicyRule[0].Trigger.ScheduleTimeZone = "W. Europe Standard Time" # $timeZone[0].Id
 
         # create policy
         $operationalVaultedPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -Name $operationalVaultedPolicyName -Policy $defaultPol 
