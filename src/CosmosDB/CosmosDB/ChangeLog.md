@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added `-DisableLocalAuth` parameter to `New-AzCosmosDBAccount` and `Update-AzCosmosDBAccount` to opt out of local authentication.
+* Added `-Capabilities` parameter to `Update-AzCosmosDBAccount` to allow adding or removing account capabilities.
 
 ## Version 1.19.1
 * Updated Azure.Core from 1.47.3 to 1.50.0
