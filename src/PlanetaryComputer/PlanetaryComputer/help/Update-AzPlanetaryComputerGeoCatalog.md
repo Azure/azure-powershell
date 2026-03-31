@@ -33,27 +33,31 @@ Update a GeoCatalog
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update tags on a GeoCatalog
 ```powershell
-{{ Add code here }}
+Update-AzPlanetaryComputerGeoCatalog -CatalogName 'mycatalog' -ResourceGroupName 'myResourceGroup' -Tag @{environment='production'; team='geospatial'}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name        Location    ResourceGroupName ProvisioningState
+----        --------    ----------------- -----------------
+mycatalog   centralus   myResourceGroup   Succeeded
 ```
 
-{{ Add description here }}
+Updates the tags on an existing GeoCatalog resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Enable system-assigned managed identity on a GeoCatalog
 ```powershell
-{{ Add code here }}
+Update-AzPlanetaryComputerGeoCatalog -CatalogName 'mycatalog' -ResourceGroupName 'myResourceGroup' -EnableSystemAssignedIdentity $true
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name        Location    ResourceGroupName ProvisioningState
+----        --------    ----------------- -----------------
+mycatalog   centralus   myResourceGroup   Succeeded
 ```
 
-{{ Add description here }}
+Enables system-assigned managed identity on the specified GeoCatalog.
 
 ## PARAMETERS
 

@@ -28,8 +28,11 @@ Describe 'Remove-AzPlanetaryComputerGeoCatalog' {
             try {
                 Get-AzPlanetaryComputerGeoCatalog -CatalogName $env.CatalogName2 -ResourceGroupName $env.NewResourceGroupName
             } catch {
-                $deleted = $true
-                break
+                if ($_.Exception.Message -match 'NotFound|not found|404') {
+                    $deleted = $true
+                    break
+                }
+                throw
             }
         }
         $deleted | Should -Be $true

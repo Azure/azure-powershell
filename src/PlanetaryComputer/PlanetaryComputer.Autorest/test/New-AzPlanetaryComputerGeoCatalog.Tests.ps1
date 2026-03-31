@@ -18,6 +18,7 @@ Describe 'New-AzPlanetaryComputerGeoCatalog' {
     It 'CreateExpanded' {
         New-AzPlanetaryComputerGeoCatalog -CatalogName $env.CatalogName2 -ResourceGroupName $env.NewResourceGroupName -Location $env.Location -NoWait
         # Poll until catalog is provisioned (can take up to 1 hour)
+        $result = $null
         $retries = 0
         $maxRetries = 360
         while ($retries -lt $maxRetries) {
@@ -32,6 +33,7 @@ Describe 'New-AzPlanetaryComputerGeoCatalog' {
                 # Catalog not yet available
             }
         }
+        $result | Should -Not -BeNullOrEmpty -Because 'GeoCatalog should be provisioned within the retry budget'
         $result.Name | Should -Be $env.CatalogName2
         $result.Location | Should -Be $env.Location
         $result.ProvisioningState | Should -Be 'Succeeded'

@@ -30,27 +30,19 @@ Delete a GeoCatalog
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a GeoCatalog by name
 ```powershell
-{{ Add code here }}
+Remove-AzPlanetaryComputerGeoCatalog -CatalogName 'mycatalog' -ResourceGroupName 'myResourceGroup'
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Deletes the specified GeoCatalog resource. This is a long-running operation that may take several minutes to complete.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a GeoCatalog without waiting for completion
 ```powershell
-{{ Add code here }}
+Remove-AzPlanetaryComputerGeoCatalog -CatalogName 'mycatalog' -ResourceGroupName 'myResourceGroup' -NoWait
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Starts the deletion of the specified GeoCatalog resource and returns immediately without waiting for the operation to complete.
 
 ## PARAMETERS
 
