@@ -664,9 +664,20 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             for (int i = 0; i < excludeIds.Count; i++)
             {
-                var type = (excludeTypes != null && i < excludeTypes.Count)
-                    ? excludeTypes[i]
-                    : defaultType;
+                string type;
+                if (excludeTypes != null && excludeTypes.Count == 1)
+                {
+                    // Single type broadcasts to all IDs
+                    type = excludeTypes[0];
+                }
+                else if (excludeTypes != null && i < excludeTypes.Count)
+                {
+                    type = excludeTypes[i];
+                }
+                else
+                {
+                    type = defaultType;
+                }
                 excludePrincipals.Add(new DenyAssignmentPrincipal { Id = excludeIds[i], Type = type });
             }
 

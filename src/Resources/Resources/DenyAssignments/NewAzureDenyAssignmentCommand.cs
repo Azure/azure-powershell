@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Resources
         public string Scope { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
-            HelpMessage = "Actions to deny. Wildcards supported (e.g. */write, Microsoft.Storage/storageAccounts/*/delete). Note: read actions are not permitted in PP1 deny assignments.")]
+            HelpMessage = "Actions to deny. Wildcards supported (e.g. Microsoft.Storage/storageAccounts/write, */delete). Note: read actions (*/read) are not permitted for user-assigned deny assignments.")]
         public string[] Action { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Commands.Resources
         public string[] NotAction { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
-            HelpMessage = "Data actions to deny.")]
+            HelpMessage = "Data actions to deny. Not supported for user-assigned deny assignments (Private Preview).")]
         public string[] DataAction { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
-            HelpMessage = "Data actions to exclude from the deny assignment.")]
+            HelpMessage = "Data actions to exclude from the deny assignment. Not supported for user-assigned deny assignments (Private Preview).")]
         public string[] NotDataAction { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Resources
         public string[] ExcludePrincipalType { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ScopeWithPrincipalsParameterSet,
-            HelpMessage = "If set, the deny assignment does not apply to child scopes.")]
+            HelpMessage = "If set, the deny assignment does not apply to child scopes. Not supported for user-assigned deny assignments (Private Preview).")]
         public SwitchParameter DoNotApplyToChildScope { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = InputFileParameterSet,
@@ -131,10 +131,10 @@ namespace Microsoft.Azure.Commands.Resources
             else
             {
                 // PP1 client-side validation: DataActions not supported
-                if (DataAction != null && DataAction.Length > 0)
+                if ((DataAction != null && DataAction.Length > 0) || (NotDataAction != null && NotDataAction.Length > 0))
                 {
                     throw new PSArgumentException(
-                        "DataActions are not supported for PP1 user-assigned deny assignments. " +
+                        "DataActions and NotDataActions are not supported for PP1 user-assigned deny assignments. " +
                         "Only Actions and NotActions are permitted.");
                 }
 

@@ -19,8 +19,8 @@
 -->
 
 ## Upcoming Release
-* Added `New-AzDenyAssignment` cmdlet for creating user-assigned deny assignments (Public Preview 1, API version `2024-07-01-preview`). Deny assignments allow denying specific write/delete/action operations to all principals except specified exclusions.
-* Added `Remove-AzDenyAssignment` cmdlet for removing user-assigned deny assignments.
+* Added `New-AzDenyAssignment` cmdlet for creating user-assigned deny assignments using the `2024-07-01-preview` API. Deny assignments allow denying specific write, delete, and action operations to all principals at a given scope while excluding specified principals.
+* Added `Remove-AzDenyAssignment` cmdlet for removing user-assigned deny assignments by ID, name and scope, or pipeline input.
 * Regenerated Authorization Management SDK from `2024-07-01-preview` swagger specification to include deny assignment create and delete operations.
 
 ## Version 9.0.3
