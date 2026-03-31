@@ -19,10 +19,14 @@
 # due to insufficient permissions. Use the known tenant admin user ID.
 function Get-TestExcludePrincipalId
 {
+    # Prefer environment variable for CI/CD flexibility
+    if ($env:TEST_EXCLUDE_PRINCIPAL_ID) {
+        return $env:TEST_EXCLUDE_PRINCIPAL_ID
+    }
     try {
         return (Get-AzADUser -SignedIn).Id
     } catch {
-        # SP auth fallback: known user in the test tenant
+        # SP auth fallback: known user in the test tenant — override via TEST_EXCLUDE_PRINCIPAL_ID
         return "1840cc0e-55b5-442d-bbf6-52c0c7e27302"
     }
 }
@@ -183,13 +187,13 @@ function Test-NewDaFromInputFile
     $daName = "Test-DA-InputFile-" + [Guid]::NewGuid().ToString().Substring(0, 8)
 
     $inputObj = @{
-        DenyAssignmentName = $daName
-        Description = "Created from input file"
-        Actions = @("Microsoft.Storage/storageAccounts/write")
-        NotActions = @()
-        DataActions = @()
-        NotDataActions = @()
-        ExcludePrincipalIds = @($excludePrincipalId)
+        denyAssignmentName = $daName
+        description = "Created from input file"
+        actions = @("Microsoft.Storage/storageAccounts/write")
+        notActions = @()
+        dataActions = @()
+        notDataActions = @()
+        excludePrincipalIds = @($excludePrincipalId)
     }
 
     $tempFile = [System.IO.Path]::GetTempFileName() + ".json"
@@ -266,10 +270,19 @@ function Test-RemoveDaById
 
     Assert-NotNull $da
 
-    Remove-AzDenyAssignment -Id $da.Id -Force
+    try
+    {
+        Remove-AzDenyAssignment -Id $da.Id -Force
 
-    $result = Get-AzDenyAssignment -Id $da.Id -ErrorAction SilentlyContinue
-    Assert-Null $result
+        $result = Get-AzDenyAssignment -Id $da.Id -ErrorAction SilentlyContinue
+        Assert-Null $result
+    }
+    catch
+    {
+        # Cleanup on failure
+        Remove-AzDenyAssignment -Id $da.Id -Force -ErrorAction SilentlyContinue
+        throw
+    }
 }
 
 <#

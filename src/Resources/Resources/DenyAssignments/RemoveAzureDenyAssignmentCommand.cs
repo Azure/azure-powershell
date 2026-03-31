@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DenyAssignment",
         SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.Medium,
         DefaultParameterSetName = DenyAssignmentIdParameterSet),
         OutputType(typeof(PSDenyAssignment))]
     public class RemoveAzureDenyAssignmentCommand : ResourcesBaseCmdlet

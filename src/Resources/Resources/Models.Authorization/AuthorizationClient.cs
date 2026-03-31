@@ -683,6 +683,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             var result = AuthorizationManagementClient.DenyAssignments
                 .CreateOrUpdate(options.Scope, denyAssignmentId.ToString(), denyAssignment);
 
+            if (result == null)
+            {
+                throw new InvalidOperationException(
+                    "The service returned an empty response when creating the deny assignment. " +
+                    "Verify that the UserAssignedDenyAssignment feature flag is enabled on the subscription.");
+            }
+
             return result.ToPSDenyAssignment(ActiveDirectoryClient);
         }
 
@@ -701,9 +708,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     : AuthorizationHelper.GetScopeFromFullyQualifiedId(denyAssignmentId)
                       ?? AuthorizationHelper.GetSubscriptionScope(subscriptionId);
 
-                toDelete = AuthorizationManagementClient.DenyAssignments
-                    .Get(resolvedScope, denyAssignmentId.GuidFromFullyQualifiedId())
-                    .ToPSDenyAssignment(ActiveDirectoryClient);
+                try
+                {
+                    toDelete = AuthorizationManagementClient.DenyAssignments
+                        .Get(resolvedScope, denyAssignmentId.GuidFromFullyQualifiedId())
+                        .ToPSDenyAssignment(ActiveDirectoryClient);
+                }
+                catch (Microsoft.Rest.Azure.CloudException ex) when (ex.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new KeyNotFoundException(
+                        string.Format("Deny assignment '{0}' not found at scope '{1}'.", denyAssignmentId, resolvedScope));
+                }
             }
             else if (!string.IsNullOrEmpty(denyAssignmentName) && !string.IsNullOrEmpty(scope))
             {

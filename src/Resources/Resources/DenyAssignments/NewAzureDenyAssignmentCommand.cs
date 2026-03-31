@@ -130,6 +130,37 @@ namespace Microsoft.Azure.Commands.Resources
             }
             else
             {
+                // PP1 client-side validation: DataActions not supported
+                if (DataAction != null && DataAction.Length > 0)
+                {
+                    throw new PSArgumentException(
+                        "DataActions are not supported for PP1 user-assigned deny assignments. " +
+                        "Only Actions and NotActions are permitted.");
+                }
+
+                // PP1 client-side validation: DoNotApplyToChildScopes not supported
+                if (DoNotApplyToChildScope.IsPresent)
+                {
+                    throw new PSArgumentException(
+                        "DoNotApplyToChildScopes is not supported for PP1 user-assigned deny assignments.");
+                }
+
+                // Require at least one Action or NotAction
+                if ((Action == null || Action.Length == 0) && (NotAction == null || NotAction.Length == 0))
+                {
+                    throw new PSArgumentException(
+                        "At least one -Action or -NotAction is required to create a deny assignment.");
+                }
+
+                // Validate ExcludePrincipalType count matches ExcludePrincipalId count
+                if (ExcludePrincipalType != null && ExcludePrincipalType.Length > 1
+                    && ExcludePrincipalType.Length != ExcludePrincipalId.Length)
+                {
+                    throw new PSArgumentException(
+                        string.Format("-ExcludePrincipalType must specify either 1 value (applied to all) or exactly {0} values " +
+                        "(one per -ExcludePrincipalId). Got {1}.", ExcludePrincipalId.Length, ExcludePrincipalType.Length));
+                }
+
                 options = new CreateDenyAssignmentOptions
                 {
                     DenyAssignmentName = DenyAssignmentName,
