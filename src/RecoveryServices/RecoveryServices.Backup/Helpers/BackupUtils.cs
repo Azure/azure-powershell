@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"westus3", "eastus"},
             {"eastasia", "southeastasia"},
             {"southeastasia", "eastasia"},
+            {"southeastasia3", "malaysiawest"},
             {"australiaeast", "australiasoutheast"},
             {"australiasoutheast", "australiaeast"},
             {"australiacentral", "australiacentral2"},

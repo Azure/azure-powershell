@@ -56,7 +56,7 @@ function setupEnv() {
     $taskHubName = $env.AddWithCache("taskHubName", $taskHubName, $UsePreviousConfigForRecord)
 
     # Create a shared scheduler to be used by most tests
-    New-AzDurableTaskScheduler -Name $env.schedulerName -ResourceGroupName $env.resourceGroup -Location $env.location -SkuName 'Dedicated' -SkuCapacity 1 -IPAllowlist @('10.0.0.0/8')
+    New-AzDurableTaskScheduler -Name $env.schedulerName -ResourceGroupName $env.resourceGroup -Location $env.location -SkuName 'Consumption' -IPAllowlist @('10.0.0.0/8') -PublicNetworkAccess 'Disabled'
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

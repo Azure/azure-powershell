@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
     using Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.PowerShell;
 
     /// <summary>
-    /// The parameters used to check the availability of the trusted signing account name.
+    /// The parameters used to check the availability of the artifact signing account name.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(CheckNameAvailabilityTypeConverter))]
     public partial class CheckNameAvailability
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
             return ToJsonString();
         }
     }
-    /// The parameters used to check the availability of the trusted signing account name.
+    /// The parameters used to check the availability of the artifact signing account name.
     [System.ComponentModel.TypeConverter(typeof(CheckNameAvailabilityTypeConverter))]
     public partial interface ICheckNameAvailability
 

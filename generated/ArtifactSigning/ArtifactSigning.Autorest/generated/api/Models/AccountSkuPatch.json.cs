@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Extensions;
 
-    /// <summary>SKU of the trusted signing account.</summary>
+    /// <summary>SKU of the artifact signing account.</summary>
     public partial class AccountSkuPatch
     {
 

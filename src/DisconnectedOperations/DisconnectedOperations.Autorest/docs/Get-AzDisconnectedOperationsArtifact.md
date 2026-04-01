@@ -85,7 +85,7 @@ Title                        : my-artifact
 Type                         : Microsoft.Edge/disconnectedOperations/images/artifacts
 ```
 
-This command gets the artifact `my-artifact` from image `default` in resource group `my-resource-group`	
+This command gets the artifact `my-artifact` from image `default` in resource group `my-resource-group`
 
 ### Example 3: GetViaIdentity for artifact.
 ```powershell
