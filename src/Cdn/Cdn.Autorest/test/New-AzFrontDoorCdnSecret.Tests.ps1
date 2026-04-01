@@ -21,7 +21,7 @@ Describe 'New-AzFrontDoorCdnSecret' {
         Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
         $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -Type "CustomerCertificate" `
-            -SecretSourceId "/subscriptions/$subId/resourceGroups/testps-rg-cdn-debug/providers/Microsoft.KeyVault/vaults/jingnanxukvtest/secrets/wildcard-test-cert"
+            -SecretSourceId "/subscriptions/$subId/resourceGroups/testps-rg-cdn-debug/providers/Microsoft.KeyVault/vaults/jingnanxukvtest/secrets/wildcard-azfdtest-xyz"
 
         # New
         $secretInfo = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter

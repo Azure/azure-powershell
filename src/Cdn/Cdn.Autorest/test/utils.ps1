@@ -58,11 +58,22 @@ function setupEnv() {
             Write-Host -ForegroundColor Green "Reusing previous environment from env.json (ResourceGroup: $($env.ResourceGroupName))"
             return
         }
-        Write-Host -ForegroundColor Yellow "Resource group '$($env.ResourceGroupName)' no longer exists. Clearing env to recreate all resources..."
-        $env.Clear()
-        $env.SubscriptionId = (Get-AzContext).Subscription.Id
-        $env.Tenant = (Get-AzContext).Tenant.Id
-        $env.location = 'westus'
+        # Resource group was deleted (e.g. by cleanupEnv), recreate with same names from env.json
+        Write-Host -ForegroundColor Yellow "Resource group '$($env.ResourceGroupName)' no longer exists. Recreating with same names..."
+        $resourceGroupName = $env.ResourceGroupName
+        $classicCdnProfileName = $env.ClassicCdnProfileName
+        $frontDoorCdnProfileName = $env.FrontDoorCdnProfileName
+
+        New-AzResourceGroup -Name $resourceGroupName -Location $env.location
+        Write-Host -ForegroundColor Green "Recreated resource group: $resourceGroupName"
+
+        New-AzCdnProfile -SkuName "Standard_Microsoft" -Name $classicCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
+        Write-Host -ForegroundColor Green "Recreated Classic CDN profile: $classicCdnProfileName"
+
+        New-AzFrontDoorCdnProfile -SkuName "Standard_AzureFrontDoor" -Name $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
+        Write-Host -ForegroundColor Green "Recreated FrontDoor CDN profile: $frontDoorCdnProfileName"
+
+        return
     }
 
     # Create the test resource group
