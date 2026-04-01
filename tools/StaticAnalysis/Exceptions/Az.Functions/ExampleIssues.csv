@@ -1,0 +1,3 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Functions","Update-AzFunctionApp","4","1","Unassigned_Parameter","5013","1","Update-AzFunctionApp -EnableSystemAssignedIdentity must be assigned with a value.","-EnableSystemAssignedIdentity:$false","Assign value for the parameter -EnableSystemAssignedIdentity."
+"Az.Functions","Update-AzFunctionApp","4","1","Unassigned_Parameter","5013","1","Update-AzFunctionApp -EnableSystemAssignedIdentity must be assigned with a value.","-EnableSystemAssignedIdentity:$false","Assign value for the parameter -EnableSystemAssignedIdentity."
