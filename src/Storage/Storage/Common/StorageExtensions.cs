@@ -11,6 +11,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using global::Azure.Storage;
     using global::Azure.Storage.Blobs;
+    using global::Azure.Storage.Blobs.Models;
     using global::Azure.Storage.Blobs.Specialized;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Sas;
@@ -306,9 +307,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
 
-                userDelegationKey = oauthService.GetUserDelegationKey(
-                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
-                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime());
+                BlobGetUserDelegationKeyOptions userDelegationKeyOptions = new BlobGetUserDelegationKeyOptions(sasBuilder.ExpiresOn.ToUniversalTime())
+                {
+                    StartsOn = sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime()
+                };
+
+                userDelegationKey = oauthService.GetUserDelegationKey(userDelegationKeyOptions);
 
                 sasToken = sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
             }

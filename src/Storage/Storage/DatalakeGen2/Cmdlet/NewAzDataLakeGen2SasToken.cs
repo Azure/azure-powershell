@@ -66,6 +66,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string DelegatedUserObjectId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Optional. The delegated user tenant id in Azure AD. This parameter can only be specified when input Storage Context is OAuth based.")]
+        [ValidateNotNullOrEmpty]
+        public string DelegatedUserTenantId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
         [ValidateNotNull]
         public SasProtocol? Protocol { get; set; }
@@ -138,6 +142,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (this.DelegatedUserObjectId != null)
                 {
                     throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based without using SAS token.", "DelegatedUserObjectId");
+                }
+                if (this.DelegatedUserTenantId != null)
+                {
+                    throw new ArgumentException("DelegatedUserTenantId can only be specified when input Storage Context is OAuth based without using SAS token.", "DelegatedUserTenantId");
                 }
             }
 
@@ -215,7 +223,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 pathClient = fileClient;
                 //WriteDataLakeGen2Item(Channel, fileClient);
             }
-            string sasToken = SasTokenHelper.GetDatalakeGen2SharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, DataLakeClientOptions, CmdletCancellationToken);
+            string sasToken = SasTokenHelper.GetDatalakeGen2SharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, DataLakeClientOptions, CmdletCancellationToken, this.DelegatedUserTenantId);
 
             // remove prefix "?" of SAS if any
             sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);

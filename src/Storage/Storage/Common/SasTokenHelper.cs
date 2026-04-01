@@ -23,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using global::Azure.Storage.Blobs.Models;
     using global::Azure.Storage.Blobs.Specialized;
     using global::Azure.Storage.Files.DataLake;
+    using global::Azure.Storage.Files.DataLake.Models;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Files.Shares.Models;
     using global::Azure.Storage.Queues;
@@ -233,7 +234,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
             string Protocol = null,
-            string delegatedUserObjectId = null)
+            string delegatedUserObjectId = null,
+            string delegatedUserTenantId = null)
         {
             ShareSasBuilder sasBuilder = SetShareSasBuilder(file.ShareName,
                 file.Path,
@@ -243,7 +245,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 ExpiryTime,
                 iPAddressOrRange,
                 Protocol,
-                delegatedUserObjectId);
+                null,
+                delegatedUserObjectId,
+                delegatedUserTenantId);
             return sasBuilder;
         }
 
@@ -257,7 +261,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? ExpiryTime = null,
             string iPAddressOrRange = null,
             string Protocol = null,
-            string delegatedUserObjectId = null)
+            string delegatedUserObjectId = null,
+            string delegatedUserTenantId = null)
         {
             ShareSasBuilder sasBuilder = SetShareSasBuilder(share.Name,
                 null,
@@ -268,7 +273,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 iPAddressOrRange,
                 Protocol,
                 null,
-                delegatedUserObjectId);
+                delegatedUserObjectId,
+                delegatedUserTenantId);
             return sasBuilder;
         }
 
@@ -282,7 +288,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             DateTime? expiryTime = null,
             string iPAddressOrRange = null,
             string protocol = null,
-            string delegatedUserObjectId = null)
+            string delegatedUserObjectId = null,
+            string delegatedUserTenantId = null)
         {
             QueueSasBuilder sasBuilder = new QueueSasBuilder
             {
@@ -397,7 +404,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             string iPAddressOrRange = null,
             string Protocol = null,
             string EncryptionScope = null,
-            string delegatedUserObjectId = null)
+            string delegatedUserObjectId = null,
+            string delegatedUserTenantId = null)
         {
             ShareSasBuilder sasBuilder;
             if (signedIdentifier != null) // Use save access policy
@@ -509,7 +517,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Get SAS string
         /// </summary>
-        public static string GetFileSharedAccessSignature(AzureStorageContext context, ShareSasBuilder sasBuilder, bool generateUserDelegationSas, CancellationToken cancelToken)
+        public static string GetFileSharedAccessSignature(AzureStorageContext context, ShareSasBuilder sasBuilder, bool generateUserDelegationSas, CancellationToken cancelToken, string delegatedUserTenantId = null)
         {
             if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey)
             {
@@ -527,10 +535,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
 
-                userDelegationKey = oauthService.GetUserDelegationKey(
-                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
-                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
-                    cancellationToken: cancelToken);
+                ShareGetUserDelegationKeyOptions userDelegationKeyOptions = new ShareGetUserDelegationKeyOptions(
+                    sasBuilder.ExpiresOn.ToUniversalTime())
+                {
+                    StartsOn = sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    DelegatedUserTenantId = delegatedUserTenantId
+                };
+
+                userDelegationKey = oauthService.GetUserDelegationKey(userDelegationKeyOptions, cancelToken);
 
                 return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
             }
@@ -541,7 +553,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Get Queue SAS string
         /// </summary>
-        public static string GetQueueSharedAccessSignature(AzureStorageContext context, QueueSasBuilder sasBuilder, bool generateUserDelegationSas, CancellationToken cancellationToken)
+        public static string GetQueueSharedAccessSignature(AzureStorageContext context, QueueSasBuilder sasBuilder, bool generateUserDelegationSas, CancellationToken cancellationToken, string delegatedUserTenantId = null)
         {
             if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey)
             {
@@ -559,10 +571,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
 
-                userDelegationKey = oauthService.GetUserDelegationKey(
-                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
-                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
-                    cancellationToken: cancellationToken);
+                QueueGetUserDelegationKeyOptions userDelegationKeyOptions = new QueueGetUserDelegationKeyOptions(
+                    sasBuilder.ExpiresOn.ToUniversalTime())
+                {
+                    StartsOn = sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    DelegatedUserTenantId = delegatedUserTenantId
+                };
+
+                userDelegationKey = oauthService.GetUserDelegationKey(userDelegationKeyOptions, cancellationToken);
 
                 return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
             }
@@ -582,7 +598,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             string iPAddressOrRange = null,
             SharedAccessProtocol? Protocol = null,
             string EncryptionScope = null,
-            string DelegatedUserObjectId = null)
+            string DelegatedUserObjectId = null,
+            string DelegatedUserTenantId = null)
         {
             BlobSasBuilder sasBuilder = SetBlobSasBuilder(blobClient.BlobContainerName,
                 blobClient.Name,
@@ -593,7 +610,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 iPAddressOrRange,
                 Protocol,
                 EncryptionScope,
-                DelegatedUserObjectId);
+                DelegatedUserObjectId,
+                DelegatedUserTenantId);
             if (Util.GetVersionIdFromBlobUri(blobClient.Uri) != null)
             {
                 sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blobClient.Uri);
@@ -616,7 +634,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             string iPAddressOrRange = null,
             SharedAccessProtocol? Protocol = null,
             string EncryptionScope = null,
-            string DelegatedUserObjectId = null)
+            string DelegatedUserObjectId = null,
+            string DelegatedUserTenantId = null)
         {
             BlobSasBuilder sasBuilder = SetBlobSasBuilder(container.Name,
                 null,
@@ -627,7 +646,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 iPAddressOrRange,
                 Protocol,
                 EncryptionScope,
-                DelegatedUserObjectId);
+                DelegatedUserObjectId,
+                DelegatedUserTenantId);
             return sasBuilder;
         }
 
@@ -643,7 +663,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             string iPAddressOrRange = null,
             SharedAccessProtocol? Protocol = null,
             string EncryptionScope = null,
-            string DelegatedUserObjectId = null)
+            string DelegatedUserObjectId = null,
+            string DelegatedUserTenantId = null)
         {
             BlobSasBuilder sasBuilder;
             if (signedIdentifier != null) // Use save access policy
@@ -759,7 +780,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Get SAS string
         /// </summary>
-        public static string GetBlobSharedAccessSignature(AzureStorageContext context, BlobSasBuilder sasBuilder, bool generateUserDelegationSas, BlobClientOptions ClientOptions, CancellationToken cancelToken)
+        public static string GetBlobSharedAccessSignature(AzureStorageContext context, BlobSasBuilder sasBuilder, bool generateUserDelegationSas, BlobClientOptions ClientOptions, CancellationToken cancelToken, string delegatedUserTenantId = null)
         {
             if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey)
             {
@@ -776,10 +797,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
 
-                userDelegationKey = oauthService.GetUserDelegationKey(
-                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
-                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
-                    cancellationToken: cancelToken);
+                BlobGetUserDelegationKeyOptions userDelegationKeyOptions = new BlobGetUserDelegationKeyOptions(
+                    sasBuilder.ExpiresOn.ToUniversalTime())
+                {
+                    StartsOn = sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    DelegatedUserTenantId = delegatedUserTenantId
+                };
+
+                userDelegationKey = oauthService.GetUserDelegationKey(userDelegationKeyOptions, cancelToken);
 
                 return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
             }
@@ -792,7 +817,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Get SAS string for DatalakeGen2
         /// </summary>
-        public static string GetDatalakeGen2SharedAccessSignature(AzureStorageContext context, DataLakeSasBuilder sasBuilder, bool generateUserDelegationSas, DataLakeClientOptions clientOptions, CancellationToken cancelToken)
+        public static string GetDatalakeGen2SharedAccessSignature(AzureStorageContext context, DataLakeSasBuilder sasBuilder, bool generateUserDelegationSas, DataLakeClientOptions clientOptions, CancellationToken cancelToken, string delegatedUserTenantId = null)
         {
             if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey)
             {
@@ -809,10 +834,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
 
-                userDelegationKey = oauthService.GetUserDelegationKey(
-                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
-                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
-                    cancellationToken: cancelToken);
+                DataLakeGetUserDelegationKeyOptions userDelegationKeyOptions = new DataLakeGetUserDelegationKeyOptions(
+                    sasBuilder.ExpiresOn.ToUniversalTime())
+                {
+                    StartsOn = sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    DelegatedUserTenantId = delegatedUserTenantId
+                };
+
+                userDelegationKey = oauthService.GetUserDelegationKey(userDelegationKeyOptions, cancelToken);
 
                 return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
             }

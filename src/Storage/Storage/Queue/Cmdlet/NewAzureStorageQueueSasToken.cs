@@ -65,6 +65,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         [ValidateNotNullOrEmpty]
         public string DelegatedUserObjectId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Optional. The delegated user tenant id in Azure AD. This parameter can only be specified when input Storage Context is OAuth based.")]
+        [ValidateNotNullOrEmpty]
+        public string DelegatedUserTenantId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
         [ValidateSet("HttpsOnly", "HttpsOrHttp", IgnoreCase = true),]
         public string Protocol { get; set; }
@@ -137,6 +141,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
                 {
                     throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based without using SAS token.", "DelegatedUserObjectId");
                 }
+                if (this.DelegatedUserTenantId != null)
+                {
+                    throw new ArgumentException("DelegatedUserTenantId can only be specified when input Storage Context is OAuth based without using SAS token.", "DelegatedUserTenantId");
+                }
             }
 
             QueueClient queueClient = Util.GetTrack2QueueClient(this.Name, (AzureStorageContext)this.Context, this.ClientOptions);
@@ -146,8 +154,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
                 identifier = SasTokenHelper.GetQueueSignedIdentifier(queueClient, this.Policy, CmdletCancellationToken);
             }
 
-            QueueSasBuilder sasBuilder = SasTokenHelper.SetQueueSasbuilder(queueClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.DelegatedUserObjectId);
-            string sasToken = SasTokenHelper.GetQueueSharedAccessSignature((AzureStorageContext)this.Context, sasBuilder, generateUserDelegationSas, CmdletCancellationToken);
+            QueueSasBuilder sasBuilder = SasTokenHelper.SetQueueSasbuilder(queueClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.DelegatedUserObjectId, this.DelegatedUserTenantId);
+            string sasToken = SasTokenHelper.GetQueueSharedAccessSignature((AzureStorageContext)this.Context, sasBuilder, generateUserDelegationSas, CmdletCancellationToken, this.DelegatedUserTenantId);
 
             // remove prefix "?" of SAS if any
             sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);

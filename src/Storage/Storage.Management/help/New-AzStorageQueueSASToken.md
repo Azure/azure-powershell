@@ -16,15 +16,17 @@ Generates a shared access signature token for an Azure storage queue.
 ### SasPolicy
 ```
 New-AzStorageQueueSASToken [-Name] <String> -Policy <String> [-DelegatedUserObjectId <String>]
- [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DelegatedUserTenantId <String>] [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
 New-AzStorageQueueSASToken [-Name] <String> [-Permission <String>] [-DelegatedUserObjectId <String>]
- [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DelegatedUserTenantId <String>] [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +40,14 @@ New-AzStorageQueueSASToken -Name "Test" -Permission raup
 ```
 
 This example generates a queue SAS token with full permission.
+
+### Example 2: Generate a User Delegation queue SAS token with OAuth authentication context, and delegated user object ID and tenant ID
+```powershell
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
+New-AzStorageQueueSASToken -Name "Test" -Permission raup -StartTime $StartTime -ExpiryTime $EndTime -Context $ctx -DelegatedUserObjectId "00000000-0000-0000-0000-000000000000" -DelegatedUserTenantId "00000000-0000-0000-0000-000000000000"
+```
+
+This example generates a User Delegation queue SAS token with OAuth authentication context, specifying the delegated user object ID and tenant ID for enhanced security.
 
 ## PARAMETERS
 
@@ -74,6 +84,21 @@ Accept wildcard characters: False
 
 ### -DelegatedUserObjectId
 This value specifies the Entra ID of the user who is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DelegatedUserTenantId
+Optional. The delegated user tenant id in Azure AD. This parameter can only be specified when input Storage Context is OAuth based.
 
 ```yaml
 Type: System.String

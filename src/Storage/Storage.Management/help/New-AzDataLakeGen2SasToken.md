@@ -15,17 +15,19 @@ Generates a SAS token for Azure DatalakeGen2 item.
 ### ReceiveManual (Default)
 ```
 New-AzDataLakeGen2SasToken [-FileSystem] <String> [-Path <String>] [-Permission <String>]
- [-DelegatedUserObjectId <String>] [-Protocol <SasProtocol>] [-IPAddressOrRange <String>]
- [-StartTime <DateTimeOffset>] [-ExpiryTime <DateTimeOffset>] [-EncryptionScope <String>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DelegatedUserObjectId <String>] [-DelegatedUserTenantId <String>] [-Protocol <SasProtocol>]
+ [-IPAddressOrRange <String>] [-StartTime <DateTimeOffset>] [-ExpiryTime <DateTimeOffset>]
+ [-EncryptionScope <String>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ItemPipeline
 ```
 New-AzDataLakeGen2SasToken -InputObject <AzureDataLakeGen2Item> [-Permission <String>]
- [-DelegatedUserObjectId <String>] [-Protocol <SasProtocol>] [-IPAddressOrRange <String>]
- [-StartTime <DateTimeOffset>] [-ExpiryTime <DateTimeOffset>] [-EncryptionScope <String>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DelegatedUserObjectId <String>] [-DelegatedUserTenantId <String>] [-Protocol <SasProtocol>]
+ [-IPAddressOrRange <String>] [-StartTime <DateTimeOffset>] [-ExpiryTime <DateTimeOffset>]
+ [-EncryptionScope <String>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +48,14 @@ Get-AzDataLakeGen2Item -FileSystem test -Path "testdir/dir2" | New-AzDataLakeGen
 ```
 
 This example generates a DatalakeGen2 SAS token by pipeline a datalake gen2 item, and with specific StartTime, ExpireTime, Protocol, IPAddressOrRange, Encryption Scope.
+
+### Example 3: Generate a User Delegation SAS token with OAuth authentication context, and delegated user object ID and tenant ID
+```powershell
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
+New-AzDataLakeGen2SasToken -FileSystem "filesystem1" -Path "dir1/file.txt" -Permission rw -StartTime (Get-Date) -ExpiryTime (Get-Date).AddDays(6) -Context $ctx -DelegatedUserObjectId "00000000-0000-0000-0000-000000000000" -DelegatedUserTenantId "00000000-0000-0000-0000-000000000000"
+```
+
+This example generates a User Delegation DatalakeGen2 SAS token with OAuth authentication context, specifying the delegated user object ID and tenant ID for enhanced security.
 
 ## PARAMETERS
 
@@ -81,6 +91,21 @@ Accept wildcard characters: False
 
 ### -DelegatedUserObjectId
 This value specifies the Entra ID of the user who is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DelegatedUserTenantId
+Optional. The delegated user tenant id in Azure AD. This parameter can only be specified when input Storage Context is OAuth based.
 
 ```yaml
 Type: System.String

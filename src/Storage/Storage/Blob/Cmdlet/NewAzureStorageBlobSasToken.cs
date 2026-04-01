@@ -113,6 +113,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string DelegatedUserObjectId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Optional. The delegated user tenant id in Azure AD. This parameter can only be specified when input Storage Context is OAuth based.")]
+        [ValidateNotNullOrEmpty]
+        public string DelegatedUserTenantId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
         [ValidateNotNull]
         public SharedAccessProtocol? Protocol { get; set; }
@@ -201,6 +205,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 {
                     throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based without using SAS token.", "DelegatedUserObjectId");
                 }
+                if (this.DelegatedUserTenantId != null)
+                {
+                    throw new ArgumentException("DelegatedUserTenantId can only be specified when input Storage Context is OAuth based without using SAS token.", "DelegatedUserTenantId");
+                }
             }
 
             //Get blob instance
@@ -223,10 +231,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
 
             //Create SAS builder
-            BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromBlob(blobClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.EncryptionScope, this.DelegatedUserObjectId);
+            BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromBlob(blobClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.EncryptionScope, this.DelegatedUserObjectId, this.DelegatedUserTenantId);
 
             //Create SAS and output
-            string sasToken = SasTokenHelper.GetBlobSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, ClientOptions, CmdletCancellationToken);
+            string sasToken = SasTokenHelper.GetBlobSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, ClientOptions, CmdletCancellationToken, this.DelegatedUserTenantId);
             
             // remove prefix "?" of SAS if any
             sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);
