@@ -13,9 +13,11 @@ while(-not $mockingPath) {
 
 $env:FunctionsTestMode = $true
 
-# These tests run in all modes (Live, Record, Playback) including CI pipeline.
-# The $env:FunctionsTestMode flag ensures deterministic naming for playback compatibility.
-Describe 'New-AzFunctionApp - Flex Consumption' {
+# These tests require a live Azure context because New-AzFunctionApp calls
+# Get-AzFunctionAppFlexConsumptionRuntime, which needs SubscriptionId from
+# the Azure context. In CI playback, there is no Azure context, so
+# SubscriptionId is null and the tests fail with parameter binding errors.
+Describe 'New-AzFunctionApp - Flex Consumption' -Tag 'LiveOnly' {
 
     BeforeAll {
 
