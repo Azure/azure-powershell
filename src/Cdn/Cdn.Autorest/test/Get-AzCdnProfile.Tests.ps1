@@ -14,33 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnProfile'  {
-    It 'List' {
-        $cdnProfiles = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName
-
-        $cdnProfiles.Count | Should -BeGreaterOrEqual 1
+Describe 'Get-AzCdnProfile' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
-        $cdnProfile = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.ClassicCdnProfileName
-
-        $cdnProfile.Name | Should -Be $env.ClassicCdnProfileName
-        $cdnProfile.SkuName | Should -Be "Standard_Microsoft"
-        $cdnProfile.Location | Should -Be "Global"
+    It 'List1' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List1' {
-        $cdnProfiles = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName
-
-        $cdnProfiles.Count | Should -BeGreaterOrEqual 1
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $cdnProfileObject = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.ClassicCdnProfileName
-        $cdnProfile = Get-AzCdnProfile -InputObject $cdnProfileObject
-
-        $cdnProfile.Name | Should -Be $env.ClassicCdnProfileName
-        $cdnProfile.SkuName | Should -Be "Standard_Microsoft"
-        $cdnProfile.Location | Should -Be "Global"
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -14,26 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnRuleSet'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnRuleSet'  {
-    BeforeAll {
-        $rulesetName = 'rsName030'
-        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
+Describe 'Get-AzFrontDoorCdnRuleSet' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List' {
-        $rulesets = Get-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $rulesets.Count | Should -BeGreaterOrEqual 1
-}
-
-    It 'Get' {
-        $ruleset = Get-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $ruleset.Name | Should -Be $rulesetName
+    It 'GetViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $rulesetObject = Get-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $ruleset = Get-AzFrontDoorCdnRuleSet -InputObject $rulesetObject
-        
-        $ruleset.Name | Should -Be $rulesetName
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

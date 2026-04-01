@@ -14,44 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnSecurity
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnSecurityPolicy'  {
-    It 'Delete'  {
-        $subId = $env.SubscriptionId
-
-        $endpointName = 'e-clipstest120'
-        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
-
-        $policyName = "pol-psName030"
-        Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
-
-        $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
-        $parameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association `
-        -WafPolicyId "/subscriptions/$subId/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
-
-        New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
-
-        Remove-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
-        Write-Host -ForegroundColor Green "Delete policyName : $($policyName)"
+Describe 'Remove-AzFrontDoorCdnSecurityPolicy' {
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
-        $subId = $env.SubscriptionId
+    It 'DeleteViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $endpointName = 'e-clipstest121'
-        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
-
-        $policyName = "pol-psName031"
-        Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
-
-        $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
-        $parameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association `
-        -WafPolicyId "/subscriptions/$subId/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
-
-        New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
-
-        $securityObject = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
-        Remove-AzFrontDoorCdnSecurityPolicy -InputObject $securityObject
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

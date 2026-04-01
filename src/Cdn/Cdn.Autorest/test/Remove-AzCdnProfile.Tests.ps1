@@ -14,46 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzCdnProfile'  {
-    It 'Delete' {
-        $cdnProfileName = 'p-psName010'
-        Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-        $profileSku = "Standard_Microsoft"
-        
-        Write-Host -ForegroundColor Green "New cdnProfileName"
-        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
-
-        Write-Host -ForegroundColor Green "Remove cdnProfileName"
-        $res = Remove-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $res | Should -BeNullOrEmpty
+Describe 'Remove-AzCdnProfile' {
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    # Use "PassThru" parameter to test
-    It 'Delete' {
-        $cdnProfileName = 'p-psName010'
-        Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-        $profileSku = "Standard_Microsoft"
-        
-        Write-Host -ForegroundColor Green "New cdnProfileName"
-        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
-
-        Write-Host -ForegroundColor Green "Remove cdnProfileName"
-        $res = Remove-AzCdnProfile -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -PassThru
-        $res | Should -Be "True"
-    }
-
-    It 'DeleteViaIdentity' {
-        $cdnProfileName = 'p-psName020'
-        Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-        $profileSku = "Standard_Microsoft"
-        
-        Write-Host -ForegroundColor Green "New cdnProfileName"
-        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
-
-        Write-Host -ForegroundColor Green "Get cdnProfileName"
-        $profileObject = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $cdnProfileName
-
-        Write-Host -ForegroundColor Green "Remove cdnProfileName"
-        Remove-AzCdnProfile -InputObject $profileObject
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

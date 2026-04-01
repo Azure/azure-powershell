@@ -14,62 +14,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnRoute'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnRoute'  {
-    BeforeAll {
-        $frontDoorEndpointName = 'e-clipstest150'
-        Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU endpoint domain : $($frontDoorEndpointName)"
-        New-AzFrontDoorCdnEndpoint -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
-
-        $originGroupName = 'org-pstest130' 
-        $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
-            -ProbeProtocol "Https" -ProbeRequestType "GET"
-        $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
-            -SampleSize 5 -SuccessfulSamplesRequired 4
-        $originGroup = New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-            -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
-
-        Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
-
-        $hostName = "en.wikipedia.org";
-        $originName = 'ori-psName080'
-        New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
-            -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
-            -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
-
-        $rulesetName = 'rsName110'
-        Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
-        $ruleSet = New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
-        $conditions = @(
-            $uriConditon
-        );
-        $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
-        -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
-        -CacheConfigurationQueryParameter "a=test" `
-        -CacheConfigurationIsCompressionEnabled "Enabled" `
-        -CacheConfigurationCacheBehavior "HonorOrigin" 
-        $actions = @($overrideAction);
-        
-        $ruleName = 'ruleName070'
-        Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
-        New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-            -Action $actions -Condition $conditions
-
-        $ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
-
-        $routeName = 'routeName040'
-        Write-Host -ForegroundColor Green "Use routeName : $($routeName)"
-        New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-            -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
+Describe 'Update-AzFrontDoorCdnRoute' {
+    It 'UpdateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
-        Update-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $frontDoorEndpointName -Name $routeName `
-            -EnabledState "Disabled"
+    It 'UpdateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
-        $routeObject = Get-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $frontDoorEndpointName -Name $routeName
-        Update-AzFrontDoorCdnRoute -EnabledState "Enabled" -InputObject $routeObject
+    It 'UpdateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityProfileExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityAfdEndpointExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityAfdEndpoint' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

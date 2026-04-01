@@ -14,16 +14,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnCustomDomai
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnCustomDomain'  {
+Describe 'New-AzFrontDoorCdnCustomDomain' {
     It 'CreateExpanded' {
-        $subId = $env.SubscriptionId
-        $secretName = "se-psName020"
-        Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
-
-        $customDomainName = "domain-psName010" 
+        $customDomainName = "domain-psName010"
         $hostName = "pstestnew.dev.cdn.azure.cn"
         $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "ManagedCertificate" -MinimumTlsVersion "TLS12"
-        New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -HostName $hostName -TlsSetting $tlsSetting
+
+        # New
+        Write-Host -ForegroundColor Green "New CustomDomain: $($customDomainName)"
+        $customDomain = New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+            -HostName $hostName -TlsSetting $tlsSetting
+        $customDomain.Name | Should -Be $customDomainName
+
+        # Get - List / by name / ViaIdentity
+        $customDomains = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName
+        $customDomains.Count | Should -BeGreaterOrEqual 1
+        $getDomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $customDomainName
+        $getDomain.Name | Should -Be $customDomainName
+        $getDomain2 = Get-AzFrontDoorCdnCustomDomain -InputObject $getDomain
+        $getDomain2.Name | Should -Be $customDomainName
+
+        # Remove
+        Write-Host -ForegroundColor Green "Remove CustomDomain: $($customDomainName)"
+        Remove-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $customDomainName
     }
 }

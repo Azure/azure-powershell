@@ -15,23 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnProfileAgent'))
 }
 
 Describe 'New-AzCdnProfileAgent' {
+    # Covers: New/Get/Update/Remove-AzCdnProfileAgent
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityProfileExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityProfile' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

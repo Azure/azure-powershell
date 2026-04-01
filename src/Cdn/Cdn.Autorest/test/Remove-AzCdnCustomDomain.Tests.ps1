@@ -14,10 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnCustomDomain'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzCdnCustomDomain'  {
+Describe 'Remove-AzCdnCustomDomain' {
     It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentityEndpoint' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -14,26 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnOriginGr
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnOriginGroup'  {
-    BeforeAll {
-        $originGroupName = 'org-pstest090'
-        $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
-        -ProbeProtocol "Https" -ProbeRequestType "GET"
-        $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
-        -SampleSize 5 -SuccessfulSamplesRequired 4
-        New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
+Describe 'Remove-AzFrontDoorCdnOriginGroup' {
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Delete' {
-        Remove-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+    It 'DeleteViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
-        New-AzFrontDoorCdnOriginGroup -SubscriptionId $env.SubscriptionId -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
-        
-        $ogObject = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
-        Remove-AzFrontDoorCdnOriginGroup -InputObject $ogObject
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

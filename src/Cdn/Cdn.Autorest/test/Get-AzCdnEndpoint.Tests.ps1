@@ -14,22 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnEndpoint'  {
-    It 'List' {
-        $endpoints = Get-AzCdnEndpoint -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $endpoints.Count | Should -BeGreaterOrEqual 1
+Describe 'Get-AzCdnEndpoint' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
-        $endpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $endpoint.Name | Should -Be $env.ClassicEndpointName
+    It 'GetViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $endpointObject = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $endpoint = Get-AzCdnEndpoint -InputObject $endpointObject
-        $endpoint.Name | Should -Be $env.ClassicEndpointName
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

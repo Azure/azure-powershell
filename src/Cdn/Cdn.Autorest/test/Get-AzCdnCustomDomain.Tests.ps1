@@ -14,25 +14,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnCustomDomain'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnCustomDomain'  {
-    It 'List' {
-        $customDomains = Get-AzCdnCustomDomain -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        Write-Host -ForegroundColor Green "customDomains.Count : $($customDomains.Count)"
-        $customDomains.Count | Should -BeGreaterOrEqual 1
+Describe 'Get-AzCdnCustomDomain' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
-        $customDomain = Get-AzCdnCustomDomain -EndpointName $env.ClassicEndpointName -Name $env.ClassicCustomDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-
-        $customDomain.Name | Should -Be $env.ClassicCustomDomainName
-        $customDomain.HostName | Should -Be $env.ClassicCustomDomainHostName
+    It 'GetViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $customDomainObject = Get-AzCdnCustomDomain -EndpointName $env.ClassicEndpointName -Name $env.ClassicCustomDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $customDomain =  Get-AzCdnCustomDomain -InputObject $customDomainObject
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $customDomain.Name | Should -Be $env.ClassicCustomDomainName
-        $customDomain.HostName | Should -Be $env.ClassicCustomDomainHostName
+    It 'GetViaIdentityEndpoint' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

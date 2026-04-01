@@ -15,19 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnDeploymentVersion'))
 }
 
 Describe 'Get-AzCdnDeploymentVersion' {
+    # Covers: Get/Update/Approve/Compare-AzCdnDeploymentVersion
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

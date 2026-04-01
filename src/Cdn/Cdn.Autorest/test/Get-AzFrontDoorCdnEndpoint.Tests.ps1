@@ -14,23 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnEndpoint'  {
-    It 'List'  {
-        $endpoints = Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName
-        $endpoints.Count | Should -BeGreaterOrEqual 1
+Describe 'Get-AzFrontDoorCdnEndpoint' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get'  {
-        $endpoint = Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName
-        $endpoint.Name | Should -Be $env.FrontDoorEndpointName
-        $endpoint.Location | Should -Be "Global"
+    It 'GetViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $endpointObject = Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName
-        $endpoint = Get-AzFrontdoorCdnEndpoint -InputObject $endpointObject
-        
-        $endpoint.Name | Should -Be $env.FrontDoorEndpointName
-        $endpoint.Location | Should -Be "Global"
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

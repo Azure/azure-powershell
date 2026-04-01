@@ -15,15 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnWebAgent'))
 }
 
 Describe 'New-AzCdnWebAgent' {
+    # Covers: New/Get/Update/Remove-AzCdnWebAgent
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

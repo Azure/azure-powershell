@@ -14,42 +14,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnRule'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnRule'  {
-    BeforeAll {
-        $rulesetName = 'rsName020'
-        Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
-        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
-        $conditions = @(    
-            $uriConditon
-        );
-        $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
-        -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
-        -CacheConfigurationQueryParameter "a=test" `
-        -CacheConfigurationIsCompressionEnabled "Enabled" `
-        -CacheConfigurationCacheBehavior "HonorOrigin"
-        $actions = @($overrideAction);
-        
-        $ruleName = 'ruleName020'
-        Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
-        New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-        -Action $actions -Condition $conditions
+Describe 'Get-AzFrontDoorCdnRule' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List' {
-        $rules = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName
-        $rules.Count | Should -BeGreaterOrEqual 1
+    It 'GetViaIdentityRuleSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
-        $rule = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
-        $rule.Name | Should -Be $ruleName
+    It 'GetViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $ruleObject = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
-        $rule = Get-AzFrontDoorCdnRule -InputObject $ruleObject
-        
-        $rule.Name | Should -Be $ruleName   
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

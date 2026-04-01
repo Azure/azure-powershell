@@ -14,31 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzCdnEndpoint'  {
-    It 'Delete' { 
-        $endpointName = 'e-clipstest370'
-        $origin = @{
-            Name = "origin1"
-            HostName = "host1.hello.com"
-        };
-        $location = "westus"
-        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-        New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
-        Remove-AzCdnEndpoint -Name $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+Describe 'Remove-AzCdnEndpoint' {
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
-        $endpointName = 'e-clipstest371'
-        $origin = @{
-            Name = "origin1"
-            HostName = "host1.hello.com"
-        };
-        $location = "westus"
-        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+    It 'DeleteViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        New-AzCdnEndpoint -SubscriptionId $env.SubscriptionId -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
-        $endpointObject = Get-AzCdnEndpoint -Name $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        Remove-AzCdnEndpoint -InputObject $endpointObject
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

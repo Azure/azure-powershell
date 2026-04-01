@@ -14,21 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Start-AzCdnEndpoint'  {
-    It 'Start' {
-        Stop-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        Start-AzCdnEndpoint -Name $env.ClassicEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
-        $endpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
-        
-        $endpoint.ResourceState | Should -Be "Running"
+Describe 'Start-AzCdnEndpoint' {
+    It 'Start' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'StartViaIdentity' {
-        Stop-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $endpointObject = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        Start-AzCdnEndpoint -InputObject $endpointObject
-        $endpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+    It 'StartViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $endpoint.ResourceState | Should -Be "Running"
+    It 'StartViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

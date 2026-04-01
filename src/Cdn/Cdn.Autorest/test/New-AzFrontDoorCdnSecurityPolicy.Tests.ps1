@@ -14,25 +14,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnSecurityPol
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnSecurityPolicy'  {
-    It 'CreateExpanded'  {
+Describe 'New-AzFrontDoorCdnSecurityPolicy' {
+    It 'CreateExpanded' {
         $subId = $env.SubscriptionId
-        Write-Host -ForegroundColor Green "Use subscriptionId : $($subId)"
-
         $endpointName = 'e-clipstest060'
-        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
         $policyName = "pol-psName020"
-        Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
+        Write-Host -ForegroundColor Green "New SecurityPolicy: $($policyName)"
 
         $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
-        $parameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association `
-        -WafPolicyId "/subscriptions/$subId/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
+        $parameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject -Association $association `
+            -WafPolicyId "/subscriptions/$subId/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
 
-        New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
-        
-        # Remove security policy for other tests
+        # New
+        $policy = New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
+        $policy.Name | Should -Be $policyName
+
+        # Get - List / by name / ViaIdentity
+        $policies = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $policies.Count | Should -BeGreaterOrEqual 1
+        $getPolicy = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
+        $getPolicy.Name | Should -Be $policyName
+        $getPolicy2 = Get-AzFrontDoorCdnSecurityPolicy -InputObject $getPolicy
+        $getPolicy2.Name | Should -Be $policyName
+
+        # Remove
+        Write-Host -ForegroundColor Green "Remove SecurityPolicy: $($policyName)"
         Remove-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
     }
 }

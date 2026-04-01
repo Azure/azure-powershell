@@ -1,0 +1,1 @@
+{"issuerParameters":{"name":"Self"},"keyProperties":{"exportable":true,"keySize":2048,"keyType":"RSA"},"x509CertificateProperties":{"subject":"CN=*.azfdtest.xyz","validityInMonths":12}}

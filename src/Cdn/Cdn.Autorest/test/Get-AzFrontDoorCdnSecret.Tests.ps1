@@ -14,33 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnSecret'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnSecret'  {
-    BeforeAll {
-        $subId = $env.SubscriptionId
-        Write-Host -ForegroundColor Green "Use SubscriptionId : $($subId)"
-
-        $secretName = "kvsecret-test01"
-        Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
-
-        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -Type "CustomerCertificate"`
-        -SecretSourceId "/subscriptions/$subId/resourceGroups/huaiyiz/providers/Microsoft.KeyVault/vaults/huaiyizkvtest/secrets/wildcard-huaiyiz-azfdtest-xyz"
-        
-        New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
+Describe 'Get-AzFrontDoorCdnSecret' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List' {
-        $rules = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $rules.Count | Should -BeGreaterOrEqual 1
+    It 'GetViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
-        $secret = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $secretName
-        $secret.Name | Should -Be $secretName
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $secretObject = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $secretName
-        $secret = Get-AzFrontDoorCdnSecret -InputObject $secretObject
-        $secret.Name | Should -Be $secretName
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

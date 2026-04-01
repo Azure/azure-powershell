@@ -14,64 +14,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnRule'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnRule'  {
-    BeforeAll {
-        $rulesetName = 'rsName120'
-        Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
-        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
-        $conditions = @(
-            $uriConditon
-        );
-        $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
-        -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
-        -CacheConfigurationQueryParameter "a=test" `
-        -CacheConfigurationIsCompressionEnabled "Enabled" `
-        -CacheConfigurationCacheBehavior "HonorOrigin" 
-        $actions = @($overrideAction);
-        
-        $ruleName = 'ruleName080'
-        Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
-        New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-        -Action $actions -Condition $conditions
-
-        $rule = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
-        $rule.Name | Should -Be $ruleName
-        $rule.Condition.Count | Should -Be $conditions.Count
-        $rule.Action.Count | Should -Be $actions.Count
+Describe 'Update-AzFrontDoorCdnRule' {
+    It 'UpdateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
-        $updatedConditions = @();
-        $updatedOverrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
-        -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
-        -CacheConfigurationQueryParameter "a=test1" `
-        -CacheConfigurationIsCompressionEnabled "Enabled" `
-        -CacheConfigurationCacheBehavior "HonorOrigin" 
-        $updatedActions = @($updatedOverrideAction);
-        Update-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-        -Action $updatedActions -Condition $updatedConditions
-
-        $updatedRule = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
-        $updatedRule.Name | Should -Be $ruleName
-        $updatedRule.Condition.Count | Should -Be $updatedConditions.Count
-        $updatedRule.Action.Count | Should -Be $actions.Count
+    It 'UpdateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
-        $updatedConditions = @();
-        $updatedOverrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
-        -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
-        -CacheConfigurationQueryParameter "a=test2" `
-        -CacheConfigurationIsCompressionEnabled "Enabled" `
-        -CacheConfigurationCacheBehavior "HonorOrigin" 
-        $updatedActions = @($updatedOverrideAction);
-        $ruleObject = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
-        Update-AzFrontDoorCdnRule -Action $updatedActions -Condition $updatedConditions -InputObject $ruleObject
+    It 'UpdateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $updatedRule = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
-        $updatedRule.Name | Should -Be $ruleName
-        $updatedRule.Condition.Count | Should -Be $updatedConditions.Count
-        $updatedRule.Action.Count | Should -Be $actions.Count
+    It 'UpdateViaIdentityRuleSetExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityRuleSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityProfileExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

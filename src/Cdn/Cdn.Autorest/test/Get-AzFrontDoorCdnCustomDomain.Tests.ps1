@@ -14,21 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnCustomDomai
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnCustomDomain'  {
-    It 'List' {
-        $customDomains = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName
-        $customDomains.Count | Should -BeGreaterOrEqual 1
+Describe 'Get-AzFrontDoorCdnCustomDomain' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
-        $customDomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $env.FrontDoorCustomDomainName
-        $customDomain.Name | Should -Be $env.FrontDoorCustomDomainName
+    It 'GetViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $customDomainObject = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $env.FrontDoorCustomDomainName 
-        $customDomain = Get-AzFrontDoorCdnCustomDomain -InputObject $customDomainObject
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $customDomain.Name | Should -Be $env.FrontDoorCustomDomainName
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

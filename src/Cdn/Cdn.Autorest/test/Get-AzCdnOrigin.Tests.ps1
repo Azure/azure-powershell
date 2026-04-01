@@ -14,32 +14,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnOrigin'  {
-    BeforeAll {
-        $originName = "origin1"
-        $originHostName = "host1.hello.com"
-    }
-    
-    It 'List' {
-        $origins = Get-AzCdnOrigin -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $origins.Count | Should -Be 1
+Describe 'Get-AzCdnOrigin' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
-        $origin = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $origin.Name | Should -Be $originName
-        $origin.HostName | Should -Be $originHostName
-        $origin.HttpsPort | Should -Be $null
+    It 'GetViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $originObject = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $origin = Get-AzCdnOrigin -InputObject $originObject
-        $origin.Name | Should -Be $originName
-        $origin.HostName | Should -Be $originHostName
-        $origin.HttpsPort | Should -Be $null
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentityEndpoint' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

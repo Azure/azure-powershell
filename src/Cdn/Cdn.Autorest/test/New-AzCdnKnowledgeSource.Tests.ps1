@@ -15,23 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnKnowledgeSource'))
 }
 
 Describe 'New-AzCdnKnowledgeSource' {
+    # Covers: New/Get/Update/Remove/Clear-AzCdnKnowledgeSource
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityWebAgentExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityWebAgent' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

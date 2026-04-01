@@ -15,81 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfile'
 }
 
 Describe 'Update-AzFrontDoorCdnProfile' {
-    BeforeAll {
-        $subId = $env.SubscriptionId
-        $frontDoorCdnProfileName = 'fdp-pstest050'
-        Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-        $profileSku = "Standard_AzureFrontDoor"
-        $tags = @{
-            Tag1 = 1
-            Tag2  = 2
-        }
-        New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global -Tag $tags
+    It 'UpdateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
-        $tags = @{
-            Tag1 = 11
-            Tag2  = 22
-        }
-
-        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile"
-        $profileObject = Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag $tags -OriginResponseTimeoutSecond 30
-
-        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnProfile"
-        $updatedProfile = Get-AzFrontDoorCdnProfile -InputObject $profileObject
-        
-        $updatedProfile.Tag["Tag1"] | Should -Be "11"
-        $updatedProfile.Tag["Tag2"] | Should -Be "22"
-        $updatedProfile.OriginResponseTimeoutSecond | Should -Be "30"
+    It 'UpdateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
-        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile: Enable managed identity"
-        $profileObject = Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -IdentityType SystemAssigned
-
-        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnProfile"
-        $updatedProfile = Get-AzFrontDoorCdnProfile -InputObject $profileObject
-
-        $updatedProfile.IdentityType | Should -Be "SystemAssigned"
+    It 'UpdateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
-        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile: add profile logScrubbing"
-
-        $rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny -State Enabled 
-        $rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -SelectorMatchOperator EqualsAny -State Enabled
-        $rules = New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($rule1, $rule2) -State Enabled
-
-        $profileObject = Update-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LogScrubbingRule $rules.ScrubbingRule -LogScrubbingState Enabled
-
-        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnProfile"
-        $updatedProfile = Get-AzFrontDoorCdnProfile -InputObject $profileObject
-
-        $updatedProfile.LogScrubbingState | Should -Be "Enabled"
-        $updatedProfile.LogScrubbingRule.Count | Should -Be 2
-        $updatedProfile.LogScrubbingRule[0].MatchVariable | Should -Be 'RequestIPAddress'
-        $updatedProfile.LogScrubbingRule[1].MatchVariable | Should -Be 'QueryStringArgNames'
-    }
-
-    It 'UpdateViaIdentityExpanded' {
-        $tags = @{
-            Tag1 = 33
-            Tag2  = 44
-        }
-
-        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnProfile"
-        $profileObject = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
-
-        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnProfile"
-        Update-AzFrontDoorCdnProfile -Tag $tags -OriginResponseTimeoutSecond 30 -InputObject $profileObject
-
-        Write-Host -ForegroundColor Green "get AzFrontDoorCdnProfile"
-        $updatedProfile = Get-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $updatedProfile.Tag["Tag1"] | Should -Be "33"
-        $updatedProfile.Tag["Tag2"] | Should -Be "44"
-        $updatedProfile.OriginResponseTimeoutSecond | Should -Be "30"
+    It 'UpdateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

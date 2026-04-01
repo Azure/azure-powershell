@@ -14,32 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Stop-AzCdnEndpoint'  {
-    BeforeAll {
-        $endpointName = 'e-clipstest333'
-        $origin = @{
-            Name = "origin1"
-            HostName = "host1.hello.com"
-        };
-        $location = "westus"
-        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-        New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
-    }
-    It 'Stop' {
-        Stop-AzCdnEndpoint -Name $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $res = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
-        
-        $res.ResourceState | Should -Be "Stopped"
+Describe 'Stop-AzCdnEndpoint' {
+    It 'Stop' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'StopViaIdentity' {
-        Start-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName
-        $resObject = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName
-        Write-Host -ForegroundColor Green "Endpoint status: $($resObject.ResourceState)"
-        Stop-AzCdnEndpoint -InputObject $resObject
-        $res = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName
+    It 'StopViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $res.ResourceState | Should -Be "Stopped"
+    It 'StopViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -14,31 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnProfile'  {
-    It 'List' {
-        $frontDoorCdnProfiles = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName
-        $frontDoorCdnProfiles.Count | Should -BeGreaterOrEqual 1
+Describe 'Get-AzFrontDoorCdnProfile' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
-        $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.FrontDoorCdnProfileName
-
-        $frontDoorCdnProfile.Name | Should -Be $env.FrontDoorCdnProfileName
-        $frontDoorCdnProfile.SkuName | Should -Be "Standard_AzureFrontDoor"
-        $frontDoorCdnProfile.Location | Should -Be "Global"
+    It 'List1' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List1' {
-        $frontDoorCdnProfiles = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName
-        $frontDoorCdnProfiles.Count | Should -BeGreaterOrEqual 1
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $frontDoorCdnProfileObject = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.FrontDoorCdnProfileName
-        $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -InputObject $frontDoorCdnProfileObject
-
-        $frontDoorCdnProfile.Name | Should -Be $env.FrontDoorCdnProfileName
-        $frontDoorCdnProfile.SkuName | Should -Be "Standard_AzureFrontDoor"
-        $frontDoorCdnProfile.Location | Should -Be "Global"
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

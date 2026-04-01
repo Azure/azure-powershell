@@ -14,19 +14,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnSecret'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnSecret'  {
+Describe 'New-AzFrontDoorCdnSecret' {
     It 'CreateExpanded' {
         $subId = $env.SubscriptionId
-        Write-Host -ForegroundColor Green "Use SubscriptionId : $($subId)"
-
         $secretName = "kvsecret-test02"
         Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -Type "CustomerCertificate"`
-        -SecretSourceId "/subscriptions/$subId/resourceGroups/huaiyiz/providers/Microsoft.KeyVault/vaults/huaiyizkvtest/secrets/wildcard-huaiyiz-azfdtest-xyz"
-        
+        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -Type "CustomerCertificate" `
+            -SecretSourceId "/subscriptions/$subId/resourceGroups/testps-rg-cdn-debug/providers/Microsoft.KeyVault/vaults/jingnanxukvtest/secrets/wildcard-test-cert"
+
+        # New
         $secretInfo = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
-        
         $secretInfo.Name | Should -Be $secretName
+
+        # Get - List / by name / ViaIdentity
+        $secrets = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $secrets.Count | Should -BeGreaterOrEqual 1
+        $getSecret = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $secretName
+        $getSecret.Name | Should -Be $secretName
+        $getSecret2 = Get-AzFrontDoorCdnSecret -InputObject $getSecret
+        $getSecret2.Name | Should -Be $secretName
+
+        # Remove
+        Write-Host -ForegroundColor Green "Remove Secret: $($secretName)"
+        Remove-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $secretName -SubscriptionId $subId
     }
 }

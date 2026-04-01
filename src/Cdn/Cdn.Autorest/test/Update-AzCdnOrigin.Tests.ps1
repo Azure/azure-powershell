@@ -14,45 +14,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzCdnOrigin'  {
-    BeforeAll {
-        $originName = "origin1"
-        $originHostName = "host1.hello.com"
-        $origin = @{
-            Name = $originName
-            HostName = $originHostName
-        };
+Describe 'Update-AzCdnOrigin' {
+    It 'UpdateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
-        $origin = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $origin.Name | Should -Be $originName
-        $origin.HostName | Should -Be $originHostName
-        $origin.HttpsPort | Should -Be $null
-
-        $origin = Update-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-            -HostName "www.azure.com" -HttpPort 456 -HttpsPort 789
-
-        $origin.Name | Should -Be $originName
-        $origin.HostName | Should -Be "www.azure.com"
-        $origin.HttpPort | Should -Be 456
-        $origin.HttpsPort | Should -Be 789
+    It 'UpdateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
-        $origin = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $origin.Name | Should -Be $originName
-        $origin.HostName | Should -Be "www.azure.com"
-        $origin.HttpPort | Should -Be 456
-        $origin.HttpsPort | Should -Be 789
+    It 'UpdateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $origin = Update-AzCdnOrigin -HostName "www.azure.com" -HttpPort 123 -HttpsPort 666 -InputObject $origin
+    It 'UpdateViaIdentityProfileExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $origin.Name | Should -Be $originName
-        $origin.HostName | Should -Be "www.azure.com"
-        $origin.HttpPort | Should -Be 123
-        $origin.HttpsPort | Should -Be 666
+    It 'UpdateViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityEndpointExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityEndpoint' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

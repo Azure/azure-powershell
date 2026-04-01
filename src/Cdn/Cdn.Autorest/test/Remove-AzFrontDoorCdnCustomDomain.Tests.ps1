@@ -14,23 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnCustomDo
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnCustomDomain'  {
-    It 'Delete' {
-        $customDomainName = "domain-psName020"
-        $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "ManagedCertificate" -MinimumTlsVersion "TLS12"
-        New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -HostName "removedomain.dev.cdn.azure.cn" -TlsSetting $tlsSetting
-
-        Remove-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $customDomainName
+Describe 'Remove-AzFrontDoorCdnCustomDomain' {
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
-        $customDomainName = "domain-psName021"
-        $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "ManagedCertificate" -MinimumTlsVersion "TLS12"
-        New-AzFrontDoorCdnCustomDomain -SubscriptionId $env.SubscriptionId -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -HostName "removedomain.dev.cdn.azure.cn" -TlsSetting $tlsSetting
+    It 'DeleteViaIdentityProfile' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 
-        $domainObject = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $customDomainName
-        Remove-AzFrontDoorCdnCustomDomain -InputObject $domainObject
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -14,38 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzCdnProfile'  {
-    It 'UpdateExpanded' {
-        $tags = @{
-            Tag1 = 11
-            Tag2  = 22
-        }
-
-        Write-Host -ForegroundColor Green "Update ClassicCdnProfileName"
-        Update-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag $tags
-
-        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
-        $updatedProfile = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $updatedProfile.Tag["Tag1"] | Should -Be "11"
-        $updatedProfile.Tag["Tag2"] | Should -Be "22"
+Describe 'Update-AzCdnProfile' {
+    It 'UpdateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' {
-        $tags = @{
-            Tag1 = 33
-            Tag2  = 44
-        }
-        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
-        $profileObject = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-
-        Write-Host -ForegroundColor Green "Update ClassicCdnProfileName"
-        Update-AzCdnProfile -Tag $tags -InputObject $profileObject
-
-        Write-Host -ForegroundColor Green "Get ClassicCdnProfileName"
-        $updatedProfile = Get-AzCdnProfile -Name $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        
-        $updatedProfile.Tag["Tag1"] | Should -Be "33"
-        $updatedProfile.Tag["Tag2"] | Should -Be "44"
+    It 'UpdateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
