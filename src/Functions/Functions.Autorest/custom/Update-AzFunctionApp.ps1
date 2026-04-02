@@ -225,6 +225,23 @@ function Update-AzFunctionApp {
                                         -Exception $exception
             }
 
+            # Validate that each identity ID is non-empty/non-whitespace
+            if ($hasUserAssignedIdentityParam)
+            {
+                foreach ($id in $UserAssignedIdentity)
+                {
+                    if ([string]::IsNullOrWhiteSpace($id))
+                    {
+                        $errorMessage = "User-assigned identity resource IDs must not be null, empty, or whitespace."
+                        $exception = [System.InvalidOperationException]::New($errorMessage)
+                        ThrowTerminatingError -ErrorId "UserAssignedIdentityRequired" `
+                                                -ErrorMessage $errorMessage `
+                                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                                -Exception $exception
+                    }
+                }
+            }
+
             if ($enableSystemAssigned -and $hasUserAssignedIdentityParam)
             {
                 $functionAppDef.IdentityType = "SystemAssigned,UserAssigned"
