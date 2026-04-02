@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-help.xml
 Module Name: Az.PolicyInsights
 online version: https://learn.microsoft.com/powershell/module/az.policyinsights/get-azpolicystate
 schema: 2.0.0
@@ -12,64 +12,71 @@ Gets policy compliance states for resources.
 
 ## SYNTAX
 
-### SubscriptionScope (Default)
+### ListBySubscriptionId (Default)
 ```
-Get-AzPolicyState [-All] [-SubscriptionId <String>] [-Top <Int32>] [-OrderBy <String>] [-Select <String>]
- [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-Apply <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ManagementGroupScope
-```
-Get-AzPolicyState [-All] -ManagementGroupName <String> [-Top <Int32>] [-OrderBy <String>] [-Select <String>]
- [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-Apply <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicyState [-SubscriptionId <String[]>] [-All] [-Apply <String>] [-Filter <String>] [-From <DateTime>]
+ [-OrderBy <String>] [-Select <String>] [-To <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceGroupScope
+### ListByResourceGroup
 ```
-Get-AzPolicyState [-All] [-SubscriptionId <String>] -ResourceGroupName <String> [-Top <Int32>]
- [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
- [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceScope
-```
-Get-AzPolicyState [-All] -ResourceId <String> [-Top <Int32>] [-OrderBy <String>] [-Select <String>]
- [-From <DateTime>] [-To <DateTime>] [-Filter <String>] [-Apply <String>] [-Expand <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicyState [-SubscriptionId <String[]>] [-All] -ResourceGroupName <String> [-Apply <String>]
+ [-Filter <String>] [-From <DateTime>] [-OrderBy <String>] [-Select <String>] [-To <DateTime>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PolicySetDefinitionScope
+### ListByPolicySetDefinition
 ```
-Get-AzPolicyState [-All] [-SubscriptionId <String>] -PolicySetDefinitionName <String> [-Top <Int32>]
- [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
- [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### PolicyDefinitionScope
-```
-Get-AzPolicyState [-All] [-SubscriptionId <String>] -PolicyDefinitionName <String> [-Top <Int32>]
- [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
- [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicyState [-SubscriptionId <String[]>] [-All] -PolicySetDefinitionName <String> [-Apply <String>]
+ [-Filter <String>] [-From <DateTime>] [-OrderBy <String>] [-Select <String>] [-To <DateTime>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionLevelPolicyAssignmentScope
+### ListByPolicyDefinition
 ```
-Get-AzPolicyState [-All] [-SubscriptionId <String>] -PolicyAssignmentName <String> [-Top <Int32>]
- [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
- [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicyState [-SubscriptionId <String[]>] [-All] -PolicyDefinitionName <String> [-Apply <String>]
+ [-Filter <String>] [-From <DateTime>] [-OrderBy <String>] [-Select <String>] [-To <DateTime>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceGroupLevelPolicyAssignmentScope
+### ListByPolicyAssignment
 ```
-Get-AzPolicyState [-All] [-SubscriptionId <String>] -ResourceGroupName <String> -PolicyAssignmentName <String>
- [-Top <Int32>] [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
- [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPolicyState [-SubscriptionId <String[]>] [-All] -PolicyAssignmentName <String> [-Apply <String>]
+ [-Filter <String>] [-From <DateTime>] [-OrderBy <String>] [-Select <String>] [-To <DateTime>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ListByPolicyAssignmentAndResourceGroup
+```
+Get-AzPolicyState [-SubscriptionId <String[]>] [-All] -ResourceGroupName <String>
+ -PolicyAssignmentName <String> [-Apply <String>] [-Filter <String>] [-From <DateTime>] [-OrderBy <String>]
+ [-Select <String>] [-To <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ListByManagementGroup
+```
+Get-AzPolicyState [-All] -ManagementGroupName <String> [-Apply <String>] [-Filter <String>] [-From <DateTime>]
+ [-OrderBy <String>] [-Select <String>] [-To <DateTime>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ListByResourceId
+```
+Get-AzPolicyState [-All] -ResourceId <String> [-Apply <String>] [-Filter <String>] [-From <DateTime>]
+ [-OrderBy <String>] [-Select <String>] [-To <DateTime>] [-Top <Int32>] [-Expand <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets policy compliance states for resources. Policy state records can be queried at various scopes. Based on the time interval specified (defaults to last day), either latest policy states or all policy state transitions can be queried. Results can be filtered, grouped, and group aggregations can be computed.
+The **Get-AzPolicyState** cmdlet gets policy compliance states for resources.
+
+Policy state records can be queried at various scopes and time intervals specified, with a default to the last day.
+
+Either latest policy states or all policy state transitions can be queried, with a default to only return the latest states for resources.
+
+Results can be filtered, grouped, and group aggregations can be computed.
 
 ## EXAMPLES
 
@@ -176,7 +183,8 @@ Gets latest policy state records generated in the last day for all resources (wi
 Get-AzPolicyState -OrderBy "Timestamp desc, PolicyAssignmentName asc" -Top 5 -Select "Timestamp, ResourceId, PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionId, IsCompliant"
 ```
 
-Gets latest policy state records generated in the last day for all resources within the subscription in current session context. 
+Gets latest policy state records generated in the last day for all resources within the subscription in current session context.
+
 The command orders the results by timestamp and policy assignment name properties, and takes only top 5 of those listed in that order.
 It also selects to list only a subset of the columns for each record.
 
@@ -208,7 +216,8 @@ The command returns the count of the policy state records only, which is returne
 Get-AzPolicyState -Filter "ComplianceState eq 'NonCompliant'" -Apply "groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId), aggregate(`$count as NumStates))" -OrderBy "NumStates desc" -Top 5
 ```
 
-Gets latest policy state records generated in the last day for all resources within the subscription in current session context. 
+Gets latest policy state records generated in the last day for all resources within the subscription in current session context.
+
 The command limits the results returned by filtering based on compliance status (includes only non-compliant status).
 It groups the results based on policy assignment, policy set definition, and policy definition, and computes the number of records in each group, which is returned inside AdditionalProperties property.
 It orders the results by the count aggregation in descending order, and takes only top 5 of those listed in that order.
@@ -218,7 +227,8 @@ It orders the results by the count aggregation in descending order, and takes on
 Get-AzPolicyState -Filter "ComplianceState eq 'NonCompliant'" -Apply "groupby((ResourceId))"
 ```
 
-Gets latest policy state records generated in the last day for all resources within the subscription in current session context. 
+Gets latest policy state records generated in the last day for all resources within the subscription in current session context.
+
 The command limits the results returned by filtering based on compliance status (includes only non-compliant status).
 It groups the results based on resource id.
 This generates the list of all resources within the subscription that are non-compliant for at least one policy.
@@ -228,9 +238,11 @@ This generates the list of all resources within the subscription that are non-co
 Get-AzPolicyState -Filter "ComplianceState eq 'NonCompliant'" -Apply "groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId, ResourceId))/groupby((PolicyAssignmentId, PolicySetDefinitionId, PolicyDefinitionReferenceId, PolicyDefinitionId), aggregate(`$count as NumNonCompliantResources))" -OrderBy "NumNonCompliantResources desc" -Top 5
 ```
 
-Gets latest policy state records generated in the last day for all resources within the subscription in current session context. 
+Gets latest policy state records generated in the last day for all resources within the subscription in current session context.
+
 The command limits the results returned by filtering based on compliance status (includes only non-compliant status).
-It groups the results first based on policy assignment, policy set definition, policy definition, and resource id. 
+It groups the results first based on policy assignment, policy set definition, policy definition, and resource id.
+
 Then, it further groups the results of this grouping with the same properties except for resource id, and computes the number of records in each of these groups, which is returned inside AdditionalProperties property.
 It orders the results by the count aggregation in descending order, and takes only top 5 of those listed in that order.
 This generates the top 5 policies with the most number of non-compliant resources.
@@ -273,7 +285,7 @@ Gets latest policy state records generated in the last day for all resources (wi
 ## PARAMETERS
 
 ### -All
-Within the specified time interval, get all policy states instead of the latest only.
+Within the specified time interval, get all policy states for the resources in scope instead of the latest only for those resources.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -303,12 +315,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -319,10 +332,11 @@ Accept wildcard characters: False
 
 ### -Expand
 Expand expression using OData notation.
+For example, to expand components use $expand=components
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceScope
+Parameter Sets: ListByResourceId
 Aliases:
 
 Required: False
@@ -349,7 +363,7 @@ Accept wildcard characters: False
 
 ### -From
 ISO 8601 formatted timestamp specifying the start time of the interval to query.
-When not specified, defaults to 'To' parameter value minus 1 day.
+When not specified, the service uses ($to - 1-day).
 
 ```yaml
 Type: System.DateTime
@@ -368,19 +382,20 @@ Management group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupScope
+Parameter Sets: ListByManagementGroup
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -OrderBy
 Ordering expression using OData notation.
-One or more comma-separated column names with an optional 'desc' (the default) or 'asc'.
+One or more comma-separated column names with an optional "desc" (the default) or "asc", e.g.
+"$orderby=PolicyAssignmentId, ResourceId asc".
 
 ```yaml
 Type: System.String
@@ -396,50 +411,54 @@ Accept wildcard characters: False
 
 ### -PolicyAssignmentName
 The name of a policy assignment.
-This policy assignment must have exactly the same scope as the parameter set. It cannot be a management group scope policy assignment.
-For example: if `-SubscriptionId` and `ResourceGroupName` are specified, the policy assignment must be assigned to that resource group. If only `-SubscriptionId` is specified, then the policy assignment must be assigned to that subscription. 
+This policy assignment must have exactly the same scope as the parameter set.
+It cannot be a management group scope policy assignment.
+For example: if `-SubscriptionId` and `-ResourceGroupName` are specified, the policy assignment must be assigned to that resource group.
+If only `-SubscriptionId` is specified, then the policy assignment must be assigned to that subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionLevelPolicyAssignmentScope, ResourceGroupLevelPolicyAssignmentScope
+Parameter Sets: ListByPolicyAssignment, ListByPolicyAssignmentAndResourceGroup
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PolicyDefinitionName
 The name of a policy definition.
-This policy definition must exist in the subscription being queried. It cannot be a management group scope policy definition.
+This policy definition must exist in the subscription being queried.
+It cannot be a management group scope policy definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: PolicyDefinitionScope
+Parameter Sets: ListByPolicyDefinition
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PolicySetDefinitionName
 The name of a policy set definition.
-This policy set definition must exist in the subscription being queried. It cannot be a management group scope policy set definition.
+This policy set definition must exist in the subscription being queried.
+It cannot be a management group scope policy set definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: PolicySetDefinitionScope
+Parameter Sets: ListByPolicySetDefinition
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -448,13 +467,13 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupScope, ResourceGroupLevelPolicyAssignmentScope
+Parameter Sets: ListByResourceGroup, ListByPolicyAssignmentAndResourceGroup
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -463,20 +482,20 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceScope
+Parameter Sets: ListByResourceId
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Select
 Select expression using OData notation.
-One or more comma-separated column names.
-Limits the columns on each record to just those requested.
+Limits the columns on each record to just those requested, e.g.
+"$select=PolicyAssignmentId, ResourceId".
 
 ```yaml
 Type: System.String
@@ -491,23 +510,24 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription ID.
+The ID of the target subscription.
+Uses current subscription if one isn't provided.
 
 ```yaml
-Type: System.String
-Parameter Sets: SubscriptionScope, ResourceGroupScope, PolicySetDefinitionScope, PolicyDefinitionScope, SubscriptionLevelPolicyAssignmentScope, ResourceGroupLevelPolicyAssignmentScope
+Type: System.String[]
+Parameter Sets: ListBySubscriptionId, ListByResourceGroup, ListByPolicySetDefinition, ListByPolicyDefinition, ListByPolicyAssignment, ListByPolicyAssignmentAndResourceGroup
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -To
 ISO 8601 formatted timestamp specifying the end time of the interval to query.
-When not specified, defaults to time of request.
+When not specified, the service uses request time.
 
 ```yaml
 Type: System.DateTime
@@ -536,19 +556,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState
+### Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IPolicyState
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzPolicyStateSummary](./Get-AzPolicyStateSummary.md)

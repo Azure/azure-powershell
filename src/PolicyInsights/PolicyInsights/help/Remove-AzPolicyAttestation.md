@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-help.xml
 Module Name: Az.PolicyInsights
 online version: https://learn.microsoft.com/powershell/module/az.policyinsights/remove-azpolicyattestation
 schema: 2.0.0
@@ -12,32 +12,44 @@ Deletes a policy attestation.
 
 ## SYNTAX
 
-### ByName (Default)
+### DeleteBySubscriptionId (Default)
 ```
-Remove-AzPolicyAttestation -Name <String> [-Scope <String>] [-ResourceGroupName <String>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Remove-AzPolicyAttestation -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzPolicyAttestation -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByInputObject
+### DeleteByResourceGroup
 ```
-Remove-AzPolicyAttestation -InputObject <PSAttestation> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzPolicyAttestation -Name <String> [-SubscriptionId <String>] -ResourceGroupName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DeleteByResourceId
+```
+Remove-AzPolicyAttestation [-Name <String>] -ResourceId <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByScope
+```
+Remove-AzPolicyAttestation -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaInputObject
+```
+Remove-AzPolicyAttestation -InputObject <IPolicyInsightsIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzPolicyAttestation** cmdlet deletes a policy attestation.
+The **Remove-AzPolicyAttestation** cmdlet deletes a policy attestation, with no return value by default.
 
 ## EXAMPLES
 
 ### Example 1: Delete a policy remediation by name at subscription scope.
 ```powershell
-Set-AzContext -Subscription "d1acb22b-c876-44f7-b08e-3fcf9f6767f4"
 Remove-AzPolicyAttestation -Name "attestation-subscription" -PassThru
 ```
 
@@ -45,7 +57,8 @@ Remove-AzPolicyAttestation -Name "attestation-subscription" -PassThru
 True
 ```
 
-This command deletes the attestation named 'attestation-subscription' in subscription "d1acb22b-c876-44f7-b08e-3fcf9f6767f4". The `-PassThru` switch forces the cmdlet to return the status of the operation.
+This command deletes the attestation named 'attestation-subscription' in the current context's subscription.
+The `-PassThru` switch forces the cmdlet to return the status of the operation.
 
 ### Example 2: Delete a policy remediation via piping at resource group.
 ```powershell
@@ -68,12 +81,13 @@ The second command then deletes the attestation using the resource id of the sto
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -83,11 +97,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Attestation object.
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation
-Parameter Sets: ByInputObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IPolicyInsightsIdentity
+Parameter Sets: DeleteViaInputObject
 Aliases:
 
 Required: True
@@ -98,22 +112,34 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource name.
+The name of the attestation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases:
+Parameter Sets: DeleteBySubscriptionId, DeleteByResourceGroup, DeleteByScope
+Aliases: AttestationName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByResourceId
+Aliases: AttestationName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return True if the command completes successfully.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -128,49 +154,66 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: DeleteByResourceGroup
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Resource ID.
+ID of the resource that the attestation was made against or full Resource ID of the attestation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: DeleteByResourceId
 Aliases: Id
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Scope
 Scope of the resource.
 E.g.
-'/subscriptions/{subscriptionId}/resourceGroups/{rgName}'.
+'/subscriptions/\{subscriptionId}/resourceGroups/\{rgName}'.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: DeleteByScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+Uses current subscription if one isn't provided.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteBySubscriptionId, DeleteByResourceGroup
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -210,9 +253,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation
+### Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models.IPolicyInsightsIdentity
 
 ## OUTPUTS
 
@@ -221,4 +262,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-[Get-AzPolicyAttestation](./Get-AzPolicyAttestation.md)

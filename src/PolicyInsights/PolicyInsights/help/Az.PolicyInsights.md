@@ -1,14 +1,14 @@
 ---
 Module Name: Az.PolicyInsights
-Module Guid: B1876B47-3652-4265-9AD5-782EC3E98319
-Download Help Link: https://learn.microsoft.com/powershell/module/az.policyinsights
-Help Version: 1.1.0.0
-Locale: en-US
+Module Guid: {{ Update Module Guid }}
+Download Help Link: {{ Update Download Link }}
+Help Version: {{ Update Help Version }}
+Locale: {{ Update Locale }}
 ---
 
 # Az.PolicyInsights Module
 ## Description
-This topic displays help for the Azure Policy Insights cmdlets.
+{{ Fill in the Description }}
 
 ## Az.PolicyInsights Cmdlets
 ### [Get-AzPolicyAttestation](Get-AzPolicyAttestation.md)
@@ -18,7 +18,7 @@ Gets policy attestations.
 Gets policy evaluation events generated as resources are created or updated.
 
 ### [Get-AzPolicyMetadata](Get-AzPolicyMetadata.md)
-Gets Policy Metadata resources
+Gets Policy Metadata resources.
 
 ### [Get-AzPolicyRemediation](Get-AzPolicyRemediation.md)
 Gets policy remediations.
@@ -38,9 +38,6 @@ Deletes a policy attestation.
 ### [Remove-AzPolicyRemediation](Remove-AzPolicyRemediation.md)
 Deletes a policy remediation.
 
-### [Set-AzPolicyAttestation](Set-AzPolicyAttestation.md)
-Modifies a policy attestation.
-
 ### [Start-AzPolicyComplianceScan](Start-AzPolicyComplianceScan.md)
 Triggers a policy compliance evaluation for all resources in a subscription or resource group.
 
@@ -49,4 +46,7 @@ Creates and starts a policy remediation for a policy assignment.
 
 ### [Stop-AzPolicyRemediation](Stop-AzPolicyRemediation.md)
 Cancels an in-progress policy remediation.
+
+### [Update-AzPolicyAttestation](Update-AzPolicyAttestation.md)
+Modifies a policy attestation.
 
