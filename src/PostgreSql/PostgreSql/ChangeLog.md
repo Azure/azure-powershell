@@ -18,10 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change message: This module will be retired and replaced with a new one called Az.PostgreSqlFlexibleServer.
 
 ## Version 1.4.0
-- Aligned with SimplySql, use a PSCredential object instead of UserName/Password parameters when calling Open-PostGreConnection
-- Introduced a Timeout value when running Test-AzPostgreSqlFlexibleServerConnect with long running query
+* Aligned with SimplySql, use a PSCredential object instead of UserName/Password parameters when calling Open-PostGreConnection
+*-* Introduced a Timeout value when running Test-AzPostgreSqlFlexibleServerConnect with long running query
 
 ## Version 1.3.0
 * Added support for Geo-restore in `Restore-AzPostgreSqlFlexibleServer` cmdlets.
