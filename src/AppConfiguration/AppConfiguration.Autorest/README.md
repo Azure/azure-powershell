@@ -163,6 +163,13 @@ directive:
       parameter-name: Location
     hide: true
 
+  # Location is required when creating a replica
+  - from: swagger-document
+    where: $.definitions.Replica
+    transform: >
+      if (!$.required) { $.required = []; }
+      if (!$.required.includes('location')) { $.required.push('location'); }
+
   # Location is create-only on replicas
   - where:
       verb: Update
@@ -175,4 +182,16 @@ directive:
       verb: Update
       subject: Replica
     hide: true
+
+  # Format output
+  - where:
+      model-name: Replica
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Endpoint
+          - ProvisioningState
+          - ResourceGroupName
 ```

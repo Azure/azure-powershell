@@ -47,10 +47,10 @@ Get-AzAppConfigurationReplica -ConfigStoreName azpstest-appstore -ResourceGroupN
 ```
 
 ```output
-Name            Location
-----            --------
-westus2replica  westus2
-eastusreplica   eastus
+Name            Location  Endpoint                                                                   ProvisioningState ResourceGroupName
+----            --------  --------                                                                   ----------------- -----------------
+westus2replica  westus2   https://azpstest-appstore-westus2replica.westus2.appconfig.io               Succeeded         azpstest_gp
+eastusreplica   eastus    https://azpstest-appstore-eastusreplica.eastus.appconfig.io                 Succeeded         azpstest_gp
 ```
 
 This command lists all replicas of the specified app configuration store.
@@ -61,9 +61,9 @@ Get-AzAppConfigurationReplica -ConfigStoreName azpstest-appstore -ResourceGroupN
 ```
 
 ```output
-Name            Location
-----            --------
-westus2replica  westus2
+Name            Location  Endpoint                                                                   ProvisioningState ResourceGroupName
+----            --------  --------                                                                   ----------------- -----------------
+westus2replica  westus2   https://azpstest-appstore-westus2replica.westus2.appconfig.io               Succeeded         azpstest_gp
 ```
 
 This command gets the properties of a specific replica by name.

@@ -15,7 +15,7 @@ Create a replica with the specified parameters.
 ### CreateExpanded (Default)
 ```
 New-AzAppConfigurationReplica -Name <String> -ConfigStoreName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -Location <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ New-AzAppConfigurationReplica -Name <String> -ConfigStoreName <String> -Resource
 ### CreateViaIdentityConfigurationStoreExpanded
 ```
 New-AzAppConfigurationReplica -Name <String> -ConfigurationStoreInputObject <IAppConfigurationIdentity>
- [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -Location <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -159,7 +159,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityConfigurationStoreExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
