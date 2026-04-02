@@ -178,13 +178,6 @@ directive:
       if (!$.required) { $.required = []; }
       if (!$.required.includes('location')) { $.required.push('location'); }
 
-  # Location is create-only on replicas
-  - where:
-      verb: Update
-      subject: Replica
-      parameter-name: Location
-    hide: true
-
   # Hide Update-AzAppConfigurationReplica; replicas have no updatable properties
   - where:
       verb: Update
