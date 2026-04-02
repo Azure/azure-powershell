@@ -99,6 +99,14 @@ directive:
     set:
       parameter-name: EncryptionKeyIdentifier
   - where:
+      parameter-name: DefaultKeyValueRevisionRetentionPeriodInSecond
+    set:
+      parameter-name: DefaultKeyValueRevisionRetentionPeriodInSeconds
+  - where:
+      parameter-name: SoftDeleteRetentionInDay
+    set:
+      parameter-name: SoftDeleteRetentionInDays
+  - where:
       parameter-name: SkuName
     set:
       parameter-name: Sku
