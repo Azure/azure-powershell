@@ -16,10 +16,10 @@ Update a configuration store with the specified parameters.
 ```
 Update-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DataPlaneProxyAuthenticationMode <String>] [-DataPlaneProxyPrivateLinkDelegation <String>]
- [-DefaultKeyValueRevisionRetentionPeriodInSeconds <Int64>] [-DisableLocalAuth] [-EnablePurgeProtection]
+ [-DefaultKeyValueRevisionRetentionPeriodInSecond <Int64>] [-DisableLocalAuth] [-EnablePurgeProtection]
  [-EnableSystemAssignedIdentity <Boolean?>] [-EncryptionKeyIdentifier <String>]
  [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <String>] [-Sku <String>]
- [-SoftDeleteRetentionInDays <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-SoftDeleteRetentionInDay <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -27,10 +27,10 @@ Update-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-Subs
 ```
 Update-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity>
  [-DataPlaneProxyAuthenticationMode <String>] [-DataPlaneProxyPrivateLinkDelegation <String>]
- [-DefaultKeyValueRevisionRetentionPeriodInSeconds <Int64>] [-DisableLocalAuth] [-EnablePurgeProtection]
+ [-DefaultKeyValueRevisionRetentionPeriodInSecond <Int64>] [-DisableLocalAuth] [-EnablePurgeProtection]
  [-EnableSystemAssignedIdentity <Boolean?>] [-EncryptionKeyIdentifier <String>]
  [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <String>] [-Sku <String>]
- [-SoftDeleteRetentionInDays <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-SoftDeleteRetentionInDay <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -114,7 +114,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultKeyValueRevisionRetentionPeriodInSeconds
+### -DefaultKeyValueRevisionRetentionPeriodInSecond
 The duration in seconds to retain new key value revisions.
 Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores.
 
@@ -311,7 +311,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SoftDeleteRetentionInDays
+### -SoftDeleteRetentionInDay
 The amount of time in days that the configuration store will be retained when it is soft deleted.
 
 ```yaml
