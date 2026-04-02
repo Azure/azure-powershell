@@ -1,0 +1,45 @@
+name: pr-new-modules
+run-name: Triggered by pr
+env:
+  GH_TOKEN: ${{ github.token }}
+  PR: ${{ github.event.pull_request.html_url }}
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+jobs:
+  process_labels:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        sparse-checkout: |
+          .github
+
+    - name: Fetch PR Head
+      run: git fetch origin refs/pull/${{ github.event.pull_request.number }}/head:pr-head
+
+    - name: Fetch comparison branch
+      run: git fetch origin ${{ github.base_ref }}
+
+    - name: check for new modules
+      shell: pwsh
+      env:
+        BASE_REF: ${{ github.base_ref }}
+      run: |
+        $files = @(git diff `
+          origin/$env:BASE_REF..pr-head `
+          --diff-filter=A `
+          --name-only `
+          -- '**/*.sln')
+
+        if ($files.Count -gt 0) {
+          Write-Host "Detected a new module"
+          gh pr edit "$env:PR" --add-label "new module"
+        } else {
+          Write-Host "No new module detected"
+        }
