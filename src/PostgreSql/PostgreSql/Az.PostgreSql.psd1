@@ -57,10 +57,10 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.4'; })
 RequiredAssemblies = 'PostgreSql.Autorest/bin/Az.PostgreSql.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'PostgreSql.Autorest/Az.PostgreSql.format.ps1xml'
@@ -126,7 +126,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','PSModule','PostgreSql'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'PostgreSql'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
