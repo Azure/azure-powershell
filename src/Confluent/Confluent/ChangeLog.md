@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Fixed failing playback tests for `Update-AzConfluentOrganization` by adding the missing HTTP recording file
 
 ## Version 0.3.0

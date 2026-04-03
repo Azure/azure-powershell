@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.3
 * Added announcement for upcoming breaking changes as part of the 2025-10-01-preview API migration:
     - Removed parameter `ActionBlockResponseCode` from `New-AzDnsResolverPolicyDnsSecurityRule` and `Update-AzDnsResolverPolicyDnsSecurityRule`. The block response code is no longer configurable.
     - Parameter `DnsResolverDomainList` is no longer mandatory on `New-AzDnsResolverPolicyDnsSecurityRule`. DNS security rules will support managed domain lists as an alternative to user-defined domain lists.
