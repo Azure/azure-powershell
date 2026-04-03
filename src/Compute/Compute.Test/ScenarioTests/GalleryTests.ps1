@@ -1224,7 +1224,7 @@ function Test-InVMAccessControlProfileVersion
         # Cleanup
         Clean-ResourceGroup $rgname;
     }
-}}
+}
 
 <#
 .SYNOPSIS
