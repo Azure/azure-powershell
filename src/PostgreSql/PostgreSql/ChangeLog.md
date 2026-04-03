@@ -20,7 +20,7 @@
 ## Upcoming Release
 * `Az.PostgreSql` will be retired in an upcoming release.
     - To continue managing Azure Database for PostgreSQL resources, move to `Az.PostgreSqlFlexibleServer`.
-    - For the replacement module, see https://www.powershellgallery.com/packages/Az.PostgreSqlFlexibleServer
+    - When the replacement module is released, it will be available to install from https://www.powershellgallery.com/packages/Az.PostgreSqlFlexibleServer
 
 ## Version 1.4.0
 * Aligned with SimplySql, use a PSCredential object instead of UserName/Password parameters when calling Open-PostGreConnection
