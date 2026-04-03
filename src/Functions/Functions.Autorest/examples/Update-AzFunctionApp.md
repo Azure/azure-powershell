@@ -13,7 +13,7 @@ This command sets a SystemAssigned managed identity for a function app.
 Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -ApplicationInsightsName ApplicationInsightsProjectName -Force
 ```
 This command updates function app Application Insights.
-### Example 3: Remove managed identity from a function app.
+### Example 4: Remove managed identity from a function app.
 ```powershell
 Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -EnableSystemAssignedIdentity $false -Force
 ```

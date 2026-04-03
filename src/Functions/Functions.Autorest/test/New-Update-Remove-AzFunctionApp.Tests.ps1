@@ -239,11 +239,11 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.AppServicePlan | Should -Be $newPlanName
 
             # Update test to use -InputObject when https://github.com/Azure/azure-powershell/issues/23266 is fixed
-            # Update-AzFunctionApp -InputObject $functionApp -EnableSystemAssignedIdentity:$false -Force
-            # Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -EnableSystemAssignedIdentity:$false -Force
+            # Update-AzFunctionApp -InputObject $functionApp -EnableSystemAssignedIdentity $false -Force
+            # Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -EnableSystemAssignedIdentity $false -Force
 
             Write-Verbose "Update function -> remove SystemAssigned managed identity" -Verbose
-            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -EnableSystemAssignedIdentity:$false -Force
+            Update-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName -EnableSystemAssignedIdentity $false -Force
 
             $functionApp = Get-AzFunctionApp -Name $appName -ResourceGroupName $resourceGroupName
             Write-Verbose "FunctionApp after identity removal. Validate IdentityType" -Verbose

@@ -54,7 +54,7 @@ Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResource
 
 This command updates function app Application Insights.
 
-### Example 3: Remove managed identity from a function app.
+### Example 4: Remove managed identity from a function app.
 ```powershell
 Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -EnableSystemAssignedIdentity $false -Force
 ```
