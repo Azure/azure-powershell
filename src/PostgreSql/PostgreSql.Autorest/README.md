@@ -61,6 +61,7 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  # Mark all cmdlets as deprecated because this legacy module is being retired in favor of Az.PostgreSqlFlexibleServer.
   - where:
       verb: (.*)
     set:
