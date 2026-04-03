@@ -83,13 +83,7 @@ FunctionsToExport = 'Get-AzPolicyAttestation', 'Get-AzPolicyEvent',
                'Update-AzPolicyAttestation'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzPolicyAttestation', 'Get-AzPolicyEvent', 
-               'Get-AzPolicyMetadata', 'Get-AzPolicyRemediation', 
-               'Get-AzPolicyState', 'Get-AzPolicyStateSummary', 
-               'New-AzPolicyAttestation', 'Remove-AzPolicyAttestation', 
-               'Remove-AzPolicyRemediation', 'Set-AzPolicyAttestation', 
-               'Start-AzPolicyComplianceScan', 'Start-AzPolicyRemediation', 
-               'Stop-AzPolicyRemediation'
+CmdletsToExport = @()
 
 # Variables to export from this module
 VariablesToExport = '*'
