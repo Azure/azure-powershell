@@ -183,7 +183,7 @@ process {
         $resourceIdContainsName = $ResourceId -like '*/providers/microsoft.policyinsights/attestations/*'
         if($resourceIdContainsName)
         {
-            $idSplit = $ResourceId -split '/providers/microsoft.policyinsights/attestations/'
+            $idSplit = $ResourceId -split '/providers/microsoft\.policyinsights/attestations/'
             $attestationName = $idSplit[1]
             $PSBoundParameters["ResourceId"] = $idSplit[0]
 

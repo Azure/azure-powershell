@@ -185,7 +185,7 @@ process {
     if($PSBoundParameters.ContainsKey("InputObject"))
     {        
         # extract scope from the InputObject's Id and add to Parameters 
-        $idSplit = $InputObject.Id -split '/providers/microsoft.policyinsights/remediations/'
+        $idSplit = $InputObject.Id -split '/providers/microsoft\.policyinsights/remediations/'
         $null = $PSBoundParameters.Add("Scope", $idSplit[0])
         $null = $PSBoundParameters.Add("Name", $idSplit[1])
 
@@ -200,7 +200,7 @@ process {
         $resourceIdContainsName = $ResourceId -like '*/providers/microsoft.policyinsights/remediations/*'
         if($resourceIdContainsName)
         {
-            $idSplit = $ResourceId -split '/providers/microsoft.policyinsights/remediations/'
+            $idSplit = $ResourceId -split '/providers/microsoft\.policyinsights/remediations/'
             $remediationName = $idSplit[1]
             $PSBoundParameters["ResourceId"] = $idSplit[0]
 

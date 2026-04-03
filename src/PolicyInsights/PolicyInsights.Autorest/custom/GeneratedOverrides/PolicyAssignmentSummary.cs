@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Models
             {
                 // Safely handle null ResultResourceDetail
                 var complianceDetail = this.ResultResourceDetail?
-                    .FirstOrDefault(detail => detail.ComplianceState == "compliant");
+                    .FirstOrDefault(detail => detail.ComplianceState.Equals("compliant", System.StringComparison.OrdinalIgnoreCase));
 
                 // Return the count if found, otherwise return 0
                 return complianceDetail?.Count ?? 0;

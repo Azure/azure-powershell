@@ -251,7 +251,7 @@ process {
     if($PSBoundParameters.ContainsKey("InputObject"))
     {        
         # extract scope from the InputObject's Id and add to Parameters 
-        $idSplit = $InputObject.Id -split '/providers/microsoft.policyinsights/remediations/'
+        $idSplit = $InputObject.Id -split '/providers/microsoft\.policyinsights/remediations/'
         $null = $PSBoundParameters.Add("Scope", $idSplit[0])
         $null = $PSBoundParameters.Add("Name", $idSplit[1])
 

@@ -99,7 +99,7 @@ process {
 
     if($PSBoundParameters.ContainsKey("Name"))
     {
-        Write-Verbose "Making a call for the specificed policy metadata resource with name: $Name"
+        Write-Verbose "Making a call for the specified policy metadata resource with name: $Name"
         $output = Az.PolicyInsights.internal\Get-AzPolicyMetadataResource @PSBoundParameters
     } 
     elseif($PSBoundParameters.ContainsKey("Top"))
