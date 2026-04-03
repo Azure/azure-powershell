@@ -16,7 +16,7 @@ Clears suspects for an Azure NetApp Files (ANF) Advanced Ransomware Protection (
 ```
 Clear-AzNetAppFilesRansomwareReportSuspect -ResourceGroupName <String> -AccountName <String>
  -PoolName <String> -VolumeName <String> -Name <String> -Resolution <String> -Extension <String[]> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,13 +24,13 @@ Clear-AzNetAppFilesRansomwareReportSuspect -ResourceGroupName <String> -AccountN
 ```
 Clear-AzNetAppFilesRansomwareReportSuspect -Name <String> -Resolution <String> -Extension <String[]>
  -VolumeObject <PSNetAppFilesVolume> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Clear-AzNetAppFilesRansomwareReportSuspect -Resolution <String> -Extension <String[]> -ResourceId <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -151,21 +151,6 @@ Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-Determines how the cmdlet responds to progress updates.
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
