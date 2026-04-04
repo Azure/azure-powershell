@@ -184,7 +184,6 @@ directive:
         properties:
           - Name
           - Location
-          - Endpoint
           - ProvisioningState
           - ResourceGroupName
 ```
