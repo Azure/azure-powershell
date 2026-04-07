@@ -14,26 +14,26 @@ Gets a DNS forwarding ruleset properties.
 
 ### List (Default)
 ```
-Get-AzDnsForwardingRuleset [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzDnsForwardingRuleset [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDnsForwardingRuleset -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDnsForwardingRuleset -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzDnsForwardingRuleset -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzDnsForwardingRuleset -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List2
@@ -48,33 +48,63 @@ Gets a DNS forwarding ruleset properties.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: List all DNS forwarding rulesets in a subscription
 ```powershell
 Get-AzDnsForwardingRuleset -SubscriptionId 0e5a46b1-de0b-4ec3-a5d7-dda908b4e076
 ```
 
+```output
+Location Name                                                            Type                                    Etag
+-------- ----                                                            ----                                    ----
+westus2  dnsForwardingRuleset                                            Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
+westus2  pw-dnsForwardingRuleset                                         Microsoft.Network/dnsForwardingRulesets "08009ec9-0000-0800-0000-60e383b70000"
+westus2  pw-dnsForwardingRuleset1                                        Microsoft.Network/dnsForwardingRulesets "08007ccc-0000-0800-0000-60e3846a0000"
+eastus2  dnsforwardingruleset-test-eastus2-main-syn-outbound-primary-0   Microsoft.Network/dnsForwardingRulesets "4f006bb2-0000-0200-0000-60e7ef240000"
+eastus2  dnsforwardingruleset-test-eastus2-main-syn-outbound-secondary-0 Microsoft.Network/dnsForwardingRulesets "4f006db2-0000-0200-0000-60e7ef240000"
+```
 
+This command gets all DNS forwarding ruleset under the subscription.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Get single DNS forwarding ruleset by name
 ```powershell
 Get-AzDnsForwardingRuleset -Name dnsForwardingRuleset -ResourceGroupName sampleRG
 ```
 
+```output
+Location Name                 Type                                    Etag
+-------- ----                 ----                                    ----
+westus2  dnsForwardingRuleset Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
+```
 
+This command gets single DNS forwarding ruleset by name.
 
-### -------------------------- EXAMPLE 3 --------------------------
+### Example 3: List all DNS forwarding ruleset under the resource group
 ```powershell
 Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG
 ```
 
+```output
+Location Name                     Type                                    Etag
+-------- ----                     ----                                    ----
+westus2  dnsForwardingRuleset     Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
+westus2  pw-dnsForwardingRuleset  Microsoft.Network/dnsForwardingRulesets "08009ec9-0000-0800-0000-60e383b70000"
+westus2  pw-dnsForwardingRuleset1 Microsoft.Network/dnsForwardingRulesets "08007ccc-0000-0800-0000-60e3846a0000"
+```
 
+This command gets all DNS forwarding ruleset under the resource group.
 
-### -------------------------- EXAMPLE 4 --------------------------
+### Example 4: List all DNS forwarding ruleset under the virtual network
 ```powershell
 Get-AzDnsForwardingRuleset -ResourceGroupName sampleRG -VirtualNetworkName virtualnetwork-test
 ```
 
+```output
+Location Name                     Type                                    Etag
+-------- ----                     ----                                    ----
+westus2  dnsForwardingRuleset     Microsoft.Network/dnsForwardingRulesets "04005592-0000-0800-0000-60e7ec170000"
+```
 
+This command gets all DNS forwarding ruleset under the virtual network.
 
 ## PARAMETERS
 

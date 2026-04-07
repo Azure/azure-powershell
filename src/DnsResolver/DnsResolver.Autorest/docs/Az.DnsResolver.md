@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DnsResolver
-Module Guid: 1a421d17-3f00-4d0c-99f7-3c0360444f37
+Module Guid: 6605f77f-457e-4b93-bab6-59237937149e
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dnsresolver
 Help Version: 1.0.0.0
 Locale: en-US
