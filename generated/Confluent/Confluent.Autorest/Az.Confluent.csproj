@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <PsModuleName>Confluent</PsModuleName>
+    <PsModuleName>confluent</PsModuleName>
     <PsRootModuleName>Confluent</PsRootModuleName>
     <PsModuleFolder>Confluent.Autorest</PsModuleFolder>
-    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Confluent</RootNamespace>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.confluent</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

@@ -27,7 +27,7 @@ New-AzNetAppFilesVolumeGroup -ResourceGroupName <String> -Location <String> -Acc
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
  [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-KeyVaultPrivateEndpointResourceId <String>]
  [-Zone <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ORACLE
@@ -62,7 +62,7 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-BackupSize <Int64>] [-BackupPerformance <Int32>] [-BackupReplicationSourceId <String>]
  [-BackupReplicationSchedule <String>] [-LogMirrorSize <Int64>] [-LogMirrorPerformance <Int32>]
  [-LogMirrorReplicationSourceId <String>] [-LogMirrorReplicationSchedule <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -80,7 +80,7 @@ New-AzNetAppFilesVolumeGroup -PoolName <String> [-Name <String>] [-GroupDescript
  [-GlobalPlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Management.NetApp.Models.PlacementKeyValuePairs]>]
  [-EncryptionKeySource <String>] [-NetworkFeature <String>] [-KeyVaultPrivateEndpointResourceId <String>]
  [-Zone <String[]>] [-Tag <Hashtable>] -AccountObject <PSNetAppFilesAccount>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -1312,21 +1312,6 @@ For PRIMARY it will be empty and HA it will be "HA - "
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

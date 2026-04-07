@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 
+## Version 4.1.3
 * Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
 
 ## Version 4.1.2

@@ -34,6 +34,25 @@ function TryParseLabelValue {
     return $null
 }
 
+function NormalizeMentioneeValue {
+    [CmdletBinding()]
+    param([string] $Mentionee)
+
+    if ([string]::IsNullOrWhiteSpace($Mentionee)) {
+        return $Mentionee
+    }
+
+    if ($Mentionee -match '^[^/]+/[^/]+$') {
+        return $Mentionee
+    }
+
+    if ($Mentionee -match '^act-[a-z0-9-]+-squad$') {
+        return "Azure/$Mentionee"
+    }
+
+    return $Mentionee
+}
+
 function GetSquadMapping {
     [CmdletBinding()]
     param([string] $AccessToken)
@@ -205,7 +224,9 @@ function AddSquadLabelsToYaml {
                         if ($lineAtB -match '^\s*mentionees:\s*$') { $mentioneesIndent = $indentAtB; continue }
                         if ($lineAtB -match '^\s*-\s+(\S+)\s*$') {
                             if ($mentionItemIndent -lt 0) { $mentionItemIndent = $indentAtB }
-                            $existingMentions[$Matches[1]] = $true
+                            $existingMention = $Matches[1]
+                            $existingMentions[$existingMention] = $true
+                            $existingMentions[(NormalizeMentioneeValue -Mentionee $existingMention)] = $true
                             $lastMentionEnd = $b
                         }
                     }
@@ -214,8 +235,9 @@ function AddSquadLabelsToYaml {
                     if ($mentionItemIndent -lt 0) { $mentionItemIndent = ($mentioneesIndent -gt 0) ? $mentioneesIndent : ($listIndentLength + 4) }
                     $mentionInsertLines = [System.Collections.Generic.List[string]]::new()
                     foreach ($squadLabel in $labelsToAdd) {
-                        if (-not $existingMentions.ContainsKey($squadLabel)) {
-                            $mentionInsertLines.Add((" " * $mentionItemIndent) + "- $squadLabel")
+                        $mentioneeValue = NormalizeMentioneeValue -Mentionee $squadLabel
+                        if (-not $existingMentions.ContainsKey($mentioneeValue)) {
+                            $mentionInsertLines.Add((" " * $mentionItemIndent) + "- $mentioneeValue")
                         }
                     }
                     if ($mentionInsertLines.Count -gt 0) {
