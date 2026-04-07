@@ -665,6 +665,15 @@ function Test-VirtualNetworkGatewayEffectiveRouteApi
 	$resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
 	$location = Get-ProviderLocation $resourceTypeParent
 
+	$gwname1 = Get-ResourceName
+	$vnetName1 = Get-ResourceName
+	$publicIpName1 = Get-ResourceName
+	$domainNameLabel1 = Get-ResourceName
+	$vnetGatewayConfigName1 = Get-ResourceName
+
+	$connectionName = Get-ResourceName
+	$connectionName1 = Get-ResourceName
+
 	try
 	{
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
@@ -677,6 +686,33 @@ function Test-VirtualNetworkGatewayEffectiveRouteApi
 		$gw = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $gwname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
 		$gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $gwname
 
+		$subnet1 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.1.0.0/24
+		$vnet1 = New-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -Subnet $subnet1
+		$vnet1 = Get-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname
+		$subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
+		$publicip1 = New-AzPublicIpAddress -Name $publicIpName1 -ResourceGroupName $rgname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel1
+		$vnetIpConfig1 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName1 -PublicIpAddress $publicip1 -Subnet $subnet1
+		$gw1 = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $gwname1 -location $location -IpConfigurations $vnetIpConfig1 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn 1337
+		$gw1 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $gwname1
+
+		New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $connectionName -location $location -VirtualNetworkGateway1 $gw -VirtualNetworkGateway2 $gw1 -ConnectionType Vnet2Vnet -SharedKey chocolate -EnableBgp $true
+		New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $connectionName1 -location $location -VirtualNetworkGateway1 $gw1 -VirtualNetworkGateway2 $gw -ConnectionType Vnet2Vnet -SharedKey chocolate -EnableBgp $true
+
+		$job = Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname -AsJob
+		$job | Wait-Job
+		$bgpLearnedRoutes = $job | Receive-Job
+
+		if($bgpLearnedRoutes -and $bgpLearnedRoutes.Length -gt 0)
+		{
+			forEach($route in $bgpLearnedRoutes)
+			{
+				if($route.Origin -eq "EBgp")
+				{
+					Assert-True { $vnet1.AddressSpace.AddressPrefixes -contains $route.Network }
+				}
+			}
+		}
+
 		$job = Get-AzVirtualNetworkGatewayEffectiveRoute -ResourceGroupName $rgname -VirtualNetworkGatewayName $gwname -AsJob
 		$job | Wait-Job
 		$effectiveRoutes = $job | Receive-Job
@@ -685,8 +721,21 @@ function Test-VirtualNetworkGatewayEffectiveRouteApi
 		{
 			forEach($route in $effectiveRoutes)
 			{
-				Assert-NotNull $route.LocalAddress "LocalAddress should not be null"
-				Assert-NotNull $route.NextHopType "NextHopType should not be null"
+				Assert-NotNullOrEmpty $route.LocalAddress "LocalAddress should not be null or empty"
+				Assert-NotNullOrEmpty $route.NextHopType "NextHopType should not be null or empty"
+                Assert-True { $route.LocalAddress -eq $publicip.IpAddress }
+
+				if($route.NextHopType -eq "Tunnel")
+				{
+					Assert-AreEqual $publicip1.IpAddress $route.NextHopIpAddress
+					Assert-True { $route.AddressPrefixes -contains $subnet1.AddressPrefix }
+			    }
+
+                if($route.NextHopType -eq "VirtualNetwork")
+				{
+					Assert-AreEqual "" $route.NextHopIpAddress
+					Assert-True { $route.AddressPrefixes -contains $subnet.AddressPrefix }
+			    }
 			}
 		}
 	}
