@@ -76,6 +76,31 @@ flatten-userassignedidentity: false
 inlining-threshold: 50
 resourcegroup-append: true
 directive:  
+ # Breaking change pre-announcements for parameter type changes
+ -  where:
+      verb: New
+      subject: StackHCIVMImage
+      parameter-name: ImagePath
+    set:
+      breaking-change:
+        old-parameter-type: String
+        new-parameter-type: SecureString
+        change-description: The type of parameter ImagePath will be changed from String to SecureString to protect sensitive file path information.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+ -  where:
+      verb: New
+      subject: StackHCIVMVirtualMachine
+      parameter-name: AdminPassword
+    set:
+      breaking-change:
+        old-parameter-type: String
+        new-parameter-type: SecureString
+        change-description: The type of parameter AdminPassword will be changed from String to SecureString to protect sensitive credential information.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
  -  from: swagger-document 
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}"].delete.responses
     transform: >-

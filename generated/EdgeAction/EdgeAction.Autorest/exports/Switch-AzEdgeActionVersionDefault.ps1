@@ -16,57 +16,42 @@
 
 <#
 .Synopsis
-A long-running resource action.
+Swap the default version for an Edge Action.
 .Description
-A long-running resource action.
+A long-running resource action that swaps the default version for an Edge Action.
+This operation makes the specified version the new default version.
 .Example
 Switch-AzEdgeActionVersionDefault -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v2"
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
 .Outputs
 System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-EDGEACTIONINPUTOBJECT <IEdgeActionIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [ExecutionFilter <String>]: The name of the execution filter
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
-
-INPUTOBJECT <IEdgeActionIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [ExecutionFilter <String>]: The name of the execution filter
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.edgeaction/switch-azedgeactionversiondefault
 #>
 function Switch-AzEdgeActionVersionDefault {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Swap', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='SwapCustom', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Swap', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
     [System.String]
     # The name of the Edge Action
     ${EdgeActionName},
 
-    [Parameter(ParameterSetName='Swap', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Swap')]
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
+    [System.String]
+    # The name of the Edge Action version to make the default
+    ${Version},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -74,32 +59,12 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Swap', Mandatory)]
-    [Parameter(ParameterSetName='SwapViaIdentityEdgeAction', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
-    [System.String]
-    # The name of the Edge Action version
-    ${Version},
-
-    [Parameter(ParameterSetName='SwapViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='SwapViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity]
-    # Identity Parameter
-    ${EdgeActionInputObject},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
@@ -173,8 +138,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -195,11 +159,9 @@ begin {
         }
 
         $mapping = @{
-            Swap = 'Az.EdgeAction.private\Switch-AzEdgeActionVersionDefault_Swap';
-            SwapViaIdentity = 'Az.EdgeAction.private\Switch-AzEdgeActionVersionDefault_SwapViaIdentity';
-            SwapViaIdentityEdgeAction = 'Az.EdgeAction.private\Switch-AzEdgeActionVersionDefault_SwapViaIdentityEdgeAction';
+            SwapCustom = 'Az.EdgeAction.custom\Switch-AzEdgeActionVersionDefault';
         }
-        if (('Swap') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('SwapCustom') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

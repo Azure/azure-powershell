@@ -220,4 +220,22 @@ directive:
   - from: SqlVirtualMachineManagementClient.cs
     where: $
     transform: return $.replace(/@\"\^\(\(\?!_\)\[\^\\\\\/\"\'\\\[\\\]\:\|\<\>\+\=;,\?\*\@\&\]\{1\,64\}\(\?\<\!\[\.\-\]\)\)\$\"/g, '@"^((?!_)[^\\\\/\"\"\'\\[\\]:|<>+=;,?*@&]{1,64}(?<![.-]))$"')
+  - where:
+      verb: Get
+      subject: SqlVM|AvailabilityGroupListener|SqlVMGroup
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: New
+      subject: AvailabilityGroupListener|SqlVirtualMachineAgReplicaObject
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Invoke
+      subject: Troubleshoot
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```

@@ -1,0 +1,13 @@
+{
+  "properties": {
+    "totalCores": 200,
+    "diskSpaceInGb": 1024,
+    "memoryInGb": 64,
+    "oem": "Contoso",
+    "hardwareSku": "MC-760",
+    "nodes": 3,
+    "versionAtRegistration": "2411.2",
+    "solutionBuilderExtension": "xyz",
+    "deviceId": "0f76428c-6fe6-476d-9943-6e994a1e849b"
+  }
+}

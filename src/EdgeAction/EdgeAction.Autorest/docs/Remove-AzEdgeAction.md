@@ -29,19 +29,12 @@ Delete a EdgeAction
 
 ## EXAMPLES
 
-### Example 1: Remove an edge action by name
+### Example 1: Delete an edge action
 ```powershell
-Remove-AzEdgeAction -Name "myEdgeAction" -ResourceGroupName "myResourceGroup"
+Remove-AzEdgeAction -ResourceGroupName "myResourceGroup" -Name "myEdgeAction"
 ```
 
-This command removes the specified edge action from the resource group.
-
-### Example 2: Remove an edge action using pipeline input
-```powershell
-Get-AzEdgeAction -Name "myEdgeAction" -ResourceGroupName "myResourceGroup" | Remove-AzEdgeAction
-```
-
-This command retrieves an edge action and pipes it to remove the resource.
+Deletes the specified edge action and all its associated versions and filters.
 
 ## PARAMETERS
 

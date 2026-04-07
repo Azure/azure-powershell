@@ -17,7 +17,13 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+
+## Version 0.1.1
+* Updated to API version 2025-12-01-preview
+* Removed `Add-AzEdgeActionAttachment` cmdlet (operation no longer available in API)
+* Removed `Remove-AzEdgeActionAttachment` cmdlet (operation no longer available in API)
 
 ## Version 0.1.0
 * First preview release for module Az.EdgeAction

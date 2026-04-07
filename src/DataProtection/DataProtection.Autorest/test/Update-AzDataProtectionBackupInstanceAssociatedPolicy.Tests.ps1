@@ -34,7 +34,7 @@ Describe 'Update-AzDataProtectionBackupInstanceAssociatedPolicy' {
         $instance.Property.IdentityDetail.UseSystemAssignedIdentity | Should be $false
         $instance.Property.IdentityDetail.UserAssignedIdentityArmUrl -eq $userAssignedIdentityARMId | Should be $true
         
-        $instance.Property.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IdentityDetails]::new()
+        $instance.Property.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IdentityDetails]::new()
         $instance.Property.IdentityDetail.UseSystemAssignedIdentity = $true
 
         Start-Sleep -Seconds 20

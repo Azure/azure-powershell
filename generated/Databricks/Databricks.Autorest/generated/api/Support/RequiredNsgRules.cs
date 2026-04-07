@@ -8,7 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support
 
     /// <summary>
     /// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
-    /// Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+    /// Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not
+    /// allowed in Serverless ComputeMode workspace.
     /// </summary>
     public partial struct RequiredNsgRules :
         System.IEquatable<RequiredNsgRules>

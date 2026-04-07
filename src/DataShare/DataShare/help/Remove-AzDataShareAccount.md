@@ -53,7 +53,7 @@ This command returns a value of $True.
 ## PARAMETERS
 
 ### -AsJob
-{{Fill AsJob Description}}
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-{{Fill Force Description}}
+Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

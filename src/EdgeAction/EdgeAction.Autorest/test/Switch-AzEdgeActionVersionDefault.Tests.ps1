@@ -15,10 +15,56 @@ if(($null -eq $TestName) -or ($TestName -contains 'Switch-AzEdgeActionVersionDef
 }
 
 Describe 'Switch-AzEdgeActionVersionDefault' {
-    # All tests skipped - known bug.
-    # BeforeAll and AfterAll removed to avoid resource creation for skipped tests
+    BeforeAll {
+        $script:resourceGroupName = "powershelltests"
+        $script:edgeActionName = "easwapdec01"
+        $script:version1 = "v1"
+        $script:version2 = "v2"
+        $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
+        
+        # Create edge action
+        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
+            -Name $script:edgeActionName `
+            -SkuName "Standard" `
+            -SkuTier "Standard" `
+            -Location "global"
+        
+        # Create v1 as default version
+        New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version1 `
+            -DeploymentType "file" `
+            -IsDefaultVersion $true `
+            -Location "global"
+        
+        # Deploy code to v1
+        Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version1 `
+            -FilePath $script:testFilePath
+        
+        # Create v2 as non-default version
+        New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version2 `
+            -DeploymentType "file" `
+            -IsDefaultVersion $false `
+            -Location "global"
+        
+        # Deploy code to v2
+        Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version2 `
+            -FilePath $script:testFilePath
+    }
 
-    It 'Swap' -skip {
+    AfterAll {
+        # Clean up test edge action
+        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
+            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+    }
+
+    It 'Swap' {
         # Verify initial state: v1 is default, v2 is not
         $v1Before = Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `

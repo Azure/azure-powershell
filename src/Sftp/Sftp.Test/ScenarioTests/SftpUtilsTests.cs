@@ -381,5 +381,313 @@ namespace Microsoft.Azure.Commands.Sftp.Test.ScenarioTests
             Assert.NotNull(result.Item3); // Error message
             Assert.Contains("Failed to start", result.Item3);
         }
+
+        #region BufferSize Tests
+
+        [Fact]
+        public void BuildSftpCommand_WithDefaultBufferSize_DoesNotIncludeBufferFlag()
+        {
+            // Arrange - default buffer size is 256 * 1024 = 262144
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22,
+                publicKeyFile: null,
+                privateKeyFile: null,
+                certFile: null,
+                sftpArgs: null,
+                sshClientFolder: null,
+                sshProxyFolder: null,
+                credentialsFolder: null,
+                yesWithoutPrompt: false,
+                bufferSizeBytes: 256 * 1024  // Default value
+            );
+
+            // Act
+            var command = SftpUtils.BuildSftpCommand(session);
+
+            // Assert - should NOT contain -B flag when using default buffer size
+            Assert.DoesNotContain("-B", command);
+        }
+
+        [Fact]
+        public void BuildSftpCommand_WithCustomBufferSize_IncludesBufferFlag()
+        {
+            // Arrange - custom buffer size
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22,
+                publicKeyFile: null,
+                privateKeyFile: null,
+                certFile: null,
+                sftpArgs: null,
+                sshClientFolder: null,
+                sshProxyFolder: null,
+                credentialsFolder: null,
+                yesWithoutPrompt: false,
+                bufferSizeBytes: 524288  // 512 KB - non-default value
+            );
+
+            // Act
+            var command = SftpUtils.BuildSftpCommand(session);
+
+            // Assert - should contain -B flag with custom buffer size
+            Assert.Contains("-B", command);
+            Assert.Contains("524288", command);
+        }
+
+        [Fact]
+        public void BuildSftpCommand_WithSmallBufferSize_IncludesBufferFlag()
+        {
+            // Arrange - smaller buffer size
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22,
+                publicKeyFile: null,
+                privateKeyFile: null,
+                certFile: null,
+                sftpArgs: null,
+                sshClientFolder: null,
+                sshProxyFolder: null,
+                credentialsFolder: null,
+                yesWithoutPrompt: false,
+                bufferSizeBytes: 32768  // 32 KB
+            );
+
+            // Act
+            var command = SftpUtils.BuildSftpCommand(session);
+
+            // Assert
+            Assert.Contains("-B", command);
+            Assert.Contains("32768", command);
+        }
+
+        [Fact]
+        public void SFTPSession_BufferSizeBytes_DefaultValue_Is256KB()
+        {
+            // Arrange & Act
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22
+            );
+
+            // Assert - default buffer size should be 256 * 1024 = 262144
+            Assert.Equal(256 * 1024, session.BufferSizeBytes);
+        }
+
+        [Fact]
+        public void SFTPSession_BufferSizeBytes_CanBeSetViaConstructor()
+        {
+            // Arrange & Act
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22,
+                bufferSizeBytes: 1048576  // 1 MB
+            );
+
+            // Assert
+            Assert.Equal(1048576, session.BufferSizeBytes);
+        }
+
+        [Fact]
+        public void SFTPSession_BufferSizeBytes_CanBeSetViaProperty()
+        {
+            // Arrange
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22
+            );
+
+            // Act
+            session.BufferSizeBytes = 2097152;  // 2 MB
+
+            // Assert
+            Assert.Equal(2097152, session.BufferSizeBytes);
+        }
+
+        #endregion
+
+        #region ValidateCommandLineArgument Tests
+
+        [Theory]
+        [InlineData("\n")]
+        [InlineData("\r")]
+        [InlineData("\0")]
+        [InlineData("\"")]
+        [InlineData("path\ninjected")]
+        [InlineData("path\rinjected")]
+        [InlineData("path\0injected")]
+        [InlineData("path\"injected")]
+        public void ValidateCommandLineArgument_WithDangerousChars_Throws(string value)
+        {
+            var exception = Assert.Throws<Microsoft.Azure.Commands.Common.Exceptions.AzPSApplicationException>(
+                () => SftpUtils.ValidateCommandLineArgument(value, "testParam"));
+
+            Assert.Contains("invalid character", exception.Message);
+            Assert.Contains("testParam", exception.Message);
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("simple")]
+        [InlineData("C:\\Users\\test\\.ssh\\id_rsa")]
+        [InlineData("C:\\Program Files (x86)\\OpenSSH\\ssh.exe")]
+        [InlineData("path with spaces")]
+        [InlineData("Tom & Jerry")]
+        [InlineData("file;name")]
+        [InlineData("file|name")]
+        [InlineData("user$name")]
+        [InlineData("value`test")]
+        [InlineData("a>b")]
+        [InlineData("a<b")]
+        [InlineData("testaccount.blob.core.windows.net")]
+        public void ValidateCommandLineArgument_WithSafeValues_DoesNotThrow(string value)
+        {
+            // Should not throw for null, empty, normal paths, or shell metacharacters
+            // (shell metacharacters are safe because UseShellExecute=false)
+            SftpUtils.ValidateCommandLineArgument(value, "testParam");
+        }
+
+        #endregion
+
+        #region EscapeProcessArgument Tests
+
+        [Fact]
+        public void EscapeProcessArgument_WithNull_ReturnsEmptyQuoted()
+        {
+            Assert.Equal("\"\"", SftpUtils.EscapeProcessArgument(null));
+        }
+
+        [Fact]
+        public void EscapeProcessArgument_WithEmpty_ReturnsEmptyQuoted()
+        {
+            Assert.Equal("\"\"", SftpUtils.EscapeProcessArgument(""));
+        }
+
+        [Fact]
+        public void EscapeProcessArgument_WithSimpleValue_ReturnsUnquoted()
+        {
+            Assert.Equal("simple", SftpUtils.EscapeProcessArgument("simple"));
+        }
+
+        [Fact]
+        public void EscapeProcessArgument_WithSpaces_ReturnsQuoted()
+        {
+            Assert.Equal("\"path with spaces\"", SftpUtils.EscapeProcessArgument("path with spaces"));
+        }
+
+        [Fact]
+        public void EscapeProcessArgument_WithTab_ReturnsQuoted()
+        {
+            Assert.Equal("\"/path\twith\ttabs\"", SftpUtils.EscapeProcessArgument("/path\twith\ttabs"));
+        }
+
+        [Theory]
+        [InlineData("C:\\Program Files (x86)\\OpenSSH\\ssh.exe", "\"C:\\Program Files (x86)\\OpenSSH\\ssh.exe\"")]
+        [InlineData("C:\\Users\\test\\.ssh\\id_rsa", "C:\\Users\\test\\.ssh\\id_rsa")]
+        [InlineData("-o", "-o")]
+        [InlineData("PasswordAuthentication=no", "PasswordAuthentication=no")]
+        public void EscapeProcessArgument_WithVariousInputs_ReturnsExpected(string input, string expected)
+        {
+            Assert.Equal(expected, SftpUtils.EscapeProcessArgument(input));
+        }
+
+        #endregion
+
+        #region BuildSftpCommand Validation Tests
+
+        [Fact]
+        public void BuildSftpCommand_WithParenthesesInPath_DoesNotThrow()
+        {
+            // Arrange - paths with parentheses like "Program Files (x86)" must work
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22,
+                publicKeyFile: null,
+                privateKeyFile: null,
+                certFile: null,
+                sftpArgs: null,
+                sshClientFolder: null,
+                sshProxyFolder: null,
+                credentialsFolder: null,
+                yesWithoutPrompt: false
+            );
+
+            // Act & Assert - should not throw
+            var command = SftpUtils.BuildSftpCommand(session);
+            Assert.NotNull(command);
+        }
+
+        [Fact]
+        public void BuildSftpCommand_WithNewlineInHost_Throws()
+        {
+            // Arrange
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "evil.host\n-o ProxyCommand=evil",
+                port: 22
+            );
+
+            // Act & Assert
+            Assert.Throws<Microsoft.Azure.Commands.Common.Exceptions.AzPSApplicationException>(
+                () => SftpUtils.BuildSftpCommand(session));
+        }
+
+        [Fact]
+        public void BuildSftpCommand_WithQuoteInUsername_Throws()
+        {
+            // Arrange
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "user\"injected",
+                host: "testaccount.blob.core.windows.net",
+                port: 22
+            );
+
+            // Act & Assert
+            Assert.Throws<Microsoft.Azure.Commands.Common.Exceptions.AzPSApplicationException>(
+                () => SftpUtils.BuildSftpCommand(session));
+        }
+
+        [Fact]
+        public void BuildSftpCommand_WithSftpArgsContainingSpecialChars_DoesNotThrow()
+        {
+            // Arrange - SftpArgs is a pass-through parameter and should not be validated
+            var session = new SFTPSession(
+                storageAccount: "testaccount",
+                username: "testuser",
+                host: "testaccount.blob.core.windows.net",
+                port: 22,
+                publicKeyFile: null,
+                privateKeyFile: null,
+                certFile: null,
+                sftpArgs: new[] { "-o", "ProxyCommand=ssh -W %h:%p bastion" },
+                sshClientFolder: null,
+                sshProxyFolder: null,
+                credentialsFolder: null,
+                yesWithoutPrompt: false
+            );
+
+            // Act & Assert - should not throw; SftpArgs are intentional pass-through
+            var command = SftpUtils.BuildSftpCommand(session);
+            Assert.NotNull(command);
+        }
+
+        #endregion
     }
 }

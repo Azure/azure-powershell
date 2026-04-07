@@ -18,7 +18,7 @@ Describe 'New-AzEdgeAction' {
     It 'CreateExpanded' {
         # Test creating edge action with expanded parameters
         $resourceGroupName = "powershelltests"
-        $edgeActionName = "eatestfixed01"
+        $edgeActionName = "eatestdec01"
         
         $result = New-AzEdgeAction -ResourceGroupName $resourceGroupName `
             -Name $edgeActionName `

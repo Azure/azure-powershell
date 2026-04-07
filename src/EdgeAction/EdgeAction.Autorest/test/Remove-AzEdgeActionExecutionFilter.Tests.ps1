@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEdgeActionExecutionF
 Describe 'Remove-AzEdgeActionExecutionFilter' {
     BeforeAll {
         $script:resourceGroupName = "powershelltests"
-        $script:edgeActionName = "eadelfilterfixed01"
+        $script:edgeActionName = "eadelfilterdec02"
         $script:version = "v1"
         $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
         
@@ -54,7 +54,7 @@ Describe 'Remove-AzEdgeActionExecutionFilter' {
         $script:versionId = $versionStatus.Id
         
         # Create an execution filter to test deletion
-        $script:filterName = "filterdelfixed01"
+        $script:filterName = "filterdeldec01"
         New-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
             -EdgeActionName $script:edgeActionName `
             -ExecutionFilter $script:filterName `

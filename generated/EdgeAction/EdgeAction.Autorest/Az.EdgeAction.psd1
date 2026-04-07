@@ -1,7 +1,7 @@
 @{
   GUID = 'f5a7ab85-ded8-4ed5-aa41-3c88ab00edb9'
   RootModule = './Az.EdgeAction.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.1.1'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.EdgeAction.private.dll'
   FormatsToProcess = './Az.EdgeAction.format.ps1xml'
-  FunctionsToExport = 'Add-AzEdgeActionAttachment', 'Deploy-AzEdgeActionVersionCode', 'Get-AzEdgeAction', 'Get-AzEdgeActionExecutionFilter', 'Get-AzEdgeActionVersion', 'Get-AzEdgeActionVersionCode', 'New-AzEdgeAction', 'New-AzEdgeActionExecutionFilter', 'New-AzEdgeActionVersion', 'Remove-AzEdgeAction', 'Remove-AzEdgeActionAttachment', 'Remove-AzEdgeActionExecutionFilter', 'Remove-AzEdgeActionVersion', 'Switch-AzEdgeActionVersionDefault', 'Update-AzEdgeAction', 'Update-AzEdgeActionExecutionFilter', 'Update-AzEdgeActionVersion'
+  FunctionsToExport = 'Deploy-AzEdgeActionVersionCode', 'Get-AzEdgeAction', 'Get-AzEdgeActionExecutionFilter', 'Get-AzEdgeActionVersion', 'Get-AzEdgeActionVersionCode', 'New-AzEdgeAction', 'New-AzEdgeActionExecutionFilter', 'New-AzEdgeActionVersion', 'Remove-AzEdgeAction', 'Remove-AzEdgeActionExecutionFilter', 'Remove-AzEdgeActionVersion', 'Switch-AzEdgeActionVersionDefault', 'Update-AzEdgeAction', 'Update-AzEdgeActionExecutionFilter', 'Update-AzEdgeActionVersion'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'EdgeAction'

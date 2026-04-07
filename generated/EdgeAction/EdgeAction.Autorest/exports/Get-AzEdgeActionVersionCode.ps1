@@ -16,64 +16,48 @@
 
 <#
 .Synopsis
-A long-running resource action.
+Get Edge Action version code and optionally save to file.
 .Description
-A long-running resource action.
+A long-running resource action that retrieves the version code for an Edge Action version.
+When the -OutputPath parameter is specified, the base64-encoded content is decoded and saved 
+as a zip file to the specified directory.
+Otherwise, returns the raw response with base64 content.
 .Example
 Get-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1"
 .Example
 Get-AzEdgeActionVersionCode -ResourceGroupName "myResourceGroup" -EdgeActionName "myEdgeAction" -Version "v1" -OutputPath "C:\Downloads"
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode
 .Outputs
 System.Management.Automation.PSCustomObject
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-EDGEACTIONINPUTOBJECT <IEdgeActionIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [ExecutionFilter <String>]: The name of the execution filter
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
-
-INPUTOBJECT <IEdgeActionIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [ExecutionFilter <String>]: The name of the execution filter
-  [Id <String>]: Resource identity path
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.edgeaction/get-azedgeactionversioncode
 #>
 function Get-AzEdgeActionVersionCode {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IVersionCode], [System.Management.Automation.PSCustomObject])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='GetCustom', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetAndSave', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
     [System.String]
     # The name of the Edge Action
     ${EdgeActionName},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetAndSave', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='GetAndSave')]
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
+    [System.String]
+    # The name of the Edge Action version
+    ${Version},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -81,27 +65,7 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityEdgeAction', Mandatory)]
-    [Parameter(ParameterSetName='GetAndSave', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
-    [System.String]
-    # The name of the Edge Action version
-    ${Version},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='GetViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Models.IEdgeActionIdentity]
-    # Identity Parameter
-    ${EdgeActionInputObject},
-
-    [Parameter(ParameterSetName='GetAndSave', Mandatory)]
+    [Parameter(ParameterSetName='GetAndSaveCustom', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Body')]
     [System.String]
     # Output directory to save the decoded version code as a zip file.
@@ -112,8 +76,7 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.EdgeAction.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter()]
@@ -181,8 +144,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -203,12 +165,10 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.EdgeAction.private\Get-AzEdgeActionVersionCode_Get';
-            GetViaIdentity = 'Az.EdgeAction.private\Get-AzEdgeActionVersionCode_GetViaIdentity';
-            GetViaIdentityEdgeAction = 'Az.EdgeAction.private\Get-AzEdgeActionVersionCode_GetViaIdentityEdgeAction';
-            GetAndSave = 'Az.EdgeAction.custom\Get-AzEdgeActionVersionCode';
+            GetCustom = 'Az.EdgeAction.custom\Get-AzEdgeActionVersionCode';
+            GetAndSaveCustom = 'Az.EdgeAction.custom\Get-AzEdgeActionVersionCode';
         }
-        if (('Get', 'GetAndSave') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('GetCustom', 'GetAndSaveCustom') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
