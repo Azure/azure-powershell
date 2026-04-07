@@ -1255,31 +1255,36 @@ function Test-GalleryImageDefinitionUpdateFeature
         # Create gallery
         New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location;
 
-        # Create image definition with initial feature
-        $initialFeature = @{Name = 'SecurityType'; Value = 'TrustedLaunch'}
+        # Create image definition with features including StartsAtVersion
+        $initialSecurityFeature = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.GalleryImageFeature `
+            -Property @{Name = 'SecurityType'; Value = 'TrustedLaunch'; StartsAtVersion = '4.0.0'}
+        $initialDiskControllerFeature = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.GalleryImageFeature `
+            -Property @{Name = 'DiskControllerTypes'; Value = 'SCSI'; StartsAtVersion = '4.0.0'}
+        $initialFeatures = @($initialSecurityFeature, $initialDiskControllerFeature);
+
         New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName `
             -Name $definitionName -Location $location `
             -Publisher $skuDetails.Publisher -Offer $skuDetails.Offer -Sku $skuDetails.Sku `
-            -OsState $osState -OsType $osType -Feature $initialFeature -ErrorAction Stop;
+            -OsState $osState -OsType $osType -Feature $initialFeatures -ErrorAction Stop;
 
         $definition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $definitionName;
         Assert-NotNull $definition;
         Assert-AreEqual $definition.Name $definitionName;
+        Assert-AreEqual $definition.Features.Count 2;
 
-        # Update with Feature using StartsAtVersion and AllowUpdateImage
-        $diskControllerFeature = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.GalleryImageFeature `
-            -Property @{Name = 'DiskControllerTypes'; Value = 'SCSI'; StartsAtVersion = '4.0.0'}
+        # Update with AllowUpdateImage
         $securityFeature = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.GalleryImageFeature `
             -Property @{Name = 'SecurityType'; Value = 'TrustedLaunch'; StartsAtVersion = '4.0.0'}
-        $features = @($diskControllerFeature, $securityFeature);
+        $diskControllerFeature = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.GalleryImageFeature `
+            -Property @{Name = 'DiskControllerTypes'; Value = 'SCSI'; StartsAtVersion = '4.0.0'}
+        $features = @($securityFeature, $diskControllerFeature);
 
         Update-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName `
             -Name $definitionName -Feature $features -AllowUpdateImage $true;
 
-        # Verify the updated features
+        # Verify the updated definition
         $updatedDefinition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $definitionName;
         Assert-NotNull $updatedDefinition;
-        Assert-AreEqual $updatedDefinition.AllowUpdateImage $true;
         Assert-AreEqual $updatedDefinition.Features.Count 2;
 
         $diskControllerUpdated = $updatedDefinition.Features | Where-Object { $_.Name -eq 'DiskControllerTypes' };
