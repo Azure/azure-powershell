@@ -16,28 +16,28 @@ Gets a quota report for an Azure NetApp Files (ANF) volume.
 ```
 Get-AzNetAppFilesVolumeQuotaReport -ResourceGroupName <String> -AccountName <String> -PoolName <String>
  -Name <String> [-QuotaType <String>] [-QuotaTarget <String>] [-UsageThresholdPercentage <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzNetAppFilesVolumeQuotaReport -Name <String> [-QuotaType <String>] [-QuotaTarget <String>]
  [-UsageThresholdPercentage <Int32>] -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzNetAppFilesVolumeQuotaReport [-QuotaType <String>] [-QuotaTarget <String>]
  [-UsageThresholdPercentage <Int32>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Get-AzNetAppFilesVolumeQuotaReport [-QuotaType <String>] [-QuotaTarget <String>]
  [-UsageThresholdPercentage <Int32>] -InputObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,21 +155,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-Determines how the cmdlet responds to progress updates.
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

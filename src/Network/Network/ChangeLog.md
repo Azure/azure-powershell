@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.26.0
 * Onboarded `Microsoft.KubernetesConfiguration/privateLinkScopes` to Private Link Common Cmdlets
 * Added EdgeZone (Extended Location) parameter support for Azure Firewall
     - Added `-EdgeZone` parameter to `New-AzFirewall` cmdlet
