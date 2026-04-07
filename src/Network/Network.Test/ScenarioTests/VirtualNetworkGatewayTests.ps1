@@ -661,9 +661,9 @@ function Test-VirtualNetworkGatewayEffectiveRouteApi
 	$vnetName = Get-ResourceName
 	$publicIpName = Get-ResourceName
 	$vnetGatewayConfigName = Get-ResourceName
-	$rgLocation = Get-ProviderLocation ResourceManagement
+	$rgLocation = "centraluseuap" #Get-ProviderLocation ResourceManagement
 	$resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
-	$location = Get-ProviderLocation $resourceTypeParent
+	$location = "centraluseuap" #Get-ProviderLocation $resourceTypeParent
 
 	$gwname1 = Get-ResourceName
 	$vnetName1 = Get-ResourceName
