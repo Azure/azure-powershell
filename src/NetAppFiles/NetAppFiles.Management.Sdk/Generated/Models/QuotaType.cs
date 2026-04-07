@@ -7,11 +7,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
 {
 
     /// <summary>
-    /// Defines values for Type.
+    /// Defines values for QuotaType.
     /// </summary>
 
 
-    public static class Type
+    public static class QuotaType
     {
         /// <summary>
         /// Default user quota

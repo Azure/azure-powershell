@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Update preannouncement breaking changes date to May 2026.
+* Updated preannouncement breaking changes date to May 2026.
 
 ## Version 3.2.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
