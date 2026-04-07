@@ -19,9 +19,10 @@ variables:
   win_ps_5_1: 5.1
   ps_7_4_x: 7.4.*
   ps_7_5_x: 7.5.*
-  ps_latest: latest
+  ps_7_6_x: 7.6.*
   dotnet_sdk_8: 8.x
   dotnet_sdk_9: 9.x
+  dotnet_sdk_10: 10.x
   ArtifactsName: LiveTestArtifacts
   DataLocation: $(Pipeline.Workspace)/$(ArtifactsName)
   SuppressAzurePowerShellBreakingChangeWarnings: true
@@ -65,11 +66,11 @@ stages:
 
   - template: util/live-test-steps.yml
     parameters:
-      name: 'ps_latest_windows'
+      name: 'ps_7_6_x_windows'
       vmImage: ${{ variables.os_windows }}
       osType: 'Windows'
-      psVersion: ${{ variables.ps_latest }}
-      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      psVersion: ${{ variables.ps_7_6_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_10 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
@@ -95,11 +96,11 @@ stages:
 
   - template: util/live-test-steps.yml
     parameters:
-      name: 'ps_latest_linux'
+      name: 'ps_7_6_x_linux'
       vmImage: ${{ variables.os_linux }}
       osType: 'Linux'
-      psVersion: ${{ variables.ps_latest }}
-      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      psVersion: ${{ variables.ps_7_6_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_10 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
 
@@ -125,13 +126,25 @@ stages:
 
   - template: util/live-test-steps.yml
     parameters:
-      name: 'ps_latest_macos'
+      name: 'ps_7_6_x_macos'
       vmImage: ${{ variables.os_macos }}
       osType: 'MacOS'
-      psVersion: ${{ variables.ps_latest }}
-      dotnetVersion: ${{ variables.dotnet_sdk_9 }}
+      psVersion: ${{ variables.ps_7_6_x }}
+      dotnetVersion: ${{ variables.dotnet_sdk_10 }}
       galleryName: ${{ parameters.GalleryName }}
       pipelineBuildId: ${{ parameters.PipelineBuildId }}
+
+  - job: CheckLatestPowerShellVersion
+    displayName: Check for latest PowerShell version
+    pool:
+      vmImage: ${{ variables.os_linux }}
+    steps:
+    - task: PowerShell@2
+      displayName: Check for latest PowerShell version
+      inputs:
+        pwsh: true
+        targetType: filePath
+        filePath: ./tools/TestFx/Live/CheckLatestPowerShellVersion.ps1
 
 - stage: Report
   displayName: Send Report
