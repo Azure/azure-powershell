@@ -59,8 +59,7 @@ directive:
     transform: $['operationId'] = 'AccessPolicyAssignment_CreateOrUpdate'
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}"].put
-    transform: $['description'] = 'Create a particular access policy assignment for a database'
-
+    transform: $['description'] = 'Creates/Updates a particular access policy assignment for a database'
   # This will remove the 'RedisEnterprise' prefix from the subject of every cmdlet
   # beginning with 'RedisEnterprise', because we have already set the subject-prefix above
   - where:

@@ -128,7 +128,7 @@ function Update-AzRedisEnterpriseCacheDatabase {
         ${AofPersistenceEnabled},
 
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("1s", "always")]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.PSArgumentCompleterAttribute("1s")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String]
         # [Preview] Sets the frequency at which data is written to disk if AOF persistence is enabled.

@@ -49,7 +49,7 @@ Forcibly removes the link to the specified database resource.
 Creates a Redis Enterprise cache.
 
 ### [New-AzRedisEnterpriseCacheAccessPolicyAssignment](New-AzRedisEnterpriseCacheAccessPolicyAssignment.md)
-Create a particular access policy assignment for a database
+Create create a particular access policy assignment for a database
 
 ### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
 Creates a database for a Redis Enterprise cache.
