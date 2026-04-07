@@ -15,10 +15,10 @@ parameters:
   displayName: PowerShell 7.6.x Version
   type: string
   default: 7.6.*
-- name: latest_ps
+- name: psLatest
   displayName: PowerShell Latest Version
   type: string
-  default: latest
+  default: 7.6
 - name: preview_ps
   displayName: PowerShell Preview Version
   type: string
@@ -76,13 +76,6 @@ jobs:
 
 - template: util/smoke-test-steps.yml
   parameters:
-    name: 'Win_Latest_PS_SmokeTest'
-    agentPoolName: ${{ variables.winAgentPoolName }}
-    psVersion: ${{ parameters.latest_ps }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_10 }}
-
-- template: util/smoke-test-steps.yml
-  parameters:
     name: 'Win_Preview_PS_SmokeTest'
     agentPoolName: ${{ variables.winAgentPoolName }}
     psVersion: ${{ parameters.preview_ps }}
@@ -111,18 +104,24 @@ jobs:
 
 - template: util/smoke-test-steps.yml
   parameters:
-    name: 'Linux_Latest_PS_SmokeTest'
-    agentPoolName: ${{ variables.linuxAgentPoolName }}
-    psVersion: ${{ parameters.latest_ps }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_10 }}
-
-- template: util/smoke-test-steps.yml
-  parameters:
     name: 'Linux_Preview_PS_SmokeTest'
     agentPoolName: ${{ variables.linuxAgentPoolName }}
     psVersion: ${{ parameters.preview_ps }}
     dotnetVersion: ${{ parameters.dotnet_sdk_9 }}
 
+- job: CheckLatestPowerShellVersion
+  displayName: Check for latest PowerShell version
+  pool:
+    name: ${{ variables.linuxAgentPoolName }}
+  steps:
+  - task: PowerShell@2
+    displayName: Check for latest PowerShell version
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Live/CheckLatestPowerShellVersion.ps1
+    env:
+      POWERSHELLLATEST: ${{ parameters.psLatest }}
 # - template: util/smoke-test-steps.yml
 #   parameters:
 #     name: 'MacOS_PS7_4_X_SmokeTest'

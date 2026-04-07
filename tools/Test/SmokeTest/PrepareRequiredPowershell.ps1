@@ -29,20 +29,10 @@ function Install-PowerShell {
       dotnet --version
       dotnet new tool-manifest --force
       if ( 'latest' -eq $requiredPsVersion ) {
-        Write-Host "Installing latest PowerShell package using dotnet tool install command."
         dotnet tool install PowerShell
       }
       else {
         dotnet tool install PowerShell --version $requiredPsVersion 
-      }
-      if ([Version](dotnet --version) -gt [Version]"9.0.0") {
-        if((dotnet tool list --local --format json | ConvertFrom-Json).data.where({ $_.packageId -eq 'powershell' }).Count -gt 0) {
-          Write-Host "PowerShell $requiredPsVersion has been installed successfully."
-        } else {
-          throw "Failed to install PowerShell $requiredPsVersion. Please ensure the PS version is correct and target framework of the package is compatible with the OS platform. Please refer to https://www.nuget.org/packages/PowerShell for more details."
-        }
-      } else {
-        Write-Host "Dotnet version is less than 9.0.0, skipping the verification of PowerShell installation"
       }
       dotnet tool list
     }
