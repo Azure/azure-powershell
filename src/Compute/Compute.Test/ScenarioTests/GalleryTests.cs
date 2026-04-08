@@ -102,16 +102,23 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateGalleryWithSystemAssignedIdentity()
+        public void TestGalleryWithUserAssignedIdentity()
         {
-            TestRunner.RunTestScript("Test-UpdateGalleryWithSystemAssignedIdentity");
+            TestRunner.RunTestScript("Test-GalleryWithUserAssignedIdentity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGalleryWithUserAssignedIdentity()
+        public void TestGalleryWithSystemAndUserAssignedIdentity()
         {
-            TestRunner.RunTestScript("Test-GalleryWithUserAssignedIdentity");
+            TestRunner.RunTestScript("Test-GalleryWithSystemAndUserAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateGalleryWithSystemAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-UpdateGalleryWithSystemAssignedIdentity");
         }
 
         [Fact]
@@ -127,6 +134,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-UpdateGalleryWithSystemAndUserAssignedIdentity");
         }
-
     }
 }
