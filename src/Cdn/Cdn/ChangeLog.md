@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 6.0.1
+* Bug fix for https://github.com/Azure/azure-powershell/issues/29231
+
 ## Version 6.0.0
 * Added support for edge action
 * Upgraded Api version to 2025-06-01

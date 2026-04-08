@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.9.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 2.9.0
+* Added support for Data Protection Platform vault soft delete feature
+
 ## Version 2.8.0
 * Added support for AzureDataLakeStorage workload
 

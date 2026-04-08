@@ -122,6 +122,7 @@ foreach ($moduleName in $testedModules) {
 
     if ($hasRawData) {
         (Import-Csv -Path $cvgRawCsv) |
+        Where-Object { $_.CommandName -in $moduleCommands } |
         Select-Object `
         @{ Name = "Module"; Expression = { $simpleModuleName } }, `
         @{ Name = "CommandName"; Expression = { $_.CommandName } }, `
@@ -139,11 +140,11 @@ foreach ($moduleName in $testedModules) {
 
         $rawCsv = Import-Csv -LiteralPath $cvgRawCsv | Where-Object IsSuccess -eq $true | Select-Object CommandName, ParameterSetName, Parameters -Unique
 
-        $csvGroupByCommand = $rawCsv | Where-Object CommandName -in $moduleCommands | Sort-Object CommandName | Select-Object -ExpandProperty CommandName -Unique
+        $csvGroupByCommand = $rawCsv | Sort-Object CommandName | Select-Object -ExpandProperty CommandName -Unique
         $totalTestedCommandsCount = $csvGroupByCommand.Count
         $overallTestedCommandsCount += $totalTestedCommandsCount
 
-        $csvGroupByParameterSet = $rawCsv | Where-Object CommandName -in $moduleCommands | Sort-Object CommandName, ParameterSetName | Select-Object CommandName, ParameterSetName -Unique | Group-Object CommandName
+        $csvGroupByParameterSet = $rawCsv | Sort-Object CommandName, ParameterSetName | Select-Object CommandName, ParameterSetName -Unique | Group-Object CommandName
         $totalTestedParameterSetsCount = ($csvGroupByParameterSet | Measure-Object -Property Count -Sum).Sum
 
         $csvGroupByParameterSet | ForEach-Object {
@@ -159,7 +160,7 @@ foreach ($moduleName in $testedModules) {
             $commandExec.UntestedCommands += $_
         }
 
-        $csvGroupByParameter = $rawCsv | Where-Object CommandName -in $moduleCommands | Sort-Object CommandName, ParameterSetName, Parameters | Select-Object CommandName, ParameterSetName, Parameters -Unique | Group-Object CommandName, ParameterSetName
+        $csvGroupByParameter = $rawCsv | Sort-Object CommandName, ParameterSetName, Parameters | Select-Object CommandName, ParameterSetName, Parameters -Unique | Group-Object CommandName, ParameterSetName
         $totalTestedParametersCount = 0
         $csvGroupByParameter | ForEach-Object {
             $testedParams = @()

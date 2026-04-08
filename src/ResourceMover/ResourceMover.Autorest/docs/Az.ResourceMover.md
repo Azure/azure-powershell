@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ResourceMover
-Module Guid: 408082ab-b750-4164-a7d4-e541c047376e
+Module Guid: 0ba90d79-503d-4960-9f28-a730b4c6d67b
 Download Help Link: https://learn.microsoft.com/powershell/module/az.resourcemover
 Help Version: 1.0.0.0
 Locale: en-US

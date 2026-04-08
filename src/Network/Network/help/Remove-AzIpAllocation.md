@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{ Fill InputObject Description }}
+The IpAllocation object to remove.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSTopLevelResource
