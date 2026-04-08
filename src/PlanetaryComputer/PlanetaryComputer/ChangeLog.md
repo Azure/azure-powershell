@@ -18,8 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added `Get-AzPlanetaryComputerGeoCatalog`, `New-AzPlanetaryComputerGeoCatalog`, `Update-AzPlanetaryComputerGeoCatalog`, and `Remove-AzPlanetaryComputerGeoCatalog` cmdlets for GeoCatalog CRUD operations.
 
 ## Version 0.1.0
-* First release for module Az.PlanetaryComputer
+* Added `Get-AzPlanetaryComputerGeoCatalog`, `New-AzPlanetaryComputerGeoCatalog`, `Update-AzPlanetaryComputerGeoCatalog`, and `Remove-AzPlanetaryComputerGeoCatalog` cmdlets for GeoCatalog CRUD operations.
 
