@@ -32,14 +32,3 @@ else {
 
     Write-Host "##[section]Desired PowerShell version $DesiredVersion has been installed."
 }
-
-if ($DesiredVersion -eq "latest") {
-    $curMajorVer = dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -Command "(Get-Variable -Name PSVersionTable -ValueOnly).PSVersion.Major"
-    $curMinorVer = dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -Command "(Get-Variable -Name PSVersionTable -ValueOnly).PSVersion.Minor"
-    $curSimpleVer = "$curMajorVer.$curMinorVer"
-
-    if ($curSimpleVer -eq ${env:POWERSHELLLATEST}) {
-        Write-Warning "Skipping live test for PowerShell $curSimpleVer as it has already been explicitly specified in the pipeline."
-        Write-Host "##vso[task.setvariable variable=skipLatest;isreadonly=true]true"
-    }
-}
