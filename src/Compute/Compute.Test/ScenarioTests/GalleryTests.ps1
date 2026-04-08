@@ -1299,3 +1299,57 @@ function Test-UpdateGalleryWithSystemAssignedIdentity
         Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
     }
 }
+
+<#
+.SYNOPSIS
+Tests New-AzGallery with user-assigned managed identity
+#>
+function Test-GalleryWithUserAssignedIdentity
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+    $identityName = 'id' + $rgname;
+
+    try
+    {
+        # Common
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a user-assigned managed identity using REST API to avoid NonModifiablePolicyAlias error
+        # Include isolationScope=Regional in request body so the policy's modify effect is a no-op
+        $subId = (Get-AzContext).Subscription.Id;
+        $identityPath = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName";
+        $identityBody = @{
+            location = $loc
+            properties = @{
+                isolationScope = "Regional"
+            }
+        } | ConvertTo-Json;
+        $restResult = Invoke-AzRestMethod -Path "${identityPath}?api-version=2024-11-30" -Method PUT -Payload $identityBody;
+        Assert-True { $restResult.StatusCode -eq 200 -or $restResult.StatusCode -eq 201 };
+        $identityId = $identityPath;
+
+        # Create gallery with user-assigned identity
+        $gallery = New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $loc -UserAssignedIdentity @($identityId);
+
+        Assert-NotNull $gallery;
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "UserAssigned" $gallery.Identity.Type.ToString();
+        Assert-NotNull $gallery.Identity.UserAssignedIdentities;
+        Assert-AreEqual 1 $gallery.Identity.UserAssignedIdentities.Count;
+
+        # Retrieve gallery and verify identity is preserved
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "UserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 1 $gallery.Identity.UserAssignedIdentities.Count;
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
+    }
+}
