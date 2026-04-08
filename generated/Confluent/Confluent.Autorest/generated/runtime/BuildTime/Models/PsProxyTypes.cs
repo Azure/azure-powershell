@@ -8,10 +8,10 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
-using static Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell.PsProxyOutputExtensions;
-using static Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell.PsProxyTypeExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.PowerShell.PsProxyOutputExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.PowerShell.PsProxyTypeExtensions;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.PowerShell
 {
     internal class ProfileGroup
     {
@@ -392,6 +392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell
             var helpInfo = variantGroup.HelpInfo;
             Description = variantGroup.Variants.SelectMany(v => v.Attributes).OfType<DescriptionAttribute>().FirstOrDefault()?.Description.NullIfEmpty()
                           ?? helpInfo.Description.EmptyIfNull();
+            Description = PsHelpInfo.CapitalizeFirstLetter(Description);
             // If there is no Synopsis, PowerShell may put in the Syntax string as the Synopsis. This seems unintended, so we remove the Synopsis in this situation.
             var synopsis = helpInfo.Synopsis.EmptyIfNull().Trim().StartsWith(variantGroup.CmdletName) ? String.Empty : helpInfo.Synopsis;
             Synopsis = synopsis.NullIfEmpty() ?? Description;

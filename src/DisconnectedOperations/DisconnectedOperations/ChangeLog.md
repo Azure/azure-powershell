@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Added cmdlets for managing hardware settings in disconnected operations.
     - Get-AzDisconnectedOperationsHardwareSetting
     - Remove-AzDisconnectedOperationsHardwareSetting
