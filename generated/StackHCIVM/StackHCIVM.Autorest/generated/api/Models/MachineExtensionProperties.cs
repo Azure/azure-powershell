@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceView Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionPropertiesInternal.InstanceView { get => (this._instanceView = this._instanceView ?? new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.MachineExtensionInstanceView()); set { {_instanceView = value;} } }
 
         /// <summary>Internal Acessors for InstanceViewStatus</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceViewStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionPropertiesInternal.InstanceViewStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceViewInternal)InstanceView).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceViewInternal)InstanceView).Status = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceViewStatus Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionPropertiesInternal.InstanceViewStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceViewInternal)InstanceView).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceViewInternal)InstanceView).Status = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }

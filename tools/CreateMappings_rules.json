@@ -917,6 +917,10 @@
     "module": "Mdp"
   },
   {
+    "alias": "NeonPostgres",
+    "module": "NeonPostgres"
+  },
+  {
     "module": "ComputeFleet",
     "alias": "ComputeFleet"
   },
@@ -1001,10 +1005,6 @@
     "module": "EdgeAction"
   },
   {
-    "alias": "EdgeMarketplace",
-    "module": "EdgeMarketplace"
-  },
-  {
     "alias": "ArtifactSigning",
     "module": "ArtifactSigning"
   },
@@ -1015,5 +1015,9 @@
   {
     "module": "ComputeLimit",
     "alias": "ComputeLimit"
+  },
+  {
+    "module": "ServiceGroups",
+    "alias": "ServiceGroups"
   }
 ]

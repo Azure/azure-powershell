@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.3
+* Added announcement for upcoming breaking changes as part of the 2025-10-01-preview API migration:
+    - Removed parameter `ActionBlockResponseCode` from `New-AzDnsResolverPolicyDnsSecurityRule` and `Update-AzDnsResolverPolicyDnsSecurityRule`. The block response code is no longer configurable.
+    - Parameter `DnsResolverDomainList` is no longer mandatory on `New-AzDnsResolverPolicyDnsSecurityRule`. DNS security rules will support managed domain lists as an alternative to user-defined domain lists.
+    - Parameter `Domain` is no longer mandatory on `New-AzDnsResolverDomainList`. Domain lists will support bulk upload via the new cmdlet `Invoke-AzDnsResolverBulkDnsResolverDomainList`, which will be introduced in the upcoming release.
+
 ## Version 1.2.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 

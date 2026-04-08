@@ -13,9 +13,17 @@ public class AssemblyServiceTests
     [Fact]
     public void DownloadAndInspectAssembly()
     {
+        var root = Directory.GetCurrentDirectory();
+        var s = Path.DirectorySeparatorChar;
+        var manifestPath = $"{root}{s}manifest.json";
+        var libPath = $"{root}{s}lib";
+        var runtimePath = $"{root}{s}runtime.cs";
+        var cgManifestPath = $"{root}{s}CgManifest.json";
+        var dllPath = $"{root}{s}lib{s}netstandard2.0{s}Azure.Core.dll";
+
         IFileSystem mockFs = new MockFileSystem(new Dictionary<string, MockFileData>
         {
-            { @"C:\manifest.json", new MockFileData(@"[
+            { manifestPath, new MockFileData(@"[
                 {
                     ""PackageName"": ""Azure.Core"",
                     ""PackageVersion"": ""1.44.1"",
@@ -24,20 +32,20 @@ public class AssemblyServiceTests
                     ""PowerShell7Plus"": true
                 }
             ]") },
-            { @"C:\lib\netstandard2.0\Azure.Core.dll", new MockFileData(@"") },
-            { @"C:\runtime.cs", new MockFileData(@"
+            { dllPath, new MockFileData(@"") },
+            { runtimePath, new MockFileData(@"
             #region Generated
             #endregion
             ") },
-            { @"C:\CgManifest.json", new MockFileData(@"{
+            { cgManifestPath, new MockFileData(@"{
                 ""registrations"": []
             }") }
         });
         var mockNugetService = new Mock<INugetService>();
-        mockNugetService.Setup(x => x.DownloadAssembly("Azure.Core", "1.44.1", "netstandard2.0", @"C:\lib", false))
-            .Returns(@"C:\lib\netstandard2.0\Azure.Core.dll");
+        mockNugetService.Setup(x => x.DownloadAssembly("Azure.Core", "1.44.1", "netstandard2.0", libPath, false))
+            .Returns(dllPath);
         var mockAssemblyMetadataService = new Mock<IAssemblyMetadataService>();
-        mockAssemblyMetadataService.Setup(x => x.ParseAssemblyMetadata(@"C:\lib\netstandard2.0\Azure.Core.dll"))
+        mockAssemblyMetadataService.Setup(x => x.ParseAssemblyMetadata(dllPath))
             .Returns(new RuntimeAssembly
             {
                 Name = "Azure.Core",
@@ -46,8 +54,8 @@ public class AssemblyServiceTests
             });
         var assemblyService = new DefaultAssemblyService(mockFs, mockNugetService.Object, NoopLogger.Instance, mockAssemblyMetadataService.Object);
 
-        assemblyService.UpdateAssembly(@"C:\manifest.json", @"C:\lib", @"C:\runtime.cs", @"C:\CgManifest.json");
-        mockNugetService.Verify(x => x.DownloadAssembly("Azure.Core", "1.44.1", "netstandard2.0", @"C:\lib", false), Times.Once);
-        mockAssemblyMetadataService.Verify(x => x.ParseAssemblyMetadata(@"C:\lib\netstandard2.0\Azure.Core.dll"), Times.Once);
+        assemblyService.UpdateAssembly(manifestPath, libPath, runtimePath, cgManifestPath);
+        mockNugetService.Verify(x => x.DownloadAssembly("Azure.Core", "1.44.1", "netstandard2.0", libPath, false), Times.Once);
+        mockAssemblyMetadataService.Verify(x => x.ParseAssemblyMetadata(dllPath), Times.Once);
     }
 }
