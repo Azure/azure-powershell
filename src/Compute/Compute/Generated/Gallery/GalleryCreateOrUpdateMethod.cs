@@ -285,8 +285,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
                     bool hasUserAssigned = this.IsParameterBound(c => c.UserAssignedIdentity) && this.UserAssignedIdentity.Length > 0;
+                    bool disableSystem = this.IsParameterBound(c => c.DisableSystemAssignedIdentity) && this.DisableSystemAssignedIdentity.IsPresent;
+                    bool disableUser = this.IsParameterBound(c => c.RemoveAllUserAssignedIdentity) && this.RemoveAllUserAssignedIdentity.IsPresent;
 
-                    if (hasSystemAssigned || hasUserAssigned)
+                    if (hasSystemAssigned && disableSystem)
+                    {
+                        throw new ArgumentException("Parameters '-EnableSystemAssignedIdentity' and '-DisableSystemAssignedIdentity' cannot be used together.");
+                    }
+
+                    if (hasUserAssigned && disableUser)
+                    {
+                        throw new ArgumentException("Parameters '-UserAssignedIdentity' and '-RemoveAllUserAssignedIdentity' cannot be used together.");
+                    }
+
+                    if (hasSystemAssigned || hasUserAssigned || disableSystem || disableUser)
                     {
                         galleryUpdate.Identity = new GalleryIdentity();
 
@@ -297,8 +309,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         bool existingHasUser = existingType == ResourceIdentityType.UserAssigned
                             || existingType == ResourceIdentityType.SystemAssignedUserAssigned;
 
-                        bool wantSystem = hasSystemAssigned || existingHasSystem;
-                        bool wantUser = hasUserAssigned || existingHasUser;
+                        bool wantSystem = (hasSystemAssigned || existingHasSystem) && !disableSystem;
+                        bool wantUser = (hasUserAssigned || existingHasUser) && !disableUser;
 
                         if (wantSystem && wantUser)
                         {
@@ -308,12 +320,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         {
                             galleryUpdate.Identity.Type = ResourceIdentityType.SystemAssigned;
                         }
-                        else
+                        else if (wantUser)
                         {
                             galleryUpdate.Identity.Type = ResourceIdentityType.UserAssigned;
                         }
+                        else
+                        {
+                            galleryUpdate.Identity.Type = ResourceIdentityType.None;
+                        }
 
-                        if (hasUserAssigned)
+                        if (disableUser && wantSystem)
+                        {
+                            // Type is SystemAssigned (not None) — explicitly null out user identities via PATCH
+                            var existingKeys = gallery.Identity?.UserAssignedIdentities?.Keys;
+                            if (existingKeys != null && existingKeys.Count > 0)
+                            {
+                                galleryUpdate.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+                                foreach (var existingKey in existingKeys)
+                                {
+                                    galleryUpdate.Identity.UserAssignedIdentities[existingKey] = null;
+                                }
+                            }
+                        }
+                        // When type is None, don't include userAssignedIdentities — the API rejects identity ids with type None
+                        else if (hasUserAssigned)
                         {
                             var newIdentityIds = new HashSet<string>(this.UserAssignedIdentity, StringComparer.OrdinalIgnoreCase);
                             galleryUpdate.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
@@ -601,8 +631,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Disables system-assigned managed identity on the gallery.")]
+        public SwitchParameter DisableSystemAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of user-assigned managed identity resource IDs to associate with the gallery. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
         public string[] UserAssignedIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Removes all user-assigned managed identities from the gallery.")]
+        public SwitchParameter RemoveAllUserAssignedIdentity { get; set; }
     }
 }

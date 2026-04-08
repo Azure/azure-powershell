@@ -1613,3 +1613,102 @@ function Test-UpdateGalleryWithSystemAndUserAssignedIdentity
         Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
     }
 }
+
+<#
+.SYNOPSIS
+Tests disabling and re-enabling system-assigned and user-assigned managed identities on a gallery.
+Creates with both, removes one at a time, re-adds both, then removes both at once.
+#>
+function Test-DisableGalleryIdentities
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+    $identityName1 = 'id1' + $rgname;
+    $identityName2 = 'id2' + $rgname;
+
+    try
+    {
+        # Common
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create 2 user-assigned managed identities using REST API
+        $subId = (Get-AzContext).Subscription.Id;
+        $identityBody = @{
+            location = $loc
+            properties = @{
+                isolationScope = "Regional"
+            }
+        } | ConvertTo-Json;
+
+        $identityPath1 = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName1";
+        $restResult = Invoke-AzRestMethod -Path "${identityPath1}?api-version=2024-11-30" -Method PUT -Payload $identityBody;
+        Assert-True { $restResult.StatusCode -eq 200 -or $restResult.StatusCode -eq 201 };
+
+        $identityPath2 = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName2";
+        $restResult = Invoke-AzRestMethod -Path "${identityPath2}?api-version=2024-11-30" -Method PUT -Payload $identityBody;
+        Assert-True { $restResult.StatusCode -eq 200 -or $restResult.StatusCode -eq 201 };
+
+        # Step 1: Create gallery with both system-assigned and user-assigned identities
+        $gallery = New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $loc -EnableSystemAssignedIdentity -UserAssignedIdentity @($identityPath1, $identityPath2);
+
+        Assert-AreEqual "SystemAssignedUserAssigned" $gallery.Identity.Type.ToString();
+        Assert-NotNull $gallery.Identity.PrincipalId;
+        Assert-AreEqual 2 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath2) };
+
+        # Step 2: Remove system-assigned identity only
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -DisableSystemAssignedIdentity;
+
+        Assert-AreEqual "UserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 2 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath2) };
+
+        # Verify via Get
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-AreEqual "UserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 2 $gallery.Identity.UserAssignedIdentities.Count;
+
+        # Step 3: Remove all user-assigned identities
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -RemoveAllUserAssignedIdentity;
+
+        Assert-Null $gallery.Identity;
+
+        # Verify via Get
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-Null $gallery.Identity;
+
+        # Step 4: Re-add both system-assigned and user-assigned identities
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -EnableSystemAssignedIdentity -UserAssignedIdentity @($identityPath1, $identityPath2);
+
+        Assert-AreEqual "SystemAssignedUserAssigned" $gallery.Identity.Type.ToString();
+        Assert-NotNull $gallery.Identity.PrincipalId;
+        Assert-AreEqual 2 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath2) };
+
+        # Verify via Get
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-AreEqual "SystemAssignedUserAssigned" $gallery.Identity.Type.ToString();
+        Assert-NotNull $gallery.Identity.PrincipalId;
+        Assert-AreEqual 2 $gallery.Identity.UserAssignedIdentities.Count;
+
+        # Step 5: Remove both system-assigned and user-assigned at the same time
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -DisableSystemAssignedIdentity -RemoveAllUserAssignedIdentity;
+
+        Assert-Null $gallery.Identity;
+
+        # Verify via Get
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-Null $gallery.Identity;
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
+    }
+}

@@ -18,7 +18,8 @@ Update-AzGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Descr
  [-Tag <Hashtable>] [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>]
  [-RemoveSubscription <String[]>] [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset]
  [-PublisherUri <String>] [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
- [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
+ [-UserAssignedIdentity <String[]>] [-RemoveAllUserAssignedIdentity]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -29,7 +30,8 @@ Update-AzGallery [-ResourceId] <String> [-AsJob] [-Description <String>] [-Tag <
  [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>] [-RemoveSubscription <String[]>]
  [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset] [-PublisherUri <String>]
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
- [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
+ [-UserAssignedIdentity <String[]>] [-RemoveAllUserAssignedIdentity]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -40,7 +42,8 @@ Update-AzGallery [-InputObject] <PSGallery> [-AsJob] [-Description <String>] [-T
  [-Permission <String>] [-Subscription <String[]>] [-Tenant <String[]>] [-RemoveSubscription <String[]>]
  [-RemoveTenant <String[]>] [-Share] [-Community] [-Reset] [-PublisherUri <String>]
  [-PublisherContact <String>] [-Eula <String>] [-PublicNamePrefix <String>]
- [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ [-EnableSystemAssignedIdentity] [-DisableSystemAssignedIdentity]
+ [-UserAssignedIdentity <String[]>] [-RemoveAllUserAssignedIdentity]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -78,6 +81,29 @@ Get-AzGallery -ResourceGroupName $rgname -Name $galleryName | Update-AzGallery -
 ```
 
 Update a gallery to add a user-assigned managed identity using pipeline input.
+
+### Example 5
+```powershell
+$uid1 = (Get-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityName1).Id
+$uid2 = (Get-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $identityName2).Id
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -UserAssignedIdentity @($uid1, $uid2)
+```
+
+Update a gallery to replace all existing user-assigned managed identities with the two specified identities. Any previously assigned identities not in the list are removed.
+
+### Example 6
+```powershell
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -DisableSystemAssignedIdentity
+```
+
+Update a gallery to disable its system-assigned managed identity.
+
+### Example 7
+```powershell
+Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -RemoveAllUserAssignedIdentity
+```
+
+Update a gallery to remove all user-assigned managed identities.
 
 ## PARAMETERS
 
@@ -141,8 +167,38 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DisableSystemAssignedIdentity
+Disables system-assigned managed identity on the gallery. Cannot be used together with -EnableSystemAssignedIdentity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RemoveAllUserAssignedIdentity
+Removes all user-assigned managed identities from the gallery. Cannot be used together with -UserAssignedIdentity.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableSystemAssignedIdentity
-Enables system-assigned managed identity on the gallery.
+Enables system-assigned managed identity on the gallery. Cannot be used together with -DisableSystemAssignedIdentity.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -397,7 +453,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The list of user-assigned managed identity resource IDs to associate with the gallery. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+The list of user-assigned managed identity resource IDs to associate with the gallery. Cannot be used together with -RemoveAllUserAssignedIdentity. The resource IDs are in the form '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 
 ```yaml
 Type: System.String[]

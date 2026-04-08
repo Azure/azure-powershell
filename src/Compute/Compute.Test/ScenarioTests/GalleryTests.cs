@@ -134,5 +134,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-UpdateGalleryWithSystemAndUserAssignedIdentity");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableGalleryIdentities()
+        {
+            TestRunner.RunTestScript("Test-DisableGalleryIdentities");
+        }
     }
 }
