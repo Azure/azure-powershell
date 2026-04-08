@@ -221,8 +221,8 @@ directive:
           - PerNodeDetail
         change-description: The types of the properties DefaultExtension and PerNodeDetail will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       verb: Get|New
       subject: Extension
@@ -234,8 +234,8 @@ directive:
           - PerNodeExtensionDetail
         change-description: The type of the property PerNodeExtensionDetail will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       verb: Get|New|Update
       subject: Cluster
@@ -255,8 +255,8 @@ directive:
           - ReportedPropertySupportedCapability
         change-description: The types of the properties ReportedPropertyNode, LogCollectionPropertyLogCollectionSessionDetail, RemoteSupportPropertyRemoteSupportSessionDetail, RemoteSupportPropertyRemoteSupportNodeSetting and ReportedPropertySupportedCapability will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       verb: Get
       subject: DeploymentSetting
@@ -274,8 +274,8 @@ directive:
           - ArcNodeResourceId
         change-description: The types of the properties DeploymentStatusStep, ValidationStatusStep, DeploymentConfigurationScaleUnit and ArcNodeResourceId will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       verb: New
       subject: DeploymentSetting
@@ -307,8 +307,8 @@ directive:
           - HostNetworkStorageNetwork
         change-description: The types of the properties DeploymentStatusStep, ValidationStatusStep, DeploymentConfigurationScaleUnit and ArcNodeResourceId will be changed from single object or fixed array to 'List'. The type of property DeploymentDataSecret, DeploymentDataInfrastructureNetwork, HostNetworkIntent, DeploymentDataPhysicalNode, SbePartnerInfoCredentialList, SbePartnerInfoPartnerProperty and HostNetworkStorageNetwork of type ScaleUnits will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       verb: Get|Set
       subject: ^Update$
@@ -324,8 +324,8 @@ directive:
           - Prerequisite
         change-description: The types of the properties ComponentVersion, HealthCheckResult and Prerequisite will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       verb: Get|Set
       subject: UpdateRun
@@ -337,8 +337,8 @@ directive:
           - ProgressStep
         change-description: The type of the property ProgressStep will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       verb: Get|Set
       subject: UpdateSummary
@@ -352,8 +352,8 @@ directive:
           - HealthCheckResult
         change-description: The types of the properties PackageVersion and HealthCheckResult will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       verb: Test
       subject: EdgeDevice
@@ -365,8 +365,8 @@ directive:
           - EdgeDeviceId
         change-description: The type of the property EdgeDeviceId will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       verb: Invoke
       subject: ConsentAndInstallDefaultExtension
@@ -380,8 +380,8 @@ directive:
           - PerNodeDetail
         change-description: The types of the properties DefaultExtension and PerNodeDetail will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       verb: Invoke
       subject: ExtendClusterSoftwareAssuranceBenefit
@@ -401,8 +401,8 @@ directive:
           - ReportedPropertySupportedCapability
         change-description: The types of the properties ReportedPropertyNode, LogCollectionPropertyLogCollectionSessionDetail, RemoteSupportPropertyRemoteSupportSessionDetail, RemoteSupportPropertyRemoteSupportNodeSetting and ReportedPropertySupportedCapability will be changed from single object or fixed array to 'List'.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       verb: Invoke
       subject: ExtendClusterSoftwareAssuranceBenefit
@@ -410,16 +410,16 @@ directive:
     set:
       breaking-change:
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       subject: EdgeDevice
       variant: Validate|ValidateViaIdentity
     set:
       breaking-change:
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       parameter-name: IdentityType
     set:
@@ -428,8 +428,8 @@ directive:
         new-parameter-type: boolean
         change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system-assigned identities.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
   - where:
       parameter-name: UserAssignedIdentity
     set:
@@ -438,6 +438,6 @@ directive:
         new-parameter-type: list
         change-description: The type of UserAssignedIdentity will be simplified to an array of strings that is used to specify the user's assigned identity.
         deprecated-by-version: 3.0.0
-        deprecated-by-azversion: 15.0.0
-        change-effective-date: 2025/11
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05
 ```
