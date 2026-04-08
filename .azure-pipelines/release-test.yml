@@ -15,10 +15,6 @@ parameters:
   displayName: PowerShell 7.6.x Version
   type: string
   default: 7.6.*
-- name: psLatest
-  displayName: PowerShell Latest Version
-  type: string
-  default: 7.6
 - name: preview_ps
   displayName: PowerShell Preview Version
   type: string
@@ -120,8 +116,6 @@ jobs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/CheckLatestPowerShellVersion.ps1
-    env:
-      POWERSHELLLATEST: ${{ parameters.psLatest }}
 # - template: util/smoke-test-steps.yml
 #   parameters:
 #     name: 'MacOS_PS7_4_X_SmokeTest'
