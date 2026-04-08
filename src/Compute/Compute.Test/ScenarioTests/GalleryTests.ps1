@@ -1451,3 +1451,101 @@ function Test-UpdateGalleryWithUserAssignedIdentity
         Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
     }
 }
+
+<#
+.SYNOPSIS
+Tests Update-AzGallery with both system-assigned and user-assigned managed identities,
+then updates with only user-assigned to verify system-assigned is preserved.
+#>
+function Test-UpdateGalleryWithSystemAndUserAssignedIdentity
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+    $identityName1 = 'id1' + $rgname;
+    $identityName2 = 'id2' + $rgname;
+
+    try
+    {
+        # Common
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create 2 user-assigned managed identities using REST API
+        $subId = (Get-AzContext).Subscription.Id;
+        $identityBody = @{
+            location = $loc
+            properties = @{
+                isolationScope = "Regional"
+            }
+        } | ConvertTo-Json;
+
+        $identityPath1 = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName1";
+        $restResult = Invoke-AzRestMethod -Path "${identityPath1}?api-version=2024-11-30" -Method PUT -Payload $identityBody;
+        Assert-True { $restResult.StatusCode -eq 200 -or $restResult.StatusCode -eq 201 };
+
+        $identityPath2 = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName2";
+        $restResult = Invoke-AzRestMethod -Path "${identityPath2}?api-version=2024-11-30" -Method PUT -Payload $identityBody;
+        Assert-True { $restResult.StatusCode -eq 200 -or $restResult.StatusCode -eq 201 };
+
+        # Create gallery without identity
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $loc;
+
+        # Update gallery to add both system-assigned and user-assigned identity
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -EnableSystemAssignedIdentity -UserAssignedIdentity @($identityPath1);
+
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "SystemAssignedUserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 1 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
+        Assert-NotNull $gallery.Identity.PrincipalId;
+
+        # Verify via Get
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-AreEqual "SystemAssignedUserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 1 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
+        Assert-NotNull $gallery.Identity.PrincipalId;
+
+        # Update with only -UserAssignedIdentity (replacing id1 with id2)
+        # This should preserve SystemAssigned and result in SystemAssigned,UserAssigned
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -UserAssignedIdentity @($identityPath2);
+
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "SystemAssignedUserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 1 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath2) };
+        Assert-NotNull $gallery.Identity.PrincipalId;
+
+        # Verify via Get
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-AreEqual "SystemAssignedUserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 1 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath2) };
+        Assert-NotNull $gallery.Identity.PrincipalId;
+
+        # Update with both user-assigned identities (still only passing -UserAssignedIdentity)
+        # SystemAssigned should still be preserved
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -UserAssignedIdentity @($identityPath1, $identityPath2);
+
+        Assert-AreEqual "SystemAssignedUserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 2 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath2) };
+        Assert-NotNull $gallery.Identity.PrincipalId;
+
+        # Verify via Get
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-AreEqual "SystemAssignedUserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 2 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath2) };
+        Assert-NotNull $gallery.Identity.PrincipalId;
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
+    }
+}

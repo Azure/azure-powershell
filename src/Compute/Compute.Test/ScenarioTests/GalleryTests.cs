@@ -121,5 +121,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-UpdateGalleryWithUserAssignedIdentity");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateGalleryWithSystemAndUserAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-UpdateGalleryWithSystemAndUserAssignedIdentity");
+        }
+
     }
 }

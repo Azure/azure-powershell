@@ -290,11 +290,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         galleryUpdate.Identity = new GalleryIdentity();
 
-                        if (hasSystemAssigned && hasUserAssigned)
+                        // Merge with the existing identity type on the resource
+                        var existingType = gallery.Identity?.Type;
+                        bool existingHasSystem = existingType == ResourceIdentityType.SystemAssigned
+                            || existingType == ResourceIdentityType.SystemAssignedUserAssigned;
+                        bool existingHasUser = existingType == ResourceIdentityType.UserAssigned
+                            || existingType == ResourceIdentityType.SystemAssignedUserAssigned;
+
+                        bool wantSystem = hasSystemAssigned || existingHasSystem;
+                        bool wantUser = hasUserAssigned || existingHasUser;
+
+                        if (wantSystem && wantUser)
                         {
                             galleryUpdate.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
                         }
-                        else if (hasSystemAssigned)
+                        else if (wantSystem)
                         {
                             galleryUpdate.Identity.Type = ResourceIdentityType.SystemAssigned;
                         }
