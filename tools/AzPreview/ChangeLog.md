@@ -1,3 +1,119 @@
+## 15.5.0 - April 2026
+#### Az.Accounts 5.3.4
+* Improved SSH certificate authentication for Az SSH cmdlets across all Azure clouds.
+    - SSH certificate authentication now works across all Azure clouds without configuring the '-SshAuthScope' parameter.
+    - The '-SshAuthScope' parameter in 'Set-AzEnvironment' and 'Add-AzEnvironment' does not take any effect.
+* Updated MSAL to 4.83.1 for bug fixes in IMDS endpoint cache.
+
+#### Az.ArtifactSigning 0.1.6
+* Updated docs and code comments to reference artifact signing accounts instead of trusted signing accounts.
+
+#### Az.Cdn 6.0.1
+* Bug fix for https://github.com/Azure/azure-powershell/issues/29231
+
+#### Az.CloudService 2.1.2
+* Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
+
+#### Az.ComputeLimit 0.1.0
+* First preview release for module Az.ComputeLimit
+
+#### Az.Confluent 0.4.0
+* Fixed failing playback tests for 'Update-AzConfluentOrganization' by adding the missing HTTP recording file
+
+#### Az.ContainerInstance 4.1.3
+* Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
+
+#### Az.CosmosDB 1.20.0
+* Added '-DisableLocalAuth' parameter to 'New-AzCosmosDBAccount' and 'Update-AzCosmosDBAccount' to opt out of local authentication.
+* Added '-Capabilities' parameter to 'Update-AzCosmosDBAccount' to allow adding or removing account capabilities.
+
+#### Az.DataProtection 2.9.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.DisconnectedOperations 0.1.1
+* Added cmdlets for managing hardware settings in disconnected operations.
+    - Get-AzDisconnectedOperationsHardwareSetting
+    - Remove-AzDisconnectedOperationsHardwareSetting
+    - New-AzDisconnectedOperationsHardwareSetting
+    - Update-AzDisconnectedOperationsHardwareSetting
+* Api version update to 2026-03-15.
+
+#### Az.DnsResolver 1.2.3
+* Added announcement for upcoming breaking changes as part of the 2025-10-01-preview API migration:
+    - Removed parameter 'ActionBlockResponseCode' from 'New-AzDnsResolverPolicyDnsSecurityRule' and 'Update-AzDnsResolverPolicyDnsSecurityRule'. The block response code is no longer configurable.
+    - Parameter 'DnsResolverDomainList' is no longer mandatory on 'New-AzDnsResolverPolicyDnsSecurityRule'. DNS security rules will support managed domain lists as an alternative to user-defined domain lists.
+    - Parameter 'Domain' is no longer mandatory on 'New-AzDnsResolverDomainList'. Domain lists will support bulk upload via the new cmdlet 'Invoke-AzDnsResolverBulkDnsResolverDomainList', which will be introduced in the upcoming release.
+
+#### Az.DurableTask 0.1.1
+* Upgraded API version to '2026-02-01'.
+    - Schedulers now support configuring 'publicNetworkAccess'
+    - Scheduler details include 'privateEndpointConnection' information.
+
+#### Az.FileShare 0.1.0
+* First preview release for module Az.FileShare
+
+#### Az.Functions 4.3.2
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Fixed an issue where New-AzFunctionApp fails due to duplicate -Name parameter binding. [#29166]
+
+#### Az.ManagedServices 3.1.3
+* Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
+
+#### Az.Migrate 2.12.0
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Added 'TargetSecurityType' and 'TargetVMSecureBootEnabled' parameters to 'New-AzMigrateServerReplication' to support Trusted Launch VM (TVM) security type during server replication
+
+#### Az.MySql 1.5.2
+* Updated preannouncement breaking changes date to May 2026.
+
+#### Az.NetAppFiles 1.1.0
+* Updated to api-version 2025-12-01
+* Added new cmdlet 'Get-AzNetAppFilesVolumeQuotaReport' to get quota report for a volume with optional filtering by 'QuotaType', 'QuotaTarget', and 'UsageThresholdPercentage'
+* Added 'DesiredRansomwareProtectionState' parameter to 'New-AzNetAppFilesVolume' and 'Update-AzNetAppFilesVolume' to enable or disable Advanced Ransomware Protection (ARP) on volumes
+* Added new cmdlet 'Get-AzNetAppFilesRansomwareReport' to list or get Advanced Ransomware Protection (ARP) reports for a volume
+* Added new cmdlet 'Clear-AzNetAppFilesRansomwareReportSuspect' to clear suspects on an ARP report by marking file extensions as 'PotentialThreat' or 'FalsePositive'
+
+#### Az.Network 7.26.0
+* Onboarded 'Microsoft.KubernetesConfiguration/privateLinkScopes' to Private Link Common Cmdlets
+* Added EdgeZone (Extended Location) parameter support for Azure Firewall
+    - Added '-EdgeZone' parameter to 'New-AzFirewall' cmdlet
+    - When '-EdgeZone' is specified, availability zones are not supported for Azure Firewall resources
+
+#### Az.Quota 0.2.0
+* Removed cmdlet 'Get-AzQuotaGroupQuotaSubscriptionRequest'
+    - This cmdlet is no longer supported and has been removed from the module
+* API Version Upgrade: Migrated from 2023-02-01 to 2025-09-01 stable
+
+#### Az.RecoveryServices 7.11.2
+* Added Cross region restore support for upcoming regions Southeast Asia 3
+
+#### Az.RedisEnterpriseCache 1.6.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.ServiceFabric 5.1.0
+* Added new OS options to 'New-AzServiceFabricCluster' '-OS' parameter: 'WindowsServer2019Datacenter', 'WindowsServer2019DatacenterGen2', 'WindowsServer2022Standard', 'WindowsServer2022Core', 'WindowsServer2022Gen2', 'WindowsServer2022Hotpatch', 'WindowsServer2025', 'WindowsServer2025AzureEdition', 'WindowsServer2025AzureEditionCore', 'WindowsServer2025Gen2', 'UbuntuServer2204', and 'UbuntuServer2404'
+* Updated SFMC to latest api general version '2026-02-01'
+
+#### Az.ServiceGroups 0.1.0
+* First preview release for module Az.ServiceGroups
+
+#### Az.Sftp 0.1.2
+* Fixed argument injection vulnerability in SFTP process-launch utilities [Security]
+    - Added input validation to reject control characters and double-quote characters that break argument boundaries
+    - Added proper argument escaping (quoting) when building ProcessStartInfo.Arguments to preserve argument boundaries for values that contain spaces
+    - Paths containing parentheses or other common filesystem characters (e.g. 'C:\Program Files (x86)') continue to work correctly
+
+#### Az.SqlVirtualMachine 2.4.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+#### Az.StackHCIVM 1.1.1
+* Added breaking change announcements for upcoming SecureString parameter type changes in 'New-AzStackHCIVMImage' and 'New-AzStackHCIVMVirtualMachine'
+
+#### Az.StandbyPool 0.4.0
+* Added '-DynamicSizingEnabled' parameter to 'New-AzStandbyVMPool', 'Update-AzStandbyVMPool', 'New-AzStandbyContainerGroupPool', and 'Update-AzStandbyContainerGroupPool'
+* Added '-PostProvisioningDelay' parameter to 'New-AzStandbyVMPool' and 'Update-AzStandbyVMPool'
+* Removed upper limit of 2000 on '-MaxReadyCapacity' and '-MinReadyCapacity'
+
 ## 15.4.0 - March 2026
 #### Az.Accounts 5.3.3
 * Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.

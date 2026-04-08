@@ -1463,6 +1463,14 @@
       "Remove-AzComputeFleet": {},
       "Update-AzComputeFleet": {}
     },
+    "Az.ComputeLimit": {
+      "Add-AzGuestSubscription": {},
+      "Add-AzSharedLimit": {},
+      "Get-AzGuestSubscription": {},
+      "Get-AzSharedLimit": {},
+      "Remove-AzGuestSubscription": {},
+      "Remove-AzSharedLimit": {}
+    },
     "Az.ComputeSchedule": {
       "Get-AzComputeScheduleOperationError": {},
       "Get-AzComputeScheduleOperationStatus": {},
@@ -1484,11 +1492,45 @@
       "Update-AzConfidentialLedger": {}
     },
     "Az.Confluent": {
+      "Get-AzConfluentAccessCluster": {},
+      "Get-AzConfluentAccessEnvironment": {},
+      "Get-AzConfluentAccessInvitation": {},
+      "Get-AzConfluentAccessRoleBinding": {},
+      "Get-AzConfluentAccessRoleBindingNameList": {},
+      "Get-AzConfluentAccessServiceAccount": {},
+      "Get-AzConfluentAccessUser": {},
+      "Get-AzConfluentConnector": {},
       "Get-AzConfluentMarketplaceAgreement": {},
       "Get-AzConfluentOrganization": {},
+      "Get-AzConfluentOrganizationCluster": {},
+      "Get-AzConfluentOrganizationClusterApiKey": {},
+      "Get-AzConfluentOrganizationEnvironment": {},
+      "Get-AzConfluentOrganizationRegion": {},
+      "Get-AzConfluentOrganizationSchemaRegistryCluster": {},
+      "Get-AzConfluentTopic": {},
+      "Invoke-AzConfluentInviteAccessUser": {},
+      "New-AzConfluentAccessRoleBinding": {},
+      "New-AzConfluentCluster": {},
+      "New-AzConfluentConnector": {},
+      "New-AzConfluentEnvironment": {},
       "New-AzConfluentOrganization": {},
+      "New-AzConfluentOrganizationApiKey": {},
+      "New-AzConfluentTopic": {},
+      "Remove-AzConfluentAccessRoleBinding": {},
+      "Remove-AzConfluentCluster": {},
+      "Remove-AzConfluentConnector": {},
+      "Remove-AzConfluentEnvironment": {},
       "Remove-AzConfluentOrganization": {},
-      "Update-AzConfluentOrganization": {}
+      "Remove-AzConfluentOrganizationClusterApiKey": {},
+      "Remove-AzConfluentTopic": {},
+      "Set-AzConfluentCluster": {},
+      "Set-AzConfluentConnector": {},
+      "Set-AzConfluentEnvironment": {},
+      "Test-AzConfluentValidationOrganization": {},
+      "Test-AzConfluentValidationOrganizationV2": {},
+      "Update-AzConfluentConnector": {},
+      "Update-AzConfluentOrganization": {},
+      "Update-AzConfluentTopic": {}
     },
     "Az.ConnectedKubernetes": {
       "Get-AzConnectedKubernetes": {},
@@ -2843,11 +2885,15 @@
       "Get-AzDisconnectedOperationsArtifactDownloadUri": {},
       "Get-AzDisconnectedOperationsDisconnectedOperation": {},
       "Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest": {},
+      "Get-AzDisconnectedOperationsHardwareSetting": {},
       "Get-AzDisconnectedOperationsImage": {},
       "Get-AzDisconnectedOperationsImageDownloadUri": {},
       "New-AzDisconnectedOperationsDisconnectedOperation": {},
+      "New-AzDisconnectedOperationsHardwareSetting": {},
       "Remove-AzDisconnectedOperationsDisconnectedOperation": {},
-      "Update-AzDisconnectedOperationsDisconnectedOperation": {}
+      "Remove-AzDisconnectedOperationsHardwareSetting": {},
+      "Update-AzDisconnectedOperationsDisconnectedOperation": {},
+      "Update-AzDisconnectedOperationsHardwareSetting": {}
     },
     "Az.DiskPool": {
       "Get-AzDiskPool": {},
@@ -3329,6 +3375,20 @@
       "Suspend-AzFabricCapacity": {},
       "Test-AzFabricCapacityNameAvailability": {},
       "Update-AzFabricCapacity": {}
+    },
+    "Az.FileShare": {
+      "Get-AzFileShare": {},
+      "Get-AzFileShareLimit": {},
+      "Get-AzFileShareProvisioningRecommendation": {},
+      "Get-AzFileShareSnapshot": {},
+      "Get-AzFileShareUsageData": {},
+      "New-AzFileShare": {},
+      "New-AzFileShareSnapshot": {},
+      "Remove-AzFileShare": {},
+      "Remove-AzFileShareSnapshot": {},
+      "Test-AzFileShareNameAvailability": {},
+      "Update-AzFileShare": {},
+      "Update-AzFileShareSnapshot": {}
     },
     "Az.FirmwareAnalysis": {
       "Get-AzFirmwareAnalysisBinaryHardening": {},
@@ -4676,25 +4736,6 @@
       "Update-AzMySqlServerConfigurationsList": {},
       "Update-AzMySqlVirtualNetworkRule": {}
     },
-    "Az.NeonPostgres": {
-      "Get-AzNeonPostgresBranch": {},
-      "Get-AzNeonPostgresCompute": {},
-      "Get-AzNeonPostgresEndpoint": {},
-      "Get-AzNeonPostgresNeonDatabase": {},
-      "Get-AzNeonPostgresNeonRole": {},
-      "Get-AzNeonPostgresOrganization": {},
-      "Get-AzNeonPostgresProject": {},
-      "Get-AzNeonPostgresProjectConnectionUri": {},
-      "New-AzNeonPostgresBranch": {},
-      "New-AzNeonPostgresOrganization": {},
-      "New-AzNeonPostgresProject": {},
-      "Remove-AzNeonPostgresBranch": {},
-      "Remove-AzNeonPostgresOrganization": {},
-      "Remove-AzNeonPostgresProject": {},
-      "Update-AzNeonPostgresBranch": {},
-      "Update-AzNeonPostgresOrganization": {},
-      "Update-AzNeonPostgresProject": {}
-    },
     "Az.NetAppFiles": {
       "Approve-AzNetAppFilesReplication": {},
       "Get-AzNetAppFilesAccount": {},
@@ -4785,6 +4826,9 @@
       "Convert-AzNetAppFilesAccountToCmk": {},
       "Get-AzNetAppFilesUsage": {},
       "Split-AzNetAppFilesCloneFromParent": {},
+      "Get-AzNetAppFilesVolumeQuotaReport": {},
+      "Get-AzNetAppFilesRansomwareReport": {},
+      "Clear-AzNetAppFilesRansomwareReportSuspect": {},
       "Approve-AnfReplication": {},
       "Get-AnfAccount": {},
       "Get-AnfBackup": {},
@@ -4867,7 +4911,10 @@
       "Invoke-AnfAccountChangeKeyVault": {},
       "Convert-AnfFilesAccountToCmk": {},
       "Get-AnfUsage": {},
-      "Split-AnfCloneFromParent": {}
+      "Split-AnfCloneFromParent": {},
+      "Get-AnfVolumeQuotaReport": {},
+      "Get-AnfRansomwareReport": {},
+      "Clear-AnfRansomwareReportSuspect": {}
     },
     "Az.Network": {
       "Add-AzApplicationGatewayAuthenticationCertificate": {},
@@ -6482,12 +6529,30 @@
     },
     "Az.Quota": {
       "Get-AzQuota": {},
+      "Get-AzQuotaGroupQuota": {},
+      "Get-AzQuotaGroupQuotaLimit": {},
+      "Get-AzQuotaGroupQuotaLimitsRequest": {},
+      "Get-AzQuotaGroupQuotaLocationSetting": {},
+      "Get-AzQuotaGroupQuotaSubscription": {},
+      "Get-AzQuotaGroupQuotaSubscriptionAllocation": {},
+      "Get-AzQuotaGroupQuotaSubscriptionAllocationRequest": {},
+      "Get-AzQuotaGroupQuotaUsage": {},
       "Get-AzQuotaOperation": {},
       "Get-AzQuotaRequestStatus": {},
       "Get-AzQuotaUsage": {},
       "New-AzQuota": {},
+      "New-AzQuotaGroupQuota": {},
+      "New-AzQuotaGroupQuotaLocationSetting": {},
+      "New-AzQuotaGroupQuotaSubscription": {},
       "New-AzQuotaLimitObject": {},
-      "Update-AzQuota": {}
+      "Remove-AzQuotaGroupQuota": {},
+      "Remove-AzQuotaGroupQuotaSubscription": {},
+      "Update-AzQuota": {},
+      "Update-AzQuotaGroupQuota": {},
+      "Update-AzQuotaGroupQuotaLimitsRequest": {},
+      "Update-AzQuotaGroupQuotaLocationSetting": {},
+      "Update-AzQuotaGroupQuotaSubscription": {},
+      "Update-AzQuotaGroupQuotaSubscriptionAllocationRequest": {}
     },
     "Az.RecoveryServices": {
       "Add-AzRecoveryServicesAsrReplicationProtectedItemDisk": {},
@@ -7498,6 +7563,13 @@
       "Update-AzServiceFabricNodeType": {},
       "Update-AzServiceFabricReliability": {},
       "Update-AzServiceFabricVmImage": {}
+    },
+    "Az.ServiceGroups": {
+      "Get-AzServiceGroup": {},
+      "Get-AzServiceGroupAncestor": {},
+      "New-AzServiceGroup": {},
+      "Remove-AzServiceGroup": {},
+      "Update-AzServiceGroup": {}
     },
     "Az.ServiceLinker": {
       "Get-AzServiceLinkerConfigurationForContainerApp": {},
