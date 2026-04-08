@@ -21,6 +21,15 @@ Creates or updates the incident.
 Creates or updates the incident.
 .Example
 Update-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -Title "Suspicious login activity" -Status "Active" -Severity "Medium" -OwnerAssignedTo "user@mydomain.local"
+.Example
+$incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434"
+$labels = $incident.Label + [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IncidentLabel]::new()
+$labels[-1].LabelName = "Reviewed"
+Update-AzSentinelIncident -InputObject $incident -Title $incident.Title -Status $incident.Status -Severity $incident.Severity -Label $labels
+.Example
+$incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434"
+$newLabels = @( @{ LabelName = "Critical" } )
+Update-AzSentinelIncident -InputObject $incident -Title $incident.Title -Status $incident.Status -Severity $incident.Severity -Label $newLabels
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity

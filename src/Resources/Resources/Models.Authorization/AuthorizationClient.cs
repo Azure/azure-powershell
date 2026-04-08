@@ -614,6 +614,155 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return AuthorizationManagementClient.DenyAssignments.List(odataQuery).ToPSDenyAssignments(ActiveDirectoryClient).ToList();
         }
 
+        // =====================================================================
+        // Deny Assignment Create/Delete
+        // =====================================================================
+
+        /// <summary>
+        /// Creates a deny assignment at the specified scope.
+        /// </summary>
+        public PSDenyAssignment CreateDenyAssignment(CreateDenyAssignmentOptions options, Guid denyAssignmentId)
+        {
+            if (denyAssignmentId == Guid.Empty)
+            {
+                denyAssignmentId = Guid.NewGuid();
+            }
+
+            var permissions = new List<DenyAssignmentPermission>
+            {
+                new DenyAssignmentPermission
+                {
+                    Actions = options.Actions,
+                    NotActions = options.NotActions,
+                    DataActions = options.DataActions,
+                    NotDataActions = options.NotDataActions
+                }
+            };
+
+            // PP1 model: principals must be Everyone (SystemDefined), actual targets go in excludePrincipals
+            if (options.PrincipalIds != null && options.PrincipalIds.Count > 0
+                && !(options.PrincipalIds.Count == 1 && options.PrincipalIds[0] == Guid.Empty.ToString()))
+            {
+                throw new ArgumentException(
+                    "PP1 deny assignments only support the Everyone principal (SystemDefined). " +
+                    "Custom principal IDs are not supported. Use ExcludePrincipalIds to exclude specific principals.");
+            }
+
+            var principals = new List<DenyAssignmentPrincipal>
+            {
+                new DenyAssignmentPrincipal
+                {
+                    Id = Guid.Empty.ToString(),
+                    Type = "SystemDefined"
+                }
+            };
+
+            var excludePrincipals = new List<DenyAssignmentPrincipal>();
+            var excludeIds = options.ExcludePrincipalIds ?? new List<string>();
+            var excludeTypes = options.ExcludePrincipalTypes;
+            var defaultType = options.ExcludePrincipalType ?? "User";
+
+            for (int i = 0; i < excludeIds.Count; i++)
+            {
+                string type;
+                if (excludeTypes != null && excludeTypes.Count == 1)
+                {
+                    // Single type broadcasts to all IDs
+                    type = excludeTypes[0];
+                }
+                else if (excludeTypes != null && i < excludeTypes.Count)
+                {
+                    type = excludeTypes[i];
+                }
+                else
+                {
+                    type = defaultType;
+                }
+                excludePrincipals.Add(new DenyAssignmentPrincipal { Id = excludeIds[i], Type = type });
+            }
+
+            var denyAssignment = new DenyAssignment
+            {
+                DenyAssignmentName = options.DenyAssignmentName,
+                Description = options.Description,
+                Permissions = permissions,
+                Principals = principals,
+                ExcludePrincipals = excludePrincipals,
+                DoNotApplyToChildScopes = options.DoNotApplyToChildScopes,
+            };
+
+            var result = AuthorizationManagementClient.DenyAssignments
+                .CreateOrUpdate(options.Scope, denyAssignmentId.ToString(), denyAssignment);
+
+            if (result == null)
+            {
+                throw new InvalidOperationException(
+                    "The service returned an empty response when creating the deny assignment. " +
+                    "Verify that the UserAssignedDenyAssignment feature flag is enabled on the subscription.");
+            }
+
+            return result.ToPSDenyAssignment(ActiveDirectoryClient);
+        }
+
+        /// <summary>
+        /// Removes a deny assignment by its fully qualified ID or by name + scope.
+        /// </summary>
+        public PSDenyAssignment RemoveDenyAssignment(string denyAssignmentId, string denyAssignmentName, string scope, string subscriptionId)
+        {
+            // Resolve the deny assignment to delete
+            PSDenyAssignment toDelete = null;
+
+            if (!string.IsNullOrEmpty(denyAssignmentId))
+            {
+                var resolvedScope = !string.IsNullOrEmpty(scope)
+                    ? scope
+                    : AuthorizationHelper.GetScopeFromFullyQualifiedId(denyAssignmentId)
+                      ?? AuthorizationHelper.GetSubscriptionScope(subscriptionId);
+
+                try
+                {
+                    toDelete = AuthorizationManagementClient.DenyAssignments
+                        .Get(resolvedScope, denyAssignmentId.GuidFromFullyQualifiedId())
+                        .ToPSDenyAssignment(ActiveDirectoryClient);
+                }
+                catch (Microsoft.Rest.Azure.CloudException ex) when (ex.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new KeyNotFoundException(
+                        string.Format("Deny assignment '{0}' not found at scope '{1}'.", denyAssignmentId, resolvedScope));
+                }
+            }
+            else if (!string.IsNullOrEmpty(denyAssignmentName) && !string.IsNullOrEmpty(scope))
+            {
+                var options = new FilterDenyAssignmentsOptions
+                {
+                    DenyAssignmentName = denyAssignmentName,
+                    Scope = scope,
+                };
+                var matches = FilterDenyAssignments(options, subscriptionId);
+                if (matches == null || matches.Count == 0)
+                {
+                    throw new KeyNotFoundException(
+                        string.Format("No deny assignment named '{0}' found at scope '{1}'.", denyAssignmentName, scope));
+                }
+                if (matches.Count > 1)
+                {
+                    throw new InvalidOperationException(
+                        string.Format("Multiple deny assignments named '{0}' found at scope '{1}'. Use -Id to specify which one to remove.",
+                            denyAssignmentName, scope));
+                }
+                toDelete = matches[0];
+            }
+            else
+            {
+                throw new ArgumentException("Either denyAssignmentId or (denyAssignmentName + scope) must be provided.");
+            }
+
+            AuthorizationManagementClient.DenyAssignments
+                .Delete(toDelete.Scope, toDelete.Id.GuidFromFullyQualifiedId());
+
+            return toDelete;
+        }
+
         private PSRoleDefinition CreateOrUpdateRoleDefinition(Guid roleDefinitionId, PSRoleDefinition roleDefinition)
         {
             PSRoleDefinition roleDef = null;

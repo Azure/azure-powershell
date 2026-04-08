@@ -29,21 +29,21 @@
     },
     {
         "PackageName": "Microsoft.Identity.Client",
-        "PackageVersion": "4.82.1",
+        "PackageVersion": "4.83.1",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Identity.Client.Extensions.Msal",
-        "PackageVersion": "4.82.1",
+        "PackageVersion": "4.83.1",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
     },
     {
         "PackageName": "Microsoft.Identity.Client.Broker",
-        "PackageVersion": "4.82.1",
+        "PackageVersion": "4.83.1",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": true
