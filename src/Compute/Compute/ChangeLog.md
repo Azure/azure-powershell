@@ -22,6 +22,7 @@
 ## Upcoming Release
 * Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` parameters to `New-AzGallery` cmdlet to support managed identities when creating an Azure Compute Gallery
 * Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` parameters to `Update-AzGallery` cmdlet to support updating managed identities on an Azure Compute Gallery
+* Added `-DisableSystemAssignedIdentity` and `-RemoveAllUserAssignedIdentity` parameters to `Update-AzGallery` cmdlet to support removing managed identities from an Azure Compute Gallery
 * Updated `Get-AzGallery` output object to include the `Identity` property of type `GalleryIdentity`
 
 ## Version 11.4.0
