@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.2
 * Fixed argument injection vulnerability in SFTP process-launch utilities [Security]
     - Added input validation to reject control characters and double-quote characters that break argument boundaries
     - Added proper argument escaping (quoting) when building ProcessStartInfo.Arguments to preserve argument boundaries for values that contain spaces

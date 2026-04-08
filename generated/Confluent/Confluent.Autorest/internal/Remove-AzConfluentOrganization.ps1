@@ -25,7 +25,7 @@ Remove-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluento
 Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-02-pwsh | Remove-AzConfluentOrganization
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentity
+Microsoft.Azure.PowerShell.Cmdlets.confluent.Models.IConfluentIdentity
 .Outputs
 System.Boolean
 .Notes
@@ -34,10 +34,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IConfluentIdentity>: Identity Parameter
+  [ApiKeyId <String>]: Confluent API Key id
+  [ClusterId <String>]: Confluent kafka or schema registry cluster id
+  [ConnectorName <String>]: Confluent connector name
+  [EnvironmentId <String>]: Confluent environment id
   [Id <String>]: Resource identity path
   [OrganizationName <String>]: Organization resource name
-  [ResourceGroupName <String>]: Resource group name
-  [SubscriptionId <String>]: Microsoft Azure subscription id
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RoleBindingId <String>]: Confluent Role binding id
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TopicName <String>]: Confluent kafka or schema registry topic name
 .Link
 https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
 #>
@@ -47,92 +53,94 @@ function Remove-AzConfluentOrganization {
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Alias('OrganizationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Path')]
     [System.String]
     # Organization resource name
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Path')]
     [System.String]
-    # Resource group name
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Microsoft Azure subscription id
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentity]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Models.IConfluentIdentity]
     # Identity Parameter
     ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Returns true when the command succeeds
     ${PassThru},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -147,11 +155,11 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         
         $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            Delete = 'Az.Confluent.private\Remove-AzConfluentOrganization_Delete';
-            DeleteViaIdentity = 'Az.Confluent.private\Remove-AzConfluentOrganization_DeleteViaIdentity';
+            Delete = 'Az.confluent.private\Remove-AzConfluentOrganization_Delete';
+            DeleteViaIdentity = 'Az.confluent.private\Remove-AzConfluentOrganization_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {

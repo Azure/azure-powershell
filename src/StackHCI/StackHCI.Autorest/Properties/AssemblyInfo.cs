@@ -24,7 +24,3 @@ using System.Runtime.InteropServices;
 [assembly: System.Reflection.AssemblyVersionAttribute("2.6.6")]
 [assembly: System.Runtime.InteropServices.ComVisibleAttribute(false)]
 [assembly: System.CLSCompliantAttribute(false)]
-
-
-
-

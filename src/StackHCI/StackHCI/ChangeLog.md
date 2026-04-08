@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* Updated preannouncement breaking changes date to May 2026.
+* Optimized cluster registration, significantly reducing registration time on large clusters.
 
 ## Version 2.6.6
 * Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
