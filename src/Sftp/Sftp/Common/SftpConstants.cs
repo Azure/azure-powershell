@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
     /// <summary>
     /// Constants for SFTP operations
     /// </summary>
-    public static class SftpConstants
+    internal static class SftpConstants
     {
         // File system constants
         public const string WindowsInvalidFoldernameChars = "\\/*:<>?\"|";
@@ -25,6 +25,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         // Default ports
         public const int DefaultSshPort = 22;
         public const int DefaultSftpPort = 22;
+
+        // Buffer size for SFTP file transfers
+        public const int DefaultBufferSizeBytes = 256 * 1024;  // 256 KB
 
         // SSH/SFTP client configuration
 

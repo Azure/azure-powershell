@@ -8,7 +8,7 @@ Create a Scheduler
 + CreateExpanded (Default)
 ```powershell
 New-AzDurableTaskScheduler -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-IPAllowlist <String[]>] [-SkuCapacity <Int32>] [-SkuName <String>]
+ [-SubscriptionId <String>] [-IPAllowlist <String[]>] [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuName <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -40,6 +40,7 @@ Id                           : /subscriptions/EE9BD735-67CE-4A90-89C4-439D3F6A4C
 Location                     : North Central US
 Name                         : testscheduler
 ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
 ResourceGroupName            : rgopenapi
 SkuCapacity                  : 3
 SkuName                      : Dedicated
@@ -72,6 +73,7 @@ Id                           : /subscriptions/EE9BD735-67CE-4A90-89C4-439D3F6A4C
 Location                     : North Central US
 Name                         : testscheduler
 ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
 ResourceGroupName            : rgopenapi
 SkuCapacity                  : 3
 SkuName                      : Dedicated
@@ -104,6 +106,7 @@ Id                           : /subscriptions/EE9BD735-67CE-4A90-89C4-439D3F6A4C
 Location                     : North Central US
 Name                         : testscheduler
 ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
 ResourceGroupName            : rgopenapi
 SkuCapacity                  : 1
 SkuName                      : Dedicated
@@ -166,6 +169,7 @@ Id                           : /subscriptions/EE9BD735-67CE-4A90-89C4-439D3F6A4C
 Location                     : North Central US
 Name                         : testscheduler
 ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
 ResourceGroupName            : rgopenapi
 SkuCapacity                  : 3
 SkuName                      : Dedicated
@@ -197,6 +201,7 @@ Id                           : /subscriptions/EE9BD735-67CE-4A90-89C4-439D3F6A4C
 Location                     : North Central US
 Name                         : testscheduler
 ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
 ResourceGroupName            : rgopenapi
 SkuCapacity                  : 3
 SkuName                      : Dedicated
@@ -228,6 +233,7 @@ Id                           : /subscriptions/EE9BD735-67CE-4A90-89C4-439D3F6A4C
 Location                     : North Central US
 Name                         : testscheduler
 ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
 ResourceGroupName            : rgopenapi
 SkuCapacity                  : 3
 SkuName                      : Dedicated
@@ -260,6 +266,7 @@ Id                           : /subscriptions/EE9BD735-67CE-4A90-89C4-439D3F6A4C
 Location                     : North Central US
 Name                         : testscheduler
 ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
 ResourceGroupName            : rgopenapi
 SkuCapacity                  : 3
 SkuName                      : Dedicated
@@ -338,14 +345,14 @@ Update a Scheduler
 + UpdateExpanded (Default)
 ```powershell
 Update-AzDurableTaskScheduler -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IPAllowlist <String[]>] [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-IPAllowlist <String[]>] [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + UpdateViaIdentityExpanded
 ```powershell
 Update-AzDurableTaskScheduler -InputObject <IDurableTaskIdentity> [-IPAllowlist <String[]>]
- [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PublicNetworkAccess <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -377,6 +384,7 @@ Id                           : /subscriptions/EE9BD735-67CE-4A90-89C4-439D3F6A4C
 Location                     : North Central US
 Name                         : testscheduler
 ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
 ResourceGroupName            : rgopenapi
 SkuCapacity                  : 3
 SkuName                      : Dedicated
@@ -408,6 +416,7 @@ Id                           : /subscriptions/EE9BD735-67CE-4A90-89C4-439D3F6A4C
 Location                     : North Central US
 Name                         : testscheduler
 ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
 ResourceGroupName            : rgopenapi
 SkuCapacity                  : 3
 SkuName                      : Dedicated
@@ -439,6 +448,7 @@ Id                           : /subscriptions/EE9BD735-67CE-4A90-89C4-439D3F6A4C
 Location                     : North Central US
 Name                         : testscheduler
 ProvisioningState            : Succeeded
+PublicNetworkAccess          : Enabled
 ResourceGroupName            : rgopenapi
 SkuCapacity                  : 3
 SkuName                      : Dedicated

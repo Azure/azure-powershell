@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version from 2022-05-01 to 2024-06-01
+* Added support for App Configuration store replicas
+    - Added `New-AzAppConfigurationReplica` cmdlet
+    - Added `Get-AzAppConfigurationReplica` cmdlet
+    - Added `Remove-AzAppConfigurationReplica` cmdlet
+* Added `DataPlaneProxyAuthenticationMode`, `DataPlaneProxyPrivateLinkDelegation`, and `DefaultKeyValueRevisionRetentionPeriodInSecond` parameters to `New-AzAppConfigurationStore` and `Update-AzAppConfigurationStore`
+* Removed `SoftDeleteRetentionInDay` parameter from `Update-AzAppConfigurationStore` as it is a create-only property
 
 ## Version 2.0.1
 * Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'

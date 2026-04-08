@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Extensions;
 
-    /// <summary>Properties of the trusted signing account.</summary>
+    /// <summary>Properties of the artifact signing account.</summary>
     public partial class CodeSigningAccountPatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPatchProperties,
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPatchPropertiesInternal
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         /// <summary>Backing field for <see cref="Sku" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.IAccountSkuPatch _sku;
 
-        /// <summary>SKU of the trusted signing account.</summary>
+        /// <summary>SKU of the artifact signing account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.IAccountSkuPatch Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.AccountSkuPatch()); set => this._sku = value; }
 
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 
         }
     }
-    /// Properties of the trusted signing account.
+    /// Properties of the artifact signing account.
     public partial interface ICodeSigningAccountPatchProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IJsonSerializable
     {
@@ -51,11 +51,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         string SkuName { get; set; }
 
     }
-    /// Properties of the trusted signing account.
+    /// Properties of the artifact signing account.
     internal partial interface ICodeSigningAccountPatchPropertiesInternal
 
     {
-        /// <summary>SKU of the trusted signing account.</summary>
+        /// <summary>SKU of the artifact signing account.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.IAccountSkuPatch Sku { get; set; }
         /// <summary>Name of the SKU.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PSArgumentCompleterAttribute("Basic", "Premium")]

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Extensions;
 
-    /// <summary>Trusted signing account resource.</summary>
+    /// <summary>Artifact signing account resource.</summary>
     public partial class CodeSigningAccount :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccount,
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountInternal,
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.TrackedResource();
 
-        /// <summary>The URI of the trusted signing account which is used during signing files.</summary>
+        /// <summary>The URI of the artifact signing account which is used during signing files.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PropertyOrigin.Inlined)]
         public string AccountUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPropertiesInternal)Property).AccountUri; }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.CodeSigningAccountProperties()); set => this._property = value; }
 
-        /// <summary>Status of the current operation on trusted signing account.</summary>
+        /// <summary>Status of the current operation on artifact signing account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PropertyOrigin.Inlined)]
         public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPropertiesInternal)Property).ProvisioningState; }
 
@@ -156,30 +156,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
             await eventListener.AssertObjectIsValid(nameof(__trackedResource), __trackedResource);
         }
     }
-    /// Trusted signing account resource.
+    /// Artifact signing account resource.
     public partial interface ICodeSigningAccount :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ITrackedResource
     {
-        /// <summary>The URI of the trusted signing account which is used during signing files.</summary>
+        /// <summary>The URI of the artifact signing account which is used during signing files.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The URI of the trusted signing account which is used during signing files.",
+        Description = @"The URI of the artifact signing account which is used during signing files.",
         SerializedName = @"accountUri",
         PossibleTypes = new [] { typeof(string) })]
         string AccountUri { get;  }
-        /// <summary>Status of the current operation on trusted signing account.</summary>
+        /// <summary>Status of the current operation on artifact signing account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Status of the current operation on trusted signing account.",
+        Description = @"Status of the current operation on artifact signing account.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Updating", "Deleting", "Accepted")]
@@ -198,18 +198,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         string SkuName { get; set; }
 
     }
-    /// Trusted signing account resource.
+    /// Artifact signing account resource.
     internal partial interface ICodeSigningAccountInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ITrackedResourceInternal
     {
-        /// <summary>The URI of the trusted signing account which is used during signing files.</summary>
+        /// <summary>The URI of the artifact signing account which is used during signing files.</summary>
         string AccountUri { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountProperties Property { get; set; }
-        /// <summary>Status of the current operation on trusted signing account.</summary>
+        /// <summary>Status of the current operation on artifact signing account.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Updating", "Deleting", "Accepted")]
         string ProvisioningState { get; set; }
-        /// <summary>SKU of the trusted signing account.</summary>
+        /// <summary>SKU of the artifact signing account.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.IAccountSku Sku { get; set; }
         /// <summary>Name of the SKU.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PSArgumentCompleterAttribute("Basic", "Premium")]
