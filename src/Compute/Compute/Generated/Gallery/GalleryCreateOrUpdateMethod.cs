@@ -241,6 +241,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
 
                     Gallery gallery = new Gallery();
+                    GalleryUpdate galleryUpdate = new GalleryUpdate();
                     CommunityGalleryInfo communityGalleryInfo = new CommunityGalleryInfo();
 
                     if (this.ParameterSetName == "ObjectParameter")
@@ -254,7 +255,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (this.IsParameterBound(c => c.Description))
                     {
-                        gallery.Description = this.Description;
+                        galleryUpdate.Description = this.Description;
                     }
 
                     if (this.IsParameterBound(c => c.PublisherUri))
@@ -279,7 +280,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (this.IsParameterBound(c => c.Tag))
                     {
-                        gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                        galleryUpdate.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
                     bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
@@ -287,45 +288,58 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (hasSystemAssigned || hasUserAssigned)
                     {
-                        if (gallery.Identity == null)
-                        {
-                            gallery.Identity = new GalleryIdentity();
-                        }
+                        galleryUpdate.Identity = new GalleryIdentity();
 
                         if (hasSystemAssigned && hasUserAssigned)
                         {
-                            gallery.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                            galleryUpdate.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
                         }
                         else if (hasSystemAssigned)
                         {
-                            gallery.Identity.Type = ResourceIdentityType.SystemAssigned;
+                            galleryUpdate.Identity.Type = ResourceIdentityType.SystemAssigned;
                         }
                         else
                         {
-                            gallery.Identity.Type = ResourceIdentityType.UserAssigned;
+                            galleryUpdate.Identity.Type = ResourceIdentityType.UserAssigned;
                         }
 
                         if (hasUserAssigned)
                         {
-                            gallery.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+                            var newIdentityIds = new HashSet<string>(this.UserAssignedIdentity, StringComparer.OrdinalIgnoreCase);
+                            galleryUpdate.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+
+                            // Set removed identities to null so the PATCH API removes them
+                            var existingKeys = gallery.Identity?.UserAssignedIdentities?.Keys;
+                            if (existingKeys != null)
+                            {
+                                foreach (var existingKey in existingKeys)
+                                {
+                                    if (!newIdentityIds.Contains(existingKey))
+                                    {
+                                        galleryUpdate.Identity.UserAssignedIdentities[existingKey] = null;
+                                    }
+                                }
+                            }
+
+                            // Add the desired identities
                             foreach (var id in this.UserAssignedIdentity)
                             {
-                                gallery.Identity.UserAssignedIdentities[id] = new UserAssignedIdentitiesValue();
+                                galleryUpdate.Identity.UserAssignedIdentities[id] = new UserAssignedIdentitiesValue();
                             }
                         }
                     }
 
                     if (this.IsParameterBound(c => c.Permission))
                     {
-                        if (gallery.SharingProfile == null)
+                        if (galleryUpdate.SharingProfile == null)
                         {
-                            gallery.SharingProfile = new SharingProfile();
+                            galleryUpdate.SharingProfile = new SharingProfile();
                         }
-                        gallery.SharingProfile.Permissions = this.Permission;
+                        galleryUpdate.SharingProfile.Permissions = this.Permission;
 
-                        if (gallery.SharingProfile.Permissions.ToLower() == "community")
+                        if (galleryUpdate.SharingProfile.Permissions.ToLower() == "community")
                         {
-                            gallery.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
+                            galleryUpdate.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
                         }
 
                     }
@@ -444,7 +458,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     else
                     {
-                        result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
+                        result = GalleriesClient.Update(resourceGroupName, galleryName, galleryUpdate);
                     }
                     var psObject = new PSGallery();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);

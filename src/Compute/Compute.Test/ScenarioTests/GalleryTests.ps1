@@ -1353,3 +1353,101 @@ function Test-GalleryWithUserAssignedIdentity
         Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
     }
 }
+
+<#
+.SYNOPSIS
+Tests Update-AzGallery with user-assigned managed identity
+#>
+function Test-UpdateGalleryWithUserAssignedIdentity
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+    $identityName1 = 'id1' + $rgname;
+    $identityName2 = 'id2' + $rgname;
+    $identityName3 = 'id3' + $rgname;
+
+    try
+    {
+        # Common
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create 3 user-assigned managed identities using REST API to avoid NonModifiablePolicyAlias error
+        $subId = (Get-AzContext).Subscription.Id;
+        $identityBody = @{
+            location = $loc
+            properties = @{
+                isolationScope = "Regional"
+            }
+        } | ConvertTo-Json;
+
+        $identityPath1 = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName1";
+        $restResult = Invoke-AzRestMethod -Path "${identityPath1}?api-version=2024-11-30" -Method PUT -Payload $identityBody;
+        Assert-True { $restResult.StatusCode -eq 200 -or $restResult.StatusCode -eq 201 };
+
+        $identityPath2 = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName2";
+        $restResult = Invoke-AzRestMethod -Path "${identityPath2}?api-version=2024-11-30" -Method PUT -Payload $identityBody;
+        Assert-True { $restResult.StatusCode -eq 200 -or $restResult.StatusCode -eq 201 };
+
+        $identityPath3 = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName3";
+        $restResult = Invoke-AzRestMethod -Path "${identityPath3}?api-version=2024-11-30" -Method PUT -Payload $identityBody;
+        Assert-True { $restResult.StatusCode -eq 200 -or $restResult.StatusCode -eq 201 };
+
+        # Create gallery without identity
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $loc;
+
+        # Update gallery to add 1 user-assigned identity
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -UserAssignedIdentity @($identityPath1);
+
+        Assert-NotNull $gallery;
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "UserAssigned" $gallery.Identity.Type.ToString();
+        Assert-NotNull $gallery.Identity.UserAssignedIdentities;
+        Assert-AreEqual 1 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
+
+        # Verify identity via Get
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "UserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 1 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
+
+        # Update gallery to have 2 user-assigned identities
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -UserAssignedIdentity @($identityPath1, $identityPath2);
+
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "UserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 2 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath2) };
+
+        # Verify via Get
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-AreEqual "UserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 2 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath2) };
+
+        # Update gallery to have only the 3rd identity
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -UserAssignedIdentity @($identityPath3);
+
+        Assert-NotNull $gallery.Identity;
+        Assert-AreEqual "UserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 1 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath3) };
+
+        # Verify via Get
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Assert-AreEqual "UserAssigned" $gallery.Identity.Type.ToString();
+        Assert-AreEqual 1 $gallery.Identity.UserAssignedIdentities.Count;
+        Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath3) };
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue;
+    }
+}
