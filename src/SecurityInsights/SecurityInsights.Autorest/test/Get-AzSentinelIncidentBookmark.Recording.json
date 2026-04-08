@@ -24,7 +24,7 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6a5d8eb9-1ffd-4356-a5aa-f3000bc9a9bb/centralus/92d5d857-2ada-4be1-9e06-0af489f424fe" ],
+        "x-ms-operation-identifier": [ "tenantId=REDACTED,objectId=REDACTED/centralus/92d5d857-2ada-4be1-9e06-0af489f424fe" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-request-id": [ "064bc1d6-5732-4532-951f-cb788c9ab2eb" ],
         "x-ms-correlation-request-id": [ "064bc1d6-5732-4532-951f-cb788c9ab2eb" ],
