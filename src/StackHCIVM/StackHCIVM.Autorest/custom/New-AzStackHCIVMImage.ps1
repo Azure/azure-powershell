@@ -101,6 +101,7 @@ function New-AzStackHCIVMImage{
     ${CustomLocationId},
 
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ParameterBreakingChangeAttribute("ImagePath", "16.0.0", "2.0.0", "May 2026", OldParamaterType="String", NewParameterType="SecureString")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
     # Local path of image that the image should be created from. 

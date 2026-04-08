@@ -10,6 +10,9 @@
 - Quick start templates
 - Versioning and publishing AzDev module
 
+## 2026/3/26
+- Feature: new cmdlet `Compare-DevPackageDep` to compare dependencies between two versions of a nuget package.
+
 ## 2026/1/29
 - Feature: `Merge-DevPullRequest` cmdlet to help merge PRs in azure-powershell repo.
 
