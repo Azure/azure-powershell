@@ -19,6 +19,15 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets for DDoS Custom Policy management
+    - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy with detection rules
+    - `New-AzDdosCustomPolicy` requires at least one detection rule at creation time
+    - `New-AzDdosCustomPolicyDetectionRule`: Create a DDoS custom policy detection rule
+    - `Add-AzDdosCustomPolicyDetectionRule`: Add a detection rule to an in-memory DDoS custom policy before persisting it with `Set-AzDdosCustomPolicy`
+    - `Get-AzDdosCustomPolicy`: Retrieve a DDoS custom policy by resource group and name
+    - `Remove-AzDdosCustomPolicy`: Remove a DDoS custom policy
+    - `Remove-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicy`: Support the load balancer style workflow to mutate a local policy object and then persist it
+    - Supports multiple detection rules with configurable traffic type (Tcp, Udp, TcpSyn) and packets per second thresholds
 
 ## Version 7.25.1
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets

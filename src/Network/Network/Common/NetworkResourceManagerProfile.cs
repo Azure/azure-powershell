@@ -1665,6 +1665,40 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.DdosProtectionPlan, CNM.PSDdosProtectionPlan>();
 
+                //// DDoS custom policy
+
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSDdosCustomPolicy, MNM.DdosCustomPolicy>();
+                cfg.CreateMap<CNM.PSDdosCustomPolicyDetectionRule, MNM.DdosDetectionRule>()
+                    .ForMember(
+                        dest => dest.Name,
+                        opt => opt.MapFrom(src => src.Name))
+                    .ForMember(
+                        dest => dest.DetectionMode,
+                        opt => opt.MapFrom(src => MNM.DdosDetectionMode.TrafficThreshold))
+                    .ForMember(
+                        dest => dest.TrafficDetectionRule,
+                        opt => opt.MapFrom(src => new MNM.TrafficDetectionRule
+                        {
+                            TrafficType = src.TrafficType,
+                            PacketsPerSecond = src.PacketsPerSecond,
+                        }));
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.DdosCustomPolicy, CNM.PSDdosCustomPolicy>();
+                cfg.CreateMap<MNM.DdosDetectionRule, CNM.PSDdosCustomPolicyDetectionRule>()
+                    .ForMember(
+                        dest => dest.Name,
+                        opt => opt.MapFrom(src => src.Name))
+                    .ForMember(
+                        dest => dest.TrafficType,
+                        opt => opt.MapFrom(src => src.TrafficDetectionRule == null ? null : src.TrafficDetectionRule.TrafficType))
+                    .ForMember(
+                        dest => dest.PacketsPerSecond,
+                        opt => opt.MapFrom(src => src.TrafficDetectionRule != null && src.TrafficDetectionRule.PacketsPerSecond.HasValue
+                            ? src.TrafficDetectionRule.PacketsPerSecond.Value
+                            : 0));
+
                 // Service Endpoint Policy
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSServiceEndpointPolicy, MNM.ServiceEndpointPolicy>();
