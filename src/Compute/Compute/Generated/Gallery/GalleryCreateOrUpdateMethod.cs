@@ -116,8 +116,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                         if (hasUserAssigned)
                         {
-                            gallery.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
-                            foreach (var id in this.UserAssignedIdentity)
+                            gallery.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>(StringComparer.OrdinalIgnoreCase);
+                            foreach (var id in this.UserAssignedIdentity.Distinct(StringComparer.OrdinalIgnoreCase))
                             {
                                 gallery.Identity.UserAssignedIdentities[id] = new UserAssignedIdentitiesValue();
                             }
