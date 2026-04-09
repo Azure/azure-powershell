@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             }
 
                             // Add the desired identities
-                            foreach (var id in this.UserAssignedIdentity)
+                            foreach (var id in newIdentityIds)
                             {
                                 galleryUpdate.Identity.UserAssignedIdentities[id] = new UserAssignedIdentitiesValue();
                             }
