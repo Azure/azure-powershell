@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                         galleryUpdate.SharingProfile.Permissions = this.Permission;
 
-                        if (galleryUpdate.SharingProfile.Permissions.ToLower() == "community")
+                        if (string.Equals(this.Permission, "community", StringComparison.OrdinalIgnoreCase))
                         {
                             galleryUpdate.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
                         }
