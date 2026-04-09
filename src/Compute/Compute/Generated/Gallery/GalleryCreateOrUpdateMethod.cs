@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.Share.IsPresent || this.Community.IsPresent || this.Reset.IsPresent)
                     {
                         GallerySharingProfileClient.Update(resourceGroupName, galleryName, sharingUpdate);
-                        result = GalleriesClient.Get(ResourceGroupName, galleryName, "Permissions");
+                        result = GalleriesClient.Get(resourceGroupName, galleryName, "Permissions");
                     }
                     else
                     {
