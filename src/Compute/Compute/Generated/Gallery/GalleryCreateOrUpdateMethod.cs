@@ -97,6 +97,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         && this.UserAssignedIdentity != null
                         && this.UserAssignedIdentity.Length > 0;
 
+                    if (hasUserAssigned && this.UserAssignedIdentity.Any(id => string.IsNullOrWhiteSpace(id)))
+                    {
+                        throw new ArgumentException("Parameter '-UserAssignedIdentity' does not accept null or empty values.");
+                    }
+
                     if (hasSystemAssigned || hasUserAssigned)
                     {
                         gallery.Identity = new GalleryIdentity();
@@ -289,6 +294,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     bool hasUserAssigned = this.IsParameterBound(c => c.UserAssignedIdentity) && this.UserAssignedIdentity != null && this.UserAssignedIdentity.Length > 0;
                     bool disableSystem = this.IsParameterBound(c => c.DisableSystemAssignedIdentity) && this.DisableSystemAssignedIdentity.IsPresent;
                     bool disableUser = this.IsParameterBound(c => c.RemoveAllUserAssignedIdentity) && this.RemoveAllUserAssignedIdentity.IsPresent;
+
+                    if (hasUserAssigned && this.UserAssignedIdentity.Any(id => string.IsNullOrWhiteSpace(id)))
+                    {
+                        throw new ArgumentException("Parameter '-UserAssignedIdentity' does not accept null or empty values.");
+                    }
 
                     if (hasSystemAssigned && disableSystem)
                     {
