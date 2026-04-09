@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
 
                     bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
-                    bool hasUserAssigned = this.IsParameterBound(c => c.UserAssignedIdentity) && this.UserAssignedIdentity.Length > 0;
+                    bool hasUserAssigned = this.IsParameterBound(c => c.UserAssignedIdentity) && this.UserAssignedIdentity != null && this.UserAssignedIdentity.Length > 0;
                     bool disableSystem = this.IsParameterBound(c => c.DisableSystemAssignedIdentity) && this.DisableSystemAssignedIdentity.IsPresent;
                     bool disableUser = this.IsParameterBound(c => c.RemoveAllUserAssignedIdentity) && this.RemoveAllUserAssignedIdentity.IsPresent;
 
