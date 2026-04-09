@@ -20,10 +20,13 @@
 
 -->
 ## Upcoming Release
-* Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` parameters to `New-AzGallery` cmdlet to support managed identities when creating an Azure Compute Gallery
-* Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` parameters to `Update-AzGallery` cmdlet to support updating managed identities on an Azure Compute Gallery
-* Added `-DisableSystemAssignedIdentity` and `-RemoveAllUserAssignedIdentity` parameters to `Update-AzGallery` cmdlet to support removing managed identities from an Azure Compute Gallery
-* Updated `Get-AzGallery` output object to include the `Identity` property of type `GalleryIdentity`
+* Added managed identity support for Azure Compute Galleries
+    - Users can now assign system-assigned and user-assigned managed identities when creating a gallery with `New-AzGallery`
+    - Users can now add or update managed identities for an existing gallery with `Update-AzGallery`
+* Added support for removing managed identities from Azure Compute Galleries
+    - Users can now remove system-assigned and user-assigned managed identities from an existing gallery with `Update-AzGallery`
+* Updated `Get-AzGallery` to return gallery identity details
+    - Users can now view configured managed identity information from the `Identity` property in `Get-AzGallery` results
 
 ## Version 11.4.0
 * Added `-DiskIOPSReadWrite` and `-DiskMBpsReadWrite` parameters to `Add-AzVMDataDisk` cmdlet
