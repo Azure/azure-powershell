@@ -100,6 +100,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AllowUpdateImage
+Must be set to `$true` when the gallery image features are being updated using the `-Feature` parameter.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -165,6 +180,21 @@ The Eula agreement for the gallery Image Definition.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Feature
+A list of gallery image features to update. Each feature can include a StartsAtVersion property to indicate the minimum gallery image version that supports it.
+
+```yaml
+Type: Microsoft.Azure.Management.Compute.Models.GalleryImageFeature[]
 Parameter Sets: (All)
 Aliases:
 
@@ -390,36 +420,6 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Feature
-A list of gallery image features to update. Each feature can include a StartsAtVersion property to indicate the minimum gallery image version that supports it.
-
-```yaml
-Type: Microsoft.Azure.Management.Compute.Models.GalleryImageFeature[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AllowUpdateImage
-Must be set to `$true` when the gallery image features are being updated using the `-Feature` parameter.
-
-```yaml
-Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

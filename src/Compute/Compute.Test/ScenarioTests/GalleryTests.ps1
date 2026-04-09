@@ -1272,11 +1272,11 @@ function Test-GalleryImageDefinitionUpdateFeature
         Assert-AreEqual $definition.Name $definitionName;
         Assert-AreEqual $definition.Features.Count 2;
 
-        # Update with AllowUpdateImage
+        # Update with AllowUpdateImage using different feature values
         $securityFeature = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.GalleryImageFeature `
-            -Property @{Name = 'SecurityType'; Value = 'TrustedLaunch'; StartsAtVersion = '4.0.0'}
+            -Property @{Name = 'SecurityType'; Value = 'TrustedLaunchAndConfidentialVm'; StartsAtVersion = '5.0.0'}
         $diskControllerFeature = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.GalleryImageFeature `
-            -Property @{Name = 'DiskControllerTypes'; Value = 'SCSI'; StartsAtVersion = '4.0.0'}
+            -Property @{Name = 'DiskControllerTypes'; Value = 'SCSI, NVMe'; StartsAtVersion = '5.0.0'}
         $features = @($securityFeature, $diskControllerFeature);
 
         Update-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName `
@@ -1289,13 +1289,13 @@ function Test-GalleryImageDefinitionUpdateFeature
 
         $diskControllerUpdated = $updatedDefinition.Features | Where-Object { $_.Name -eq 'DiskControllerTypes' };
         Assert-NotNull $diskControllerUpdated;
-        Assert-AreEqual $diskControllerUpdated.Value 'SCSI';
-        Assert-AreEqual $diskControllerUpdated.StartsAtVersion '4.0.0';
+        Assert-AreEqual $diskControllerUpdated.Value 'SCSI, NVMe';
+        Assert-AreEqual $diskControllerUpdated.StartsAtVersion '5.0.0';
 
         $securityUpdated = $updatedDefinition.Features | Where-Object { $_.Name -eq 'SecurityType' };
         Assert-NotNull $securityUpdated;
-        Assert-AreEqual $securityUpdated.Value 'TrustedLaunch';
-        Assert-AreEqual $securityUpdated.StartsAtVersion '4.0.0';
+        Assert-AreEqual $securityUpdated.Value 'TrustedLaunchAndConfidentialVm';
+        Assert-AreEqual $securityUpdated.StartsAtVersion '5.0.0';
     }
     finally
     {
