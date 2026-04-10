@@ -1,5 +1,5 @@
 ---
-external help file: Az.AppConfiguration-help.xml
+external help file:
 Module Name: Az.AppConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.appconfiguration/new-azappconfigurationsnapshot
 schema: 2.0.0
@@ -14,46 +14,41 @@ Create a key-value snapshot.
 
 ### Create (Default)
 ```
-New-AzAppConfigurationSnapshot -Endpoint <String> -Name <String> [-SyncToken <String>] -Entity <ISnapshot>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzAppConfigurationSnapshot -Endpoint <String> -Name <String> [-SyncToken <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzAppConfigurationSnapshot -Endpoint <String> -Name <String> [-SyncToken <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzAppConfigurationSnapshot -Endpoint <String> -Name <String> -Entity <ISnapshot> [-SyncToken <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzAppConfigurationSnapshot -Endpoint <String> -Name <String> [-SyncToken <String>]
- -Filter <IKeyValueFilter[]> [-CompositionType <String>] [-RetentionPeriod <Int64>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzAppConfigurationSnapshot -Endpoint <String> -InputObject <IAppConfigurationdataIdentity>
- [-SyncToken <String>] -Filter <IKeyValueFilter[]> [-CompositionType <String>] [-RetentionPeriod <Int64>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAppConfigurationSnapshot -Endpoint <String> -Name <String> -Filter <IKeyValueFilter[]>
+ [-SyncToken <String>] [-CompositionType <String>] [-RetentionPeriod <Int64>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzAppConfigurationSnapshot -Endpoint <String> -InputObject <IAppConfigurationdataIdentity>
- [-SyncToken <String>] -Entity <ISnapshot> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Entity <ISnapshot> [-SyncToken <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzAppConfigurationSnapshot -Endpoint <String> -InputObject <IAppConfigurationdataIdentity>
+ -Filter <IKeyValueFilter[]> [-SyncToken <String>] [-CompositionType <String>] [-RetentionPeriod <Int64>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzAppConfigurationSnapshot -Endpoint <String> -Name <String> -JsonFilePath <String> [-SyncToken <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzAppConfigurationSnapshot -Endpoint <String> -Name <String> -JsonString <String> [-SyncToken <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -189,7 +184,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IAppConfigurationdataIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -234,7 +229,7 @@ The name of the key-value snapshot to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateViaJsonString, CreateViaJsonFilePath, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -353,3 +348,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
