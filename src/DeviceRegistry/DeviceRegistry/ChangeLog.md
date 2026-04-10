@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Preview release of API version 2026-03-01-preview for Az.DeviceRegistry. New cmdlets include:
+    - `Get-AzDeviceRegistryCredentials`: Get a Credential for a namespace
+    - `New-AzDeviceRegistryCredentials`: Create a Credential for a namespace
+    - `Update-AzDeviceRegistryCredentials`: Update a Credential for a namespace
+    - `Remove-AzDeviceRegistryCredentials`: Delete a Credential for a namespace
+    - `Sync-AzDeviceRegistryCredentials`: Synchronize credentials for a namespace
+    - `Get-AzDeviceRegistryPolicy`: Get a Policy for a namespace
+    - `New-AzDeviceRegistryPolicy`: Create a Policy for a namespace
+    - `Update-AzDeviceRegistryPolicy`: Update a Policy for a namespace
+    - `Remove-AzDeviceRegistryPolicy`: Remove a Policy for a namespace
+    - `Initialize-AzDeviceRegistryPolicyBringYourOwnRoot`: Initialize a bring-your-own-root policy
+    - `Revoke-AzDeviceRegistryPolicyIssuer`: Revoke a policy issuer
+    - `Revoke-AzDeviceRegistryNamespaceDevice`: Revoke a namespace device
 
 ## Version 1.0.0
 * General availability for module Az.DeviceRegistry

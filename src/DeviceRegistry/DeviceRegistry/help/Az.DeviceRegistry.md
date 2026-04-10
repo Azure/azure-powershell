@@ -20,6 +20,9 @@ Get a AssetEndpointProfile
 ### [Get-AzDeviceRegistryBillingContainer](Get-AzDeviceRegistryBillingContainer.md)
 Get a BillingContainer
 
+### [Get-AzDeviceRegistryCredentials](Get-AzDeviceRegistryCredentials.md)
+Get a Credential
+
 ### [Get-AzDeviceRegistryNamespace](Get-AzDeviceRegistryNamespace.md)
 Get a Namespace
 
@@ -35,6 +38,9 @@ Get a NamespaceDiscoveredAsset
 ### [Get-AzDeviceRegistryNamespaceDiscoveredDevice](Get-AzDeviceRegistryNamespaceDiscoveredDevice.md)
 Get a NamespaceDiscoveredDevice
 
+### [Get-AzDeviceRegistryPolicy](Get-AzDeviceRegistryPolicy.md)
+Get a Policy
+
 ### [Get-AzDeviceRegistrySchema](Get-AzDeviceRegistrySchema.md)
 Get a Schema
 
@@ -44,6 +50,10 @@ Get a SchemaRegistry
 ### [Get-AzDeviceRegistrySchemaVersion](Get-AzDeviceRegistrySchemaVersion.md)
 Get a SchemaVersion
 
+### [Initialize-AzDeviceRegistryPolicyBringYourOwnRoot](Initialize-AzDeviceRegistryPolicyBringYourOwnRoot.md)
+Activates or renews a Bring Your Own Root policy by accepting a customer-provided signed certificate.
+This is a long-running operation that returns no content upon completion.
+
 ### [Move-AzDeviceRegistryNamespace](Move-AzDeviceRegistryNamespace.md)
 Migrate the resources into Namespace
 
@@ -52,6 +62,9 @@ Create a Asset
 
 ### [New-AzDeviceRegistryAssetEndpointProfile](New-AzDeviceRegistryAssetEndpointProfile.md)
 Create a AssetEndpointProfile
+
+### [New-AzDeviceRegistryCredentials](New-AzDeviceRegistryCredentials.md)
+Create a Credential
 
 ### [New-AzDeviceRegistryNamespace](New-AzDeviceRegistryNamespace.md)
 Create a Namespace
@@ -68,6 +81,9 @@ Create a NamespaceDiscoveredAsset
 ### [New-AzDeviceRegistryNamespaceDiscoveredDevice](New-AzDeviceRegistryNamespaceDiscoveredDevice.md)
 Create a NamespaceDiscoveredDevice
 
+### [New-AzDeviceRegistryPolicy](New-AzDeviceRegistryPolicy.md)
+Create a Policy
+
 ### [New-AzDeviceRegistrySchema](New-AzDeviceRegistrySchema.md)
 Create a Schema
 
@@ -82,6 +98,9 @@ Delete a Asset
 
 ### [Remove-AzDeviceRegistryAssetEndpointProfile](Remove-AzDeviceRegistryAssetEndpointProfile.md)
 Delete a AssetEndpointProfile
+
+### [Remove-AzDeviceRegistryCredentials](Remove-AzDeviceRegistryCredentials.md)
+Delete a Credential
 
 ### [Remove-AzDeviceRegistryNamespace](Remove-AzDeviceRegistryNamespace.md)
 Delete a Namespace
@@ -98,6 +117,9 @@ Delete a NamespaceDiscoveredAsset
 ### [Remove-AzDeviceRegistryNamespaceDiscoveredDevice](Remove-AzDeviceRegistryNamespaceDiscoveredDevice.md)
 Delete a NamespaceDiscoveredDevice
 
+### [Remove-AzDeviceRegistryPolicy](Remove-AzDeviceRegistryPolicy.md)
+Delete a Policy
+
 ### [Remove-AzDeviceRegistrySchema](Remove-AzDeviceRegistrySchema.md)
 Delete a Schema
 
@@ -107,11 +129,23 @@ Delete a SchemaRegistry
 ### [Remove-AzDeviceRegistrySchemaVersion](Remove-AzDeviceRegistrySchemaVersion.md)
 Delete a SchemaVersion
 
+### [Revoke-AzDeviceRegistryNamespaceDevice](Revoke-AzDeviceRegistryNamespaceDevice.md)
+A long-running resource action.
+
+### [Revoke-AzDeviceRegistryPolicyIssuer](Revoke-AzDeviceRegistryPolicyIssuer.md)
+A long-running resource action.
+
+### [Sync-AzDeviceRegistryCredentials](Sync-AzDeviceRegistryCredentials.md)
+A long-running resource action.
+
 ### [Update-AzDeviceRegistryAsset](Update-AzDeviceRegistryAsset.md)
 Update a Asset
 
 ### [Update-AzDeviceRegistryAssetEndpointProfile](Update-AzDeviceRegistryAssetEndpointProfile.md)
 Update a AssetEndpointProfile
+
+### [Update-AzDeviceRegistryCredentials](Update-AzDeviceRegistryCredentials.md)
+Update a Credential
 
 ### [Update-AzDeviceRegistryNamespace](Update-AzDeviceRegistryNamespace.md)
 Replace a Namespace
@@ -127,6 +161,9 @@ Update a NamespaceDiscoveredAsset
 
 ### [Update-AzDeviceRegistryNamespaceDiscoveredDevice](Update-AzDeviceRegistryNamespaceDiscoveredDevice.md)
 Update a NamespaceDiscoveredDevice
+
+### [Update-AzDeviceRegistryPolicy](Update-AzDeviceRegistryPolicy.md)
+Update a Policy
 
 ### [Update-AzDeviceRegistrySchema](Update-AzDeviceRegistrySchema.md)
 Replace a Schema
