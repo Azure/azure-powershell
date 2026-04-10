@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -151,11 +151,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* General availability for module Az.DeviceRegistry
-* GA stable release of API version 2025-10-01 for Az.DeviceRegistry. New updates include:
-    - Schema and Schema Version asynchronous delete. No longer synchronous.
-    - Namespace Asset and Namespace Discovered Asset EventGroups.
-    - Namespace Device x509 certificate authentication now supports intermediate certificates and key secret names.'
+        ReleaseNotes = '* Public preview release of API version 2025-11-01-preview for Az.DeviceRegistry. 
+New resources included:
+    - Namespace Credentials
+    - Namespace Policies
+* Added cmdlets: New-AzDeviceRegistryCredentials, Get-AzDeviceRegistryCredentials, Update-AzDeviceRegistryCredentials, Remove-AzDeviceRegistryCredentials, Sync-AzDeviceRegistryCredentials
+* Added cmdlets: New-AzDeviceRegistryPolicy, Get-AzDeviceRegistryPolicy, Update-AzDeviceRegistryPolicy, Remove-AzDeviceRegistryPolicy'
 
         # Prerelease string of this module
         Prerelease = 'preview'

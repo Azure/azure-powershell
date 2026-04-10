@@ -32,6 +32,15 @@
     - `Revoke-AzDeviceRegistryPolicyIssuer`: Revoke a policy issuer
     - `Revoke-AzDeviceRegistryNamespaceDevice`: Revoke a namespace device
 
+## Version 1.0.1
+* Public preview release of API version 2025-11-01-preview for Az.DeviceRegistry. 
+
+New resources included:
+    - Namespace Credentials
+    - Namespace Policies
+* Added cmdlets: New-AzDeviceRegistryCredentials, Get-AzDeviceRegistryCredentials, Update-AzDeviceRegistryCredentials, Remove-AzDeviceRegistryCredentials, Sync-AzDeviceRegistryCredentials
+* Added cmdlets: New-AzDeviceRegistryPolicy, Get-AzDeviceRegistryPolicy, Update-AzDeviceRegistryPolicy, Remove-AzDeviceRegistryPolicy
+
 ## Version 1.0.0
 * General availability for module Az.DeviceRegistry
 

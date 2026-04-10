@@ -1,0 +1,9 @@
+{
+    "properties": {
+        "certificate": {
+            "leafCertificateConfiguration": {
+                "validityPeriodInDays": 60
+            }
+        }
+    }
+}
