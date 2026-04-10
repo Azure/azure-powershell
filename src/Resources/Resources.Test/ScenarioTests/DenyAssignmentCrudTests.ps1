@@ -197,7 +197,7 @@ function Test-NewDaFromInputFile
         excludePrincipalIds = @($excludePrincipalId)
     }
 
-    $tempFile = [System.IO.Path]::GetTempFileName() + ".json"
+    $tempFile = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), ([Guid]::NewGuid().ToString() + ".json"))
     $inputObj | ConvertTo-Json -Depth 5 | Set-Content -Path $tempFile
 
     try
@@ -594,7 +594,7 @@ function Test-NewDaPerPrincipalFromInputFile
         principalTypes = @("User")
     }
 
-    $tempFile = [System.IO.Path]::GetTempFileName() + ".json"
+    $tempFile = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), ([Guid]::NewGuid().ToString() + ".json"))
     $inputObj | ConvertTo-Json -Depth 5 | Set-Content -Path $tempFile
 
     try

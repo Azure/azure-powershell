@@ -133,8 +133,14 @@ namespace Microsoft.Azure.Commands.Resources
         /// </summary>
         private static void ValidateDenyAssignmentOptions(CreateDenyAssignmentOptions options)
         {
+            bool isEveryonePrincipal = false;
+            if (options.PrincipalIds != null && options.PrincipalIds.Count == 1)
+            {
+                isEveryonePrincipal = Guid.TryParse(options.PrincipalIds[0], out Guid parsedId) && parsedId == Guid.Empty;
+            }
+
             bool hasPerPrincipal = options.PrincipalIds != null && options.PrincipalIds.Count > 0
-                && !(options.PrincipalIds.Count == 1 && options.PrincipalIds[0] == Guid.Empty.ToString());
+                && !isEveryonePrincipal;
             bool hasExcludes = options.ExcludePrincipalIds != null && options.ExcludePrincipalIds.Count > 0;
 
             // Validate per-principal fields
@@ -153,6 +159,13 @@ namespace Microsoft.Azure.Commands.Resources
                     throw new PSArgumentException(
                         "PrincipalTypes is required when PrincipalIds is specified. " +
                         "Accepted values: User, ServicePrincipal.");
+                }
+
+                if (options.PrincipalTypes.Count != options.PrincipalIds.Count)
+                {
+                    throw new PSArgumentException(
+                        "PrincipalTypes count must match PrincipalIds count. " +
+                        "Specify exactly one PrincipalType for the single PrincipalId.");
                 }
 
                 var supportedTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "User", "ServicePrincipal" };

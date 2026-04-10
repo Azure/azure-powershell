@@ -640,8 +640,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             };
 
             // Build principals list based on mode
-            bool isPerPrincipalMode = options.PrincipalIds != null && options.PrincipalIds.Count > 0
-                && !(options.PrincipalIds.Count == 1 && options.PrincipalIds[0] == Guid.Empty.ToString());
+            bool isEveryoneMode = options.PrincipalIds != null
+                && options.PrincipalIds.Count == 1
+                && Guid.TryParse(options.PrincipalIds[0], out Guid principalGuid)
+                && principalGuid == Guid.Empty;
+
+            bool isPerPrincipalMode = options.PrincipalIds != null
+                && options.PrincipalIds.Count > 0
+                && !isEveryoneMode;
 
             List<DenyAssignmentPrincipal> principals;
             if (isPerPrincipalMode)
