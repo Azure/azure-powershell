@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Fixed command injection vulnerability in file permission handling [Security]
+    - Replaced 'powershell.exe' and 'icacls.exe' subprocess calls with direct .NET ACL APIs on Windows
+    - Replaced 'chmod' subprocess call with native P/Invoke on Unix
+    - Canonicalized file paths in SSH key generation methods to prevent path traversal
 
 ## Version 0.1.2
 * Fixed argument injection vulnerability in SFTP process-launch utilities [Security]

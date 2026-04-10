@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.6.6'
+ModuleVersion = '2.7.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -57,10 +57,10 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.4'; })
 RequiredAssemblies = 'StackHCI.Autorest/bin/Az.StackHCI.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'StackHCI.Autorest/Az.StackHCI.format.ps1xml'
@@ -122,7 +122,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'StackHci'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','StackHci'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -134,9 +134,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
-* Added ability to register in custom Azure Environments
-* Fixed issue where Arc enablement was incorrectly triggered during repair registration for cloud deployments'
+        ReleaseNotes = '* Updated preannouncement breaking changes date to May 2026.
+* Optimized cluster registration, significantly reducing registration time on large clusters.'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -149,7 +148,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
