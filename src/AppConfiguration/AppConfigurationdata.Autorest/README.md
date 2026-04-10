@@ -44,11 +44,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 498ccf7ddf78ced8ef515f88b755b2eb3775de9e
+commit: 1d3a6fbdea5ce574dd89ae581d11f7b7cbcdba3b
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/appconfiguration/data-plane/Microsoft.AppConfiguration/stable/1.0/appconfiguration.json
+  - $(repo)/specification/appconfiguration/data-plane/AppConfiguration/stable/2024-09-01/appconfiguration.json
 
 root-module-name: $(prefix).AppConfiguration
 module-version: 1.0.0
@@ -63,6 +63,9 @@ nested-object-to-string: true
 endpoint-resource-id-key-name: AzureAppConfigurationEndpointResourceId
 
 directive:
+  # Break circular reference in AzureCoreFoundationsInnerError
+  - no-inline:
+    - AzureCoreFoundationsInnerError
   # Remove the Etag and Last-Modified in headers from the response
   - from: swagger-document
     where: $.*.*.*.*.*.headers
