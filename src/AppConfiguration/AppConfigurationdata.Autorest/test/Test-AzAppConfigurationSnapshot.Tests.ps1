@@ -15,15 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzAppConfigurationSnapsh
 }
 
 Describe 'Test-AzAppConfigurationSnapshot' {
-    It 'Check' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Check' {
+        # Test if any snapshots exist (HEAD on snapshots collection)
+        $result = Test-AzAppConfigurationSnapshot -Endpoint $env.endpoint -PassThru
+        $result | Should -BeTrue
     }
 
-    It 'Check1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CheckViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckByName' {
+        # Create a snapshot then test it exists
+        $snapshotName = "testsnap-" + (RandomString -allChars $false -len 6)
+        $filter = @{ Key = $env.key }
+        New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
+        $result = Test-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -PassThru
+        $result | Should -BeTrue
     }
 }

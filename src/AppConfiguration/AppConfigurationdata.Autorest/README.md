@@ -74,6 +74,21 @@ directive:
     where: $.paths["/kv"]
     transform: delete $.head
 
+  # Add 200 response to CreateSnapshot so the LRO final result is deserialized
+  # as a Snapshot instead of falling through to the default error handler.
+  - from: swagger-document
+    where: $.paths["/snapshots/{name}"].put.responses
+    transform: >-
+      $["200"] = {
+        "description": "The snapshot was successfully created.",
+        "schema": { "$ref": "#/definitions/Snapshot" },
+        "headers": {
+          "Sync-Token": { "description": "Used to guarantee real-time consistency between requests.", "type": "string" },
+          "ETag": { "description": "An identifier representing the returned state of the resource.", "type": "string" },
+          "Link": { "description": "Provides a link to the next page of results.", "type": "string" }
+        }
+      };
+
   # Hide the get operation for KeyValue because the parameter key doesn't have a consistent meaning in /kv and /kv/{key}
   - where:
       subject: ^KeyValue$
@@ -91,6 +106,12 @@ directive:
       variant: ^Put$
       verb: Set
     remove: true
+
+  # Remove the body 'etag' property from Snapshot to avoid CLS conflict with
+  # the response header 'ETag' property (they differ only in casing).
+  - from: swagger-document
+    where: $.definitions.Snapshot.properties
+    transform: delete $.etag
 
   # Improve the Endpoint parameter description for all cmdlets
   - where:

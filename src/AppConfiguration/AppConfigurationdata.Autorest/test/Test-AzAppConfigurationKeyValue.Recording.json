@@ -1,0 +1,149 @@
+{
+  "Test-AzAppConfigurationKeyValue+[NoContext]+CheckExisting+$PUT+https://sanitized.azconfig.io/kv/checktest-ntuwfc?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://sanitized.azconfig.io/kv/checktest-ntuwfc?api-version=2024-09-01",
+      "Content": "{\r\n  \"value\": \"exists\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "25" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Fri, 10 Apr 2026 21:26:48 GMT" ],
+        "Transfer-Encoding": [ "chunked" ],
+        "Connection": [ "keep-alive" ],
+        "ETag": [ "\"ZfIEXA6psWJ_HQNOS1Y2d0ufpuzRoZzxFe1k2jA2Nuw\"" ],
+        "Sync-Token": [ "zAJw6V16=MTM6MTkjODMxNjk3MjU=;sn=83169725" ],
+        "x-ms-request-id": [ "47fdf9b1-edb5-4458-8c67-00a9eafe3e5a" ],
+        "x-ms-correlation-request-id": [ "47fdf9b1-edb5-4458-8c67-00a9eafe3e5a" ],
+        "x-ms-date": [ "Fri, 10 Apr 2026 21:26:48 GMT" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Access-Control-Allow-Origin": [ "*" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/vnd.microsoft.appconfig.kv+json; charset=utf-8" ],
+        "Last-Modified": [ "Fri, 10 Apr 2026 21:26:48 GMT" ]
+      },
+      "Content": "{\"etag\":\"ZfIEXA6psWJ_HQNOS1Y2d0ufpuzRoZzxFe1k2jA2Nuw\",\"key\":\"checktest-ntuwfc\",\"label\":null,\"content_type\":null,\"value\":\"exists\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:26:48+00:00\"}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzAppConfigurationKeyValue+[NoContext]+CheckExisting+$HEAD+https://sanitized.azconfig.io/kv/checktest-ntuwfc?api-version=2024-09-01+2": {
+    "Request": {
+      "Method": "HEAD",
+      "RequestUri": "https://sanitized.azconfig.io/kv/checktest-ntuwfc?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-client-request-id": [ "61d5fc44-9846-4f35-af45-ac90053fd14c" ],
+        "CommandName": [ "Test-AzAppConfigurationKeyValue" ],
+        "FullCommandName": [ "Test-AzAppConfigurationKeyValue_Check" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Fri, 10 Apr 2026 21:26:48 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "ETag": [ "\"ZfIEXA6psWJ_HQNOS1Y2d0ufpuzRoZzxFe1k2jA2Nuw\"" ],
+        "Sync-Token": [ "zAJw6V16=MTM6MTkjODMxNjk3MjU=;sn=83169725" ],
+        "x-ms-request-id": [ "f85a8007-adde-4782-8482-b58b8e5f2b18" ],
+        "x-ms-correlation-request-id": [ "f85a8007-adde-4782-8482-b58b8e5f2b18" ],
+        "x-ms-date": [ "Fri, 10 Apr 2026 21:26:48 GMT" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Access-Control-Allow-Origin": [ "*" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/vnd.microsoft.appconfig.kv+json; charset=utf-8" ],
+        "Last-Modified": [ "Fri, 10 Apr 2026 21:26:48 GMT" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Test-AzAppConfigurationKeyValue+[NoContext]+CheckExisting+$DELETE+https://sanitized.azconfig.io/kv/checktest-ntuwfc?api-version=2024-09-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://sanitized.azconfig.io/kv/checktest-ntuwfc?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-client-request-id": [ "a636e00f-26cb-4215-9749-b216c942fa18" ],
+        "CommandName": [ "Remove-AzAppConfigurationKeyValue" ],
+        "FullCommandName": [ "Remove-AzAppConfigurationKeyValue_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Fri, 10 Apr 2026 21:26:49 GMT" ],
+        "Transfer-Encoding": [ "chunked" ],
+        "Connection": [ "keep-alive" ],
+        "ETag": [ "\"ZfIEXA6psWJ_HQNOS1Y2d0ufpuzRoZzxFe1k2jA2Nuw\"" ],
+        "Sync-Token": [ "zAJw6V16=MTM6MTkjODMxNjk3MjY=;sn=83169726" ],
+        "x-ms-request-id": [ "ef9ef29c-c1da-41f4-8d18-df9c167a0583" ],
+        "x-ms-correlation-request-id": [ "ef9ef29c-c1da-41f4-8d18-df9c167a0583" ],
+        "x-ms-date": [ "Fri, 10 Apr 2026 21:26:49 GMT" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Access-Control-Allow-Origin": [ "*" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/vnd.microsoft.appconfig.kv+json; charset=utf-8" ],
+        "Last-Modified": [ "Fri, 10 Apr 2026 21:26:48 GMT" ]
+      },
+      "Content": "{\"etag\":\"ZfIEXA6psWJ_HQNOS1Y2d0ufpuzRoZzxFe1k2jA2Nuw\",\"key\":\"checktest-ntuwfc\",\"label\":null,\"content_type\":null,\"value\":\"exists\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:26:48+00:00\"}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzAppConfigurationKeyValue+[NoContext]+CheckNonExisting+$HEAD+https://sanitized.azconfig.io/kv/nonexistent-key-8nrwsjcvx6?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "HEAD",
+      "RequestUri": "https://sanitized.azconfig.io/kv/nonexistent-key-8nrwsjcvx6?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-client-request-id": [ "d614274b-b44c-4d38-8e5d-aa319155dcbb" ],
+        "CommandName": [ "Test-AzAppConfigurationKeyValue" ],
+        "FullCommandName": [ "Test-AzAppConfigurationKeyValue_Check" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Date": [ "Fri, 10 Apr 2026 21:26:49 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "Sync-Token": [ "zAJw6V16=MTM6MTkjODMxNjk3MjY=;sn=83169726" ],
+        "x-ms-request-id": [ "9d841da8-c6b5-4f2e-a158-31cb88967730" ],
+        "x-ms-correlation-request-id": [ "9d841da8-c6b5-4f2e-a158-31cb88967730" ],
+        "x-ms-date": [ "Fri, 10 Apr 2026 21:26:49 GMT" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Access-Control-Allow-Origin": [ "*" ]
+      },
+      "ContentHeaders": {
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

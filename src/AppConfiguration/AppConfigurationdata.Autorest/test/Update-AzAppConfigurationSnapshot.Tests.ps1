@@ -15,27 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzAppConfigurationSnap
 }
 
 Describe 'Update-AzAppConfigurationSnapshot' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        # Create a snapshot, then archive it
+        $snapshotName = "updsnap-" + (RandomString -allChars $false -len 6)
+        $filter = @{ Key = $env.key }
+        New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
+        $result = Update-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Status "archived"
+        $result | Should -Not -BeNullOrEmpty
+        $result.Status | Should -Be "archived"
     }
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ArchiveAndRecover' {
+        # Create, archive, then recover a snapshot
+        $snapshotName = "updsnap2-" + (RandomString -allChars $false -len 6)
+        $filter = @{ Key = $env.key }
+        New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
+        Update-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Status "archived"
+        $result = Update-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Status "ready"
+        $result | Should -Not -BeNullOrEmpty
+        $result.Status | Should -Be "ready"
     }
 }

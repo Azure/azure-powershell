@@ -15,15 +15,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzAppConfigurationKeyValu
 }
 
 Describe 'Set-AzAppConfigurationKeyValue' {
-    It 'PutExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PutExpanded' {
+        $setKey = "settest-" + (RandomString -allChars $false -len 6)
+        $result = Set-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $setKey -Value "test-value"
+        $result | Should -Not -BeNullOrEmpty
+        $result.Key | Should -Be $setKey
+        $result.Value | Should -Be "test-value"
+        # Cleanup
+        Remove-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $setKey
     }
 
-    It 'PutViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PutViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PutViaJsonString' {
+        $setKey = "setjson-" + (RandomString -allChars $false -len 6)
+        $jsonString = '{"key": "' + $setKey + '", "value": "json-value"}'
+        $result = Set-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $setKey -JsonString $jsonString
+        $result | Should -Not -BeNullOrEmpty
+        $result.Value | Should -Be "json-value"
+        # Cleanup
+        Remove-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $setKey
     }
 }

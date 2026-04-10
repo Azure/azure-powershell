@@ -15,27 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAppConfigurationSnapsho
 }
 
 Describe 'New-AzAppConfigurationSnapshot' {
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $snapshotName = "newsnap-" + (RandomString -allChars $false -len 6)
+        $filter = @{ Key = $env.key }
+        $result = New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $snapshotName
     }
 
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaJsonString' {
+        $snapshotName = "newsnap-" + (RandomString -allChars $false -len 6)
+        $jsonString = '{"filters": [{"key": "' + $env.key + '"}]}'
+        $result = New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -JsonString $jsonString
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $snapshotName
     }
 }

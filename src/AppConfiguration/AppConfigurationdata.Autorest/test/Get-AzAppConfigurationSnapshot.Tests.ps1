@@ -15,15 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppConfigurationSnapsho
 }
 
 Describe 'Get-AzAppConfigurationSnapshot' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        # List all snapshots
+        $results = Get-AzAppConfigurationSnapshot -Endpoint $env.endpoint
+        $results | Should -Not -BeNullOrEmpty
     }
 
-    It 'Get1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetByName' {
+        # Create a snapshot then get it by name
+        $snapshotName = "getsnap-" + (RandomString -allChars $false -len 6)
+        $filter = @{ Key = $env.key }
+        New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
+        $result = Get-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $snapshotName
+        $result.Status | Should -Be "ready"
     }
 }

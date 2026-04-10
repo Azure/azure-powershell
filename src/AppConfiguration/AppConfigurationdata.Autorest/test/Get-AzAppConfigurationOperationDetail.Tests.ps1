@@ -15,7 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppConfigurationOperati
 }
 
 Describe 'Get-AzAppConfigurationOperationDetail' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        # Create a snapshot to generate a long-running operation, then query its status
+        $snapshotName = "opdetail-" + (RandomString -allChars $false -len 6)
+        $filter = @{ Key = $env.key }
+        New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
+        $result = Get-AzAppConfigurationOperationDetail -Endpoint $env.endpoint -Snapshot $snapshotName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Status | Should -Be "Succeeded"
     }
 }
