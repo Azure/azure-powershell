@@ -91,4 +91,10 @@ directive:
       variant: ^Put$
       verb: Set
     remove: true
+
+  # Improve the Endpoint parameter description for all cmdlets
+  - where:
+      parameter-name: Endpoint
+    set:
+      parameter-description: The endpoint of the App Configuration instance to send requests to.
 ```

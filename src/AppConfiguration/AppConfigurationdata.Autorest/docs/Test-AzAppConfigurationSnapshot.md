@@ -46,7 +46,8 @@ Test-AzAppConfigurationSnapshot -Endpoint $endpoint -PassThru
 True
 ```
 
-Check whether any snapshots exist in the App Configuration store. Returns True if snapshots are found.
+Check whether any snapshots exist in the App Configuration store.
+Returns True if snapshots are found.
 
 ### Example 2: Check if a specific snapshot exists
 ```powershell

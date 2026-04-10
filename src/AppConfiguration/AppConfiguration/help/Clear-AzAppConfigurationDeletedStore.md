@@ -30,12 +30,10 @@ Permanently deletes the specified configuration store.
 
 ## EXAMPLES
 
-### Example 1: Permanently deletes the specified configuration store.
-```powershell
+### EXAMPLE 1
+```
 Clear-AzAppConfigurationDeletedStore -Location eastus -Name azpstestappstore
 ```
-
-Permanently deletes the specified configuration store.
 
 ## PARAMETERS
 
@@ -49,7 +47,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -125,7 +123,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -140,7 +138,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -155,7 +153,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -197,11 +195,29 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
-
 ## OUTPUTS
 
 ### System.Boolean
-
 ## NOTES
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT \<IAppConfigurationIdentity\>: Identity Parameter
+  \[ConfigStoreName \<String\>\]: The name of the configuration store.
+  \[GroupName \<String\>\]: The name of the private link resource group.
+  \[Id \<String\>\]: Resource identity path
+  \[KeyValueName \<String\>\]: Identifier of key and label combination.
+Key and label are joined by $ character.
+Label is optional.
+  \[Location \<String\>\]: The location in which uniqueness will be verified.
+  \[PrivateEndpointConnectionName \<String\>\]: Private endpoint connection name
+  \[ReplicaName \<String\>\]: The name of the replica.
+  \[ResourceGroupName \<String\>\]: The name of the resource group to which the container registry belongs.
+  \[SnapshotName \<String\>\]: The name of the snapshot.
+  \[SubscriptionId \<String\>\]: The Microsoft Azure subscription ID.
 
 ## RELATED LINKS
+
+[https://learn.microsoft.com/powershell/module/az.appconfiguration/clear-azappconfigurationdeletedstore](https://learn.microsoft.com/powershell/module/az.appconfiguration/clear-azappconfigurationdeletedstore)
