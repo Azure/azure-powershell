@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DeviceRegistry
-Module Guid: 52c302d9-f50f-427c-94a3-e5682e580cef
+Module Guid: f613026c-356a-4747-b427-018396784bdd
 Download Help Link: https://learn.microsoft.com/powershell/module/az.deviceregistry
 Help Version: 1.0.0.0
 Locale: en-US
@@ -49,6 +49,10 @@ Get a SchemaRegistry
 
 ### [Get-AzDeviceRegistrySchemaVersion](Get-AzDeviceRegistrySchemaVersion.md)
 Get a SchemaVersion
+
+### [Initialize-AzDeviceRegistryPolicyBringYourOwnRoot](Initialize-AzDeviceRegistryPolicyBringYourOwnRoot.md)
+Activates or renews a Bring Your Own Root policy by accepting a customer-provided signed certificate.
+This is a long-running operation that returns no content upon completion.
 
 ### [Move-AzDeviceRegistryNamespace](Move-AzDeviceRegistryNamespace.md)
 Migrate the resources into Namespace
@@ -124,6 +128,12 @@ Delete a SchemaRegistry
 
 ### [Remove-AzDeviceRegistrySchemaVersion](Remove-AzDeviceRegistrySchemaVersion.md)
 Delete a SchemaVersion
+
+### [Revoke-AzDeviceRegistryNamespaceDevice](Revoke-AzDeviceRegistryNamespaceDevice.md)
+A long-running resource action.
+
+### [Revoke-AzDeviceRegistryPolicyIssuer](Revoke-AzDeviceRegistryPolicyIssuer.md)
+A long-running resource action.
 
 ### [Sync-AzDeviceRegistryCredentials](Sync-AzDeviceRegistryCredentials.md)
 A long-running resource action.

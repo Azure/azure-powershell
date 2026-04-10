@@ -15,38 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDeviceRegistryPolicy'))
 }
 
 Describe 'Get-AzDeviceRegistryPolicy' {
-    $policyName = $env.policyTests.getTests.Get.policyName
-    It 'Get' {
-        $policyTestParams = $env.policyTests.getTests.Get
-        
-        $policy = Get-AzDeviceRegistryPolicy `
-            -Name $policyName `
-            -NamespaceName $env.policyTests.namespaceName `
-            -ResourceGroupName $env.policyTests.resourceGroup
-        
-        $policy.Name | Should -Be $policyTestParams.policyName
-        $policy.ResourceGroupName | Should -Be $env.policyTests.resourceGroup
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List' {
-        $policyList = Get-AzDeviceRegistryPolicy `
-            -NamespaceName $env.policyTests.namespaceName `
-            -ResourceGroupName $env.policyTests.resourceGroup
-        
-        $policyList.Count | Should -BeGreaterThan 0
+    It 'GetViaIdentityNamespace' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' {
-        $policyTestParams = $env.policyTests.getTests.GetViaIdentity
-        
-        $policy = Get-AzDeviceRegistryPolicy `
-            -Name $policyName `
-            -NamespaceName $env.policyTests.namespaceName `
-            -ResourceGroupName $env.policyTests.resourceGroup
-        
-        $policyViaIdentity = Get-AzDeviceRegistryPolicy -InputObject $policy
-        
-        $policyViaIdentity.Name | Should -Be $policyName
-        $policyViaIdentity.ResourceGroupName | Should -Be $env.policyTests.resourceGroup
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

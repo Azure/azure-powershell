@@ -1,6 +1,6 @@
 {
   "resourceType": "namespaces/policies",
-  "apiVersion": "2025-11-01-preview",
+  "apiVersion": "2026-03-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry"
   },
@@ -78,6 +78,49 @@
             {
               "name": "-NamespaceName",
               "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Revoke-AzDeviceRegistryPolicyIssuer",
+      "description": "A long-running resource action.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/credentials/default/policies/{policyName}/revokeIssuer",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/revoke-azdeviceregistrypolicyissuer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NamespaceName <String>",
+              "-PolicyName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "A long-running resource action.",
+          "parameters": [
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-PolicyName",
+              "value": "[Path.policyName]"
             },
             {
               "name": "-ResourceGroupName",

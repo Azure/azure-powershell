@@ -50,6 +50,10 @@ Get a SchemaRegistry
 ### [Get-AzDeviceRegistrySchemaVersion](Get-AzDeviceRegistrySchemaVersion.md)
 Get a SchemaVersion
 
+### [Initialize-AzDeviceRegistryPolicyBringYourOwnRoot](Initialize-AzDeviceRegistryPolicyBringYourOwnRoot.md)
+Activates or renews a Bring Your Own Root policy by accepting a customer-provided signed certificate.
+This is a long-running operation that returns no content upon completion.
+
 ### [Move-AzDeviceRegistryNamespace](Move-AzDeviceRegistryNamespace.md)
 Migrate the resources into Namespace
 
@@ -124,6 +128,12 @@ Delete a SchemaRegistry
 
 ### [Remove-AzDeviceRegistrySchemaVersion](Remove-AzDeviceRegistrySchemaVersion.md)
 Delete a SchemaVersion
+
+### [Revoke-AzDeviceRegistryNamespaceDevice](Revoke-AzDeviceRegistryNamespaceDevice.md)
+A long-running resource action.
+
+### [Revoke-AzDeviceRegistryPolicyIssuer](Revoke-AzDeviceRegistryPolicyIssuer.md)
+A long-running resource action.
 
 ### [Sync-AzDeviceRegistryCredentials](Sync-AzDeviceRegistryCredentials.md)
 A long-running resource action.

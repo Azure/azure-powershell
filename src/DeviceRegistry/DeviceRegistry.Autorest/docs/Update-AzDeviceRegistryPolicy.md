@@ -15,23 +15,25 @@ Update a Policy
 ### UpdateExpanded (Default)
 ```
 Update-AzDeviceRegistryPolicy -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CertificateAuthorityConfiguration <IAny>]
- [-LeafCertificateConfigurationValidityPeriodInDay <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-CertificateAuthorityConfigurationBringYourOwnRoot <IAny>]
+ [-LeafCertificateConfigurationValidityPeriodInDay <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDeviceRegistryPolicy -InputObject <IDeviceRegistryIdentity>
- [-CertificateAuthorityConfiguration <IAny>] [-LeafCertificateConfigurationValidityPeriodInDay <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CertificateAuthorityConfigurationBringYourOwnRoot <IAny>]
+ [-LeafCertificateConfigurationValidityPeriodInDay <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityNamespaceExpanded
 ```
 Update-AzDeviceRegistryPolicy -Name <String> -NamespaceInputObject <IDeviceRegistryIdentity>
- [-CertificateAuthorityConfiguration <IAny>] [-LeafCertificateConfigurationValidityPeriodInDay <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CertificateAuthorityConfigurationBringYourOwnRoot <IAny>]
+ [-LeafCertificateConfigurationValidityPeriodInDay <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -53,171 +55,20 @@ Update a Policy
 
 ## EXAMPLES
 
-### Example 1: Update policy certificate validity using JSON string
+### Example 1: Update a policy for a namespace
 ```powershell
-$jsonString = @"
-{
-    "properties": {
-        "certificate": {
-            "leafCertificateConfiguration": {
-                "validityPeriodInDays": 60
-            }
-        }
-    }
-}
-"@
-
-Update-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonString $jsonString
+Update-AzDeviceRegistryPolicy -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -Name "my-policy" -Tag @{environment="production"}
 ```
 
 ```output
-Id                           : /subscriptions/xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/credentials/default/policies/my-policy
-Location                     : eastus2
-Name                         : my-policy
-Properties                   : {
-                                 "provisioningState": "Succeeded",
-                                 "certificate": {
-                                   "certificateAuthorityConfiguration": {
-                                     "keyType": "ECC"
-                                   },
-                                   "leafCertificateValidityPeriodInDays": 60
-                                 }
-                               }
-ResourceGroupName            : my-resource-group
-SystemDataCreatedAt          : 12/2/2024 11:15:20 AM
-SystemDataCreatedBy          : user@contoso.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 12/2/2024 11:30:45 AM
-SystemDataLastModifiedBy     : user@contoso.com
-SystemDataLastModifiedByType : User
-Tag                          : {
-                                 "environment": "production"
-                               }
-Type                         : Microsoft.DeviceRegistry/namespaces/credentials/policies
+Name      Location ResourceGroupName
+----      -------- -----------------
+my-policy eastus   my-resource-group
 ```
 
-Updates the certificate validity period for an existing policy.
-**Note:** For PATCH operations, you only need to specify the fields you want to change.
+Updates the specified policy in the Device Registry namespace.
 
-### Example 2: Update policy tags using JSON string
-```powershell
-$jsonString = @"
-{
-    "tags": {
-        "environment": "production",
-        "team": "iot",
-        "updated": "true"
-    }
-}
-"@
-
-Update-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonString $jsonString
-```
-
-```output
-Id                           : /subscriptions/xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/credentials/default/policies/my-policy
-Location                     : eastus2
-Name                         : my-policy
-Properties                   : {
-                                 "provisioningState": "Succeeded",
-                                 "certificate": {
-                                   "certificateAuthorityConfiguration": {
-                                     "keyType": "ECC"
-                                   },
-                                   "leafCertificateValidityPeriodInDays": 60
-                                 }
-                               }
-ResourceGroupName            : my-resource-group
-SystemDataCreatedAt          : 12/2/2024 11:15:20 AM
-SystemDataCreatedBy          : user@contoso.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 12/2/2024 11:32:18 AM
-SystemDataLastModifiedBy     : user@contoso.com
-SystemDataLastModifiedByType : User
-Tag                          : {
-                                 "environment": "production",
-                                 "team": "iot",
-                                 "updated": "true"
-                               }
-Type                         : Microsoft.DeviceRegistry/namespaces/credentials/policies
-```
-
-Updates only the tags on an existing policy without modifying the certificate configuration.
-
-### Example 3: Update policy from a JSON file
-```powershell
-Update-AzDeviceRegistryPolicy -Name my-policy -NamespaceName my-namespace -ResourceGroupName my-resource-group -JsonFilePath "C:\policies\policy-update.json"
-```
-
-```output
-Id                           : /subscriptions/xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/credentials/default/policies/my-policy
-Location                     : eastus2
-Name                         : my-policy
-Properties                   : {
-                                 "provisioningState": "Succeeded",
-                                 "certificate": {
-                                   "certificateAuthorityConfiguration": {
-                                     "keyType": "ECC"
-                                   },
-                                   "leafCertificateValidityPeriodInDays": 180
-                                 }
-                               }
-ResourceGroupName            : my-resource-group
-SystemDataCreatedAt          : 12/2/2024 11:15:20 AM
-SystemDataCreatedBy          : user@contoso.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 12/2/2024 11:35:02 AM
-SystemDataLastModifiedBy     : user@contoso.com
-SystemDataLastModifiedByType : User
-Tag                          : {
-                                 "environment": "production",
-                                 "team": "iot"
-                               }
-Type                         : Microsoft.DeviceRegistry/namespaces/credentials/policies
-```
-
-Updates a policy from a JSON file containing the update payload.
-
-### Example 4: Update policy via identity object
-```powershell
-$policyIdentity = @{
-    SubscriptionId = "xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx"
-    ResourceGroupName = "my-resource-group"
-    NamespaceName = "my-namespace"
-    CredentialName = "default"
-    PolicyName = "my-policy-name"
-}
-
-Update-AzDeviceRegistryPolicy -InputObject $policyIdentity -Tag @{"environment" = "staging"}
-```
-
-```output
-Id                           : /subscriptions/xxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/my-namespace/credentials/default/policies/my-policy
-Location                     : eastus2
-Name                         : my-policy
-Properties                   : {
-                                 "provisioningState": "Succeeded",
-                                 "certificate": {
-                                   "certificateAuthorityConfiguration": {
-                                     "keyType": "ECC"
-                                   },
-                                   "leafCertificateValidityPeriodInDays": 120
-                                 }
-                               }
-ResourceGroupName            : my-resource-group
-SystemDataCreatedAt          : 12/2/2024 11:15:20 AM
-SystemDataCreatedBy          : user@contoso.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 12/2/2024 11:37:44 AM
-SystemDataLastModifiedBy     : user@contoso.com
-SystemDataLastModifiedByType : User
-Tag                          : {
-                                 "environment": "staging"
-                               }
-Type                         : Microsoft.DeviceRegistry/namespaces/credentials/policies
-```
-
-Updates a policy object using an identity object parameter.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -236,8 +87,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CertificateAuthorityConfiguration
-The configuration to set up an ICA.
+### -CertificateAuthorityConfigurationBringYourOwnRoot
+Configuration for Bring Your Own Root.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IAny
@@ -328,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Policy tracked resource.
+The name of the Policy proxy resource.
 
 ```yaml
 Type: System.String
@@ -415,21 +266,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
