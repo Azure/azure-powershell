@@ -36,6 +36,26 @@ Describe 'Invoke-AzSpotPlacementScore' {
         } | Should -Not -Throw
     }
 
+    It 'ThrottledWithRetryAfter' {
+        # When the API returns 429 with a plain-text body and a Retry-After header,
+        # the cmdlet should surface a clean error message (not a JSON parse exception).
+        {
+            Invoke-AzSpotPlacementScore -Location eastus -DesiredCount $desiredCount -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
+        } | Should -Throw
+        $Error[0].Exception.Message | Should -Not -Match "Expected '\{' or '\['"
+        $Error[0].Exception.Message | Should -Not -BeNullOrEmpty
+    }
+
+    It 'ThrottledWithoutRetryAfter' {
+        # When the API returns 429 with a plain-text body and no Retry-After header,
+        # the cmdlet should surface a clean error message (not a JSON parse exception).
+        {
+            Invoke-AzSpotPlacementScore -Location eastus -DesiredCount $desiredCount -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
+        } | Should -Throw
+        $Error[0].Exception.Message | Should -Not -Match "Expected '\{' or '\['"
+        $Error[0].Exception.Message | Should -Not -BeNullOrEmpty
+    }
+
     It 'Post' {
         {
             # Zonal

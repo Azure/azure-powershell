@@ -1,4 +1,59 @@
 {
+  "Invoke-AzSpotPlacementScore+[NoContext]+ThrottledWithRetryAfter+$POST+https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/placementScores/spot/generate?api-version=2025-06-05+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/placementScores/spot/generate?api-version=2025-06-05",
+      "Content": "{\r\n  \"desiredLocations\": [ \"eastus\", \"eastus2\", \"westus\" ],\r\n  \"desiredSizes\": [\r\n    {\r\n      \"sku\": \"Standard_D2_v3\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D2_v2\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D4_v3\"\r\n    }\r\n  ],\r\n  \"desiredCount\": 1\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "247" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 429,
+      "Headers": {
+        "Retry-After": [ "0" ],
+        "x-ms-request-id": [ "throttled-request-id-with-retry-after" ],
+        "x-ms-correlation-request-id": [ "throttled-correlation-id-with-retry-after" ],
+        "Date": [ "Thu, 24 Jul 2025 08:10:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "text/plain; charset=utf-8" ]
+      },
+      "Content": "You are being throttled. Please retry after some time.",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzSpotPlacementScore+[NoContext]+ThrottledWithoutRetryAfter+$POST+https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/placementScores/spot/generate?api-version=2025-06-05+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/placementScores/spot/generate?api-version=2025-06-05",
+      "Content": "{\r\n  \"desiredLocations\": [ \"eastus\", \"eastus2\", \"westus\" ],\r\n  \"desiredSizes\": [\r\n    {\r\n      \"sku\": \"Standard_D2_v3\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D2_v2\"\r\n    },\r\n    {\r\n      \"sku\": \"Standard_D4_v3\"\r\n    }\r\n  ],\r\n  \"desiredCount\": 1\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "247" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 429,
+      "Headers": {
+        "x-ms-request-id": [ "throttled-request-id-no-retry-after" ],
+        "x-ms-correlation-request-id": [ "throttled-correlation-id-no-retry-after" ],
+        "Date": [ "Thu, 24 Jul 2025 08:10:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "text/plain; charset=utf-8" ]
+      },
+      "Content": "You are being throttled. Please retry after some time.",
+      "isContentBase64": false
+    }
+  },
   "Invoke-AzSpotPlacementScore+[NoContext]+PostExpanded+$POST+https://management.azure.com/subscriptions/be23ca13-8eb4-4d0e-be10-b00451817956/providers/Microsoft.Compute/locations/eastus/placementScores/spot/generate?api-version=2025-06-05+1": {
     "Request": {
       "Method": "POST",
