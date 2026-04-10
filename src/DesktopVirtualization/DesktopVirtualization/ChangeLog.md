@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.4.6
 * Upgrade API version to 2026-01-01-preview
     - Added `New-AzWvdSessionHost` cmdlet to create session hosts in a host pool.
     - Added `Get-AzWvdSessionHostSingleRegistrationToken` cmdlet to list scoped registration tokens associated with a session host.
