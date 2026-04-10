@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzAppConfigurationKeyVal
 Describe 'Test-AzAppConfigurationKeyValue' {
     It 'CheckExisting' {
         # Create a dedicated key for this test
-        $testKey = "checktest-" + (RandomString -allChars $false -len 6)
+        $testKey = "checktest-key1"
         Set-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $testKey -Value "exists"
         { Test-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $testKey } | Should -Not -Throw
         # Cleanup
@@ -26,6 +26,6 @@ Describe 'Test-AzAppConfigurationKeyValue' {
 
     It 'CheckNonExisting' {
         # Test a key-value that does not exist (HEAD returns 404 which throws)
-        { Test-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key "nonexistent-key-$(RandomString -allChars $false -len 10)" } | Should -Throw
+        { Test-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key "nonexistent-key-playback" } | Should -Throw
     }
 }

@@ -23,7 +23,7 @@ Describe 'Get-AzAppConfigurationSnapshot' {
 
     It 'GetByName' {
         # Create a snapshot then get it by name
-        $snapshotName = "getsnap-" + (RandomString -allChars $false -len 6)
+        $snapshotName = "getsnap-test1"
         $filter = @{ Key = $env.key }
         New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
         $result = Get-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName

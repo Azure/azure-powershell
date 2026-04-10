@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAppConfigurationLock
 Describe 'Remove-AzAppConfigurationLock' {
     It 'Delete' {
         # Create a dedicated key and lock it
-        $lockKey = "unlocktest-" + (RandomString -allChars $false -len 6)
+        $lockKey = "unlocktest-key1"
         Set-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $lockKey -Value "unlock-value"
         Set-AzAppConfigurationLock -Endpoint $env.endpoint -Key $lockKey
         $result = Remove-AzAppConfigurationLock -Endpoint $env.endpoint -Key $lockKey

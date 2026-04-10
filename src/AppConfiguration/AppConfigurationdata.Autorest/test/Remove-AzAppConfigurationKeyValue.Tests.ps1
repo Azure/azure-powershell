@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAppConfigurationKeyV
 Describe 'Remove-AzAppConfigurationKeyValue' {
     It 'Delete' {
         # Create a key-value, then delete it
-        $deleteKey = "deletetest-" + (RandomString -allChars $false -len 6)
+        $deleteKey = "deletetest-key1"
         Set-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $deleteKey -Value "to-be-deleted"
         {
             Remove-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $deleteKey

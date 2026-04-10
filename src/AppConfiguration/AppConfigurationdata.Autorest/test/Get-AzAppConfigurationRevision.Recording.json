@@ -6,7 +6,7 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-client-request-id": [ "1381d59b-f7fd-4a53-b467-eebb6751b2f1" ],
+        "x-ms-client-request-id": [ "96e03ac4-6c0b-4fc1-bbcd-00c113be666e" ],
         "CommandName": [ "Get-AzAppConfigurationRevision" ],
         "FullCommandName": [ "Get-AzAppConfigurationRevision_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -19,22 +19,22 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:25:08 GMT" ],
+        "Date": [ "Fri, 10 Apr 2026 21:33:56 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
         "Accept-Ranges": [ "items" ],
-        "ETag": [ "\"DFXIRAq-4OlfqXkJdNtwIAkn-6KRy8Q-etofx1DLVIY\"" ],
-        "Sync-Token": [ "zAJw6V16=MTM6MTkjODMxNjk2ODg=;sn=83169688" ],
-        "x-ms-request-id": [ "8c055290-f18f-4c64-bfb7-53bb3f13b4f6" ],
-        "x-ms-correlation-request-id": [ "8c055290-f18f-4c64-bfb7-53bb3f13b4f6" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:25:08 GMT" ],
+        "ETag": [ "\"UAI6LLBOGZNqFHKeqEhGbF7C3kObq5wTYArR--_P2ls\"" ],
+        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgyODY=;sn=79468286" ],
+        "x-ms-request-id": [ "73b48fd8-1a5a-4f5f-9c2f-6dad8238e47a" ],
+        "x-ms-correlation-request-id": [ "73b48fd8-1a5a-4f5f-9c2f-6dad8238e47a" ],
+        "x-ms-date": [ "Fri, 10 Apr 2026 21:33:56 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.kvset+json; charset=utf-8" ]
       },
-      "Content": "{\"etag\":\"DFXIRAq-4OlfqXkJdNtwIAkn-6KRy8Q-etofx1DLVIY\",\"items\":[{\"etag\":\"Elf5iRUV_zYWP8y-F8kOpMjT9UL20A0a6hbLYAUtml4\",\"key\":\"k6i7\",\"label\":null,\"content_type\":null,\"value\":\"value3\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:24:34+00:00\"},{\"etag\":\"U2y5br7ouxJXI5VK96al9raMYun5Q34Zo9_pYM2W9VU\",\"key\":\"k6i7\",\"label\":null,\"content_type\":null,\"value\":\"value3\",\"tags\":{},\"locked\":true,\"last_modified\":\"2026-04-10T21:24:33+00:00\"},{\"etag\":\"36wmUjT9N6aahXyglVBrwTPXnRKKU-25ZoZ6HP0-Zb4\",\"key\":\"k6i7\",\"label\":null,\"content_type\":null,\"value\":\"value2\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:24:31+00:00\"},{\"etag\":\"AxkiWHEO4YqaZlcrrEbGbjlSTLFuwrfiDtKLqjJnoqM\",\"key\":\"k6i7\",\"label\":null,\"content_type\":null,\"value\":\"value3\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:24:31+00:00\"},{\"etag\":\"SdbwI1fmeYVOW68eoYVdMX4-UipLZtigpzbEcZmtp6k\",\"key\":\"k6i7\",\"label\":\"test\",\"content_type\":null,\"value\":\"ewh6ktl841dufyza\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:24:30+00:00\"}]}",
+      "Content": "{\"etag\":\"UAI6LLBOGZNqFHKeqEhGbF7C3kObq5wTYArR--_P2ls\",\"items\":[{\"etag\":\"XUPjwgA6pDMxXlceYzKkL-HvrRwUsVf9p541fpM4Fo8\",\"key\":\"ghse\",\"label\":null,\"content_type\":null,\"value\":\"value3\",\"tags\":{},\"locked\":true,\"last_modified\":\"2026-04-10T21:33:22+00:00\"},{\"etag\":\"Xm-0KN6RUA6YpIwlnFCXuHVfnwX426FNtPS9Y3YWlG4\",\"key\":\"ghse\",\"label\":null,\"content_type\":null,\"value\":\"value3\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:33:22+00:00\"},{\"etag\":\"938f3y0RCzJ_cTD5zrg2ooFFwMt7Te8X0Bn3NSdGlrU\",\"key\":\"ghse\",\"label\":null,\"content_type\":null,\"value\":\"value3\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:33:21+00:00\"},{\"etag\":\"grKHm_Gxbs7k4GvO0lFEkInnWkuq0VWfUWj_8a6QFn8\",\"key\":\"ghse\",\"label\":null,\"content_type\":null,\"value\":\"value2\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:33:21+00:00\"},{\"etag\":\"VPuM1smwvV43mXhRJptkgmhUljcyDKpp1Pky92a1Uf0\",\"key\":\"ghse\",\"label\":\"test\",\"content_type\":null,\"value\":\"ezn3bl1k4fu8hcxd\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:33:20+00:00\"}]}",
       "isContentBase64": false
     }
   }

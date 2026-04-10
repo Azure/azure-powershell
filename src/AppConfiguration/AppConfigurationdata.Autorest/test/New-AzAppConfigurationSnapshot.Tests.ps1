@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAppConfigurationSnapsho
 
 Describe 'New-AzAppConfigurationSnapshot' {
     It 'CreateExpanded' {
-        $snapshotName = "newsnap-" + (RandomString -allChars $false -len 6)
+        $snapshotName = "newsnap-test1"
         $filter = @{ Key = $env.key }
         $result = New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
         $result | Should -Not -BeNullOrEmpty
@@ -24,7 +24,7 @@ Describe 'New-AzAppConfigurationSnapshot' {
     }
 
     It 'CreateViaJsonString' {
-        $snapshotName = "newsnap-" + (RandomString -allChars $false -len 6)
+        $snapshotName = "newsnap-test2"
         $jsonString = '{"filters": [{"key": "' + $env.key + '"}]}'
         $result = New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -JsonString $jsonString
         $result | Should -Not -BeNullOrEmpty

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzAppConfigurationSnap
 Describe 'Update-AzAppConfigurationSnapshot' {
     It 'UpdateExpanded' {
         # Create a snapshot, then archive it
-        $snapshotName = "updsnap-" + (RandomString -allChars $false -len 6)
+        $snapshotName = "updsnap-test1"
         $filter = @{ Key = $env.key }
         New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
         $result = Update-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Status "archived"
@@ -27,7 +27,7 @@ Describe 'Update-AzAppConfigurationSnapshot' {
 
     It 'ArchiveAndRecover' {
         # Create, archive, then recover a snapshot
-        $snapshotName = "updsnap2-" + (RandomString -allChars $false -len 6)
+        $snapshotName = "updsnap-test2"
         $filter = @{ Key = $env.key }
         New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
         Update-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Status "archived"

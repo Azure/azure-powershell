@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzAppConfigurationKeyValu
 
 Describe 'Set-AzAppConfigurationKeyValue' {
     It 'PutExpanded' {
-        $setKey = "settest-" + (RandomString -allChars $false -len 6)
+        $setKey = "settest-key1"
         $result = Set-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $setKey -Value "test-value"
         $result | Should -Not -BeNullOrEmpty
         $result.Key | Should -Be $setKey
@@ -26,7 +26,7 @@ Describe 'Set-AzAppConfigurationKeyValue' {
     }
 
     It 'PutViaJsonString' {
-        $setKey = "setjson-" + (RandomString -allChars $false -len 6)
+        $setKey = "setjson-key1"
         $jsonString = '{"key": "' + $setKey + '", "value": "json-value"}'
         $result = Set-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $setKey -JsonString $jsonString
         $result | Should -Not -BeNullOrEmpty

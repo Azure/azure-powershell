@@ -23,7 +23,7 @@ Describe 'Test-AzAppConfigurationSnapshot' {
 
     It 'CheckByName' {
         # Create a snapshot then test it exists
-        $snapshotName = "testsnap-" + (RandomString -allChars $false -len 6)
+        $snapshotName = "testsnap-test1"
         $filter = @{ Key = $env.key }
         New-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -Filter $filter
         $result = Test-AzAppConfigurationSnapshot -Endpoint $env.endpoint -Name $snapshotName -PassThru

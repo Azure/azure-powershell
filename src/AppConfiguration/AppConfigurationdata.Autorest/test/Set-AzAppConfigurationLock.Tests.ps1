@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzAppConfigurationLock'))
 Describe 'Set-AzAppConfigurationLock' {
     It 'Put' {
         # Create a dedicated key for this test
-        $lockKey = "locktest-" + (RandomString -allChars $false -len 6)
+        $lockKey = "locktest-key1"
         Set-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $lockKey -Value "lock-value"
         $result = Set-AzAppConfigurationLock -Endpoint $env.endpoint -Key $lockKey
         $result | Should -Not -BeNullOrEmpty
