@@ -90,7 +90,9 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!this.IsPublicIpAddressPresent(this.ResourceGroupName, this.Name))
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                throw new ArgumentException(string.Format(
+                    Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound,
+                    string.Format("{0}/{1}", this.ResourceGroupName, this.Name)));
             }
 
             string target = string.Format("{0}/{1}", this.ResourceGroupName, this.Name);

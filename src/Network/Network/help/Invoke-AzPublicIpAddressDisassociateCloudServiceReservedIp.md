@@ -34,7 +34,7 @@ Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp -ResourceId <String> 
 ```
 
 ## DESCRIPTION
-The **Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp** cmdlet invokes the **DisassociateCloudServiceReservedPublicIp** operation. Use **PublicIpArmId** to specify the ARM resource ID of the standalone public IP to disassociate from the cloud service public IP identified by **Name** and **ResourceGroupName**, **ResourceId**, or **InputObject**.
+The **Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp** cmdlet invokes the **DisassociateCloudServiceReservedPublicIp** operation. Use **PublicIpArmId** to specify the Azure Resource Manager (ARM) resource ID of the standalone public IP to disassociate from the cloud service public IP identified by **Name** and **ResourceGroupName**, **ResourceId**, or **InputObject**.
 
 This cmdlet supports **WhatIf** and **Confirm** (see [about_CommonParameters](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_commonparameters)).
 
@@ -53,11 +53,12 @@ Disassociates the standalone public IP **standalonePip** from the cloud service 
 
 ### Example 2: Pipe the cloud service public IP
 ```powershell
+$standaloneId = '/subscriptions/{subId}/resourceGroups/myRg/providers/Microsoft.Network/publicIPAddresses/standalonePip'
 $cloudPip = Get-AzPublicIpAddress -ResourceGroupName 'myResourceGroup' -Name 'myCloudServicePublicIp'
-Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp -InputObject $cloudPip -PublicIpArmId $standaloneId
+$cloudPip | Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp -PublicIpArmId $standaloneId
 ```
 
-Uses a **PSPublicIpAddress** from the pipeline context; **PublicIpArmId** is still required.
+Pipes a **PSPublicIpAddress** to the cmdlet; **PublicIpArmId** is still required.
 
 ## PARAMETERS
 
