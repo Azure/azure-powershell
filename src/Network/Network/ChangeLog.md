@@ -28,6 +28,9 @@
     - `Remove-AzDdosCustomPolicy`: Remove a DDoS custom policy
     - `Remove-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicy`: Support the load balancer style workflow to mutate a local policy object and then persist it
     - Supports multiple detection rules with configurable traffic type (Tcp, Udp, TcpSyn) and packets per second thresholds
+* Added cmdlets for cloud service public IP address operations:
+    - `Invoke-AzPublicIpAddressCloudServiceReservation`: reserve a cloud service public IP or roll back to dynamic allocation (`-IsRollback`).
+    - `Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp`: disassociate a standalone reserved public IP from a cloud service public IP. Use `-PublicIpArmId` for the Azure Resource Manager (ARM) resource ID of the standalone public IP.
 
 ## Version 7.25.1
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
