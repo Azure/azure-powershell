@@ -36,7 +36,7 @@ Describe 'New-AzWvdRegistrationInfo' {
                                         -ResourceGroupName $env.ResourceGroup `
                                         -HostPoolName $env.HostPool `
                                         -ExpirationTime $newDate
-                $regInfo.Token | Should -Not -BeNullOrEmpty
+            $regInfo.Token | Should -Not -BeNullOrEmpty
         }
         finally{
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
