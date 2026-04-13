@@ -447,6 +447,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         {
             ValidateCommandLineArgument(privateKeyFile, nameof(privateKeyFile));
             ValidateCommandLineArgument(publicKeyFile, nameof(publicKeyFile));
+            // Canonicalize paths to prevent path traversal and satisfy command injection analysis.
+            // Path.GetFullPath resolves relative segments and normalizes the path so only
+            // valid filesystem paths reach the process arguments.
+            privateKeyFile = Path.GetFullPath(privateKeyFile);
+            publicKeyFile = Path.GetFullPath(publicKeyFile);
             var sshKeygenPath = GetSshClientPath("ssh-keygen", sshClientFolder);
             var command = new string[] { sshKeygenPath, "-y", "-f", privateKeyFile };
             LogDebug($"Running ssh-keygen command to generate public key: {string.Join(" ", command)}");
@@ -497,6 +502,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         internal static void CreateSshKeyfile(string privateKeyFile, string sshClientFolder = null)
         {
             ValidateCommandLineArgument(privateKeyFile, nameof(privateKeyFile));
+            // Canonicalize path to prevent path traversal and satisfy command injection analysis.
+            // Path.GetFullPath resolves relative segments and normalizes the path so only
+            // valid filesystem paths reach the process arguments.
+            privateKeyFile = Path.GetFullPath(privateKeyFile);
             var sshKeygenPath = GetSshClientPath("ssh-keygen", sshClientFolder);
 
             // Delete existing key files if they exist

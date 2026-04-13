@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPostgreSqlFlexibleServerLocationBasedCapability_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.CmdletBreakingChange("16.0.0", "-", "2026/06/02", ChangeDescription="This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601.ICapabilityProperties))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description(@"Get capabilities at specified location in a given subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Generated]

@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/virtualNetworkRules/{virtualNetworkRuleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPostgreSqlVirtualNetworkRule_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.CmdletBreakingChange("16.0.0", "-", "2026/06/02", ChangeDescription="This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IVirtualNetworkRule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description(@"Gets a virtual network rule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Generated]

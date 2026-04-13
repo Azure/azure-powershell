@@ -1,14 +1,14 @@
 ---
 Module Name: Az.ServiceGroups
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
+Module Guid: f41823c6-d8a5-433a-96b0-8e67f7a8dccd
+Download Help Link: https://learn.microsoft.com/powershell/module/az.servicegroups
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.ServiceGroups Module
 ## Description
-Microsoft Azure PowerShell: cmdlets to manage Service Groups in Azure. Service Groups allow you to organize and manage related Azure resources as a logical unit.
+Microsoft Azure PowerShell: ServiceGroups cmdlets
 
 ## Az.ServiceGroups Cmdlets
 ### [Get-AzServiceGroup](Get-AzServiceGroup.md)

@@ -614,65 +614,6 @@ function Confirm-UserAcknowledgmentUpgradeToSolution {
     }
 }
 
-#If the Arc agent is installed AND its status is Connected AND resourceName is present, it validates that subscriptionId and resourceGroup match the expected values.
-#It ignores machines that are not Connected, have no resourceName, or lack the agent. Throws only when a Connected node is registered to a different scope.
-$CheckNodeArcRegistrationStateScriptBlock = {
-    param (
-        [string]$SubscriptionId,
-        [string]$ArcResourceGroupName,
-        [string]$ClusterNode
-    )
-    if(Test-Path -Path "C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe")
-    {
-        $arcAgentStatus = Invoke-Expression -Command "& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' show -j"
-
-        # Parsing the status received from Arc agent
-        $arcAgentStatusParsed = $arcAgentStatus | ConvertFrom-Json
-
-        # Throw an error if the node is Arc enabled to a different resource group or subscription id
-        # Agent can be is "Connected"  or disconnected state. If the resource name property on the agent is empty, that means, it is cleanly disconnected , and just the exe exists
-        # If the resourceName exists and agent is in "Disconnected" state, indicates agent has temporary connectivity issues to the cloud
-        if (-not ([string]::IsNullOrEmpty($arcAgentStatusParsed.resourceName)) -and (($arcAgentStatusParsed.subscriptionId -ne $SubscriptionId) -or ($arcAgentStatusParsed.resourceGroup -ne $ArcResourceGroupName))) {
-            $differentResourceExceptionMessage = "{0}:  Subscription Id: {1}, Resource Group: {2}" -f $ClusterNode, $arcAgentStatusParsed.subscriptionId, $arcAgentStatusParsed.resourceGroup
-            throw $differentResourceExceptionMessage
-        }
-    }
-}
-
-# Requires the Arc agent to be installed, the node to be registered (resourceName present), actively Connected, and scoped to the expected subscription and resource group.
-# Throws on any deviation (missing agent, unregistered, disconnected, or mismatched scope).
-# This is used in New MSI Registration Flow where Arc enablement is a prerequisite for registration.
-$ValidateArcConnectionAndRegistrationScriptBlock = {
-    $agentPath = "C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe"
-
-    # Check if the Arc agent is installed
-    if (-not (Test-Path -Path $agentPath)) {
-        throw "$Using:clusterNode is NOT Azure Arc-enabled. Agent not found."
-    }
-
-    # Get Arc agent status
-    $arcAgentStatus = Invoke-Expression -Command "& '$agentPath' show -j"
-    $arcAgentStatusParsed = $arcAgentStatus | ConvertFrom-Json
-
-    # Check if the node is registered
-    if ([string]::IsNullOrEmpty($arcAgentStatusParsed.resourceName)) {
-        throw "$Using:clusterNode has Arc agent installed but is NOT registered with Azure."
-    }
-
-    # Check connection status
-    if ($arcAgentStatusParsed.status -ne "Connected") {
-        throw "$Using:clusterNode is registered but NOT currently connected to Azure Arc. Status: $($arcAgentStatusParsed.status)"
-    }
-
-    # Validate subscription and resource group
-    if (($arcAgentStatusParsed.subscriptionId -ne $Using:SubscriptionId) -or 
-        ($arcAgentStatusParsed.resourceGroup -ne $Using:ArcResourceGroupName)) {
-        
-        $msg = "{0} is Arc-enabled but registered to a different Subscription or Resource Group. Subscription: {1}, Resource Group: {2}" -f `
-            $Using:clusterNode, $arcAgentStatusParsed.subscriptionId, $arcAgentStatusParsed.resourceGroup
-        throw $msg
-    }
-}
 
 $registerArcScript = {
     try
@@ -2154,50 +2095,100 @@ function Verify-NodesArcRegistrationState{
         [System.Management.Automation.PSCredential] $Credential,
         [string] $ClusterDNSSuffix
     )
-    $NodesAlreadyArcEnabledDifferentResource = [System.Collections.ArrayList]::new()
 
-    foreach ($clusterNode in $clusterNodes)
-    {
-        # Create session into the cluster node
-        $clusterNodeWithDNSSuffix = "$clusterNode.$ClusterDNSSuffix"
-        if($Null -eq $Credential)
+    # Build fully-qualified node names.
+    $computerNames = @($ClusterNodes | ForEach-Object { "$($_.Name).$ClusterDNSSuffix" })
+
+    # Returns a structured object per node
+    $checkBlock = {
+        param([string]$SubscriptionId, [string]$ArcResourceGroupName)
+        $nodeName = $env:COMPUTERNAME
+        $result = @{ NodeName = $nodeName; IsMismatch = $false; Details = $null }
+
+        if(Test-Path -Path "C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe")
         {
-            $nodeSession = New-PSSession -ComputerName $clusterNodeWithDNSSuffix
+            $arcAgentStatus = Invoke-Expression -Command "& 'C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe' show -j"
+            $arcAgentStatusParsed = $arcAgentStatus | ConvertFrom-Json
+
+            if (-not ([string]::IsNullOrEmpty($arcAgentStatusParsed.resourceName)) -and
+                (($arcAgentStatusParsed.subscriptionId -ne $SubscriptionId) -or ($arcAgentStatusParsed.resourceGroup -ne $ArcResourceGroupName)))
+            {
+                $result.IsMismatch = $true
+                $result.Details = "{0}:  Subscription Id: {1}, Resource Group: {2}" -f $nodeName, $arcAgentStatusParsed.subscriptionId, $arcAgentStatusParsed.resourceGroup
+            }
+        }
+
+        return $result
+    }
+
+    # Invoke-Command fans out to all nodes in parallel
+    $invokeParams = @{
+        ComputerName  = $computerNames
+        ScriptBlock   = $checkBlock
+        ArgumentList  = @($SubscriptionId, $ArcResourceGroupName)
+        ThrottleLimit = 70
+        ErrorAction   = 'Continue'
+        ErrorVariable = 'remoteErrors'
+    }
+    if ($null -ne $Credential) {
+        $invokeParams['Credential'] = $Credential
+    }
+
+    $results = Invoke-Command @invokeParams
+
+    # Classify remote errors
+    $unreachableNodes = [System.Collections.ArrayList]::new()
+    $scriptErrors = [System.Collections.ArrayList]::new()
+    foreach ($err in $remoteErrors)
+    {
+        if ($err.CategoryInfo.Category -eq 'OpenError')
+        {
+            $errMsg = if ($err.Exception) { $err.Exception.Message } else { "$err" }
+            Write-WarnLog $errMsg
+            $targetNode = if ($err.TargetObject) { "$($err.TargetObject)" } else { "Unknown" }
+            $unreachableNodes.Add($targetNode) | Out-Null
         }
         else
         {
-            $nodeSession = New-PSSession -ComputerName $clusterNodeWithDNSSuffix -Credential $Credential
-        }
-
-        try
-        {
-            Invoke-Command -Session $nodeSession `
-                -ScriptBlock $CheckNodeArcRegistrationStateScriptBlock `
-                -ArgumentList $SubscriptionId, $ArcResourceGroupName, $clusterNode `
-                -ErrorAction Stop
-        }
-        catch 
-        {
-            if(($null -ne $_.Exception.Message) -and $_.Exception.Message.Contains($clusterNode) -and $_.Exception.Message.Contains("Subscription Id") -and $_.Exception.Message.Contains("Resource Group"))
-            {
-                $NodesAlreadyArcEnabledDifferentResource.Add($_.Exception.Message) | Out-Null
-            }
-            else
-            {
-                Write-WarnLog $_.Exception.Message
-            }
-        }
-        finally
-        {
-            # Cleanup node session
-            Remove-PSSession $nodeSession | Out-Null
+            # In-script error (e.g. azcmagent failure, JSON parse error)
+            $errMsg = if ($err.Exception) { $err.Exception.Message } else { "$err" }
+            Write-WarnLog "[Arc Verify] Script error on remote node: $errMsg"
+            $scriptErrors.Add($errMsg) | Out-Null
         }
     }
 
-    if($NodesAlreadyArcEnabledDifferentResource.Length -gt 0)
+    if ($unreachableNodes.Count -gt 0)
     {
-        $NodesAlreadyArcEnabledDifferentResource = $NodesAlreadyArcEnabledDifferentResource -join "`n"
-        $ExceptionMessage = $ArcAlreadyEnabledInADifferentResourceError -f $NodesAlreadyArcEnabledDifferentResource
+        throw "Cannot verify Arc registration state on unreachable node(s): $($unreachableNodes -join ', '). Ensure all cluster nodes are online and accessible via WinRM before registering."
+    }
+
+    if ($scriptErrors.Count -gt 0)
+    {
+        throw "Failed to verify Arc registration state on one or more nodes:`n$($scriptErrors -join "`n")"
+    }
+
+    # Validate we received results from all nodes
+    $resultCount = if ($results -eq $null) { 0 } else { $results.Count }
+    $expectedCount = $computerNames.Count
+    if ($resultCount -ne $expectedCount)
+    {
+        throw "Arc registration state verification incomplete: expected results from $expectedCount node(s) but received from $resultCount. Some nodes may have failed silently."
+    }
+
+    # Check structured results for subscription/RG mismatches
+    $NodesAlreadyArcEnabledDifferentResource = [System.Collections.ArrayList]::new()
+
+    foreach ($nodeResult in $results)
+    {
+        if ($nodeResult.IsMismatch -eq $true)
+        {
+            $NodesAlreadyArcEnabledDifferentResource.Add($nodeResult.Details) | Out-Null
+        }
+    }
+
+    if($NodesAlreadyArcEnabledDifferentResource.Count -gt 0)
+    {
+        $ExceptionMessage = $ArcAlreadyEnabledInADifferentResourceError -f ($NodesAlreadyArcEnabledDifferentResource -join "`n")
         throw $ExceptionMessage
     }
 }
@@ -3095,7 +3086,6 @@ function Enable-ArcOnNodes {
 
 <#
 Checks whether all nodes in the given cluster are Arc-enabled.
-[bool] Returns $true if all nodes are Arc-enabled, $false otherwise.
 Logs which nodes are not enabled for easier debugging.
 #>
 function Test-ClusterArcEnabled {
@@ -3113,42 +3103,71 @@ function Test-ClusterArcEnabled {
         [string]$ArcResourceGroupName
     )
 
-     # Make these values available to the script block via $Using:
-    $SubscriptionId = $SubscriptionId
-    $ArcResourceGroupName = $ArcResourceGroupName
+    $computerNames = @($ClusterNodes | ForEach-Object { "$($_.Name).$ClusterDNSSuffix" })
 
-    $notArcNodes = @()
+    # Inline check block — throws if the node is not properly Arc-enabled
+    $checkBlock = {
+        param([string]$SubscriptionId, [string]$ArcResourceGroupName)
+        $nodeName = $env:COMPUTERNAME
 
-    foreach ($node in $ClusterNodes) {
-        $nodeFQDN = $node.Name + "." + $ClusterDNSSuffix
-        $nodeSession = $null
-        $clusterNode = $node.Name
-        try {
-            if ($null -eq $Credential) {
-                $nodeSession = New-PSSession -ComputerName $nodeFQDN
-            } else {
-                $nodeSession = New-PSSession -ComputerName $nodeFQDN -Credential $Credential
-            }
-               
-            # Use shared script block to check Arc status
-            Invoke-Command -Session $nodeSession `
-                -ScriptBlock $ValidateArcConnectionAndRegistrationScriptBlock
-        } catch {
-            # If exception is thrown, Arc is not properly configured
-            $notArcNodes += $node.Name
-        } finally {
-            if ($nodeSession) {
-                Remove-PSSession $nodeSession | Out-Null
-            }
+        $agentPath = "C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe"
+
+        if (-not (Test-Path -Path $agentPath)) {
+            throw "$nodeName is NOT Azure Arc-enabled. Agent not found."
+        }
+
+        $arcAgentStatus = & $agentPath show -j | ConvertFrom-Json
+
+        if ([string]::IsNullOrEmpty($arcAgentStatus.resourceName)) {
+            throw "$nodeName has Arc agent installed but is NOT registered with Azure."
+        }
+
+        if ($arcAgentStatus.status -ne "Connected") {
+            throw "$nodeName is registered but NOT currently connected to Azure Arc. Status: $($arcAgentStatus.status)"
+        }
+
+        if (($arcAgentStatus.subscriptionId -ne $SubscriptionId) -or ($arcAgentStatus.resourceGroup -ne $ArcResourceGroupName)) {
+            $msg = "{0} is Arc-enabled but registered to a different Subscription or Resource Group. Subscription: {1}, Resource Group: {2}" -f `
+                $nodeName, $arcAgentStatus.subscriptionId, $arcAgentStatus.resourceGroup
+            throw $msg
         }
     }
 
-    if ($notArcNodes.Count -eq 0) {
+    $invokeParams = @{
+        ComputerName  = $computerNames
+        ScriptBlock   = $checkBlock
+        ArgumentList  = @($SubscriptionId, $ArcResourceGroupName)
+        ThrottleLimit = 70
+        ErrorAction   = 'Continue'
+        ErrorVariable = 'remoteErrors'
+    }
+    if ($null -ne $Credential) {
+        $invokeParams['Credential'] = $Credential
+    }
+
+    Invoke-Command @invokeParams
+
+    $errorMessages = @()
+
+    foreach ($err in $remoteErrors) {
+        if ($err.CategoryInfo.Category -eq 'OpenError') {
+            # Transport / unreachable node
+            $targetNode = if ($err.TargetObject) { "$($err.TargetObject)" } else { "Unknown" }
+            $errorMessages += "$targetNode is unreachable."
+            Write-VerboseLog "[Arc Check] Unreachable node: $targetNode"
+        } else {
+            # Script-level throw from the checkBlock
+            $errorMessages += $err.Exception.Message
+            Write-VerboseLog "[Arc Check] $($err.Exception.Message)"
+        }
+    }
+
+    if ($errorMessages.Count -eq 0) {
         Write-VerboseLog "[Arc Check] All cluster nodes are Arc-enabled."
         return $true
     } else {
-        Write-VerboseLog "[Arc Check] The following nodes are NOT Arc-enabled: $($notArcNodes -join ', ')"
-        return $false
+        $allErrors = $errorMessages -join "`n"
+        throw "Not all cluster nodes are properly Arc-enabled:`n$allErrors"
     }
 }
 
@@ -3284,14 +3303,21 @@ function Invoke-MSIFlow {
         $resource = Get-AzResource -ResourceId $ResourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
 
         # Check if nodes are already Arc enabled
-        $allArcEnabled = Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
+        $allArcEnabled = $true
+        try {
+            Test-ClusterArcEnabled -ClusterNodes $ClusterNodes -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix -SubscriptionId $SubscriptionId -ArcResourceGroupName $ArcServerResourceGroupName
+        }
+        catch {
+            $allArcEnabled = $false
+            $arcCheckError = $_.Exception.Message
+            Write-VerboseLog "[MSI Flow] Arc check failed: $arcCheckError"
+        }
         
         if (-not $allArcEnabled) {
             # Check if this is a cloud deployment
             if (ValidateCloudDeployment) {
-                # For cloud deployments, skip manual Arc enablement - let registration continue
-                Write-VerboseLog "[MSI Flow] Cloud deployment detected - skipping manual Arc enablement on nodes"
-                Write-NodeEventLog -Message "[MSI Flow] Cloud deployment detected - skipping manual Arc enablement for cloud deployment" -EventID 9136 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+                # For cloud deployments, nodes must already be Arc-enabled — fail early
+                throw "Cloud deployment detected but not all cluster nodes are Arc-enabled. Ensure all nodes are Arc-connected before running registration.`n$arcCheckError"  
             }
             else {
                 # Non-cloud deployment - attempt manual Arc enablement
