@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzRedisEnterpriseCacheAccessPolicyAssignment
 
 ## SYNOPSIS
-Create create a particular access policy assignment for a database
+Creates or updates a particular access policy assignment for a database
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ New-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -Database
 ```
 
 ## DESCRIPTION
-Create create a particular access policy assignment for a database
+Create a particular access policy assignment for a database
 
 ## EXAMPLES
 

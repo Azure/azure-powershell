@@ -1,6 +1,6 @@
 ---
 Module Name: Az.RedisEnterpriseCache
-Module Guid: cddc4755-5511-445a-a323-f449e436bf6e
+Module Guid: 82e88e50-68df-4284-98c5-f6c58186c025
 Download Help Link: https://learn.microsoft.com/powershell/module/az.redisenterprisecache
 Help Version: 1.0.0.0
 Locale: en-US
@@ -49,7 +49,7 @@ Forcibly removes the link to the specified database resource.
 Creates a Redis Enterprise cache.
 
 ### [New-AzRedisEnterpriseCacheAccessPolicyAssignment](New-AzRedisEnterpriseCacheAccessPolicyAssignment.md)
-Create create a particular access policy assignment for a database
+Creates or updates a particular access policy assignment for a database
 
 ### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
 Creates a database for a Redis Enterprise cache.
@@ -67,7 +67,7 @@ Deletes a single access policy assignment.
 Deletes a single database in a Redis Enterprise cache.
 
 ### [Update-AzRedisEnterpriseCache](Update-AzRedisEnterpriseCache.md)
-Update an existing (overwrite/reupdate  with potential downtime) cache cluster
+Updates an existing Redis Enterprise cluster
 
 ### [Update-AzRedisEnterpriseCacheDatabase](Update-AzRedisEnterpriseCacheDatabase.md)
 Updates an existing Redis Enterprise database
