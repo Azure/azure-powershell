@@ -193,13 +193,9 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Dns suffix of Azure App Configuration.")]
-        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Dns suffix of Azure App Configuration.")]
         public string AzureAppConfigurationEndpointSuffix { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource identifier of the Azure App Configuration service that is the recipient of the requested token.")]
-        [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource identifier of the Azure App Configuration service that is the recipient of the requested token.")]
         public string AzureAppConfigurationEndpointResourceId { get; set; }
 
