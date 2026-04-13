@@ -1,10 +1,48 @@
 {
   "resourceType": "namespaces",
-  "apiVersion": "2025-10-01",
+  "apiVersion": "2025-11-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry"
   },
   "commands": [
+    {
+      "name": "Get-AzDeviceRegistryCredentials",
+      "description": "Get a Credential",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/credentials/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/get-azdeviceregistrycredentials"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Credential",
+          "parameters": [
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "Get-AzDeviceRegistryNamespace",
       "description": "Get a Namespace",
@@ -44,6 +82,44 @@
       ]
     },
     {
+      "name": "Remove-AzDeviceRegistryCredentials",
+      "description": "Delete a Credential",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/credentials/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/remove-azdeviceregistrycredentials"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Credential",
+          "parameters": [
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Remove-AzDeviceRegistryNamespace",
       "description": "Delete a Namespace",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
@@ -67,6 +143,44 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sync-AzDeviceRegistryCredentials",
+      "description": "A long-running resource action.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/credentials/default/synchronize",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.deviceregistry/sync-azdeviceregistrycredentials"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "A long-running resource action.",
+          "parameters": [
+            {
+              "name": "-NamespaceName",
               "value": "[Path.namespaceName]"
             },
             {

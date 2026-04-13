@@ -17,7 +17,7 @@ Update a NamespaceDevice
 Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Attribute <Hashtable>] [-Enabled] [-EndpointInbound <Hashtable>]
  [-OperatingSystemVersion <String>] [-OutboundAssigned <Hashtable>] [-OutboundUnassigned <Hashtable>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PolicyResourceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,17 +39,17 @@ Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceName <Stri
 ```
 Update-AzDeviceRegistryNamespaceDevice -DeviceName <String> -NamespaceInputObject <IDeviceRegistryIdentity>
  [-Attribute <Hashtable>] [-Enabled] [-EndpointInbound <Hashtable>] [-OperatingSystemVersion <String>]
- [-OutboundAssigned <Hashtable>] [-OutboundUnassigned <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-OutboundAssigned <Hashtable>] [-OutboundUnassigned <Hashtable>] [-PolicyResourceId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDeviceRegistryNamespaceDevice -InputObject <IDeviceRegistryIdentity> [-Attribute <Hashtable>]
  [-Enabled] [-EndpointInbound <Hashtable>] [-OperatingSystemVersion <String>] [-OutboundAssigned <Hashtable>]
- [-OutboundUnassigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-OutboundUnassigned <Hashtable>] [-PolicyResourceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -458,6 +458,20 @@ Updates a Device Registry Namespace Device using the namespace's identity object
 
 ### Example 5: Update a Device Registry Namespace Device using device identity object
 ```powershell
+# Define the device identifiers
+$SubscriptionId = (Get-AzContext).Subscription.Id
+$ResourceGroupName = "my-resource-group"
+$NamespaceName = "my-namespace"
+$DeviceName = "my-device"
+
+# Create a device identity object
+$deviceIdentity = @{
+    SubscriptionId = $SubscriptionId
+    ResourceGroupName = $ResourceGroupName
+    NamespaceName = $NamespaceName
+    DeviceName = $DeviceName
+}
+
 $endpointsInbound = @{
     "endpoint1" = @{
         Address = "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
@@ -473,7 +487,8 @@ $endpointsInbound = @{
         UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
     }
 }
-Update-AzDeviceRegistryNamespaceDevice -InputObject $deviceObject -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
+
+Update-AzDeviceRegistryNamespaceDevice -InputObject $deviceIdentity -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
 ```
 
 ```output
@@ -553,7 +568,8 @@ Uuid                         : 78bc3246-208f-4df4-8aeb-1ddfa5e0e762
 Version                      : 8
 ```
 
-Updates a Device Registry Namespace Device using the device's identity object.
+Updates a Device Registry Namespace Device using a complete device identity object that includes subscription, resource group, namespace, and device name.
+This approach is useful in automation scenarios where resource identifiers are constructed programmatically.
 
 ## PARAMETERS
 
@@ -774,6 +790,21 @@ Set of most recently removed endpoints.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicyResourceId
+Resource Id of the Policy.
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityExpanded
 Aliases:
 

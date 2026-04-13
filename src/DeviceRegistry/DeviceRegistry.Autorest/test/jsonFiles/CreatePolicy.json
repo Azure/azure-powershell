@@ -1,0 +1,13 @@
+{
+    "location": "$eastus2euap",
+    "properties": {
+        "certificate": {
+            "certificateAuthorityConfiguration": {
+                "keyType": "ECC"
+            },
+            "leafCertificateConfiguration": {
+                "validityPeriodInDays": 90
+            }
+        }
+    }
+}
