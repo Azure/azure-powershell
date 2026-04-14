@@ -50,8 +50,6 @@ default eastus   my-resource-group
 
 Gets the credentials resource for the specified Device Registry namespace.
 
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -DefaultProfile

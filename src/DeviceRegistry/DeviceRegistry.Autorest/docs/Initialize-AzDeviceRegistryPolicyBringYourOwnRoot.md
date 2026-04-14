@@ -82,8 +82,6 @@ Initialize-AzDeviceRegistryPolicyBringYourOwnRoot -ResourceGroupName "my-resourc
 
 Initializes or renews a bring-your-own-root (BYOR) policy with a signed certificate chain for the specified Device Registry namespace.
 
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -AsJob

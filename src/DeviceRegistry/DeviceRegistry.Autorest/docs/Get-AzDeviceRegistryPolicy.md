@@ -68,8 +68,6 @@ my-policy2 eastus   my-resource-group
 
 Lists all policies in the specified Device Registry namespace.
 
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -DefaultProfile

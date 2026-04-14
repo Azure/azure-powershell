@@ -37,8 +37,6 @@ Remove-AzDeviceRegistryCredentials -ResourceGroupName "my-resource-group" -Names
 
 Removes the credentials resource from the specified Device Registry namespace.
 
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -AsJob

@@ -45,8 +45,6 @@ Revoke-AzDeviceRegistryPolicyIssuer -ResourceGroupName "my-resource-group" -Name
 Revokes the policy issuer for the specified policy in the Device Registry namespace.
 This is a long-running operation.
 
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -AsJob

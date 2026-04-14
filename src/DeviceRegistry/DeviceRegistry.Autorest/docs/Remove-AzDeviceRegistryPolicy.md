@@ -45,13 +45,10 @@ Removes the specified policy from the Device Registry namespace.
 
 ### Example 2: Remove a policy using pipeline input
 ```powershell
-$policy = Get-AzDeviceRegistryPolicy -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -Name "my-policy"
-Remove-AzDeviceRegistryPolicy -InputObject $policy
+Get-AzDeviceRegistryPolicy -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -Name "my-policy" | Remove-AzDeviceRegistryPolicy
 ```
 
-Removes a policy by passing the policy object via the InputObject parameter.
-
-{{ Add description here }}
+Removes a policy by piping the policy object to the Remove cmdlet.
 
 ## PARAMETERS
 

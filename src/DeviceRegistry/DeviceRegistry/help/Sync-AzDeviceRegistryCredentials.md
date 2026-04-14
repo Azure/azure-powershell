@@ -38,8 +38,6 @@ Sync-AzDeviceRegistryCredentials -ResourceGroupName "my-resource-group" -Namespa
 Synchronizes the credentials for the specified Device Registry namespace.
 This is a long-running operation.
 
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -AsJob
