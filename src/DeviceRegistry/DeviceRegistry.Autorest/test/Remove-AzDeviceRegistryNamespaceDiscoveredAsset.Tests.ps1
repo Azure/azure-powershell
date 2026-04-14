@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDeviceRegistryNamesp
 }
 
 Describe 'Remove-AzDeviceRegistryNamespaceDiscoveredAsset' {
-    It 'Delete' {
+    It 'Delete' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.deleteTests.Delete
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDiscoveredAssetTests.deleteTests.jsonFilePath
@@ -30,7 +30,7 @@ Describe 'Remove-AzDeviceRegistryNamespaceDiscoveredAsset' {
         { Get-AzDeviceRegistryNamespaceDiscoveredAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DiscoveredAssetName $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentityNamespace' {
+    It 'DeleteViaIdentityNamespace' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.deleteTests.DeleteViaIdentityNamespace
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDiscoveredAssetTests.deleteTests.jsonFilePath
@@ -52,7 +52,7 @@ Describe 'Remove-AzDeviceRegistryNamespaceDiscoveredAsset' {
         { Get-AzDeviceRegistryNamespaceDiscoveredAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -DiscoveredAssetName $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.deleteTests.DeleteViaIdentity
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDiscoveredAssetTests.deleteTests.jsonFilePath

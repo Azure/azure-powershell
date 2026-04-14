@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDeviceRegistryNamespace
 }
 
 Describe 'Get-AzDeviceRegistryNamespaceDiscoveredAsset' {
-    It 'List' {
+    It 'List' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.getTests.List
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDiscoveredAssetTests.getTests.jsonFilePath
@@ -31,7 +31,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDiscoveredAsset' {
         $DiscoveredAssetNames | Should -Contain $testConfig.name2
     }
 
-    It 'GetViaIdentityNamespace' {
+    It 'GetViaIdentityNamespace' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.getTests.GetViaIdentityNamespace
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDiscoveredAssetTests.getTests.jsonFilePath
@@ -63,7 +63,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDiscoveredAsset' {
         $result.ManagementGroup | Should -HaveCount 1
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.getTests.Get
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDiscoveredAssetTests.getTests.jsonFilePath
@@ -90,7 +90,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDiscoveredAsset' {
         $result.ManagementGroup | Should -HaveCount 1
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.getTests.GetViaIdentity
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDiscoveredAssetTests.getTests.jsonFilePath

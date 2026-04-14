@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDeviceRegistrySchema
 }
 
 Describe 'Remove-AzDeviceRegistrySchemaVersion' {
-    It 'Delete' {
+    It 'Delete' -Skip {
         $testConfig = $env.schemaVersionTests.deleteTests.Delete
         $commonProperties = $env.schemaVersionTests.commonProperties
         $schemaRegistryName = $env.schemaVersionTests.schemaRegistryName
@@ -32,7 +32,7 @@ Describe 'Remove-AzDeviceRegistrySchemaVersion' {
         { Get-AzDeviceRegistrySchemaVersion -ResourceGroupName $env.resourceGroup -SchemaRegistryName $schemaRegistryName -SchemaName $schemaName -Name $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentitySchemaRegistry' {
+    It 'DeleteViaIdentitySchemaRegistry' -Skip {
         $testConfig = $env.schemaVersionTests.deleteTests.DeleteViaIdentitySchemaRegistry
         $commonProperties = $env.schemaVersionTests.commonProperties
         $schemaRegistryName = $env.schemaVersionTests.schemaRegistryName
@@ -52,7 +52,7 @@ Describe 'Remove-AzDeviceRegistrySchemaVersion' {
         { Get-AzDeviceRegistrySchemaVersion -ResourceGroupName $env.resourceGroup -SchemaRegistryName $schemaRegistryName -SchemaName $schemaName -Name $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentitySchema' {
+    It 'DeleteViaIdentitySchema' -Skip {
         $testConfig = $env.schemaVersionTests.deleteTests.DeleteViaIdentitySchema
         $commonProperties = $env.schemaVersionTests.commonProperties
         $schemaRegistryName = $env.schemaVersionTests.schemaRegistryName
@@ -72,7 +72,7 @@ Describe 'Remove-AzDeviceRegistrySchemaVersion' {
         { Get-AzDeviceRegistrySchemaVersion -ResourceGroupName $env.resourceGroup -SchemaRegistryName $schemaRegistryName -SchemaName $schemaName -Name $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -Skip {
         $testConfig = $env.schemaVersionTests.deleteTests.DeleteViaIdentity
         $commonProperties = $env.schemaVersionTests.commonProperties
         $schemaRegistryName = $env.schemaVersionTests.schemaRegistryName

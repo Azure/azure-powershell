@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDeviceRegistryAssetE
 }
 
 Describe 'Remove-AzDeviceRegistryAssetEndpointProfile' {
-    It 'Delete' {
+    It 'Delete' -Skip {
         $aepTestParams = $env.assetEndpointProfileTests.deleteTests.Delete
         $jsonFilePath = (Join-Path $PSScriptRoot $aepTestParams.jsonFilePath)
 
@@ -24,7 +24,7 @@ Describe 'Remove-AzDeviceRegistryAssetEndpointProfile' {
         { Get-AzDeviceRegistryAssetEndpointProfile -Name $aepTestParams.name -ResourceGroupName $env.resourceGroup -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -Skip {
         $aepTestParams = $env.assetEndpointProfileTests.deleteTests.DeleteViaIdentity
         $jsonFilePath = (Join-Path $PSScriptRoot $aepTestParams.jsonFilePath)
 

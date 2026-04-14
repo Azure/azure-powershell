@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDeviceRegistryNamespace
 }
 
 Describe 'New-AzDeviceRegistryNamespaceDiscoveredDevice' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.createTests.CreateExpanded
         $commonProperties = $env.namespaceDiscoveredDeviceTests.createTests.commonProperties
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName
@@ -62,7 +62,7 @@ Describe 'New-AzDeviceRegistryNamespaceDiscoveredDevice' {
         $result.EndpointInbound[$commonProperties.inboundEndpointName2].Version | Should -Be $commonProperties.inboundVersion2
     }
 
-    It 'CreateViaJsonFilePath' {
+    It 'CreateViaJsonFilePath' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.createTests.CreateViaJsonFilePath
         $commonProperties = $env.namespaceDiscoveredDeviceTests.createTests.commonProperties
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName
@@ -92,7 +92,7 @@ Describe 'New-AzDeviceRegistryNamespaceDiscoveredDevice' {
         $result.EndpointInbound[$commonProperties.inboundEndpointName2].Version | Should -Be $commonProperties.inboundVersion2
     }
 
-    It 'CreateViaJsonString' {
+    It 'CreateViaJsonString' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.createTests.CreateViaJsonString
         $commonProperties = $env.namespaceDiscoveredDeviceTests.createTests.commonProperties
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName

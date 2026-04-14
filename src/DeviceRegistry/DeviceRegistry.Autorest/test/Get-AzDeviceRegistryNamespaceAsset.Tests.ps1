@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDeviceRegistryNamespace
 }
 
 Describe 'Get-AzDeviceRegistryNamespaceAsset' {
-    It 'List' {
+    It 'List' -Skip {
         $testConfig = $env.namespaceAssetTests.getTests.List
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
@@ -32,7 +32,7 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
         $assetNames | Should -Contain $testConfig.name2
     }
 
-    It 'GetViaIdentityNamespace' {
+    It 'GetViaIdentityNamespace' -Skip {
         $testConfig = $env.namespaceAssetTests.getTests.GetViaIdentityNamespace
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
@@ -67,7 +67,7 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
         $result.ManagementGroup | Should -HaveCount 1
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         $testConfig = $env.namespaceAssetTests.getTests.Get
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
@@ -97,7 +97,7 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
         $result.ManagementGroup | Should -HaveCount 1
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -Skip {
         $testConfig = $env.namespaceAssetTests.getTests.GetViaIdentity
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName

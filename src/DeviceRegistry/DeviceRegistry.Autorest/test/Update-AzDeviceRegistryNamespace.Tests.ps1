@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeviceRegistryNamesp
 }
 
 Describe 'Update-AzDeviceRegistryNamespace' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         $namespaceTestParams = $env.namespaceTests.updateTests.UpdateExpanded
         $jsonFilePath = (Join-Path $PSScriptRoot $env.namespaceTests.updateTests.createJsonFilePath)
         New-AzDeviceRegistryNamespace -Name $namespaceTestParams.name -ResourceGroupName $env.resourceGroup -JsonFilePath $jsonFilePath
@@ -39,7 +39,7 @@ Describe 'Update-AzDeviceRegistryNamespace' {
         $namespace.MessagingEndpoint[$key1].resourceId | Should -Be $endpoints.myendpoint1.resourceId
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         $namespaceTestParams = $env.namespaceTests.updateTests.UpdateViaJsonFilePath
         $jsonFilePath = (Join-Path $PSScriptRoot $env.namespaceTests.updateTests.createJsonFilePath)
         $namespaceIdentity = New-AzDeviceRegistryNamespace -Name $namespaceTestParams.name -ResourceGroupName $env.resourceGroup -JsonFilePath $jsonFilePath

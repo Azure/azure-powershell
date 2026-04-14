@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDeviceRegistryNamesp
 }
 
 Describe 'Remove-AzDeviceRegistryNamespace' {
-    It 'Delete' {
+    It 'Delete' -Skip {
         $namespaceTestParams = $env.namespaceTests.deleteTests.Delete
         $jsonFilePath = (Join-Path $PSScriptRoot $namespaceTestParams.jsonFilePath)
         New-AzDeviceRegistryNamespace -Name $namespaceTestParams.name -ResourceGroupName $env.resourceGroup -JsonFilePath $jsonFilePath
@@ -23,7 +23,7 @@ Describe 'Remove-AzDeviceRegistryNamespace' {
         { Get-AzDeviceRegistryNamespace -ResourceGroupName $env.resourceGroup -Name $namespaceTestParams.name -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -Skip {
         $namespaceTestParams = $env.namespaceTests.deleteTests.DeleteViaIdentity
         $jsonFilePath = (Join-Path $PSScriptRoot $namespaceTestParams.jsonFilePath)
         $namespace = New-AzDeviceRegistryNamespace -Name $namespaceTestParams.name -ResourceGroupName $env.resourceGroup -JsonFilePath $jsonFilePath

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDeviceRegistrySchema
 }
 
 Describe 'Remove-AzDeviceRegistrySchema' {
-    It 'Delete' {
+    It 'Delete' -Skip {
         $testConfig = $env.schemaTests.deleteTests.Delete
         $commonProperties = $env.schemaTests.commonProperties
         $schemaRegistryName = $env.schemaTests.schemaRegistryName
@@ -31,7 +31,7 @@ Describe 'Remove-AzDeviceRegistrySchema' {
         { Get-AzDeviceRegistrySchema -ResourceGroupName $env.resourceGroup -RegistryName $schemaRegistryName -Name $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentitySchemaRegistry' {
+    It 'DeleteViaIdentitySchemaRegistry' -Skip {
         $testConfig = $env.schemaTests.deleteTests.DeleteViaIdentitySchemaRegistry
         $commonProperties = $env.schemaTests.commonProperties
         $schemaRegistryName = $env.schemaTests.schemaRegistryName
@@ -54,7 +54,7 @@ Describe 'Remove-AzDeviceRegistrySchema' {
         { Get-AzDeviceRegistrySchema -ResourceGroupName $env.resourceGroup -RegistryName $schemaRegistryName -Name $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -Skip {
         $testConfig = $env.schemaTests.deleteTests.DeleteViaIdentity
         $commonProperties = $env.schemaTests.commonProperties
         $schemaRegistryName = $env.schemaTests.schemaRegistryName

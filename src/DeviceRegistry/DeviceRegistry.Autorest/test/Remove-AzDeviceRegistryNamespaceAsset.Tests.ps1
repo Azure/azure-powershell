@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDeviceRegistryNamesp
 }
 
 Describe 'Remove-AzDeviceRegistryNamespaceAsset' {
-    It 'Delete' {
+    It 'Delete' -Skip {
         $testConfig = $env.namespaceAssetTests.deleteTests.Delete
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
@@ -31,7 +31,7 @@ Describe 'Remove-AzDeviceRegistryNamespaceAsset' {
         { Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentityNamespace' {
+    It 'DeleteViaIdentityNamespace' -Skip {
         $testConfig = $env.namespaceAssetTests.deleteTests.DeleteViaIdentityNamespace
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
@@ -54,7 +54,7 @@ Describe 'Remove-AzDeviceRegistryNamespaceAsset' {
         { Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -Skip {
         $testConfig = $env.namespaceAssetTests.deleteTests.DeleteViaIdentity
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName

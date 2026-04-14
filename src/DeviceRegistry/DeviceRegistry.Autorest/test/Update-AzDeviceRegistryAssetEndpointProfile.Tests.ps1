@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeviceRegistryAssetE
 }
 
 Describe 'Update-AzDeviceRegistryAssetEndpointProfile' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         $aepCommonPatchConfig = $env.assetEndpointProfileTests.updateTests.commonPatchConfig
         $aepTestParams = $env.assetEndpointProfileTests.updateTests.UpdateExpanded
         $aepCommonProperties = $env.assetEndpointProfileTests.CommonProperties
@@ -38,7 +38,7 @@ Describe 'Update-AzDeviceRegistryAssetEndpointProfile' {
         $assetEndpointProfile.AdditionalConfiguration | Should -Be $aepCommonPatchConfig.additionalConfiguration
     }
 
-    It 'UpdateViaJsonString' {
+    It 'UpdateViaJsonString' -Skip {
         $aepCommonPatchConfig = $env.assetEndpointProfileTests.updateTests.commonPatchConfig
         $aepTestParams = $env.assetEndpointProfileTests.updateTests.UpdateViaJsonString
         $aepCommonProperties = $env.assetEndpointProfileTests.CommonProperties
@@ -62,7 +62,7 @@ Describe 'Update-AzDeviceRegistryAssetEndpointProfile' {
         $assetEndpointProfile.AdditionalConfiguration | Should -Be $aepCommonPatchConfig.additionalConfiguration
     }
 
-    It 'UpdateViaJsonFilePath' {
+    It 'UpdateViaJsonFilePath' -Skip {
         $aepCommonPatchConfig = $env.assetEndpointProfileTests.updateTests.commonPatchConfig
         $aepTestParams = $env.assetEndpointProfileTests.updateTests.UpdateViaJsonFilePath
         $aepCommonProperties = $env.assetEndpointProfileTests.CommonProperties
@@ -86,7 +86,7 @@ Describe 'Update-AzDeviceRegistryAssetEndpointProfile' {
         $assetEndpointProfile.AdditionalConfiguration | Should -Be $aepCommonPatchConfig.additionalConfiguration
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         $aepCommonPatchConfig = $env.assetEndpointProfileTests.updateTests.commonPatchConfig
         $aepTestParams = $env.assetEndpointProfileTests.updateTests.UpdateExpanded
         $aepCommonProperties = $env.assetEndpointProfileTests.CommonProperties

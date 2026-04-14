@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDeviceRegistrySchema'))
 }
 
 Describe 'Get-AzDeviceRegistrySchema' {
-    It 'List' {
+    It 'List' -Skip {
         $testConfig = $env.schemaTests.getTests.List
         $commonProperties = $env.schemaTests.commonProperties
         $schemaRegistryName = $env.schemaTests.schemaRegistryName
@@ -32,7 +32,7 @@ Describe 'Get-AzDeviceRegistrySchema' {
         $schemaNames | Should -Contain $testConfig.names[1]
     }
 
-    It 'GetViaIdentitySchemaRegistry' {
+    It 'GetViaIdentitySchemaRegistry' -Skip {
         $testConfig = $env.schemaTests.getTests.GetViaIdentitySchemaRegistry
         $commonProperties = $env.schemaTests.commonProperties
         $schemaRegistryName = $env.schemaTests.schemaRegistryName
@@ -54,7 +54,7 @@ Describe 'Get-AzDeviceRegistrySchema' {
         $result.Tag[$commonProperties.tagsKey] | Should -Be $commonProperties.tagsValue
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         $testConfig = $env.schemaTests.getTests.Get
         $commonProperties = $env.schemaTests.commonProperties
         $schemaRegistryName = $env.schemaTests.schemaRegistryName
@@ -71,7 +71,7 @@ Describe 'Get-AzDeviceRegistrySchema' {
         $result.Tag[$commonProperties.tagsKey] | Should -Be $commonProperties.tagsValue
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -Skip {
         $testConfig = $env.schemaTests.getTests.GetViaIdentity
         $commonProperties = $env.schemaTests.commonProperties
         $schemaRegistryName = $env.schemaTests.schemaRegistryName

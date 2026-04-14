@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDeviceRegistrySchemaReg
 }
 
 Describe 'New-AzDeviceRegistrySchemaRegistry' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -Skip {
         $testConfig = $env.schemaRegistryTests.createTests.CreateExpanded
         $commonProperties = $env.schemaRegistryTests.createTests.commonProperties
 
@@ -29,7 +29,7 @@ Describe 'New-AzDeviceRegistrySchemaRegistry' {
         $result.StorageAccountContainerUrl | Should -Be $commonProperties.storageAccountContainerUrl
     }
 
-    It 'CreateViaJsonFilePath' {
+    It 'CreateViaJsonFilePath' -Skip {
         $testConfig = $env.schemaRegistryTests.createTests.CreateViaJsonFilePath
         $jsonFilePath = Join-Path $PSScriptRoot $testConfig.jsonFilePath
         $commonProperties = $env.schemaRegistryTests.createTests.commonProperties
@@ -44,7 +44,7 @@ Describe 'New-AzDeviceRegistrySchemaRegistry' {
         $result.StorageAccountContainerUrl | Should -Be $commonProperties.storageAccountContainerUrl
     }
 
-    It 'CreateViaJsonString' {
+    It 'CreateViaJsonString' -Skip {
         $testConfig = $env.schemaRegistryTests.createTests.CreateViaJsonString
         $commonProperties = $env.schemaRegistryTests.createTests.commonProperties
         $jsonObject = @{

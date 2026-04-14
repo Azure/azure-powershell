@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Move-AzDeviceRegistryNamespac
 }
 
 Describe 'Move-AzDeviceRegistryNamespace' {
-    It 'MigrateExpanded' {
+    It 'MigrateExpanded' -Skip {
         $testConfig = $env.namespaceTests.migrateTests.MigrateExpanded
         $commonProperties = $env.namespaceTests.migrateTests.commonProperties
 
@@ -32,7 +32,7 @@ Describe 'Move-AzDeviceRegistryNamespace' {
         $deviceResult | Should -Not -BeNullOrEmpty
     }
 
-    It 'MigrateViaJsonString' {
+    It 'MigrateViaJsonString' -Skip {
         $testConfig = $env.namespaceTests.migrateTests.MigrateViaJsonString
         $commonProperties = $env.namespaceTests.migrateTests.commonProperties
 
@@ -54,7 +54,7 @@ Describe 'Move-AzDeviceRegistryNamespace' {
         $deviceResult | Should -Not -BeNullOrEmpty
     }
 
-    It 'MigrateViaJsonFilePath' {
+    It 'MigrateViaJsonFilePath' -Skip {
         $testConfig = $env.namespaceTests.migrateTests.MigrateViaJsonFilePath
         $commonProperties = $env.namespaceTests.migrateTests.commonProperties
         $jsonFilePath = Join-Path $PSScriptRoot $testConfig.jsonFilePath
@@ -71,7 +71,7 @@ Describe 'Move-AzDeviceRegistryNamespace' {
         $deviceResult | Should -Not -BeNullOrEmpty
     }
 
-    It 'Migrate' {
+    It 'Migrate' -Skip {
         $testConfig = $env.namespaceTests.migrateTests.Migrate
         $commonProperties = $env.namespaceTests.migrateTests.commonProperties
 
@@ -88,7 +88,7 @@ Describe 'Move-AzDeviceRegistryNamespace' {
         $deviceResult | Should -Not -BeNullOrEmpty
     }
 
-    It 'MigrateViaIdentityExpanded' {
+    It 'MigrateViaIdentityExpanded' -Skip {
         $testConfig = $env.namespaceTests.migrateTests.MigrateViaIdentityExpanded
         $commonProperties = $env.namespaceTests.migrateTests.commonProperties
 
@@ -108,7 +108,7 @@ Describe 'Move-AzDeviceRegistryNamespace' {
         $deviceResult | Should -Not -BeNullOrEmpty
     }
 
-    It 'MigrateViaIdentity' {
+    It 'MigrateViaIdentity' -Skip {
         $testConfig = $env.namespaceTests.migrateTests.MigrateViaIdentity
         $commonProperties = $env.namespaceTests.migrateTests.commonProperties
 

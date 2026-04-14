@@ -46,7 +46,7 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     $env.Add("resourceGroup", "adr-pwsh-test-rg")
     $env.Add("location", "eastus2")
-    $env.Add("extendedLocationName", "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq")
+    $env.Add("extendedLocationName", "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq")
     $env.Add("extendedLocationType", "CustomLocation")
 
     $jsonStringConfig = '{"defaultPublishingInterval": 200, "defaultSamplingInterval": 500, "defaultQueueSize": 10}'
@@ -227,12 +227,12 @@ function setupEnv() {
             key2 = "myendpoint2"
             endpoints = @{
                 "myendpoint1" = @{
-                    "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
+                    "resourceId" = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
                     "address" = "https://myendpoint1.westeurope-1.iothub.azure.net"
                     "endpointType" = "Microsoft.Devices/IotHubs"
                 }
                 "myendpoint2" = @{
-                    "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2"
+                    "resourceId" = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2"
                     "address" = "https://myendpoint2.westeurope-1.iothub.azure.net"
                     "endpointType" = "Microsoft.Devices/IotHubs"
                 }
@@ -263,12 +263,12 @@ function setupEnv() {
                 key2 = "myendpoint2"
                 endpoints = @{
                     "myendpoint1" = @{
-                        "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
+                        "resourceId" = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
                         "address" = "https://myendpoint1.westeurope-1.iothub.azure.net"
                         "endpointType" = "Microsoft.Devices/IotHubs"
                     }
                     "myendpoint2" = @{
-                        "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2"
+                        "resourceId" = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2"
                         "address" = "https://myendpoint2.westeurope-1.iothub.azure.net"
                         "endpointType" = "Microsoft.Devices/IotHubs"
                     }
@@ -281,12 +281,12 @@ function setupEnv() {
                 key2 = "myendpoint2"
                 endpoints = @{
                     "myendpoint1" = @{
-                        "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
+                        "resourceId" = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
                         "address" = "https://myendpoint1.westeurope-1.iothub.azure.net"
                         "endpointType" = "Microsoft.Devices/IotHubs"
                     }
                     "myendpoint2" = @{
-                        "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2"
+                        "resourceId" = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace2"
                         "address" = "https://myendpoint2.westeurope-1.iothub.azure.net"
                         "endpointType" = "Microsoft.Devices/IotHubs"
                     }
@@ -308,7 +308,7 @@ function setupEnv() {
             key1 = "myendpoint1"
             endpoints = @{
                 "myendpoint1" = @{
-                    "resourceId" = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
+                    "resourceId" = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.IotHub/namespaces/contoso-hub-namespace1"
                     "address" = "https://myendpoint1.westeurope-1.iothub.azure.net"
                     "endpointType" = "Microsoft.Devices/IotHubs"
                 }
@@ -332,7 +332,7 @@ function setupEnv() {
         migrateTests = @{
             commonProperties = @{
                 namespace = "adr-namespace"
-                resourceIdPrefix = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/assets/"
+                resourceIdPrefix = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.DeviceRegistry/assets/"
                 targetAddress = "https://myendpoint1.westeurope-1.iothub.azure.net"
                 endpointProfileType = "Microsoft.IotHub"
             }
@@ -368,7 +368,7 @@ function setupEnv() {
     $env.Add("namespaceAssetTests", @{
         namespaceName = "adr-namespace"
         resourceGroupName = "adr-canary-test-ga-2510"
-        extendedLocationName = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-canary-test-ga-2510/providers/Microsoft.ExtendedLocation/customLocations/adr-canary-test-ga-2510-cl"
+        extendedLocationName = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourceGroups/adr-canary-test-ga-2510/providers/Microsoft.ExtendedLocation/customLocations/adr-canary-test-ga-2510-cl"
         createTests = @{
             CreateExpanded = @{
                 name = "test-ns-asset-create-expanded"
@@ -577,7 +577,7 @@ function setupEnv() {
     $env.Add("namespaceDeviceTests", @{
         namespaceName = "adr-namespace"
         resourceGroupName = "adr-canary-test-ga-2510"
-        extendedLocationName = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourceGroups/adr-canary-test-ga-2510/providers/Microsoft.ExtendedLocation/customLocations/adr-canary-test-ga-2510-cl"
+        extendedLocationName = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourceGroups/adr-canary-test-ga-2510/providers/Microsoft.ExtendedLocation/customLocations/adr-canary-test-ga-2510-cl"
         location = "eastus2euap"
         createTests = @{
             commonProperties = @{
@@ -1064,10 +1064,10 @@ function setupEnv() {
         }
         updateTests = @{
             UpdateExpanded = @{
-                userIdentity = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-azpowershell-test-cms-2/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cms-test-azpowershell-uami-2"
+                userIdentity = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourcegroups/adr-azpowershell-test-cms-2/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cms-test-azpowershell-uami-2"
             }
             UpdateViaIdentity = @{
-                userIdentity = "/subscriptions/efb15086-3322-405d-a9d0-c35715a9b722/resourcegroups/adr-azpowershell-test-cms-2/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cms-test-azpowershell-uami-2"
+                userIdentity = "/subscriptions/53cd450b-b108-4e6e-b048-f63c1dcc8c8f/resourcegroups/adr-azpowershell-test-cms-2/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cms-test-azpowershell-uami-2"
             }
         }
         deleteTests = @{

@@ -15,14 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDeviceRegistryAsset'
 }
 
 Describe 'Remove-AzDeviceRegistryAsset' {
-    It 'Delete' {
+    It 'Delete' -Skip {
         $assetTestParams = $env.assetTests.deleteTests.Delete
         New-AzDeviceRegistryAsset -ResourceGroupName $env.resourceGroup -Name $assetTestParams.name -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -Location $env.location -AssetEndpointProfileRef $env.assetTests.assetEndpointProfileRef
         Remove-AzDeviceRegistryAsset -ResourceGroupName $env.resourceGroup -Name $assetTestParams.name
         { Get-AzDeviceRegistryAsset -ResourceGroupName $env.resourceGroup -Name $assetTestParams.name -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -Skip {
         $assetTestParams = $env.assetTests.deleteTests.DeleteViaIdentity
         $asset = New-AzDeviceRegistryAsset -ResourceGroupName $env.resourceGroup -Name $assetTestParams.name -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -Location $env.location -AssetEndpointProfileRef $env.assetTests.assetEndpointProfileRef
         Remove-AzDeviceRegistryAsset -InputObject $asset

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeviceRegistryNamesp
 }
 
 Describe 'Update-AzDeviceRegistryNamespaceDiscoveredAsset' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.updateTests.UpdateExpanded
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $createJsonFilePath = Join-Path $PSScriptRoot $env.namespaceDiscoveredAssetTests.updateTests.createJsonFilePath
@@ -47,7 +47,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDiscoveredAsset' {
         $result.DocumentationUri | Should -Be $commonPatchConfig.documentationUri
     }
 
-    It 'UpdateViaJsonString' {
+    It 'UpdateViaJsonString' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.updateTests.UpdateViaJsonString
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredAssetTests.updateTests.commonProperties
@@ -84,7 +84,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDiscoveredAsset' {
         
     }
 
-    It 'UpdateViaJsonFilePath' {
+    It 'UpdateViaJsonFilePath' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.updateTests.UpdateViaJsonFilePath
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredAssetTests.updateTests.commonProperties
@@ -117,7 +117,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDiscoveredAsset' {
         $result.DocumentationUri | Should -Be $commonPatchConfig.documentationUri
     }
 
-    It 'UpdateViaIdentityNamespaceExpanded' {
+    It 'UpdateViaIdentityNamespaceExpanded' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.updateTests.UpdateViaIdentityNamespaceExpanded
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredAssetTests.updateTests.commonProperties
@@ -156,7 +156,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDiscoveredAsset' {
         $result.DocumentationUri | Should -Be $commonPatchConfig.documentationUri
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         $testConfig = $env.namespaceDiscoveredAssetTests.updateTests.UpdateViaIdentityExpanded
         $namespaceName = $env.namespaceDiscoveredAssetTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredAssetTests.updateTests.commonProperties

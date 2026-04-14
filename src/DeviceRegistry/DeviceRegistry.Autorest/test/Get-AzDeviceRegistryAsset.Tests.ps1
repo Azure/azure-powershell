@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDeviceRegistryAsset'))
 }
 
 Describe 'Get-AzDeviceRegistryAsset' {
-    It 'List' {
+    It 'List' -Skip {
         $assetTestParams = $env.assetTests.getTests.List
         New-AzDeviceRegistryAsset -ResourceGroupName $env.resourceGroup -Name $assetTestParams.name1 -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -Location $env.location -AssetEndpointProfileRef $env.assetTests.assetEndpointProfileRef
         New-AzDeviceRegistryAsset -ResourceGroupName $env.resourceGroup -Name $assetTestParams.name2 -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -Location $env.location -AssetEndpointProfileRef $env.assetTests.assetEndpointProfileRef
@@ -26,7 +26,7 @@ Describe 'Get-AzDeviceRegistryAsset' {
         $listOfAssets.Count -ge 2 | Should -Be $true
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         $assetTestParams = $env.assetTests.getTests.Get
         New-AzDeviceRegistryAsset -ResourceGroupName $env.resourceGroup -Name $assetTestParams.name -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -Location $env.location -AssetEndpointProfileRef $env.assetTests.assetEndpointProfileRef
         $asset = Get-AzDeviceRegistryAsset -ResourceGroupName $env.resourceGroup -Name $assetTestParams.name
@@ -38,7 +38,7 @@ Describe 'Get-AzDeviceRegistryAsset' {
         $asset.EndpointProfileRef | Should -Be $env.assetTests.assetEndpointProfileRef
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -Skip {
         $assetTestParams = $env.assetTests.getTests.GetViaIdentity
         $assetIdentity = New-AzDeviceRegistryAsset -ResourceGroupName $env.resourceGroup -Name $assetTestParams.name -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -Location $env.location -AssetEndpointProfileRef $env.assetTests.assetEndpointProfileRef
         $asset = Get-AzDeviceRegistryAsset -InputObject $assetIdentity

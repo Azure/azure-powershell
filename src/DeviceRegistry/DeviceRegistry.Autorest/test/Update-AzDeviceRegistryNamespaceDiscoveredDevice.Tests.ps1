@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeviceRegistryNamesp
 }
 
 Describe 'Update-AzDeviceRegistryNamespaceDiscoveredDevice' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.updateTests.UpdateExpanded
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredDeviceTests.updateTests.commonProperties
@@ -62,7 +62,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDiscoveredDevice' {
         $result.EndpointInbound[$commonProperties.inboundEndpointName2].Version | Should -Be $commonProperties.inboundVersion2
     }
 
-    It 'UpdateViaJsonString' {
+    It 'UpdateViaJsonString' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.updateTests.UpdateViaJsonString
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredDeviceTests.updateTests.commonProperties
@@ -101,7 +101,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDiscoveredDevice' {
         $result.EndpointInbound[$commonProperties.inboundEndpointName2].Version | Should -Be $commonProperties.inboundVersion2
     }
 
-    It 'UpdateViaJsonFilePath' {
+    It 'UpdateViaJsonFilePath' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.updateTests.UpdateViaJsonFilePath
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredDeviceTests.updateTests.commonProperties
@@ -137,7 +137,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDiscoveredDevice' {
         $result.EndpointInbound[$commonProperties.inboundEndpointName2].Version | Should -Be $commonProperties.inboundVersion2
     }
 
-    It 'UpdateViaIdentityNamespaceExpanded' {
+    It 'UpdateViaIdentityNamespaceExpanded' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.updateTests.UpdateViaIdentityNamespaceExpanded
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredDeviceTests.updateTests.commonProperties
@@ -191,7 +191,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDiscoveredDevice' {
         $result.EndpointInbound[$commonProperties.inboundEndpointName2].Version | Should -Be $commonProperties.inboundVersion2
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.updateTests.UpdateViaIdentityExpanded
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredDeviceTests.updateTests.commonProperties

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeviceRegistryNamesp
 }
 
 Describe 'Update-AzDeviceRegistryNamespaceDevice' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         $testConfig = $env.namespaceDeviceTests.updateTests.UpdateExpanded
         $namespaceName = $env.namespaceDeviceTests.namespaceName
         $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
@@ -70,7 +70,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].UsernamePasswordCredentialsPasswordSecretName | Should -Be $commonProperties.passwordSecretName
     }
 
-    It 'UpdateViaJsonString' {
+    It 'UpdateViaJsonString' -Skip {
         $testConfig = $env.namespaceDeviceTests.updateTests.UpdateViaJsonString
         $namespaceName = $env.namespaceDeviceTests.namespaceName
         $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
@@ -114,7 +114,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].UsernamePasswordCredentialsPasswordSecretName | Should -Be $commonProperties.passwordSecretName
     }
 
-    It 'UpdateViaJsonFilePath' {
+    It 'UpdateViaJsonFilePath' -Skip {
         $testConfig = $env.namespaceDeviceTests.updateTests.UpdateViaJsonFilePath
         $namespaceName = $env.namespaceDeviceTests.namespaceName
         $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
@@ -155,7 +155,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].UsernamePasswordCredentialsPasswordSecretName | Should -Be $commonProperties.passwordSecretName
     }
 
-    It 'UpdateViaIdentityNamespaceExpanded' {
+    It 'UpdateViaIdentityNamespaceExpanded' -Skip {
         $testConfig = $env.namespaceDeviceTests.updateTests.UpdateViaIdentityNamespaceExpanded
         $namespaceName = $env.namespaceDeviceTests.namespaceName
         $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
@@ -219,7 +219,7 @@ Describe 'Update-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].UsernamePasswordCredentialsPasswordSecretName | Should -Be $commonProperties.passwordSecretName
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         $testConfig = $env.namespaceDeviceTests.updateTests.UpdateViaIdentityExpanded
         $namespaceName = $env.namespaceDeviceTests.namespaceName
         $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName

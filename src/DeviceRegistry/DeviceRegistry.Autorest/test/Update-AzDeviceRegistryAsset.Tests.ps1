@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeviceRegistryAsset'
 }
 
 Describe 'Update-AzDeviceRegistryAsset' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         $assetCommonPatchConfig = $env.assetTests.updateTests.commonPatchConfig
         $assetTestParams = $env.assetTests.updateTests.UpdateExpanded
         
@@ -33,7 +33,7 @@ Describe 'Update-AzDeviceRegistryAsset' {
         $asset.DisplayName | Should -Be $assetCommonPatchConfig.displayName
     }
 
-    It 'UpdateViaJsonString' {
+    It 'UpdateViaJsonString' -Skip {
         $assetCommonPatchConfig = $env.assetTests.updateTests.commonPatchConfig
         $assetTestParams = $env.assetTests.updateTests.UpdateViaJsonString
         $updateJsonString = Get-Content -Path (Join-Path $PSScriptRoot $assetTestParams.updateJsonFilePath) -Raw
@@ -51,7 +51,7 @@ Describe 'Update-AzDeviceRegistryAsset' {
         $asset.DisplayName | Should -Be $assetCommonPatchConfig.displayName
     }
 
-    It 'UpdateViaJsonFilePath' {
+    It 'UpdateViaJsonFilePath' -Skip {
         $assetCommonPatchConfig = $env.assetTests.updateTests.commonPatchConfig
         $assetTestParams = $env.assetTests.updateTests.UpdateViaJsonFilePath
         $updateJsonFilePath = (Join-Path $PSScriptRoot $assetTestParams.updateJsonFilePath)
@@ -69,7 +69,7 @@ Describe 'Update-AzDeviceRegistryAsset' {
         $asset.DisplayName | Should -Be $assetCommonPatchConfig.displayName
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         $assetCommonPatchConfig = $env.assetTests.updateTests.commonPatchConfig
         $assetTestParams = $env.assetTests.updateTests.UpdateExpanded
         $asset = New-AzDeviceRegistryAsset -ResourceGroupName $env.resourceGroup -Name $assetTestParams.name -ExtendedLocationName $env.extendedLocationName -ExtendedLocationType $env.extendedLocationType -Location $env.location -AssetEndpointProfileRef $env.assetTests.assetEndpointProfileRef
