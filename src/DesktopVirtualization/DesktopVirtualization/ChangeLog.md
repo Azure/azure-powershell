@@ -18,8 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2025-10-10
 * Added MultiplePersistent enum value to HostPool property loadBalancerType.
-* Fixed issue when `New-AzWvdRegistrationInfo` cmdlet execution failed if public network access was disabled on the host pool.
+* Fixed an issue where `New-AzWvdRegistrationInfo` failed when public network access was disabled on the host pool.
+* Fixed an issue where `Remove-AzWvdRegistrationInfo` failed when public network access was disabled on the host pool.
 
 ## Version 5.4.7
 * Added preannouncement for breaking changes in Az.DesktopVirtualization 6.0.0

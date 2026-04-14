@@ -50,7 +50,7 @@ require:
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)\specification\desktopvirtualization\resource-manager\Microsoft.DesktopVirtualization\DesktopVirtualization\stable\2025-10-10\desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/DesktopVirtualization/stable/2025-10-10/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
