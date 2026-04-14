@@ -1225,3 +1225,81 @@ function Test-InVMAccessControlProfileVersion
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Tests updating gallery image definition features with StartsAtVersion and AllowUpdateImage parameters
+#>
+function Test-GalleryImageDefinitionUpdateFeature
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $location = $loc;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Gallery variables
+        $galleryName = 'gl' + $rgname;
+        $definitionName = 'def' + $rgname;
+        $skuDetails = @{
+            Publisher = 'testpub'
+            Offer     = 'testoffer'
+            Sku       = 'testsku'
+        }
+        $osType = 'Windows'
+        $osState = 'Specialized'
+
+        # Create gallery
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Location $location;
+
+        # Create image definition with features including StartsAtVersion
+        $initialSecurityFeature = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.GalleryImageFeature `
+            -Property @{Name = 'SecurityType'; Value = 'TrustedLaunch'; StartsAtVersion = '4.0.0'}
+        $initialDiskControllerFeature = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.GalleryImageFeature `
+            -Property @{Name = 'DiskControllerTypes'; Value = 'SCSI'; StartsAtVersion = '4.0.0'}
+        $initialFeatures = @($initialSecurityFeature, $initialDiskControllerFeature);
+
+        New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName `
+            -Name $definitionName -Location $location `
+            -Publisher $skuDetails.Publisher -Offer $skuDetails.Offer -Sku $skuDetails.Sku `
+            -OsState $osState -OsType $osType -Feature $initialFeatures -ErrorAction Stop;
+
+        $definition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $definitionName;
+        Assert-NotNull $definition;
+        Assert-AreEqual $definition.Name $definitionName;
+        Assert-AreEqual $definition.Features.Count 2;
+
+        # Update with AllowUpdateImage using different feature values
+        $securityFeature = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.GalleryImageFeature `
+            -Property @{Name = 'SecurityType'; Value = 'TrustedLaunch'; StartsAtVersion = '4.0.0'}
+        $diskControllerFeature = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.GalleryImageFeature `
+            -Property @{Name = 'DiskControllerTypes'; Value = 'SCSI, NVMe'; StartsAtVersion = '4.0.0'}
+        $features = @($securityFeature, $diskControllerFeature);
+
+        Update-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName `
+            -Name $definitionName -Feature $features -AllowUpdateImage $true;
+
+        # Verify the updated definition
+        $updatedDefinition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $definitionName;
+        Assert-NotNull $updatedDefinition;
+        Assert-AreEqual $updatedDefinition.Features.Count 2;
+
+        $diskControllerUpdated = $updatedDefinition.Features | Where-Object { $_.Name -eq 'DiskControllerTypes' };
+        Assert-NotNull $diskControllerUpdated;
+        Assert-AreEqual $diskControllerUpdated.Value 'SCSI, NVMe';
+        Assert-AreEqual $diskControllerUpdated.StartsAtVersion '4.0.0';
+
+        $securityUpdated = $updatedDefinition.Features | Where-Object { $_.Name -eq 'SecurityType' };
+        Assert-NotNull $securityUpdated;
+        Assert-AreEqual $securityUpdated.Value 'TrustedLaunch';
+        Assert-AreEqual $securityUpdated.StartsAtVersion '4.0.0';
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

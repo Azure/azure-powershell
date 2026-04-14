@@ -47,6 +47,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         [JsonProperty("principalIds")]
         public List<string> PrincipalIds { get; set; } = new List<string>();
 
+        [JsonProperty("principalTypes")]
+        public List<string> PrincipalTypes { get; set; } = new List<string>();
+
         [JsonProperty("excludePrincipalIds")]
         public List<string> ExcludePrincipalIds { get; set; } = new List<string>();
 
