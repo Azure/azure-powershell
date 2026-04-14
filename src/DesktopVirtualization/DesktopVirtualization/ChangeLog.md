@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Preannounced breaking changes for Az.DesktopVirtualization 6.0.0
+* Added preannouncement for breaking changes in Az.DesktopVirtualization 6.0.0
     - The parameter 'Tag' will be removed from the Update cmdlet of Application.
     - The parameter 'Tag' will be removed from the Update cmdlet of Desktop.
 
