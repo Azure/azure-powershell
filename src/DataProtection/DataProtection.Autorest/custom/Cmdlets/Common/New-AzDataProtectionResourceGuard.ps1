@@ -1,8 +1,8 @@
-﻿
+
 
 function New-AzDataProtectionResourceGuard
 {   
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IResourceGuardResource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IResourceGuardResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates a resource guard under a resource group')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
