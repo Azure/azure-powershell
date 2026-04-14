@@ -43,7 +43,7 @@ Describe 'CredentialsAndPoliciesFlow' {
 
         # CMS test-specific overrides (these differ from the standard test env)
         $script:resourceGroup    = "adr-sdk-test-cms-async1"
-        $script:subscriptionId   = (Get-AzContext).Subscription.Id
+        $script:subscriptionId   = $env.SubscriptionId
         $script:location         = "eastus2euap"
     }
 
