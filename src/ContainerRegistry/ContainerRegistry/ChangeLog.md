@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 5.0.1
+* Fixed `-ExposeToken` with `Connect-AzContainerRegistry`
+* Updated Azure.Core from 1.47.3 to 1.50.0
+
 ## Version 5.0.0
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 * Updated Azure.Core from 1.45.0 to 1.47.3

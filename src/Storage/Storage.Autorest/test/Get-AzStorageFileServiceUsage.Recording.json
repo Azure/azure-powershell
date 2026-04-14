@@ -1,8 +1,8 @@
 {
-  "Get-AzStorageFileServiceUsage+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/pshtestaccountpv2/fileServices/default/usages/default?api-version=2025-01-01+1": {
+  "Get-AzStorageFileServiceUsage+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/pshtestaccountpv2/fileServices/default/usages/default?api-version=2025-06-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/pshtestaccountpv2/fileServices/default/usages/default?api-version=2025-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/pshtestaccountpv2/fileServices/default/usages/default?api-version=2025-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

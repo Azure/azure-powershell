@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Extensions;
 
-    /// <summary>For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.</summary>
+    /// <summary>
+    /// A time range. For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.
+    /// </summary>
     public partial class TimeSpan
     {
 

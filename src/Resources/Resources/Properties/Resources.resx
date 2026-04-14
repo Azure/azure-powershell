@@ -312,6 +312,12 @@
   <data name="RemoveRoleDefinition" xml:space="preserve">
     <value>Are you sure you want to remove role definition with id '{0}'.</value>
   </data>
+  <data name="RemovingRoleDefinitionById" xml:space="preserve">
+    <value>Removing role definition by id</value>
+  </data>
+  <data name="RemovingRoleDefinitionByName" xml:space="preserve">
+    <value>Removing role definition by name</value>
+  </data>
   <data name="InvalidActions" xml:space="preserve">
     <value>Invalid value for Actions</value>
   </data>

@@ -1,3 +1,104 @@
+## 15.5.0 - April 2026
+#### Az.CosmosDB 1.20.0 
+* Modified cmdlet `New-AzCosmosDBAccount`
+   - Added parameter `-DisableLocalAuth`
+* Modified cmdlet `Update-AzCosmosDBAccount`
+   - Added parameters `-Capabilities`, `-DisableLocalAuth`
+#### Az.Migrate 2.12.0 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameters `-TargetSecurityType`, `-TargetVMSecureBootEnabled`
+#### Az.NetAppFiles 1.1.0 
+* Modified cmdlet `New-AzNetAppFilesVolume`
+   - Added parameter `-DesiredRansomwareProtectionState`
+* Modified cmdlet `Update-AzNetAppFilesVolume`
+   - Added parameter `-DesiredRansomwareProtectionState`
+* Added cmdlet `Clear-AzNetAppFilesRansomwareReportSuspect`, `Get-AzNetAppFilesRansomwareReport`, `Get-AzNetAppFilesVolumeQuotaReport`
+#### Az.Network 7.26.0 
+* Modified cmdlet `New-AzFirewall`
+   - Added parameter `-EdgeZone`
+
+## 15.4.0 - March 2026
+#### Az.Compute 11.4.0 
+* Modified cmdlet `Add-AzVMDataDisk`
+   - Added parameters `-DiskIOPSReadWrite`, `-DiskMBpsReadWrite`
+* Modified cmdlet `New-AzDiskConfig`
+   - Added parameter `-ActionOnDiskDelay`
+* Modified cmdlet `New-AzDiskUpdateConfig`
+   - Added parameter `-ActionOnDiskDelay`
+* Modified cmdlet `New-AzSshKey`
+   - Added parameters `-Location`, `-Tag`
+* Modified cmdlet `Update-AzSshKey`
+   - Added parameter `-Tag`
+#### Az.Databricks 1.11.0 
+* Modified cmdlet `New-AzDatabricksWorkspace`
+   - Added parameter `-ComputeMode`
+   - Changed the type of parameter `-ComplianceStandard` from `ComplianceStandard[]` to `String[]`
+* Modified cmdlet `Update-AzDatabricksWorkspace`
+   - Changed the type of parameter `-ComplianceStandard` from `ComplianceStandard[]` to `String[]`
+#### Az.ElasticSan 1.7.0 
+* Modified cmdlet `New-AzElasticSan`
+   - Added parameters `-AutoScalePolicyEnforcement`, `-CapacityUnitScaleUpLimitTiB`, `-IncreaseCapacityUnitByTiB`, `-UnusedSizeTiB`
+* Modified cmdlet `Update-AzElasticSan`
+   - Added parameters `-AutoScalePolicyEnforcement`, `-CapacityUnitScaleUpLimitTiB`, `-IncreaseCapacityUnitByTiB`, `-UnusedSizeTiB`
+* Added cmdlet `Test-AzElasticSanVolumeBackup`, `Test-AzElasticSanVolumeRestore`
+
+## 15.3.0 - February 2026
+#### Az.Compute 11.3.0 
+* Added cmdlet `Convert-AzAvailabilitySet`, `Move-AzVirtualMachineToVmss`, `Start-AzAvailabilitySetMigration`, `Stop-AzAvailabilitySetMigration`, `Test-AzAvailabilitySetMigration`#### Az.DataProtection 2.9.0 
+, `Get-AzDataProtectionSoftDeletedBackupVault`, `Search-AzDataProtectionSoftDeletedVaultBackupInstanceInAzGraph`, `Undo-AzDataProtectionVaultDeletion`
+#### Az.Network 7.25.0 
+* Modified cmdlet `New-AzPrivateEndpoint`
+   - Added parameter `-IpVersionType`
+* Added cmdlet `Get-AzVirtualNetworkAppliance`, `New-AzVirtualNetworkAppliance`, `Remove-AzVirtualNetworkAppliance`, `Update-AzVirtualNetworkAppliance`
+#### Az.Storage 9.6.0 
+* Modified cmdlet `Update-AzStorageFileServiceProperty`
+   - Added parameters `-SmbEncryptionInTransitRequired`, `-NfsEncryptionInTransitRequired`
+
+## 15.2.0 - January 2026
+#### Az.Aks 7.1.0 
+* Modified cmdlet `New-AzAksCluster`
+   - Removed parameter `-AutoUpgradeChannel`
+   - Added parameters `-NodeMessageOfTheDay`, `-NodeNetworkProfile`, `-NodeOSDiskType`, `-NodePodIPAllocationMode`, `-NodeEnableSecureBoot`, `-NodeEnableVtpm`, `-NodeSshAccess`, `-NodeTaint`, `-NodeWorkloadRuntime`, `-EnableAIToolchainOperator`, `-DisableApiServerRunCommand`, `-EnableApiServerVnetIntegration`, `-ApiServerSubnetId`, `-NodeOSAutoUpgradeChannel`, `-NodeAutoUpgradeChannel`, `-EnableMonitorMetric`, `-BootstrapArtifactSource`, `-BootstrapContainerRegistryId`, `-AssignKubeletIdentity`, `-EnableCostAnalysis`, `-EnableAdvancedNetworking`, `-EnableAdvancedNetworkingObservability`, `-EnableAdvancedNetworkingSecurity`, `-AdvancedNetworkingSecurityPolicy`, `-IPFamily`, `-LoadBalancerBackendPoolType`, `-LoadBalancerManagedOutboundIpCountIPv6`, `-NATGatewayIdleTimeoutInMinute`, `-NATGatewayManagedOutboundIpCount`, `-NetworkDataplane`, `-NetworkPluginMode`, `-EnableStaticEgressGateway`, `-NodeProvisioningMode`, `-NodeProvisioningDefaultPool`, `-NodeResourceGroupRestrictionLevel`, `-EnablePodIdentity`, `-EnablePodIdentityWithKubenet`, `-EnablePublicNetworkAccess`, `-EnableAzureKeyVaultKms`, `-AzureKeyVaultKmsKeyId`, `-AzureKeyVaultKmsNetworkAccess`, `-AzureKeyVaultKmsResourceId`, `-CustomCaTrustCertificate`, `-DefenderLogAnalyticsWorkspaceResourceId`, `-EnableDefenderSecurityMonitoring`, `-EnableImageCleaner`, `-ImageCleanerIntervalHour`, `-EnableWorkloadIdentity`, `-SupportPlan`, `-EnableKEDA`, `-EnableVerticalPodAutoscaler`, `-EnableBlobCSIDriver`, `-EnableDiskCSIDriver`, `-EnableFileCSIDriver`, `-EnableSnapshotCSIDriver`, `-IfMatch`, `-IfNoneMatch`
+* Modified cmdlet `New-AzAksNodePool`
+   - Added parameters `-OSDiskType`, `-WorkloadRuntime`, `-MessageOfTheDay`, `-PodIPAllocationMode`, `-GatewayPublicIPPrefixSize`, `-GPUDriver`, `-IfMatch`, `-IfNoneMatch`, `-NetworkProfile`, `-ScaleDownMode`, `-EnableSecureBoot`, `-EnableVtpm`, `-SshAccess`, `-MaxUnavailable`, `-DrainTimeoutInMinute`, `-NodeSoakDurationInMinute`, `-UndrainableNodeBehavior`
+* Modified cmdlet `Set-AzAksCluster`
+   - Removed parameter `-AutoUpgradeChannel`
+   - Added parameters `-NodeTaint`, `-NodeWorkloadRuntime`, `-EnableAIToolchainOperator`, `-DisableApiServerRunCommand`, `-EnableApiServerVnetIntegration`, `-ApiServerSubnetId`, `-NodeOSAutoUpgradeChannel`, `-NodeAutoUpgradeChannel`, `-EnableMonitorMetric`, `-BootstrapArtifactSource`, `-BootstrapContainerRegistryId`, `-AssignKubeletIdentity`, `-EnableCostAnalysis`, `-EnableAdvancedNetworking`, `-EnableAdvancedNetworkingObservability`, `-EnableAdvancedNetworkingSecurity`, `-AdvancedNetworkingSecurityPolicy`, `-IPFamily`, `-LoadBalancerBackendPoolType`, `-LoadBalancerManagedOutboundIpCountIPv6`, `-NATGatewayIdleTimeoutInMinute`, `-NATGatewayManagedOutboundIpCount`, `-NetworkDataplane`, `-NetworkPluginMode`, `-EnableStaticEgressGateway`, `-NodeProvisioningMode`, `-NodeProvisioningDefaultPool`, `-NodeResourceGroupRestrictionLevel`, `-EnablePodIdentity`, `-EnablePodIdentityWithKubenet`, `-EnablePublicNetworkAccess`, `-EnableAzureKeyVaultKms`, `-AzureKeyVaultKmsKeyId`, `-AzureKeyVaultKmsNetworkAccess`, `-AzureKeyVaultKmsResourceId`, `-CustomCaTrustCertificate`, `-DefenderLogAnalyticsWorkspaceResourceId`, `-EnableDefenderSecurityMonitoring`, `-EnableImageCleaner`, `-ImageCleanerIntervalHour`, `-EnableWorkloadIdentity`, `-SupportPlan`, `-EnableKEDA`, `-EnableVerticalPodAutoscaler`, `-EnableBlobCSIDriver`, `-EnableDiskCSIDriver`, `-EnableFileCSIDriver`, `-EnableSnapshotCSIDriver`, `-IfMatch`, `-IfNoneMatch`
+* Modified cmdlet `Update-AzAksNodePool`
+   - Added parameters `-IfMatch`, `-IfNoneMatch`, `-NetworkProfile`, `-ScaleDownMode`, `-EnableSecureBoot`, `-EnableVtpm`, `-SshAccess`, `-MaxUnavailable`, `-DrainTimeoutInMinute`, `-NodeSoakDurationInMinute`, `-UndrainableNodeBehavior`
+* Removed cmdlet `Get-AzAksManagedClusterOSOption`
+* Modified cmdlet `New-AzAksMaintenanceConfiguration`
+   - Added parameters `-AbsoluteMonthlyDayOfMonth`, `-AbsoluteMonthlyIntervalMonth`, `-DailyIntervalDay`, `-MaintenanceWindowDurationHour`, `-MaintenanceWindowNotAllowedDate`, `-MaintenanceWindowStartDate`, `-MaintenanceWindowStartTime`, `-MaintenanceWindowUtcOffset`, `-RelativeMonthlyDayOfWeek`, `-RelativeMonthlyIntervalMonth`, `-RelativeMonthlyWeekIndex`, `-WeeklyDayOfWeek`, `-WeeklyIntervalWeek`
+* Modified cmdlet `Update-AzAksMaintenanceConfiguration`
+   - Added parameters `-AbsoluteMonthlyDayOfMonth`, `-AbsoluteMonthlyIntervalMonth`, `-DailyIntervalDay`, `-MaintenanceWindowDurationHour`, `-MaintenanceWindowNotAllowedDate`, `-MaintenanceWindowStartDate`, `-MaintenanceWindowStartTime`, `-MaintenanceWindowUtcOffset`, `-RelativeMonthlyDayOfWeek`, `-RelativeMonthlyIntervalMonth`, `-RelativeMonthlyWeekIndex`, `-WeeklyDayOfWeek`, `-WeeklyIntervalWeek`
+* Added cmdlet `Get-AzAksMachine`, `Get-AzAksManagedClusterKuberneteVersion`, `Get-AzAksManagedClusterMeshRevisionProfile`, `Get-AzAksManagedClusterMeshUpgradeProfile`, `Get-AzAksTrustedAccessRole`, `Get-AzAksTrustedAccessRoleBinding`, `New-AzAksTrustedAccessRoleBinding`, `Remove-AzAksAgentPoolMachine`, `Remove-AzAksTrustedAccessRoleBinding`, `Update-AzAksTrustedAccessRoleBinding`
+#### Az.Compute 11.2.0 
+* Modified cmdlet `New-AzVmss`
+   - Added parameters `-ZonePlacementPolicy`, `-IncludeZone`, `-ExcludeZone`, `-HighSpeedInterconnectPlacement`
+* Modified cmdlet `New-AzVmssConfig`
+   - Added parameters `-ZonePlacementPolicy`, `-MaxZoneCount`, `-EnableMaxInstancePercentPerZone`, `-MaxInstancePercentPerZoneValue`, `-IncludeZone`, `-ExcludeZone`, `-HighSpeedInterconnectPlacement`
+* Modified cmdlet `Update-AzVmss`
+   - Added parameters `-MaxZoneCount`, `-EnableMaxInstancePercentPerZone`, `-MaxInstancePercentPerZoneValue`
+#### Az.FrontDoor 2.1.0 
+* Modified cmdlet `New-AzFrontDoorWafManagedRuleOverrideObject`
+   - Added parameter `-Sensitivity`
+#### Az.Migrate 2.11.0 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Set-AzMigrateServerReplication`
+   - Added parameter `-TargetCapacityReservationGroupId`
+* Modified cmdlet `Start-AzMigrateServerMigration`
+   - Added parameter `-TargetCapacityReservationGroupId`
+#### Az.RecoveryServices 7.11.0 
+* Modified cmdlet `New-AzRecoveryServicesAsrReplicationProtectedItem`
+   - Added parameter `-PlatformFaultDomain`
+* Modified cmdlet `Set-AzRecoveryServicesAsrReplicationProtectedItem`
+   - Added parameter `-PlatformFaultDomain`
+* Modified cmdlet `Update-AzRecoveryServicesAsrProtectionDirection`
+   - Added parameters `-RecoveryAvailabilityZone`, `-PlatformFaultDomain`
+#### Az.Sql 6.4.0 
+* Added cmdlet `Get-AzSqlDeletedServer`
+
 ## 15.1.0 - December 2025
 #### Az.Compute 11.1.0 
 * Modified cmdlet `Get-AzVmssVM`
@@ -1158,6 +1259,10 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
+
+
+
 
 
 

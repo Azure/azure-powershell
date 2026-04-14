@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.ContainerRegistry",
-  "ModuleVersion": "5.0.0",
+  "ModuleVersion": "5.0.1",
   "Cmdlets": [
     {
       "VerbName": "Connect",
@@ -356,7 +356,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase",
               "ImageName": "System.String",
@@ -427,7 +427,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSAcrManifest",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSAcrManifest, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSAcrManifest, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ManifestsAttributes": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase]",
               "ImageName": "System.String",
@@ -816,7 +816,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ChangeableAttributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute",
               "ManifestCount": "System.Nullable`1[System.Int32]",
@@ -1206,7 +1206,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase",
               "ImageName": "System.String",
@@ -1280,7 +1280,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagList",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagList, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagList, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase]",
               "ImageName": "System.String",
@@ -2021,7 +2021,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSDeletedRepository",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSDeletedRepository, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSDeletedRepository, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ManifestsDeleted": "System.Collections.Generic.IList`1[System.String]",
               "TagsDeleted": "System.Collections.Generic.IList`1[System.String]"
@@ -2407,7 +2407,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase",
               "ImageName": "System.String",
@@ -3078,7 +3078,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ChangeableAttributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute",
               "ManifestCount": "System.Nullable`1[System.Int32]",
@@ -3430,7 +3430,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase",
               "ImageName": "System.String",
@@ -56984,7 +56984,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ChangeableAttributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute",
         "Tags": "System.Collections.Generic.IList`1[System.String]",
@@ -57085,7 +57085,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DeleteEnabled": "System.Nullable`1[System.Boolean]",
         "WriteEnabled": "System.Nullable`1[System.Boolean]",
@@ -57385,7 +57385,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase"
       ]
@@ -57401,7 +57401,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ChangeableAttributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute",
         "Signed": "System.Nullable`1[System.Boolean]",
@@ -57612,7 +57612,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=4.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase"
       ]

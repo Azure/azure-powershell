@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     bool extensionFound = false;
                     foreach (var ext in vmss.VirtualMachineProfile.ExtensionProfile.Extensions)
                     {
-                        if (ext.VirtualMachineScaleSetExtensionPropertiesType.Equals(this.ExtensionName))
+                        if (ext.VirtualMachineExtensionType.Equals(this.ExtensionName))
                         {
                             ext.Settings = GetDisalbeEncryptionSetting();
                             ext.ProtectedSettings = null;

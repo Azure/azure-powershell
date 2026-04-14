@@ -91,20 +91,6 @@ $endpointsInbound = @{
 }
 Update-AzDeviceRegistryNamespaceDevice -NamespaceInputObject $namespaceIdentity -DeviceName "my-device" -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
 .Example
-# Define the device identifiers
-$SubscriptionId = (Get-AzContext).Subscription.Id
-$ResourceGroupName = "my-resource-group"
-$NamespaceName = "my-namespace"
-$DeviceName = "my-device"
-
-# Create a device identity object
-$deviceIdentity = @{
-    SubscriptionId = $SubscriptionId
-    ResourceGroupName = $ResourceGroupName
-    NamespaceName = $NamespaceName
-    DeviceName = $DeviceName
-}
-
 $endpointsInbound = @{
     "endpoint1" = @{
         Address = "https://my-inbound-endpoint1.westeurope-1.iothub.azure.net"
@@ -120,8 +106,7 @@ $endpointsInbound = @{
         UsernamePasswordCredentialsPasswordSecretName = "my-password-secret"
     }
 }
-
-Update-AzDeviceRegistryNamespaceDevice -InputObject $deviceIdentity -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
+Update-AzDeviceRegistryNamespaceDevice -InputObject $deviceObject -OperatingSystemVersion "10.0.19041" -EndpointInbound $endpointsInbound
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDeviceRegistryIdentity
@@ -143,7 +128,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -161,7 +145,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy tracked resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -274,14 +257,6 @@ param(
     [System.Collections.Hashtable]
     # Set of most recently removed endpoints.
     ${OutboundUnassigned},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Resource Id of the Policy.
-    ${PolicyResourceId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]

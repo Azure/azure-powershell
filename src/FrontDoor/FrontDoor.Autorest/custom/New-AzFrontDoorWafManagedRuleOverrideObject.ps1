@@ -44,7 +44,11 @@ function New-AzFrontDoorWafManagedRuleOverrideObject {
         $Exclusion,
         [Parameter(Mandatory, HelpMessage="Identifier for the managed rule.")]
         [string]
-        $RuleId
+        $RuleId,
+        [Parameter(HelpMessage="Describes the override sensitivity to be applied when rule matches.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Low", "Medium", "High")]
+        [string]
+        $Sensitivity
     )
 
     process {
@@ -61,6 +65,9 @@ function New-AzFrontDoorWafManagedRuleOverrideObject {
         }
         if ($PSBoundParameters.ContainsKey('RuleId')) {
             $Object.RuleId = $RuleId
+        }
+        if ($PSBoundParameters.ContainsKey('Sensitivity')) {
+            $Object.Sensitivity = $Sensitivity
         }
         return $Object
     }

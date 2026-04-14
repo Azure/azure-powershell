@@ -103,12 +103,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="LicenseName" /> property.</summary>
+        private string _licenseName;
+
+        /// <summary>Name of the license.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string LicenseName { get => this._licenseName; set => this._licenseName = value; }
+
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
         /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
+
+        /// <summary>Backing field for <see cref="MaintenanceName" /> property.</summary>
+        private string _maintenanceName;
+
+        /// <summary>Name of the maintenance</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string MaintenanceName { get => this._maintenanceName; set => this._maintenanceName = value; }
 
         /// <summary>Backing field for <see cref="PlacementPolicyName" /> property.</summary>
         private string _placementPolicyName;
@@ -179,6 +193,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>The ID of the NSX Segment</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string SegmentId { get => this._segmentId; set => this._segmentId = value; }
+
+        /// <summary>Backing field for <see cref="ServiceComponentName" /> property.</summary>
+        private string _serviceComponentName;
+
+        /// <summary>A service component</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string ServiceComponentName { get => this._serviceComponentName; set => this._serviceComponentName = value; }
 
         /// <summary>Backing field for <see cref="StoragePolicyName" /> property.</summary>
         private string _storagePolicyName;
@@ -360,6 +381,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>Name of the license.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the license.",
+        SerializedName = @"licenseName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("VmwareFirewall")]
+        string LicenseName { get; set; }
         /// <summary>The name of the Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -371,6 +404,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
+        /// <summary>Name of the maintenance</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the maintenance",
+        SerializedName = @"maintenanceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string MaintenanceName { get; set; }
         /// <summary>Name of the placement policy.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -481,6 +525,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"segmentId",
         PossibleTypes = new [] { typeof(string) })]
         string SegmentId { get; set; }
+        /// <summary>A service component</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A service component",
+        SerializedName = @"serviceComponentName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ServiceComponentName { get; set; }
         /// <summary>Name of the storage policy.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
@@ -556,8 +611,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string HostId { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>Name of the license.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("VmwareFirewall")]
+        string LicenseName { get; set; }
         /// <summary>The name of the Azure region.</summary>
         string Location { get; set; }
+        /// <summary>Name of the maintenance</summary>
+        string MaintenanceName { get; set; }
         /// <summary>Name of the placement policy.</summary>
         string PlacementPolicyName { get; set; }
         /// <summary>ID of the NSX port mirroring profile.</summary>
@@ -578,6 +638,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string ScriptPackageName { get; set; }
         /// <summary>The ID of the NSX Segment</summary>
         string SegmentId { get; set; }
+        /// <summary>A service component</summary>
+        string ServiceComponentName { get; set; }
         /// <summary>Name of the storage policy.</summary>
         string StoragePolicyName { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>

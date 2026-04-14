@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.3
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 2.3.2
+* Updated Azure.Core from 1.47.3 to 1.50.0
+
 ## Version 2.3.1
 * Updated Azure.Core from 1.45.0 to 1.47.3
 
