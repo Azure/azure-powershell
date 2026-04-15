@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The DdosCustomPolicy id to associate with the frontend IP configuration.",
+            HelpMessage = "The DDoS custom policy resource ID to associate with the frontend IP configuration.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string DdosCustomPolicyId { get; set; }
