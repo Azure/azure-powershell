@@ -51,6 +51,7 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
+  [PolicyName <String>]: The name of the Policy proxy resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -156,8 +157,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
