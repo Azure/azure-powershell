@@ -1,8 +1,8 @@
 {
-  "New-AzDataProtectionBackupPolicy+[NoContext]+PGFlexPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2025-09-01+1": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+PGFlexPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2026-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2026-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"datasourceTypes\": [ \"Microsoft.DBforPostgreSQL/flexibleServers\" ],\r\n    \"objectType\": \"BackupPolicy\",\r\n    \"policyRules\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": true,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P10D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"BackupWeekly\",\r\n        \"objectType\": \"AzureBackupRule\",\r\n        \"backupParameters\": {\r\n          \"objectType\": \"AzureBackupParams\",\r\n          \"backupType\": \"full\"\r\n        },\r\n        \"dataStore\": {\r\n          \"dataStoreType\": \"VaultStore\",\r\n          \"objectType\": \"DataStoreInfoBase\"\r\n        },\r\n        \"trigger\": {\r\n          \"objectType\": \"ScheduleBasedTriggerContext\",\r\n          \"schedule\": {\r\n            \"repeatingTimeIntervals\": [ \"R/2024-03-04T09:00:00+05:30/P1W\", \"R/2024-03-05T09:00:00+05:30/P1W\" ],\r\n            \"timeZone\": \"India Standard Time\"\r\n          },\r\n          \"taggingCriteria\": [\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Default\"\r\n              },\r\n              \"isDefault\": true,\r\n              \"taggingPriority\": 99\r\n            },\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Monthly\"\r\n              },\r\n              \"criteria\": [\r\n                {\r\n                  \"objectType\": \"ScheduleBasedBackupCriteria\",\r\n                  \"daysOfMonth\": [\r\n                    {\r\n                      \"date\": 1,\r\n                      \"isLast\": false\r\n                    },\r\n                    {\r\n                      \"date\": 5,\r\n                      \"isLast\": false\r\n                    },\r\n                    {\r\n                      \"isLast\": true\r\n                    }\r\n                  ]\r\n                }\r\n              ],\r\n              \"isDefault\": false,\r\n              \"taggingPriority\": 15\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"Monthly\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": false,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P6M\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -38,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+PGFlexPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2025-09-01+2": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+PGFlexPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2026-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -82,10 +82,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+PGFlexPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2025-09-01+3": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+PGFlexPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2026-03-01+3": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-pgflex-policy?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -125,10 +125,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+MySQLPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2025-09-01+1": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+MySQLPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2026-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2026-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"datasourceTypes\": [ \"Microsoft.DBforMySQL/flexibleServers\" ],\r\n    \"objectType\": \"BackupPolicy\",\r\n    \"policyRules\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": true,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P10D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"BackupWeekly\",\r\n        \"objectType\": \"AzureBackupRule\",\r\n        \"backupParameters\": {\r\n          \"objectType\": \"AzureBackupParams\",\r\n          \"backupType\": \"full\"\r\n        },\r\n        \"dataStore\": {\r\n          \"dataStoreType\": \"VaultStore\",\r\n          \"objectType\": \"DataStoreInfoBase\"\r\n        },\r\n        \"trigger\": {\r\n          \"objectType\": \"ScheduleBasedTriggerContext\",\r\n          \"schedule\": {\r\n            \"repeatingTimeIntervals\": [ \"R/2024-03-04T09:00:00+05:30/P1W\", \"R/2024-03-05T09:00:00+05:30/P1W\" ],\r\n            \"timeZone\": \"India Standard Time\"\r\n          },\r\n          \"taggingCriteria\": [\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Default\"\r\n              },\r\n              \"isDefault\": true,\r\n              \"taggingPriority\": 99\r\n            },\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Monthly\"\r\n              },\r\n              \"criteria\": [\r\n                {\r\n                  \"objectType\": \"ScheduleBasedBackupCriteria\",\r\n                  \"daysOfMonth\": [\r\n                    {\r\n                      \"date\": 1,\r\n                      \"isLast\": false\r\n                    },\r\n                    {\r\n                      \"date\": 5,\r\n                      \"isLast\": false\r\n                    },\r\n                    {\r\n                      \"isLast\": true\r\n                    }\r\n                  ]\r\n                }\r\n              ],\r\n              \"isDefault\": false,\r\n              \"taggingPriority\": 15\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"Monthly\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": false,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P6M\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -164,10 +164,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+MySQLPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2025-09-01+2": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+MySQLPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2026-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -208,10 +208,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+MySQLPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2025-09-01+3": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+MySQLPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2026-03-01+3": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-mysql-policy?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -251,10 +251,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServicePolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-aks-policy?api-version=2025-09-01+1": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServicePolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-aks-policy?api-version=2026-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-aks-policy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-aks-policy?api-version=2026-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"datasourceTypes\": [ \"Microsoft.ContainerService/managedClusters\" ],\r\n    \"objectType\": \"BackupPolicy\",\r\n    \"policyRules\": [\r\n      {\r\n        \"name\": \"BackupDaily\",\r\n        \"objectType\": \"AzureBackupRule\",\r\n        \"backupParameters\": {\r\n          \"objectType\": \"AzureBackupParams\",\r\n          \"backupType\": \"Incremental\"\r\n        },\r\n        \"dataStore\": {\r\n          \"dataStoreType\": \"OperationalStore\",\r\n          \"objectType\": \"DataStoreInfoBase\"\r\n        },\r\n        \"trigger\": {\r\n          \"objectType\": \"ScheduleBasedTriggerContext\",\r\n          \"schedule\": {\r\n            \"repeatingTimeIntervals\": [ \"R/2023-03-18T16:00:00+05:30/P1D\" ],\r\n            \"timeZone\": \"Central Standard Time\"\r\n          },\r\n          \"taggingCriteria\": [\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Default\"\r\n              },\r\n              \"isDefault\": true,\r\n              \"taggingPriority\": 99\r\n            },\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Daily\"\r\n              },\r\n              \"criteria\": [\r\n                {\r\n                  \"objectType\": \"ScheduleBasedBackupCriteria\",\r\n                  \"absoluteCriteria\": [ \"FirstOfDay\" ]\r\n                }\r\n              ],\r\n              \"isDefault\": false,\r\n              \"taggingPriority\": 25\r\n            },\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Weekly\"\r\n              },\r\n              \"criteria\": [\r\n                {\r\n                  \"objectType\": \"ScheduleBasedBackupCriteria\",\r\n                  \"absoluteCriteria\": [ \"FirstOfWeek\" ]\r\n                }\r\n              ],\r\n              \"isDefault\": false,\r\n              \"taggingPriority\": 20\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"Default\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": true,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P7D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"OperationalStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Daily\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": false,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P8D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"OperationalStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Weekly\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": false,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P9W\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"OperationalStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -290,10 +290,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServicePolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2025-09-01+2": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServicePolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2026-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -334,10 +334,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServicePolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-aks-policy?api-version=2025-09-01+3": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServicePolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-aks-policy?api-version=2026-03-01+3": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-aks-policy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/pstest-aks-policy?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -377,10 +377,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServicePolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2025-09-01+4": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServicePolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2026-03-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -421,10 +421,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServiceVaultedPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2025-09-01+1": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServiceVaultedPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2026-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2026-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"datasourceTypes\": [ \"Microsoft.ContainerService/managedClusters\" ],\r\n    \"objectType\": \"BackupPolicy\",\r\n    \"policyRules\": [\r\n      {\r\n        \"name\": \"BackupDaily\",\r\n        \"objectType\": \"AzureBackupRule\",\r\n        \"backupParameters\": {\r\n          \"objectType\": \"AzureBackupParams\",\r\n          \"backupType\": \"Incremental\"\r\n        },\r\n        \"dataStore\": {\r\n          \"dataStoreType\": \"OperationalStore\",\r\n          \"objectType\": \"DataStoreInfoBase\"\r\n        },\r\n        \"trigger\": {\r\n          \"objectType\": \"ScheduleBasedTriggerContext\",\r\n          \"schedule\": {\r\n            \"repeatingTimeIntervals\": [ \"R/2024-10-02T15:30:00+05:30/P1D\" ],\r\n            \"timeZone\": \"India Standard Time\"\r\n          },\r\n          \"taggingCriteria\": [\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Default\"\r\n              },\r\n              \"isDefault\": true,\r\n              \"taggingPriority\": 99\r\n            },\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Daily\"\r\n              },\r\n              \"criteria\": [\r\n                {\r\n                  \"objectType\": \"ScheduleBasedBackupCriteria\",\r\n                  \"absoluteCriteria\": [ \"FirstOfDay\" ]\r\n                }\r\n              ],\r\n              \"isDefault\": false,\r\n              \"taggingPriority\": 25\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"Default\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": true,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P9D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"OperationalStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Daily\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": false,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P9D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"OperationalStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            },\r\n            \"targetDataStoreCopySettings\": [\r\n              {\r\n                \"copyAfter\": {\r\n                  \"objectType\": \"ImmediateCopyOption\"\r\n                },\r\n                \"dataStore\": {\r\n                  \"dataStoreType\": \"VaultStore\",\r\n                  \"objectType\": \"DataStoreInfoBase\"\r\n                }\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P86D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -460,10 +460,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServiceVaultedPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2025-09-01+2": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServiceVaultedPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2026-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -504,10 +504,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServiceVaultedPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2025-09-01+3": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServiceVaultedPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2026-03-01+3": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies/vaulted-aks-pspol?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -547,10 +547,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServiceVaultedPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2025-09-01+4": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+AzureKubernetesServiceVaultedPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2026-03-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DataProtection/backupVaults/hiagaBackupVault/backupPolicies?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -591,10 +591,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningOperationalPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2025-09-01+1": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningOperationalPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2026-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -632,10 +632,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningOperationalPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2025-09-01+2": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningOperationalPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2026-03-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2026-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"datasourceTypes\": [ \"Microsoft.Storage/storageAccounts/blobServices\" ],\r\n    \"objectType\": \"BackupPolicy\",\r\n    \"policyRules\": [\r\n      {\r\n        \"name\": \"Default\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": true,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P30D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"OperationalStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -670,10 +670,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningOperationalPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2025-09-01+3": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningOperationalPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2026-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -713,10 +713,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningOperationalPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2025-09-01+4": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningOperationalPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2026-03-01+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/operationalpol2?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -755,10 +755,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningOperationalPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2025-09-01+5": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningOperationalPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2026-03-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -798,10 +798,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningVaultedPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2025-09-01+1": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningVaultedPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2026-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -839,10 +839,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningVaultedPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2025-09-01+2": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningVaultedPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2026-03-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2026-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"datasourceTypes\": [ \"Microsoft.Storage/storageAccounts/blobServices\" ],\r\n    \"objectType\": \"BackupPolicy\",\r\n    \"policyRules\": [\r\n      {\r\n        \"name\": \"BackupWeekly\",\r\n        \"objectType\": \"AzureBackupRule\",\r\n        \"backupParameters\": {\r\n          \"objectType\": \"AzureBackupParams\",\r\n          \"backupType\": \"Discrete\"\r\n        },\r\n        \"dataStore\": {\r\n          \"dataStoreType\": \"VaultStore\",\r\n          \"objectType\": \"DataStoreInfoBase\"\r\n        },\r\n        \"trigger\": {\r\n          \"objectType\": \"ScheduleBasedTriggerContext\",\r\n          \"schedule\": {\r\n            \"repeatingTimeIntervals\": [ \"R/2023-03-26T13:00:00+00:00/P1W\" ],\r\n            \"timeZone\": \"UTC\"\r\n          },\r\n          \"taggingCriteria\": [\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Default\"\r\n              },\r\n              \"isDefault\": true,\r\n              \"taggingPriority\": 99\r\n            },\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Weekly\"\r\n              },\r\n              \"criteria\": [\r\n                {\r\n                  \"objectType\": \"ScheduleBasedBackupCriteria\",\r\n                  \"absoluteCriteria\": [ \"FirstOfWeek\" ]\r\n                }\r\n              ],\r\n              \"isDefault\": false,\r\n              \"taggingPriority\": 20\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"Default\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": true,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P7D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Weekly\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": false,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P4W\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -877,10 +877,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningVaultedPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2025-09-01+3": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningVaultedPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2026-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -920,10 +920,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningVaultedPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2025-09-01+4": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningVaultedPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2026-03-01+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/vaultpolicy?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -962,10 +962,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningVaultedPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2025-09-01+5": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningVaultedPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2026-03-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1005,10 +1005,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2025-09-01+1": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2026-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1047,10 +1047,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2025-09-01+2": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2026-03-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2026-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"datasourceTypes\": [ \"Microsoft.Storage/storageAccounts/blobServices\" ],\r\n    \"objectType\": \"BackupPolicy\",\r\n    \"policyRules\": [\r\n      {\r\n        \"name\": \"BackupWeekly\",\r\n        \"objectType\": \"AzureBackupRule\",\r\n        \"backupParameters\": {\r\n          \"objectType\": \"AzureBackupParams\",\r\n          \"backupType\": \"Discrete\"\r\n        },\r\n        \"dataStore\": {\r\n          \"dataStoreType\": \"VaultStore\",\r\n          \"objectType\": \"DataStoreInfoBase\"\r\n        },\r\n        \"trigger\": {\r\n          \"objectType\": \"ScheduleBasedTriggerContext\",\r\n          \"schedule\": {\r\n            \"repeatingTimeIntervals\": [ \"R/2023-05-09T02:30:00+01:00/P1W\" ],\r\n            \"timeZone\": \"W. Europe Standard Time\"\r\n          },\r\n          \"taggingCriteria\": [\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Default\"\r\n              },\r\n              \"isDefault\": true,\r\n              \"taggingPriority\": 99\r\n            },\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Weekly\"\r\n              },\r\n              \"criteria\": [\r\n                {\r\n                  \"objectType\": \"ScheduleBasedBackupCriteria\",\r\n                  \"absoluteCriteria\": [ \"FirstOfWeek\" ]\r\n                }\r\n              ],\r\n              \"isDefault\": false,\r\n              \"taggingPriority\": 20\r\n            },\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Monthly\"\r\n              },\r\n              \"criteria\": [\r\n                {\r\n                  \"objectType\": \"ScheduleBasedBackupCriteria\",\r\n                  \"absoluteCriteria\": [ \"FirstOfMonth\" ]\r\n                }\r\n              ],\r\n              \"isDefault\": false,\r\n              \"taggingPriority\": 15\r\n            },\r\n            {\r\n              \"tagInfo\": {\r\n                \"tagName\": \"Yearly\"\r\n              },\r\n              \"criteria\": [\r\n                {\r\n                  \"objectType\": \"ScheduleBasedBackupCriteria\",\r\n                  \"absoluteCriteria\": [ \"FirstOfYear\" ]\r\n                }\r\n              ],\r\n              \"isDefault\": false,\r\n              \"taggingPriority\": 10\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      {\r\n        \"name\": \"Default\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": true,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P7D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Default\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": true,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P30D\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"OperationalStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Weekly\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": false,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P7W\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Monthly\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": false,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P5M\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Yearly\",\r\n        \"objectType\": \"AzureRetentionRule\",\r\n        \"isDefault\": false,\r\n        \"lifecycles\": [\r\n          {\r\n            \"deleteAfter\": {\r\n              \"duration\": \"P1Y\",\r\n              \"objectType\": \"AbsoluteDeleteOption\"\r\n            },\r\n            \"sourceDataStore\": {\r\n              \"dataStoreType\": \"VaultStore\",\r\n              \"objectType\": \"DataStoreInfoBase\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -1085,10 +1085,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2025-09-01+3": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2026-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/opvaultpolicy3?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1128,10 +1128,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseBackupPolicyResource?api-version=2025-09-01+4": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseBackupPolicyResource?api-version=2026-03-01+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseBackupPolicyResource?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies/Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseBackupPolicyResource?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1169,10 +1169,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2025-09-01+5": {
+  "New-AzDataProtectionBackupPolicy+[NoContext]+BlobHardeningHybridPolicy+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2026-03-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2025-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/dataprotectionpstest-rg/providers/Microsoft.DataProtection/backupVaults/dataprotectionpstest-bv/backupPolicies?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
