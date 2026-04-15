@@ -56,5 +56,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ddosProtectionPlan")]
         public SubResource DdosProtectionPlan {get; set; }
+
+        /// <summary>
+        /// Gets or sets the DDoS custom policy associated with the frontend IP configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ddosCustomPolicy")]
+        public SubResource DdosCustomPolicy {get; set; }
     }
 }
