@@ -54,15 +54,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <returns>The managed instance link</returns>
         public AzureSqlManagedInstanceLinkModel GetManagedInstanceLink(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName)
         {
-            try
-            {
-                var resp = Communicator.Get(resourceGroupName, instanceName, distributedAvailabilityGroupName);
-                return CreateManagedInstanceLinkModelFromResponse(resourceGroupName, instanceName, resp);
-            }
-            catch (ErrorResponseException ex)
-            {
-                throw CreateExceptionWithDescriptiveErrorMessage(ex);
-            }
+            var resp = Communicator.Get(resourceGroupName, instanceName, distributedAvailabilityGroupName);
+            return CreateManagedInstanceLinkModelFromResponse(resourceGroupName, instanceName, resp);
         }
 
         /// <summary>
@@ -73,15 +66,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <returns>A list of all the server trust certificates</returns>
         public List<AzureSqlManagedInstanceLinkModel> ListManagedInstanceLinks(string resourceGroupName, string instanceName)
         {
-            try
-            {
-                var resp = Communicator.List(resourceGroupName, instanceName);
-                return resp.Select((dag) => CreateManagedInstanceLinkModelFromResponse(resourceGroupName, instanceName, dag)).ToList();
-            }
-            catch (ErrorResponseException ex)
-            {
-                throw CreateExceptionWithDescriptiveErrorMessage(ex);
-            }
+            var resp = Communicator.List(resourceGroupName, instanceName);
+            return resp.Select((dag) => CreateManagedInstanceLinkModelFromResponse(resourceGroupName, instanceName, dag)).ToList();
         }
 
         /// <summary>
@@ -130,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
                     throw new ErrorResponseException("Allowed values for instance link role are 'Primary' or 'Secondary'.");
                 }
 
-                throw CreateExceptionWithDescriptiveErrorMessage(ex);
+                throw;
             }
         }
 
@@ -141,19 +127,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <returns>The updated Azure Sql Managed Instance Link</returns>
         internal AzureSqlManagedInstanceLinkModel UpdateManagedInstanceLink(AzureSqlManagedInstanceLinkModel model)
         {
-            try
+            var resp = Communicator.Update(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroup
             {
-                var resp = Communicator.Update(model.ResourceGroupName, model.InstanceName, model.Name, new Management.Sql.Models.DistributedAvailabilityGroup
-                {
-                    ReplicationMode = model.ReplicationMode,
-                });
+                ReplicationMode = model.ReplicationMode,
+            });
 
-                return CreateManagedInstanceLinkModelFromResponse(model.ResourceGroupName, model.InstanceName, resp);
-            }
-            catch (ErrorResponseException ex)
-            {
-                throw CreateExceptionWithDescriptiveErrorMessage(ex);
-            }
+            return CreateManagedInstanceLinkModelFromResponse(model.ResourceGroupName, model.InstanceName, resp);
         }
 
         /// <summary>
@@ -164,14 +143,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <param name="managedInstanceLinkName">Name of the instance link to delete</param>
         public void RemoveManagedInstanceLink(string resourceGroupName, string instanceName, string managedInstanceLinkName)
         {
-            try
-            {
-                Communicator.Remove(resourceGroupName, instanceName, managedInstanceLinkName);
-            }
-            catch (ErrorResponseException ex)
-            {
-                throw CreateExceptionWithDescriptiveErrorMessage(ex);
-            }
+            Communicator.Remove(resourceGroupName, instanceName, managedInstanceLinkName);
         }
 
         /// <summary>
@@ -199,7 +171,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
                     throw new ErrorResponseException("Allowed values for failover type are 'Planned' or 'ForcedAllowDataLoss'.");
                 }
 
-                throw CreateExceptionWithDescriptiveErrorMessage(ex);
+                throw;
             }
         }
 
@@ -233,22 +205,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
                 
             };
             return managedInstanceLinkModel;
-        }
-
-        /// <summary>
-        /// Due to some change in SDK generator, proper messages from REST aren't propagated as a exception message.
-        /// For this reason the error message of the PS cmdlet will always be generic that is 'Operation returned an invalid status code '{0}''.
-        /// In order to get the correct error message we need to extract it from Body of the original exception.
-        /// </summary>
-        /// <returns>The new ErrorResponseException that will have non-generic error message.</returns>
-        private ErrorResponseException CreateExceptionWithDescriptiveErrorMessage(ErrorResponseException originalException)
-        {
-            ErrorResponseException responseException = new ErrorResponseException(originalException.Body.Error.Message, originalException.InnerException);
-            responseException.Body = originalException.Body;
-            responseException.Request = originalException.Request;
-            responseException.Response = originalException.Response;
-
-            return responseException;
         }
 
     }
