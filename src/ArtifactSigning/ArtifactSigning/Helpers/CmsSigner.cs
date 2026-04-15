@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.ArtifactSigning.Helpers
                     cms.ComputeSignature(signer);
 
                     cms.CheckSignature(true);
-                    //Console.WriteLine(Util.BytesToHex(cms.Encode(), " ", 16));
 
                     var signedData = cms.Encode();
 

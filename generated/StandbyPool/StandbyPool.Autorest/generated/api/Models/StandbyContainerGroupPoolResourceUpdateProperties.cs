@@ -32,6 +32,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet> ContainerGroupPropertySubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupPropertiesInternal)ContainerGroupProperty).SubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupPropertiesInternal)ContainerGroupProperty).SubnetId = value ?? null /* arrayOf */; }
 
+        /// <summary>Indicates whether dynamic sizing is enabled for the standby pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Inlined)]
+        public bool? DynamicSizingEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileInternal)ElasticityProfile).DynamicSizingEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileInternal)ElasticityProfile).DynamicSizingEnabled = value ?? default(bool); }
+
         /// <summary>Backing field for <see cref="ElasticityProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfile _elasticityProfile;
 
@@ -51,10 +55,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProperties Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal.ContainerGroupProperty { get => (this._containerGroupProperty = this._containerGroupProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ContainerGroupProperties()); set { {_containerGroupProperty = value;} } }
 
         /// <summary>Internal Acessors for ContainerGroupPropertyContainerGroupProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfile Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal.ContainerGroupPropertyContainerGroupProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupPropertiesInternal)ContainerGroupProperty).ContainerGroupProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupPropertiesInternal)ContainerGroupProperty).ContainerGroupProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfile Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal.ContainerGroupPropertyContainerGroupProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupPropertiesInternal)ContainerGroupProperty).ContainerGroupProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupPropertiesInternal)ContainerGroupProperty).ContainerGroupProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ElasticityProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfile Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal.ElasticityProfile { get => (this._elasticityProfile = this._elasticityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolElasticityProfile()); set { {_elasticityProfile = value;} } }
+
+        /// <summary>Internal Acessors for ElasticityProfileDynamicSizing</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdatePropertiesInternal.ElasticityProfileDynamicSizing { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileInternal)ElasticityProfile).DynamicSizing; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfileInternal)ElasticityProfile).DynamicSizing = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Zone" /> property.</summary>
         private System.Collections.Generic.List<string> _zone;
@@ -108,6 +115,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         SerializedName = @"subnetIds",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet> ContainerGroupPropertySubnetId { get; set; }
+        /// <summary>Indicates whether dynamic sizing is enabled for the standby pool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether dynamic sizing is enabled for the standby pool.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? DynamicSizingEnabled { get; set; }
         /// <summary>Specifies maximum number of standby container groups in the standby pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
         Required = false,
@@ -158,8 +176,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IContainerGroupProfile ContainerGroupPropertyContainerGroupProfile { get; set; }
         /// <summary>Specifies subnet Ids for container group.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ISubnet> ContainerGroupPropertySubnetId { get; set; }
+        /// <summary>Indicates whether dynamic sizing is enabled for the standby pool.</summary>
+        bool? DynamicSizingEnabled { get; set; }
         /// <summary>Specifies elasticity profile of standby container group pools.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolElasticityProfile ElasticityProfile { get; set; }
+        /// <summary>Specifies the dynamic sizing configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IDynamicSizing ElasticityProfileDynamicSizing { get; set; }
         /// <summary>Specifies maximum number of standby container groups in the standby pool.</summary>
         long? ElasticityProfileMaxReadyCapacity { get; set; }
         /// <summary>Specifies refill policy of the pool.</summary>

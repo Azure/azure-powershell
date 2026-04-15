@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.0.0'
+ModuleVersion = '6.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -245,8 +245,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added support for edge action
-* Upgraded Api version to 2025-06-01'
+        ReleaseNotes = '* Bug fix for https://github.com/Azure/azure-powershell/issues/29231'
 
         # Prerelease string of this module
         # Prerelease = ''

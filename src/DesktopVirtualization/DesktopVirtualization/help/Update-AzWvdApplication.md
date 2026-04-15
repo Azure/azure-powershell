@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdApplication
 
 ## SYNOPSIS
-update an application.
+Update an application.
 
 ## SYNTAX
 
@@ -63,7 +63,7 @@ Update-AzWvdApplication -InputObject <IDesktopVirtualizationIdentity> [-Applicat
 ```
 
 ## DESCRIPTION
-update an application.
+Update an application.
 
 ## EXAMPLES
 
