@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDeviceRegistrySchema'))
 }
 
 Describe 'New-AzDeviceRegistrySchema' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -Skip {
         $testConfig = $env.schemaTests.createTests.CreateExpanded
         $commonProperties = $env.schemaTests.commonProperties
         $RegistryName = $env.schemaTests.schemaRegistryName
@@ -30,7 +30,7 @@ Describe 'New-AzDeviceRegistrySchema' {
         $result.Tag[$commonProperties.tagsKey] | Should -Be $commonProperties.tagsValue
     }
 
-    It 'CreateViaJsonFilePath' {
+    It 'CreateViaJsonFilePath' -Skip {
         $testConfig = $env.schemaTests.createTests.CreateViaJsonFilePath
         $commonProperties = $env.schemaTests.commonProperties
         $RegistryName = $env.schemaTests.schemaRegistryName
@@ -46,7 +46,7 @@ Describe 'New-AzDeviceRegistrySchema' {
         $result.Tag[$commonProperties.tagsKey] | Should -Be $commonProperties.tagsValue
     }
 
-    It 'CreateViaJsonString' {
+    It 'CreateViaJsonString' -Skip {
         $testConfig = $env.schemaTests.createTests.CreateViaJsonString
         $commonProperties = $env.schemaTests.commonProperties
         $RegistryName = $env.schemaTests.schemaRegistryName

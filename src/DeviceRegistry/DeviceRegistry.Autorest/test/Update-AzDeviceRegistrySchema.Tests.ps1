@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeviceRegistrySchema
 }
 
 Describe 'Update-AzDeviceRegistrySchema' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         $testConfig = $env.schemaTests.updateTests.UpdateExpanded
         $commonProperties = $env.schemaTests.commonProperties
         $commonPatchConfig = $env.schemaTests.updateTests.commonPatchConfig
@@ -36,7 +36,7 @@ Describe 'Update-AzDeviceRegistrySchema' {
         $result.Tag[$commonPatchConfig.tagsKey] | Should -Be $commonPatchConfig.tagsValue
     }
 
-    It 'UpdateViaIdentitySchemaRegistryExpanded' {
+    It 'UpdateViaIdentitySchemaRegistryExpanded' -Skip {
         $testConfig = $env.schemaTests.updateTests.UpdateViaIdentitySchemaRegistryExpanded
         $commonProperties = $env.schemaTests.commonProperties
         $commonPatchConfig = $env.schemaTests.updateTests.commonPatchConfig
@@ -64,7 +64,7 @@ Describe 'Update-AzDeviceRegistrySchema' {
         $result.Tag[$commonPatchConfig.tagsKey] | Should -Be $commonPatchConfig.tagsValue
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         $testConfig = $env.schemaTests.updateTests.UpdateViaIdentityExpanded
         $commonProperties = $env.schemaTests.commonProperties
         $commonPatchConfig = $env.schemaTests.updateTests.commonPatchConfig

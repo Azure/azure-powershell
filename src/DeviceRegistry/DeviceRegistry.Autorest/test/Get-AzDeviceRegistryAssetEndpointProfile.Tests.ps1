@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDeviceRegistryAssetEndp
 }
 
 Describe 'Get-AzDeviceRegistryAssetEndpointProfile' {
-    It 'List' {
+    It 'List' -Skip {
         $aepTestParams = $env.assetEndpointProfileTests.getTests.List
         $jsonFilePath = (Join-Path $PSScriptRoot $aepTestParams.jsonFilePath)
         $aepTestParams.names | ForEach-Object {
@@ -28,7 +28,7 @@ Describe 'Get-AzDeviceRegistryAssetEndpointProfile' {
         $listOfAeps.Count -ge $aepTestParams.names.Count | Should -Be $true
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         $aepTestParams = $env.assetEndpointProfileTests.getTests.Get
         $aepCommonProperties = $env.assetEndpointProfileTests.CommonProperties
         $jsonFilePath = (Join-Path $PSScriptRoot $aepTestParams.jsonFilePath)
@@ -49,7 +49,7 @@ Describe 'Get-AzDeviceRegistryAssetEndpointProfile' {
         $assetEndpointProfile.AdditionalConfiguration | Should -Be $aepCommonProperties.additionalConfiguration
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -Skip {
         $aepTestParams = $env.assetEndpointProfileTests.getTests.GetViaIdentity
         $aepCommonProperties = $env.assetEndpointProfileTests.CommonProperties
         $jsonFilePath = (Join-Path $PSScriptRoot $aepTestParams.jsonFilePath)

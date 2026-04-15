@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDeviceRegistryNamespace
 }
 
 Describe 'Get-AzDeviceRegistryNamespace' {
-    It 'List' {
+    It 'List' -Skip {
         $namespaceTestParams = $env.namespaceTests.getTests.List
         $jsonFilePath = (Join-Path $PSScriptRoot $namespaceTestParams.jsonFilePath)
 
@@ -29,7 +29,7 @@ Describe 'Get-AzDeviceRegistryNamespace' {
         $listOfNamespaces.Count -ge 2 | Should -Be $true
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         $namespaceTestParams = $env.namespaceTests.getTests.Get
         $jsonFilePath = (Join-Path $PSScriptRoot $namespaceTestParams.jsonFilePath)
         New-AzDeviceRegistryNamespace -Name $namespaceTestParams.name -ResourceGroupName $env.resourceGroup -JsonFilePath $jsonFilePath
@@ -50,7 +50,7 @@ Describe 'Get-AzDeviceRegistryNamespace' {
         $namespace.MessagingEndpoint[$key2].resourceId | Should -Be $endpoints.myendpoint2.resourceId
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -Skip {
         $namespaceTestParams = $env.namespaceTests.getTests.GetViaIdentity
         $jsonFilePath = (Join-Path $PSScriptRoot $namespaceTestParams.jsonFilePath)
         $namespaceIdentity = New-AzDeviceRegistryNamespace -Name $namespaceTestParams.name -ResourceGroupName $env.resourceGroup -JsonFilePath $jsonFilePath

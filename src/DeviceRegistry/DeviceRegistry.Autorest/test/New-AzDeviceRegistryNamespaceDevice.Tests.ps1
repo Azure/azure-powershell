@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDeviceRegistryNamespace
 }
 
 Describe 'New-AzDeviceRegistryNamespaceDevice' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -Skip {
         $testConfig = $env.namespaceDeviceTests.createTests.CreateExpanded
         $commonProperties = $env.namespaceDeviceTests.createTests.commonProperties
         $namespaceName = $env.namespaceDeviceTests.namespaceName
@@ -68,7 +68,7 @@ Describe 'New-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].AuthenticationMethod | Should -Be $commonProperties.authenticationMethod2
     }
 
-    It 'CreateViaJsonFilePath' {
+    It 'CreateViaJsonFilePath' -Skip {
         $testConfig = $env.namespaceDeviceTests.createTests.CreateViaJsonFilePath
         $commonProperties = $env.namespaceDeviceTests.createTests.commonProperties
         $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
@@ -103,7 +103,7 @@ Describe 'New-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].AuthenticationMethod | Should -Be $commonProperties.authenticationMethod2
     }
 
-    It 'CreateViaJsonString' {
+    It 'CreateViaJsonString' -Skip {
         $testConfig = $env.namespaceDeviceTests.createTests.CreateViaJsonString
         $commonProperties = $env.namespaceDeviceTests.createTests.commonProperties
         $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName

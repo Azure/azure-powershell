@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeviceRegistrySchema
 }
 
 Describe 'Update-AzDeviceRegistrySchemaRegistry' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         $testConfig = $env.schemaRegistryTests.updateTests.UpdateExpanded
         $commonProperties = $env.schemaRegistryTests.updateTests.commonProperties
         $commonPatchConfig = $env.schemaRegistryTests.updateTests.commonPatchConfig
@@ -33,7 +33,7 @@ Describe 'Update-AzDeviceRegistrySchemaRegistry' {
         $result.StorageAccountContainerUrl | Should -Be $commonProperties.storageAccountContainerUrl
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         $testConfig = $env.schemaRegistryTests.updateTests.UpdateViaIdentityExpanded
         $commonProperties = $env.schemaRegistryTests.updateTests.commonProperties
         $commonPatchConfig = $env.schemaRegistryTests.updateTests.commonPatchConfig

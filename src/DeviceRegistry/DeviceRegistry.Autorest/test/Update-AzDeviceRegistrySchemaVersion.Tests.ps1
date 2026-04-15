@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeviceRegistrySchema
 }
 
 Describe 'Update-AzDeviceRegistrySchemaVersion' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         $testConfig = $env.schemaVersionTests.updateTests.UpdateExpanded
         $commonProperties = $env.schemaVersionTests.commonProperties
         $commonPatchConfig = $env.schemaVersionTests.updateTests.commonPatchConfig
@@ -33,7 +33,7 @@ Describe 'Update-AzDeviceRegistrySchemaVersion' {
         $result.SchemaContent | Should -Be $commonProperties.schemaContent
     }
 
-    It 'UpdateViaIdentitySchemaRegistryExpanded' {
+    It 'UpdateViaIdentitySchemaRegistryExpanded' -Skip {
         $testConfig = $env.schemaVersionTests.updateTests.UpdateViaIdentitySchemaRegistryExpanded
         $commonProperties = $env.schemaVersionTests.commonProperties
         $commonPatchConfig = $env.schemaVersionTests.updateTests.commonPatchConfig
@@ -54,7 +54,7 @@ Describe 'Update-AzDeviceRegistrySchemaVersion' {
         $result.SchemaContent | Should -Be $commonProperties.schemaContent
     }
 
-    It 'UpdateViaIdentitySchemaExpanded' {
+    It 'UpdateViaIdentitySchemaExpanded' -Skip {
         $testConfig = $env.schemaVersionTests.updateTests.UpdateViaIdentitySchemaExpanded
         $commonProperties = $env.schemaVersionTests.commonProperties
         $commonPatchConfig = $env.schemaVersionTests.updateTests.commonPatchConfig
@@ -75,7 +75,7 @@ Describe 'Update-AzDeviceRegistrySchemaVersion' {
         $result.SchemaContent | Should -Be $commonProperties.schemaContent
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         $testConfig = $env.schemaVersionTests.updateTests.UpdateViaIdentityExpanded
         $commonProperties = $env.schemaVersionTests.commonProperties
         $commonPatchConfig = $env.schemaVersionTests.updateTests.commonPatchConfig

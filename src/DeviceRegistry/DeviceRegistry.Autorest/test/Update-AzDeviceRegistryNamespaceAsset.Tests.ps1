@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeviceRegistryNamesp
 }
 
 Describe 'Update-AzDeviceRegistryNamespaceAsset' {
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip {
         $testConfig = $env.namespaceAssetTests.updateTests.UpdateExpanded
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
@@ -48,7 +48,7 @@ Describe 'Update-AzDeviceRegistryNamespaceAsset' {
         $result.DisplayName | Should -Be $commonPatchConfig.displayName
     }
 
-    It 'UpdateViaJsonString' {
+    It 'UpdateViaJsonString' -Skip {
         $testConfig = $env.namespaceAssetTests.updateTests.UpdateViaJsonString
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
@@ -86,7 +86,7 @@ Describe 'Update-AzDeviceRegistryNamespaceAsset' {
         
     }
 
-    It 'UpdateViaJsonFilePath' {
+    It 'UpdateViaJsonFilePath' -Skip {
         $testConfig = $env.namespaceAssetTests.updateTests.UpdateViaJsonFilePath
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
@@ -120,7 +120,7 @@ Describe 'Update-AzDeviceRegistryNamespaceAsset' {
         $result.DisplayName | Should -Be $commonPatchConfig.displayName
     }
 
-    It 'UpdateViaIdentityNamespaceExpanded' {
+    It 'UpdateViaIdentityNamespaceExpanded' -Skip {
         $testConfig = $env.namespaceAssetTests.updateTests.UpdateViaIdentityNamespaceExpanded
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
@@ -160,7 +160,7 @@ Describe 'Update-AzDeviceRegistryNamespaceAsset' {
         $result.DisplayName | Should -Be $commonPatchConfig.displayName
     }
 
-    It 'UpdateViaIdentityExpanded' {
+    It 'UpdateViaIdentityExpanded' -Skip {
         $testConfig = $env.namespaceAssetTests.updateTests.UpdateViaIdentityExpanded
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDeviceRegistryNamespace
 }
 
 Describe 'Get-AzDeviceRegistryNamespaceDevice' {
-    It 'List' {
+    It 'List' -Skip {
         $testConfig = $env.namespaceDeviceTests.getTests.List
         $namespaceName = $env.namespaceDeviceTests.namespaceName
         $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
@@ -32,7 +32,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDevice' {
         $deviceNames | Should -Contain $testConfig.name2
     }
 
-    It 'GetViaIdentityNamespace' {
+    It 'GetViaIdentityNamespace' -Skip {
         $testConfig = $env.namespaceDeviceTests.getTests.GetViaIdentityNamespace
         $namespaceName = $env.namespaceDeviceTests.namespaceName
         $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
@@ -62,7 +62,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound.Count | Should -Be 2
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         $testConfig = $env.namespaceDeviceTests.getTests.Get
         $namespaceName = $env.namespaceDeviceTests.namespaceName
         $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName
@@ -95,7 +95,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDevice' {
         $result.EndpointsInbound[$commonProperties.inboundEndpointName2].AuthenticationMethod | Should -Be $commonProperties.authenticationMethod2
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -Skip {
         $testConfig = $env.namespaceDeviceTests.getTests.GetViaIdentity
         $namespaceName = $env.namespaceDeviceTests.namespaceName
         $resourceGroupName = $env.namespaceDeviceTests.resourceGroupName

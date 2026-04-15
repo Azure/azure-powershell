@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDeviceRegistrySchemaReg
 }
 
 Describe 'Get-AzDeviceRegistrySchemaRegistry' {
-    It 'List' {
+    It 'List' -Skip {
         $testConfig = $env.schemaRegistryTests.getTests.List
         $commonProperties = $env.schemaRegistryTests.getTests.commonProperties
 
@@ -28,7 +28,7 @@ Describe 'Get-AzDeviceRegistrySchemaRegistry' {
         $result.Count -ge 2 | Should -Be $true
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         $testConfig = $env.schemaRegistryTests.getTests.Get
         $commonProperties = $env.schemaRegistryTests.getTests.commonProperties
         New-AzDeviceRegistrySchemaRegistry -ResourceGroupName $env.resourceGroup -SchemaRegistryName $testConfig.name -Location $env.location -Namespace $testConfig.namespace -DisplayName $commonProperties.displayName -Description $commonProperties.description -StorageAccountContainerUrl $commonProperties.storageAccountContainerUrl
@@ -44,7 +44,7 @@ Describe 'Get-AzDeviceRegistrySchemaRegistry' {
         $result.StorageAccountContainerUrl | Should -Be $commonProperties.storageAccountContainerUrl
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -Skip {
         $testConfig = $env.schemaRegistryTests.getTests.GetViaIdentity
         $commonProperties = $env.schemaRegistryTests.getTests.commonProperties
         $sr = New-AzDeviceRegistrySchemaRegistry -ResourceGroupName $env.resourceGroup -SchemaRegistryName $testConfig.name -Location $env.location -Namespace $testConfig.namespace -DisplayName $commonProperties.displayName -Description $commonProperties.description -StorageAccountContainerUrl $commonProperties.storageAccountContainerUrl

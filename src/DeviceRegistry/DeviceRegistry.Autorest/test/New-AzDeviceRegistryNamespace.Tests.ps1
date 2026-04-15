@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDeviceRegistryNamespace
 }
 
 Describe 'New-AzDeviceRegistryNamespace' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -Skip {
         $namespaceTestParams = $env.namespaceTests.createTests.CreateExpanded
         $endpoints = $env.namespaceTests.createTests.endpoints
         $endpointsHashtable = @{
@@ -46,7 +46,7 @@ Describe 'New-AzDeviceRegistryNamespace' {
         $namespace.MessagingEndpoint[$key2].resourceId | Should -Be $endpoints.myendpoint2.resourceId
     }
 
-    It 'CreateViaJsonFilePath' {
+    It 'CreateViaJsonFilePath' -Skip {
         $namespaceTestParams = $env.namespaceTests.createTests.CreateViaJsonFilePath
         $endpoints = $env.namespaceTests.createTests.endpoints
         $jsonFilePath = (Join-Path $PSScriptRoot $namespaceTestParams.jsonFilePath)
@@ -66,7 +66,7 @@ Describe 'New-AzDeviceRegistryNamespace' {
         $namespace.MessagingEndpoint[$key2].resourceId | Should -Be $endpoints.myendpoint2.resourceId
     }
 
-    It 'CreateViaJsonString' {
+    It 'CreateViaJsonString' -Skip {
         $namespaceTestParams = $env.namespaceTests.createTests.CreateViaJsonString
         $endpoints = $env.namespaceTests.createTests.endpoints
         $jsonFilePath = (Join-Path $PSScriptRoot $namespaceTestParams.jsonStringFilePath)

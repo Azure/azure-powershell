@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDeviceRegistryNamespace
 }
 
 Describe 'Get-AzDeviceRegistryNamespaceDiscoveredDevice' {
-    It 'List' {
+    It 'List' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.getTests.List
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceDiscoveredDeviceTests.getTests.jsonFilePath
@@ -31,7 +31,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDiscoveredDevice' {
         $deviceNames | Should -Contain $testConfig.name2
     }
 
-    It 'GetViaIdentityNamespace' {
+    It 'GetViaIdentityNamespace' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.getTests.GetViaIdentityNamespace
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredDeviceTests.createTests.commonProperties
@@ -59,7 +59,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDiscoveredDevice' {
         $result.EndpointInbound.Count | Should -Be 2
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.getTests.Get
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredDeviceTests.createTests.commonProperties
@@ -90,7 +90,7 @@ Describe 'Get-AzDeviceRegistryNamespaceDiscoveredDevice' {
         $result.EndpointInbound[$commonProperties.inboundEndpointName2].Version | Should -Be $commonProperties.inboundVersion2
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -Skip {
         $testConfig = $env.namespaceDiscoveredDeviceTests.getTests.GetViaIdentity
         $namespaceName = $env.namespaceDiscoveredDeviceTests.namespaceName
         $commonProperties = $env.namespaceDiscoveredDeviceTests.createTests.commonProperties

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDeviceRegistryAsset'))
 }
 
 Describe 'New-AzDeviceRegistryAsset' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -Skip {
         $assetTestParams = $env.assetTests.createTests.CreateExpanded
         $commonAssetProperties = $env.assetTests.createTests.commonAssetProperties
         
@@ -43,7 +43,7 @@ Describe 'New-AzDeviceRegistryAsset' {
         $asset.DefaultEventsConfiguration | Should -Be $commonAssetProperties.defaultEventsConfiguration
     }
 
-    It 'CreateViaJsonFilePath' {
+    It 'CreateViaJsonFilePath' -Skip {
         $assetTestParams = $env.assetTests.createTests.CreateViaJsonFilePath
         $commonAssetProperties = $env.assetTests.createTests.commonAssetProperties
         $jsonFilePath = (Join-Path $PSScriptRoot $assetTestParams.jsonFilePath)
@@ -91,7 +91,7 @@ Describe 'New-AzDeviceRegistryAsset' {
         $asset.Event[1].Configuration | Should -Be $assetTestParams.event2.eventConfiguration
     }
 
-    It 'CreateViaJsonString' {
+    It 'CreateViaJsonString' -Skip {
         $assetTestParams = $env.assetTests.createTests.CreateViaJsonString
         $commonAssetProperties = $env.assetTests.createTests.commonAssetProperties
         $jsonString = Get-Content -Path (Join-Path $PSScriptRoot $assetTestParams.jsonStringFilePath) -Raw

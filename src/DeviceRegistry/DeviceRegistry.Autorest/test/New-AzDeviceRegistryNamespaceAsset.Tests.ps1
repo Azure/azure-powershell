@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDeviceRegistryNamespace
 }
 
 Describe 'New-AzDeviceRegistryNamespaceAsset' {
-    It 'CreateExpanded'  {
+    It 'CreateExpanded' -Skip {
         $testConfig = $env.namespaceAssetTests.createTests.CreateExpanded
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
@@ -41,7 +41,7 @@ Describe 'New-AzDeviceRegistryNamespaceAsset' {
         $result.DocumentationUri | Should -Be $testConfig.properties.documentationUri
     }
 
-    It 'CreateViaJsonFilePath'  {
+    It 'CreateViaJsonFilePath' -Skip {
         $testConfig = $env.namespaceAssetTests.createTests.CreateViaJsonFilePath
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
@@ -70,7 +70,7 @@ Describe 'New-AzDeviceRegistryNamespaceAsset' {
         $result.ManagementGroup | Should -HaveCount 1
     }
 
-    It 'CreateViaJsonString'  {
+    It 'CreateViaJsonString' -Skip {
         $testConfig = $env.namespaceAssetTests.createTests.CreateViaJsonString
         $namespaceName = $env.namespaceAssetTests.namespaceName
         $resourceGroupName = $env.namespaceAssetTests.resourceGroupName

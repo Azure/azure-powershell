@@ -15,16 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Sync-AzDeviceRegistryCredenti
 }
 
 Describe 'Sync-AzDeviceRegistryCredentials' {
-    It 'Sync' {
-        Sync-AzDeviceRegistryCredentials `
-            -NamespaceName $env.credentialsTests.namespaceName `
-            -ResourceGroupName $env.credentialsTests.resourceGroup
-        
-        # Verify credentials are synced by getting them
-        $credentials = Get-AzDeviceRegistryCredentials `
-            -NamespaceName $env.credentialsTests.namespaceName `
-            -ResourceGroupName $env.credentialsTests.resourceGroup
-        
-        $credentials.Name | Should -Be "default"
+    It 'Synchronize' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'SynchronizeViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

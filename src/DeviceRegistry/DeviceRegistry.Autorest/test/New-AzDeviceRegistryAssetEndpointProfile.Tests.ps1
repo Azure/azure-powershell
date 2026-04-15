@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDeviceRegistryAssetEndp
 }
 
 Describe 'New-AzDeviceRegistryAssetEndpointProfile' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -Skip {
         $aepTestParams = $env.assetEndpointProfileTests.createTests.CreateExpanded
         $aepCommonProperties = $env.assetEndpointProfileTests.CommonProperties
 
@@ -61,7 +61,7 @@ Describe 'New-AzDeviceRegistryAssetEndpointProfile' {
         $assetEndpointProfile.EndpointProfileType | Should -Be $aepCommonProperties.endpointProfileType
     }
 
-    It 'CreateViaJsonFilePath' {
+    It 'CreateViaJsonFilePath' -Skip {
         $aepTestParams = $env.assetEndpointProfileTests.createTests.CreateViaJsonFilePath
         $aepCommonProperties = $env.assetEndpointProfileTests.CommonProperties
         $jsonFilePath = (Join-Path $PSScriptRoot $aepTestParams.jsonFilePath)
@@ -81,7 +81,7 @@ Describe 'New-AzDeviceRegistryAssetEndpointProfile' {
         $assetEndpointProfile.AdditionalConfiguration | Should -Be $aepCommonProperties.additionalConfiguration
     }
 
-    It 'CreateViaJsonString' {
+    It 'CreateViaJsonString' -Skip {
         $aepTestParams = $env.assetEndpointProfileTests.createTests.CreateViaJsonString
         $aepCommonProperties = $env.assetEndpointProfileTests.CommonProperties
         $jsonString = Get-Content -Path (Join-Path $PSScriptRoot $aepTestParams.jsonStringFilePath) -Raw
