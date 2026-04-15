@@ -128,7 +128,6 @@ INPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy proxy resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -146,7 +145,6 @@ NAMESPACEINPUTOBJECT <IDeviceRegistryIdentity>: Identity Parameter
   [Location <String>]: The name of the Azure region.
   [NamespaceName <String>]: The name of the namespace.
   [OperationId <String>]: The ID of an ongoing async operation.
-  [PolicyName <String>]: The name of the Policy proxy resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SchemaName <String>]: Schema name parameter.
   [SchemaRegistryName <String>]: Schema registry name parameter.
@@ -259,14 +257,6 @@ param(
     [System.Collections.Hashtable]
     # Set of most recently removed endpoints.
     ${OutboundUnassigned},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityNamespaceExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category('Body')]
-    [System.String]
-    # Resource Id of the Policy.
-    ${PolicyResourceId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]

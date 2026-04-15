@@ -79,7 +79,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             }
             {_endpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject>("endpoints"), out var __jsonEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.MessagingEndpoints1.FromJson(__jsonEndpoints) : _endpoint;}
             {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject>("status"), out var __jsonStatus) ? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceStatus.FromJson(__jsonStatus) : _status;}
-            {_policy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonObject>("policy"), out var __jsonPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.DeviceCredentialPolicy.FromJson(__jsonPolicy) : _policy;}
             {_uuid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("uuid"), out var __jsonUuid) ? (string)__jsonUuid : (string)_uuid;}
             {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool?)__jsonEnabled : _enabled;}
             {_externalDeviceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString>("externalDeviceId"), out var __jsonExternalDeviceId) ? (string)__jsonExternalDeviceId : (string)_externalDeviceId;}
@@ -119,7 +118,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 AddIf( null != this._status ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) this._status.ToJson(null,serializationMode) : null, "status" ,container.Add );
             }
-            AddIf( null != this._policy ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) this._policy.ToJson(null,serializationMode) : null, "policy" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._uuid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Json.JsonString(this._uuid.ToString()) : null, "uuid" ,container.Add );
