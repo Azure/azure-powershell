@@ -181,12 +181,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     if (File.Exists(actualPrivateKeyFile))
                     {
                         WriteVerbose($"[CertGen] Removing existing private key: '{actualPrivateKeyFile}'");
-                        File.Delete(actualPrivateKeyFile);
+                        FileUtils.DeleteFile(actualPrivateKeyFile);
                     }
                     if (File.Exists(actualPublicKeyFile))
                     {
                         WriteVerbose($"[CertGen] Removing existing public key: '{actualPublicKeyFile}'");
-                        File.Delete(actualPublicKeyFile);
+                        FileUtils.DeleteFile(actualPublicKeyFile);
                     }
                 }
                 else
