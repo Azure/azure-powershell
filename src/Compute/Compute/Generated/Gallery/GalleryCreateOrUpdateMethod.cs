@@ -293,11 +293,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     bool hasSystemAssigned = this.IsParameterBound(c => c.EnableSystemAssignedIdentity) && this.EnableSystemAssignedIdentity.IsPresent;
                     bool hasUserAssigned = this.IsParameterBound(c => c.UserAssignedIdentity) && this.UserAssignedIdentity != null && this.UserAssignedIdentity.Length > 0;
                     bool disableSystem = this.IsParameterBound(c => c.DisableSystemAssignedIdentity) && this.DisableSystemAssignedIdentity.IsPresent;
-                    bool disableUser = this.IsParameterBound(c => c.RemoveAllUserAssignedIdentity) && this.RemoveAllUserAssignedIdentity.IsPresent;
+                    bool removeUserBound = this.IsParameterBound(c => c.RemoveUserAssignedIdentity) && this.RemoveUserAssignedIdentity != null && this.RemoveUserAssignedIdentity.Length > 0;
+                    bool removeAllUser = removeUserBound && this.RemoveUserAssignedIdentity.Any(id => string.Equals(id, "All", StringComparison.OrdinalIgnoreCase));
 
                     if (hasUserAssigned && this.UserAssignedIdentity.Any(id => string.IsNullOrWhiteSpace(id)))
                     {
                         throw new ArgumentException("Parameter '-UserAssignedIdentity' does not accept null or empty values.");
+                    }
+
+                    if (removeUserBound && !removeAllUser && this.RemoveUserAssignedIdentity.Any(id => string.IsNullOrWhiteSpace(id)))
+                    {
+                        throw new ArgumentException("Parameter '-RemoveUserAssignedIdentity' does not accept null or empty values.");
                     }
 
                     if (hasSystemAssigned && disableSystem)
@@ -305,12 +311,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         throw new ArgumentException("Parameters '-EnableSystemAssignedIdentity' and '-DisableSystemAssignedIdentity' cannot be used together.");
                     }
 
-                    if (hasUserAssigned && disableUser)
+                    if (hasUserAssigned && removeAllUser)
                     {
-                        throw new ArgumentException("Parameters '-UserAssignedIdentity' and '-RemoveAllUserAssignedIdentity' cannot be used together.");
+                        throw new ArgumentException("Parameters '-UserAssignedIdentity' and '-RemoveUserAssignedIdentity All' cannot be used together.");
                     }
 
-                    if (hasSystemAssigned || hasUserAssigned || disableSystem || disableUser)
+                    if (hasSystemAssigned || hasUserAssigned || disableSystem || removeUserBound)
                     {
                         galleryUpdate.Identity = new GalleryIdentity();
 
@@ -322,7 +328,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             || existingType == ResourceIdentityType.SystemAssignedUserAssigned;
 
                         bool wantSystem = (hasSystemAssigned || existingHasSystem) && !disableSystem;
-                        bool wantUser = (hasUserAssigned || existingHasUser) && !disableUser;
+                        bool wantUser = (hasUserAssigned || existingHasUser) && !removeAllUser;
 
                         if (wantSystem && wantUser)
                         {
@@ -341,9 +347,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             galleryUpdate.Identity.Type = ResourceIdentityType.None;
                         }
 
-                        if (disableUser && wantSystem)
+                        if (removeAllUser && wantSystem)
                         {
-                            // Type is SystemAssigned (not None) — explicitly null out user identities via PATCH
+                            // Type is SystemAssigned (not None) — explicitly null out all user identities via PATCH
                             var existingKeys = gallery.Identity?.UserAssignedIdentities?.Keys;
                             if (existingKeys != null && existingKeys.Count > 0)
                             {
@@ -355,28 +361,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             }
                         }
                         // When type is None, don't include userAssignedIdentities — the API rejects identity ids with type None
-                        else if (hasUserAssigned)
+                        else if (hasUserAssigned || (removeUserBound && !removeAllUser))
                         {
-                            var newIdentityIds = new HashSet<string>(this.UserAssignedIdentity, StringComparer.OrdinalIgnoreCase);
-                            galleryUpdate.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+                            galleryUpdate.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>(StringComparer.OrdinalIgnoreCase);
 
-                            // Set removed identities to null so the PATCH API removes them
-                            var existingKeys = gallery.Identity?.UserAssignedIdentities?.Keys;
-                            if (existingKeys != null)
+                            // Null out specific identities being removed
+                            if (removeUserBound && !removeAllUser)
                             {
-                                foreach (var existingKey in existingKeys)
+                                foreach (var id in this.RemoveUserAssignedIdentity.Distinct(StringComparer.OrdinalIgnoreCase))
                                 {
-                                    if (!newIdentityIds.Contains(existingKey))
-                                    {
-                                        galleryUpdate.Identity.UserAssignedIdentities[existingKey] = null;
-                                    }
+                                    galleryUpdate.Identity.UserAssignedIdentities[id] = null;
                                 }
                             }
 
-                            // Add the desired identities
-                            foreach (var id in newIdentityIds)
+                            // Append the desired identities
+                            if (hasUserAssigned)
                             {
-                                galleryUpdate.Identity.UserAssignedIdentities[id] = new UserAssignedIdentitiesValue();
+                                foreach (var id in this.UserAssignedIdentity.Distinct(StringComparer.OrdinalIgnoreCase))
+                                {
+                                    galleryUpdate.Identity.UserAssignedIdentities[id] = new UserAssignedIdentitiesValue();
+                                }
                             }
                         }
                     }
@@ -654,7 +658,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Removes all user-assigned managed identities from the gallery.")]
-        public SwitchParameter RemoveAllUserAssignedIdentity { get; set; }
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of user-assigned managed identity resource IDs to remove from the gallery, or 'All' to remove all user-assigned identities.")]
+        public string[] RemoveUserAssignedIdentity { get; set; }
     }
 }

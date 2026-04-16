@@ -1495,8 +1495,8 @@ function Test-UpdateGalleryWithUserAssignedIdentity
         Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
         Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath2) };
 
-        # Update gallery to have only the 3rd identity
-        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -UserAssignedIdentity @($identityPath3);
+        # Update gallery to have only the 3rd identity (remove id1+id2, add id3)
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -UserAssignedIdentity @($identityPath3) -RemoveUserAssignedIdentity @($identityPath1, $identityPath2);
 
         Assert-NotNull $gallery.Identity;
         Assert-AreEqual "UserAssigned" $gallery.Identity.Type.ToString();
@@ -1572,9 +1572,9 @@ function Test-UpdateGalleryWithSystemAndUserAssignedIdentity
         Assert-True { $gallery.Identity.UserAssignedIdentities.ContainsKey($identityPath1) };
         Assert-NotNull $gallery.Identity.PrincipalId;
 
-        # Update with only -UserAssignedIdentity (replacing id1 with id2)
+        # Update with -UserAssignedIdentity to add id2 and -RemoveUserAssignedIdentity to remove id1
         # This should preserve SystemAssigned and result in SystemAssigned,UserAssigned
-        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -UserAssignedIdentity @($identityPath2);
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -UserAssignedIdentity @($identityPath2) -RemoveUserAssignedIdentity @($identityPath1);
 
         Assert-NotNull $gallery.Identity;
         Assert-AreEqual "SystemAssignedUserAssigned" $gallery.Identity.Type.ToString();
@@ -1674,7 +1674,7 @@ function Test-DisableGalleryIdentities
         Assert-AreEqual 2 $gallery.Identity.UserAssignedIdentities.Count;
 
         # Step 3: Remove all user-assigned identities
-        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -RemoveAllUserAssignedIdentity;
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -RemoveUserAssignedIdentity "All";
 
         Assert-Null $gallery.Identity;
 
@@ -1698,7 +1698,7 @@ function Test-DisableGalleryIdentities
         Assert-AreEqual 2 $gallery.Identity.UserAssignedIdentities.Count;
 
         # Step 5: Remove both system-assigned and user-assigned at the same time
-        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -DisableSystemAssignedIdentity -RemoveAllUserAssignedIdentity;
+        $gallery = Update-AzGallery -ResourceGroupName $rgname -Name $galleryName -DisableSystemAssignedIdentity -RemoveUserAssignedIdentity "All";
 
         Assert-Null $gallery.Identity;
 
