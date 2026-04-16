@@ -760,7 +760,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                 -Location $params.location `
                 -Kind $params.kind `
                 -Tags $params.tags `
-                -AllowBlobPublicAccess $true
+                -AllowBlobPublicAccess $false
 
             if ($null -ne $cacheStorageAccount -and
                 $null -ne $cacheStorageAccount.ProvisioningState -and
@@ -804,14 +804,10 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             throw "Cache Storage Account '$($cacheStorageAccount.StorageAccountName)' uses an unsupported SKU tier '$($cacheStorageAccount.Sku.Tier)'. Only 'Standard' tier storage accounts are supported. Please provide a Standard tier storage account."
         }
 
-        # Validate public network access is not restricted (unless using private endpoints)
-        if ($null -ne $cacheStorageAccount.PublicNetworkAccess -and
+        # Validate public network access should not be disabled even for private endpoint
+        if (![string]::IsNullOrEmpty($cacheStorageAccount.PublicNetworkAccess) -and
             $cacheStorageAccount.PublicNetworkAccess -eq "Disabled") {
-            # Public network access is disabled — skip blob access check as private endpoints are in use
-        }
-        elseif ($null -ne $cacheStorageAccount.AllowBlobPublicAccess -and
-            $cacheStorageAccount.AllowBlobPublicAccess -ne $true) {
-            throw "Cache Storage Account '$($cacheStorageAccount.StorageAccountName)' does not allow public blob access. Please enable 'Allow Blob public access' on the storage account and re-run this command."
+            throw "Cache Storage Account '$($cacheStorageAccount.StorageAccountName)' does not allow public network access. Please enable 'Public network access' on the storage account and re-run this command."
         }
 
         $params = @{

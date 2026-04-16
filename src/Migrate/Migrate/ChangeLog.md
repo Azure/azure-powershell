@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
   - Fixed caller identity resolution to correctly handle Service Principal and Managed Identity account types, with a null-guard for hostname lookup.
-  - Added cache storage account validations to reject unsupported SKU tiers and storage accounts with public blob access disabled.
+  - Added cache storage account validations to reject unsupported SKU tiers and storage accounts with public network access disabled.
 * Updated `New-AzMigrateLocalServerReplication`
   - Removed redundant conditional guards on mandatory parameter ARM ID validation.
   - Added storage path validation to verify existence, successful creation status, and latest operation provisioning state before initiating replication
