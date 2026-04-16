@@ -37,9 +37,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
         protected CancellationToken CmdletCancellationToken { get; private set; }
 
         /// <summary>
-        /// Forces the command to run without asking for user confirmation when overwriting existing SSH key pairs.
+        /// Forces the command to run without asking for user confirmation to overwrite existing SSH key pairs.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation when overwriting existing SSH key pairs.")]
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation to overwrite existing SSH key pairs.")]
         public SwitchParameter Force { get; set; }
 
         protected override void BeginProcessing()
