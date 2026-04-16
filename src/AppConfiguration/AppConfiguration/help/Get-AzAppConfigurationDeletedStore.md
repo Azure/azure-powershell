@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAppConfigurationDeletedStore
 
 ## SYNOPSIS
-Gets a deleted Azure app configuration store.
+Gets a deleted Azure App Configuration store.
 
 ## SYNTAX
 
@@ -31,11 +31,11 @@ Get-AzAppConfigurationDeletedStore -InputObject <IAppConfigurationIdentity> [-De
 ```
 
 ## DESCRIPTION
-Gets a deleted Azure app configuration store.
+Gets a deleted Azure App Configuration store.
 
 ## EXAMPLES
 
-### Example 1: Gets a deleted Azure app configuration store.
+### Example 1: Gets a deleted Azure App Configuration store.
 ```powershell
 Remove-AzAppConfigurationStore -Name azpstestappstore -ResourceGroupName azpstest-gp
 Get-AzAppConfigurationDeletedStore
@@ -47,9 +47,9 @@ Name             ResourceGroupName
 azpstestappstore
 ```
 
-Gets a deleted Azure app configuration store.
+Gets a deleted Azure App Configuration store.
 
-### Example 2: Gets a deleted Azure app configuration store.
+### Example 2: Gets a deleted Azure App Configuration store.
 ```powershell
 Remove-AzAppConfigurationStore -Name azpstestappstore -ResourceGroupName azpstest-gp
 Get-AzAppConfigurationDeletedStore -Location eastus -Name azpstestappstore
@@ -61,7 +61,7 @@ Name             ResourceGroupName
 azpstestappstore
 ```
 
-Gets a deleted Azure app configuration store.
+Gets a deleted Azure App Configuration store.
 
 ## PARAMETERS
 

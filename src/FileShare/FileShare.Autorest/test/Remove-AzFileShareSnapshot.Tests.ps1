@@ -15,15 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFileShareSnapshot'))
 }
 
 Describe 'Remove-AzFileShareSnapshot' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentityFileShare' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            $snapshotName = "snapshot-todelete"
+            New-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                     -ResourceName $env.fileShareName01 `
+                                     -Name $snapshotName `
+                                     -Metadata @{"purpose" = "testing"; "environment" = "test"}
+            Remove-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                        -ResourceName $env.fileShareName01 `
+                                        -Name $snapshotName `
+                                        -PassThru
+            $config = Get-AzFileShareSnapshot -ResourceGroupName $env.resourceGroup `
+                                               -ResourceName $env.fileShareName01 `
+                                               -Name $snapshotName `
+                                               -ErrorAction SilentlyContinue
+            $config | Should -BeNullOrEmpty
+        } | Should -Not -Throw
     }
 }

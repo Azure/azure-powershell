@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Authorization.Models
     /// Deny Assignment
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class DenyAssignment
+    public partial class DenyAssignment : Microsoft.Rest.Azure.IResource
     {
         /// <summary>
         /// Initializes a new instance of the DenyAssignment class.
@@ -32,6 +32,10 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// </param>
 
         /// <param name="type">The deny assignment type.
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="denyAssignmentName">The display name of the deny assignment.
@@ -59,12 +63,38 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// <param name="isSystemProtected">Specifies whether this deny assignment was created by Azure and cannot be
         /// edited or deleted.
         /// </param>
-        public DenyAssignment(string id = default(string), string name = default(string), string type = default(string), string denyAssignmentName = default(string), string description = default(string), System.Collections.Generic.IList<DenyAssignmentPermission> permissions = default(System.Collections.Generic.IList<DenyAssignmentPermission>), string scope = default(string), bool? doNotApplyToChildScopes = default(bool?), System.Collections.Generic.IList<Principal> principals = default(System.Collections.Generic.IList<Principal>), System.Collections.Generic.IList<Principal> excludePrincipals = default(System.Collections.Generic.IList<Principal>), bool? isSystemProtected = default(bool?))
+
+        /// <param name="denyAssignmentEffect">The effect of the deny assignment. &#39;enforced&#39; blocks access, &#39;audit&#39; logs
+        /// without blocking.
+        /// Possible values include: &#39;enforced&#39;, &#39;audit&#39;</param>
+
+        /// <param name="condition">The conditions on the deny assignment. This limits the resources it can be
+        /// assigned to. e.g.:
+        /// @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName]
+        /// StringEqualsIgnoreCase &#39;foo_storage_container&#39;
+        /// </param>
+
+        /// <param name="conditionVersion">Version of the condition.
+        /// </param>
+
+        /// <param name="createdOn">Time it was created
+        /// </param>
+
+        /// <param name="updatedOn">Time it was updated
+        /// </param>
+
+        /// <param name="createdBy">Id of the user who created the assignment
+        /// </param>
+
+        /// <param name="updatedBy">Id of the user who updated the assignment
+        /// </param>
+        public DenyAssignment(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string denyAssignmentName = default(string), string description = default(string), System.Collections.Generic.IList<DenyAssignmentPermission> permissions = default(System.Collections.Generic.IList<DenyAssignmentPermission>), string scope = default(string), bool? doNotApplyToChildScopes = default(bool?), System.Collections.Generic.IList<DenyAssignmentPrincipal> principals = default(System.Collections.Generic.IList<DenyAssignmentPrincipal>), System.Collections.Generic.IList<DenyAssignmentPrincipal> excludePrincipals = default(System.Collections.Generic.IList<DenyAssignmentPrincipal>), bool? isSystemProtected = default(bool?), string denyAssignmentEffect = default(string), string condition = default(string), string conditionVersion = default(string), System.DateTime? createdOn = default(System.DateTime?), System.DateTime? updatedOn = default(System.DateTime?), string createdBy = default(string), string updatedBy = default(string))
 
         {
             this.Id = id;
             this.Name = name;
             this.Type = type;
+            this.SystemData = systemData;
             this.DenyAssignmentName = denyAssignmentName;
             this.Description = description;
             this.Permissions = permissions;
@@ -73,6 +103,13 @@ namespace Microsoft.Azure.Management.Authorization.Models
             this.Principals = principals;
             this.ExcludePrincipals = excludePrincipals;
             this.IsSystemProtected = isSystemProtected;
+            this.DenyAssignmentEffect = denyAssignmentEffect;
+            this.Condition = condition;
+            this.ConditionVersion = conditionVersion;
+            this.CreatedOn = createdOn;
+            this.UpdatedOn = updatedOn;
+            this.CreatedBy = createdBy;
+            this.UpdatedBy = updatedBy;
             CustomInit();
         }
 
@@ -101,6 +138,13 @@ namespace Microsoft.Azure.Management.Authorization.Models
         public string Type {get; private set; }
 
         /// <summary>
+        /// Gets azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData {get; private set; }
+
+        /// <summary>
         /// Gets or sets the display name of the deny assignment.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.denyAssignmentName")]
@@ -120,10 +164,10 @@ namespace Microsoft.Azure.Management.Authorization.Models
         public System.Collections.Generic.IList<DenyAssignmentPermission> Permissions {get; set; }
 
         /// <summary>
-        /// Gets or sets the deny assignment scope.
+        /// Gets the deny assignment scope.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.scope")]
-        public string Scope {get; set; }
+        public string Scope {get; private set; }
 
         /// <summary>
         /// Gets or sets determines if the deny assignment applies to child scopes.
@@ -136,14 +180,14 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// Gets or sets array of principals to which the deny assignment applies.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.principals")]
-        public System.Collections.Generic.IList<Principal> Principals {get; set; }
+        public System.Collections.Generic.IList<DenyAssignmentPrincipal> Principals {get; set; }
 
         /// <summary>
         /// Gets or sets array of principals to which the deny assignment does not
         /// apply.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.excludePrincipals")]
-        public System.Collections.Generic.IList<Principal> ExcludePrincipals {get; set; }
+        public System.Collections.Generic.IList<DenyAssignmentPrincipal> ExcludePrincipals {get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether this deny assignment was created by Azure
@@ -151,5 +195,51 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isSystemProtected")]
         public bool? IsSystemProtected {get; set; }
+
+        /// <summary>
+        /// Gets or sets the effect of the deny assignment. &#39;enforced&#39; blocks access,
+        /// &#39;audit&#39; logs without blocking. Possible values include: &#39;enforced&#39;, &#39;audit&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.denyAssignmentEffect")]
+        public string DenyAssignmentEffect {get; set; }
+
+        /// <summary>
+        /// Gets or sets the conditions on the deny assignment. This limits the
+        /// resources it can be assigned to. e.g.:
+        /// @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName]
+        /// StringEqualsIgnoreCase &#39;foo_storage_container&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.condition")]
+        public string Condition {get; set; }
+
+        /// <summary>
+        /// Gets or sets version of the condition.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.conditionVersion")]
+        public string ConditionVersion {get; set; }
+
+        /// <summary>
+        /// Gets time it was created
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdOn")]
+        public System.DateTime? CreatedOn {get; private set; }
+
+        /// <summary>
+        /// Gets time it was updated
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.updatedOn")]
+        public System.DateTime? UpdatedOn {get; private set; }
+
+        /// <summary>
+        /// Gets id of the user who created the assignment
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdBy")]
+        public string CreatedBy {get; private set; }
+
+        /// <summary>
+        /// Gets id of the user who updated the assignment
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.updatedBy")]
+        public string UpdatedBy {get; private set; }
     }
 }

@@ -17,7 +17,12 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Upcoming Release
+## Upcoming 
+* Fixed single node registration scenario.
+
+## Version 2.7.0
+* Updated preannouncement breaking changes date to May 2026.
+* Optimized cluster registration, significantly reducing registration time on large clusters.
 
 ## Version 2.6.6
 * Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.

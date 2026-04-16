@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Identity.Client.SSHCertificates;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -30,13 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
     public class SshCredentialFactory : ISshCredentialFactory
     {
-        // kept for backward-compatibility
-        private readonly Dictionary<string, string> CloudToScope = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
-        {
-            { EnvironmentName.AzureCloud, AzureEnvironmentConstants.AzureSshAuthScope },
-            { EnvironmentName.AzureChinaCloud, AzureEnvironmentConstants.ChinaSshAuthScope },
-            { EnvironmentName.AzureUSGovernment, AzureEnvironmentConstants.USGovernmentSshAuthScope },
-        };
+        private const string AadSshLoginForLinuxServerAppId = "ce6ff14a-7fdc-4685-bbe0-f6afdfcfa8e0";
 
         private string CreateJwk(RSAParameters rsaKeyInfo, out string keyId)
         {
@@ -70,8 +63,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             var publicClient = tokenCacheProvider.CreatePublicClient(context.Environment.ActiveDirectoryAuthority, context.Tenant.Id);
-            string scope = GetAuthScope(context.Environment)
-                ?? throw new AzPSKeyNotFoundException(string.Format(Resources.ErrorSshAuthScopeNotSet, context.Environment.Name));
+            string scope = GetAuthScope();
             List<string> scopes = new List<string>() { scope };
             var jwk = CreateJwk(rsaKeyInfo, out string keyId);
 
@@ -90,10 +82,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return resultToken;
         }
 
-        private string GetAuthScope(IAzureEnvironment environment)
+        private string GetAuthScope()
         {
-            return environment.GetProperty(AzureEnvironment.ExtendedEndpoint.AzureSshAuthScope)
-                ?? CloudToScope.GetValueOrDefault(environment.Name.ToLower(), null);
+            return $"{AadSshLoginForLinuxServerAppId}/.default";
         }
     }
 }

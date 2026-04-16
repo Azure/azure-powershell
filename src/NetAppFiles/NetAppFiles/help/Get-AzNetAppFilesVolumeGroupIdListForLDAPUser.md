@@ -16,25 +16,25 @@ Get Group Id List for LDAP User
 ```
 Get-AzNetAppFilesVolumeGroupIdListForLDAPUser -ResourceGroupName <String> -AccountName <String>
  -PoolName <String> -Name <String> -Username <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzNetAppFilesVolumeGroupIdListForLDAPUser -Name <String> -PoolObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzNetAppFilesVolumeGroupIdListForLDAPUser -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Get-AzNetAppFilesVolumeGroupIdListForLDAPUser -InputObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,21 +138,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
