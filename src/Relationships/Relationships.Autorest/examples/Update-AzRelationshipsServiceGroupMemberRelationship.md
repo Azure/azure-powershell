@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a ServiceGroupMember relationship target
 ```powershell
-{{ Add code here }}
+Update-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -TargetId "/providers/Microsoft.Management/serviceGroups/newServiceGroup"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the ServiceGroupMember relationship to point to a different Service Group.
 

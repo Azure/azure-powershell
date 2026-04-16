@@ -31,27 +31,12 @@ Update a DependencyOfRelationship
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the target of a DependencyOf relationship
 ```powershell
-{{ Add code here }}
+Update-AzRelationshipsDependencyOfRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myDependency" -TargetId "/providers/Microsoft.Management/serviceGroups/newTarget"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Updates the DependencyOf relationship to point to a different Service Group target.
 
 ## PARAMETERS
 

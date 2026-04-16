@@ -36,27 +36,19 @@ Create a ServiceGroupMemberRelationship
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Make a resource group a member of a Service Group
 ```powershell
-{{ Add code here }}
+New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -TargetId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Creates a ServiceGroupMember relationship that makes the resource group 'myRG' a member of the Service Group 'myServiceGroup'. The target must be an existing Service Group.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Make a subscription a member of a Service Group
 ```powershell
-{{ Add code here }}
+New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001" -Name "subMembership" -TargetId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Makes the subscription a member of the Service Group 'myServiceGroup'.
 
 ## PARAMETERS
 

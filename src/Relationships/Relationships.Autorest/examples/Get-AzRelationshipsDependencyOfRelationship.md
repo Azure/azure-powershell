@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a DependencyOf relationship by name
 ```powershell
-{{ Add code here }}
+Get-AzRelationshipsDependencyOfRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myDependency"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Retrieves the DependencyOf relationship named 'myDependency' scoped to the resource group 'myRG'.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a DependencyOf relationship using identity input
 ```powershell
-{{ Add code here }}
+$identity = @{ ResourceUri = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG"; Name = "myDependency" }
+Get-AzRelationshipsDependencyOfRelationship -InputObject $identity
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Retrieves the relationship by constructing an identity hashtable with ResourceUri and Name keys.
 

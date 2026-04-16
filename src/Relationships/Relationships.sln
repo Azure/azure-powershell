@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Relationships.Autorest", "Relationships.Autorest", "{70B5B518-732F-B4FA-61D8-EC0023A4A294}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Relationships", "Relationships.Autorest\Az.Relationships.csproj", "{A0CDBC42-848E-4585-9482-B65D1C5E2791}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Relationships", "..\..\generated\Relationships\Relationships.Autorest\Az.Relationships.csproj", "{A0CDBC42-848E-4585-9482-B65D1C5E2791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

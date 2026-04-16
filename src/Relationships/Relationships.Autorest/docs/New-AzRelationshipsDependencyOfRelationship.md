@@ -36,27 +36,19 @@ Create a DependencyOfRelationship
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a DependencyOf relationship from a resource group to a Service Group
 ```powershell
-{{ Add code here }}
+New-AzRelationshipsDependencyOfRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myDependency" -TargetId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Creates a DependencyOf relationship declaring that the resource group 'myRG' depends on the Service Group 'myServiceGroup'.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create a DependencyOf relationship from a subscription to a resource group
 ```powershell
-{{ Add code here }}
+New-AzRelationshipsDependencyOfRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001" -Name "subDep" -TargetId "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/targetRG"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a DependencyOf relationship where the subscription depends on the resource group 'targetRG'. Source and target must be different resources.
 
 ## PARAMETERS
 

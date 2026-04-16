@@ -29,27 +29,12 @@ Delete a DependencyOfRelationship
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a DependencyOf relationship by name
 ```powershell
-{{ Add code here }}
+Remove-AzRelationshipsDependencyOfRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myDependency"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Deletes the DependencyOf relationship named 'myDependency' scoped to the resource group 'myRG'. The delete operation is asynchronous.
 
 ## PARAMETERS
 

@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a ServiceGroupMember relationship
 ```powershell
-{{ Add code here }}
+Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes the ServiceGroupMember relationship, detaching the resource group from the Service Group. The delete operation is asynchronous.
 

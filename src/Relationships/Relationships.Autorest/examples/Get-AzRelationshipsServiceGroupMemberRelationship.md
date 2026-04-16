@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a ServiceGroupMember relationship by name
 ```powershell
-{{ Add code here }}
+Get-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Retrieves the ServiceGroupMember relationship named 'myMembership' scoped to the resource group 'myRG'.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get a ServiceGroupMember relationship using identity input
 ```powershell
-{{ Add code here }}
+$identity = @{ ResourceUri = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG"; Name = "myMembership" }
+Get-AzRelationshipsServiceGroupMemberRelationship -InputObject $identity
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Retrieves the relationship by constructing an identity hashtable with ResourceUri and Name keys.
 

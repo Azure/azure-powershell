@@ -1,3 +1,3 @@
-directory: C:\One\azure-rest-api-specs\specification\relationships\Relationships.Management\tspconfig.yaml
-commit: 
-repo: 
+directory: specification/relationships/Relationships.Management
+commit: 5edf687e01dbcaf914c305363217cf133d3f0a28
+repo: Azure/azure-rest-api-specs
