@@ -165,27 +165,27 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
         Write-Host "*Selected Resource Group: '$($ResourceGroupName)'"
 
-        # Verify user validity
-        $userObject = Get-AzADUser -UserPrincipalName $context.Subscription.ExtendedProperties.Account
-
-        if (-not $userObject) {
-            $userObject = Get-AzADUser -Mail $context.Subscription.ExtendedProperties.Account
+        # Verify caller identity
+        if ($context.Account.Type -eq 'ServicePrincipal') {
+            $userObject = Get-AzADServicePrincipal -ApplicationID $context.Account.Id
         }
-
-        if (-not $userObject) {
-            $mailNickname = "{0}#EXT#" -f $($context.Account.Id -replace '@', '_')
-
-            $userObject = Get-AzADUser | 
-            Where-Object { $_.MailNickname -eq $mailNickname }
-        }
-
-        if (-not $userObject) {
-            if ($context.Account.Id.StartsWith("MSI@")) {
-                $hostname = $env:COMPUTERNAME
-                $userObject = Get-AzADServicePrincipal -DisplayName $hostname
+        elseif ($context.Account.Type -eq 'ManagedService' -or $context.Account.Id.StartsWith("MSI@")) {
+            $hostname = if ($env:COMPUTERNAME) { $env:COMPUTERNAME } else { $env:HOSTNAME }
+            if ([string]::IsNullOrEmpty($hostname)) {
+                throw "Unable to determine the hostname for Managed Identity resolution. Please set the COMPUTERNAME or HOSTNAME environment variable."
             }
-            else {
-                $userObject = Get-AzADServicePrincipal -ApplicationID $context.Account.Id
+            $userObject = Get-AzADServicePrincipal -DisplayName $hostname
+        }
+        else {
+            $userObject = Get-AzADUser -UserPrincipalName $context.Subscription.ExtendedProperties.Account
+
+            if (-not $userObject) {
+                $userObject = Get-AzADUser -Mail $context.Subscription.ExtendedProperties.Account
+            }
+
+            if (-not $userObject) {
+                $mailNickname = "{0}#EXT#" -f $($context.Account.Id -replace '@', '_')
+                $userObject = Get-AzADUser -Filter "mailNickname eq '$mailNickname'"
             }
         }
 
@@ -797,6 +797,21 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             $null -eq $cacheStorageAccount.ProvisioningState -or
             $cacheStorageAccount.ProvisioningState -ne [StorageAccountProvisioningState]::Succeeded) {
             throw "Unexpected error occurs during Cache Storage Account selection process. Please re-run this command or contact support if help needed."
+        }
+
+        # Validate Cache Storage Account SKU tier is Standard (not Premium)
+        if ($cacheStorageAccount.Sku.Tier -ne "Standard") {
+            throw "Cache Storage Account '$($cacheStorageAccount.StorageAccountName)' uses an unsupported SKU tier '$($cacheStorageAccount.Sku.Tier)'. Only 'Standard' tier storage accounts are supported. Please provide a Standard tier storage account."
+        }
+
+        # Validate public network access is not restricted (unless using private endpoints)
+        if ($null -ne $cacheStorageAccount.PublicNetworkAccess -and
+            $cacheStorageAccount.PublicNetworkAccess -eq "Disabled") {
+            # Public network access is disabled — skip blob access check as private endpoints are in use
+        }
+        elseif ($null -ne $cacheStorageAccount.AllowBlobPublicAccess -and
+            $cacheStorageAccount.AllowBlobPublicAccess -ne $true) {
+            throw "Cache Storage Account '$($cacheStorageAccount.StorageAccountName)' does not allow public blob access. Please enable 'Allow Blob public access' on the storage account and re-run this command."
         }
 
         $params = @{
