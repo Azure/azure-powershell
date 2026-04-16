@@ -273,6 +273,26 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Patch$|^PatchViaIdentity$|^Check$|^Check1$|^CheckViaIdentity$|^Validate$|^ValidateViaIdentity$
       subject: ^(?!RuleSet).+$
     remove: true
+
+  # Remove new cmdlets not planned for this release
+  - where:
+      subject: DeploymentVersion
+    remove: true
+  - where:
+      subject: KnowledgeSource
+    remove: true
+  - where:
+      subject: ManagedRuleSet
+    remove: true
+  - where:
+      subject: Policy
+    remove: true
+  - where:
+      subject: ProfileAgent
+    remove: true
+  - where:
+      subject: WebAgent
+    remove: true
   - where:
       variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
       subject: ^RuleSet$
