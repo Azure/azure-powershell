@@ -125,6 +125,17 @@ directive:
     where: $.definitions.Snapshot.properties
     transform: delete $.etag
 
+  # Fix descriptions where newlines in the API spec are stripped without adding a space,
+  # causing words to run together (e.g., "arecomposed", "valuescontaining", "archivedstate").
+  - from: swagger-document
+    where: $.definitions.Snapshot.properties.composition_type
+    transform: >-
+      $.description = "The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label.";
+  - from: swagger-document
+    where: $.definitions.Snapshot.properties.retention_period
+    transform: >-
+      $.description = "The amount of time, in seconds, that a snapshot will remain in the archived state before expiring. This property is only writable during the creation of a snapshot. If not specified, the default lifetime of key-value revisions will be used.";
+
   # Improve the Endpoint parameter description for all cmdlets
   - where:
       parameter-name: Endpoint
