@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
 
                 if (ex.Response.Content.Contains("instanceLinkRole") &&
                    ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
-                   (!model.FailoverMode.Equals("Primary") && !model.FailoverMode.Equals("Secondary")))
+                   (!model.InstanceLinkRole.Equals("Primary") && !model.InstanceLinkRole.Equals("Secondary")))
                 {
                     throw new ErrorResponseException("Allowed values for instance link role are 'Primary' or 'Secondary'.");
                 }
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
             {
                 if (ex.Response.Content.Contains("failoverType") &&
                     ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
-                    (!model.FailoverMode.Equals("Planned") || !model.FailoverMode.Equals("ForcedAllowDataLoss")))
+                    (!model.FailoverMode.Equals("Planned") && !model.FailoverMode.Equals("ForcedAllowDataLoss")))
                 {
                     throw new ErrorResponseException("Allowed values for failover type are 'Planned' or 'ForcedAllowDataLoss'.");
                 }

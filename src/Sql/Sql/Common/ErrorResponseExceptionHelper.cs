@@ -84,13 +84,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 }
             }
 
-            if (!string.IsNullOrEmpty(detailedMessage))
-            {
-                return new AzPSCloudException(detailedMessage);
-            }
-
-            // Could not extract a better message — wrap original as-is
-            return new AzPSCloudException(ex.Message);
+            var message = !string.IsNullOrEmpty(detailedMessage) ? detailedMessage : ex.Message;
+            return new AzPSCloudException(message, message, ex);
         }
     }
 }

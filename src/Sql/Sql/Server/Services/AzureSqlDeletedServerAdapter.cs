@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Sql;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Server.Model;
@@ -64,14 +65,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
             {
                 if (ex.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    throw new ErrorResponseException(
+                    throw new AzPSResourceNotFoundCloudException(
                         string.Format(Properties.Resources.DeletedServerNotFoundInLocation, serverName, location),
-                        ex.InnerException)
-                    {
-                        Body = ex.Body,
-                        Request = ex.Request,
-                        Response = ex.Response
-                    };
+                        string.Format(Properties.Resources.DeletedServerNotFoundInLocation, serverName, location),
+                        ex);
                 }
 
                 throw ErrorResponseExceptionHelper.CreateFrom(ex);
