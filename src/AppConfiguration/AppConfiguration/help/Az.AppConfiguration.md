@@ -36,7 +36,7 @@ Gets the properties of the specified replica.
 Gets a list of key-value revisions.
 
 ### [Get-AzAppConfigurationSnapshot](Get-AzAppConfigurationSnapshot.md)
-Gets a list of key-value snapshots.
+Gets a single key-value snapshot or lists key-value snapshots.
 
 ### [Get-AzAppConfigurationStore](Get-AzAppConfigurationStore.md)
 Get or list app configuration stores.

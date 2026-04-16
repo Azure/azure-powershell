@@ -27,7 +27,7 @@ Gets the state of a long running operation.
 Gets a list of key-value revisions.
 
 ### [Get-AzAppConfigurationSnapshot](Get-AzAppConfigurationSnapshot.md)
-Gets a list of key-value snapshots.
+Gets a single key-value snapshot or lists key-value snapshots.
 
 ### [New-AzAppConfigurationSnapshot](New-AzAppConfigurationSnapshot.md)
 Create a key-value snapshot.

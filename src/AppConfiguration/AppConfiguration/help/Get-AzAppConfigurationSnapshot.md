@@ -8,36 +8,28 @@ schema: 2.0.0
 # Get-AzAppConfigurationSnapshot
 
 ## SYNOPSIS
-Gets a list of key-value snapshots.
+Gets a single key-value snapshot or lists key-value snapshots.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
 Get-AzAppConfigurationSnapshot -Endpoint <String> [-Name <String>] [-After <String>]
- [-Select <System.Collections.Generic.List`1[System.String]>]
- [-Status <System.Collections.Generic.List`1[System.String]>] [-SyncToken <String>]
+ [-Status <System.Collections.Generic.List`1[System.String]>]
+ [-Select <System.Collections.Generic.List`1[System.String]>] [-SyncToken <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get1
+### Get
 ```
-Get-AzAppConfigurationSnapshot -Endpoint <String> -Name <String>
- [-Select <System.Collections.Generic.List`1[System.String]>] [-SyncToken <String>] [-ClientRequestId <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzAppConfigurationSnapshot -Endpoint <String> -InputObject <IAppConfigurationdataIdentity>
+Get-AzAppConfigurationSnapshot -Endpoint <String> [-Name <String>]
  [-Select <System.Collections.Generic.List`1[System.String]>] [-SyncToken <String>] [-ClientRequestId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a list of key-value snapshots.
+Gets a single key-value snapshot by name, or lists key-value snapshots with optional filtering.
 
 ## EXAMPLES
 
@@ -70,12 +62,11 @@ Get a single key-value snapshot by name from an App Configuration store.
 ## PARAMETERS
 
 ### -After
-Instructs the server to return elements that appear after the element referred
-to by the specified token.
+Instructs the server to return elements that appear after the element referred to by the specified token.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -90,7 +81,7 @@ An opaque, globally-unique, client-generated string identifier for the request.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, GetViaIdentity
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -132,54 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -IfMatch
-Used to perform an operation only if the targeted resource's etag matches the
-value provided.
-
-```yaml
-Type: System.String
-Parameter Sets: Get1, GetViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IfNoneMatch
-Used to perform an operation only if the targeted resource's etag does not
-match the value provided.
-
-```yaml
-Type: System.String
-Parameter Sets: Get1, GetViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IAppConfigurationdataIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-A filter for the name of the returned snapshots.
+Used to perform an operation only if the targeted resource's etag matches the value provided.
 
 ```yaml
 Type: System.String
@@ -193,12 +137,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IfNoneMatch
+Used to perform an operation only if the targeted resource's etag does not match the value provided.
+
 ```yaml
 Type: System.String
-Parameter Sets: Get1
+Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the snapshot.
+When used with the Get parameter set, retrieves a single snapshot by exact name.
+When used with the List parameter set, filters the returned snapshots by name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -225,7 +189,7 @@ Used to filter returned snapshots by their status property.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: Get
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -254,8 +218,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IAppConfigurationdataIdentity
 
 ## OUTPUTS
 

@@ -16,8 +16,8 @@ Put a key-value.
 ```
 Set-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String>] [-ClientRequestId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] [-SyncToken <String>] [-ContentType <String>] [-Etag <String>]
- [-Label1 <String>] [-LastModified <DateTime>] [-Locked] [-Tag <Hashtable>] [-Value <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LastModified <DateTime>] [-Locked] [-Tag <Hashtable>] [-Value <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PutViaJsonFilePath
@@ -216,42 +216,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Key1
-.
-
-```yaml
-Type: System.String
-Parameter Sets: PutExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Label
 The label of the key-value to create.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Label1
-The label the key-value belongs to.
-
-```yaml
-Type: System.String
-Parameter Sets: PutExpanded
 Aliases:
 
 Required: False

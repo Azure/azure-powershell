@@ -95,6 +95,13 @@ directive:
       verb: Get
     hide: true
 
+  # Hide the get operation for Snapshot to provide a custom cmdlet with clean Get/List parameter sets
+  # instead of the auto-generated Get/Get1 naming (matching the Python SDK's get_snapshot vs list_snapshots pattern)
+  - where:
+      subject: ^Snapshot$
+      verb: Get
+    hide: true
+
   # The head operation for key is not supported.
   - where:
       subject: ^Key$|^Label$|^Revision$
@@ -106,6 +113,11 @@ directive:
       variant: ^Put$
       verb: Set
     remove: true
+
+  # Mark label as read-only on KeyValue to prevent it from being settable
+  - from: swagger-document
+    where: $.definitions.KeyValue.properties.label
+    transform: $["readOnly"] = true
 
   # Remove the body 'etag' property from Snapshot to avoid CLS conflict with
   # the response header 'ETag' property (they differ only in casing).
