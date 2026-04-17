@@ -672,11 +672,8 @@ function New-AzMigrateLocalServerReplication {
         if ([string]::IsNullOrEmpty($provisioningState)) {
             throw "Storage path '$($storagePath.Name)' provisioning state is unavailable. Please verify the storage path resource is fully provisioned."
         }
-        if ($provisioningState -eq "Failed") {
-            throw "Storage path '$($storagePath.Name)' has a failed provisioning state. The latest operation on this storage path did not succeed. Please resolve the issue and retry."
-        }
-        elseif ($provisioningState -ne "Succeeded") {
-            throw "Storage path '$($storagePath.Name)' has a provisioning state of '$provisioningState'. An operation is currently in progress. Please wait for it to complete and retry."
+        if ($provisioningState -ne "Succeeded") {
+            throw "Storage path '$($storagePath.Name)' has a provisioning state of '$provisioningState'. Only storage paths with a 'Succeeded' provisioning state can be used. Please resolve the issue or select a different storage path."
         }
 
         $customProperties.StorageContainerId = $TargetStoragePathId
