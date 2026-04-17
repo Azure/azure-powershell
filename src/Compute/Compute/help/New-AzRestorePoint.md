@@ -15,7 +15,7 @@ This cmdlet can create a New Restore Point
 ```
 New-AzRestorePoint [-ResourceGroupName] <String> [-RestorePointCollectionName] <String> [-Name] <String>
  [[-Location] <String>] [-RestorePointId <String>] [-DisksToExclude <String[]>] [-ConsistencyMode <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-InstantAccessDurationInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -30,6 +30,13 @@ New-AzRestorePoint -ResourceGroupName "myRG" -RestorePointCollectionName "myColl
 ```
 
 Creates a new Restore Point
+
+### Example 2
+```powershell
+New-AzRestorePoint -ResourceGroupName "MyResourceGroup" -RestorePointCollectionName "MyRPCollection" -Name "MyRestorePoint" -ConsistencyMode "ApplicationConsistent" -InstantAccessDurationInMinutes 120
+```
+
+Creates a new application-consistent Restore Point with a 120-minute instant access snapshot duration.
 
 ## PARAMETERS
 
@@ -150,6 +157,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InstantAccessDurationInMinutes
+Duration in minutes for which the instant access snapshot is retained. Valid range: 1 to 300. Only applicable when the parent restore point collection has InstantAccess enabled.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

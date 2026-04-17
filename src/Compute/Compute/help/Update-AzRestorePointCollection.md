@@ -14,12 +14,12 @@ Update Restore Point Collection.
 
 ```
 Update-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-InstantAccess <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update Restore Point Collection. Can only Update Tags
+Update Restore Point Collection. Can update Tags and InstantAccess setting.
 
 ## EXAMPLES
 
@@ -29,6 +29,13 @@ Update-AzRestorePointCollection -ResourceGroupName <String> -Name <String> -Tag 
 ```
 
 Add updated tags using -Tag parameter
+
+### Example 2
+```powershell
+Update-AzRestorePointCollection -ResourceGroupName "MyResourceGroup" -Name "MyRPCollection" -InstantAccess $false
+```
+
+Disable Instant Access on an existing restore point collection.
 
 ## PARAMETERS
 
@@ -82,6 +89,21 @@ A hashtable which represents resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstantAccess
+Enables or disables instant access snapshot for restore points created under this restore point collection for Premium SSD v2 or Ultra disk.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

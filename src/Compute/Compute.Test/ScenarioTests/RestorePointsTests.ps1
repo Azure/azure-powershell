@@ -63,3 +63,66 @@ function Test-RestorePoints
     }
 }
 
+<#
+.SYNOPSIS
+Testing Instant Access for RestorePoints commands
+#>
+function Test-RestorePointsInstantAccess
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $restorePointCollectionName = 'rpc-ia-123' ;
+    $restorePointName = 'rp-ia-123' ;
+    $vmname = 'vm-ia-123'
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        #create a new vm
+        $user = "Foo12";
+        $password = "temppass12345T";
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -Image Win2012R2Datacenter -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel
+
+        $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname -DisplayHint Expand;
+
+        # Create restore point collection with InstantAccess enabled
+        $collection = New-AzRestorePointCollection -ResourceGroupName $rgname -Name $restorePointCollectionName -VmId $vm1.Id -Location $loc -InstantAccess $true
+        Assert-NotNull $collection
+        Assert-AreEqual $true $collection.InstantAccess
+
+        # Get collection and verify InstantAccess property
+        $getCollection = Get-AzRestorePointCollection -ResourceGroupName $rgname -Name $restorePointCollectionName
+        Assert-NotNull $getCollection
+        Assert-AreEqual $true $getCollection.InstantAccess
+
+        # Create restore point with InstantAccessDurationInMinutes
+        $restorePoint = New-AzRestorePoint -ResourceGroupName $rgname -RestorePointCollectionName $restorePointCollectionName -Name $restorePointName -InstantAccessDurationInMinutes 120
+        Assert-NotNull $restorePoint
+        Assert-AreEqual 120 $restorePoint.InstantAccessDurationInMinutes
+
+        # Get restore point and verify
+        $getRestorePoint = Get-AzRestorePoint -ResourceGroupName $rgname -RestorePointCollectionName $restorePointCollectionName -Name $restorePointName
+        Assert-NotNull $getRestorePoint
+        Assert-AreEqual 120 $getRestorePoint.InstantAccessDurationInMinutes
+
+        # Update collection to disable InstantAccess
+        $updatedCollection = Update-AzRestorePointCollection -ResourceGroupName $rgname -Name $restorePointCollectionName -InstantAccess $false
+        Assert-NotNull $updatedCollection
+        Assert-AreEqual $false $updatedCollection.InstantAccess
+
+        # Cleanup restore point and collection
+        Remove-AzRestorePoint -ResourceGroupName $rgname -RestorePointCollectionName $restorePointCollectionName -Name $restorePointName
+        Remove-AzRestorePointCollection -ResourceGroupName $rgname -Name $restorePointCollectionName
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
