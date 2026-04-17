@@ -14,10 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Management.Sql.Models;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -62,30 +60,49 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {
                 try
                 {
-                    var content = JsonConvert.DeserializeObject<Dictionary<string, object>>(ex.Response.Content);
+                    var parsed = JObject.Parse(ex.Response.Content);
 
-                    if (content.ContainsKey("error"))
+                    var errorObj = parsed["error"] as JObject;
+                    if (errorObj != null)
                     {
-                        JObject errorResponse = (JObject)content["error"];
                         JToken errorMessage;
-                        if (errorResponse.TryGetValue("message", StringComparison.InvariantCultureIgnoreCase, out errorMessage))
+                        if (errorObj.TryGetValue("message", StringComparison.InvariantCultureIgnoreCase, out errorMessage))
                         {
                             detailedMessage = errorMessage.ToString();
                         }
                     }
-                    else if (content.ContainsKey("Message"))
+                    else
                     {
-                        detailedMessage = content["Message"].ToString();
+                        var messageToken = parsed["Message"];
+                        if (messageToken != null)
+                        {
+                            detailedMessage = messageToken.ToString();
+                        }
                     }
                 }
-                catch (JsonException)
+                catch (Exception)
                 {
-                    // JSON parsing failed — fall through to use original message
+                    // JSON parsing or property access failed — fall through to use original message
                 }
             }
 
             var message = !string.IsNullOrEmpty(detailedMessage) ? detailedMessage : ex.Message;
-            return new AzPSCloudException(message, message, ex);
+            var wrappedException = new AzPSCloudException(message, message, ex);
+
+            if (ex.Request != null)
+            {
+                wrappedException.Data["Request"] = ex.Request;
+            }
+            if (ex.Response != null)
+            {
+                wrappedException.Data["Response"] = ex.Response;
+            }
+            if (!string.IsNullOrEmpty(ex.Body?.Error?.Code))
+            {
+                wrappedException.Data["ErrorCode"] = ex.Body.Error.Code;
+            }
+
+            return wrappedException;
         }
     }
 }

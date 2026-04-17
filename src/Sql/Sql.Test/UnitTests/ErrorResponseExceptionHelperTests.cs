@@ -186,5 +186,32 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             Assert.Contains("Body error message", result.Message);
             Assert.DoesNotContain("Response content message", result.Message);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateFrom_PreservesInnerExceptionAndContext()
+        {
+            // Arrange
+            var httpResponse = new HttpResponseMessage(HttpStatusCode.Forbidden);
+            var ex = new ErrorResponseException("Operation returned an invalid status code 'Forbidden'")
+            {
+                Body = new ErrorResponse(new ErrorDetail(
+                    code: "AuthorizationFailed",
+                    message: "Authorization failed.")),
+                Request = new HttpRequestMessageWrapper(new HttpRequestMessage(HttpMethod.Get, "https://management.azure.com/test"), ""),
+                Response = new HttpResponseMessageWrapper(httpResponse, "")
+            };
+
+            // Act
+            var result = ErrorResponseExceptionHelper.CreateFrom(ex);
+
+            // Assert — inner exception is preserved
+            Assert.IsType<ErrorResponseException>(result.InnerException);
+            // Assert — ErrorCode is propagated
+            Assert.Equal("AuthorizationFailed", result.Data["ErrorCode"]);
+            // Assert — Request and Response are in Data
+            Assert.NotNull(result.Data["Request"]);
+            Assert.NotNull(result.Data["Response"]);
+        }
     }
 }

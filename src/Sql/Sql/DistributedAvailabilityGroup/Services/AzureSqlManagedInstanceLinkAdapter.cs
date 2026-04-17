@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
 using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
@@ -111,12 +112,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
 
                 if (ex.Response.Content.Contains("instanceLinkRole") &&
                    ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
-                   (!model.InstanceLinkRole.Equals("Primary") && !model.InstanceLinkRole.Equals("Secondary")))
+                   (!string.Equals(model.InstanceLinkRole, "Primary", System.StringComparison.OrdinalIgnoreCase) &&
+                    !string.Equals(model.InstanceLinkRole, "Secondary", System.StringComparison.OrdinalIgnoreCase)))
                 {
                     throw new ErrorResponseException("Allowed values for instance link role are 'Primary' or 'Secondary'.");
                 }
 
-                throw;
+                throw ErrorResponseExceptionHelper.CreateFrom(ex);
             }
         }
 
@@ -171,7 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
                     throw new ErrorResponseException("Allowed values for failover type are 'Planned' or 'ForcedAllowDataLoss'.");
                 }
 
-                throw;
+                throw ErrorResponseExceptionHelper.CreateFrom(ex);
             }
         }
 
