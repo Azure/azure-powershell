@@ -19,11 +19,11 @@
 -->
 ## Upcoming Release
 * Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
-  - Fixed caller identity resolution to correctly handle Service Principal and Managed Identity account types, with a null-guard for hostname lookup.
-  - Added cache storage account validations to reject unsupported SKU tiers and storage accounts with public network access disabled.
+  - Added early Azure login validation with a clear error message when user is not logged in
+  - Removed unnecessary caller identity resolution
+  - Added cache storage account validations to reject unsupported SKU tiers and disabled public network access
 * Updated `New-AzMigrateLocalServerReplication`
-  - Removed redundant conditional guards on mandatory parameter ARM ID validation.
-  - Added storage path validation to verify existence, successful creation status, and latest operation provisioning state before initiating replication
+  - Added storage path health validation before initiating replication
 
 ## Version 2.11.0
 * Updated DefaultCrashConsistentFrequencyInMinutes and DefaultAppConsistentFrequencyInMinutes to align with Azure Portal UX for Replication Policy

@@ -130,9 +130,6 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         Import-Module Az.Resources
         Import-Module Az.Storage
 
-        $hasCacheStorageAccountId = $PSBoundParameters.ContainsKey('CacheStorageAccountId')
-
-        $parameterSetName = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('ProjectName')
         $null = $PSBoundParameters.Remove('CacheStorageAccountId')
@@ -143,14 +140,19 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         $null = $PSBoundParameters.Add('ErrorVariable', 'notPresent')
         $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
 
-        # Get subscription Id
+        # Validate Azure login
         $context = Get-AzContext
+        if ($null -eq $context -or $null -eq $context.Account) {
+            throw "Not logged in to Azure. Please run 'Connect-AzAccount' before running this command."
+        }
+
+        # Get subscription Id
         if ([string]::IsNullOrEmpty($SubscriptionId)) {
             Write-Host "No -SubscriptionId provided. Using the one from Get-AzContext."
 
             $SubscriptionId = $context.Subscription.Id
             if ([string]::IsNullOrEmpty($SubscriptionId)) {
-                throw "Please login to Azure to select a subscription."
+                throw "No subscription selected. Please run 'Set-AzContext -SubscriptionId <id>' or provide -SubscriptionId."
             }
         }
         Write-Host "*Selected Subscription Id: '$($SubscriptionId)'"
@@ -164,34 +166,6 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             throw "Resource group '$($ResourceGroupName)' does not exist in the subscription. Please create the resource group and try again."
         }
         Write-Host "*Selected Resource Group: '$($ResourceGroupName)'"
-
-        # Verify caller identity
-        if ($context.Account.Type -eq 'ServicePrincipal') {
-            $userObject = Get-AzADServicePrincipal -ApplicationID $context.Account.Id
-        }
-        elseif ($context.Account.Type -eq 'ManagedService' -or $context.Account.Id.StartsWith("MSI@")) {
-            $hostname = if ($env:COMPUTERNAME) { $env:COMPUTERNAME } else { $env:HOSTNAME }
-            if ([string]::IsNullOrEmpty($hostname)) {
-                throw "Unable to determine the hostname for Managed Identity resolution. Please set the COMPUTERNAME or HOSTNAME environment variable."
-            }
-            $userObject = Get-AzADServicePrincipal -DisplayName $hostname
-        }
-        else {
-            $userObject = Get-AzADUser -UserPrincipalName $context.Subscription.ExtendedProperties.Account
-
-            if (-not $userObject) {
-                $userObject = Get-AzADUser -Mail $context.Subscription.ExtendedProperties.Account
-            }
-
-            if (-not $userObject) {
-                $mailNickname = "{0}#EXT#" -f $($context.Account.Id -replace '@', '_')
-                $userObject = Get-AzADUser -Filter "mailNickname eq '$mailNickname'"
-            }
-        }
-
-        if (-not $userObject) {
-            throw 'User Object Id Not Found!'
-        }
 
         # Get Migrate Project with ResourceGroupName, Name
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
