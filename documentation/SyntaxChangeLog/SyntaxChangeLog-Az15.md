@@ -1,3 +1,22 @@
+## 15.5.0 - April 2026
+#### Az.CosmosDB 1.20.0 
+* Modified cmdlet `New-AzCosmosDBAccount`
+   - Added parameter `-DisableLocalAuth`
+* Modified cmdlet `Update-AzCosmosDBAccount`
+   - Added parameters `-Capabilities`, `-DisableLocalAuth`
+#### Az.Migrate 2.12.0 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameters `-TargetSecurityType`, `-TargetVMSecureBootEnabled`
+#### Az.NetAppFiles 1.1.0 
+* Modified cmdlet `New-AzNetAppFilesVolume`
+   - Added parameter `-DesiredRansomwareProtectionState`
+* Modified cmdlet `Update-AzNetAppFilesVolume`
+   - Added parameter `-DesiredRansomwareProtectionState`
+* Added cmdlet `Clear-AzNetAppFilesRansomwareReportSuspect`, `Get-AzNetAppFilesRansomwareReport`, `Get-AzNetAppFilesVolumeQuotaReport`
+#### Az.Network 7.26.0 
+* Modified cmdlet `New-AzFirewall`
+   - Added parameter `-EdgeZone`
+
 ## 15.4.0 - March 2026
 #### Az.Compute 11.4.0 
 * Modified cmdlet `Add-AzVMDataDisk`
@@ -1240,6 +1259,7 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
 
 
 

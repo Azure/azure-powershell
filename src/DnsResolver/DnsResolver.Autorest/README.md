@@ -129,4 +129,34 @@ directive:
     set:
       preview-announcement:
         preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  # Breaking change: ActionBlockResponseCode parameter removed in 2025-10-01-preview
+  - where:
+      verb: New|Update
+      subject: PolicyDnsSecurityRule
+    set:
+      breaking-change:
+        change-description: The parameter 'ActionBlockResponseCode' has been removed. The block response code is no longer configurable in API version 2025-10-01-preview.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05/01
+  # Breaking change: DnsResolverDomainList parameter no longer mandatory
+  - where:
+      verb: New
+      subject: PolicyDnsSecurityRule
+    set:
+      breaking-change:
+        change-description: The parameter 'DnsResolverDomainList' is no longer mandatory. DNS security rules will support managed domain lists as an alternative to user-defined domain lists.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05/01
+  # Breaking change: Domain parameter no longer mandatory
+  - where:
+      verb: New
+      subject: DnsResolverDomainList
+    set:
+      breaking-change:
+        change-description: The parameter 'Domain' is no longer mandatory. Domain lists will support bulk upload via the new cmdlet 'Invoke-AzDnsResolverBulkDnsResolverDomainList'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05/01
 ```
