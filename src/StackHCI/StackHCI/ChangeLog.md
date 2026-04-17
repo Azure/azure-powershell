@@ -17,7 +17,7 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Upcoming 
+## Upcoming Release
 * Fixed single node registration scenario.
 
 ## Version 2.7.0
