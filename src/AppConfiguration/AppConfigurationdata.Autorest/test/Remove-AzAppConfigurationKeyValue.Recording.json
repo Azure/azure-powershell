@@ -15,22 +15,22 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:35:31 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:53:48 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"U26nAGdixkVUyJA41Oj9qwGvv7sM5SWHVH-BTTHc3Bk\"" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzMjY=;sn=79468326" ],
-        "x-ms-request-id": [ "e88df289-28df-4750-8358-df63cd1e42f8" ],
-        "x-ms-correlation-request-id": [ "e88df289-28df-4750-8358-df63cd1e42f8" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:35:31 GMT" ],
+        "ETag": [ "\"a215HJDIhTc1Plojfg_RRF0fKPePX7_Fa6qgf2Rvx90\"" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNTE=;sn=79279251" ],
+        "x-ms-request-id": [ "1a4d5382-a991-4b66-9f2f-36002ccb82ac" ],
+        "x-ms-correlation-request-id": [ "1a4d5382-a991-4b66-9f2f-36002ccb82ac" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:53:48 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.kv+json; charset=utf-8" ],
-        "Last-Modified": [ "Fri, 10 Apr 2026 21:35:31 GMT" ]
+        "Last-Modified": [ "Thu, 16 Apr 2026 21:53:48 GMT" ]
       },
-      "Content": "{\"etag\":\"U26nAGdixkVUyJA41Oj9qwGvv7sM5SWHVH-BTTHc3Bk\",\"key\":\"deletetest-key1\",\"label\":null,\"content_type\":null,\"value\":\"to-be-deleted\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:35:31+00:00\"}",
+      "Content": "{\"etag\":\"a215HJDIhTc1Plojfg_RRF0fKPePX7_Fa6qgf2Rvx90\",\"key\":\"deletetest-key1\",\"label\":null,\"content_type\":null,\"value\":\"to-be-deleted\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-16T21:53:48+00:00\"}",
       "isContentBase64": false
     }
   },
@@ -41,7 +41,7 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-client-request-id": [ "56006615-2c72-4b7f-92fc-1e9eef228735" ],
+        "x-ms-client-request-id": [ "e27bbade-680b-48b4-aa65-fdd069e1e8cf" ],
         "CommandName": [ "Remove-AzAppConfigurationKeyValue" ],
         "FullCommandName": [ "Remove-AzAppConfigurationKeyValue_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -54,22 +54,22 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:35:31 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:53:48 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"U26nAGdixkVUyJA41Oj9qwGvv7sM5SWHVH-BTTHc3Bk\"" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzMjc=;sn=79468327" ],
-        "x-ms-request-id": [ "863a1e16-405a-4ae3-8c6d-6b3ea05f06dd" ],
-        "x-ms-correlation-request-id": [ "863a1e16-405a-4ae3-8c6d-6b3ea05f06dd" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:35:31 GMT" ],
+        "ETag": [ "\"a215HJDIhTc1Plojfg_RRF0fKPePX7_Fa6qgf2Rvx90\"" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNTI=;sn=79279252" ],
+        "x-ms-request-id": [ "cc98042a-5158-46dd-b242-16bd25b95f1a" ],
+        "x-ms-correlation-request-id": [ "cc98042a-5158-46dd-b242-16bd25b95f1a" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:53:48 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.kv+json; charset=utf-8" ],
-        "Last-Modified": [ "Fri, 10 Apr 2026 21:35:31 GMT" ]
+        "Last-Modified": [ "Thu, 16 Apr 2026 21:53:48 GMT" ]
       },
-      "Content": "{\"etag\":\"U26nAGdixkVUyJA41Oj9qwGvv7sM5SWHVH-BTTHc3Bk\",\"key\":\"deletetest-key1\",\"label\":null,\"content_type\":null,\"value\":\"to-be-deleted\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-10T21:35:31+00:00\"}",
+      "Content": "{\"etag\":\"a215HJDIhTc1Plojfg_RRF0fKPePX7_Fa6qgf2Rvx90\",\"key\":\"deletetest-key1\",\"label\":null,\"content_type\":null,\"value\":\"to-be-deleted\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-16T21:53:48+00:00\"}",
       "isContentBase64": false
     }
   },
@@ -80,7 +80,7 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-client-request-id": [ "dd54c3ec-0d2d-4c5e-9db0-678e5fa3b280" ],
+        "x-ms-client-request-id": [ "30c1c886-6def-4d1c-b65a-83cf2506957c" ],
         "CommandName": [ "Get-AzAppConfigurationKeyValue" ],
         "FullCommandName": [ "Get-AzAppConfigurationKeyValue_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -93,12 +93,12 @@
     "Response": {
       "StatusCode": 404,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:35:31 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:53:48 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzMjc=;sn=79468327" ],
-        "x-ms-request-id": [ "bd4cd5cf-f471-4c72-a88b-ef78c7004781" ],
-        "x-ms-correlation-request-id": [ "bd4cd5cf-f471-4c72-a88b-ef78c7004781" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:35:31 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNTI=;sn=79279252" ],
+        "x-ms-request-id": [ "8d959abf-10e2-4f0f-86bc-85b0611db6ff" ],
+        "x-ms-correlation-request-id": [ "8d959abf-10e2-4f0f-86bc-85b0611db6ff" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:53:48 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },

@@ -6,7 +6,7 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-client-request-id": [ "8746ade6-c885-417e-aa06-227a1cca44b9" ],
+        "x-ms-client-request-id": [ "0121ec53-6309-4194-9e11-309f93c2b195" ],
         "CommandName": [ "Get-AzAppConfigurationKey" ],
         "FullCommandName": [ "Get-AzAppConfigurationKey_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -19,20 +19,20 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:33:23 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:51:39 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgyODQ=;sn=79468284" ],
-        "x-ms-request-id": [ "9f2f5d41-2d42-459a-8ef5-b0f5379c6e0e" ],
-        "x-ms-correlation-request-id": [ "9f2f5d41-2d42-459a-8ef5-b0f5379c6e0e" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:33:23 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyMTE=;sn=79279211" ],
+        "x-ms-request-id": [ "dc651cee-a511-4890-9e24-7d4cdd8266cb" ],
+        "x-ms-correlation-request-id": [ "dc651cee-a511-4890-9e24-7d4cdd8266cb" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:51:39 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.keyset+json; charset=utf-8" ]
       },
-      "Content": "{\"items\":[{\"name\":\"ghse\"}]}",
+      "Content": "{\"items\":[{\"name\":\"2wcg\"}]}",
       "isContentBase64": false
     }
   }

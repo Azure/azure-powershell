@@ -6,7 +6,7 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-client-request-id": [ "1efabd10-75e1-46c1-b992-3b4757d7a910" ],
+        "x-ms-client-request-id": [ "d2e98d03-4d9a-43d0-ac31-c66fb3ec2b5b" ],
         "CommandName": [ "Test-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "Test-AzAppConfigurationSnapshot_Check" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -19,12 +19,12 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:35:36 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:53:52 GMT" ],
         "Connection": [ "keep-alive" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzNDU=;sn=79468345" ],
-        "x-ms-request-id": [ "c530cc5f-2bc3-4a9a-8b74-da9fc347e8d1" ],
-        "x-ms-correlation-request-id": [ "c530cc5f-2bc3-4a9a-8b74-da9fc347e8d1" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:35:36 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNzA=;sn=79279270" ],
+        "x-ms-request-id": [ "c7c2821e-5ffb-46aa-b492-e7f196448288" ],
+        "x-ms-correlation-request-id": [ "c7c2821e-5ffb-46aa-b492-e7f196448288" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:53:52 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
@@ -39,7 +39,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://sanitized.azconfig.io/snapshots/testsnap-test1?api-version=2024-09-01",
-      "Content": "{\r\n  \"filters\": [\r\n    {\r\n      \"key\": \"ghse\"\r\n    }\r\n  ]\r\n}",
+      "Content": "{\r\n  \"filters\": [\r\n    {\r\n      \"key\": \"2wcg\"\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -51,24 +51,24 @@
     "Response": {
       "StatusCode": 201,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:35:36 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:53:53 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"ohrnmcP8YTopJQb78qe_5fNH5vT3N_2tmhgCzVjO0v4\"" ],
+        "ETag": [ "\"_MRvEGrf1jkpsPRAGwetzwWFMredO09myAKlBfIDj1M\"" ],
         "Operation-Location": [ "https://sanitized.azconfig.io/operations?snapshot=testsnap-test1\u0026api-version=2024-09-01" ],
         "Link": [ "\u003c/kv?snapshot=testsnap-test1\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzNDY=;sn=79468346" ],
-        "x-ms-request-id": [ "4aff6df9-9740-411b-9e65-938468541982" ],
-        "x-ms-correlation-request-id": [ "4aff6df9-9740-411b-9e65-938468541982" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:35:36 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNzE=;sn=79279271" ],
+        "x-ms-request-id": [ "10cbc85d-d3de-47e6-bcb9-d0f79f51d781" ],
+        "x-ms-correlation-request-id": [ "10cbc85d-d3de-47e6-bcb9-d0f79f51d781" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:53:53 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Fri, 10 Apr 2026 21:35:36 GMT" ]
+        "Last-Modified": [ "Thu, 16 Apr 2026 21:53:53 GMT" ]
       },
-      "Content": "{\"etag\":\"ohrnmcP8YTopJQb78qe_5fNH5vT3N_2tmhgCzVjO0v4\",\"name\":\"testsnap-test1\",\"status\":\"provisioning\",\"filters\":[{\"key\":\"ghse\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-10T21:35:36.1933854+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"_MRvEGrf1jkpsPRAGwetzwWFMredO09myAKlBfIDj1M\",\"name\":\"testsnap-test1\",\"status\":\"provisioning\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:53:53.0136396+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
@@ -80,7 +80,7 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "455371fa-2383-4f7d-ae54-7e444f56e1cb" ],
+        "x-ms-client-request-id": [ "2826cddd-4efc-4733-b341-ad1af66ee320" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -92,13 +92,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:36:06 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:54:23 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzNDc=;sn=79468347" ],
-        "x-ms-request-id": [ "749fc9f9-1007-4a8e-a4f7-e6dd707fbcbd" ],
-        "x-ms-correlation-request-id": [ "749fc9f9-1007-4a8e-a4f7-e6dd707fbcbd" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:36:06 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNzI=;sn=79279272" ],
+        "x-ms-request-id": [ "13811cdd-7e28-4c08-a039-4df460abe307" ],
+        "x-ms-correlation-request-id": [ "13811cdd-7e28-4c08-a039-4df460abe307" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:54:23 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
@@ -117,7 +117,7 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "455371fa-2383-4f7d-ae54-7e444f56e1cb" ],
+        "x-ms-client-request-id": [ "2826cddd-4efc-4733-b341-ad1af66ee320" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -129,23 +129,23 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:36:06 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:54:23 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"ohrnmcP8YTopJQb78qe_5fNH5vT3N_2tmhgCzVjO0v4\"" ],
+        "ETag": [ "\"_MRvEGrf1jkpsPRAGwetzwWFMredO09myAKlBfIDj1M\"" ],
         "Link": [ "\u003c/kv?snapshot=testsnap-test1\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzNDc=;sn=79468347" ],
-        "x-ms-request-id": [ "5999ae04-a1b6-486a-b9fc-8df4e8cacc2b" ],
-        "x-ms-correlation-request-id": [ "5999ae04-a1b6-486a-b9fc-8df4e8cacc2b" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:36:06 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNzI=;sn=79279272" ],
+        "x-ms-request-id": [ "d6310914-97ca-49a9-8aa1-f75186ca1912" ],
+        "x-ms-correlation-request-id": [ "d6310914-97ca-49a9-8aa1-f75186ca1912" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:54:23 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Fri, 10 Apr 2026 21:35:58 GMT" ]
+        "Last-Modified": [ "Thu, 16 Apr 2026 21:54:13 GMT" ]
       },
-      "Content": "{\"etag\":\"ohrnmcP8YTopJQb78qe_5fNH5vT3N_2tmhgCzVjO0v4\",\"name\":\"testsnap-test1\",\"status\":\"ready\",\"filters\":[{\"key\":\"ghse\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-10T21:35:36+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"_MRvEGrf1jkpsPRAGwetzwWFMredO09myAKlBfIDj1M\",\"name\":\"testsnap-test1\",\"status\":\"ready\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:53:53+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
@@ -156,7 +156,7 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-client-request-id": [ "7103e7a1-925c-408c-ab84-34c6a0e2e42c" ],
+        "x-ms-client-request-id": [ "1ff799fc-6454-4f36-ae2b-fdf7d630c728" ],
         "CommandName": [ "Test-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "Test-AzAppConfigurationSnapshot_Check1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -169,20 +169,20 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:36:06 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:54:23 GMT" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"ohrnmcP8YTopJQb78qe_5fNH5vT3N_2tmhgCzVjO0v4\"" ],
+        "ETag": [ "\"_MRvEGrf1jkpsPRAGwetzwWFMredO09myAKlBfIDj1M\"" ],
         "Link": [ "\u003c/kv?snapshot=testsnap-test1\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzNDc=;sn=79468347" ],
-        "x-ms-request-id": [ "8bcab0b0-4a03-465f-ad2b-09b387e1e31c" ],
-        "x-ms-correlation-request-id": [ "8bcab0b0-4a03-465f-ad2b-09b387e1e31c" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:36:06 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNzI=;sn=79279272" ],
+        "x-ms-request-id": [ "e93077eb-6305-41d8-97d0-d34b88de3caa" ],
+        "x-ms-correlation-request-id": [ "e93077eb-6305-41d8-97d0-d34b88de3caa" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:54:23 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Fri, 10 Apr 2026 21:35:58 GMT" ]
+        "Last-Modified": [ "Thu, 16 Apr 2026 21:54:13 GMT" ]
       },
       "Content": null,
       "isContentBase64": false

@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://sanitized.azconfig.io/snapshots/newsnap-test1?api-version=2024-09-01",
-      "Content": "{\r\n  \"filters\": [\r\n    {\r\n      \"key\": \"ghse\"\r\n    }\r\n  ]\r\n}",
+      "Content": "{\r\n  \"filters\": [\r\n    {\r\n      \"key\": \"2wcg\"\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -15,24 +15,24 @@
     "Response": {
       "StatusCode": 201,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:34:29 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:52:45 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"UQitEBOV8mg0IjT-OKVHEIfao9fAV6HkDwOKLFMT0to\"" ],
+        "ETag": [ "\"NPii4RcTy3V2L-dyzI7otp9OpyEPKx9L-8k7PjCfhFc\"" ],
         "Operation-Location": [ "https://sanitized.azconfig.io/operations?snapshot=newsnap-test1\u0026api-version=2024-09-01" ],
         "Link": [ "\u003c/kv?snapshot=newsnap-test1\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzMjA=;sn=79468320" ],
-        "x-ms-request-id": [ "a93ee19d-b9e4-4fd3-a8c2-68e9f7d72f3b" ],
-        "x-ms-correlation-request-id": [ "a93ee19d-b9e4-4fd3-a8c2-68e9f7d72f3b" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:34:29 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNDc=;sn=79279247" ],
+        "x-ms-request-id": [ "97bb10e8-b671-4ac0-bb93-04e3dd17a098" ],
+        "x-ms-correlation-request-id": [ "97bb10e8-b671-4ac0-bb93-04e3dd17a098" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:52:45 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Fri, 10 Apr 2026 21:34:28 GMT" ]
+        "Last-Modified": [ "Thu, 16 Apr 2026 21:52:45 GMT" ]
       },
-      "Content": "{\"etag\":\"UQitEBOV8mg0IjT-OKVHEIfao9fAV6HkDwOKLFMT0to\",\"name\":\"newsnap-test1\",\"status\":\"provisioning\",\"filters\":[{\"key\":\"ghse\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-10T21:34:28.9979661+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"NPii4RcTy3V2L-dyzI7otp9OpyEPKx9L-8k7PjCfhFc\",\"name\":\"newsnap-test1\",\"status\":\"provisioning\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:52:45.7180779+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
@@ -44,7 +44,7 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "9fbf8e66-c9b1-4d58-b31e-5e35d1419fe7" ],
+        "x-ms-client-request-id": [ "3d54a671-8267-4449-99eb-840b554d64c9" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -56,13 +56,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:34:59 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:53:16 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzMjM=;sn=79468323" ],
-        "x-ms-request-id": [ "d43c252c-8475-496f-ae9f-fcebd9e7d581" ],
-        "x-ms-correlation-request-id": [ "d43c252c-8475-496f-ae9f-fcebd9e7d581" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:34:59 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNDg=;sn=79279248" ],
+        "x-ms-request-id": [ "e00ff796-d365-4bb4-be44-8949a7068579" ],
+        "x-ms-correlation-request-id": [ "e00ff796-d365-4bb4-be44-8949a7068579" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:53:16 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
@@ -81,7 +81,7 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "9fbf8e66-c9b1-4d58-b31e-5e35d1419fe7" ],
+        "x-ms-client-request-id": [ "3d54a671-8267-4449-99eb-840b554d64c9" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -93,23 +93,23 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:34:59 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:53:16 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"UQitEBOV8mg0IjT-OKVHEIfao9fAV6HkDwOKLFMT0to\"" ],
+        "ETag": [ "\"NPii4RcTy3V2L-dyzI7otp9OpyEPKx9L-8k7PjCfhFc\"" ],
         "Link": [ "\u003c/kv?snapshot=newsnap-test1\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzMjM=;sn=79468323" ],
-        "x-ms-request-id": [ "9b4112fc-4f5a-4ce4-9aa4-fa104dd37719" ],
-        "x-ms-correlation-request-id": [ "9b4112fc-4f5a-4ce4-9aa4-fa104dd37719" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:34:59 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNDg=;sn=79279248" ],
+        "x-ms-request-id": [ "71aceec0-74da-4620-be2a-47213717657b" ],
+        "x-ms-correlation-request-id": [ "71aceec0-74da-4620-be2a-47213717657b" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:53:16 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Fri, 10 Apr 2026 21:34:29 GMT" ]
+        "Last-Modified": [ "Thu, 16 Apr 2026 21:52:51 GMT" ]
       },
-      "Content": "{\"etag\":\"UQitEBOV8mg0IjT-OKVHEIfao9fAV6HkDwOKLFMT0to\",\"name\":\"newsnap-test1\",\"status\":\"ready\",\"filters\":[{\"key\":\"ghse\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-10T21:34:28+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"NPii4RcTy3V2L-dyzI7otp9OpyEPKx9L-8k7PjCfhFc\",\"name\":\"newsnap-test1\",\"status\":\"ready\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:52:45+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
@@ -117,7 +117,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://sanitized.azconfig.io/snapshots/newsnap-test2?api-version=2024-09-01",
-      "Content": "{\"filters\": [{\"key\": \"ghse\"}]}",
+      "Content": "{\"filters\": [{\"key\": \"2wcg\"}]}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -129,24 +129,24 @@
     "Response": {
       "StatusCode": 201,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:34:59 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:53:16 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"1p9ojfYLO03Lf9SPse9yM0gs0uhiFrOFf9U4tTixHLs\"" ],
+        "ETag": [ "\"oiFzJV9IDHM1Mrzh5lqroP1kBVKppXJvLinmuukfXa4\"" ],
         "Operation-Location": [ "https://sanitized.azconfig.io/operations?snapshot=newsnap-test2\u0026api-version=2024-09-01" ],
         "Link": [ "\u003c/kv?snapshot=newsnap-test2\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzMjQ=;sn=79468324" ],
-        "x-ms-request-id": [ "b17b07b5-3b7c-4a37-a73d-bfdaf49edd03" ],
-        "x-ms-correlation-request-id": [ "b17b07b5-3b7c-4a37-a73d-bfdaf49edd03" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:34:59 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNDk=;sn=79279249" ],
+        "x-ms-request-id": [ "c29f4461-eb00-478b-99a7-f31069bcd037" ],
+        "x-ms-correlation-request-id": [ "c29f4461-eb00-478b-99a7-f31069bcd037" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:53:16 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Fri, 10 Apr 2026 21:34:59 GMT" ]
+        "Last-Modified": [ "Thu, 16 Apr 2026 21:53:16 GMT" ]
       },
-      "Content": "{\"etag\":\"1p9ojfYLO03Lf9SPse9yM0gs0uhiFrOFf9U4tTixHLs\",\"name\":\"newsnap-test2\",\"status\":\"provisioning\",\"filters\":[{\"key\":\"ghse\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-10T21:34:59.8984671+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"oiFzJV9IDHM1Mrzh5lqroP1kBVKppXJvLinmuukfXa4\",\"name\":\"newsnap-test2\",\"status\":\"provisioning\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:53:16.8012058+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
@@ -158,7 +158,7 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "ea823135-659e-4fe7-9179-3a22b1775d80" ],
+        "x-ms-client-request-id": [ "e6659a13-7083-43c1-9015-9f2f76f907bd" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateViaJsonString" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -170,13 +170,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:35:30 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:53:47 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzMjU=;sn=79468325" ],
-        "x-ms-request-id": [ "9f4da21e-bd7f-45aa-b392-f3f3dc5ad0c6" ],
-        "x-ms-correlation-request-id": [ "9f4da21e-bd7f-45aa-b392-f3f3dc5ad0c6" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:35:30 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNTA=;sn=79279250" ],
+        "x-ms-request-id": [ "1ce750e3-a10f-4fae-b3c3-26c81202b53e" ],
+        "x-ms-correlation-request-id": [ "1ce750e3-a10f-4fae-b3c3-26c81202b53e" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:53:47 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
@@ -195,7 +195,7 @@
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "ea823135-659e-4fe7-9179-3a22b1775d80" ],
+        "x-ms-client-request-id": [ "e6659a13-7083-43c1-9015-9f2f76f907bd" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateViaJsonString" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -207,23 +207,23 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Fri, 10 Apr 2026 21:35:30 GMT" ],
+        "Date": [ "Thu, 16 Apr 2026 21:53:47 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"1p9ojfYLO03Lf9SPse9yM0gs0uhiFrOFf9U4tTixHLs\"" ],
+        "ETag": [ "\"oiFzJV9IDHM1Mrzh5lqroP1kBVKppXJvLinmuukfXa4\"" ],
         "Link": [ "\u003c/kv?snapshot=newsnap-test2\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTU6MTkjNzk0NjgzMjU=;sn=79468325" ],
-        "x-ms-request-id": [ "f8b0269b-24a6-423b-ab6b-6031e42aa253" ],
-        "x-ms-correlation-request-id": [ "f8b0269b-24a6-423b-ab6b-6031e42aa253" ],
-        "x-ms-date": [ "Fri, 10 Apr 2026 21:35:30 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyNTA=;sn=79279250" ],
+        "x-ms-request-id": [ "66c7d91a-62c9-4604-b67a-02fa92d35993" ],
+        "x-ms-correlation-request-id": [ "66c7d91a-62c9-4604-b67a-02fa92d35993" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:53:47 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Fri, 10 Apr 2026 21:35:01 GMT" ]
+        "Last-Modified": [ "Thu, 16 Apr 2026 21:53:30 GMT" ]
       },
-      "Content": "{\"etag\":\"1p9ojfYLO03Lf9SPse9yM0gs0uhiFrOFf9U4tTixHLs\",\"name\":\"newsnap-test2\",\"status\":\"ready\",\"filters\":[{\"key\":\"ghse\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-10T21:34:59+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"oiFzJV9IDHM1Mrzh5lqroP1kBVKppXJvLinmuukfXa4\",\"name\":\"newsnap-test2\",\"status\":\"ready\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:53:16+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   }
