@@ -659,12 +659,19 @@ function New-AzMigrateLocalServerReplication {
         }
 
         # Creation must have succeeded for the storage path to be usable
-        if ($storagePath.Properties.status.provisioningStatus.status -ne "Succeeded") {
-            throw "Storage path '$($storagePath.Name)' has a creation provisioning status of '$($storagePath.Properties.status.provisioningStatus.status)'. Only storage paths with a successful creation can be used. Please select a different storage path or wait for provisioning to complete."
+        $creationStatus = $storagePath.Properties.status.provisioningStatus.status
+        if ([string]::IsNullOrEmpty($creationStatus)) {
+            throw "Storage path '$($storagePath.Name)' creation status is unavailable. Please verify the storage path resource is fully provisioned."
+        }
+        if ($creationStatus -ne "Succeeded") {
+            throw "Storage path '$($storagePath.Name)' has a creation provisioning status of '$creationStatus'. Only storage paths with a successful creation can be used. Please select a different storage path or wait for provisioning to complete."
         }
 
         # The latest operation (ProvisioningState) must also be Succeeded
         $provisioningState = $storagePath.Properties.provisioningState
+        if ([string]::IsNullOrEmpty($provisioningState)) {
+            throw "Storage path '$($storagePath.Name)' provisioning state is unavailable. Please verify the storage path resource is fully provisioned."
+        }
         if ($provisioningState -eq "Failed") {
             throw "Storage path '$($storagePath.Name)' has a failed provisioning state. The latest operation on this storage path did not succeed. Please resolve the issue and retry."
         }
