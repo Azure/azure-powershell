@@ -659,8 +659,8 @@ function New-AzMigrateLocalServerReplication {
         }
 
         # Creation must have succeeded for the storage path to be usable
-        if ($storagePath.Properties.status.provisioningStatus -ne "Succeeded") {
-            throw "Storage path '$($storagePath.Name)' has a creation provisioning status of '$($storagePath.Properties.status.provisioningStatus)'. Only storage paths with a successful creation can be used. Please select a different storage path or wait for provisioning to complete."
+        if ($storagePath.Properties.status.provisioningStatus.status -ne "Succeeded") {
+            throw "Storage path '$($storagePath.Name)' has a creation provisioning status of '$($storagePath.Properties.status.provisioningStatus.status)'. Only storage paths with a successful creation can be used. Please select a different storage path or wait for provisioning to complete."
         }
 
         # The latest operation (ProvisioningState) must also be Succeeded
