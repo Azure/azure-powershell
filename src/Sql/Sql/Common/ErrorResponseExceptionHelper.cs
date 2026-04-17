@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
                     if (errorObj != null)
                     {
                         JToken errorMessage;
-                        if (errorObj.TryGetValue("message", StringComparison.InvariantCultureIgnoreCase, out errorMessage))
+                        if (errorObj.TryGetValue("message", StringComparison.OrdinalIgnoreCase, out errorMessage))
                         {
                             detailedMessage = errorMessage.ToString();
                         }
@@ -87,19 +87,15 @@ namespace Microsoft.Azure.Commands.Sql.Common
             }
 
             var message = !string.IsNullOrEmpty(detailedMessage) ? detailedMessage : ex.Message;
-            var wrappedException = new AzPSCloudException(message, message, ex);
+            var wrappedException = new AzPSCloudException(message, message, ex)
+            {
+                Request = ex.Request,
+                Response = ex.Response,
+            };
 
-            if (ex.Request != null)
-            {
-                wrappedException.Data["Request"] = ex.Request;
-            }
-            if (ex.Response != null)
-            {
-                wrappedException.Data["Response"] = ex.Response;
-            }
             if (!string.IsNullOrEmpty(ex.Body?.Error?.Code))
             {
-                wrappedException.Data["ErrorCode"] = ex.Body.Error.Code;
+                wrappedException.Data["CloudErrorCode"] = ex.Body.Error.Code;
             }
 
             return wrappedException;

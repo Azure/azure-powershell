@@ -65,9 +65,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
             {
                 if (ex.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
+                    var notFoundMessage = string.Format(Properties.Resources.DeletedServerNotFoundInLocation, serverName, location);
                     throw new AzPSResourceNotFoundCloudException(
-                        string.Format(Properties.Resources.DeletedServerNotFoundInLocation, serverName, location),
-                        string.Format(Properties.Resources.DeletedServerNotFoundInLocation, serverName, location),
+                        notFoundMessage,
+                        notFoundMessage,
                         ex);
                 }
 

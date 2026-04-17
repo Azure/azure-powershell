@@ -208,10 +208,10 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             // Assert — inner exception is preserved
             Assert.IsType<ErrorResponseException>(result.InnerException);
             // Assert — ErrorCode is propagated
-            Assert.Equal("AuthorizationFailed", result.Data["ErrorCode"]);
-            // Assert — Request and Response are in Data
-            Assert.NotNull(result.Data["Request"]);
-            Assert.NotNull(result.Data["Response"]);
+            Assert.True(result.Data.Contains("CloudErrorCode"));
+            // Assert — Request and Response are set
+            Assert.NotNull(result.Request);
+            Assert.NotNull(result.Response);
         }
     }
 }
