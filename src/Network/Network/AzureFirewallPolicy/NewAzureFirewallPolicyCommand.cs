@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -134,6 +135,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Multiple ResourceId of the user assigned identities to be assigned to Firewall Policy.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("UserAssignedIdentities")]
+        public string[] UserAssignedIdentityIds { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Type of Managed Identity. Set to 'None' to remove the identity.")]
+        [ValidateSet(
+            nameof(MNM.ResourceIdentityType.SystemAssigned),
+            nameof(MNM.ResourceIdentityType.UserAssigned),
+            nameof(MNM.ResourceIdentityType.SystemAssignedUserAssigned),
+            nameof(MNM.ResourceIdentityType.None),
+            IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Firewall Policy Identity to be assigned to Firewall Policy.")]
         [ValidateNotNullOrEmpty]
         public PSManagedServiceIdentity Identity { get; set; }
@@ -200,15 +219,30 @@ namespace Microsoft.Azure.Commands.Network
                 firewallPolicy.Snat = this.Snat;
             }
 
-            if (this.UserAssignedIdentityId != null)
+            if (this.UserAssignedIdentityId != null || this.UserAssignedIdentityIds != null)
             {
+                var userAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>();
+
+                if (this.UserAssignedIdentityId != null)
+                {
+                    userAssignedIdentities.Add(this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
+                }
+
+                if (this.UserAssignedIdentityIds != null)
+                {
+                    foreach (var identityId in this.UserAssignedIdentityIds)
+                    {
+                        if (!userAssignedIdentities.ContainsKey(identityId))
+                        {
+                            userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
+                        }
+                    }
+                }
+
                 firewallPolicy.Identity = new PSManagedServiceIdentity
                 {
                     Type = MNM.ResourceIdentityType.UserAssigned,
-                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
-                    {
-                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
-                    }
+                    UserAssignedIdentities = userAssignedIdentities
                 };
             }
             else if (this.Identity != null)
@@ -223,7 +257,7 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("TransportSecurityName must be provided with TransportSecurityKeyVaultSecretId");
                 }
 
-                if (this.Identity == null && this.UserAssignedIdentityId == null)
+                if (this.Identity == null && this.UserAssignedIdentityId == null && this.UserAssignedIdentityIds == null)
                 {
                     throw new ArgumentException("Identity must be provided with TransportSecurityKeyVaultSecretId");
                 }
@@ -241,6 +275,14 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
             azureFirewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+
+            if (this.IsParameterBound(c => c.IdentityType) && this.IdentityType == "None")
+            {
+                azureFirewallPolicyModel.Identity = new MNM.ManagedServiceIdentity
+                {
+                    Type = MNM.ResourceIdentityType.None
+                };
+            }
 
             // Execute the Create AzureFirewall call
             this.AzureFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallPolicyModel);

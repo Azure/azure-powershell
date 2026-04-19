@@ -153,6 +153,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Multiple ResourceId of the user assigned identities to be assigned to Firewall Policy.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("UserAssignedIdentities")]
+        public string[] UserAssignedIdentityIds { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Type of Managed Identity. Set to 'None' to remove the identity.")]
+        [ValidateSet(
+            nameof(MNM.ResourceIdentityType.SystemAssigned),
+            nameof(MNM.ResourceIdentityType.UserAssigned),
+            nameof(MNM.ResourceIdentityType.SystemAssignedUserAssigned),
+            nameof(MNM.ResourceIdentityType.None),
+            IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Firewall Policy Identity to be assigned to Firewall Policy.")]
         [ValidateNotNullOrEmpty]
         public PSManagedServiceIdentity Identity { get; set; }
@@ -180,22 +198,6 @@ namespace Microsoft.Azure.Commands.Network
             };
             firewallPolicy.IntrusionDetection = this.IntrusionDetection;
 
-            if (this.UserAssignedIdentityId != null)
-            {
-                firewallPolicy.Identity = new PSManagedServiceIdentity
-                {
-                    Type = MNM.ResourceIdentityType.UserAssigned,
-                    UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
-                    {
-                        { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
-                    }
-                };
-            }
-            else if (this.Identity != null)
-            {
-                firewallPolicy.Identity = this.Identity;
-            }
-
             if (this.TransportSecurityKeyVaultSecretId != null)
             {
                 if (this.TransportSecurityName == null)
@@ -203,7 +205,7 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("TransportSecurityName must be provided with TransportSecurityKeyVaultSecretId");
                 }
 
-                if (this.Identity == null && this.UserAssignedIdentityId == null)
+                if (this.Identity == null && this.UserAssignedIdentityId == null && this.UserAssignedIdentityIds == null)
                 {
                     throw new ArgumentException("Identity must be provided with TransportSecurityKeyVaultSecretId");
                 }
@@ -268,6 +270,8 @@ namespace Microsoft.Azure.Commands.Network
                 this.TransportSecurityKeyVaultSecretId = this.IsParameterBound(c => c.TransportSecurityKeyVaultSecretId) ? TransportSecurityKeyVaultSecretId : (InputObject.TransportSecurity?.CertificateAuthority != null ? InputObject.TransportSecurity.CertificateAuthority.KeyVaultSecretId : null);
                 this.Identity = this.IsParameterBound(c => c.Identity) ? Identity : (InputObject.Identity != null ? InputObject.Identity : null);
                 this.UserAssignedIdentityId = this.IsParameterBound(c => c.UserAssignedIdentityId) ? UserAssignedIdentityId : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.First().Key : null);
+                this.UserAssignedIdentityIds = this.IsParameterBound(c => c.UserAssignedIdentityId) ? UserAssignedIdentityIds : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.Keys.ToArray() : null);
+                this.IdentityType = this.IsParameterBound(c => c.IdentityType) ? IdentityType : (InputObject.Identity.Type != null ? InputObject.Identity.Type.ToString() : null);
                 this.SkuTier = this.IsParameterBound(c => c.SkuTier) ? SkuTier : (InputObject.Sku?.Tier != null ? InputObject.Sku.Tier : null);
                 this.PrivateRange = this.IsParameterBound(c => c.PrivateRange) ? PrivateRange : InputObject.PrivateRange;
                 this.ExplicitProxy = this.IsParameterBound(c => c.ExplicitProxy) ? ExplicitProxy : InputObject.ExplicitProxy;
@@ -295,8 +299,45 @@ namespace Microsoft.Azure.Commands.Network
 
                 AddPremiumProperties(firewallPolicy);
 
+                if (this.UserAssignedIdentityId != null)
+                {
+                    firewallPolicy.Identity = new PSManagedServiceIdentity
+                    {
+                        Type = MNM.ResourceIdentityType.UserAssigned,
+                        UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
+                        {
+                            { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
+                        }
+                    };
+                }
+                else if (this.UserAssignedIdentityIds != null)
+                {
+                    var userAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>();
+                    foreach (var identityId in this.UserAssignedIdentityIds)
+                    {
+                        userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
+                    }
+                    firewallPolicy.Identity = new PSManagedServiceIdentity
+                    {
+                        Type = MNM.ResourceIdentityType.UserAssigned,
+                        UserAssignedIdentities = userAssignedIdentities
+                    };
+                }
+                else if (this.Identity != null)
+                {
+                    firewallPolicy.Identity = this.Identity;
+                }
+
                 var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
                 azureFirewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+
+                if (this.IsParameterBound(c => c.IdentityType) && this.IdentityType == "None")
+                {
+                    azureFirewallPolicyModel.Identity = new MNM.ManagedServiceIdentity
+                    {
+                        Type = MNM.ResourceIdentityType.None
+                    };
+                }
 
                 // Execute the PUT AzureFirewall Policy call
                 this.AzureFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, azureFirewallPolicyModel);
@@ -331,9 +372,49 @@ namespace Microsoft.Azure.Commands.Network
 
                 AddPremiumProperties(firewallPolicy);
 
+                if (this.UserAssignedIdentityId != null || this.UserAssignedIdentityIds != null)
+                {
+
+                    var userAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>();
+
+                    if (this.UserAssignedIdentityId != null)
+                    {
+                        userAssignedIdentities.Add(this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
+                    }
+
+                    if (this.UserAssignedIdentityIds != null)
+                    {
+                        foreach (var identityId in this.UserAssignedIdentityIds)
+                        {
+                            if(!userAssignedIdentities.ContainsKey(identityId))
+                            {
+                                userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
+                            }
+                        }
+                    }
+
+                    firewallPolicy.Identity = new PSManagedServiceIdentity
+                    {
+                        Type = MNM.ResourceIdentityType.UserAssigned,
+                        UserAssignedIdentities = userAssignedIdentities
+                    };
+                }
+                else if (this.Identity != null)
+                {
+                    firewallPolicy.Identity = this.Identity;
+                }
+
                 // Map to the sdk object
                 var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
                 azureFirewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+
+                if (this.IsParameterBound(c => c.IdentityType) && this.IdentityType == "None")
+                {
+                    azureFirewallPolicyModel.Identity = new MNM.ManagedServiceIdentity
+                    {
+                        Type = MNM.ResourceIdentityType.None
+                    };
+                }
 
                 // Execute the Create AzureFirewall call
                 this.AzureFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallPolicyModel);
