@@ -98,15 +98,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions
         {
             PSResourceManagerError rmError = new PSResourceManagerError
             {
-                Code = error.Code,
-                Message = error.Message,
-                Target = string.IsNullOrEmpty(error.Target) ? null : error.Target
+                Code = error.Error?.Code,
+                Message = error.Error?.Message,
+                Target = string.IsNullOrEmpty(error.Error?.Target) ? null : error.Error.Target
             };
 
-            if(error.Details != null)
+            if(error.Error?.Details != null)
             {
                 List<PSResourceManagerError> innerRMError = new List<PSResourceManagerError>();
-                error.Details.ForEach(detail => innerRMError.Add(detail.ToPSResourceManagerError()));
+                error.Error.Details.ToList().ForEach(detail => innerRMError.Add(detail.ToPSResourceManagerError()));
                 rmError.Details = innerRMError;
             }
 
@@ -134,6 +134,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions
 
         public static string ToFormattedString(this ErrorResponse error, int level = 0)
         {
+            if (error.Error?.Details == null)
+            {
+                return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, error.Error?.Message, error.Error?.Code);
+            }
+
+            string errorDetail = null;
+
+            foreach (ErrorDetail detail in error.Error.Details)
+            {
+                errorDetail += GetIndentation(level) + ToFormattedString(detail, level + 1) + System.Environment.NewLine;
+            }
+
+            return string.Format(ProjectResources.DeploymentOperationErrorMessage, error.Error?.Message, error.Error?.Code, errorDetail);
+        }
+
+        public static string ToFormattedString(this ErrorDetail error, int level = 0)
+        {
             if (error.Details == null)
             {
                 return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, error.Message, error.Code);
@@ -141,7 +158,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions
 
             string errorDetail = null;
 
-            foreach (ErrorResponse detail in error.Details)
+            foreach (ErrorDetail detail in error.Details)
             {
                 errorDetail += GetIndentation(level) + ToFormattedString(detail, level + 1) + System.Environment.NewLine;
             }

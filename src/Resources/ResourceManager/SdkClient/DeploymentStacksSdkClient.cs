@@ -1383,6 +1383,163 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return whatIfResult;
         }
 
+        #region What-If Resource CRUD Operations
+
+        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string stackName)
+        {
+            try
+            {
+                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Get(resourceGroupName, stackName);
+                return ConvertToPSDeploymentStackWhatIfResult(result);
+            }
+            catch (Exception ex)
+            {
+                if (ex is DeploymentStacksErrorException dex)
+                    throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                throw;
+            }
+        }
+
+        public IList<PSDeploymentStackWhatIfResult> ListResourceGroupDeploymentStackWhatIfResults(string resourceGroupName)
+        {
+            try
+            {
+                var list = new List<PSDeploymentStackWhatIfResult>();
+                var results = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.List(resourceGroupName);
+                list.AddRange(results.Select(r => ConvertToPSDeploymentStackWhatIfResult(r)));
+                while (results.NextPageLink != null)
+                {
+                    results = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.ListNext(results.NextPageLink);
+                    list.AddRange(results.Select(r => ConvertToPSDeploymentStackWhatIfResult(r)));
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                if (ex is DeploymentStacksErrorException dex)
+                    throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                throw;
+            }
+        }
+
+        public void DeleteResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string stackName)
+        {
+            try
+            {
+                DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Delete(resourceGroupName, stackName);
+            }
+            catch (Exception ex)
+            {
+                if (ex is DeploymentStacksErrorException dex)
+                    throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                throw;
+            }
+        }
+
+        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResult(string stackName)
+        {
+            try
+            {
+                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Get(stackName);
+                return ConvertToPSDeploymentStackWhatIfResult(result);
+            }
+            catch (Exception ex)
+            {
+                if (ex is DeploymentStacksErrorException dex)
+                    throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                throw;
+            }
+        }
+
+        public IList<PSDeploymentStackWhatIfResult> ListSubscriptionDeploymentStackWhatIfResults()
+        {
+            try
+            {
+                var list = new List<PSDeploymentStackWhatIfResult>();
+                var results = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.List();
+                list.AddRange(results.Select(r => ConvertToPSDeploymentStackWhatIfResult(r)));
+                while (results.NextPageLink != null)
+                {
+                    results = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.ListNext(results.NextPageLink);
+                    list.AddRange(results.Select(r => ConvertToPSDeploymentStackWhatIfResult(r)));
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                if (ex is DeploymentStacksErrorException dex)
+                    throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                throw;
+            }
+        }
+
+        public void DeleteSubscriptionDeploymentStackWhatIfResult(string stackName)
+        {
+            try
+            {
+                DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Delete(stackName);
+            }
+            catch (Exception ex)
+            {
+                if (ex is DeploymentStacksErrorException dex)
+                    throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                throw;
+            }
+        }
+
+        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string stackName)
+        {
+            try
+            {
+                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Get(managementGroupId, stackName);
+                return ConvertToPSDeploymentStackWhatIfResult(result);
+            }
+            catch (Exception ex)
+            {
+                if (ex is DeploymentStacksErrorException dex)
+                    throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                throw;
+            }
+        }
+
+        public IList<PSDeploymentStackWhatIfResult> ListManagementGroupDeploymentStackWhatIfResults(string managementGroupId)
+        {
+            try
+            {
+                var list = new List<PSDeploymentStackWhatIfResult>();
+                var results = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.List(managementGroupId);
+                list.AddRange(results.Select(r => ConvertToPSDeploymentStackWhatIfResult(r)));
+                while (results.NextPageLink != null)
+                {
+                    results = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.ListNext(results.NextPageLink);
+                    list.AddRange(results.Select(r => ConvertToPSDeploymentStackWhatIfResult(r)));
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                if (ex is DeploymentStacksErrorException dex)
+                    throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                throw;
+            }
+        }
+
+        public void DeleteManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string stackName)
+        {
+            try
+            {
+                DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Delete(managementGroupId, stackName);
+            }
+            catch (Exception ex)
+            {
+                if (ex is DeploymentStacksErrorException dex)
+                    throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                throw;
+            }
+        }
+
+        #endregion
+
         #region What-If Operations
 
         /// <summary>

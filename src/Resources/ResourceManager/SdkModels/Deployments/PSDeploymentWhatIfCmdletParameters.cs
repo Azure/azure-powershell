@@ -102,11 +102,11 @@
             // Populate template properties.
             if (!string.IsNullOrEmpty(this.TemplateSpecId))
             {
-                properties.TemplateLink = new TemplateLink(id: this.TemplateSpecId);
+                properties.TemplateLink = new Microsoft.Azure.Management.Resources.Models.TemplateLink { Id = this.TemplateSpecId };
             }
             else if (Uri.IsWellFormedUriString(this.TemplateUri, UriKind.Absolute))
             {
-                properties.TemplateLink = new TemplateLink(this.TemplateUri);
+                properties.TemplateLink = new Microsoft.Azure.Management.Resources.Models.TemplateLink { Uri = this.TemplateUri };
 
                 if (!string.IsNullOrEmpty(this.QueryString))
                 {
@@ -124,7 +124,7 @@
             // Populate template parameters properties.
             if (Uri.IsWellFormedUriString(this.TemplateParametersUri, UriKind.Absolute))
             {
-                properties.ParametersLink = new ParametersLink(this.TemplateParametersUri);
+                properties.ParametersLink = new Microsoft.Azure.Management.Resources.Models.ParametersLink { Uri = this.TemplateParametersUri };
             }
             else
             {

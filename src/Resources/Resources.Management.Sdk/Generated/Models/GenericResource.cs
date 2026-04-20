@@ -61,8 +61,11 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </param>
         public GenericResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Plan plan = default(Plan), object properties = default(object), string kind = default(string), string managedBy = default(string), Sku sku = default(Sku), Identity identity = default(Identity))
 
-        : base(id, name, type, location, extendedLocation, tags)
+        : base(id, name, type)
         {
+            this.Location = location;
+            this.ExtendedLocation = extendedLocation;
+            this.Tags = tags;
             this.Plan = plan;
             this.Properties = properties;
             this.Kind = kind;
@@ -77,6 +80,24 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets resource location
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets resource extended location.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
+        public ExtendedLocation ExtendedLocation {get; set; }
+
+        /// <summary>
+        /// Gets or sets resource tags
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets or sets the plan of the resource.
