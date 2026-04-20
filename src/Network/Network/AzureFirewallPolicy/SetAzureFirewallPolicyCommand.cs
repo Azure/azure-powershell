@@ -270,8 +270,8 @@ namespace Microsoft.Azure.Commands.Network
                 this.TransportSecurityKeyVaultSecretId = this.IsParameterBound(c => c.TransportSecurityKeyVaultSecretId) ? TransportSecurityKeyVaultSecretId : (InputObject.TransportSecurity?.CertificateAuthority != null ? InputObject.TransportSecurity.CertificateAuthority.KeyVaultSecretId : null);
                 this.Identity = this.IsParameterBound(c => c.Identity) ? Identity : (InputObject.Identity != null ? InputObject.Identity : null);
                 this.UserAssignedIdentityId = this.IsParameterBound(c => c.UserAssignedIdentityId) ? UserAssignedIdentityId : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.First().Key : null);
-                this.UserAssignedIdentityIds = this.IsParameterBound(c => c.UserAssignedIdentityId) ? UserAssignedIdentityIds : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.Keys.ToArray() : null);
-                this.IdentityType = this.IsParameterBound(c => c.IdentityType) ? IdentityType : (InputObject.Identity.Type != null ? InputObject.Identity.Type.ToString() : null);
+                this.UserAssignedIdentityIds = this.IsParameterBound(c => c.UserAssignedIdentityIds) ? UserAssignedIdentityIds : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.Keys.ToArray() : null);
+                this.IdentityType = this.IsParameterBound(c => c.IdentityType) ? IdentityType : (InputObject.Identity?.Type != null ? InputObject.Identity?.Type.ToString() : null);
                 this.SkuTier = this.IsParameterBound(c => c.SkuTier) ? SkuTier : (InputObject.Sku?.Tier != null ? InputObject.Sku.Tier : null);
                 this.PrivateRange = this.IsParameterBound(c => c.PrivateRange) ? PrivateRange : InputObject.PrivateRange;
                 this.ExplicitProxy = this.IsParameterBound(c => c.ExplicitProxy) ? ExplicitProxy : InputObject.ExplicitProxy;
@@ -299,24 +299,26 @@ namespace Microsoft.Azure.Commands.Network
 
                 AddPremiumProperties(firewallPolicy);
 
-                if (this.UserAssignedIdentityId != null)
-                {
-                    firewallPolicy.Identity = new PSManagedServiceIdentity
-                    {
-                        Type = MNM.ResourceIdentityType.UserAssigned,
-                        UserAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>
-                        {
-                            { this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue() }
-                        }
-                    };
-                }
-                else if (this.UserAssignedIdentityIds != null)
+                if (this.UserAssignedIdentityId != null || this.UserAssignedIdentityIds != null)
                 {
                     var userAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>();
-                    foreach (var identityId in this.UserAssignedIdentityIds)
+
+                    if (this.UserAssignedIdentityId != null)
                     {
-                        userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
+                        userAssignedIdentities.Add(this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
                     }
+
+                    if (this.UserAssignedIdentityIds != null)
+                    {
+                        foreach (var identityId in this.UserAssignedIdentityIds)
+                        {
+                            if (!userAssignedIdentities.ContainsKey(identityId))
+                            {
+                                userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
+                            }
+                        }
+                    }
+
                     firewallPolicy.Identity = new PSManagedServiceIdentity
                     {
                         Type = MNM.ResourceIdentityType.UserAssigned,
