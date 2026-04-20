@@ -190,21 +190,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RemoveUserAssignedIdentity
-The list of user-assigned managed identity resource IDs to remove from the gallery, or 'All' to remove all user-assigned identities. Cannot use 'All' together with -UserAssignedIdentity.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -EnableSystemAssignedIdentity
 Enables system-assigned managed identity on the gallery. Cannot be used together with -DisableSystemAssignedIdentity.
 
@@ -342,6 +327,21 @@ Accept wildcard characters: False
 
 ### -RemoveTenant
 A list of tenant IDs the gallery will stop sharing to.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RemoveUserAssignedIdentity
+The list of user-assigned managed identity resource IDs to remove from the gallery, or 'All' to remove all user-assigned identities. Cannot use 'All' together with -UserAssignedIdentity.
 
 ```yaml
 Type: System.String[]
