@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Sql;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
@@ -61,7 +63,16 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
             }
             catch (ErrorResponseException ex)
             {
-                throw GetImprovedErrorResponseException(ex, location, serverName);
+                if (ex.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    var notFoundMessage = string.Format(Properties.Resources.DeletedServerNotFoundInLocation, serverName, location);
+                    throw new AzPSResourceNotFoundCloudException(
+                        notFoundMessage,
+                        notFoundMessage,
+                        ex);
+                }
+
+                throw ErrorResponseExceptionHelper.CreateFrom(ex);
             }
         }
 
@@ -110,31 +121,5 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
             return model;
         }
 
-        /// <summary>
-        /// Creates an improved ErrorResponseException with a more descriptive error message for NotFound scenarios.
-        /// </summary>
-        /// <param name="originalException">The original exception from the SDK</param>
-        /// <param name="location">The location where the server was being searched</param>
-        /// <param name="serverName">The name of the server being searched for</param>
-        /// <returns>An ErrorResponseException with an improved error message</returns>
-        private ErrorResponseException GetImprovedErrorResponseException(ErrorResponseException originalException, string location, string serverName)
-        {
-            string improvedMessage = originalException.Body?.Error?.Message;
-            
-            // If it's a NotFound error, provide a more helpful message
-            if (originalException.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                improvedMessage = string.Format(
-                    Properties.Resources.DeletedServerNotFoundInLocation,
-                    serverName, location);
-            }
-
-            ErrorResponseException improvedException = new ErrorResponseException(improvedMessage, originalException.InnerException);
-            improvedException.Body = originalException.Body;
-            improvedException.Request = originalException.Request;
-            improvedException.Response = originalException.Response;
-
-            return improvedException;
-        }
     }
 }

@@ -2103,7 +2103,7 @@ function Verify-NodesArcRegistrationState{
     $checkBlock = {
         param([string]$SubscriptionId, [string]$ArcResourceGroupName)
         $nodeName = $env:COMPUTERNAME
-        $result = @{ NodeName = $nodeName; IsMismatch = $false; Details = $null }
+        $result = [PSCustomObject]@{ NodeName = $nodeName; IsMismatch = $false; Details = $null }
 
         if(Test-Path -Path "C:\Program Files\AzureConnectedMachineAgent\azcmagent.exe")
         {
@@ -2168,7 +2168,7 @@ function Verify-NodesArcRegistrationState{
     }
 
     # Validate we received results from all nodes
-    $resultCount = if ($results -eq $null) { 0 } else { $results.Count }
+    $resultCount = if ($null -eq $results) { 0 } else { @($results).Count }
     $expectedCount = $computerNames.Count
     if ($resultCount -ne $expectedCount)
     {

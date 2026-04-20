@@ -9,17 +9,27 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Creates a user-assigned deny assignment at the specified scope.
-PP1 deny assignments apply to all principals (Everyone) and require at least one excluded principal.
+By default, the deny assignment targets Everyone and requires at least one excluded principal.
+Alternatively, use -PrincipalId and -PrincipalType to target a specific user or service principal.
 
 ## SYNTAX
 
-### ScopeWithPrincipalsParameterSet (Default)
+### EveryoneParameterSet (Default)
 ```
 New-AzDenyAssignment -DenyAssignmentName <String> -Scope <String> -ExcludePrincipalId <String[]>
  [-Description <String>] [-Action <String[]>] [-NotAction <String[]>] [-DataAction <String[]>]
  [-NotDataAction <String[]>] [-ExcludePrincipalType <String[]>] [-DoNotApplyToChildScope]
  [-DenyAssignmentId <Guid>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PerPrincipalParameterSet
+```
+New-AzDenyAssignment -DenyAssignmentName <String> -Scope <String> -PrincipalId <String>
+ -PrincipalType <String> [-Description <String>] [-Action <String[]>] [-NotAction <String[]>]
+ [-DataAction <String[]>] [-NotDataAction <String[]>] [-ExcludePrincipalId <String[]>]
+ [-ExcludePrincipalType <String[]>] [-DoNotApplyToChildScope] [-DenyAssignmentId <Guid>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputFileParameterSet
@@ -31,12 +41,15 @@ New-AzDenyAssignment -Scope <String> -InputFile <String> [-DenyAssignmentId <Gui
 ## DESCRIPTION
 Use the New-AzDenyAssignment command to create a new user-assigned deny assignment at the specified scope.
 
-PP1 deny assignments apply to all principals (Everyone) and require at least one excluded principal to be specified via the ExcludePrincipalId parameter.
-Only write, delete, and action operations can be denied. Read actions and data actions are not supported in PP1.
+By default, the deny assignment targets all principals (Everyone) and requires at least one excluded principal via the ExcludePrincipalId parameter.
+
+Alternatively, use -PrincipalId and -PrincipalType to target a specific user or service principal. In this mode, -ExcludePrincipalId is optional. Group type principals are not supported for user-assigned deny assignments.
+
+Only write, delete, and action operations can be denied. Read actions and data actions are not supported.
 
 ## EXAMPLES
 
-### Example 1: Create a deny assignment that blocks delete actions
+### Example 1: Create a deny assignment that blocks delete actions for everyone
 ```powershell
 New-AzDenyAssignment -DenyAssignmentName "Block deletes" `
     -Scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG" `
@@ -45,17 +58,39 @@ New-AzDenyAssignment -DenyAssignmentName "Block deletes" `
     -ExcludePrincipalType "User"
 ```
 
-Creates a deny assignment named "Block deletes" at the resource group scope that denies all delete actions. The specified user is excluded from the deny assignment.
+Creates a deny assignment named "Block deletes" at the resource group scope that denies all delete actions for everyone. The specified user is excluded from the deny assignment.
 
-### Example 2: Create a deny assignment from a JSON input file
+### Example 2: Block a specific user from performing write operations
+```powershell
+New-AzDenyAssignment -DenyAssignmentName "Block user writes" `
+    -Scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG" `
+    -Action "*/write" `
+    -PrincipalId "11111111-1111-1111-1111-111111111111" `
+    -PrincipalType "User"
+```
+
+Creates a deny assignment that blocks write operations for a specific user. No excluded principals are required in per-principal mode.
+
+### Example 3: Block a specific service principal from deleting resources
+```powershell
+New-AzDenyAssignment -DenyAssignmentName "Block SP deletes" `
+    -Scope "/subscriptions/00000000-0000-0000-0000-000000000000" `
+    -Action "*/delete" `
+    -PrincipalId "22222222-2222-2222-2222-222222222222" `
+    -PrincipalType "ServicePrincipal"
+```
+
+Creates a deny assignment that blocks delete operations for a specific service principal at subscription scope.
+
+### Example 4: Create a deny assignment from a JSON input file
 ```powershell
 New-AzDenyAssignment -Scope "/subscriptions/00000000-0000-0000-0000-000000000000" `
     -InputFile "C:\DenyAssignment.json"
 ```
 
-Creates a deny assignment using the definition in the specified JSON file. The input file must include DenyAssignmentName, Actions, and ExcludePrincipalIds.
+Creates a deny assignment using the definition in the specified JSON file. The input file must include DenyAssignmentName, Actions, and either ExcludePrincipalIds (Everyone mode) or PrincipalIds + PrincipalTypes (per-principal mode).
 
-### Example 3: Create a deny assignment with multiple exclude principals
+### Example 5: Create a deny assignment with multiple exclude principals
 ```powershell
 New-AzDenyAssignment -DenyAssignmentName "Block writes" `
     -Scope "/subscriptions/00000000-0000-0000-0000-000000000000" `
@@ -64,7 +99,7 @@ New-AzDenyAssignment -DenyAssignmentName "Block writes" `
     -ExcludePrincipalType "User", "ServicePrincipal"
 ```
 
-Creates a deny assignment that denies write actions, excluding a user and a service principal.
+Creates a deny assignment that denies write actions for everyone, excluding a user and a service principal.
 
 ## PARAMETERS
 
@@ -73,7 +108,7 @@ Actions to deny. Wildcards supported (e.g., */delete, Microsoft.Storage/storageA
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ScopeWithPrincipalsParameterSet
+Parameter Sets: EveryoneParameterSet, PerPrincipalParameterSet
 Aliases:
 
 Required: False
@@ -84,11 +119,11 @@ Accept wildcard characters: False
 ```
 
 ### -DataAction
-Data actions to deny. Note: Data actions are not supported in Public Preview 1 user-assigned deny assignments and will be rejected by the service.
+Data actions to deny. Note: Data actions are not supported for user-assigned deny assignments and will be rejected by the service.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ScopeWithPrincipalsParameterSet
+Parameter Sets: EveryoneParameterSet, PerPrincipalParameterSet
 Aliases:
 
 Required: False
@@ -133,7 +168,7 @@ The display name for the deny assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: ScopeWithPrincipalsParameterSet
+Parameter Sets: EveryoneParameterSet, PerPrincipalParameterSet
 Aliases:
 
 Required: True
@@ -148,7 +183,7 @@ A description of the deny assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: ScopeWithPrincipalsParameterSet
+Parameter Sets: EveryoneParameterSet, PerPrincipalParameterSet
 Aliases:
 
 Required: False
@@ -159,11 +194,11 @@ Accept wildcard characters: False
 ```
 
 ### -DoNotApplyToChildScope
-If set, the deny assignment does not apply to child scopes. Note: This property is not supported in Public Preview 1 user-assigned deny assignments and will be rejected by the service.
+If set, the deny assignment does not apply to child scopes. Note: This property is not supported for user-assigned deny assignments and will be rejected by the service.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ScopeWithPrincipalsParameterSet
+Parameter Sets: EveryoneParameterSet, PerPrincipalParameterSet
 Aliases:
 
 Required: False
@@ -174,14 +209,26 @@ Accept wildcard characters: False
 ```
 
 ### -ExcludePrincipalId
-Object IDs of principals to exclude from the deny assignment. Required when principal is Everyone.
+Object IDs of principals to exclude from the deny assignment. Required when targeting Everyone. Optional when using -PrincipalId.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ScopeWithPrincipalsParameterSet
+Parameter Sets: EveryoneParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: PerPrincipalParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -193,7 +240,7 @@ Type(s) of the exclude principals (User, Group, ServicePrincipal). One per Exclu
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ScopeWithPrincipalsParameterSet
+Parameter Sets: EveryoneParameterSet, PerPrincipalParameterSet
 Aliases:
 Accepted values: User, Group, ServicePrincipal
 
@@ -224,7 +271,7 @@ Actions to exclude from the deny assignment.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ScopeWithPrincipalsParameterSet
+Parameter Sets: EveryoneParameterSet, PerPrincipalParameterSet
 Aliases:
 
 Required: False
@@ -235,14 +282,45 @@ Accept wildcard characters: False
 ```
 
 ### -NotDataAction
-Data actions to exclude from the deny assignment. Note: Data actions are not supported in Public Preview 1 user-assigned deny assignments.
+Data actions to exclude from the deny assignment. Note: Data actions are not supported for user-assigned deny assignments.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ScopeWithPrincipalsParameterSet
+Parameter Sets: EveryoneParameterSet, PerPrincipalParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PrincipalId
+Object ID of the user or service principal to deny. When specified, the deny assignment targets this specific principal instead of Everyone.
+
+```yaml
+Type: System.String
+Parameter Sets: PerPrincipalParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PrincipalType
+Type of the principal specified by -PrincipalId. Accepted values are User and ServicePrincipal. Group type is not supported for user-assigned deny assignments.
+
+```yaml
+Type: System.String
+Parameter Sets: PerPrincipalParameterSet
+Aliases:
+Accepted values: User, ServicePrincipal
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
