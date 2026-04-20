@@ -212,7 +212,7 @@ function Test-EnableAndDisableAzAksAddons
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
 
-        $cluster = New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize
+        $cluster = New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -GenerateSshKey
         Assert-Null $cluster.AddonProfiles
 
         $cluster = $cluster | Enable-AzAksAddon -Name AzurePolicy
@@ -220,7 +220,7 @@ function Test-EnableAndDisableAzAksAddons
         $cluster = $cluster | Disable-AzAksAddon -Name AzurePolicy
         Assert-AreEqual $false $cluster.AddonProfiles['azurepolicy'].Enabled
 
-        $cluster2 = New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2 -NodeVmSize $nodeVmSize
+        $cluster2 = New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2 -NodeVmSize $nodeVmSize -GenerateSshKey
         Assert-Null $cluster2.AddonProfiles
         #$workspace = New-AzOperationalInsightsWorkspace -Location $location -Name 'akstestws' -ResourceGroupName $resourceGroupName
         #$workspaceId = $workspace.ResourceId
@@ -228,6 +228,7 @@ function Test-EnableAndDisableAzAksAddons
 
         $cluster2 = Enable-AzAksAddon -Name 'Monitoring' -WorkspaceResourceId $workspaceId -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName2
         Assert-AreEqual $true $cluster2.AddonProfiles['omsagent'].Enabled
+        Assert-AreEqual 'true' $cluster2.AddonProfiles['omsagent'].Config['useAADAuth']
         $cluster2 = Disable-AzAksAddon -Name 'Monitoring' -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName2
         Assert-AreEqual $false $cluster2.AddonProfiles['omsagent'].Enabled
     }
