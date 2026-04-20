@@ -137,7 +137,17 @@ CmdletsToExport = 'Approve-AzNetAppFilesReplication', 'Get-AzNetAppFilesAccount'
                'Split-AzNetAppFilesCloneFromParent', 
                'Get-AzNetAppFilesVolumeQuotaReport', 
                'Get-AzNetAppFilesRansomwareReport', 
-               'Clear-AzNetAppFilesRansomwareReportSuspect'
+               'Clear-AzNetAppFilesRansomwareReportSuspect', 
+               'Get-AzNetAppFilesBucket', 'New-AzNetAppFilesBucket', 
+               'Update-AzNetAppFilesBucket', 'Remove-AzNetAppFilesBucket', 
+               'New-AzNetAppFilesBucketCredential', 
+               'Set-AzNetAppFilesBucketAkvCredential', 
+               'Update-AzNetAppFilesBucketCertificate', 
+               'Get-AzNetAppFilesCache', 'New-AzNetAppFilesCache', 
+               'Update-AzNetAppFilesCache', 'Remove-AzNetAppFilesCache', 
+               'Get-AzNetAppFilesCachePeeringPassphrase', 
+               'Set-AzNetAppFilesCachePool', 
+               'Reset-AzNetAppFilesCacheSmbPassword'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -180,7 +190,13 @@ AliasesToExport = 'Approve-AnfReplication', 'Get-AnfAccount', 'Get-AnfBackup',
                'Invoke-AnfAccountChangeKeyVault', 'Convert-AnfFilesAccountToCmk', 
                'Get-AnfUsage', 'Split-AnfCloneFromParent', 
                'Get-AnfVolumeQuotaReport', 'Get-AnfRansomwareReport', 
-               'Clear-AnfRansomwareReportSuspect'
+               'Clear-AnfRansomwareReportSuspect', 'Get-AnfBucket', 
+               'New-AnfBucket', 'Update-AnfBucket', 'Remove-AnfBucket', 
+               'New-AnfBucketCredential', 'Set-AnfBucketAkvCredential', 
+               'Update-AnfBucketCertificate', 'Get-AnfCache', 'New-AnfCache', 
+               'Update-AnfCache', 'Remove-AnfCache', 
+               'Get-AnfCachePeeringPassphrase', 'Set-AnfCachePool', 
+               'Reset-AnfCacheSmbPassword'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
