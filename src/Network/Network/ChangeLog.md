@@ -28,7 +28,13 @@
 * Added EdgeZone (Extended Location) parameter support for Azure Firewall
     - Added `-EdgeZone` parameter to `New-AzFirewall` cmdlet
     - When `-EdgeZone` is specified, availability zones are not supported for Azure Firewall resources
-
+* Added `UserAssignedIdentityIds` parameter in Azure Firewall Policy to input multiple UAMIs
+    - Added `-UserAssignedIdentityIds` parameter to `New-AzFirewallPolicy` and `Set-AzFirewallPolicy` cmdlets
+    - Supports assigning multiple User Assigned Managed Identities (e.g., separate identities for Explicit Proxy and TLS Inspection)
+* Added `IdentityType` parameter in Azure Firewall Policy to manage identity type
+    - Added `-IdentityType` parameter to `New-AzFirewallPolicy` and `Set-AzFirewallPolicy` cmdlets
+    - Supports setting identity type to `None` to remove all User Assigned Managed Identities from the policy
+    
 ## Version 7.25.1
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
 * Onboarded `Microsoft.DurableTask/schedulers` to Private Link Common Cmdlets
