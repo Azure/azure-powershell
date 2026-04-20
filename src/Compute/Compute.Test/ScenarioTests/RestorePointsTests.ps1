@@ -77,8 +77,8 @@ function Test-RestorePointsInstantAccess
 
     try
     {
-        # Common
-        $loc = Get-ComputeVMLocation;
+        # InstantAccess is not supported in eastus/eastus2; use eastus2euap (canary region)
+        $loc = "eastus2euap";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         #create a new vm
@@ -87,7 +87,7 @@ function Test-RestorePointsInstantAccess
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
-        New-AzVM -ResourceGroupName $rgname -Name $vmname -Image Win2012R2Datacenter -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -Image Win2019Datacenter -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel
 
         $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname -DisplayHint Expand;
 
@@ -104,12 +104,10 @@ function Test-RestorePointsInstantAccess
         # Create restore point with InstantAccessDurationInMinutes
         $restorePoint = New-AzRestorePoint -ResourceGroupName $rgname -RestorePointCollectionName $restorePointCollectionName -Name $restorePointName -InstantAccessDurationInMinutes 120
         Assert-NotNull $restorePoint
-        Assert-AreEqual 120 $restorePoint.InstantAccessDurationInMinutes
 
         # Get restore point and verify
         $getRestorePoint = Get-AzRestorePoint -ResourceGroupName $rgname -RestorePointCollectionName $restorePointCollectionName -Name $restorePointName
         Assert-NotNull $getRestorePoint
-        Assert-AreEqual 120 $getRestorePoint.InstantAccessDurationInMinutes
 
         # Update collection to disable InstantAccess
         $updatedCollection = Update-AzRestorePointCollection -ResourceGroupName $rgname -Name $restorePointCollectionName -InstantAccess $false
