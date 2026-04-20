@@ -303,5 +303,95 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SaveAndRemoveManagementGroupDeploymentStackWithPipeOperator");
         }
+
+        // ---- WhatIf Resource Group Scope ----
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewResourceGroupDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-NewResourceGroupDeploymentStackWhatIf");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetResourceGroupDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-SetResourceGroupDeploymentStackWhatIf");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceGroupDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-GetResourceGroupDeploymentStackWhatIf");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveResourceGroupDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-RemoveResourceGroupDeploymentStackWhatIf");
+        }
+
+        // ---- WhatIf Subscription Scope ----
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSubscriptionDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-NewSubscriptionDeploymentStackWhatIf");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetSubscriptionDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-SetSubscriptionDeploymentStackWhatIf");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetSubscriptionDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-GetSubscriptionDeploymentStackWhatIf");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveSubscriptionDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-RemoveSubscriptionDeploymentStackWhatIf");
+        }
+
+        // ---- WhatIf Management Group Scope ----
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewManagementGroupDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-NewManagementGroupDeploymentStackWhatIf");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetManagementGroupDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-SetManagementGroupDeploymentStackWhatIf");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetManagementGroupDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-GetManagementGroupDeploymentStackWhatIf");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveManagementGroupDeploymentStackWhatIf()
+        {
+            TestRunner.RunTestScript("Test-RemoveManagementGroupDeploymentStackWhatIf");
+        }
     }
 }
