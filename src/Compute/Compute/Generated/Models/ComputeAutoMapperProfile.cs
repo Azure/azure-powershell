@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.Gallery, TO.PSGalleryList>();
                 cfg.CreateMap<TO.PSGalleryList, TO.PSGallery>();
                 cfg.CreateMap<TO.PSGallery, TO.PSGalleryList>();
+                cfg.CreateMap<TO.PSGallery, FROM.GalleryUpdate>();
                 cfg.CreateMap<FROM.GalleryImage, TO.PSGalleryImageList>();
                 cfg.CreateMap<TO.PSGalleryImageList, TO.PSGalleryImage>();
                 cfg.CreateMap<TO.PSGalleryImage, TO.PSGalleryImageList>();

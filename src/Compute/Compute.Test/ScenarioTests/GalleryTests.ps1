@@ -134,8 +134,7 @@ function Test-Gallery
     try
     {
         # Common
-        [string]$loc = Get-ComputeVMLocation;
-        $loc = $loc.Replace(' ', '');
+        [string]$loc = "westus3";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         $description1 = "Original Description";
         $description2 = "Updated Description";
@@ -194,14 +193,14 @@ function Test-Gallery
         $privacyStatementUri = "https://www.microsoft.com";
         $releaseNoteUri = "https://www.microsoft.com";
         $disallowedDiskTypes = "Premium_LRS";
-        $endOfLifeDate = [DateTime]::ParseExact('12 07 2025 18 02', 'HH mm yyyy dd MM', $null);
+        $endOfLifeDate = [DateTime]::ParseExact('12 07 2028 18 02', 'HH mm yyyy dd MM', $null);
         $minMemory = 1;
         $maxMemory = 100;
         $minVCPU = 2;
         $maxVCPU = 32;
         $purchasePlanName = "purchasePlanName";
         $purchasePlanProduct = "purchasePlanProduct";
-        $purchasePlanPublisher = "";
+        $purchasePlanPublisher = "purchasePlanPublisher";
         $osState = "Generalized";
         $osType = "Windows";
 
@@ -215,7 +214,8 @@ function Test-Gallery
                                           -MinimumVCPU $minVCPU -MaximumVCPU $maxVCPU `
                                           -PurchasePlanName $purchasePlanName `
                                           -PurchasePlanProduct $purchasePlanProduct `
-                                          -PurchasePlanPublisher $purchasePlanPublisher;
+                                          -PurchasePlanPublisher $purchasePlanPublisher `
+                                          -HyperVGeneration 'V1';
 
         $wildcardNameQuery = ($galleryImageName -replace ".$") + "*"
         $galleryImageDefinitionList = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $wildcardNameQuery;
@@ -254,18 +254,18 @@ function Test-Gallery
         $galleryImageVersionName = "1.0.0";
 
         # Create a VM first
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_D4s_v3';
         $vmname = 'vm' + $rgname;
         $stnd = "Standard";
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24" -DefaultOutboundAccess $false;
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel ('pubip' + $rgname);
         $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
         $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
@@ -277,24 +277,15 @@ function Test-Gallery
         # Adding the same Nic but not set it Primary
         $p = Add-AzVMNetworkInterface -VM $p -Id $nicId -Primary;
 
-        # Storage Account (SA)
-        $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_LRS';
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
-
+        # OS Disk (managed)
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
-        $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -CreateOption Empty;
         $p = Remove-AzVMDataDisk -VM $p -Name 'testDataDisk3';
 
         # OS & Image
@@ -303,30 +294,26 @@ function Test-Gallery
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
-        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Virtual Machine
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-        # Create Image using the VM's OS disk and data disks.
+        # Stop, deallocate, and generalize the VM so it can be captured as an Image.
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
+        Set-AzVM -ResourceGroupName $rgname -Name $vmname -Generalized;
+
+        # Create Image from the generalized VM (uses managed disks).
         $imageName = 'image' + $rgname;
-        $imageConfig = New-AzImageConfig -Location $loc;
-        Set-AzImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
-        $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
-        $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
-        $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 3 -BlobUri $dataDiskVhdUri2;
-        Assert-AreEqual 3 $imageConfig.StorageProfile.DataDisks.Count;
-        $imageConfig = Remove-AzImageDataDisk -Image $imageConfig -Lun 3;
-        Assert-AreEqual 2 $imageConfig.StorageProfile.DataDisks.Count;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        $imageConfig = New-AzImageConfig -Location $loc -SourceVirtualMachineId $vm.Id;
 
         $image = New-AzImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname
-        $targetRegions = @(@{Name='South Central US';ReplicaCount=1},@{Name='East US';ReplicaCount=2});
+        $targetRegions = @(@{Name='South Central US';ReplicaCount=1},@{Name='West US 3';ReplicaCount=2});
         $tag = @{test1 = "testval1"; test2 = "testval2" };
 
         New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
@@ -348,7 +335,7 @@ function Test-Gallery
         Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
                                    $image.Id 1 $endOfLifeDate $targetRegions;
 
-        $targetRegions = @(@{Name='South Central US';ReplicaCount=1},@{Name='East US';ReplicaCount=2},@{Name='Central US';StorageAccountType="Standard_ZRS"});
+        $targetRegions = @(@{Name='South Central US';ReplicaCount=1},@{Name='West US 3';ReplicaCount=2},@{Name='Central US';StorageAccountType="Standard_ZRS"});
 
         Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
                                           -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `

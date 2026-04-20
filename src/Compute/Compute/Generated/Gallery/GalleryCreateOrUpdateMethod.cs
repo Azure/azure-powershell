@@ -254,6 +254,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.ParameterSetName == "ObjectParameter")
                     {
                         ComputeAutomationAutoMapperProfile.Mapper.Map<PSGallery, Gallery>(this.InputObject, gallery);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<PSGallery, GalleryUpdate>(this.InputObject, galleryUpdate);
                     }
                     else
                     {
@@ -401,6 +402,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     
                     SharingUpdate sharingUpdate = new SharingUpdate();
+
+                    bool isSharingOperation = this.Share.IsPresent || this.Community.IsPresent || this.Reset.IsPresent;
+                    if (isSharingOperation)
+                    {
+                        // Sharing operations use a separate API call that does not send galleryUpdate,
+                        // so reject parameters that would be silently discarded.
+                        bool hasNonSharingParams = this.IsParameterBound(c => c.Description)
+                            || this.IsParameterBound(c => c.Tag)
+                            || hasSystemAssigned || hasUserAssigned || disableSystem || removeUserBound;
+
+                        if (hasNonSharingParams)
+                        {
+                            throw new ArgumentException(
+                                "Parameters '-Description', '-Tag', '-EnableSystemAssignedIdentity', '-DisableSystemAssignedIdentity', "
+                                + "'-UserAssignedIdentity', and '-RemoveUserAssignedIdentity' cannot be combined with '-Share', '-Community', or '-Reset'. "
+                                + "Please run the sharing update and property update as separate commands.");
+                        }
+                    }
+
                     if (this.Reset.IsPresent)
                     {
                         sharingUpdate.OperationType = "Reset";
