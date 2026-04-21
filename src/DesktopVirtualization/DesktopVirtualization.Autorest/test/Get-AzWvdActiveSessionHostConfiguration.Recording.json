@@ -1,54 +1,43 @@
 {
-  "Get-AzWvdActiveSessionHostConfiguration+[NoContext]+List+$GET+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/activeSessionHostConfigurations/default?api-version=2026-01-01-preview+1": {
+  "Get-AzWvdActiveSessionHostConfiguration+[NoContext]+List+$GET+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/activeSessionHostConfigurations/default?api-version=2026-02-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/activeSessionHostConfigurations/default?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/activeSessionHostConfigurations/default?api-version=2026-02-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "78b13b05-2e49-4c61-b04f-1c60295b856a" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "5cfefc03-92ef-410c-ba2f-ef3fd3baaa71" ],
         "CommandName": [ "Get-AzWvdActiveSessionHostConfiguration" ],
         "FullCommandName": [ "Get-AzWvdActiveSessionHostConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.3.0", "PSVersion/v7.5.5", "Az.DesktopVirtualization/5.4.4" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.5", "Az.DesktopVirtualization/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 400,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=8eb53c7710500278821fb75ab392467d6494e2d2530a038ab3afa4bec63f4072;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=8eb53c7710500278821fb75ab392467d6494e2d2530a038ab3afa4bec63f4072;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
-        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=20778267-e9a4-46ba-97d7-7b7e5b321864/westus2/aa5eed87-8f76-415b-8f1e-de95b294e50a" ],
-        "X-Rate-Limit-Limit": [ "0" ],
-        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
-        "X-Rate-Limit-Reset": [ "0" ],
-        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkL2FjdGl2ZVNlc3Npb25Ib3N0Q29uZmlndXJhdGlvbnMvZGVmYXVsdA==" ],
-        "x-ms-lamport-ts": [ "-9223372036854775748" ],
-        "x-ms-correlation-id": [ "22b9fd3d-9413-474d-a1c9-a70a82d34bb8" ],
-        "x-ms-request-id": [ "78b13b05-2e49-4c61-b04f-1c60295b856a" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
-        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "ae48de3a-e2de-486e-8f0e-1c8a762d126c" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260318T054121Z:ae48de3a-e2de-486e-8f0e-1c8a762d126c" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "a0d802ba-3e9f-496f-8549-ce32da13dea6" ],
+        "x-ms-correlation-request-id": [ "a0d802ba-3e9f-496f-8549-ce32da13dea6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260417T063650Z:a0d802ba-3e9f-496f-8549-ce32da13dea6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F5E1D36A6A184BD98FD60B945031B93F Ref B: SG2AA1070303023 Ref C: 2026-03-18T05:41:21Z" ],
-        "Date": [ "Wed, 18 Mar 2026 05:41:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C41D9A280ADD4565B00F0A209EE143D1 Ref B: TYO201100113011 Ref C: 2026-04-17T06:36:49Z" ],
+        "Date": [ "Fri, 17 Apr 2026 06:36:49 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1693" ],
+        "Content-Length": [ "1495" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"default\",\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/activeSessionHostConfigurations/default\",\"type\":\"Microsoft.DesktopVirtualization/hostPools/sessionHostConfigurations\",\"properties\":{\"version\":\"2026-03-17T08:39:31Z\",\"provisioningState\":\"Succeeded\",\"vmSizeId\":\"Standard_D2alds_v6\",\"vmLocation\":\"westus2\",\"friendlyName\":null,\"vmTags\":{\"cm-resource-parent\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/zhongjie-automated\"},\"vmResourceGroup\":\"zhongjie-rg-wus\",\"vmNamePrefix\":\"auto\",\"availabilityZones\":null,\"networkInfo\":{\"subnetId\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.Network/virtualNetworks/zhongjievirtualnetworkwestus/subnets/default\",\"securityGroupId\":null},\"diskInfo\":{\"managedDisk\":{\"type\":\"Standard_LRS\"},\"diffDiskSettings\":null},\"imageInfo\":{\"type\":\"Marketplace\",\"marketplaceInfo\":{\"offer\":\"windows-11\",\"publisher\":\"microsoftwindowsdesktop\",\"sku\":\"win11-24h2-avd\",\"exactVersion\":\"26100.8037.260306\"},\"customInfo\":null},\"domainInfo\":{\"joinType\":\"AzureActiveDirectory\",\"activeDirectoryInfo\":null,\"azureActiveDirectoryInfo\":{\"mdmProviderGuid\":\"\"}},\"vmAdminCredentials\":{\"usernameKeyVaultSecretUri\":\"https://zhongjie-kv.vault.azure.net/secrets/username\",\"passwordKeyVaultSecretUri\":\"https://zhongjie-kv.vault.azure.net/secrets/password\"},\"bootDiagnosticsInfo\":{\"enabled\":true,\"storageUri\":null},\"securityInfo\":{\"type\":\"TrustedLaunch\",\"secureBootEnabled\":true,\"vTpmEnabled\":true},\"customConfigurationScriptUrl\":null}}",
+      "Content": "{\"error\":{\"code\":\"NoRegisteredProviderFound\",\"message\":\"No registered resource provider found for location \u0027westus2\u0027 and API version \u00272026-02-01-preview\u0027 for type \u0027hostpools\u0027. The supported api-versions are \u00272019-01-23-preview, 2019-09-24-preview, 2019-12-10-preview, 2020-09-21-preview, 2020-10-19-preview, 2020-11-02-preview, 2020-11-10-preview, 2021-01-14-preview, 2021-02-01-preview, 2021-03-09-preview, 2021-04-01-preview, 2021-09-03-preview, 2022-02-10-preview, 2022-04-01-preview, 2022-10-14-preview, 2022-12-09-privatepreview, 2023-03-03-privatepreview, 2023-03-21-privatepreview, 2023-10-04-preview, 2023-10-09-privatepreview, 2023-11-01-preview, 2023-11-29-privatepreview, 2023-12-25-privatepreview, 2024-04-08-preview, 2024-09-01-privatepreview, 2024-01-16-preview, 2024-03-06-preview, 2024-07-15-privatepreview, 2024-08-08-preview, 2024-08-12-preview, 2024-11-01-preview, 2025-01-06-preview, 2025-03-01-preview, 2025-03-05-preview, 2025-04-01-preview, 2025-05-30-preview, 2025-07-04-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview, 2026-01-01-preview, 2026-02-15-preview, 2026-03-01-preview, 2021-07-12, 2022-09-09, 2023-09-05, 2024-04-03, 2025-10-10\u0027. The supported locations are \u0027centralindia, uksouth, ukwest, eastasia, southeastasia, japaneast, japanwest, australiaeast, canadaeast, canadacentral, northeurope, westeurope, koreacentral, southafricanorth, eastus, westus, westus2, westus3, northcentralus, southcentralus, westcentralus, centralus, eastus2\u0027.\"}}",
       "isContentBase64": false
     }
   }

@@ -1,8 +1,8 @@
 {
-  "New-AzWvdSessionHost+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-personal/sessionHosts/auto2-2?api-version=2026-01-01-preview+1": {
+  "New-AzWvdSessionHost+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-personal/sessionHosts/auto2-2?api-version=2026-02-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-personal/sessionHosts/auto2-2?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-personal/sessionHosts/auto2-2?api-version=2026-02-01-preview",
       "Content": "{\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -13,90 +13,68 @@
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 400,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=59aa6267dcb9bf04eba78e7fd20bd39e116b391c1adae1450bab3979b9aa3b9f;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=59aa6267dcb9bf04eba78e7fd20bd39e116b391c1adae1450bab3979b9aa3b9f;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
-        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=20778267-e9a4-46ba-97d7-7b7e5b321864/westus2/73909f00-f67e-4f8f-9c22-f8df8b67d832" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
-        "X-Rate-Limit-Limit": [ "0" ],
-        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
-        "X-Rate-Limit-Reset": [ "0" ],
-        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtcGVyc29uYWwvc2Vzc2lvbkhvc3RzL2F1dG8yLTI=" ],
-        "x-ms-lamport-ts": [ "-9223372036854775149" ],
-        "x-ms-correlation-id": [ "f7476229-4d1b-47f1-a3f1-e7b84d367c7c" ],
-        "x-ms-request-id": [ "7619a821-d327-486a-a71a-913f171e55e9" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "ccfbdb65-9fab-491d-8e53-f87613b1df15" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260323T053657Z:ccfbdb65-9fab-491d-8e53-f87613b1df15" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "4da244b8-b730-4fb4-8dca-a636b7f97eab" ],
+        "x-ms-correlation-request-id": [ "4da244b8-b730-4fb4-8dca-a636b7f97eab" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260417T063839Z:4da244b8-b730-4fb4-8dca-a636b7f97eab" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 58442FAA15ED4003A7CCBD22B0E8A445 Ref B: SG2AA1040513025 Ref C: 2026-03-23T05:36:56Z" ],
-        "Date": [ "Mon, 23 Mar 2026 05:36:57 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8B9738A210CD4391B040A9844D434276 Ref B: TYO201100113011 Ref C: 2026-04-17T06:38:39Z" ],
+        "Date": [ "Fri, 17 Apr 2026 06:38:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1004" ],
+        "Content-Length": [ "1508" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"zhongjie-personal/auto2-2\",\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourcegroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostpools/zhongjie-personal/sessionhosts/auto2-2\",\"type\":\"Microsoft.DesktopVirtualization/hostpools/sessionhosts\",\"properties\":{\"customRdpProperty\":null,\"activeSessions\":0,\"disconnectedSessions\":0,\"pendingSessions\":0,\"sessionHostConfiguration\":null,\"friendlyName\":null,\"lastHeartBeat\":\"2026-03-23T05:36:57.05Z\",\"statusTimestamp\":null,\"lastUpdateTime\":null,\"sessions\":0,\"agentVersion\":null,\"allowNewSession\":false,\"assignedUser\":null,\"status\":\"NotRegistered\",\"osVersion\":null,\"sxSStackVersion\":null,\"updateState\":\"Initial\",\"updateErrorMessage\":null,\"sessionHostHealthCheckResults\":[],\"resourceId\":null,\"virtualMachineId\":null,\"objectId\":\"6cda8669-57ee-4a6f-aa00-1cd755c29849\"},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2026-03-23T05:36:57.05Z\",\"lastModifiedBy\":null,\"lastModifiedByType\":null,\"lastModifiedAt\":null}}",
+      "Content": "{\"error\":{\"code\":\"NoRegisteredProviderFound\",\"message\":\"No registered resource provider found for location \u0027westus2\u0027 and API version \u00272026-02-01-preview\u0027 for type \u0027hostpools/sessionhosts\u0027. The supported api-versions are \u00272019-01-23-preview, 2019-09-24-preview, 2019-12-10-preview, 2020-09-21-preview, 2020-10-19-preview, 2020-11-02-preview, 2020-11-10-preview, 2021-01-14-preview, 2021-02-01-preview, 2021-03-09-preview, 2021-04-01-preview, 2021-09-03-preview, 2022-02-10-preview, 2022-04-01-preview, 2022-10-14-preview, 2022-12-09-privatepreview, 2023-03-03-privatepreview, 2023-03-21-privatepreview, 2023-10-04-preview, 2023-10-09-privatepreview, 2023-11-01-preview, 2023-11-29-privatepreview, 2023-12-25-privatepreview, 2024-04-08-preview, 2024-09-01-privatepreview, 2024-01-16-preview, 2024-03-06-preview, 2024-07-15-privatepreview, 2024-08-08-preview, 2024-08-12-preview, 2024-11-01-preview, 2025-01-06-preview, 2025-03-01-preview, 2025-03-05-preview, 2025-04-01-preview, 2025-05-30-preview, 2025-07-04-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview, 2026-01-01-preview, 2026-02-15-preview, 2026-03-01-preview, 2021-07-12, 2022-09-09, 2023-09-05, 2024-04-03, 2025-10-10\u0027. The supported locations are \u0027centralindia, uksouth, ukwest, eastasia, southeastasia, japaneast, japanwest, australiaeast, canadaeast, canadacentral, northeurope, westeurope, koreacentral, southafricanorth, eastus, westus, westus2, westus3, northcentralus, southcentralus, westcentralus, centralus, eastus2\u0027.\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzWvdSessionHost+[NoContext]+Create+$DELETE+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-personal/sessionHosts/auto2-2?api-version=2026-01-01-preview\u0026force=True+2": {
+  "New-AzWvdSessionHost+[NoContext]+Create+$DELETE+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-personal/sessionHosts/auto2-2?api-version=2026-02-01-preview\u0026force=True+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-personal/sessionHosts/auto2-2?api-version=2026-01-01-preview\u0026force=True",
+      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-personal/sessionHosts/auto2-2?api-version=2026-02-01-preview\u0026force=True",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "06bb6938-555f-48a0-ab0e-cf08e4ee10fb" ],
+        "x-ms-unique-id": [ "143" ],
+        "x-ms-client-request-id": [ "f86508f8-77d0-4e37-902e-e4aaea1f73a0" ],
         "CommandName": [ "Remove-AzWvdSessionHost" ],
         "FullCommandName": [ "Remove-AzWvdSessionHost_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v15.3.0", "PSVersion/v7.6.0", "Az.DesktopVirtualization/5.4.4" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.5", "Az.DesktopVirtualization/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 400,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=f2b03ea959f8416bc6b71d28a36cf8c0479d848b33638ccc3ef4c51389285d81;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=f2b03ea959f8416bc6b71d28a36cf8c0479d848b33638ccc3ef4c51389285d81;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
-        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=20778267-e9a4-46ba-97d7-7b7e5b321864/westus2/4d08d22e-22ee-4a64-a643-f73ddc91ca8e" ],
-        "X-Rate-Limit-Limit": [ "0" ],
-        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
-        "X-Rate-Limit-Reset": [ "0" ],
-        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtcGVyc29uYWwvc2Vzc2lvbkhvc3RzL2F1dG8yLTI=" ],
-        "x-ms-lamport-ts": [ "-9223372036854775486" ],
-        "x-ms-correlation-id": [ "27533285-d75e-405c-90e2-5d7ebd207ccc" ],
-        "x-ms-request-id": [ "06bb6938-555f-48a0-ab0e-cf08e4ee10fb" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
-        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "d6d80552-591b-493e-8e36-bc15789a1fca" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260323T053658Z:d6d80552-591b-493e-8e36-bc15789a1fca" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "d98dbf0b-b641-44ce-9b9e-b73e3a7e03d0" ],
+        "x-ms-correlation-request-id": [ "d98dbf0b-b641-44ce-9b9e-b73e3a7e03d0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260417T063839Z:d98dbf0b-b641-44ce-9b9e-b73e3a7e03d0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3C7241754CDD450CBEC50130A9C402F0 Ref B: SG2AA1040513025 Ref C: 2026-03-23T05:36:57Z" ],
-        "Date": [ "Mon, 23 Mar 2026 05:36:58 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 691B2A71E3E44093BAD2CD4C1178ECCF Ref B: TYO201100113011 Ref C: 2026-04-17T06:38:39Z" ],
+        "Date": [ "Fri, 17 Apr 2026 06:38:39 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1004" ],
+        "Content-Length": [ "1508" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"zhongjie-personal/auto2-2\",\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourcegroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostpools/zhongjie-personal/sessionhosts/auto2-2\",\"type\":\"Microsoft.DesktopVirtualization/hostpools/sessionhosts\",\"properties\":{\"customRdpProperty\":null,\"activeSessions\":0,\"disconnectedSessions\":0,\"pendingSessions\":0,\"sessionHostConfiguration\":null,\"friendlyName\":null,\"lastHeartBeat\":\"2026-03-23T05:36:57.05Z\",\"statusTimestamp\":null,\"lastUpdateTime\":null,\"sessions\":0,\"agentVersion\":null,\"allowNewSession\":false,\"assignedUser\":null,\"status\":\"NotRegistered\",\"osVersion\":null,\"sxSStackVersion\":null,\"updateState\":\"Initial\",\"updateErrorMessage\":null,\"sessionHostHealthCheckResults\":[],\"resourceId\":null,\"virtualMachineId\":null,\"objectId\":\"6cda8669-57ee-4a6f-aa00-1cd755c29849\"},\"systemData\":{\"createdBy\":null,\"createdByType\":null,\"createdAt\":\"2026-03-23T05:36:57.05Z\",\"lastModifiedBy\":null,\"lastModifiedByType\":null,\"lastModifiedAt\":null}}",
+      "Content": "{\"error\":{\"code\":\"NoRegisteredProviderFound\",\"message\":\"No registered resource provider found for location \u0027westus2\u0027 and API version \u00272026-02-01-preview\u0027 for type \u0027hostpools/sessionhosts\u0027. The supported api-versions are \u00272019-01-23-preview, 2019-09-24-preview, 2019-12-10-preview, 2020-09-21-preview, 2020-10-19-preview, 2020-11-02-preview, 2020-11-10-preview, 2021-01-14-preview, 2021-02-01-preview, 2021-03-09-preview, 2021-04-01-preview, 2021-09-03-preview, 2022-02-10-preview, 2022-04-01-preview, 2022-10-14-preview, 2022-12-09-privatepreview, 2023-03-03-privatepreview, 2023-03-21-privatepreview, 2023-10-04-preview, 2023-10-09-privatepreview, 2023-11-01-preview, 2023-11-29-privatepreview, 2023-12-25-privatepreview, 2024-04-08-preview, 2024-09-01-privatepreview, 2024-01-16-preview, 2024-03-06-preview, 2024-07-15-privatepreview, 2024-08-08-preview, 2024-08-12-preview, 2024-11-01-preview, 2025-01-06-preview, 2025-03-01-preview, 2025-03-05-preview, 2025-04-01-preview, 2025-05-30-preview, 2025-07-04-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview, 2026-01-01-preview, 2026-02-15-preview, 2026-03-01-preview, 2021-07-12, 2022-09-09, 2023-09-05, 2024-04-03, 2025-10-10\u0027. The supported locations are \u0027centralindia, uksouth, ukwest, eastasia, southeastasia, japaneast, japanwest, australiaeast, canadaeast, canadacentral, northeurope, westeurope, koreacentral, southafricanorth, eastus, westus, westus2, westus3, northcentralus, southcentralus, westcentralus, centralus, eastus2\u0027.\"}}",
       "isContentBase64": false
     }
   }
