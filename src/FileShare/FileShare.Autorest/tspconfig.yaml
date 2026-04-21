@@ -36,3 +36,27 @@ options:
       - where:
           verb: Set
         remove: true
+      - where:
+          parameter-name: NfProtocolPropertyEncryptionInTransitRequired
+        set:
+          parameter-name: EncryptionInTransitRequired
+      - where:
+          parameter-name: NfProtocolPropertyRootSquash
+        set:
+          parameter-name: RootSquash
+      - where:
+          parameter-name: PublicAccessPropertyAllowedSubnet
+        set:
+          parameter-name: AllowedSubnet
+      - where:
+          property-name: NfProtocolPropertyEncryptionInTransitRequired
+        set:
+          property-name: EncryptionInTransitRequired
+      - where:
+          property-name: NfProtocolPropertyRootSquash
+        set:
+          property-name: RootSquash
+      - where:
+          property-name: PublicAccessPropertyAllowedSubnet
+        set:
+          property-name: AllowedSubnet

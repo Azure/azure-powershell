@@ -15,11 +15,11 @@ Create a file share.
 ### CreateExpanded (Default)
 ```
 New-AzFileShare -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- -Location <String> [-MediaTier <String>] [-MountName <String>] [-NfProtocolPropertyRootSquash <String>]
- [-Protocol <String>] [-ProvisionedIoPerSec <Int32>] [-ProvisionedStorageGiB <Int32>]
- [-ProvisionedThroughputMiBPerSec <Int32>] [-PublicAccessPropertyAllowedSubnet <String[]>]
- [-PublicNetworkAccess <String>] [-Redundancy <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Location <String> [-AllowedSubnet <String[]>] [-EncryptionInTransitRequired <String>] [-MediaTier <String>]
+ [-MountName <String>] [-Protocol <String>] [-ProvisionedIoPerSec <Int32>] [-ProvisionedStorageGiB <Int32>]
+ [-ProvisionedThroughputMiBPerSec <Int32>] [-PublicNetworkAccess <String>] [-Redundancy <String>]
+ [-RootSquash <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -87,6 +87,21 @@ This command creates a file share.
 
 ## PARAMETERS
 
+### -AllowedSubnet
+The allowed set of subnets when access is restricted.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -110,6 +125,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionInTransitRequired
+Encryption in transit defines whether data is encrypted for NFS shares.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -180,21 +210,6 @@ Accept wildcard characters: False
 
 ### -MountName
 The name of the file share as seen by the end user when mounting the share, such as in a URI or UNC format in their operating system.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NfProtocolPropertyRootSquash
-Root squash defines how root users on clients are mapped to the NFS share.
 
 ```yaml
 Type: System.String
@@ -284,21 +299,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicAccessPropertyAllowedSubnet
-The allowed set of subnets when access is restricted.
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublicNetworkAccess
 Gets or sets allow or disallow public network access to azure managed file share
 
@@ -354,6 +354,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquash
+Root squash defines how root users on clients are mapped to the NFS share.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

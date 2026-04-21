@@ -15,9 +15,9 @@ Update a FileShare
 ### UpdateExpanded (Default)
 ```
 Update-AzFileShare -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- [-NfProtocolPropertyRootSquash <String>] [-ProvisionedIoPerSec <Int32>] [-ProvisionedStorageGiB <Int32>]
- [-ProvisionedThroughputMiBPerSec <Int32>] [-PublicAccessPropertyAllowedSubnet <String[]>]
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-AllowedSubnet <String[]>] [-EncryptionInTransitRequired <String>] [-ProvisionedIoPerSec <Int32>]
+ [-ProvisionedStorageGiB <Int32>] [-ProvisionedThroughputMiBPerSec <Int32>] [-PublicNetworkAccess <String>]
+ [-RootSquash <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,11 +37,11 @@ Update-AzFileShare -ResourceGroupName <String> -ResourceName <String> [-Subscrip
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzFileShare -InputObject <IFileShareIdentity> [-NfProtocolPropertyRootSquash <String>]
- [-ProvisionedIoPerSec <Int32>] [-ProvisionedStorageGiB <Int32>] [-ProvisionedThroughputMiBPerSec <Int32>]
- [-PublicAccessPropertyAllowedSubnet <String[]>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzFileShare -InputObject <IFileShareIdentity> [-AllowedSubnet <String[]>]
+ [-EncryptionInTransitRequired <String>] [-ProvisionedIoPerSec <Int32>] [-ProvisionedStorageGiB <Int32>]
+ [-ProvisionedThroughputMiBPerSec <Int32>] [-PublicNetworkAccess <String>] [-RootSquash <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,6 +93,21 @@ This command updates a file share.
 
 ## PARAMETERS
 
+### -AllowedSubnet
+The allowed set of subnets when access is restricted.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -116,6 +131,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionInTransitRequired
+Encryption in transit defines whether data is encrypted for NFS shares.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -163,21 +193,6 @@ Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NfProtocolPropertyRootSquash
-Root squash defines how root users on clients are mapped to the NFS share.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -245,21 +260,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicAccessPropertyAllowedSubnet
-The allowed set of subnets when access is restricted.
-
-```yaml
-Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublicNetworkAccess
 Gets or sets allow or disallow public network access to azure managed file share
 
@@ -300,6 +300,21 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquash
+Root squash defines how root users on clients are mapped to the NFS share.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
