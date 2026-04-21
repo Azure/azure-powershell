@@ -30,6 +30,7 @@
     - Added `Get-AzAppConfigurationSnapshot` cmdlet to retrieve snapshots
     - Added `Update-AzAppConfigurationSnapshot` cmdlet to archive or recover snapshots
     - Added `Test-AzAppConfigurationSnapshot` cmdlet to check if a snapshot exists
+* Added `Snapshot` parameter to `Get-AzAppConfigurationKeyValue` to support retrieving key-values by snapshot name
 * Added `Get-AzAppConfigurationOperationDetail` cmdlet to retrieve data plane operation details
 
 ## Version 2.0.1
