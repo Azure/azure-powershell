@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed error handling in Az.Sql cmdlets that inherit from `AzureSqlCmdletBase` to surface descriptive error messages instead of generic 'Operation returned an invalid status code' when API calls fail. This restores meaningful error details such as Azure Policy violation messages.
+* Updated version for all SQL resources to use stable 2025-01-01
 
 ## Version 6.4.1
 * Add support for the versionless AKV keys.
