@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     using Microsoft.Azure.Commands.ResourceManager.Common;
 
     /// <summary>
-    /// Cmdlet to preview changes for creating a Subscription Deployment Stack.
+    /// Cmdlet to preview changes for updating a Management Group Deployment Stack.
     /// </summary>
-    [Cmdlet("New", AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackWhatIf",
+    [Cmdlet("Set", AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackWhatIf",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class NewAzSubscriptionDeploymentStackWhatIf : DeploymentStackWhatIfCmdlet
+    public class SetAzManagementGroupDeploymentStackWhatIf : DeploymentStackWhatIfCreateCmdlet
     {
         #region Cmdlet Parameters
 
@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             HelpMessage = "The name of the DeploymentStack to preview changes for.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ID of the target management group.")]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location to store deployment data.")]
@@ -77,6 +82,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             return new PSDeploymentStackWhatIfParameters
             {
                 StackName = Name,
+                ManagementGroupId = ManagementGroupId,
                 Location = Location,
                 TemplateFile = TemplateFile,
                 TemplateUri = !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,

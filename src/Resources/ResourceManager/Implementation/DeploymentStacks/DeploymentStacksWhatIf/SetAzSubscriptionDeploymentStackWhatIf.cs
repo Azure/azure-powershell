@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     [Cmdlet("Set", AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackWhatIf",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class SetAzSubscriptionDeploymentStackWhatIf : DeploymentStackWhatIfCmdlet
+    public class SetAzSubscriptionDeploymentStackWhatIf : DeploymentStackWhatIfCreateCmdlet
     {
         #region Cmdlet Parameters
 

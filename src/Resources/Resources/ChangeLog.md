@@ -19,7 +19,11 @@
 -->
 
 ## Upcoming Release
-* Added `-PrincipalId` and `-PrincipalType` parameters to `New-AzDenyAssignment` to support per-principal deny assignments targeting a specific User or ServicePrincipal, in addition to the existing Everyone mode.
+* Added `New-Az{ResourceGroup,Subscription,ManagementGroup}DeploymentStackWhatIf` cmdlets for creating a WhatIf result resource that previews changes for a deployment stack without executing them.
+* Added `Set-Az{ResourceGroup,Subscription,ManagementGroup}DeploymentStackWhatIf` cmdlets for updating an existing WhatIf result resource with a new template.
+* Added `Remove-Az{ResourceGroup,Subscription,ManagementGroup}DeploymentStackWhatIf` cmdlets for deleting an existing WhatIf result resource.
+* Updated `Get-Az{ResourceGroup,Subscription,ManagementGroup}DeploymentStackWhatIf` cmdlets to list or retrieve existing WhatIf result resources. Without `-Name` lists all WhatIf results at the given scope; with `-Name` retrieves a specific one. No template required.
+* Added `-PrincipalId` and `-PrincipalType` parameters to `New-AzDenyAssignment`
 * Added `New-AzDenyAssignment` cmdlet for creating user-assigned deny assignments using the `2024-07-01-preview` API. Deny assignments allow denying specific write, delete, and action operations to all principals at a given scope while excluding specified principals.
 * Added `Remove-AzDenyAssignment` cmdlet for removing user-assigned deny assignments by ID, name and scope, or pipeline input.
 * Regenerated Authorization Management SDK from `2024-07-01-preview` swagger specification to include deny assignment create and delete operations.

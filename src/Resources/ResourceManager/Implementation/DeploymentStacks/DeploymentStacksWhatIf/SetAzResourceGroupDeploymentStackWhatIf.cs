@@ -19,14 +19,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
     using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
-    /// Cmdlet to preview changes for creating a Management Group Deployment Stack.
+    /// Cmdlet to preview changes for updating a Resource Group Deployment Stack.
     /// </summary>
-    [Cmdlet("New", AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackWhatIf",
+    [Cmdlet("Set", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStackWhatIf",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class NewAzManagementGroupDeploymentStackWhatIf : DeploymentStackWhatIfCmdlet
+    public class SetAzResourceGroupDeploymentStackWhatIf : DeploymentStackWhatIfCreateCmdlet
     {
         #region Cmdlet Parameters
 
@@ -37,21 +38,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The ID of the target management group.")]
+            HelpMessage = "The name of the ResourceGroup.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public string ManagementGroupId { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location to store deployment data.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Description for the stack.")]
         public string Description { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The scope for the deployment stack. Determines where managed resources can be deployed.")]
-        public string DeploymentScope { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Action to take on resources that become unmanaged. Possible values include: " +
             "'detachAll', 'deleteResources', and 'deleteAll'.")]
@@ -82,8 +76,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             return new PSDeploymentStackWhatIfParameters
             {
                 StackName = Name,
-                ManagementGroupId = ManagementGroupId,
-                Location = Location,
+                ResourceGroupName = ResourceGroupName,
                 TemplateFile = TemplateFile,
                 TemplateUri = !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
                 TemplateSpecId = TemplateSpecId,
@@ -91,7 +84,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                 TemplateParameterUri = TemplateParameterUri,
                 TemplateParameterObject = GetTemplateParameterObject(),
                 Description = Description,
-                DeploymentScope = DeploymentScope,
                 ResourcesCleanupAction = shouldDeleteResources ? "delete" : "detach",
                 ResourceGroupsCleanupAction = shouldDeleteResourceGroups ? "delete" : "detach",
                 ManagementGroupsCleanupAction = shouldDeleteManagementGroups ? "delete" : "detach",

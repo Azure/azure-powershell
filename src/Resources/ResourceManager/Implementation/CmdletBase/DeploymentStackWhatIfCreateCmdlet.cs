@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
     /// <summary>
     /// Base class for Deployment Stack What-If cmdlets.
     /// </summary>
-    public abstract class DeploymentStackWhatIfCmdlet : DeploymentStacksCreateCmdletBase
+    public abstract class DeploymentStackWhatIfCreateCmdlet : DeploymentStacksCreateCmdletBase
     {
         /// <summary>
         /// It's important not to call this function more than once during an invocation, as it can call the Bicep CLI.
