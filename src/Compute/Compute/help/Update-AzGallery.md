@@ -341,7 +341,7 @@ Accept wildcard characters: False
 ```
 
 ### -RemoveUserAssignedIdentity
-The list of user-assigned managed identity resource IDs to remove from the gallery, or 'All' to remove all user-assigned identities. Cannot use 'All' together with -UserAssignedIdentity.
+The list of user-assigned managed identity resource IDs to remove from the gallery. Alternatively, specify 'All' to remove all user-assigned identities. If 'All' is provided, it must be the only value in -RemoveUserAssignedIdentity, and any use of 'All' causes all user-assigned identities to be removed. Cannot use 'All' together with -UserAssignedIdentity.
 
 ```yaml
 Type: System.String[]
