@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ManagedServerCreateMode
     {
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
+        /// <summary>
+        /// PointInTimeRestore
+        /// </summary>
         public const string PointInTimeRestore = "PointInTimeRestore";
     }
 }

@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Get the managed instance&#39;s Advanced Threat Protection settings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -47,8 +46,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Get a managed instance&#39;s Advanced Threat Protection state.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -74,8 +72,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates Advanced Threat Protection settings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -95,7 +92,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceAdvancedThreatProtection>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, ManagedInstanceAdvancedThreatProtection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceAdvancedThreatProtection,ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, ManagedInstanceAdvancedThreatProtection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates Advanced Threat Protection settings.
@@ -104,8 +101,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates Advanced Threat Protection settings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -125,7 +121,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceAdvancedThreatProtection>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, ManagedInstanceAdvancedThreatProtection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstanceAdvancedThreatProtection,ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, ManagedInstanceAdvancedThreatProtection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get the managed instance&#39;s Advanced Threat Protection settings.

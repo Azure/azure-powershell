@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class QueryTimeGrainType
     {
+        /// <summary>
+        /// PT1H
+        /// </summary>
         public const string PT1H = "PT1H";
+        /// <summary>
+        /// P1D
+        /// </summary>
         public const string P1D = "P1D";
     }
 }

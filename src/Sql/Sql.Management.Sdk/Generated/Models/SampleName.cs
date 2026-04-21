@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class SampleName
     {
+        /// <summary>
+        /// AdventureWorksLT
+        /// </summary>
         public const string AdventureWorksLT = "AdventureWorksLT";
+        /// <summary>
+        /// WideWorldImportersStd
+        /// </summary>
         public const string WideWorldImportersStd = "WideWorldImportersStd";
+        /// <summary>
+        /// WideWorldImportersFull
+        /// </summary>
         public const string WideWorldImportersFull = "WideWorldImportersFull";
     }
 }

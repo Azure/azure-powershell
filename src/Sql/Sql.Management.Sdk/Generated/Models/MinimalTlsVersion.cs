@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class MinimalTlsVersion
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// 1.0
+        /// </summary>
         public const string One0 = "1.0";
+        /// <summary>
+        /// 1.1
+        /// </summary>
         public const string One1 = "1.1";
+        /// <summary>
+        /// 1.2
+        /// </summary>
         public const string One2 = "1.2";
+        /// <summary>
+        /// 1.3
+        /// </summary>
         public const string One3 = "1.3";
     }
 }

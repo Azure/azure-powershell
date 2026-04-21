@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class AdvancedThreatProtectionName
     {
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
     }
 }

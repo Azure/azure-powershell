@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class JobStepActionType
     {
+        /// <summary>
+        /// TSql
+        /// </summary>
         public const string TSql = "TSql";
     }
 }

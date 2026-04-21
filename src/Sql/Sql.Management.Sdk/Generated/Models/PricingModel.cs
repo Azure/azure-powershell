@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class PricingModel
     {
+        /// <summary>
+        /// Regular
+        /// </summary>
         public const string Regular = "Regular";
+        /// <summary>
+        /// Freemium
+        /// </summary>
         public const string Freemium = "Freemium";
     }
 }

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class SyncConflictResolutionPolicy
     {
+        /// <summary>
+        /// HubWin
+        /// </summary>
         public const string HubWin = "HubWin";
+        /// <summary>
+        /// MemberWin
+        /// </summary>
         public const string MemberWin = "MemberWin";
     }
 }

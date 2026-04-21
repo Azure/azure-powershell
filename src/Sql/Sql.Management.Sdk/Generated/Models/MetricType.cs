@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class MetricType
     {
+        /// <summary>
+        /// cpu
+        /// </summary>
         public const string Cpu = "cpu";
+        /// <summary>
+        /// io
+        /// </summary>
         public const string Io = "io";
+        /// <summary>
+        /// logIo
+        /// </summary>
         public const string LogIo = "logIo";
+        /// <summary>
+        /// duration
+        /// </summary>
         public const string Duration = "duration";
+        /// <summary>
+        /// dtu
+        /// </summary>
         public const string Dtu = "dtu";
     }
 }

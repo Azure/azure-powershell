@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the SyncGroup class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="sku">The name and capacity of the SKU.
@@ -74,9 +80,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="privateEndpointName">Private endpoint name of the sync group if use private link connection is
         /// enabled.
         /// </param>
-        public SyncGroup(string id = default(string), string name = default(string), string type = default(string), Sku sku = default(Sku), int? interval = default(int?), System.DateTime? lastSyncTime = default(System.DateTime?), string conflictResolutionPolicy = default(string), string syncDatabaseId = default(string), string hubDatabaseUserName = default(string), string hubDatabasePassword = default(string), string syncState = default(string), SyncGroupSchema schema = default(SyncGroupSchema), bool? enableConflictLogging = default(bool?), int? conflictLoggingRetentionInDays = default(int?), bool? usePrivateLinkConnection = default(bool?), string privateEndpointName = default(string))
+        public SyncGroup(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), Sku sku = default(Sku), int? interval = default(int?), System.DateTime? lastSyncTime = default(System.DateTime?), string conflictResolutionPolicy = default(string), string syncDatabaseId = default(string), string hubDatabaseUserName = default(string), string hubDatabasePassword = default(string), string syncState = default(string), SyncGroupSchema schema = default(SyncGroupSchema), bool? enableConflictLogging = default(bool?), int? conflictLoggingRetentionInDays = default(int?), bool? usePrivateLinkConnection = default(bool?), string privateEndpointName = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.Sku = sku;
             this.Interval = interval;

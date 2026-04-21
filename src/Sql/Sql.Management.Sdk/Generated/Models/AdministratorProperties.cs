@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the AdministratorProperties class.
         /// </summary>
 
+        /// <param name="administratorType">Type of the sever administrator.
+        /// Possible values include: &#39;ActiveDirectory&#39;</param>
+
         /// <param name="login">Login name of the server administrator.
         /// </param>
 
@@ -35,21 +38,15 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="azureAdOnlyAuthentication">Azure Active Directory only Authentication enabled.
         /// </param>
-        public AdministratorProperties(string login, System.Guid sid, System.Guid? tenantId = default(System.Guid?), bool? azureAdOnlyAuthentication = default(bool?))
+        public AdministratorProperties(string login, System.Guid sid, string administratorType = default(string), System.Guid? tenantId = default(System.Guid?), bool? azureAdOnlyAuthentication = default(bool?))
 
         {
+            this.AdministratorType = administratorType;
             this.Login = login;
             this.Sid = sid;
             this.TenantId = tenantId;
             this.AzureAdOnlyAuthentication = azureAdOnlyAuthentication;
             CustomInit();
-        }
-        /// <summary>
-        /// Static constructor for AdministratorProperties class.
-        /// </summary>
-        static AdministratorProperties()
-        {
-            AdministratorType = "ActiveDirectory";
         }
 
         /// <summary>
@@ -57,6 +54,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets type of the sever administrator. Possible values include: &#39;ActiveDirectory&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "administratorType")]
+        public string AdministratorType {get; set; }
 
         /// <summary>
         /// Gets or sets login name of the server administrator.
@@ -81,11 +84,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "azureADOnlyAuthentication")]
         public bool? AzureAdOnlyAuthentication {get; private set; }
-        /// <summary>
-        /// Gets or sets type of the sever administrator.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "administratorType")]
-        public static string AdministratorType {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

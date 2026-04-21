@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class SyncMemberDbType
     {
+        /// <summary>
+        /// AzureSqlDatabase
+        /// </summary>
         public const string AzureSqlDatabase = "AzureSqlDatabase";
+        /// <summary>
+        /// SqlServerDatabase
+        /// </summary>
         public const string SqlServerDatabase = "SqlServerDatabase";
     }
 }

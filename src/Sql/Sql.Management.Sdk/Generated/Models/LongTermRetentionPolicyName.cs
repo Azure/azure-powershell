@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class LongTermRetentionPolicyName
     {
+        /// <summary>
+        /// default
+        /// </summary>
         public const string Default = "default";
     }
 }

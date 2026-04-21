@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Sql.Models
     using System.Linq;
 
     /// <summary>
-    /// Properties of a transparent data encryption.
+    /// Properties of a transparent data encryption scan.
     /// </summary>
     public partial class TransparentDataEncryptionProperties
     {
@@ -26,10 +26,15 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="state">Specifies the state of the transparent data encryption.
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
-        public TransparentDataEncryptionProperties(TransparentDataEncryptionState state)
+
+        /// <param name="scanState">Specifies the encryption scan state of the transparent data encryption.
+        /// Possible values include: &#39;None&#39;, &#39;Resume&#39;, &#39;Running&#39;, &#39;Suspend&#39;, &#39;Aborted&#39;,
+        /// &#39;Completed&#39;</param>
+        public TransparentDataEncryptionProperties(TransparentDataEncryptionState state, string scanState = default(string))
 
         {
             this.State = state;
+            this.ScanState = scanState;
             CustomInit();
         }
 
@@ -44,6 +49,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "state")]
         public TransparentDataEncryptionState State {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the encryption scan state of the transparent data
+        /// encryption. Possible values include: &#39;None&#39;, &#39;Resume&#39;, &#39;Running&#39;, &#39;Suspend&#39;, &#39;Aborted&#39;, &#39;Completed&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scanState")]
+        public string ScanState {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -52,6 +64,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
         }
     }

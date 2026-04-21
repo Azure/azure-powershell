@@ -25,19 +25,25 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the Database class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="sku">The database SKU.
@@ -47,10 +53,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// `Capabilities_ListByLocation` REST API or one of the following commands:
         /// ```azurecli
         /// az sql db list-editions -l &lt;location&gt; -o table
-        /// ````
+        /// ```
         /// ```powershell
         /// Get-AzSqlServerServiceObjective -Location &lt;location&gt;
-        /// ````
+        /// ```
         /// </param>
 
         /// <param name="kind">Kind of database. This is metadata used for the Azure portal experience.
@@ -303,9 +309,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="encryptionProtectorAutoRotation">The flag to enable or disable auto rotation of database encryption
         /// protector AKV key.
         /// </param>
-        public Database(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), string managedBy = default(string), DatabaseIdentity identity = default(DatabaseIdentity), string createMode = default(string), string sampleName = default(string), string secondaryType = default(string), string collation = default(string), long? maxSizeBytes = default(long?), string elasticPoolId = default(string), string sourceDatabaseId = default(string), string status = default(string), System.Guid? databaseId = default(System.Guid?), System.DateTime? creationDate = default(System.DateTime?), string currentServiceObjectiveName = default(string), string requestedServiceObjectiveName = default(string), string defaultSecondaryLocation = default(string), string failoverGroupId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), System.DateTime? sourceDatabaseDeletionDate = default(System.DateTime?), string recoveryServicesRecoveryPointId = default(string), string longTermRetentionBackupResourceId = default(string), string recoverableDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string catalogCollation = default(string), bool? zoneRedundant = default(bool?), string licenseType = default(string), long? maxLogSizeBytes = default(long?), System.DateTime? earliestRestoreDate = default(System.DateTime?), string readScale = default(string), int? highAvailabilityReplicaCount = default(int?), Sku currentSku = default(Sku), int? autoPauseDelay = default(int?), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), double? minCapacity = default(double?), System.DateTime? pausedDate = default(System.DateTime?), System.DateTime? resumedDate = default(System.DateTime?), string maintenanceConfigurationId = default(string), bool? isLedgerOn = default(bool?), bool? isInfraEncryptionEnabled = default(bool?), System.Guid? federatedClientId = default(System.Guid?), System.Collections.Generic.IDictionary<string, DatabaseKey> keys = default(System.Collections.Generic.IDictionary<string, DatabaseKey>), string encryptionProtector = default(string), string preferredEnclaveType = default(string), bool? useFreeLimit = default(bool?), string freeLimitExhaustionBehavior = default(string), string sourceResourceId = default(string), bool? manualCutover = default(bool?), bool? performCutover = default(bool?), string availabilityZone = default(string), bool? encryptionProtectorAutoRotation = default(bool?))
+        public Database(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), string kind = default(string), string managedBy = default(string), DatabaseIdentity identity = default(DatabaseIdentity), string createMode = default(string), string sampleName = default(string), string secondaryType = default(string), string collation = default(string), long? maxSizeBytes = default(long?), string elasticPoolId = default(string), string sourceDatabaseId = default(string), string status = default(string), System.Guid? databaseId = default(System.Guid?), System.DateTime? creationDate = default(System.DateTime?), string currentServiceObjectiveName = default(string), string requestedServiceObjectiveName = default(string), string defaultSecondaryLocation = default(string), string failoverGroupId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), System.DateTime? sourceDatabaseDeletionDate = default(System.DateTime?), string recoveryServicesRecoveryPointId = default(string), string longTermRetentionBackupResourceId = default(string), string recoverableDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string catalogCollation = default(string), bool? zoneRedundant = default(bool?), string licenseType = default(string), long? maxLogSizeBytes = default(long?), System.DateTime? earliestRestoreDate = default(System.DateTime?), string readScale = default(string), int? highAvailabilityReplicaCount = default(int?), Sku currentSku = default(Sku), int? autoPauseDelay = default(int?), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), double? minCapacity = default(double?), System.DateTime? pausedDate = default(System.DateTime?), System.DateTime? resumedDate = default(System.DateTime?), string maintenanceConfigurationId = default(string), bool? isLedgerOn = default(bool?), bool? isInfraEncryptionEnabled = default(bool?), System.Guid? federatedClientId = default(System.Guid?), System.Collections.Generic.IDictionary<string, DatabaseKey> keys = default(System.Collections.Generic.IDictionary<string, DatabaseKey>), string encryptionProtector = default(string), string preferredEnclaveType = default(string), bool? useFreeLimit = default(bool?), string freeLimitExhaustionBehavior = default(string), string sourceResourceId = default(string), bool? manualCutover = default(bool?), bool? performCutover = default(bool?), string availabilityZone = default(string), bool? encryptionProtectorAutoRotation = default(bool?))
 
-        : base(location, id, name, type, tags)
+        : base(location, id, name, type, systemData, tags)
         {
             this.Sku = sku;
             this.Kind = kind;
@@ -376,10 +382,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// `Capabilities_ListByLocation` REST API or one of the following commands:
         /// ```azurecli
         /// az sql db list-editions -l &lt;location&gt; -o table
-        /// ````
+        /// ```
         /// ```powershell
         /// Get-AzSqlServerServiceObjective -Location &lt;location&gt;
-        /// ````
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
         public Sku Sku {get; set; }

@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the SyncMember class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="syncDirection">Sync direction of the sync member.
@@ -77,9 +83,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// &#39;UnProvisioned&#39;, &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;ProvisionFailed&#39;,
         /// &#39;DeProvisioning&#39;, &#39;DeProvisioned&#39;, &#39;DeProvisionFailed&#39;, &#39;Reprovisioning&#39;,
         /// &#39;ReprovisionFailed&#39;, &#39;UnReprovisioned&#39;</param>
-        public SyncMember(string id = default(string), string name = default(string), string type = default(string), string syncDirection = default(string), string databaseType = default(string), string syncAgentId = default(string), System.Guid? sqlServerDatabaseId = default(System.Guid?), string syncMemberAzureDatabaseResourceId = default(string), bool? usePrivateLinkConnection = default(bool?), string privateEndpointName = default(string), string serverName = default(string), string databaseName = default(string), string userName = default(string), string password = default(string), string syncState = default(string))
+        public SyncMember(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string syncDirection = default(string), string databaseType = default(string), string syncAgentId = default(string), System.Guid? sqlServerDatabaseId = default(System.Guid?), string syncMemberAzureDatabaseResourceId = default(string), bool? usePrivateLinkConnection = default(bool?), string privateEndpointName = default(string), string serverName = default(string), string databaseName = default(string), string userName = default(string), string password = default(string), string syncState = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.SyncDirection = syncDirection;
             this.DatabaseType = databaseType;

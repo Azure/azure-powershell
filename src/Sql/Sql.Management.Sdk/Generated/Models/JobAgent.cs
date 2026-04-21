@@ -25,19 +25,25 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the JobAgent class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="sku">The name and tier of the SKU.
@@ -52,9 +58,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="state">The state of the job agent.
         /// Possible values include: &#39;Creating&#39;, &#39;Ready&#39;, &#39;Updating&#39;, &#39;Deleting&#39;,
         /// &#39;Disabled&#39;</param>
-        public JobAgent(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), JobAgentIdentity identity = default(JobAgentIdentity), string databaseId = default(string), string state = default(string))
+        public JobAgent(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), JobAgentIdentity identity = default(JobAgentIdentity), string databaseId = default(string), string state = default(string))
 
-        : base(location, id, name, type, tags)
+        : base(location, id, name, type, systemData, tags)
         {
             this.Sku = sku;
             this.Identity = identity;

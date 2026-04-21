@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -66,8 +64,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -90,8 +87,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -119,8 +115,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -129,7 +124,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the database.
         /// </param>
         /// <param name='linkId'>
-        /// 
+        /// The name of the replication link.
         /// </param>
         public static ReplicationLink CreateOrUpdate(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLink parameters)
         {
@@ -143,8 +138,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -153,7 +147,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the database.
         /// </param>
         /// <param name='linkId'>
-        /// 
+        /// The name of the replication link.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -166,64 +160,13 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes the replication link.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='linkId'>
-        /// 
-        /// </param>
-        public static void Delete(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId)
-        {
-                ((IReplicationLinksOperations)operations).DeleteAsync(resourceGroupName, serverName, databaseName, linkId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the replication link.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='linkId'>
-        /// 
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Updates the replication link type.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -232,7 +175,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the database.
         /// </param>
         /// <param name='linkId'>
-        /// 
+        /// The name of the replication link.
         /// </param>
         public static ReplicationLink Update(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLinkUpdate parameters)
         {
@@ -246,8 +189,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -256,7 +198,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the database.
         /// </param>
         /// <param name='linkId'>
-        /// 
+        /// The name of the replication link.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -269,14 +211,64 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Deletes the replication link.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// The name of the replication link.
+        /// </param>
+        public static ReplicationLinksDeleteHeaders Delete(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId)
+        {
+                return ((IReplicationLinksOperations)operations).DeleteAsync(resourceGroupName, serverName, databaseName, linkId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the replication link.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// The name of the replication link.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationLinksDeleteHeaders> DeleteAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Fails over from the current primary server to this server.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -299,8 +291,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -329,8 +320,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -354,8 +344,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -383,8 +372,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -401,8 +389,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -424,8 +411,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -434,7 +420,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the database.
         /// </param>
         /// <param name='linkId'>
-        /// 
+        /// The name of the replication link.
         /// </param>
         public static ReplicationLink BeginCreateOrUpdate(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLink parameters)
         {
@@ -448,8 +434,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -458,7 +443,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the database.
         /// </param>
         /// <param name='linkId'>
-        /// 
+        /// The name of the replication link.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -471,64 +456,13 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes the replication link.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='linkId'>
-        /// 
-        /// </param>
-        public static void BeginDelete(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId)
-        {
-                ((IReplicationLinksOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, databaseName, linkId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the replication link.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='linkId'>
-        /// 
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Updates the replication link type.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -537,7 +471,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the database.
         /// </param>
         /// <param name='linkId'>
-        /// 
+        /// The name of the replication link.
         /// </param>
         public static ReplicationLink BeginUpdate(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLinkUpdate parameters)
         {
@@ -551,8 +485,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -561,7 +494,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the database.
         /// </param>
         /// <param name='linkId'>
-        /// 
+        /// The name of the replication link.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -574,14 +507,64 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Deletes the replication link.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// The name of the replication link.
+        /// </param>
+        public static ReplicationLinksDeleteHeaders BeginDelete(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId)
+        {
+                return ((IReplicationLinksOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, databaseName, linkId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the replication link.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// The name of the replication link.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationLinksDeleteHeaders> BeginDeleteAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Fails over from the current primary server to this server.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -604,8 +587,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -634,8 +616,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -659,8 +640,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.

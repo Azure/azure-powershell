@@ -30,6 +30,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="value">The virtual cores value.
         /// </param>
 
+        /// <param name="supportedMemorySizesInGb">Supported memory sizes in GB.
+        /// </param>
+
+        /// <param name="supportedMemoryLimitsMb">Memory limit MB ranges.
+        /// </param>
+
         /// <param name="includedMaxSize">Included size.
         /// </param>
 
@@ -76,11 +82,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="reason">The reason for the capability not being available.
         /// </param>
-        public ManagedInstanceVcoresCapability(string name = default(string), int? value = default(int?), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), System.Collections.Generic.IList<MaxSizeRangeCapability> supportedStorageSizes = default(System.Collections.Generic.IList<MaxSizeRangeCapability>), long? includedStorageIOps = default(long?), MaxLimitRangeCapability supportedStorageIOps = default(MaxLimitRangeCapability), double? iopsMinValueOverrideFactorPerSelectedStorageGb = default(double?), double? iopsIncludedValueOverrideFactorPerSelectedStorageGb = default(double?), long? includedStorageThroughputMBps = default(long?), MaxLimitRangeCapability supportedStorageThroughputMBps = default(MaxLimitRangeCapability), double? throughputMBpsMinValueOverrideFactorPerSelectedStorageGb = default(double?), double? throughputMBpsIncludedValueOverrideFactorPerSelectedStorageGb = default(double?), bool? instancePoolSupported = default(bool?), bool? standaloneSupported = default(bool?), System.Collections.Generic.IList<ManagedInstanceMaintenanceConfigurationCapability> supportedMaintenanceConfigurations = default(System.Collections.Generic.IList<ManagedInstanceMaintenanceConfigurationCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public ManagedInstanceVcoresCapability(string name = default(string), int? value = default(int?), MaxLimitRangeCapability supportedMemorySizesInGb = default(MaxLimitRangeCapability), MaxLimitRangeCapability supportedMemoryLimitsMb = default(MaxLimitRangeCapability), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), System.Collections.Generic.IList<MaxSizeRangeCapability> supportedStorageSizes = default(System.Collections.Generic.IList<MaxSizeRangeCapability>), long? includedStorageIOps = default(long?), MaxLimitRangeCapability supportedStorageIOps = default(MaxLimitRangeCapability), double? iopsMinValueOverrideFactorPerSelectedStorageGb = default(double?), double? iopsIncludedValueOverrideFactorPerSelectedStorageGb = default(double?), long? includedStorageThroughputMBps = default(long?), MaxLimitRangeCapability supportedStorageThroughputMBps = default(MaxLimitRangeCapability), double? throughputMBpsMinValueOverrideFactorPerSelectedStorageGb = default(double?), double? throughputMBpsIncludedValueOverrideFactorPerSelectedStorageGb = default(double?), bool? instancePoolSupported = default(bool?), bool? standaloneSupported = default(bool?), System.Collections.Generic.IList<ManagedInstanceMaintenanceConfigurationCapability> supportedMaintenanceConfigurations = default(System.Collections.Generic.IList<ManagedInstanceMaintenanceConfigurationCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
 
         {
             this.Name = name;
             this.Value = value;
+            this.SupportedMemorySizesInGb = supportedMemorySizesInGb;
+            this.SupportedMemoryLimitsMb = supportedMemoryLimitsMb;
             this.IncludedMaxSize = includedMaxSize;
             this.SupportedStorageSizes = supportedStorageSizes;
             this.IncludedStorageIOps = includedStorageIOps;
@@ -116,6 +124,18 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
         public int? Value {get; private set; }
+
+        /// <summary>
+        /// Gets supported memory sizes in GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "supportedMemorySizesInGB")]
+        public MaxLimitRangeCapability SupportedMemorySizesInGb {get; private set; }
+
+        /// <summary>
+        /// Gets memory limit MB ranges.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "supportedMemoryLimitsMB")]
+        public MaxLimitRangeCapability SupportedMemoryLimitsMb {get; private set; }
 
         /// <summary>
         /// Gets included size.

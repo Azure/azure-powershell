@@ -14,14 +14,29 @@ namespace Microsoft.Azure.Management.Sql.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SensitivityLabelRank
     {
+        /// <summary>
+        /// None
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "None")]
         None,
+        /// <summary>
+        /// Low
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Low")]
         Low,
+        /// <summary>
+        /// Medium
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Medium")]
         Medium,
+        /// <summary>
+        /// High
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "High")]
         High,
+        /// <summary>
+        /// Critical
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Critical")]
         Critical
     }

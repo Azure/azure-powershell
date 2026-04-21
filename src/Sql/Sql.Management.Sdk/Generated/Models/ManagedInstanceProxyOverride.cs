@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ManagedInstanceProxyOverride
     {
+        /// <summary>
+        /// Proxy
+        /// </summary>
         public const string Proxy = "Proxy";
+        /// <summary>
+        /// Redirect
+        /// </summary>
         public const string Redirect = "Redirect";
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
     }
 }

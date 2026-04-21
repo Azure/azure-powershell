@@ -20,14 +20,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of job agent private endpoints.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,14 +49,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a private endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint to get.
@@ -83,17 +81,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a private endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
+        /// The name of the private endpoint to get.
         /// </param>
         /// <param name='parameters'>
         /// The requested private endpoint state.
@@ -110,7 +107,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobPrivateEndpoint>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, JobPrivateEndpoint parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobPrivateEndpoint,JobPrivateEndpointsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, JobPrivateEndpoint parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes a private endpoint.
@@ -119,17 +116,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a private endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint to delete.
+        /// The name of the private endpoint to get.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -140,7 +136,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<JobPrivateEndpointsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates a private endpoint.
@@ -149,17 +145,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a private endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
+        /// The name of the private endpoint to get.
         /// </param>
         /// <param name='parameters'>
         /// The requested private endpoint state.
@@ -176,7 +171,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobPrivateEndpoint>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, JobPrivateEndpoint parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobPrivateEndpoint,JobPrivateEndpointsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, JobPrivateEndpoint parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes a private endpoint.
@@ -185,17 +180,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a private endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint to delete.
+        /// The name of the private endpoint to get.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -206,7 +200,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<JobPrivateEndpointsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a list of job agent private endpoints.

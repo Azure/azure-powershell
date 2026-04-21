@@ -18,23 +18,22 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The name of the region where the resource is located.
         /// </param>
         /// <param name='onlyLatestPerDatabase'>
         /// Whether or not to only get the latest operation for each database. Has
         /// higher priority than $filter.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ManagedDatabaseMoveOperationResult> ListByLocation(this IManagedDatabaseMoveOperations operations, string resourceGroupName, string locationName, Microsoft.Rest.Azure.OData.ODataQuery<ManagedDatabaseMoveOperationResult> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ManagedDatabaseMoveOperationResult>), bool? onlyLatestPerDatabase = default(bool?))
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ManagedDatabaseMoveOperationResult> ListByLocation(this IManagedDatabaseMoveOperations operations, string resourceGroupName, string locationName, bool? onlyLatestPerDatabase = default(bool?), string filter = default(string))
         {
-                return ((IManagedDatabaseMoveOperations)operations).ListByLocationAsync(resourceGroupName, locationName, odataQuery, onlyLatestPerDatabase).GetAwaiter().GetResult();
+                return ((IManagedDatabaseMoveOperations)operations).ListByLocationAsync(resourceGroupName, locationName, onlyLatestPerDatabase, filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -43,26 +42,25 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The name of the region where the resource is located.
         /// </param>
         /// <param name='onlyLatestPerDatabase'>
         /// Whether or not to only get the latest operation for each database. Has
         /// higher priority than $filter.
         /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedDatabaseMoveOperationResult>> ListByLocationAsync(this IManagedDatabaseMoveOperations operations, string resourceGroupName, string locationName, Microsoft.Rest.Azure.OData.ODataQuery<ManagedDatabaseMoveOperationResult> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ManagedDatabaseMoveOperationResult>), bool? onlyLatestPerDatabase = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedDatabaseMoveOperationResult>> ListByLocationAsync(this IManagedDatabaseMoveOperations operations, string resourceGroupName, string locationName, bool? onlyLatestPerDatabase = default(bool?), string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByLocationWithHttpMessagesAsync(resourceGroupName, locationName, odataQuery, onlyLatestPerDatabase, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByLocationWithHttpMessagesAsync(resourceGroupName, locationName, onlyLatestPerDatabase, filter, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -74,14 +72,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The name of the region where the resource is located.
         /// </param>
         /// <param name='operationId'>
-        /// 
+        /// The ID of the managed database move operation.
         /// </param>
         public static ManagedDatabaseMoveOperationResult Get(this IManagedDatabaseMoveOperations operations, string resourceGroupName, string locationName, System.Guid operationId)
         {
@@ -95,14 +92,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The name of the region where the resource is located.
         /// </param>
         /// <param name='operationId'>
-        /// 
+        /// The ID of the managed database move operation.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

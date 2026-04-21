@@ -20,14 +20,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of jobs credentials.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,14 +49,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a jobs credential.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='credentialName'>
         /// The name of the credential.
@@ -83,14 +81,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a job credential.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='credentialName'>
         /// The name of the credential.
@@ -119,14 +116,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a job credential.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='credentialName'>
         /// The name of the credential.

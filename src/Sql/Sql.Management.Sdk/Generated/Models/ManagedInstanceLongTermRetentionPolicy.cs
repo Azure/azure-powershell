@@ -25,14 +25,23 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ManagedInstanceLongTermRetentionPolicy class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="backupStorageAccessTier">The BackupStorageAccessTier for the LTR backups
+        /// Possible values include: &#39;Hot&#39;, &#39;Archive&#39;</param>
 
         /// <param name="weeklyRetention">The weekly retention policy for an LTR backup in an ISO 8601 format.
         /// </param>
@@ -45,10 +54,11 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="weekOfYear">The week of year to take the yearly backup in an ISO 8601 format.
         /// </param>
-        public ManagedInstanceLongTermRetentionPolicy(string id = default(string), string name = default(string), string type = default(string), string weeklyRetention = default(string), string monthlyRetention = default(string), string yearlyRetention = default(string), int? weekOfYear = default(int?))
+        public ManagedInstanceLongTermRetentionPolicy(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string backupStorageAccessTier = default(string), string weeklyRetention = default(string), string monthlyRetention = default(string), string yearlyRetention = default(string), int? weekOfYear = default(int?))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
+            this.BackupStorageAccessTier = backupStorageAccessTier;
             this.WeeklyRetention = weeklyRetention;
             this.MonthlyRetention = monthlyRetention;
             this.YearlyRetention = yearlyRetention;
@@ -61,6 +71,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets the BackupStorageAccessTier for the LTR backups Possible values include: &#39;Hot&#39;, &#39;Archive&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backupStorageAccessTier")]
+        public string BackupStorageAccessTier {get; set; }
 
         /// <summary>
         /// Gets or sets the weekly retention policy for an LTR backup in an ISO 8601

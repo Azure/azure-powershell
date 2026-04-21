@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class StorageKeyType
     {
+        /// <summary>
+        /// SharedAccessKey
+        /// </summary>
         public const string SharedAccessKey = "SharedAccessKey";
+        /// <summary>
+        /// StorageAccessKey
+        /// </summary>
         public const string StorageAccessKey = "StorageAccessKey";
+        /// <summary>
+        /// ManagedIdentity
+        /// </summary>
         public const string ManagedIdentity = "ManagedIdentity";
     }
 }

@@ -14,14 +14,29 @@ namespace Microsoft.Azure.Management.Sql.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReplicationRole
     {
+        /// <summary>
+        /// Primary
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Primary")]
         Primary,
+        /// <summary>
+        /// Secondary
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Secondary")]
         Secondary,
+        /// <summary>
+        /// NonReadableSecondary
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "NonReadableSecondary")]
         NonReadableSecondary,
+        /// <summary>
+        /// Source
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Source")]
         Source,
+        /// <summary>
+        /// Copy
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Copy")]
         Copy
     }

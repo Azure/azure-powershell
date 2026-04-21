@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class JobStepActionSource
     {
+        /// <summary>
+        /// Inline
+        /// </summary>
         public const string Inline = "Inline";
     }
 }

@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Sql.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CheckNameAvailabilityReason
     {
+        /// <summary>
+        /// Invalid
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Invalid")]
         Invalid,
+        /// <summary>
+        /// AlreadyExists
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "AlreadyExists")]
         AlreadyExists
     }

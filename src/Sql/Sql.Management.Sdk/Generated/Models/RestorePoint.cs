@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the RestorePoint class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="location">Resource location.
@@ -48,9 +54,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="restorePointLabel">The label of restore point for backup request by user
         /// </param>
-        public RestorePoint(string id = default(string), string name = default(string), string type = default(string), string location = default(string), RestorePointType? restorePointType = default(RestorePointType?), System.DateTime? earliestRestoreDate = default(System.DateTime?), System.DateTime? restorePointCreationDate = default(System.DateTime?), string restorePointLabel = default(string))
+        public RestorePoint(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), RestorePointType? restorePointType = default(RestorePointType?), System.DateTime? earliestRestoreDate = default(System.DateTime?), System.DateTime? restorePointCreationDate = default(System.DateTime?), string restorePointLabel = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.Location = location;
             this.RestorePointType = restorePointType;

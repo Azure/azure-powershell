@@ -43,11 +43,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of all managed instances in an instance pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='instancePoolName'>
-        /// The instance pool name.
+        /// The name of the instance pool to be retrieved.
         /// </param>
         /// <param name='expand'>
         /// The child resources to include in the response.
@@ -73,8 +72,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of managed instances in a resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expand'>
         /// The child resources to include in the response.
@@ -100,8 +98,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -130,8 +127,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -154,38 +150,13 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstance,ManagedInstancesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, ManagedInstance parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes a managed instance.
-        /// </summary>
-        /// <remarks>
-        /// Deletes a managed instance.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedInstancesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Updates a managed instance.
         /// </summary>
         /// <remarks>
         /// Updates a managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -208,17 +179,39 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstance,ManagedInstancesUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, ManagedInstanceUpdate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Deletes a managed instance.
+        /// </summary>
+        /// <remarks>
+        /// Deletes a managed instance.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedInstancesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Failovers a managed instance.
         /// </summary>
         /// <remarks>
         /// Failovers a managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
-        /// The name of the managed instance to failover.
+        /// The name of the managed instance.
         /// </param>
         /// <param name='replicaType'>
         /// The type of replica to be failed over.
@@ -243,8 +236,7 @@ namespace Microsoft.Azure.Management.Sql
         /// instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -270,8 +262,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Reevaluates the inaccessibility state of all managed databases.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -294,8 +285,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Refresh external governance enablement status.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -321,8 +311,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Starts the managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -348,8 +337,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Stops the managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -375,8 +363,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Get top resource consuming queries of a managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -425,8 +412,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Validates customer managed key.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -452,8 +438,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -476,38 +461,13 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstance,ManagedInstancesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, ManagedInstance parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes a managed instance.
-        /// </summary>
-        /// <remarks>
-        /// Deletes a managed instance.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedInstancesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Updates a managed instance.
         /// </summary>
         /// <remarks>
         /// Updates a managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -530,17 +490,39 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedInstance,ManagedInstancesUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, ManagedInstanceUpdate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Deletes a managed instance.
+        /// </summary>
+        /// <remarks>
+        /// Deletes a managed instance.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ManagedInstancesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Failovers a managed instance.
         /// </summary>
         /// <remarks>
         /// Failovers a managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
-        /// The name of the managed instance to failover.
+        /// The name of the managed instance.
         /// </param>
         /// <param name='replicaType'>
         /// The type of replica to be failed over.
@@ -563,8 +545,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Reevaluates the inaccessibility state of all managed databases.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -587,8 +568,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Refresh external governance enablement status.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -614,8 +594,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Starts the managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -641,8 +620,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Stops the managed instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -668,8 +646,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Validates customer managed key.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.

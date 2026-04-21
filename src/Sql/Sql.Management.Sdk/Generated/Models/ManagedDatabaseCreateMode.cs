@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ManagedDatabaseCreateMode
     {
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
+        /// <summary>
+        /// RestoreExternalBackup
+        /// </summary>
         public const string RestoreExternalBackup = "RestoreExternalBackup";
+        /// <summary>
+        /// PointInTimeRestore
+        /// </summary>
         public const string PointInTimeRestore = "PointInTimeRestore";
+        /// <summary>
+        /// Recovery
+        /// </summary>
         public const string Recovery = "Recovery";
+        /// <summary>
+        /// RestoreLongTermRetentionBackup
+        /// </summary>
         public const string RestoreLongTermRetentionBackup = "RestoreLongTermRetentionBackup";
     }
 }

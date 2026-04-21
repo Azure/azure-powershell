@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<JobStep> ListByJob(this IJobStepsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName)
         {
@@ -43,8 +42,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -53,7 +51,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -72,8 +70,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -99,8 +96,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -132,8 +128,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -160,8 +155,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -192,8 +186,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -205,7 +198,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job.
         /// </param>
         /// <param name='stepName'>
-        /// The name of the job step to delete.
+        /// The name of the job step.
         /// </param>
         public static void Delete(this IJobStepsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, string stepName)
         {
@@ -219,8 +212,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -232,7 +224,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job.
         /// </param>
         /// <param name='stepName'>
-        /// The name of the job step to delete.
+        /// The name of the job step.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -248,8 +240,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -258,7 +249,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='jobVersion'>
         /// The version of the job to get.
@@ -275,8 +266,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -285,7 +275,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='jobVersion'>
         /// The version of the job to get.
@@ -307,8 +297,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -337,8 +326,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.

@@ -13,17 +13,55 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class ServerDnsAliasesOperationsExtensions
     {
         /// <summary>
+        /// Gets a list of server DNS aliases for a server.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ServerDnsAlias> ListByServer(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName)
+        {
+                return ((IServerDnsAliasesOperations)operations).ListByServerAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a list of server DNS aliases for a server.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServerDnsAlias>> ListByServerAsync(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets a server DNS alias.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
@@ -40,11 +78,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
@@ -66,11 +103,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
@@ -87,11 +123,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
@@ -113,18 +148,17 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
         /// </param>
-        public static void Delete(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName, string dnsAliasName)
+        public static ServerDnsAliasesDeleteHeaders Delete(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName, string dnsAliasName)
         {
-                ((IServerDnsAliasesOperations)operations).DeleteAsync(resourceGroupName, serverName, dnsAliasName).GetAwaiter().GetResult();
+                return ((IServerDnsAliasesOperations)operations).DeleteAsync(resourceGroupName, serverName, dnsAliasName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -134,11 +168,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
@@ -146,49 +179,11 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName, string dnsAliasName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ServerDnsAliasesDeleteHeaders> DeleteAsync(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName, string dnsAliasName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, dnsAliasName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets a list of server DNS aliases for a server.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ServerDnsAlias> ListByServer(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName)
-        {
-                return ((IServerDnsAliasesOperations)operations).ListByServerAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a list of server DNS aliases for a server.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServerDnsAlias>> ListByServerAsync(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, dnsAliasName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -198,11 +193,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
@@ -219,11 +213,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
@@ -245,11 +238,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
@@ -266,11 +258,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
@@ -292,18 +283,17 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
         /// </param>
-        public static void BeginDelete(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName, string dnsAliasName)
+        public static ServerDnsAliasesDeleteHeaders BeginDelete(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName, string dnsAliasName)
         {
-                ((IServerDnsAliasesOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, dnsAliasName).GetAwaiter().GetResult();
+                return ((IServerDnsAliasesOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, dnsAliasName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -313,11 +303,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
@@ -325,9 +314,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName, string dnsAliasName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ServerDnsAliasesDeleteHeaders> BeginDeleteAsync(this IServerDnsAliasesOperations operations, string resourceGroupName, string serverName, string dnsAliasName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, dnsAliasName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, dnsAliasName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Acquires server DNS alias from another server.
@@ -336,11 +328,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.
@@ -357,11 +348,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server that the alias is pointing to.
+        /// The name of the server.
         /// </param>
         /// <param name='dnsAliasName'>
         /// The name of the server dns alias.

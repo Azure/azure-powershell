@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class PrivateLinkServiceConnectionStateStatus
     {
+        /// <summary>
+        /// Approved
+        /// </summary>
         public const string Approved = "Approved";
+        /// <summary>
+        /// Pending
+        /// </summary>
         public const string Pending = "Pending";
+        /// <summary>
+        /// Rejected
+        /// </summary>
         public const string Rejected = "Rejected";
+        /// <summary>
+        /// Disconnected
+        /// </summary>
         public const string Disconnected = "Disconnected";
     }
 }

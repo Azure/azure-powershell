@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Sql.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RecommendedSensitivityLabelUpdateKind
     {
+        /// <summary>
+        /// enable
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "enable")]
         Enable,
+        /// <summary>
+        /// disable
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "disable")]
         Disable
     }

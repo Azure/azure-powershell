@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class DatabaseKeyType
     {
+        /// <summary>
+        /// AzureKeyVault
+        /// </summary>
         public const string AzureKeyVault = "AzureKeyVault";
     }
 }

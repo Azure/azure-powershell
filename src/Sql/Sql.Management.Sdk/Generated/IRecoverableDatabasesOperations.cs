@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of recoverable databases.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -46,18 +45,20 @@ namespace Microsoft.Azure.Management.Sql
         /// <remarks>
         /// Gets a recoverable database.
         /// </remarks>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
         /// The name of the database.
+        /// </param>
+        /// <param name='expand'>
+        /// The child resources to include in the response.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoverableDatabase>> GetWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, Microsoft.Rest.Azure.OData.ODataQuery<RecoverableDatabase> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<RecoverableDatabase>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RecoverableDatabase>> GetWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string expand = default(string), string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a list of recoverable databases.

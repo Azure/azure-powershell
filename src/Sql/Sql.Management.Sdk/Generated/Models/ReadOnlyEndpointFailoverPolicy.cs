@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ReadOnlyEndpointFailoverPolicy
     {
+        /// <summary>
+        /// Disabled
+        /// </summary>
         public const string Disabled = "Disabled";
+        /// <summary>
+        /// Enabled
+        /// </summary>
         public const string Enabled = "Enabled";
     }
 }

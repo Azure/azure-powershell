@@ -25,41 +25,42 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the VirtualCluster class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
         /// </param>
 
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+
         /// <param name="subnetId">Subnet resource ID for the virtual cluster.
         /// </param>
 
-        /// <param name="family">If the service has different generations of hardware, for the same SKU,
-        /// then that can be captured here.
+        /// <param name="version">Virtual cluster version.
         /// </param>
 
         /// <param name="childResources">List of resources in this virtual cluster.
         /// </param>
+        public VirtualCluster(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string subnetId = default(string), string version = default(string), System.Collections.Generic.IList<string> childResources = default(System.Collections.Generic.IList<string>))
 
-        /// <param name="maintenanceConfigurationId">Specifies maintenance configuration id to apply to this virtual cluster.
-        /// </param>
-        public VirtualCluster(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string subnetId = default(string), string family = default(string), System.Collections.Generic.IList<string> childResources = default(System.Collections.Generic.IList<string>), string maintenanceConfigurationId = default(string))
-
-        : base(location, id, name, type, tags)
+        : base(location, id, name, type, systemData, tags)
         {
             this.SubnetId = subnetId;
-            this.Family = family;
+            this.Version = version;
             this.ChildResources = childResources;
-            this.MaintenanceConfigurationId = maintenanceConfigurationId;
             CustomInit();
         }
 
@@ -76,24 +77,16 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string SubnetId {get; private set; }
 
         /// <summary>
-        /// Gets or sets if the service has different generations of hardware, for the
-        /// same SKU, then that can be captured here.
+        /// Gets or sets virtual cluster version.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.family")]
-        public string Family {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.version")]
+        public string Version {get; set; }
 
         /// <summary>
         /// Gets list of resources in this virtual cluster.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.childResources")]
         public System.Collections.Generic.IList<string> ChildResources {get; private set; }
-
-        /// <summary>
-        /// Gets or sets specifies maintenance configuration id to apply to this
-        /// virtual cluster.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maintenanceConfigurationId")]
-        public string MaintenanceConfigurationId {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -103,7 +96,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         public override void Validate()
         {
             base.Validate();
-
 
 
 

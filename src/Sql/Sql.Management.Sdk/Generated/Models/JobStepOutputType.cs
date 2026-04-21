@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class JobStepOutputType
     {
+        /// <summary>
+        /// SqlDatabase
+        /// </summary>
         public const string SqlDatabase = "SqlDatabase";
     }
 }

@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class SyncGroupsType
     {
+        /// <summary>
+        /// All
+        /// </summary>
         public const string All = "All";
+        /// <summary>
+        /// Error
+        /// </summary>
         public const string Error = "Error";
+        /// <summary>
+        /// Warning
+        /// </summary>
         public const string Warning = "Warning";
+        /// <summary>
+        /// Success
+        /// </summary>
         public const string Success = "Success";
     }
 }

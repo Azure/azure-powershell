@@ -13,23 +13,73 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class SyncMembersOperationsExtensions
     {
         /// <summary>
+        /// Lists sync members in the given sync group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SyncMember> ListBySyncGroup(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        {
+                return ((ISyncMembersOperations)operations).ListBySyncGroupAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists sync members in the given sync group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SyncMember>> ListBySyncGroupAsync(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBySyncGroupWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets a sync member.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -46,17 +96,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -78,17 +127,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -105,17 +153,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -131,79 +178,22 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes a sync member.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
-        /// </param>
-        /// <param name='syncMemberName'>
-        /// The name of the sync member.
-        /// </param>
-        public static void Delete(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
-        {
-                ((ISyncMembersOperations)operations).DeleteAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a sync member.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
-        /// </param>
-        /// <param name='syncMemberName'>
-        /// The name of the sync member.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Updates an existing sync member.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -220,17 +210,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -246,56 +235,117 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Lists sync members in the given sync group.
+        /// Deletes a sync member.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<SyncMember> ListBySyncGroup(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        /// <param name='syncMemberName'>
+        /// The name of the sync member.
+        /// </param>
+        public static SyncMembersDeleteHeaders Delete(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
         {
-                return ((ISyncMembersOperations)operations).ListBySyncGroupAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
+                return ((ISyncMembersOperations)operations).DeleteAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists sync members in the given sync group.
+        /// Deletes a sync member.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
+        /// </param>
+        /// <param name='syncMemberName'>
+        /// The name of the sync member.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SyncMember>> ListBySyncGroupAsync(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SyncMembersDeleteHeaders> DeleteAsync(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListBySyncGroupWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Refreshes a sync member database schema.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        /// <param name='syncMemberName'>
+        /// The name of the sync member.
+        /// </param>
+        public static SyncMembersRefreshMemberSchemaHeaders RefreshMemberSchema(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
+        {
+                return ((ISyncMembersOperations)operations).RefreshMemberSchemaAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Refreshes a sync member database schema.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        /// <param name='syncMemberName'>
+        /// The name of the sync member.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SyncMembersRefreshMemberSchemaHeaders> RefreshMemberSchemaAsync(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.RefreshMemberSchemaWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -305,17 +355,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -332,17 +381,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -358,79 +406,22 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Refreshes a sync member database schema.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
-        /// </param>
-        /// <param name='syncMemberName'>
-        /// The name of the sync member.
-        /// </param>
-        public static void RefreshMemberSchema(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
-        {
-                ((ISyncMembersOperations)operations).RefreshMemberSchemaAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Refreshes a sync member database schema.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
-        /// </param>
-        /// <param name='syncMemberName'>
-        /// The name of the sync member.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task RefreshMemberSchemaAsync(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.RefreshMemberSchemaWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Creates or updates a sync member.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -447,17 +438,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -473,79 +463,22 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes a sync member.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
-        /// </param>
-        /// <param name='syncMemberName'>
-        /// The name of the sync member.
-        /// </param>
-        public static void BeginDelete(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
-        {
-                ((ISyncMembersOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a sync member.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
-        /// </param>
-        /// <param name='syncMemberName'>
-        /// The name of the sync member.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Updates an existing sync member.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -562,17 +495,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -588,30 +520,86 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Deletes a sync member.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        /// <param name='syncMemberName'>
+        /// The name of the sync member.
+        /// </param>
+        public static SyncMembersDeleteHeaders BeginDelete(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
+        {
+                return ((ISyncMembersOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a sync member.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        /// <param name='syncMemberName'>
+        /// The name of the sync member.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SyncMembersDeleteHeaders> BeginDeleteAsync(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Refreshes a sync member database schema.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
         /// </param>
-        public static void BeginRefreshMemberSchema(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
+        public static SyncMembersRefreshMemberSchemaHeaders BeginRefreshMemberSchema(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
         {
-                ((ISyncMembersOperations)operations).BeginRefreshMemberSchemaAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName).GetAwaiter().GetResult();
+                return ((ISyncMembersOperations)operations).BeginRefreshMemberSchemaAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -621,17 +609,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
-        /// The name of the sync group on which the sync member is hosted.
+        /// The name of the sync group.
         /// </param>
         /// <param name='syncMemberName'>
         /// The name of the sync member.
@@ -639,9 +626,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginRefreshMemberSchemaAsync(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SyncMembersRefreshMemberSchemaHeaders> BeginRefreshMemberSchemaAsync(this ISyncMembersOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginRefreshMemberSchemaWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginRefreshMemberSchemaWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, syncMemberName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Lists sync members in the given sync group.

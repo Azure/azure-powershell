@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ReplicaType
     {
+        /// <summary>
+        /// Primary
+        /// </summary>
         public const string Primary = "Primary";
+        /// <summary>
+        /// ReadableSecondary
+        /// </summary>
         public const string ReadableSecondary = "ReadableSecondary";
     }
 }

@@ -25,16 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the StartStopManagedInstanceSchedule class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="systemData">System data of the scheduled resource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="description">The description of the schedule.
@@ -54,9 +57,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
         public StartStopManagedInstanceSchedule(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string description = default(string), string timeZoneId = default(string), System.Collections.Generic.IList<ScheduleItem> scheduleList = default(System.Collections.Generic.IList<ScheduleItem>), string nextRunAction = default(string), string nextExecutionTime = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
-            this.SystemData = systemData;
             this.Description = description;
             this.TimeZoneId = timeZoneId;
             this.ScheduleList = scheduleList;
@@ -70,12 +72,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets system data of the scheduled resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
 
         /// <summary>
         /// Gets or sets the description of the schedule.

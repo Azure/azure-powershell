@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class DatabaseState
     {
+        /// <summary>
+        /// All
+        /// </summary>
         public const string All = "All";
+        /// <summary>
+        /// Live
+        /// </summary>
         public const string Live = "Live";
+        /// <summary>
+        /// Deleted
+        /// </summary>
         public const string Deleted = "Deleted";
     }
 }

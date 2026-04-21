@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -37,8 +36,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -59,12 +57,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -72,9 +66,15 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='restorableDroppedDatabaseId'>
         /// 
         /// </param>
-        public static RestorableDroppedDatabase Get(this IRestorableDroppedDatabasesOperations operations, string resourceGroupName, string serverName, string restorableDroppedDatabaseId, Microsoft.Rest.Azure.OData.ODataQuery<RestorableDroppedDatabase> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<RestorableDroppedDatabase>))
+        /// <param name='expand'>
+        /// The child resources to include in the response.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
+        /// </param>
+        public static RestorableDroppedDatabase Get(this IRestorableDroppedDatabasesOperations operations, string resourceGroupName, string serverName, string restorableDroppedDatabaseId, string expand = default(string), string filter = default(string))
         {
-                return ((IRestorableDroppedDatabasesOperations)operations).GetAsync(resourceGroupName, serverName, restorableDroppedDatabaseId, odataQuery).GetAwaiter().GetResult();
+                return ((IRestorableDroppedDatabasesOperations)operations).GetAsync(resourceGroupName, serverName, restorableDroppedDatabaseId, expand, filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -83,12 +83,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -96,12 +92,18 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='restorableDroppedDatabaseId'>
         /// 
         /// </param>
+        /// <param name='expand'>
+        /// The child resources to include in the response.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<RestorableDroppedDatabase> GetAsync(this IRestorableDroppedDatabasesOperations operations, string resourceGroupName, string serverName, string restorableDroppedDatabaseId, Microsoft.Rest.Azure.OData.ODataQuery<RestorableDroppedDatabase> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<RestorableDroppedDatabase>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RestorableDroppedDatabase> GetAsync(this IRestorableDroppedDatabasesOperations operations, string resourceGroupName, string serverName, string restorableDroppedDatabaseId, string expand = default(string), string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, restorableDroppedDatabaseId, odataQuery, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, restorableDroppedDatabaseId, expand, filter, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

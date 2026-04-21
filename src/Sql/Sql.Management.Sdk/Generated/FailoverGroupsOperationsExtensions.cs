@@ -19,11 +19,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<FailoverGroup> ListByServer(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName)
         {
@@ -37,11 +36,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -60,11 +58,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -81,11 +78,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -107,11 +103,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -128,11 +123,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -148,61 +142,16 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes a failover group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server containing the failover group.
-        /// </param>
-        /// <param name='failoverGroupName'>
-        /// The name of the failover group.
-        /// </param>
-        public static void Delete(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName)
-        {
-                ((IFailoverGroupsOperations)operations).DeleteAsync(resourceGroupName, serverName, failoverGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a failover group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server containing the failover group.
-        /// </param>
-        /// <param name='failoverGroupName'>
-        /// The name of the failover group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Updates a failover group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -219,11 +168,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -239,17 +187,61 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Deletes a failover group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='failoverGroupName'>
+        /// The name of the failover group.
+        /// </param>
+        public static FailoverGroupsDeleteHeaders Delete(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName)
+        {
+                return ((IFailoverGroupsOperations)operations).DeleteAsync(resourceGroupName, serverName, failoverGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a failover group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='failoverGroupName'>
+        /// The name of the failover group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<FailoverGroupsDeleteHeaders> DeleteAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Fails over from the current primary server to this server.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -266,11 +258,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -293,11 +284,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -315,11 +305,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -342,8 +331,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -364,8 +352,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -390,11 +377,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -411,11 +397,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -431,61 +416,16 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes a failover group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server containing the failover group.
-        /// </param>
-        /// <param name='failoverGroupName'>
-        /// The name of the failover group.
-        /// </param>
-        public static void BeginDelete(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName)
-        {
-                ((IFailoverGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, failoverGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a failover group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server containing the failover group.
-        /// </param>
-        /// <param name='failoverGroupName'>
-        /// The name of the failover group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Updates a failover group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -502,11 +442,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -522,17 +461,61 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Deletes a failover group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='failoverGroupName'>
+        /// The name of the failover group.
+        /// </param>
+        public static FailoverGroupsDeleteHeaders BeginDelete(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName)
+        {
+                return ((IFailoverGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, failoverGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a failover group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='failoverGroupName'>
+        /// The name of the failover group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<FailoverGroupsDeleteHeaders> BeginDeleteAsync(this IFailoverGroupsOperations operations, string resourceGroupName, string serverName, string failoverGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, failoverGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Fails over from the current primary server to this server.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -549,11 +532,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -576,11 +558,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -598,11 +579,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the server containing the failover group.
+        /// The name of the server.
         /// </param>
         /// <param name='failoverGroupName'>
         /// The name of the failover group.
@@ -625,8 +605,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -647,8 +626,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.

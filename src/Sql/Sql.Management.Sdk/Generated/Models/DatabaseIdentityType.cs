@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class DatabaseIdentityType
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// UserAssigned
+        /// </summary>
         public const string UserAssigned = "UserAssigned";
     }
 }

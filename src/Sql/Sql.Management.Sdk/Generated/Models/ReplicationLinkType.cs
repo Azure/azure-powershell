@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ReplicationLinkType
     {
+        /// <summary>
+        /// GEO
+        /// </summary>
         public const string GEO = "GEO";
+        /// <summary>
+        /// NAMED
+        /// </summary>
         public const string Named = "NAMED";
+        /// <summary>
+        /// STANDBY
+        /// </summary>
         public const string Standby = "STANDBY";
     }
 }

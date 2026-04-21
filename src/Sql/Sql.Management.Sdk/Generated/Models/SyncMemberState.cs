@@ -13,23 +13,77 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class SyncMemberState
     {
+        /// <summary>
+        /// SyncInProgress
+        /// </summary>
         public const string SyncInProgress = "SyncInProgress";
+        /// <summary>
+        /// SyncSucceeded
+        /// </summary>
         public const string SyncSucceeded = "SyncSucceeded";
+        /// <summary>
+        /// SyncFailed
+        /// </summary>
         public const string SyncFailed = "SyncFailed";
+        /// <summary>
+        /// DisabledTombstoneCleanup
+        /// </summary>
         public const string DisabledTombstoneCleanup = "DisabledTombstoneCleanup";
+        /// <summary>
+        /// DisabledBackupRestore
+        /// </summary>
         public const string DisabledBackupRestore = "DisabledBackupRestore";
+        /// <summary>
+        /// SyncSucceededWithWarnings
+        /// </summary>
         public const string SyncSucceededWithWarnings = "SyncSucceededWithWarnings";
+        /// <summary>
+        /// SyncCancelling
+        /// </summary>
         public const string SyncCancelling = "SyncCancelling";
+        /// <summary>
+        /// SyncCancelled
+        /// </summary>
         public const string SyncCancelled = "SyncCancelled";
+        /// <summary>
+        /// UnProvisioned
+        /// </summary>
         public const string UnProvisioned = "UnProvisioned";
+        /// <summary>
+        /// Provisioning
+        /// </summary>
         public const string Provisioning = "Provisioning";
+        /// <summary>
+        /// Provisioned
+        /// </summary>
         public const string Provisioned = "Provisioned";
+        /// <summary>
+        /// ProvisionFailed
+        /// </summary>
         public const string ProvisionFailed = "ProvisionFailed";
+        /// <summary>
+        /// DeProvisioning
+        /// </summary>
         public const string DeProvisioning = "DeProvisioning";
+        /// <summary>
+        /// DeProvisioned
+        /// </summary>
         public const string DeProvisioned = "DeProvisioned";
+        /// <summary>
+        /// DeProvisionFailed
+        /// </summary>
         public const string DeProvisionFailed = "DeProvisionFailed";
+        /// <summary>
+        /// Reprovisioning
+        /// </summary>
         public const string Reprovisioning = "Reprovisioning";
+        /// <summary>
+        /// ReprovisionFailed
+        /// </summary>
         public const string ReprovisionFailed = "ReprovisionFailed";
+        /// <summary>
+        /// UnReprovisioned
+        /// </summary>
         public const string UnReprovisioned = "UnReprovisioned";
     }
 }

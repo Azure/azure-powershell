@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the DatabaseBlobAuditingPolicy class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="kind">Resource kind.
@@ -159,9 +165,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="storageAccountSubscriptionId">Specifies the blob storage subscription Id.
         /// </param>
-        public DatabaseBlobAuditingPolicy(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), int? retentionDays = default(int?), System.Collections.Generic.IList<string> auditActionsAndGroups = default(System.Collections.Generic.IList<string>), bool? isStorageSecondaryKeyInUse = default(bool?), bool? isAzureMonitorTargetEnabled = default(bool?), int? queueDelayMS = default(int?), bool? isManagedIdentityInUse = default(bool?), BlobAuditingPolicyState? state = default(BlobAuditingPolicyState?), string storageEndpoint = default(string), string storageAccountAccessKey = default(string), System.Guid? storageAccountSubscriptionId = default(System.Guid?))
+        public DatabaseBlobAuditingPolicy(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string kind = default(string), int? retentionDays = default(int?), System.Collections.Generic.IList<string> auditActionsAndGroups = default(System.Collections.Generic.IList<string>), bool? isStorageSecondaryKeyInUse = default(bool?), bool? isAzureMonitorTargetEnabled = default(bool?), int? queueDelayMS = default(int?), bool? isManagedIdentityInUse = default(bool?), BlobAuditingPolicyState? state = default(BlobAuditingPolicyState?), string storageEndpoint = default(string), string storageAccountAccessKey = default(string), System.Guid? storageAccountSubscriptionId = default(System.Guid?))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.Kind = kind;
             this.RetentionDays = retentionDays;

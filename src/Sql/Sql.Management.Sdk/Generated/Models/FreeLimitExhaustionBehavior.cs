@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class FreeLimitExhaustionBehavior
     {
+        /// <summary>
+        /// AutoPause
+        /// </summary>
         public const string AutoPause = "AutoPause";
+        /// <summary>
+        /// BillOverUsage
+        /// </summary>
         public const string BillOverUsage = "BillOverUsage";
     }
 }

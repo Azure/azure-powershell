@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class TransparentDataEncryptionName
     {
+        /// <summary>
+        /// current
+        /// </summary>
         public const string Current = "current";
     }
 }

@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class JobAgentState
     {
+        /// <summary>
+        /// Creating
+        /// </summary>
         public const string Creating = "Creating";
+        /// <summary>
+        /// Ready
+        /// </summary>
         public const string Ready = "Ready";
+        /// <summary>
+        /// Updating
+        /// </summary>
         public const string Updating = "Updating";
+        /// <summary>
+        /// Deleting
+        /// </summary>
         public const string Deleting = "Deleting";
+        /// <summary>
+        /// Disabled
+        /// </summary>
         public const string Disabled = "Disabled";
     }
 }

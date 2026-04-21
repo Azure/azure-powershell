@@ -13,49 +13,6 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class VirtualClustersOperationsExtensions
     {
         /// <summary>
-        /// Synchronizes the DNS server settings used by the managed instances inside
-        /// the given virtual cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='virtualClusterName'>
-        /// The name of the virtual cluster.
-        /// </param>
-        public static UpdateManagedInstanceDnsServersOperation UpdateDnsServers(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName)
-        {
-                return ((IVirtualClustersOperations)operations).UpdateDnsServersAsync(resourceGroupName, virtualClusterName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Synchronizes the DNS server settings used by the managed instances inside
-        /// the given virtual cluster.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='virtualClusterName'>
-        /// The name of the virtual cluster.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<UpdateManagedInstanceDnsServersOperation> UpdateDnsServersAsync(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateDnsServersWithHttpMessagesAsync(resourceGroupName, virtualClusterName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets a list of all virtualClusters in the subscription.
         /// </summary>
         /// <param name='operations'>
@@ -89,8 +46,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<VirtualCluster> ListByResourceGroup(this IVirtualClustersOperations operations, string resourceGroupName)
         {
@@ -104,8 +60,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -124,8 +79,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -142,8 +96,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -159,32 +112,30 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes a virtual cluster.
+        /// Creates virtual cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
         /// </param>
-        public static void Delete(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName)
+        public static VirtualCluster CreateOrUpdate(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, VirtualCluster parameters)
         {
-                ((IVirtualClustersOperations)operations).DeleteAsync(resourceGroupName, virtualClusterName).GetAwaiter().GetResult();
+                return ((IVirtualClustersOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualClusterName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes a virtual cluster.
+        /// Creates virtual cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -192,19 +143,21 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualCluster> CreateOrUpdateAsync(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, VirtualCluster parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualClusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualClusterName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
-        /// Updates a virtual cluster.
+        /// Updates an existing virtual cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -215,14 +168,13 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Updates a virtual cluster.
+        /// Updates an existing virtual cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -244,15 +196,14 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
         /// </param>
-        public static void BeginDelete(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName)
+        public static VirtualClustersDeleteHeaders Delete(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName)
         {
-                ((IVirtualClustersOperations)operations).BeginDeleteAsync(resourceGroupName, virtualClusterName).GetAwaiter().GetResult();
+                return ((IVirtualClustersOperations)operations).DeleteAsync(resourceGroupName, virtualClusterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -262,8 +213,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -271,19 +221,101 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualClustersDeleteHeaders> DeleteAsync(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualClusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualClusterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Updates a virtual cluster.
+        /// Synchronizes the DNS server settings used by the managed instances inside
+        /// the given virtual cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualClusterName'>
+        /// The name of the virtual cluster.
+        /// </param>
+        public static UpdateVirtualClusterDnsServersOperation UpdateDnsServers(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName)
+        {
+                return ((IVirtualClustersOperations)operations).UpdateDnsServersAsync(resourceGroupName, virtualClusterName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Synchronizes the DNS server settings used by the managed instances inside
+        /// the given virtual cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualClusterName'>
+        /// The name of the virtual cluster.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<UpdateVirtualClusterDnsServersOperation> UpdateDnsServersAsync(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateDnsServersWithHttpMessagesAsync(resourceGroupName, virtualClusterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates virtual cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualClusterName'>
+        /// The name of the virtual cluster.
+        /// </param>
+        public static VirtualCluster BeginCreateOrUpdate(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, VirtualCluster parameters)
+        {
+                return ((IVirtualClustersOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, virtualClusterName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates virtual cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualClusterName'>
+        /// The name of the virtual cluster.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualCluster> BeginCreateOrUpdateAsync(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, VirtualCluster parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualClusterName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates an existing virtual cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -294,14 +326,13 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Updates a virtual cluster.
+        /// Updates an existing virtual cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualClusterName'>
         /// The name of the virtual cluster.
@@ -312,6 +343,86 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task<VirtualCluster> BeginUpdateAsync(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, VirtualClusterUpdate parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, virtualClusterName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a virtual cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualClusterName'>
+        /// The name of the virtual cluster.
+        /// </param>
+        public static VirtualClustersDeleteHeaders BeginDelete(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName)
+        {
+                return ((IVirtualClustersOperations)operations).BeginDeleteAsync(resourceGroupName, virtualClusterName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a virtual cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualClusterName'>
+        /// The name of the virtual cluster.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualClustersDeleteHeaders> BeginDeleteAsync(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualClusterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Synchronizes the DNS server settings used by the managed instances inside
+        /// the given virtual cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualClusterName'>
+        /// The name of the virtual cluster.
+        /// </param>
+        public static UpdateVirtualClusterDnsServersOperation BeginUpdateDnsServers(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName)
+        {
+                return ((IVirtualClustersOperations)operations).BeginUpdateDnsServersAsync(resourceGroupName, virtualClusterName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Synchronizes the DNS server settings used by the managed instances inside
+        /// the given virtual cluster.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualClusterName'>
+        /// The name of the virtual cluster.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<UpdateVirtualClusterDnsServersOperation> BeginUpdateDnsServersAsync(this IVirtualClustersOperations operations, string resourceGroupName, string virtualClusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateDnsServersWithHttpMessagesAsync(resourceGroupName, virtualClusterName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ElasticPoolState
     {
+        /// <summary>
+        /// Creating
+        /// </summary>
         public const string Creating = "Creating";
+        /// <summary>
+        /// Ready
+        /// </summary>
         public const string Ready = "Ready";
+        /// <summary>
+        /// Disabled
+        /// </summary>
         public const string Disabled = "Disabled";
     }
 }

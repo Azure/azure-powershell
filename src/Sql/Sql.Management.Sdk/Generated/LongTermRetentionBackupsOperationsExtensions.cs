@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -280,16 +280,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         public static LongTermRetentionBackup ChangeAccessTier(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, ChangeLongTermRetentionBackupAccessTierParameters parameters)
         {
@@ -303,16 +303,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -638,8 +638,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -664,8 +663,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -695,8 +693,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -724,8 +721,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -758,11 +754,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -790,11 +785,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -826,8 +820,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -853,8 +846,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -885,11 +877,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -912,11 +903,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -944,20 +934,19 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         public static LongTermRetentionBackup ChangeAccessTierByResourceGroup(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, ChangeLongTermRetentionBackupAccessTierParameters parameters)
         {
@@ -971,20 +960,19 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -1003,8 +991,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1030,8 +1017,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1062,10 +1048,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1088,10 +1074,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1119,10 +1105,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1145,10 +1131,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1176,10 +1162,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1202,10 +1188,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1233,10 +1219,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1259,10 +1245,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1290,8 +1276,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1317,8 +1302,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1349,7 +1333,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1372,7 +1356,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1400,16 +1384,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         public static LongTermRetentionBackup BeginChangeAccessTier(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, ChangeLongTermRetentionBackupAccessTierParameters parameters)
         {
@@ -1423,16 +1407,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -1502,7 +1486,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1525,7 +1509,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1553,7 +1537,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1576,7 +1560,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1604,7 +1588,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1627,7 +1611,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1655,7 +1639,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1678,7 +1662,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1757,11 +1741,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1784,11 +1767,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1816,20 +1798,19 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         public static LongTermRetentionBackup BeginChangeAccessTierByResourceGroup(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, ChangeLongTermRetentionBackupAccessTierParameters parameters)
         {
@@ -1843,20 +1824,19 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -1875,8 +1855,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1902,8 +1881,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1934,10 +1912,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1960,10 +1938,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1991,10 +1969,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -2017,10 +1995,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -2048,10 +2026,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -2074,10 +2052,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -2105,10 +2083,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -2131,10 +2109,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -2162,8 +2140,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -2189,8 +2166,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.

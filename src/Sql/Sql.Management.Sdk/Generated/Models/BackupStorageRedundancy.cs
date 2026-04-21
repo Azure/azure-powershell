@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class BackupStorageRedundancy
     {
+        /// <summary>
+        /// Geo
+        /// </summary>
         public const string Geo = "Geo";
+        /// <summary>
+        /// Local
+        /// </summary>
         public const string Local = "Local";
+        /// <summary>
+        /// Zone
+        /// </summary>
         public const string Zone = "Zone";
+        /// <summary>
+        /// GeoZone
+        /// </summary>
         public const string GeoZone = "GeoZone";
     }
 }

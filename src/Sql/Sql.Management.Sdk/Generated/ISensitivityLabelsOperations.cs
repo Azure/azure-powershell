@@ -19,12 +19,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <remarks>
         /// Gets the sensitivity labels of a given database
         /// </remarks>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -38,6 +34,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='count'>
         /// 
         /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SensitivityLabel>>> ListCurrentByDatabaseWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel>), string skipToken = default(string), bool? count = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SensitivityLabel>>> ListCurrentByDatabaseWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string skipToken = default(string), bool? count = default(bool?), string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update sensitivity labels of a given database using an operations batch.
@@ -59,8 +58,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Update sensitivity labels of a given database using an operations batch.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -88,12 +86,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <remarks>
         /// Gets the sensitivity labels of a given database
         /// </remarks>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -107,6 +101,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='includeDisabledRecommendations'>
         /// Specifies whether to include disabled recommendations or not.
         /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -119,81 +116,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SensitivityLabel>>> ListRecommendedByDatabaseWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel>), string skipToken = default(string), bool? includeDisabledRecommendations = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Enables sensitivity recommendations on a given column (recommendations are
-        /// enabled by default on all columns)
-        /// </summary>
-        /// <remarks>
-        /// Enables sensitivity recommendations on a given column (recommendations are
-        /// enabled by default on all columns)
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='schemaName'>
-        /// The name of the schema.
-        /// </param>
-        /// <param name='tableName'>
-        /// The name of the table.
-        /// </param>
-        /// <param name='columnName'>
-        /// The name of the column.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> EnableRecommendationWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string schemaName, string tableName, string columnName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Disables sensitivity recommendations on a given column
-        /// </summary>
-        /// <remarks>
-        /// Disables sensitivity recommendations on a given column
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='schemaName'>
-        /// The name of the schema.
-        /// </param>
-        /// <param name='tableName'>
-        /// The name of the table.
-        /// </param>
-        /// <param name='columnName'>
-        /// The name of the column.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DisableRecommendationWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string schemaName, string tableName, string columnName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SensitivityLabel>>> ListRecommendedByDatabaseWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string skipToken = default(string), bool? includeDisabledRecommendations = default(bool?), string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the sensitivity label of a given column
@@ -202,8 +125,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the sensitivity label of a given column
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -244,8 +166,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates the sensitivity label of a given column
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -286,8 +207,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes the sensitivity label of a given column
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -314,6 +234,110 @@ namespace Microsoft.Azure.Management.Sql
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string schemaName, string tableName, string columnName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Disables sensitivity recommendations on a given column
+        /// </summary>
+        /// <remarks>
+        /// Disables sensitivity recommendations on a given column
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='schemaName'>
+        /// The name of the schema.
+        /// </param>
+        /// <param name='tableName'>
+        /// The name of the table.
+        /// </param>
+        /// <param name='columnName'>
+        /// The name of the column.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DisableRecommendationWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string schemaName, string tableName, string columnName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Enables sensitivity recommendations on a given column (recommendations are
+        /// enabled by default on all columns)
+        /// </summary>
+        /// <remarks>
+        /// Enables sensitivity recommendations on a given column (recommendations are
+        /// enabled by default on all columns)
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='schemaName'>
+        /// The name of the schema.
+        /// </param>
+        /// <param name='tableName'>
+        /// The name of the table.
+        /// </param>
+        /// <param name='columnName'>
+        /// The name of the column.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> EnableRecommendationWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string schemaName, string tableName, string columnName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets the sensitivity labels of a given database
+        /// </summary>
+        /// <remarks>
+        /// Gets the sensitivity labels of a given database
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SensitivityLabel>>> ListByDatabaseWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the sensitivity labels of a given database
@@ -360,6 +384,29 @@ namespace Microsoft.Azure.Management.Sql
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SensitivityLabel>>> ListRecommendedByDatabaseNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets the sensitivity labels of a given database
+        /// </summary>
+        /// <remarks>
+        /// Gets the sensitivity labels of a given database
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SensitivityLabel>>> ListByDatabaseNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists the target executions of a job step execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job to get.
         /// </param>
         /// <param name='jobExecutionId'>
-        /// The id of the job execution
+        /// The unique id of the job execution
         /// </param>
         /// <param name='stepName'>
         /// The name of the step.
@@ -84,8 +83,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a target execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -126,8 +124,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists target executions for all steps of a job execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -136,7 +133,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='jobExecutionId'>
         /// The id of the job execution

@@ -19,14 +19,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='createTimeMin'>
         /// If specified, only job executions created at or after the specified time
@@ -65,14 +64,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='createTimeMin'>
         /// If specified, only job executions created at or after the specified time
@@ -116,8 +114,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -126,7 +123,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='createTimeMin'>
         /// If specified, only job executions created at or after the specified time
@@ -165,8 +162,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -175,7 +171,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='createTimeMin'>
         /// If specified, only job executions created at or after the specified time
@@ -219,8 +215,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -246,8 +241,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -278,8 +272,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -288,10 +281,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='jobExecutionId'>
-        /// The job execution id to create the job execution under.
+        /// The id of the job execution
         /// </param>
         public static JobExecution CreateOrUpdate(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId)
         {
@@ -305,8 +298,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -315,10 +307,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='jobExecutionId'>
-        /// The job execution id to create the job execution under.
+        /// The id of the job execution
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -337,8 +329,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -350,7 +341,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job.
         /// </param>
         /// <param name='jobExecutionId'>
-        /// The id of the job execution to cancel.
+        /// The id of the job execution
         /// </param>
         public static void Cancel(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId)
         {
@@ -364,8 +355,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -377,7 +367,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job.
         /// </param>
         /// <param name='jobExecutionId'>
-        /// The id of the job execution to cancel.
+        /// The id of the job execution
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -393,14 +383,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='jobName'>
         /// The name of the job to get.
@@ -417,14 +406,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='jobName'>
         /// The name of the job to get.
@@ -446,8 +434,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -456,10 +443,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='jobExecutionId'>
-        /// The job execution id to create the job execution under.
+        /// The id of the job execution
         /// </param>
         public static JobExecution BeginCreateOrUpdate(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId)
         {
@@ -473,8 +460,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -483,10 +469,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='jobExecutionId'>
-        /// The job execution id to create the job execution under.
+        /// The id of the job execution
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -505,14 +491,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='jobName'>
         /// The name of the job to get.
@@ -529,14 +514,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='jobName'>
         /// The name of the job to get.

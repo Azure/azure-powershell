@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ServicePrincipalType
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// SystemAssigned
+        /// </summary>
         public const string SystemAssigned = "SystemAssigned";
     }
 }

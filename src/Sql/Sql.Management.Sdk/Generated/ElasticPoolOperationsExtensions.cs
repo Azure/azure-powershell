@@ -13,20 +13,64 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class ElasticPoolOperationsExtensions
     {
         /// <summary>
+        /// Gets a list of operations performed on the elastic pool.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='elasticPoolName'>
+        /// The name of the elastic pool.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ElasticPoolOperation> ListByElasticPool(this IElasticPoolOperations operations, string resourceGroupName, string serverName, string elasticPoolName)
+        {
+                return ((IElasticPoolOperations)operations).ListByElasticPoolAsync(resourceGroupName, serverName, elasticPoolName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a list of operations performed on the elastic pool.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='elasticPoolName'>
+        /// The name of the elastic pool.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ElasticPoolOperation>> ListByElasticPoolAsync(this IElasticPoolOperations operations, string resourceGroupName, string serverName, string elasticPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByElasticPoolWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Cancels the asynchronous operation on the elastic pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='elasticPoolName'>
-        /// 
+        /// The name of the elastic pool.
         /// </param>
         /// <param name='operationId'>
         /// The operation identifier.
@@ -43,14 +87,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='elasticPoolName'>
-        /// 
+        /// The name of the elastic pool.
         /// </param>
         /// <param name='operationId'>
         /// The operation identifier.
@@ -61,53 +104,6 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task CancelAsync(this IElasticPoolOperations operations, string resourceGroupName, string serverName, string elasticPoolName, System.Guid operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.CancelWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, operationId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets a list of operations performed on the elastic pool.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='elasticPoolName'>
-        /// 
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ElasticPoolOperation> ListByElasticPool(this IElasticPoolOperations operations, string resourceGroupName, string serverName, string elasticPoolName)
-        {
-                return ((IElasticPoolOperations)operations).ListByElasticPoolAsync(resourceGroupName, serverName, elasticPoolName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a list of operations performed on the elastic pool.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='elasticPoolName'>
-        /// 
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ElasticPoolOperation>> ListByElasticPoolAsync(this IElasticPoolOperations operations, string resourceGroupName, string serverName, string elasticPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByElasticPoolWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
         }
         /// <summary>
         /// Gets a list of operations performed on the elastic pool.

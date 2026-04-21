@@ -14,14 +14,42 @@ namespace Microsoft.Azure.Management.Sql
     public partial interface IManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesOperations
     {
         /// <summary>
+        /// Gets a dropped database&#39;s short term retention policy list.
+        /// </summary>
+        /// <remarks>
+        /// Gets a dropped database&#39;s short term retention policy list.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='restorableDroppedDatabaseId'>
+        /// 
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedBackupShortTermRetentionPolicy>>> ListByRestorableDroppedDatabaseWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string restorableDroppedDatabaseId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Gets a dropped database&#39;s short term retention policy.
         /// </summary>
         /// <remarks>
         /// Gets a dropped database&#39;s short term retention policy.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -50,8 +78,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Sets a database&#39;s short term retention policy.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -74,7 +101,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedBackupShortTermRetentionPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string restorableDroppedDatabaseId, ManagedBackupShortTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedBackupShortTermRetentionPolicy,ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string restorableDroppedDatabaseId, ManagedBackupShortTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Sets a database&#39;s short term retention policy.
@@ -83,8 +110,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Sets a database&#39;s short term retention policy.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -107,37 +133,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedBackupShortTermRetentionPolicy>> UpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string restorableDroppedDatabaseId, ManagedBackupShortTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets a dropped database&#39;s short term retention policy list.
-        /// </summary>
-        /// <remarks>
-        /// Gets a dropped database&#39;s short term retention policy list.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='restorableDroppedDatabaseId'>
-        /// 
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ManagedBackupShortTermRetentionPolicy>>> ListByRestorableDroppedDatabaseWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string restorableDroppedDatabaseId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedBackupShortTermRetentionPolicy,ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string restorableDroppedDatabaseId, ManagedBackupShortTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Sets a database&#39;s short term retention policy.
@@ -146,8 +142,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Sets a database&#39;s short term retention policy.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -170,7 +165,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedBackupShortTermRetentionPolicy>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string restorableDroppedDatabaseId, ManagedBackupShortTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedBackupShortTermRetentionPolicy,ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string restorableDroppedDatabaseId, ManagedBackupShortTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Sets a database&#39;s short term retention policy.
@@ -179,8 +174,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Sets a database&#39;s short term retention policy.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -203,7 +197,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedBackupShortTermRetentionPolicy>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string restorableDroppedDatabaseId, ManagedBackupShortTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ManagedBackupShortTermRetentionPolicy,ManagedRestorableDroppedDatabaseBackupShortTermRetentionPoliciesUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string restorableDroppedDatabaseId, ManagedBackupShortTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a dropped database&#39;s short term retention policy list.

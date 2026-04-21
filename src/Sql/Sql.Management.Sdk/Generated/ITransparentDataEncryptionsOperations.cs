@@ -20,15 +20,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of the logical database&#39;s transparent data encryption.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption
-        /// is defined.
+        /// The name of the database.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -51,15 +49,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a logical database&#39;s transparent data encryption.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption
-        /// is defined.
+        /// The name of the database.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -82,15 +78,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a logical database&#39;s transparent data encryption configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is
-        /// defined.
+        /// The name of the database.
         /// </param>
         /// <param name='parameters'>
         /// The database transparent data encryption.
@@ -107,7 +101,69 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LogicalDatabaseTransparentDataEncryption>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, LogicalDatabaseTransparentDataEncryption parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LogicalDatabaseTransparentDataEncryption,TransparentDataEncryptionsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, LogicalDatabaseTransparentDataEncryption parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Resume ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <remarks>
+        /// Resume ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LogicalDatabaseTransparentDataEncryption,TransparentDataEncryptionsResumeHeaders>> ResumeWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Suspend ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <remarks>
+        /// Suspend ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LogicalDatabaseTransparentDataEncryption,TransparentDataEncryptionsSuspendHeaders>> SuspendWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates a logical database&#39;s transparent data encryption configuration.
@@ -116,15 +172,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a logical database&#39;s transparent data encryption configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is
-        /// defined.
+        /// The name of the database.
         /// </param>
         /// <param name='parameters'>
         /// The database transparent data encryption.
@@ -141,7 +195,69 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LogicalDatabaseTransparentDataEncryption>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, LogicalDatabaseTransparentDataEncryption parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LogicalDatabaseTransparentDataEncryption,TransparentDataEncryptionsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, LogicalDatabaseTransparentDataEncryption parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Resume ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <remarks>
+        /// Resume ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LogicalDatabaseTransparentDataEncryption,TransparentDataEncryptionsResumeHeaders>> BeginResumeWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Suspend ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <remarks>
+        /// Suspend ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LogicalDatabaseTransparentDataEncryption,TransparentDataEncryptionsSuspendHeaders>> BeginSuspendWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a list of the logical database&#39;s transparent data encryption.

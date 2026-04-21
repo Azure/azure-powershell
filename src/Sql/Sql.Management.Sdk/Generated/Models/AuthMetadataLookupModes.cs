@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class AuthMetadataLookupModes
     {
+        /// <summary>
+        /// AzureAD
+        /// </summary>
         public const string AzureAD = "AzureAD";
+        /// <summary>
+        /// Paired
+        /// </summary>
         public const string Paired = "Paired";
+        /// <summary>
+        /// Windows
+        /// </summary>
         public const string Windows = "Windows";
     }
 }

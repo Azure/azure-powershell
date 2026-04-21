@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Sql.Models
     /// A restorable dropped database resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RestorableDroppedDatabase : ProxyResource
+    public partial class RestorableDroppedDatabase : Resource
     {
         /// <summary>
         /// Initializes a new instance of the RestorableDroppedDatabase class.
@@ -25,22 +25,28 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the RestorableDroppedDatabase class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="sku">The name and tier of the SKU.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
+        /// <param name="tags">Resource tags.
         /// </param>
 
         /// <param name="location">Resource location.
         /// </param>
 
-        /// <param name="tags">Resource tags.
+        /// <param name="sku">The name and tier of the SKU.
         /// </param>
 
         /// <param name="databaseName">The name of the database.
@@ -63,13 +69,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="keys">The resource ids of the user assigned identities to use
         /// </param>
-        public RestorableDroppedDatabase(string id = default(string), string name = default(string), string type = default(string), Sku sku = default(Sku), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string databaseName = default(string), long? maxSizeBytes = default(long?), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? deletionDate = default(System.DateTime?), System.DateTime? earliestRestoreDate = default(System.DateTime?), string backupStorageRedundancy = default(string), System.Collections.Generic.IDictionary<string, DatabaseKey> keys = default(System.Collections.Generic.IDictionary<string, DatabaseKey>))
+        public RestorableDroppedDatabase(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), Sku sku = default(Sku), string databaseName = default(string), long? maxSizeBytes = default(long?), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? deletionDate = default(System.DateTime?), System.DateTime? earliestRestoreDate = default(System.DateTime?), string backupStorageRedundancy = default(string), System.Collections.Generic.IDictionary<string, DatabaseKey> keys = default(System.Collections.Generic.IDictionary<string, DatabaseKey>))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
-            this.Sku = sku;
-            this.Location = location;
             this.Tags = tags;
+            this.Location = location;
+            this.Sku = sku;
             this.DatabaseName = databaseName;
             this.MaxSizeBytes = maxSizeBytes;
             this.CreationDate = creationDate;
@@ -87,10 +93,10 @@ namespace Microsoft.Azure.Management.Sql.Models
 
 
         /// <summary>
-        /// Gets or sets the name and tier of the SKU.
+        /// Gets or sets resource tags.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
-        public Sku Sku {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets or sets resource location.
@@ -99,10 +105,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string Location {get; set; }
 
         /// <summary>
-        /// Gets or sets resource tags.
+        /// Gets or sets the name and tier of the SKU.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
+        public Sku Sku {get; set; }
 
         /// <summary>
         /// Gets the name of the database.
@@ -153,12 +159,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </exception>
         public virtual void Validate()
         {
+
+
             if (this.Sku != null)
             {
                 this.Sku.Validate();
             }
-
-
 
 
 

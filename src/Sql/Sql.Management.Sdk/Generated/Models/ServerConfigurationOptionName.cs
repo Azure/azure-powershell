@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ServerConfigurationOptionName
     {
+        /// <summary>
+        /// allowPolybaseExport
+        /// </summary>
         public const string AllowPolybaseExport = "allowPolybaseExport";
     }
 }

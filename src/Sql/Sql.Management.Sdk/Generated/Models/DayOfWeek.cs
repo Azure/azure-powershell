@@ -13,12 +13,33 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class DayOfWeek
     {
+        /// <summary>
+        /// Sunday
+        /// </summary>
         public const string Sunday = "Sunday";
+        /// <summary>
+        /// Monday
+        /// </summary>
         public const string Monday = "Monday";
+        /// <summary>
+        /// Tuesday
+        /// </summary>
         public const string Tuesday = "Tuesday";
+        /// <summary>
+        /// Wednesday
+        /// </summary>
         public const string Wednesday = "Wednesday";
+        /// <summary>
+        /// Thursday
+        /// </summary>
         public const string Thursday = "Thursday";
+        /// <summary>
+        /// Friday
+        /// </summary>
         public const string Friday = "Friday";
+        /// <summary>
+        /// Saturday
+        /// </summary>
         public const string Saturday = "Saturday";
     }
 }

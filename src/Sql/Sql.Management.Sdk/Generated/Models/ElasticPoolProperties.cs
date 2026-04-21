@@ -52,9 +52,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// occur.
         /// </param>
 
-        /// <param name="highAvailabilityReplicaCount">The number of secondary replicas associated with the elastic pool that are
-        /// used to provide high availability. Applicable only to Hyperscale elastic
-        /// pools.
+        /// <param name="highAvailabilityReplicaCount">The number of secondary replicas associated with the Business Critical,
+        /// Premium, or Hyperscale edition elastic pool that are used to provide high
+        /// availability. Applicable only to Hyperscale elastic pools.
+        /// </param>
+
+        /// <param name="autoPauseDelay">Time in minutes after which elastic pool is automatically paused. A value
+        /// of -1 means that automatic pause is disabled
         /// </param>
 
         /// <param name="preferredEnclaveType">Type of enclave requested on the elastic pool.
@@ -62,7 +66,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="availabilityZone">Specifies the availability zone the pool&#39;s primary replica is pinned to.
         /// Possible values include: &#39;NoPreference&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;</param>
-        public ElasticPoolProperties(string state = default(string), System.DateTime? creationDate = default(System.DateTime?), long? maxSizeBytes = default(long?), double? minCapacity = default(double?), ElasticPoolPerDatabaseSettings perDatabaseSettings = default(ElasticPoolPerDatabaseSettings), bool? zoneRedundant = default(bool?), string licenseType = default(string), string maintenanceConfigurationId = default(string), int? highAvailabilityReplicaCount = default(int?), string preferredEnclaveType = default(string), string availabilityZone = default(string))
+        public ElasticPoolProperties(string state = default(string), System.DateTime? creationDate = default(System.DateTime?), long? maxSizeBytes = default(long?), double? minCapacity = default(double?), ElasticPoolPerDatabaseSettings perDatabaseSettings = default(ElasticPoolPerDatabaseSettings), bool? zoneRedundant = default(bool?), string licenseType = default(string), string maintenanceConfigurationId = default(string), int? highAvailabilityReplicaCount = default(int?), int? autoPauseDelay = default(int?), string preferredEnclaveType = default(string), string availabilityZone = default(string))
 
         {
             this.State = state;
@@ -74,6 +78,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.LicenseType = licenseType;
             this.MaintenanceConfigurationId = maintenanceConfigurationId;
             this.HighAvailabilityReplicaCount = highAvailabilityReplicaCount;
+            this.AutoPauseDelay = autoPauseDelay;
             this.PreferredEnclaveType = preferredEnclaveType;
             this.AvailabilityZone = availabilityZone;
             CustomInit();
@@ -139,12 +144,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string MaintenanceConfigurationId {get; set; }
 
         /// <summary>
-        /// Gets or sets the number of secondary replicas associated with the elastic
-        /// pool that are used to provide high availability. Applicable only to
-        /// Hyperscale elastic pools.
+        /// Gets or sets the number of secondary replicas associated with the Business
+        /// Critical, Premium, or Hyperscale edition elastic pool that are used to
+        /// provide high availability. Applicable only to Hyperscale elastic pools.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "highAvailabilityReplicaCount")]
         public int? HighAvailabilityReplicaCount {get; set; }
+
+        /// <summary>
+        /// Gets or sets time in minutes after which elastic pool is automatically
+        /// paused. A value of -1 means that automatic pause is disabled
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "autoPauseDelay")]
+        public int? AutoPauseDelay {get; set; }
 
         /// <summary>
         /// Gets or sets type of enclave requested on the elastic pool. Possible values include: &#39;Default&#39;, &#39;VBS&#39;

@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the LongTermRetentionBackupOperationResult class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="requestId">Request Id.
@@ -54,9 +60,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="message">Progress message
         /// </param>
-        public LongTermRetentionBackupOperationResult(string id = default(string), string name = default(string), string type = default(string), System.Guid? requestId = default(System.Guid?), string operationType = default(string), string fromBackupResourceId = default(string), string toBackupResourceId = default(string), string targetBackupStorageRedundancy = default(string), string status = default(string), string message = default(string))
+        public LongTermRetentionBackupOperationResult(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Guid? requestId = default(System.Guid?), string operationType = default(string), string fromBackupResourceId = default(string), string toBackupResourceId = default(string), string targetBackupStorageRedundancy = default(string), string status = default(string), string message = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.RequestId = requestId;
             this.OperationType = operationType;

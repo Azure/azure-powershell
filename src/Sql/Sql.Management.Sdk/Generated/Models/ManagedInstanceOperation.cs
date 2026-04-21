@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ManagedInstanceOperation class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="managedInstanceName">The name of the managed instance the operation is being performed on.
@@ -79,9 +85,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="operationSteps">The operation steps.
         /// </param>
-        public ManagedInstanceOperation(string id = default(string), string name = default(string), string type = default(string), string managedInstanceName = default(string), string operation = default(string), string operationFriendlyName = default(string), int? percentComplete = default(int?), System.DateTime? startTime = default(System.DateTime?), string state = default(string), int? errorCode = default(int?), string errorDescription = default(string), int? errorSeverity = default(int?), bool? isUserError = default(bool?), System.DateTime? estimatedCompletionTime = default(System.DateTime?), string description = default(string), bool? isCancellable = default(bool?), ManagedInstanceOperationParametersPair operationParameters = default(ManagedInstanceOperationParametersPair), ManagedInstanceOperationSteps operationSteps = default(ManagedInstanceOperationSteps))
+        public ManagedInstanceOperation(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string managedInstanceName = default(string), string operation = default(string), string operationFriendlyName = default(string), int? percentComplete = default(int?), System.DateTime? startTime = default(System.DateTime?), string state = default(string), int? errorCode = default(int?), string errorDescription = default(string), int? errorSeverity = default(int?), bool? isUserError = default(bool?), System.DateTime? estimatedCompletionTime = default(System.DateTime?), string description = default(string), bool? isCancellable = default(bool?), ManagedInstanceOperationParametersPair operationParameters = default(ManagedInstanceOperationParametersPair), ManagedInstanceOperationSteps operationSteps = default(ManagedInstanceOperationSteps))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.ManagedInstanceName = managedInstanceName;
             this.Operation = operation;

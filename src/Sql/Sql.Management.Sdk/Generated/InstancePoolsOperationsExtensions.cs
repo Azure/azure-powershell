@@ -46,8 +46,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<InstancePool> ListByResourceGroup(this IInstancePoolsOperations operations, string resourceGroupName)
         {
@@ -61,8 +60,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -81,8 +79,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='instancePoolName'>
         /// The name of the instance pool to be retrieved.
@@ -99,8 +96,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='instancePoolName'>
         /// The name of the instance pool to be retrieved.
@@ -122,11 +118,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='instancePoolName'>
-        /// The name of the instance pool to be created or updated.
+        /// The name of the instance pool to be retrieved.
         /// </param>
         public static InstancePool CreateOrUpdate(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName, InstancePool parameters)
         {
@@ -140,11 +135,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='instancePoolName'>
-        /// The name of the instance pool to be created or updated.
+        /// The name of the instance pool to be retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -157,55 +151,16 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes an instance pool
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='instancePoolName'>
-        /// The name of the instance pool to be deleted
-        /// </param>
-        public static void Delete(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName)
-        {
-                ((IInstancePoolsOperations)operations).DeleteAsync(resourceGroupName, instancePoolName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes an instance pool
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='instancePoolName'>
-        /// The name of the instance pool to be deleted
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, instancePoolName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Updates an instance pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='instancePoolName'>
-        /// The name of the instance pool to be updated.
+        /// The name of the instance pool to be retrieved.
         /// </param>
         public static InstancePool Update(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName, InstancePoolUpdate parameters)
         {
@@ -219,11 +174,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='instancePoolName'>
-        /// The name of the instance pool to be updated.
+        /// The name of the instance pool to be retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -236,17 +190,55 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Deletes an instance pool
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='instancePoolName'>
+        /// The name of the instance pool to be retrieved.
+        /// </param>
+        public static InstancePoolsDeleteHeaders Delete(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName)
+        {
+                return ((IInstancePoolsOperations)operations).DeleteAsync(resourceGroupName, instancePoolName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an instance pool
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='instancePoolName'>
+        /// The name of the instance pool to be retrieved.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<InstancePoolsDeleteHeaders> DeleteAsync(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, instancePoolName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Creates or updates an instance pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='instancePoolName'>
-        /// The name of the instance pool to be created or updated.
+        /// The name of the instance pool to be retrieved.
         /// </param>
         public static InstancePool BeginCreateOrUpdate(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName, InstancePool parameters)
         {
@@ -260,11 +252,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='instancePoolName'>
-        /// The name of the instance pool to be created or updated.
+        /// The name of the instance pool to be retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -277,55 +268,16 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes an instance pool
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='instancePoolName'>
-        /// The name of the instance pool to be deleted
-        /// </param>
-        public static void BeginDelete(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName)
-        {
-                ((IInstancePoolsOperations)operations).BeginDeleteAsync(resourceGroupName, instancePoolName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes an instance pool
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='instancePoolName'>
-        /// The name of the instance pool to be deleted
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, instancePoolName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Updates an instance pool.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='instancePoolName'>
-        /// The name of the instance pool to be updated.
+        /// The name of the instance pool to be retrieved.
         /// </param>
         public static InstancePool BeginUpdate(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName, InstancePoolUpdate parameters)
         {
@@ -339,11 +291,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='instancePoolName'>
-        /// The name of the instance pool to be updated.
+        /// The name of the instance pool to be retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -353,6 +304,45 @@ namespace Microsoft.Azure.Management.Sql
             using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, instancePoolName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes an instance pool
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='instancePoolName'>
+        /// The name of the instance pool to be retrieved.
+        /// </param>
+        public static InstancePoolsDeleteHeaders BeginDelete(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName)
+        {
+                return ((IInstancePoolsOperations)operations).BeginDeleteAsync(resourceGroupName, instancePoolName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an instance pool
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='instancePoolName'>
+        /// The name of the instance pool to be retrieved.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<InstancePoolsDeleteHeaders> BeginDeleteAsync(this IInstancePoolsOperations operations, string resourceGroupName, string instancePoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, instancePoolName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

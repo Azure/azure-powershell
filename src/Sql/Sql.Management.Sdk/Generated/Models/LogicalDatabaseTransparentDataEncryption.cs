@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Sql.Models
     using System.Linq;
 
     /// <summary>
-    /// A logical database transparent data encryption state.
+    /// A logical database transparent data encryption scan state.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
     public partial class LogicalDatabaseTransparentDataEncryption : ProxyResource
@@ -25,22 +25,33 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the LogicalDatabaseTransparentDataEncryption class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="state">Specifies the state of the transparent data encryption.
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
-        public LogicalDatabaseTransparentDataEncryption(string id = default(string), string name = default(string), string type = default(string), TransparentDataEncryptionState? state = default(TransparentDataEncryptionState?))
 
-        : base(id, name, type)
+        /// <param name="scanState">Specifies the encryption scan state of the transparent data encryption.
+        /// Possible values include: &#39;None&#39;, &#39;Resume&#39;, &#39;Running&#39;, &#39;Suspend&#39;, &#39;Aborted&#39;,
+        /// &#39;Completed&#39;</param>
+        public LogicalDatabaseTransparentDataEncryption(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), TransparentDataEncryptionState? state = default(TransparentDataEncryptionState?), string scanState = default(string))
+
+        : base(id, name, type, systemData)
         {
             this.State = state;
+            this.ScanState = scanState;
             CustomInit();
         }
 
@@ -55,5 +66,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.state")]
         public TransparentDataEncryptionState? State {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the encryption scan state of the transparent data
+        /// encryption. Possible values include: &#39;None&#39;, &#39;Resume&#39;, &#39;Running&#39;, &#39;Suspend&#39;, &#39;Aborted&#39;, &#39;Completed&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.scanState")]
+        public string ScanState {get; set; }
     }
 }

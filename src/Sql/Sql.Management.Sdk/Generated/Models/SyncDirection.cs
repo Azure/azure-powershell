@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class SyncDirection
     {
+        /// <summary>
+        /// Bidirectional
+        /// </summary>
         public const string Bidirectional = "Bidirectional";
+        /// <summary>
+        /// OneWayMemberToHub
+        /// </summary>
         public const string OneWayMemberToHub = "OneWayMemberToHub";
+        /// <summary>
+        /// OneWayHubToMember
+        /// </summary>
         public const string OneWayHubToMember = "OneWayHubToMember";
     }
 }

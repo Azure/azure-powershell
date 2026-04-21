@@ -44,7 +44,10 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="backupStorageRedundancy">The storage redundancy type of the backup
         /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
-        public ManagedInstanceLongTermRetentionBackupProperties(string managedInstanceName = default(string), System.DateTime? managedInstanceCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string))
+
+        /// <param name="backupStorageAccessTier">The BackupStorageAccessTier for the LTR backup
+        /// Possible values include: &#39;Hot&#39;, &#39;Archive&#39;</param>
+        public ManagedInstanceLongTermRetentionBackupProperties(string managedInstanceName = default(string), System.DateTime? managedInstanceCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string), string backupStorageAccessTier = default(string))
 
         {
             this.ManagedInstanceName = managedInstanceName;
@@ -54,6 +57,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.BackupTime = backupTime;
             this.BackupExpirationTime = backupExpirationTime;
             this.BackupStorageRedundancy = backupStorageRedundancy;
+            this.BackupStorageAccessTier = backupStorageAccessTier;
             CustomInit();
         }
 
@@ -104,5 +108,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backupStorageRedundancy")]
         public string BackupStorageRedundancy {get; private set; }
+
+        /// <summary>
+        /// Gets the BackupStorageAccessTier for the LTR backup Possible values include: &#39;Hot&#39;, &#39;Archive&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "backupStorageAccessTier")]
+        public string BackupStorageAccessTier {get; private set; }
     }
 }

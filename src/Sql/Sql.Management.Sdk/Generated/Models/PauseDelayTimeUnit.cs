@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class PauseDelayTimeUnit
     {
+        /// <summary>
+        /// Minutes
+        /// </summary>
         public const string Minutes = "Minutes";
     }
 }

@@ -13,14 +13,181 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class ManagedDatabaseSensitivityLabelsOperationsExtensions
     {
         /// <summary>
+        /// Gets the sensitivity labels of a given database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='skipToken'>
+        /// 
+        /// </param>
+        /// <param name='count'>
+        /// 
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SensitivityLabel> ListCurrentByDatabase(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, string skipToken = default(string), bool? count = default(bool?), string filter = default(string))
+        {
+                return ((IManagedDatabaseSensitivityLabelsOperations)operations).ListCurrentByDatabaseAsync(resourceGroupName, managedInstanceName, databaseName, skipToken, count, filter).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the sensitivity labels of a given database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='skipToken'>
+        /// 
+        /// </param>
+        /// <param name='count'>
+        /// 
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SensitivityLabel>> ListCurrentByDatabaseAsync(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, string skipToken = default(string), bool? count = default(bool?), string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListCurrentByDatabaseWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, skipToken, count, filter, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Update sensitivity labels of a given database using an operations batch.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static void Update(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, SensitivityLabelUpdateList parameters)
+        {
+                ((IManagedDatabaseSensitivityLabelsOperations)operations).UpdateAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Update sensitivity labels of a given database using an operations batch.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task UpdateAsync(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, SensitivityLabelUpdateList parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.UpdateWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Gets the sensitivity labels of a given database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='skipToken'>
+        /// 
+        /// </param>
+        /// <param name='includeDisabledRecommendations'>
+        /// Specifies whether to include disabled recommendations or not.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SensitivityLabel> ListRecommendedByDatabase(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, string skipToken = default(string), bool? includeDisabledRecommendations = default(bool?), string filter = default(string))
+        {
+                return ((IManagedDatabaseSensitivityLabelsOperations)operations).ListRecommendedByDatabaseAsync(resourceGroupName, managedInstanceName, databaseName, skipToken, includeDisabledRecommendations, filter).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the sensitivity labels of a given database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='skipToken'>
+        /// 
+        /// </param>
+        /// <param name='includeDisabledRecommendations'>
+        /// Specifies whether to include disabled recommendations or not.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SensitivityLabel>> ListRecommendedByDatabaseAsync(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, string skipToken = default(string), bool? includeDisabledRecommendations = default(bool?), string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListRecommendedByDatabaseWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, skipToken, includeDisabledRecommendations, filter, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets the sensitivity label of a given column
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -52,8 +219,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -90,8 +256,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -120,8 +285,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -155,8 +319,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -185,8 +348,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -217,8 +379,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -247,8 +408,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -280,8 +440,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -311,8 +470,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -342,12 +500,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -355,15 +509,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        /// <param name='skipToken'>
-        /// 
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
         /// </param>
-        /// <param name='count'>
-        /// 
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<SensitivityLabel> ListCurrentByDatabase(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel>), string skipToken = default(string), bool? count = default(bool?))
+        public static Microsoft.Rest.Azure.IPage<SensitivityLabel> ListByDatabase(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, string filter = default(string))
         {
-                return ((IManagedDatabaseSensitivityLabelsOperations)operations).ListCurrentByDatabaseAsync(resourceGroupName, managedInstanceName, databaseName, odataQuery, skipToken, count).GetAwaiter().GetResult();
+                return ((IManagedDatabaseSensitivityLabelsOperations)operations).ListByDatabaseAsync(resourceGroupName, managedInstanceName, databaseName, filter).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -372,12 +523,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -385,127 +532,15 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        /// <param name='skipToken'>
-        /// 
-        /// </param>
-        /// <param name='count'>
-        /// 
+        /// <param name='filter'>
+        /// An OData filter expression that filters elements in the collection.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SensitivityLabel>> ListCurrentByDatabaseAsync(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel>), string skipToken = default(string), bool? count = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SensitivityLabel>> ListByDatabaseAsync(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, string filter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListCurrentByDatabaseWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, odataQuery, skipToken, count, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Update sensitivity labels of a given database using an operations batch.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        public static void Update(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, SensitivityLabelUpdateList parameters)
-        {
-                ((IManagedDatabaseSensitivityLabelsOperations)operations).UpdateAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update sensitivity labels of a given database using an operations batch.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task UpdateAsync(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, SensitivityLabelUpdateList parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.UpdateWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets the sensitivity labels of a given database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='skipToken'>
-        /// 
-        /// </param>
-        /// <param name='includeDisabledRecommendations'>
-        /// Specifies whether to include disabled recommendations or not.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<SensitivityLabel> ListRecommendedByDatabase(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel>), string skipToken = default(string), bool? includeDisabledRecommendations = default(bool?))
-        {
-                return ((IManagedDatabaseSensitivityLabelsOperations)operations).ListRecommendedByDatabaseAsync(resourceGroupName, managedInstanceName, databaseName, odataQuery, skipToken, includeDisabledRecommendations).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the sensitivity labels of a given database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='odataQuery'>
-        /// 
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='skipToken'>
-        /// 
-        /// </param>
-        /// <param name='includeDisabledRecommendations'>
-        /// Specifies whether to include disabled recommendations or not.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SensitivityLabel>> ListRecommendedByDatabaseAsync(this IManagedDatabaseSensitivityLabelsOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<SensitivityLabel>), string skipToken = default(string), bool? includeDisabledRecommendations = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListRecommendedByDatabaseWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, odataQuery, skipToken, includeDisabledRecommendations, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, filter, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -572,6 +607,39 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SensitivityLabel>> ListRecommendedByDatabaseNextAsync(this IManagedDatabaseSensitivityLabelsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListRecommendedByDatabaseNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the sensitivity labels of a given database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SensitivityLabel> ListByDatabaseNext(this IManagedDatabaseSensitivityLabelsOperations operations, string nextPageLink)
+        {
+                return ((IManagedDatabaseSensitivityLabelsOperations)operations).ListByDatabaseNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the sensitivity labels of a given database
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SensitivityLabel>> ListByDatabaseNextAsync(this IManagedDatabaseSensitivityLabelsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByDatabaseNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

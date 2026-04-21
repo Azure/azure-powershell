@@ -14,16 +14,15 @@ namespace Microsoft.Azure.Management.Sql
     public partial interface IServerTrustCertificatesOperations
     {
         /// <summary>
-        /// Gets a list of server trust certificates that were uploaded from box to the
-        /// given Sql Managed Instance.
+        /// Gets a list of the server trust certificates used to secure communication
+        /// between SQL Server and the specified SQL Managed Instance
         /// </summary>
         /// <remarks>
-        /// Gets a list of server trust certificates that were uploaded from box to the
-        /// given Sql Managed Instance.
+        /// Gets a list of the server trust certificates used to secure communication
+        /// between SQL Server and the specified SQL Managed Instance
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -43,16 +42,15 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ServerTrustCertificate>>> ListByInstanceWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a server trust certificate that was uploaded from box to Sql Managed
-        /// Instance.
+        /// Gets a server trust certificate that was uploaded from SQL Server to SQL
+        /// Managed Instance.
         /// </summary>
         /// <remarks>
-        /// Gets a server trust certificate that was uploaded from box to Sql Managed
-        /// Instance.
+        /// Gets a server trust certificate that was uploaded from SQL Server to SQL
+        /// Managed Instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -75,20 +73,19 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServerTrustCertificate>> GetWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string certificateName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Uploads a server trust certificate from box to Sql Managed Instance.
+        /// Uploads a server trust certificate from SQL Server to SQL Managed Instance.
         /// </summary>
         /// <remarks>
-        /// Uploads a server trust certificate from box to Sql Managed Instance.
+        /// Uploads a server trust certificate from SQL Server to SQL Managed Instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to upload.
+        /// Name of of the certificate to get.
         /// </param>
         /// <param name='parameters'>
         /// The server trust certificate info.
@@ -105,25 +102,24 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServerTrustCertificate>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string certificateName, ServerTrustCertificate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServerTrustCertificate,ServerTrustCertificatesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string certificateName, ServerTrustCertificate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes a server trust certificate that was uploaded from box to Sql
+        /// Deletes a server trust certificate that was uploaded from SQL Server to SQL
         /// Managed Instance.
         /// </summary>
         /// <remarks>
-        /// Deletes a server trust certificate that was uploaded from box to Sql
+        /// Deletes a server trust certificate that was uploaded from SQL Server to SQL
         /// Managed Instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to delete.
+        /// Name of of the certificate to get.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -134,23 +130,22 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string certificateName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ServerTrustCertificatesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string certificateName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Uploads a server trust certificate from box to Sql Managed Instance.
+        /// Uploads a server trust certificate from SQL Server to SQL Managed Instance.
         /// </summary>
         /// <remarks>
-        /// Uploads a server trust certificate from box to Sql Managed Instance.
+        /// Uploads a server trust certificate from SQL Server to SQL Managed Instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to upload.
+        /// Name of of the certificate to get.
         /// </param>
         /// <param name='parameters'>
         /// The server trust certificate info.
@@ -167,25 +162,24 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServerTrustCertificate>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string certificateName, ServerTrustCertificate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServerTrustCertificate,ServerTrustCertificatesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string certificateName, ServerTrustCertificate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes a server trust certificate that was uploaded from box to Sql
+        /// Deletes a server trust certificate that was uploaded from SQL Server to SQL
         /// Managed Instance.
         /// </summary>
         /// <remarks>
-        /// Deletes a server trust certificate that was uploaded from box to Sql
+        /// Deletes a server trust certificate that was uploaded from SQL Server to SQL
         /// Managed Instance.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to delete.
+        /// Name of of the certificate to get.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -196,15 +190,15 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string certificateName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ServerTrustCertificatesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string certificateName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a list of server trust certificates that were uploaded from box to the
-        /// given Sql Managed Instance.
+        /// Gets a list of the server trust certificates used to secure communication
+        /// between SQL Server and the specified SQL Managed Instance
         /// </summary>
         /// <remarks>
-        /// Gets a list of server trust certificates that were uploaded from box to the
-        /// given Sql Managed Instance.
+        /// Gets a list of the server trust certificates used to secure communication
+        /// between SQL Server and the specified SQL Managed Instance
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

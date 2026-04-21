@@ -13,20 +13,64 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class DatabaseSecurityAlertPoliciesOperationsExtensions
     {
         /// <summary>
+        /// Gets a list of database&#39;s security alert policies.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DatabaseSecurityAlertPolicy> ListByDatabase(this IDatabaseSecurityAlertPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName)
+        {
+                return ((IDatabaseSecurityAlertPoliciesOperations)operations).ListByDatabaseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a list of database&#39;s security alert policies.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseSecurityAlertPolicy>> ListByDatabaseAsync(this IDatabaseSecurityAlertPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets a database&#39;s security alert policy.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the  server.
+        /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the  database for which the security alert policy is defined.
+        /// The name of the database.
         /// </param>
         public static DatabaseSecurityAlertPolicy Get(this IDatabaseSecurityAlertPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
@@ -40,14 +84,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the  server.
+        /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the  database for which the security alert policy is defined.
+        /// The name of the database.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -66,14 +109,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the  server.
+        /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the  database for which the security alert policy is defined.
+        /// The name of the database.
         /// </param>
         public static DatabaseSecurityAlertPolicy CreateOrUpdate(this IDatabaseSecurityAlertPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, DatabaseSecurityAlertPolicy parameters)
         {
@@ -87,14 +129,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
-        /// The name of the  server.
+        /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the  database for which the security alert policy is defined.
+        /// The name of the database.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -102,53 +143,6 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task<DatabaseSecurityAlertPolicy> CreateOrUpdateAsync(this IDatabaseSecurityAlertPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, DatabaseSecurityAlertPolicy parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets a list of database&#39;s security alert policies.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the  server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the  database for which the security alert policy is defined.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<DatabaseSecurityAlertPolicy> ListByDatabase(this IDatabaseSecurityAlertPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName)
-        {
-                return ((IDatabaseSecurityAlertPoliciesOperations)operations).ListByDatabaseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a list of database&#39;s security alert policies.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the  server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the  database for which the security alert policy is defined.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DatabaseSecurityAlertPolicy>> ListByDatabaseAsync(this IDatabaseSecurityAlertPoliciesOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

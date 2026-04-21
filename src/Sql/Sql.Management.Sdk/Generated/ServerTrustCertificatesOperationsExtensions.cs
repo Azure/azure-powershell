@@ -13,15 +13,14 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class ServerTrustCertificatesOperationsExtensions
     {
         /// <summary>
-        /// Gets a list of server trust certificates that were uploaded from box to the
-        /// given Sql Managed Instance.
+        /// Gets a list of the server trust certificates used to secure communication
+        /// between SQL Server and the specified SQL Managed Instance
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -32,15 +31,14 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Gets a list of server trust certificates that were uploaded from box to the
-        /// given Sql Managed Instance.
+        /// Gets a list of the server trust certificates used to secure communication
+        /// between SQL Server and the specified SQL Managed Instance
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -56,15 +54,14 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Gets a server trust certificate that was uploaded from box to Sql Managed
-        /// Instance.
+        /// Gets a server trust certificate that was uploaded from SQL Server to SQL
+        /// Managed Instance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -78,15 +75,14 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Gets a server trust certificate that was uploaded from box to Sql Managed
-        /// Instance.
+        /// Gets a server trust certificate that was uploaded from SQL Server to SQL
+        /// Managed Instance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -105,20 +101,19 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Uploads a server trust certificate from box to Sql Managed Instance.
+        /// Uploads a server trust certificate from SQL Server to SQL Managed Instance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to upload.
+        /// Name of of the certificate to get.
         /// </param>
         public static ServerTrustCertificate CreateOrUpdate(this IServerTrustCertificatesOperations operations, string resourceGroupName, string managedInstanceName, string certificateName, ServerTrustCertificate parameters)
         {
@@ -126,20 +121,19 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Uploads a server trust certificate from box to Sql Managed Instance.
+        /// Uploads a server trust certificate from SQL Server to SQL Managed Instance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to upload.
+        /// Name of of the certificate to get.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -152,66 +146,66 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes a server trust certificate that was uploaded from box to Sql
+        /// Deletes a server trust certificate that was uploaded from SQL Server to SQL
         /// Managed Instance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to delete.
+        /// Name of of the certificate to get.
         /// </param>
-        public static void Delete(this IServerTrustCertificatesOperations operations, string resourceGroupName, string managedInstanceName, string certificateName)
+        public static ServerTrustCertificatesDeleteHeaders Delete(this IServerTrustCertificatesOperations operations, string resourceGroupName, string managedInstanceName, string certificateName)
         {
-                ((IServerTrustCertificatesOperations)operations).DeleteAsync(resourceGroupName, managedInstanceName, certificateName).GetAwaiter().GetResult();
+                return ((IServerTrustCertificatesOperations)operations).DeleteAsync(resourceGroupName, managedInstanceName, certificateName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes a server trust certificate that was uploaded from box to Sql
+        /// Deletes a server trust certificate that was uploaded from SQL Server to SQL
         /// Managed Instance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to delete.
+        /// Name of of the certificate to get.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IServerTrustCertificatesOperations operations, string resourceGroupName, string managedInstanceName, string certificateName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ServerTrustCertificatesDeleteHeaders> DeleteAsync(this IServerTrustCertificatesOperations operations, string resourceGroupName, string managedInstanceName, string certificateName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, certificateName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, certificateName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Uploads a server trust certificate from box to Sql Managed Instance.
+        /// Uploads a server trust certificate from SQL Server to SQL Managed Instance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to upload.
+        /// Name of of the certificate to get.
         /// </param>
         public static ServerTrustCertificate BeginCreateOrUpdate(this IServerTrustCertificatesOperations operations, string resourceGroupName, string managedInstanceName, string certificateName, ServerTrustCertificate parameters)
         {
@@ -219,20 +213,19 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Uploads a server trust certificate from box to Sql Managed Instance.
+        /// Uploads a server trust certificate from SQL Server to SQL Managed Instance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to upload.
+        /// Name of of the certificate to get.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -245,54 +238,55 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes a server trust certificate that was uploaded from box to Sql
+        /// Deletes a server trust certificate that was uploaded from SQL Server to SQL
         /// Managed Instance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to delete.
+        /// Name of of the certificate to get.
         /// </param>
-        public static void BeginDelete(this IServerTrustCertificatesOperations operations, string resourceGroupName, string managedInstanceName, string certificateName)
+        public static ServerTrustCertificatesDeleteHeaders BeginDelete(this IServerTrustCertificatesOperations operations, string resourceGroupName, string managedInstanceName, string certificateName)
         {
-                ((IServerTrustCertificatesOperations)operations).BeginDeleteAsync(resourceGroupName, managedInstanceName, certificateName).GetAwaiter().GetResult();
+                return ((IServerTrustCertificatesOperations)operations).BeginDeleteAsync(resourceGroupName, managedInstanceName, certificateName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes a server trust certificate that was uploaded from box to Sql
+        /// Deletes a server trust certificate that was uploaded from SQL Server to SQL
         /// Managed Instance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='certificateName'>
-        /// Name of of the certificate to delete.
+        /// Name of of the certificate to get.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IServerTrustCertificatesOperations operations, string resourceGroupName, string managedInstanceName, string certificateName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ServerTrustCertificatesDeleteHeaders> BeginDeleteAsync(this IServerTrustCertificatesOperations operations, string resourceGroupName, string managedInstanceName, string certificateName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, certificateName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, certificateName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Gets a list of server trust certificates that were uploaded from box to the
-        /// given Sql Managed Instance.
+        /// Gets a list of the server trust certificates used to secure communication
+        /// between SQL Server and the specified SQL Managed Instance
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -306,8 +300,8 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Gets a list of server trust certificates that were uploaded from box to the
-        /// given Sql Managed Instance.
+        /// Gets a list of the server trust certificates used to secure communication
+        /// between SQL Server and the specified SQL Managed Instance
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

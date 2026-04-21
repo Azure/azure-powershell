@@ -13,15 +13,45 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class JobExecutionLifecycle
     {
+        /// <summary>
+        /// Created
+        /// </summary>
         public const string Created = "Created";
+        /// <summary>
+        /// InProgress
+        /// </summary>
         public const string InProgress = "InProgress";
+        /// <summary>
+        /// WaitingForChildJobExecutions
+        /// </summary>
         public const string WaitingForChildJobExecutions = "WaitingForChildJobExecutions";
+        /// <summary>
+        /// WaitingForRetry
+        /// </summary>
         public const string WaitingForRetry = "WaitingForRetry";
+        /// <summary>
+        /// Succeeded
+        /// </summary>
         public const string Succeeded = "Succeeded";
+        /// <summary>
+        /// SucceededWithSkipped
+        /// </summary>
         public const string SucceededWithSkipped = "SucceededWithSkipped";
+        /// <summary>
+        /// Failed
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// TimedOut
+        /// </summary>
         public const string TimedOut = "TimedOut";
+        /// <summary>
+        /// Canceled
+        /// </summary>
         public const string Canceled = "Canceled";
+        /// <summary>
+        /// Skipped
+        /// </summary>
         public const string Skipped = "Skipped";
     }
 }

@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Sql.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RestorePointType
     {
+        /// <summary>
+        /// CONTINUOUS
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "CONTINUOUS")]
         Continuous,
+        /// <summary>
+        /// DISCRETE
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "DISCRETE")]
         Discrete
     }

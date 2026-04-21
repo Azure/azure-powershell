@@ -13,14 +13,52 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class OutboundFirewallRulesOperationsExtensions
     {
         /// <summary>
+        /// Gets all outbound firewall rules on a server.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<OutboundFirewallRule> ListByServer(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName)
+        {
+                return ((IOutboundFirewallRulesOperations)operations).ListByServerAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all outbound firewall rules on a server.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<OutboundFirewallRule>> ListByServerAsync(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets an outbound firewall rule.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -40,8 +78,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -66,8 +103,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -75,9 +111,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='outboundRuleFqdn'>
         /// 
         /// </param>
-        public static OutboundFirewallRule CreateOrUpdate(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn, OutboundFirewallRule parameters)
+        public static OutboundFirewallRule CreateOrUpdate(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn)
         {
-                return ((IOutboundFirewallRulesOperations)operations).CreateOrUpdateAsync(resourceGroupName, serverName, outboundRuleFqdn, parameters).GetAwaiter().GetResult();
+                return ((IOutboundFirewallRulesOperations)operations).CreateOrUpdateAsync(resourceGroupName, serverName, outboundRuleFqdn).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -87,8 +123,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -99,9 +134,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<OutboundFirewallRule> CreateOrUpdateAsync(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn, OutboundFirewallRule parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<OutboundFirewallRule> CreateOrUpdateAsync(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, outboundRuleFqdn, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, outboundRuleFqdn, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -113,8 +148,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -122,9 +156,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='outboundRuleFqdn'>
         /// 
         /// </param>
-        public static void Delete(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn)
+        public static OutboundFirewallRulesDeleteHeaders Delete(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn)
         {
-                ((IOutboundFirewallRulesOperations)operations).DeleteAsync(resourceGroupName, serverName, outboundRuleFqdn).GetAwaiter().GetResult();
+                return ((IOutboundFirewallRulesOperations)operations).DeleteAsync(resourceGroupName, serverName, outboundRuleFqdn).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -134,8 +168,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -146,49 +179,11 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<OutboundFirewallRulesDeleteHeaders> DeleteAsync(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, outboundRuleFqdn, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets all outbound firewall rules on a server.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<OutboundFirewallRule> ListByServer(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName)
-        {
-                return ((IOutboundFirewallRulesOperations)operations).ListByServerAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all outbound firewall rules on a server.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<OutboundFirewallRule>> ListByServerAsync(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByServerWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, outboundRuleFqdn, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -198,8 +193,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -207,9 +201,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='outboundRuleFqdn'>
         /// 
         /// </param>
-        public static OutboundFirewallRule BeginCreateOrUpdate(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn, OutboundFirewallRule parameters)
+        public static OutboundFirewallRule BeginCreateOrUpdate(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn)
         {
-                return ((IOutboundFirewallRulesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, serverName, outboundRuleFqdn, parameters).GetAwaiter().GetResult();
+                return ((IOutboundFirewallRulesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, serverName, outboundRuleFqdn).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -219,8 +213,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -231,9 +224,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<OutboundFirewallRule> BeginCreateOrUpdateAsync(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn, OutboundFirewallRule parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<OutboundFirewallRule> BeginCreateOrUpdateAsync(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, outboundRuleFqdn, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, outboundRuleFqdn, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -245,8 +238,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -254,9 +246,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='outboundRuleFqdn'>
         /// 
         /// </param>
-        public static void BeginDelete(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn)
+        public static OutboundFirewallRulesDeleteHeaders BeginDelete(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn)
         {
-                ((IOutboundFirewallRulesOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, outboundRuleFqdn).GetAwaiter().GetResult();
+                return ((IOutboundFirewallRulesOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, outboundRuleFqdn).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -266,8 +258,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -278,9 +269,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<OutboundFirewallRulesDeleteHeaders> BeginDeleteAsync(this IOutboundFirewallRulesOperations operations, string resourceGroupName, string serverName, string outboundRuleFqdn, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, outboundRuleFqdn, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, outboundRuleFqdn, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets all outbound firewall rules on a server.

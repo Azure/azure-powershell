@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of server keys.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -47,8 +46,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a server key.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -77,19 +75,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a server key.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the server key to be operated on (updated or created). The key
-        /// name is required to be in the format of &#39;vault_key_version&#39;. For example,
-        /// if the keyId is
-        /// https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion, then
-        /// the server key name should be formatted as:
-        /// YourVaultName_YourKeyName_YourKeyVersion
+        /// The name of the server key to be retrieved.
         /// </param>
         /// <param name='parameters'>
         /// The requested server key resource state.
@@ -115,14 +107,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes the server key with the given name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the server key to be deleted.
+        /// The name of the server key to be retrieved.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -142,19 +133,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a server key.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the server key to be operated on (updated or created). The key
-        /// name is required to be in the format of &#39;vault_key_version&#39;. For example,
-        /// if the keyId is
-        /// https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion, then
-        /// the server key name should be formatted as:
-        /// YourVaultName_YourKeyName_YourKeyVersion
+        /// The name of the server key to be retrieved.
         /// </param>
         /// <param name='parameters'>
         /// The requested server key resource state.
@@ -180,14 +165,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes the server key with the given name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the server key to be deleted.
+        /// The name of the server key to be retrieved.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

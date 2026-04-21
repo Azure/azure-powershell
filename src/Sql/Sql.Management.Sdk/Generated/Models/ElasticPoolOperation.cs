@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ElasticPoolOperation class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="elasticPoolName">The name of the elastic pool the operation is being performed on.
@@ -75,9 +81,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="isCancellable">Whether the operation can be cancelled.
         /// </param>
-        public ElasticPoolOperation(string id = default(string), string name = default(string), string type = default(string), string elasticPoolName = default(string), string operation = default(string), string operationFriendlyName = default(string), int? percentComplete = default(int?), string serverName = default(string), System.DateTime? startTime = default(System.DateTime?), string state = default(string), int? errorCode = default(int?), string errorDescription = default(string), int? errorSeverity = default(int?), bool? isUserError = default(bool?), System.DateTime? estimatedCompletionTime = default(System.DateTime?), string description = default(string), bool? isCancellable = default(bool?))
+        public ElasticPoolOperation(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string elasticPoolName = default(string), string operation = default(string), string operationFriendlyName = default(string), int? percentComplete = default(int?), string serverName = default(string), System.DateTime? startTime = default(System.DateTime?), string state = default(string), int? errorCode = default(int?), string errorDescription = default(string), int? errorSeverity = default(int?), bool? isUserError = default(bool?), System.DateTime? estimatedCompletionTime = default(System.DateTime?), string description = default(string), bool? isCancellable = default(bool?))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.ElasticPoolName = elasticPoolName;
             this.Operation = operation;

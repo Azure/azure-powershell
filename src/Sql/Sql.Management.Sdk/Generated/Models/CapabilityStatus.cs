@@ -14,12 +14,24 @@ namespace Microsoft.Azure.Management.Sql.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CapabilityStatus
     {
+        /// <summary>
+        /// Visible
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Visible")]
         Visible,
+        /// <summary>
+        /// Available
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Available")]
         Available,
+        /// <summary>
+        /// Default
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Default")]
         Default,
+        /// <summary>
+        /// Disabled
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Disabled")]
         Disabled
     }

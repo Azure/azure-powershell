@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class HybridSecondaryUsageDetected
     {
+        /// <summary>
+        /// Active
+        /// </summary>
         public const string Active = "Active";
+        /// <summary>
+        /// Passive
+        /// </summary>
         public const string Passive = "Passive";
     }
 }

@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Sql.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SensitivityLabelSource
     {
+        /// <summary>
+        /// current
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "current")]
         Current,
+        /// <summary>
+        /// recommended
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "recommended")]
         Recommended
     }

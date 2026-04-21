@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Sql.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobTargetGroupMembershipType
     {
+        /// <summary>
+        /// Include
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Include")]
         Include,
+        /// <summary>
+        /// Exclude
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Exclude")]
         Exclude
     }

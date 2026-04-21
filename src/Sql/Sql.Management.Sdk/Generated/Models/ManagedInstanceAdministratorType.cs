@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ManagedInstanceAdministratorType
     {
+        /// <summary>
+        /// ActiveDirectory
+        /// </summary>
         public const string ActiveDirectory = "ActiveDirectory";
     }
 }

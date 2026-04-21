@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ServerWorkspaceFeature
     {
+        /// <summary>
+        /// Connected
+        /// </summary>
         public const string Connected = "Connected";
+        /// <summary>
+        /// Disconnected
+        /// </summary>
         public const string Disconnected = "Disconnected";
     }
 }

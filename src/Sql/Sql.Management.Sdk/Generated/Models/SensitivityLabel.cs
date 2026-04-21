@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the SensitivityLabel class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="managedBy">Resource that manages the sensitivity label.
@@ -65,9 +71,12 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="rank">
         /// Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;, &#39;Critical&#39;</param>
-        public SensitivityLabel(string id = default(string), string name = default(string), string type = default(string), string managedBy = default(string), string schemaName = default(string), string tableName = default(string), string columnName = default(string), string labelName = default(string), string labelId = default(string), string informationType = default(string), string informationTypeId = default(string), bool? isDisabled = default(bool?), SensitivityLabelRank? rank = default(SensitivityLabelRank?))
 
-        : base(id, name, type)
+        /// <param name="clientClassificationSource">
+        /// Possible values include: &#39;None&#39;, &#39;Native&#39;, &#39;Recommended&#39;, &#39;MIP&#39;</param>
+        public SensitivityLabel(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string managedBy = default(string), string schemaName = default(string), string tableName = default(string), string columnName = default(string), string labelName = default(string), string labelId = default(string), string informationType = default(string), string informationTypeId = default(string), bool? isDisabled = default(bool?), SensitivityLabelRank? rank = default(SensitivityLabelRank?), string clientClassificationSource = default(string))
+
+        : base(id, name, type, systemData)
         {
             this.ManagedBy = managedBy;
             this.SchemaName = schemaName;
@@ -79,6 +88,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.InformationTypeId = informationTypeId;
             this.IsDisabled = isDisabled;
             this.Rank = rank;
+            this.ClientClassificationSource = clientClassificationSource;
             CustomInit();
         }
 
@@ -149,5 +159,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.rank")]
         public SensitivityLabelRank? Rank {get; set; }
+
+        /// <summary>
+        /// Gets or sets Possible values include: &#39;None&#39;, &#39;Native&#39;, &#39;Recommended&#39;, &#39;MIP&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientClassificationSource")]
+        public string ClientClassificationSource {get; set; }
     }
 }

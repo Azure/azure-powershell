@@ -19,15 +19,14 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
-        public static void Create(this ITdeCertificatesOperations operations, string resourceGroupName, string serverName, TdeCertificate parameters)
+        public static TdeCertificatesCreateHeaders Create(this ITdeCertificatesOperations operations, string resourceGroupName, string serverName, TdeCertificate parameters)
         {
-                ((ITdeCertificatesOperations)operations).CreateAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
+                return ((ITdeCertificatesOperations)operations).CreateAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -37,8 +36,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -46,9 +44,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task CreateAsync(this ITdeCertificatesOperations operations, string resourceGroupName, string serverName, TdeCertificate parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<TdeCertificatesCreateHeaders> CreateAsync(this ITdeCertificatesOperations operations, string resourceGroupName, string serverName, TdeCertificate parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.CreateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Creates a TDE certificate for a given server.
@@ -57,15 +58,14 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
-        public static void BeginCreate(this ITdeCertificatesOperations operations, string resourceGroupName, string serverName, TdeCertificate parameters)
+        public static TdeCertificatesCreateHeaders BeginCreate(this ITdeCertificatesOperations operations, string resourceGroupName, string serverName, TdeCertificate parameters)
         {
-                ((ITdeCertificatesOperations)operations).BeginCreateAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
+                return ((ITdeCertificatesOperations)operations).BeginCreateAsync(resourceGroupName, serverName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -75,8 +75,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -84,9 +83,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginCreateAsync(this ITdeCertificatesOperations operations, string resourceGroupName, string serverName, TdeCertificate parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<TdeCertificatesCreateHeaders> BeginCreateAsync(this ITdeCertificatesOperations operations, string resourceGroupName, string serverName, TdeCertificate parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, serverName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
     }
 }

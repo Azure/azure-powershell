@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ManagedInstanceDtc class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="provisioningState">Provisioning state of managed instance DTC.
@@ -49,9 +55,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="dtcHostNameDnsSuffix">Host name dns suffix of managed instance DTC.
         /// </param>
-        public ManagedInstanceDtc(string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), bool? dtcEnabled = default(bool?), ManagedInstanceDtcSecuritySettings securitySettings = default(ManagedInstanceDtcSecuritySettings), System.Collections.Generic.IList<string> externalDnsSuffixSearchList = default(System.Collections.Generic.IList<string>), string dtcHostNameDnsSuffix = default(string))
+        public ManagedInstanceDtc(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), bool? dtcEnabled = default(bool?), ManagedInstanceDtcSecuritySettings securitySettings = default(ManagedInstanceDtcSecuritySettings), System.Collections.Generic.IList<string> externalDnsSuffixSearchList = default(System.Collections.Generic.IList<string>), string dtcHostNameDnsSuffix = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.ProvisioningState = provisioningState;
             this.DtcEnabled = dtcEnabled;

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class PerformanceLevelUnit
     {
+        /// <summary>
+        /// DTU
+        /// </summary>
         public const string DTU = "DTU";
+        /// <summary>
+        /// VCores
+        /// </summary>
         public const string VCores = "VCores";
     }
 }

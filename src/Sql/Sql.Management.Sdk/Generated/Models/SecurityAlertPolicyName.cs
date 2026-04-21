@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class SecurityAlertPolicyName
     {
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
     }
 }

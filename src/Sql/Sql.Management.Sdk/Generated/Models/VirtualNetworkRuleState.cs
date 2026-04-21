@@ -13,11 +13,29 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class VirtualNetworkRuleState
     {
+        /// <summary>
+        /// Initializing
+        /// </summary>
         public const string Initializing = "Initializing";
+        /// <summary>
+        /// InProgress
+        /// </summary>
         public const string InProgress = "InProgress";
+        /// <summary>
+        /// Ready
+        /// </summary>
         public const string Ready = "Ready";
+        /// <summary>
+        /// Failed
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// Deleting
+        /// </summary>
         public const string Deleting = "Deleting";
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
     }
 }

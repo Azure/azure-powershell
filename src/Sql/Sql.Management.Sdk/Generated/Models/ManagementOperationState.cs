@@ -13,11 +13,29 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ManagementOperationState
     {
+        /// <summary>
+        /// Pending
+        /// </summary>
         public const string Pending = "Pending";
+        /// <summary>
+        /// InProgress
+        /// </summary>
         public const string InProgress = "InProgress";
+        /// <summary>
+        /// Succeeded
+        /// </summary>
         public const string Succeeded = "Succeeded";
+        /// <summary>
+        /// Failed
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// CancelInProgress
+        /// </summary>
         public const string CancelInProgress = "CancelInProgress";
+        /// <summary>
+        /// Cancelled
+        /// </summary>
         public const string Cancelled = "Cancelled";
     }
 }
