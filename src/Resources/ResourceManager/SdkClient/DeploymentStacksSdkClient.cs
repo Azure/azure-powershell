@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,9 +36,6 @@ using Newtonsoft.Json;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json;
 using Microsoft.WindowsAzure.Commands.Common;
-using Azure.Core;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -86,28 +83,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             set { this.resourceManagerSdkClient = value; }
-        }
-
-        /// <summary>
-        /// Field that holds the ARM client instance for Track 2 SDK
-        /// </summary>
-        private ArmClient armClient;
-
-        /// <summary>
-        /// Gets the ARM client for Track 2 SDK operations (e.g., What-If)
-        /// </summary>
-        private ArmClient ArmClient
-        {
-            get
-            {
-                if (this.armClient == null && this.azureContext != null)
-                {
-                    var credential = new AzureContextCredential(this.azureContext);
-                    var armClientOptions = new ArmClientOptions();
-                    this.armClient = new ArmClient(credential, this.azureContext.Subscription.Id, armClientOptions);
-                }
-                return this.armClient;
-            }
         }
 
         private enum DeploymentStackScope
@@ -1385,12 +1360,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         #region What-If Resource CRUD Operations
 
-        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string stackName)
+        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string stackName, bool withPropertyChanges = false)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Get(resourceGroupName, stackName);
-                return ConvertToPSDeploymentStackWhatIfResult(result);
+                if (withPropertyChanges)
+                {
+                    var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.WhatIf(resourceGroupName, stackName);
+                    return ConvertToPSDeploymentStackWhatIfResult(result);
+                }
+                else
+                {
+                    var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Get(resourceGroupName, stackName);
+                    return ConvertToPSDeploymentStackWhatIfResult(result);
+                }
             }
             catch (Exception ex)
             {
@@ -1436,12 +1419,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResult(string stackName)
+        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResult(string stackName, bool withPropertyChanges = false)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Get(stackName);
-                return ConvertToPSDeploymentStackWhatIfResult(result);
+                if (withPropertyChanges)
+                {
+                    var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.WhatIf(stackName);
+                    return ConvertToPSDeploymentStackWhatIfResult(result);
+                }
+                else
+                {
+                    var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Get(stackName);
+                    return ConvertToPSDeploymentStackWhatIfResult(result);
+                }
             }
             catch (Exception ex)
             {
@@ -1487,12 +1478,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string stackName)
+        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string stackName, bool withPropertyChanges = false)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Get(managementGroupId, stackName);
-                return ConvertToPSDeploymentStackWhatIfResult(result);
+                if (withPropertyChanges)
+                {
+                    var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.WhatIf(managementGroupId, stackName);
+                    return ConvertToPSDeploymentStackWhatIfResult(result);
+                }
+                else
+                {
+                    var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Get(managementGroupId, stackName);
+                    return ConvertToPSDeploymentStackWhatIfResult(result);
+                }
             }
             catch (Exception ex)
             {
@@ -1702,8 +1701,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 WriteVerbose($"Final What-If result state: {finalResult.Properties?.ProvisioningState}");
 
-                // Convert SDK result to PowerShell model
-                return ConvertToPSDeploymentStackWhatIfResult(finalResult);
+                // Call WhatIf POST to retrieve result with property changes populated
+                WriteVerbose("Retrieving What-If result with property changes...");
+                var postResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.WhatIf(resourceGroupName, deploymentStackName);
+                return ConvertToPSDeploymentStackWhatIfResult(postResult);
             }
             catch (ErrorResponseException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound || 
                                                      (ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
@@ -1824,8 +1825,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 WriteVerbose($"Final What-If result state: {finalResult.Properties?.ProvisioningState}");
 
-                // Convert SDK result to PowerShell model
-                return ConvertToPSDeploymentStackWhatIfResult(finalResult);
+                // Call WhatIf POST to retrieve result with property changes populated
+                WriteVerbose("Retrieving What-If result with property changes...");
+                var postResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.WhatIf(deploymentStackName);
+                return ConvertToPSDeploymentStackWhatIfResult(postResult);
             }
             catch (ErrorResponseException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound || 
                                                      (ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
@@ -1950,8 +1953,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 WriteVerbose($"Final What-If result state: {finalResult.Properties?.ProvisioningState}");
 
-                // Convert SDK result to PowerShell model
-                return ConvertToPSDeploymentStackWhatIfResult(finalResult);
+                // Call WhatIf POST to retrieve result with property changes populated
+                WriteVerbose("Retrieving What-If result with property changes...");
+                var postResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.WhatIf(managementGroupId, deploymentStackName);
+                return ConvertToPSDeploymentStackWhatIfResult(postResult);
             }
             catch (ErrorResponseException ex) when (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound || 
                                                      (ex.Response.StatusCode == System.Net.HttpStatusCode.BadRequest && 
@@ -2000,58 +2005,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         #endregion
-    }
-
-    /// <summary>
-    /// Token credential implementation for Azure Context
-    /// </summary>
-    internal class AzureContextCredential : TokenCredential
-    {
-        private readonly IAzureContext context;
-
-        public AzureContextCredential(IAzureContext context)
-        {
-            this.context = context ?? throw new ArgumentNullException(nameof(context));
-        }
-
-        public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken)
-        {
-            var accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
-                context.Account,
-                context.Environment,
-                context.Tenant.Id,
-                null,
-                ShowDialog.Never,
-                null,
-                requestContext.Scopes?.FirstOrDefault());
-
-            // Try to get expiration time from the token
-            DateTimeOffset expiresOn = DateTimeOffset.UtcNow.AddHours(1); // Default to 1 hour from now
-            
-            // Try to get ExpiresOn from extended properties
-            if (accessToken.ExtendedProperties != null && accessToken.ExtendedProperties.TryGetValue("ExpiresOn", out string expiresOnStr))
-            {
-                if (DateTimeOffset.TryParse(expiresOnStr, out var parsedDate))
-                {
-                    expiresOn = parsedDate;
-                }
-            }
-            else
-            {
-                // Try to use reflection to get ExpiresOn property if it exists
-                var expiresOnProperty = accessToken.GetType().GetProperty("ExpiresOn");
-                if (expiresOnProperty != null && expiresOnProperty.PropertyType == typeof(DateTimeOffset))
-                {
-                    expiresOn = (DateTimeOffset)expiresOnProperty.GetValue(accessToken);
-                }
-            }
-
-            return new AccessToken(accessToken.AccessToken, expiresOn);
-        }
-
-        public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
-        {
-            return new ValueTask<AccessToken>(GetToken(requestContext, cancellationToken));
-        }
     }
 }
