@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     /// </summary>
     [Cmdlet("Remove", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStackWhatIfResult",
         SupportsShouldProcess = true, DefaultParameterSetName = RemoveByNameAndResourceGroupNameParameterSetName), OutputType(typeof(bool))]
-    public class RemoveAzResourceGroupDeploymentStackWhatIf : DeploymentStacksCmdletBase
+    public class RemoveAzResourceGroupDeploymentStackWhatIfResult : DeploymentStacksCmdletBase
     {
         internal const string RemoveByResourceIdParameterSetName = "RemoveByResourceId";
         internal const string RemoveByNameAndResourceGroupNameParameterSetName = "RemoveByNameAndResourceGroupName";

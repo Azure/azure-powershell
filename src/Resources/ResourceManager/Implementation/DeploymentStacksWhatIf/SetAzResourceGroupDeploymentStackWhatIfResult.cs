@@ -16,18 +16,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
-    /// Cmdlet to preview changes for creating a Resource Group Deployment Stack.
+    /// Cmdlet to preview changes for updating a Resource Group Deployment Stack.
     /// </summary>
-    [Cmdlet("New", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStackWhatIfResult",
+    [Cmdlet("Set", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStackWhatIfResult",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class NewAzResourceGroupDeploymentStackWhatIf : DeploymentStackWhatIfCmdlet
+    public class SetAzResourceGroupDeploymentStackWhatIfResult : DeploymentStackWhatIfCmdlet
     {
         #region Cmdlet Parameters
 

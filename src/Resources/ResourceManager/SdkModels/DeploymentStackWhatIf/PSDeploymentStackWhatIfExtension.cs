@@ -11,20 +11,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class DeploymentStackWhatIfChanges
+    public class PSDeploymentStackWhatIfExtension
     {
-        [JsonProperty("resourceChanges")]
-        public IList<DeploymentStackResourceChange> ResourceChanges { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
 
-        [JsonProperty("deploymentScopeChange")]
-        public DeploymentStackChangeBase DeploymentScopeChange { get; set; }
+        [JsonProperty("version")]
+        public string Version { get; set; }
 
-        [JsonProperty("denySettingsChange")]
-        public DeploymentStackChangeDeltaRecord DenySettingsChange { get; set; }
+        [JsonProperty("configId")]
+        public string ConfigId { get; set; }
+
+        [JsonProperty("config")]
+        public IDictionary<string, PSDeploymentStackWhatIfExtensionConfigItem> Config { get; set; }
     }
 }

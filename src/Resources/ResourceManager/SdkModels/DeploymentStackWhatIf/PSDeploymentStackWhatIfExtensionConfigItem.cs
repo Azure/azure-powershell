@@ -11,16 +11,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf
 {
     using Newtonsoft.Json;
 
-    public class DeploymentStackExtensionConfigItem
+    public class PSDeploymentStackWhatIfExtensionConfigItem
     {
         [JsonProperty("value")]
         public object Value { get; set; }
 
         [JsonProperty("keyVaultReference")]
-        public DeploymentStackKeyVaultReference KeyVaultReference { get; set; }
+        public PSDeploymentStackWhatIfKeyVaultReference KeyVaultReference { get; set; }
     }
 }

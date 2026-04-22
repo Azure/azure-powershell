@@ -11,26 +11,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class DeploymentStackPropertyChange
+    public class PSDeploymentStackWhatIfDiagnostic
     {
-        [JsonProperty("path")]
-        public string Path { get; set; }
+        [JsonProperty("level")]
+        public string Level { get; set; }
 
-        [JsonProperty("changeType")]
-        public string ChangeType { get; set; }
+        [JsonProperty("code")]
+        public string Code { get; set; }
 
-        [JsonProperty("before")]
-        public object Before { get; set; }
+        [JsonProperty("message")]
+        public string Message { get; set; }
 
-        [JsonProperty("after")]
-        public object After { get; set; }
-
-        [JsonProperty("children")]
-        public IList<DeploymentStackPropertyChange> Children { get; set; }
+        [JsonProperty("target")]
+        public string Target { get; set; }
     }
 }

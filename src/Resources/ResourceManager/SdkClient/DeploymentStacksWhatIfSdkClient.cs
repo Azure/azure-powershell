@@ -13,7 +13,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 {
                     Name = deploymentStackName,
                     Type = "Microsoft.Resources/deploymentStacks",
-                    Properties = new DeploymentStackWhatIfProperties
+                    Properties = new PSDeploymentStackWhatIfProperties
                     {
                         ProvisioningState = "What-If API not available"
                     }
@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 {
                     Name = deploymentStackName,
                     Type = "Microsoft.Resources/deploymentStacks",
-                    Properties = new DeploymentStackWhatIfProperties
+                    Properties = new PSDeploymentStackWhatIfProperties
                     {
                         ProvisioningState = "What-If API not available"
                     }
@@ -928,7 +928,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 {
                     Name = deploymentStackName,
                     Type = "Microsoft.Resources/deploymentStacks",
-                    Properties = new DeploymentStackWhatIfProperties
+                    Properties = new PSDeploymentStackWhatIfProperties
                     {
                         ProvisioningState = "What-If API not available"
                     }
