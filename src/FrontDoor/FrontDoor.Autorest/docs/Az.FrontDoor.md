@@ -1,6 +1,6 @@
 ---
 Module Name: Az.FrontDoor
-Module Guid: da373e2c-9a59-49f0-ab41-9d25ef4d1519
+Module Guid: 7d4bc594-9700-430c-9585-5cda742b26ef
 Download Help Link: https://learn.microsoft.com/powershell/module/az.frontdoor
 Help Version: 1.0.0.0
 Locale: en-US
@@ -20,8 +20,23 @@ Enables a frontendEndpoint for HTTPS traffic
 ### [Get-AzFrontDoor](Get-AzFrontDoor.md)
 Gets a Front Door with the specified Front Door name under the specified subscription and resource group.
 
+### [Get-AzFrontDoorExperiment](Get-AzFrontDoorExperiment.md)
+Gets an Experiment by ExperimentName
+
 ### [Get-AzFrontDoorFrontendEndpoint](Get-AzFrontDoorFrontendEndpoint.md)
 Gets a Frontend endpoint with the specified name within the specified Front Door.
+
+### [Get-AzFrontDoorNetworkExperimentProfile](Get-AzFrontDoorNetworkExperimentProfile.md)
+Gets an NetworkExperiment Profile by ProfileName
+
+### [Get-AzFrontDoorPreconfiguredEndpoint](Get-AzFrontDoorPreconfiguredEndpoint.md)
+Gets a list of Preconfigured Endpoints
+
+### [Get-AzFrontDoorReportLatencyScorecard](Get-AzFrontDoorReportLatencyScorecard.md)
+Gets a Latency Scorecard for a given Experiment
+
+### [Get-AzFrontDoorReportTimesery](Get-AzFrontDoorReportTimesery.md)
+Gets a Timeseries for a given Experiment
 
 ### [Get-AzFrontDoorRulesEngine](Get-AzFrontDoorRulesEngine.md)
 Gets a Rules Engine Configuration with the specified name within the specified Front Door.
@@ -47,6 +62,9 @@ Create an in-memory object for BackendPoolsSettings.
 ### [New-AzFrontDoorCacheConfigurationObject](New-AzFrontDoorCacheConfigurationObject.md)
 Create an in-memory object for CacheConfiguration.
 
+### [New-AzFrontDoorExperiment](New-AzFrontDoorExperiment.md)
+Create an Experiment
+
 ### [New-AzFrontDoorForwardingConfigurationObject](New-AzFrontDoorForwardingConfigurationObject.md)
 Create an in-memory object for ForwardingConfiguration.
 
@@ -61,6 +79,9 @@ Create an in-memory object for HealthProbeSettingsModel.
 
 ### [New-AzFrontDoorLoadBalancingSettingObject](New-AzFrontDoorLoadBalancingSettingObject.md)
 Create an in-memory object for LoadBalancingSettingsModel.
+
+### [New-AzFrontDoorNetworkExperimentProfile](New-AzFrontDoorNetworkExperimentProfile.md)
+Create an NetworkExperiment Profile
 
 ### [New-AzFrontDoorPolicySettingsObject](New-AzFrontDoorPolicySettingsObject.md)
 Create an in-memory object for PolicySettings.
@@ -119,6 +140,12 @@ Deletes an existing Front Door with the specified parameters.
 ### [Remove-AzFrontDoorContent](Remove-AzFrontDoorContent.md)
 Removes a content from Front Door.
 
+### [Remove-AzFrontDoorExperiment](Remove-AzFrontDoorExperiment.md)
+Deletes an Experiment
+
+### [Remove-AzFrontDoorNetworkExperimentProfile](Remove-AzFrontDoorNetworkExperimentProfile.md)
+Deletes an NetworkExperiment Profile by ProfileName
+
 ### [Remove-AzFrontDoorRulesEngine](Remove-AzFrontDoorRulesEngine.md)
 Deletes an existing Rules Engine Configuration with the specified parameters.
 
@@ -128,8 +155,20 @@ Deletes Policy
 ### [Set-AzFrontDoor](Set-AzFrontDoor.md)
 Update a new Front Door with a Front Door name under the specified subscription and resource group.
 
+### [Set-AzFrontDoorExperiment](Set-AzFrontDoorExperiment.md)
+Update an Experiment
+
+### [Set-AzFrontDoorNetworkExperimentProfile](Set-AzFrontDoorNetworkExperimentProfile.md)
+Update an NetworkExperiment Profile
+
 ### [Set-AzFrontDoorRulesEngine](Set-AzFrontDoorRulesEngine.md)
 Update a new Rules Engine Configuration with the specified name within the specified Front Door.
+
+### [Update-AzFrontDoorExperiment](Update-AzFrontDoorExperiment.md)
+Update an Experiment
+
+### [Update-AzFrontDoorNetworkExperimentProfile](Update-AzFrontDoorNetworkExperimentProfile.md)
+Update an NetworkExperimentProfiles
 
 ### [Update-AzFrontDoorWafPolicy](Update-AzFrontDoorWafPolicy.md)
 Update policy with specified rule set name within a resource group.
