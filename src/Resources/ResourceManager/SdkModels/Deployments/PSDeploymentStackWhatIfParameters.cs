@@ -58,5 +58,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
         public string[] DenySettingsExcludedActions { get; set; }
 
         public bool DenySettingsApplyToChildScopes { get; set; }
+
+        /// <summary>The fully-qualified resource ID of the deployment stack to use as the basis for comparison.</summary>
+        public string StackResourceId { get; set; }
+
+        /// <summary>The interval to persist the WhatIf result in ISO 8601 format (e.g. P1D).</summary>
+        public string RetentionInterval { get; set; }
+
+        /// <summary>The validation level. Possible values: Template, Provider, ProviderNoRbac.</summary>
+        public string ValidationLevel { get; set; }
+
+        /// <summary>The debug setting detail level (e.g. RequestContent, ResponseContent).</summary>
+        public string DebugSettingDetailLevel { get; set; }
+
+        /// <summary>Flag to bypass stack out-of-sync error.</summary>
+        public bool BypassStackOutOfSyncError { get; set; }
     }
 }
