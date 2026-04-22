@@ -45,17 +45,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             {
                 if (!string.IsNullOrEmpty(parameters.ResourceGroupName))
                 {
-                    existing = DeploymentStacksSdkClient.GetResourceGroupDeploymentStackWhatIfResult(
+                    existing = DeploymentStacksWhatIfSdkClient.GetResourceGroupDeploymentStackWhatIfResult(
                         parameters.ResourceGroupName, parameters.StackName, throwIfNotExists: false);
                 }
                 else if (!string.IsNullOrEmpty(parameters.ManagementGroupId))
                 {
-                    existing = DeploymentStacksSdkClient.GetManagementGroupDeploymentStackWhatIfResult(
+                    existing = DeploymentStacksWhatIfSdkClient.GetManagementGroupDeploymentStackWhatIfResult(
                         parameters.ManagementGroupId, parameters.StackName, throwIfNotExists: false);
                 }
                 else
                 {
-                    existing = DeploymentStacksSdkClient.GetSubscriptionDeploymentStackWhatIfResult(
+                    existing = DeploymentStacksWhatIfSdkClient.GetSubscriptionDeploymentStackWhatIfResult(
                         parameters.StackName, throwIfNotExists: false);
                 }
             }
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 // Write status message.
                 this.WriteInformation(information, tags);
 
-                var whatIfResult = DeploymentStacksSdkClient.ExecuteDeploymentStackWhatIf(parameters);
+                var whatIfResult = DeploymentStacksWhatIfSdkClient.ExecuteDeploymentStackWhatIf(parameters);
 
                 // Clear status before returning result.
                 this.WriteInformation(clearInformation, tags);

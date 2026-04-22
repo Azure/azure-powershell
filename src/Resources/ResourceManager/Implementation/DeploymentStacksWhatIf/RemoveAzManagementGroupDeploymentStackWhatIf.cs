@@ -19,31 +19,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
-    /// Deletes an existing WhatIf result for a Resource Group Deployment Stack.
+    /// Deletes an existing WhatIf result for a Management Group Deployment Stack.
     /// </summary>
-    [Cmdlet("Remove", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStackWhatIfResult",
-        SupportsShouldProcess = true, DefaultParameterSetName = RemoveByNameAndResourceGroupNameParameterSetName), OutputType(typeof(bool))]
-    public class RemoveAzResourceGroupDeploymentStackWhatIf : DeploymentStacksCmdletBase
+    [Cmdlet("Remove", AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackWhatIfResult",
+        SupportsShouldProcess = true, DefaultParameterSetName = RemoveByNameAndManagementGroupIdParameterSetName), OutputType(typeof(bool))]
+    public class RemoveAzManagementGroupDeploymentStackWhatIf : DeploymentStacksCmdletBase
     {
         internal const string RemoveByResourceIdParameterSetName = "RemoveByResourceId";
-        internal const string RemoveByNameAndResourceGroupNameParameterSetName = "RemoveByNameAndResourceGroupName";
+        internal const string RemoveByNameAndManagementGroupIdParameterSetName = "RemoveByNameAndManagementGroupId";
         internal const string RemoveByInputObjectParameterSetName = "RemoveByInputObject";
 
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            ParameterSetName = RemoveByNameAndResourceGroupNameParameterSetName,
+            ParameterSetName = RemoveByNameAndManagementGroupIdParameterSetName,
             HelpMessage = "The name of the WhatIf result to delete.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            ParameterSetName = RemoveByNameAndResourceGroupNameParameterSetName,
-            HelpMessage = "The name of the ResourceGroup containing the WhatIf result.")]
-        [ResourceGroupCompleter]
+            ParameterSetName = RemoveByNameAndManagementGroupIdParameterSetName,
+            HelpMessage = "The ID of the management group.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ManagementGroupId { get; set; }
 
         [Alias("Id")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -73,24 +71,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                     ResourceId = InputObject.Id;
                 }
 
-                // Resolve Name and ResourceGroupName if ResourceId was provided
-                ResourceGroupName = ResourceGroupName ?? ResourceIdUtility.GetResourceGroupName(ResourceId);
-                Name = Name ?? ResourceIdUtility.GetDeploymentName(ResourceId);
+                // Resolve Name and ManagementGroupId if ResourceId was provided
+                if (!string.IsNullOrEmpty(ResourceId))
+                {
+                    Name = Name ?? ResourceIdUtility.GetDeploymentName(ResourceId);
+                    if (string.IsNullOrEmpty(ManagementGroupId))
+                    {
+                        // Extract management group id from: /providers/Microsoft.Management/managementGroups/{mgId}/...
+                        var segments = ResourceId.Split('/');
+                        var mgIndex = Array.IndexOf(segments, "managementGroups");
+                        if (mgIndex >= 0 && mgIndex + 1 < segments.Length)
+                        {
+                            ManagementGroupId = segments[mgIndex + 1];
+                        }
+                    }
+                }
 
-                if (Name == null || ResourceGroupName == null)
+                if (Name == null || ManagementGroupId == null)
                 {
                     throw new PSArgumentException($"Provided Id '{ResourceId}' is not in correct form. Should be in form " +
-                        "/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.Resources/deploymentStacksWhatIfResults/<name>");
+                        "/providers/Microsoft.Management/managementGroups/<mgId>/providers/Microsoft.Resources/deploymentStacksWhatIfResults/<name>");
                 }
 
                 ConfirmAction(
                     Force.IsPresent,
-                    $"Are you sure you want to delete WhatIf result '{Name}' in ResourceGroup '{ResourceGroupName}'?",
+                    $"Are you sure you want to delete WhatIf result '{Name}' in ManagementGroup '{ManagementGroupId}'?",
                     "Delete",
                     Name,
                     () =>
                     {
-                        DeploymentStacksSdkClient.DeleteResourceGroupDeploymentStackWhatIfResult(ResourceGroupName, Name);
+                        DeploymentStacksWhatIfSdkClient.DeleteManagementGroupDeploymentStackWhatIfResult(ManagementGroupId, Name);
                         if (PassThru.IsPresent)
                         {
                             WriteObject(true);

@@ -133,8 +133,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                     if(error != null)
                     {
-                        WriteWarning(string.Format("{0} : {1}", error.Error?.Code, error.Error?.Message));
-                        foreach (var detail in error.Error?.Details ?? new System.Collections.Generic.List<ErrorDetail>())
+                        WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
+                        foreach (var detail in error.Details)
                         {
                             WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
                         }

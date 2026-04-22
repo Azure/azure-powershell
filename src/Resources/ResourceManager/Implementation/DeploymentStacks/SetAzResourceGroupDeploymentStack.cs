@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 // Handle WhatIf scenario
                 if (MyInvocation.BoundParameters.ContainsKey("WhatIf") && ((SwitchParameter)MyInvocation.BoundParameters["WhatIf"]).ToBool())
                 {
-                    var whatIfResult = DeploymentStacksSdkClient.ExecuteResourceGroupDeploymentStackWhatIf(
+                    var whatIfResult = DeploymentStacksWhatIfSdkClient.ExecuteResourceGroupDeploymentStackWhatIf(
                         deploymentStackName: Name,
                         resourceGroupName: ResourceGroupName,
                         templateFile: TemplateFile,

@@ -52,23 +52,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         private static string GetFormattedErrorString(ErrorResponse error, int level = 0)
         {
-            if (error.Error?.Details == null)
-            {
-                return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, error.Error?.Message, error.Error?.Code);
-            }
-
-            string errorDetail = null;
-
-            foreach (ErrorDetail detail in error.Error.Details)
-            {
-                errorDetail += GetIndentation(level) + GetFormattedErrorString(detail, level + 1) + System.Environment.NewLine;
-            }
-
-            return string.Format(ProjectResources.DeploymentOperationErrorMessage, error.Error?.Message, error.Error?.Code, errorDetail);
-        }
-
-        private static string GetFormattedErrorString(ErrorDetail error, int level = 0)
-        {
             if (error.Details == null)
             {
                 return string.Format(ProjectResources.DeploymentOperationErrorMessageNoDetails, error.Message, error.Code);
@@ -76,7 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
             string errorDetail = null;
 
-            foreach (ErrorDetail detail in error.Details)
+            foreach (ErrorResponse detail in error.Details)
             {
                 errorDetail += GetIndentation(level) + GetFormattedErrorString(detail, level + 1) + System.Environment.NewLine;
             }

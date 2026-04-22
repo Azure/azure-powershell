@@ -424,14 +424,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (!string.IsNullOrEmpty(parameters.TemplateSpecId))
             {
-                deployment.Properties.TemplateLink = new Microsoft.Azure.Management.Resources.Models.TemplateLink
+                deployment.Properties.TemplateLink = new TemplateLink
                 {
                     Id = parameters.TemplateSpecId
                 };
             }
             else if (Uri.IsWellFormedUriString(parameters.TemplateFile, UriKind.Absolute))
             {
-                deployment.Properties.TemplateLink = new Microsoft.Azure.Management.Resources.Models.TemplateLink
+                deployment.Properties.TemplateLink = new TemplateLink
                 {
                     Uri = parameters.TemplateFile
                 };
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
             {
-                deployment.Properties.ParametersLink = new Microsoft.Azure.Management.Resources.Models.ParametersLink
+                deployment.Properties.ParametersLink = new ParametersLink
                 {
                     Uri = parameters.ParameterUri
                 };
@@ -544,11 +544,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             if (ex is CloudException)
             {
                 var cloudEx = ex as CloudException;
-                error = new ErrorResponse(new ErrorDetail(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target));
+                error = new ErrorResponse(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
             }
             else
             {
-                error = new ErrorResponse(new ErrorDetail(null, ex.Message, null));
+                error = new ErrorResponse(null, ex.Message, null, innerException);
             }
 
             return new List<ErrorResponse> { error };
@@ -702,10 +702,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 foreach (var error in validationResult.Errors)
                 {
-                    WriteError(string.Format(ErrorFormat, error.Error?.Code, error.Error?.Message));
-                    if (error.Error?.Details != null && error.Error.Details.Count > 0)
+                    WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+                    if (error.Details != null && error.Details.Count > 0)
                     {
-                        foreach (var innerError in error.Error.Details)
+                        foreach (var innerError in error.Details)
                         {
                             DisplayInnerDetailErrorMessage(innerError);
                         }
@@ -1521,7 +1521,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return ProvisionDeploymentStatus(parameters, deployment);
         }
 
-        private void DisplayInnerDetailErrorMessage(ErrorDetail error)
+        private void DisplayInnerDetailErrorMessage(ErrorResponse error)
         {
             WriteError(string.Format(ErrorFormat, error.Code, error.Message));
             if (error.Details != null)
