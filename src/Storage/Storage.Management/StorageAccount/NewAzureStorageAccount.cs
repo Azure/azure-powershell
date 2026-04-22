@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. TLS 1.3 is not yet supported.")]
+            HelpMessage = "The minimum TLS version to be permitted on requests to storage. TLS 1.3 is not yet supported.")]
         [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
             StorageModels.MinimumTlsVersion.TLS11,
             StorageModels.MinimumTlsVersion.TLS12,

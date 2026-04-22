@@ -1150,7 +1150,7 @@ Accept wildcard characters: False
 ```
 
 ### -MinimumTlsVersion
-The minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. TLS 1.3 is not yet supported.
+The minimum TLS version to be permitted on requests to storage. TLS 1.3 is not yet supported.
 
 ```yaml
 Type: System.String
