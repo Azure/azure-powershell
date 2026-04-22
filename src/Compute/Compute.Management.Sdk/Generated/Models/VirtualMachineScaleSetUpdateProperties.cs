@@ -74,11 +74,14 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="zonalPlatformFaultDomainAlignMode">Specifies the align mode between Virtual Machine Scale Set compute and
         /// storage Fault Domain count.
-        /// Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;</param>
+        /// Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;, &#39;BestEffortAligned&#39;</param>
 
         /// <param name="skuProfile">Specifies the sku profile for the virtual machine scale set.
         /// </param>
-        public VirtualMachineScaleSetUpdateProperties(UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMS = default(bool?), bool? singlePlacementGroup = default(bool?), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), string zonalPlatformFaultDomainAlignMode = default(string), SkuProfile skuProfile = default(SkuProfile))
+
+        /// <param name="lifecycleHooksProfile">Specifies the lifecycle hooks profile for the virtual machine scale set.
+        /// </param>
+        public VirtualMachineScaleSetUpdateProperties(UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMS = default(bool?), bool? singlePlacementGroup = default(bool?), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), string zonalPlatformFaultDomainAlignMode = default(string), SkuProfile skuProfile = default(SkuProfile), LifecycleHooksProfile lifecycleHooksProfile = default(LifecycleHooksProfile))
 
         {
             this.UpgradePolicy = upgradePolicy;
@@ -95,6 +98,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.ResiliencyPolicy = resiliencyPolicy;
             this.ZonalPlatformFaultDomainAlignMode = zonalPlatformFaultDomainAlignMode;
             this.SkuProfile = skuProfile;
+            this.LifecycleHooksProfile = lifecycleHooksProfile;
             CustomInit();
         }
 
@@ -193,7 +197,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies the align mode between Virtual Machine Scale Set
-        /// compute and storage Fault Domain count. Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;
+        /// compute and storage Fault Domain count. Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;, &#39;BestEffortAligned&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "zonalPlatformFaultDomainAlignMode")]
         public string ZonalPlatformFaultDomainAlignMode {get; set; }
@@ -203,6 +207,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "skuProfile")]
         public SkuProfile SkuProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the lifecycle hooks profile for the virtual machine
+        /// scale set.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "lifecycleHooksProfile")]
+        public LifecycleHooksProfile LifecycleHooksProfile {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -229,6 +240,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.ResiliencyPolicy.Validate();
             }
+
 
 
         }

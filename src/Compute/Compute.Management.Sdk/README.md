@@ -25,15 +25,15 @@ title: ComputeManagementClient
 payload-flattening-threshold: 1
 
 # Azure REST API Specs commit
-commit: 5df56443d7ed2402adbea31f30eb68e71b469536
+commit: 0607ac7cf513761c4ffbc3a65dd8a01e1ef9a6da
 
 input-file: 
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/common-types/resource-management/v3/types.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2025-04-01/ComputeRP.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2025-01-02/DiskRP.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2025-03-03/GalleryRP.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Skus/stable/2021-07-01/skus.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/common-types/v1/common.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2025-11-01/ComputeRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2025-01-02/DiskRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2025-03-03/GalleryRP.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/compute/resource-manager/Microsoft.Compute/Compute/stable/2021-07-01/skus.json
 
 output-folder: Generated
 namespace: Microsoft.Azure.Management.Compute
