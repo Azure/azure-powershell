@@ -1,0 +1,46 @@
+FROM mcr.microsoft.com/dotnet/sdk:9.0-alpine3.22 AS builder
+
+ARG AZURE_FOLDER=/root/.Azure
+
+COPY latest.tar.gz latest.tar.gz
+
+RUN mkdir latest && \
+    tar -zxvf ./latest.tar.gz -C ./latest && \
+    pwsh -Command ./latest/InstallModule.ps1 -Scope AllUsers && \
+    rm -fr latest && \
+    rm -f latest.tar.gz
+
+FROM mcr.microsoft.com/dotnet/runtime:9.0-alpine3.22
+
+RUN apk update && apk add icu-libs && apk upgrade --no-cache
+
+ARG IMAGE_NAME=mcr.microsoft.com/azure-powershell:15.6.0-alpine-3.23
+ARG AZURE_FOLDER=/root/.Azure
+ARG VCS_REF="none"
+ARG BUILD_DATE=
+
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=0
+ENV AZUREPS_HOST_ENVIRONMENT="dockerImage/15.6.0-alpine-3.23"
+
+LABEL maintainer="Azure PowerShell Team <azdevxps@microsoft.com>" \
+    readme.md="http://aka.ms/azpsdockerreadme" \
+    org.label-schema.build-date=${BUILD_DATE} \
+    org.label-schema.usage="http://aka.ms/azpsdocker" \
+    org.label-schema.url="http://aka.ms/azpsdockerreadme" \
+    org.label-schema.vcs-url="https://github.com/Azure/azure-powershell" \
+    org.label-schema.name="azure powershell" \
+    org.label-schema.vendor="Azure PowerShell" \
+    org.label-schema.version=15.6.0 \
+    org.label-schema.schema-version="1.0" \
+    org.label-schema.vcs-ref=${VCS_REF} \
+    org.label-schema.docker.cmd="docker run --rm ${IMAGE_NAME} pwsh -c '\$PSVERSIONTABLE'" \
+    org.label-schema.docker.devel="docker run -it --rm -e 'DebugPreference=Continue' ${IMAGE_NAME} pwsh" \
+    org.label-schema.docker.test="currently not available" \
+    org.label-schema.docker.help="docker run --rm ${IMAGE_NAME} pwsh -c Get-Help"
+
+COPY --from=builder /usr/share/powershell /usr/share/powershell
+COPY --from=builder /usr/local/share/powershell /usr/local/share/powershell
+
+RUN ln -s /usr/share/powershell/pwsh /usr/bin/pwsh
+
+CMD [ "pwsh" ]
