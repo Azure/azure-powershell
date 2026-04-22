@@ -41,9 +41,5 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// No denyAssignments have been applied.
         /// </summary>
         public const string None = "none";
-        /// <summary>
-        /// The denyAssignment status is unknown.
-        /// </summary>
-        public const string Unknown = "unknown";
     }
 }

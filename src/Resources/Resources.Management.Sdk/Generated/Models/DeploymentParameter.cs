@@ -32,16 +32,12 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <param name="reference">Azure Key Vault parameter reference.
         /// </param>
-
-        /// <param name="expression">Input expression to the parameter.
-        /// </param>
-        public DeploymentParameter(object value = default(object), string type = default(string), KeyVaultParameterReference reference = default(KeyVaultParameterReference), string expression = default(string))
+        public DeploymentParameter(object value = default(object), string type = default(string), KeyVaultParameterReference reference = default(KeyVaultParameterReference))
 
         {
             this.Value = value;
             this.Type = type;
             this.Reference = reference;
-            this.Expression = expression;
             CustomInit();
         }
 
@@ -68,12 +64,6 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "reference")]
         public KeyVaultParameterReference Reference {get; set; }
-
-        /// <summary>
-        /// Gets or sets input expression to the parameter.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "expression")]
-        public string Expression {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -88,7 +78,6 @@ namespace Microsoft.Azure.Management.Resources.Models
             {
                 this.Reference.Validate();
             }
-
         }
     }
 }

@@ -23,14 +23,10 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <param name="location">
         /// </param>
-
-        /// <param name="retryAfter">
-        /// </param>
-        public DeploymentStacksDeleteAtSubscriptionHeaders(string location = default(string), int? retryAfter = default(int?))
+        public DeploymentStacksDeleteAtSubscriptionHeaders(string location = default(string))
 
         {
             this.Location = location;
-            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -45,11 +41,5 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
         public string Location {get; set; }
-
-        /// <summary>
-        /// Gets or sets
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
-        public int? RetryAfter {get; set; }
     }
 }

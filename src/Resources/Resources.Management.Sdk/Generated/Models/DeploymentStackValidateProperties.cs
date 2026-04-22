@@ -49,13 +49,7 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <param name="validatedResources">The array of resources that were validated.
         /// </param>
-
-        /// <param name="deploymentExtensions">The deployment extensions.
-        /// </param>
-
-        /// <param name="validationLevel">The validation level of the deployment stack
-        /// Possible values include: &#39;Template&#39;, &#39;Provider&#39;, &#39;ProviderNoRbac&#39;</param>
-        public DeploymentStackValidateProperties(ActionOnUnmanage actionOnUnmanage = default(ActionOnUnmanage), string correlationId = default(string), DenySettings denySettings = default(DenySettings), string deploymentScope = default(string), string description = default(string), System.Collections.Generic.IDictionary<string, DeploymentParameter> parameters = default(System.Collections.Generic.IDictionary<string, DeploymentParameter>), DeploymentStacksTemplateLink templateLink = default(DeploymentStacksTemplateLink), System.Collections.Generic.IList<ResourceReference> validatedResources = default(System.Collections.Generic.IList<ResourceReference>), System.Collections.Generic.IList<DeploymentExtension> deploymentExtensions = default(System.Collections.Generic.IList<DeploymentExtension>), string validationLevel = default(string))
+        public DeploymentStackValidateProperties(ActionOnUnmanage actionOnUnmanage = default(ActionOnUnmanage), string correlationId = default(string), DenySettings denySettings = default(DenySettings), string deploymentScope = default(string), string description = default(string), System.Collections.Generic.IDictionary<string, DeploymentParameter> parameters = default(System.Collections.Generic.IDictionary<string, DeploymentParameter>), DeploymentStacksTemplateLink templateLink = default(DeploymentStacksTemplateLink), System.Collections.Generic.IList<ResourceReference> validatedResources = default(System.Collections.Generic.IList<ResourceReference>))
 
         {
             this.ActionOnUnmanage = actionOnUnmanage;
@@ -66,8 +60,6 @@ namespace Microsoft.Azure.Management.Resources.Models
             this.Parameters = parameters;
             this.TemplateLink = templateLink;
             this.ValidatedResources = validatedResources;
-            this.DeploymentExtensions = deploymentExtensions;
-            this.ValidationLevel = validationLevel;
             CustomInit();
         }
 
@@ -126,18 +118,6 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "validatedResources")]
         public System.Collections.Generic.IList<ResourceReference> ValidatedResources {get; set; }
-
-        /// <summary>
-        /// Gets or sets the deployment extensions.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "deploymentExtensions")]
-        public System.Collections.Generic.IList<DeploymentExtension> DeploymentExtensions {get; set; }
-
-        /// <summary>
-        /// Gets or sets the validation level of the deployment stack Possible values include: &#39;Template&#39;, &#39;Provider&#39;, &#39;ProviderNoRbac&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "validationLevel")]
-        public string ValidationLevel {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -168,26 +148,6 @@ namespace Microsoft.Azure.Management.Resources.Models
                 }
             }
 
-            if (this.ValidatedResources != null)
-            {
-                foreach (var element in this.ValidatedResources)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-            if (this.DeploymentExtensions != null)
-            {
-                foreach (var element in this.DeploymentExtensions)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
 
         }
     }

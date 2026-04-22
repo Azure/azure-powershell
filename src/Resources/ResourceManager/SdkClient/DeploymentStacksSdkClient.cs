@@ -137,23 +137,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         throw new PSArgumentException(dex.Body.Error.Message);
                     }
                 }
-                else if (ex is ErrorResponseException erex)
-                {
-                    if (erex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                    {
-                        // Deployment Stack does not exist
-                        if (!throwIfNotExists)
-                            return null;
-                        else
-                            throw new PSArgumentException(
-                            $"DeploymentStack '{deploymentStackName}' in Resource Group '{resourceGroupName}' not found."
-                        );
-                    }
-                    else
-                    {
-                        throw new PSArgumentException(erex.Body.Message);
-                    }
-                }
 
                 throw;
             }
@@ -321,23 +304,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         throw new PSArgumentException(dex.Body.Error.Message);
                     }
                 }
-                else if (ex is ErrorResponseException erex)
-                {
-                    if (erex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                    {
-                        // Deployment Stack does not exist
-                        if (!throwIfNotExists)
-                            return null;
-                        else
-                            throw new PSArgumentException(
-                            $"DeploymentStack '{stackName}' not found in current subscription scope."
-                        );
-                    }
-                    else
-                    {
-                        throw new PSArgumentException(erex.Body.Message);
-                    }
-                }
 
                 throw;
             }
@@ -398,23 +364,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     else
                     {
                         throw new PSArgumentException(dex.Body.Error.Message);
-                    }
-                }
-                else if (ex is ErrorResponseException erex)
-                {
-                    if (erex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                    {
-                        // Deployment Stack does not exist
-                        if (!throwIfNotExists)
-                            return null;
-                        else
-                            throw new PSArgumentException(
-                            $"DeploymentStack '{deploymentStackName}' in Management Group '{managementGroupId}' not found."
-                        );
-                    }
-                    else
-                    {
-                        throw new PSArgumentException(erex.Body.Message);
                     }
                 }
 

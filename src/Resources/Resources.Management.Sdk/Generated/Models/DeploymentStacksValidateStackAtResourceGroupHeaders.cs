@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Resources.Models
 
         /// <param name="retryAfter">
         /// </param>
-        public DeploymentStacksValidateStackAtResourceGroupHeaders(string location = default(string), int? retryAfter = default(int?))
+        public DeploymentStacksValidateStackAtResourceGroupHeaders(string location = default(string), string retryAfter = default(string))
 
         {
             this.Location = location;
@@ -50,6 +50,6 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Gets or sets
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
-        public int? RetryAfter {get; set; }
+        public string RetryAfter {get; set; }
     }
 }
