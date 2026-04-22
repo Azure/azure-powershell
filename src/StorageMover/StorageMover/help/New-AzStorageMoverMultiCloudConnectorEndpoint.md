@@ -1,5 +1,5 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemovermulticloudconnectorendpoint
 schema: 2.0.0
@@ -14,9 +14,8 @@ Creates a multicloud connector endpoint resource, which represents a data transf
 
 ```
 New-AzStorageMoverMultiCloudConnectorEndpoint -Name <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -MultiCloudConnectorId <String> -AWSS3BucketId <String>
- [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -StorageMoverName <String> -AWSS3BucketId <String> -MultiCloudConnectorId <String> [-SubscriptionId <String>]
+ [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +25,7 @@ Creates a Multi-Cloud Connector endpoint resource, which represents a data trans
 
 ### Example 1: Create a Multi-Cloud Connector endpoint
 ```powershell
-New-AzStorageMoverMultiCloudConnectorEndpoint -Name "my-mc-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -AWSS3BucketId "my-s3-bucket" -Description "My Multi-Cloud endpoint"
+New-AzStorageMoverMultiCloudConnectorEndpoint -Name "my-mc-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -AWSS3BucketId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.AwsConnector/s3Buckets/testBucket" -MultiCloudConnectorId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.HybridConnectivity/publicCloudConnectors/TestConnector" -Description "Example multi cloud connector resource id"
 ```
 
 ```output
@@ -220,3 +219,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

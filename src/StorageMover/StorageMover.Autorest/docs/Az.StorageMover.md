@@ -1,6 +1,6 @@
 ---
 Module Name: Az.StorageMover
-Module Guid: 6ada34e0-8668-4ac4-b5fe-753062600db9
+Module Guid: fa4418e5-2dd1-4577-a8f7-098cbc85a94c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storagemover
 Help Version: 1.0.0.0
 Locale: en-US
@@ -16,6 +16,9 @@ Gets a Storage Mover resource.
 
 ### [Get-AzStorageMoverAgent](Get-AzStorageMoverAgent.md)
 Gets an Agent resource.
+
+### [Get-AzStorageMoverConnection](Get-AzStorageMoverConnection.md)
+Gets a Connection resource.
 
 ### [Get-AzStorageMoverEndpoint](Get-AzStorageMoverEndpoint.md)
 Gets an Endpoint resource.
@@ -41,6 +44,9 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 ### [New-AzStorageMoverAzStorageContainerEndpoint](New-AzStorageMoverAzStorageContainerEndpoint.md)
 Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
 
+### [New-AzStorageMoverConnection](New-AzStorageMoverConnection.md)
+Create a Connection resource.
+
 ### [New-AzStorageMoverJobDefinition](New-AzStorageMoverJobDefinition.md)
 Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
@@ -61,6 +67,9 @@ Create an in-memory object for UploadLimitWeeklyRecurrence.
 
 ### [Remove-AzStorageMover](Remove-AzStorageMover.md)
 Deletes a Storage Mover resource.
+
+### [Remove-AzStorageMoverConnection](Remove-AzStorageMoverConnection.md)
+Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.
 
 ### [Remove-AzStorageMoverEndpoint](Remove-AzStorageMoverEndpoint.md)
 Deletes an Endpoint resource.
@@ -98,6 +107,9 @@ Properties not specified in the request body will be unchanged.
 ### [Update-AzStorageMoverAzStorageContainerEndpoint](Update-AzStorageMoverAzStorageContainerEndpoint.md)
 Updates properties for an AzStorageContainer endpoint resource.
 Properties not specified in the request body will be unchanged.
+
+### [Update-AzStorageMoverConnection](Update-AzStorageMoverConnection.md)
+Update a Connection resource.
 
 ### [Update-AzStorageMoverJobDefinition](Update-AzStorageMoverJobDefinition.md)
 Update properties for a Job Definition resource.

@@ -1,5 +1,5 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/stop-azstoragemoverjobdefinition
 schema: 2.0.0
@@ -15,27 +15,27 @@ Requests the Agent of any active instance of this Job Definition to stop.
 ### Stop (Default)
 ```
 Stop-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -StorageMoverName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### StopViaIdentityStorageMover
+### StopViaIdentity
 ```
-Stop-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <String>
- -StorageMoverInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### StopViaIdentityProject
 ```
 Stop-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectInputObject <IStorageMoverIdentity>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StopViaIdentity
+### StopViaIdentityStorageMover
 ```
-Stop-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <String>
+ -StorageMoverInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +92,7 @@ The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopViaIdentityStorageMover, StopViaIdentityProject
+Parameter Sets: Stop, StopViaIdentityProject, StopViaIdentityStorageMover
 Aliases:
 
 Required: True
@@ -238,3 +238,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,0 +1,63 @@
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageMoverConnection'))
+{
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  if (-Not (Test-Path -Path $loadEnvPath)) {
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+  }
+  . ($loadEnvPath)
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzStorageMoverConnection.Recording.json'
+  $currentPath = $PSScriptRoot
+  while(-not $mockingPath) {
+      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+      $currentPath = Split-Path -Path $currentPath -Parent
+  }
+  . ($mockingPath | Select-Object -First 1).FullName
+}
+
+# NOTE: Recording files for these tests do not yet exist. Remove the -skip flag
+# after running `./test-module.ps1 -Record` against a live subscription with a
+# valid Private Link Service.
+Describe 'New-AzStorageMoverConnection' {
+    It 'CreateExpanded' -skip {
+        $connectionName = 'testConnection1' + $env.RandomString
+        $description = 'test connection description'
+        $connection = New-AzStorageMoverConnection -Name $connectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -PrivateLinkServiceId $env.PrivateLinkServiceId -Description $description
+        $connection.Name | Should -Be $connectionName
+        $connection.Property.Description | Should -Be $description
+        $connection.Property.PrivateLinkServiceId | Should -Be $env.PrivateLinkServiceId
+    }
+
+    It 'CreateViaIdentityStorageMoverExpanded' -skip {
+        $connectionName = 'testConnection2' + $env.RandomString
+        $description = 'test connection via identity'
+        $storageMover = Get-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $env.InitialStoMoverName
+        $connection = New-AzStorageMoverConnection -Name $connectionName -StorageMoverInputObject $storageMover -PrivateLinkServiceId $env.PrivateLinkServiceId -Description $description
+        $connection.Name | Should -Be $connectionName
+        $connection.Property.Description | Should -Be $description
+    }
+
+    It 'CreateViaJsonString' -skip {
+        $connectionName = 'testConnection3' + $env.RandomString
+        $jsonString = @{
+            properties = @{
+                description = 'json string connection'
+                privateLinkServiceId = $env.PrivateLinkServiceId
+            }
+        } | ConvertTo-Json -Depth 5
+        $connection = New-AzStorageMoverConnection -Name $connectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -JsonString $jsonString
+        $connection.Name | Should -Be $connectionName
+    }
+
+    It 'CreateViaJsonFilePath' -skip {
+        $connectionName = 'testConnection4' + $env.RandomString
+        $jsonFilePath = Join-Path $TestDrive 'newConnection.json'
+        @{
+            properties = @{
+                description = 'json file connection'
+                privateLinkServiceId = $env.PrivateLinkServiceId
+            }
+        } | ConvertTo-Json -Depth 5 | Set-Content -Path $jsonFilePath
+        $connection = New-AzStorageMoverConnection -Name $connectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -JsonFilePath $jsonFilePath
+        $connection.Name | Should -Be $connectionName
+    }
+}

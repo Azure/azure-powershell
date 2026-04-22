@@ -1,5 +1,5 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint
 schema: 2.0.0
@@ -14,8 +14,8 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 
 ```
 New-AzStorageMoverAzSmbFileShareEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String>] -StorageAccountResourceId <String> -FileShareName <String> [-Description <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -FileShareName <String> -StorageAccountResourceId <String> [-SubscriptionId <String>] [-Description <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -223,3 +223,4 @@ ALIASES
 New-AzStorageMoverSmbFileShareEndpoint
 
 ## RELATED LINKS
+

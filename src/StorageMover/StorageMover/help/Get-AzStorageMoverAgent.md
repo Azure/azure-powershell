@@ -1,5 +1,5 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveragent
 schema: 2.0.0
@@ -18,23 +18,21 @@ Get-AzStorageMoverAgent -ResourceGroupName <String> -StorageMoverName <String> [
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityStorageMover
-```
-Get-AzStorageMoverAgent -Name <String> -StorageMoverInputObject <IStorageMoverIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### Get
 ```
 Get-AzStorageMoverAgent -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzStorageMoverAgent -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzStorageMoverAgent -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityStorageMover
+```
+Get-AzStorageMoverAgent -Name <String> -StorageMoverInputObject <IStorageMoverIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,7 +142,7 @@ The name of the Agent resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityStorageMover, Get
+Parameter Sets: Get, GetViaIdentityStorageMover
 Aliases: AgentName
 
 Required: True
@@ -160,7 +158,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -190,7 +188,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -205,7 +203,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -229,3 +227,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

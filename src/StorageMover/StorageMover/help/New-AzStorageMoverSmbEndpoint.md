@@ -1,5 +1,5 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoversmbendpoint
 schema: 2.0.0
@@ -14,9 +14,9 @@ Creates an SMB endpoint resource, which represents a data transfer source or des
 
 ```
 New-AzStorageMoverSmbEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String>] -Host <String> -ShareName <String> [-CredentialsUsernameUri <String>]
- [-CredentialsPasswordUri <String>] [-Description <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Host <String> -ShareName <String> [-SubscriptionId <String>] [-CredentialsPasswordUri <String>]
+ [-CredentialsUsernameUri <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -256,3 +256,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

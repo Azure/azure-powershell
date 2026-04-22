@@ -1,5 +1,5 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverjobdefinition
 schema: 2.0.0
@@ -16,45 +16,57 @@ Properties not specified in the request body will be unchanged.
 ### UpdateExpanded (Default)
 ```
 Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] [-AgentName <String>] [-CopyMode <String>]
- [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -StorageMoverName <String> [-SubscriptionId <String>] [-AgentName <String>] [-Connection <String[]>]
+ [-CopyMode <String>] [-DataIntegrityValidation <String>] [-Description <String>] [-ExecutionTimeHour <Int32>]
+ [-ExecutionTimeMinute <Single>] [-ScheduleCronExpression <String>] [-ScheduleDaysOfMonth <Int32[]>]
+ [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>] [-ScheduleFrequency <String>]
+ [-ScheduleIsActive] [-ScheduleStartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityStorageMoverExpanded
-```
-Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String>
- -StorageMoverInputObject <IStorageMoverIdentity> [-AgentName <String>] [-CopyMode <String>]
- [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityProjectExpanded
-```
-Update-AzStorageMoverJobDefinition -Name <String> -ProjectInputObject <IStorageMoverIdentity>
- [-AgentName <String>] [-CopyMode <String>] [-Description <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-AgentName <String>]
- [-CopyMode <String>] [-Description <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Connection <String[]>] [-CopyMode <String>] [-DataIntegrityValidation <String>] [-Description <String>]
+ [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>] [-ScheduleCronExpression <String>]
+ [-ScheduleDaysOfMonth <Int32[]>] [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>]
+ [-ScheduleFrequency <String>] [-ScheduleIsActive] [-ScheduleStartDate <DateTime>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityProjectExpanded
+```
+Update-AzStorageMoverJobDefinition -Name <String> -ProjectInputObject <IStorageMoverIdentity>
+ [-AgentName <String>] [-Connection <String[]>] [-CopyMode <String>] [-DataIntegrityValidation <String>]
+ [-Description <String>] [-ExecutionTimeHour <Int32>] [-ExecutionTimeMinute <Single>]
+ [-ScheduleCronExpression <String>] [-ScheduleDaysOfMonth <Int32[]>] [-ScheduleDaysOfWeek <String[]>]
+ [-ScheduleEndDate <DateTime>] [-ScheduleFrequency <String>] [-ScheduleIsActive]
+ [-ScheduleStartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityStorageMoverExpanded
+```
+Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String>
+ -StorageMoverInputObject <IStorageMoverIdentity> [-AgentName <String>] [-Connection <String[]>]
+ [-CopyMode <String>] [-DataIntegrityValidation <String>] [-Description <String>] [-ExecutionTimeHour <Int32>]
+ [-ExecutionTimeMinute <Single>] [-ScheduleCronExpression <String>] [-ScheduleDaysOfMonth <Int32[]>]
+ [-ScheduleDaysOfWeek <String[]>] [-ScheduleEndDate <DateTime>] [-ScheduleFrequency <String>]
+ [-ScheduleIsActive] [-ScheduleStartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ -StorageMoverName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ -StorageMoverName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,7 +115,22 @@ Name of the Agent to assign for new Job Runs of this Job Definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Connection
+List of connections associated to this job
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
 Aliases:
 
 Required: False
@@ -118,7 +145,22 @@ Strategy to use for copy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataIntegrityValidation
+Data Integrity Validation mode.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
 Aliases:
 
 Required: False
@@ -149,7 +191,41 @@ A description for the Job Definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExecutionTimeHour
+The hour element of the time.
+Allowed values range from 0 (start of the selected day) to 24 (end of the selected day).
+Hour value 24 cannot be combined with any other minute value but 0.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExecutionTimeMinute
+The minute element of the time.
+Allowed values are 0 and 30.
+If not specified, its value defaults to 0.
+
+```yaml
+Type: System.Single
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
 Aliases:
 
 Required: False
@@ -209,7 +285,7 @@ The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityStorageMoverExpanded, UpdateViaIdentityProjectExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: JobDefinitionName
 
 Required: True
@@ -239,7 +315,7 @@ The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityStorageMoverExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -255,10 +331,115 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleCronExpression
+Optional CRON expression for advanced scheduling
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleDaysOfMonth
+Days of the month for monthly schedules
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleDaysOfWeek
+Days of the week for weekly schedules
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleEndDate
+End time of the schedule (in UTC)
+
+```yaml
+Type: System.DateTime
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleFrequency
+Type of schedule — Monthly, Weekly, or Daily
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleIsActive
+Whether the schedule is currently active
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleStartDate
+Specific one-time execution date and time
+
+```yaml
+Type: System.DateTime
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProjectExpanded, UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -285,7 +466,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -300,7 +481,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -355,3 +536,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoveraznfsfileshareendpoint
 schema: 2.0.0
@@ -14,8 +14,8 @@ Creates a Nfs file share endpoint resource, which represents a data transfer sou
 
 ```
 New-AzStorageMoverAzNfsFileShareEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String>] -StorageAccountResourceId <String> -FileShareName <String> [-Description <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -FileShareName <String> -StorageAccountResourceId <String> [-SubscriptionId <String>] [-Description <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Creates a Nfs file share endpoint resource, which represents a data transfer sou
 
 ### Example 1: Create an NFS endpoint
 ```powershell
-New-AzStorageMoverAzNfsFileShareEndpoint -Name "my-nfs-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -FileShareName "10.0.0.1"  -Description "My NFS endpoint"
+New-AzStorageMoverAzNfsFileShareEndpoint -Name "my-nfs-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -FileShareName "examples-fileshare" -StorageAccountResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.Storage/storageAccounts/examplesa" -Description "Example Storage File Share Endpoint Description"
 ```
 
 ```output
@@ -218,3 +218,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

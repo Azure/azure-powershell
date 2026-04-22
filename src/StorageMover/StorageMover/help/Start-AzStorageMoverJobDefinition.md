@@ -1,5 +1,5 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/start-azstoragemoverjobdefinition
 schema: 2.0.0
@@ -14,28 +14,28 @@ Start a new Job Run resource for the specified Job Definition and passes it to t
 
 ### Start (Default)
 ```
-Start-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <String>
+ -ResourceGroupName <String> -StorageMoverName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StartViaIdentityStorageMover
+### StartViaIdentity
 ```
-Start-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <String>
- -StorageMoverInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### StartViaIdentityProject
 ```
 Start-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectInputObject <IStorageMoverIdentity>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StartViaIdentity
+### StartViaIdentityStorageMover
 ```
-Start-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <String>
+ -StorageMoverInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +98,7 @@ The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start, StartViaIdentityStorageMover, StartViaIdentityProject
+Parameter Sets: Start, StartViaIdentityProject, StartViaIdentityStorageMover
 Aliases:
 
 Required: True
@@ -244,3 +244,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
