@@ -206,13 +206,13 @@ function Test-EnableAndDisableAzAksAddons
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $kubeClusterName2 = Get-RandomClusterName
-    $nodeVmSize = "standard_a2_v2"
+    $nodeVmSize = "Standard_D2_v3"
 
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
 
-        $cluster = New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -GenerateSshKey
+        $cluster = New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -EnableManagedIdentity
         Assert-Null $cluster.AddonProfiles
 
         $cluster = $cluster | Enable-AzAksAddon -Name AzurePolicy
@@ -220,11 +220,14 @@ function Test-EnableAndDisableAzAksAddons
         $cluster = $cluster | Disable-AzAksAddon -Name AzurePolicy
         Assert-AreEqual $false $cluster.AddonProfiles['azurepolicy'].Enabled
 
-        $cluster2 = New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2 -NodeVmSize $nodeVmSize -GenerateSshKey
+        Remove-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -Force
+
+        $cluster2 = New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2 -NodeVmSize $nodeVmSize -EnableManagedIdentity
         Assert-Null $cluster2.AddonProfiles
         #$workspace = New-AzOperationalInsightsWorkspace -Location $location -Name 'akstestws' -ResourceGroupName $resourceGroupName
         #$workspaceId = $workspace.ResourceId
-        $workspaceId = '/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.OperationalInsights/workspaces/akstestws'
+        #$workspaceId = '/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/AKS_TEST_RG/providers/Microsoft.OperationalInsights/workspaces/akstestws'
+        $workspaceId = '/subscriptions/7c6f5bb4-3319-4b85-ba4c-afde75f86f02/resourcegroups/AKS_TEST_RG/providers/Microsoft.OperationalInsights/workspaces/akstestws'
 
         $cluster2 = Enable-AzAksAddon -Name 'Monitoring' -WorkspaceResourceId $workspaceId -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName2
         Assert-AreEqual $true $cluster2.AddonProfiles['omsagent'].Enabled
