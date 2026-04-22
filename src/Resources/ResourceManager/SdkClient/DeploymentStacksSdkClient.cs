@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     resourceGroupsCleanupAction, 
                     managementGroupsCleanupAction, 
                     null, // unmanageActionResourcesWithoutDeleteSupport
-                    bypassStackOutOfSyncError ? (bool?)true : (bool?)false)
+                    bypassStackOutOfSyncError ? (bool?)true : null)
                 .GetAwaiter()
                 .GetResult();
 
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     resourceGroupsCleanupAction, 
                     managementGroupsCleanupAction, 
                     null, // unmanageActionResourcesWithoutDeleteSupport
-                    bypassStackOutOfSyncError ? (bool?)true : (bool?)false)
+                    bypassStackOutOfSyncError ? (bool?)true : null)
                 .GetAwaiter()
                 .GetResult();
 
@@ -692,7 +692,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         resourceGroupsCleanupAction, 
                         managementGroupsCleanupAction, 
                         null, // unmanageActionResourcesWithoutDeleteSupport
-                        bypassStackOutOfSyncError ? (bool?)true : (bool?)false)
+                        bypassStackOutOfSyncError ? (bool?)true : null)
                     .GetAwaiter()
                     .GetResult();
 
