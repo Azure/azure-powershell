@@ -1019,5 +1019,9 @@
   {
     "module": "ServiceGroups",
     "alias": "ServiceGroups"
+  },
+  {
+    "module": "PlanetaryComputer",
+    "alias": "PlanetaryComputer"
   }
 ]

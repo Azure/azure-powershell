@@ -25,6 +25,9 @@
 * [Breaking Change] Parameter `DnsResolverDomainList` is no longer mandatory on `New-AzDnsResolverPolicyDnsSecurityRule`. DNS security rules now support `ManagedDomainList` as an alternative.
 * [Breaking Change] Parameter `Domain` is no longer mandatory on `New-AzDnsResolverDomainList`. Domain lists now support bulk upload via `Invoke-AzDnsResolverBulkDnsResolverDomainList`.
 
+* Fixed misleading breaking change warning on `New-AzDnsResolverDomainList` that incorrectly stated the cmdlet was being deprecated
+    - The cmdlet displayed "The cmdlet is being deprecated. There will be no replacement for it." when the intent was only to announce that the `Domain` parameter is no longer mandatory
+
 ## Version 1.2.3
 * Added announcement for upcoming breaking changes as part of the 2025-10-01-preview API migration:
     - Removed parameter `ActionBlockResponseCode` from `New-AzDnsResolverPolicyDnsSecurityRule` and `Update-AzDnsResolverPolicyDnsSecurityRule`. The block response code is no longer configurable.
