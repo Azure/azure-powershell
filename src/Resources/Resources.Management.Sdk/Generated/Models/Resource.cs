@@ -8,8 +8,13 @@ namespace Microsoft.Azure.Management.Resources.Models
     using System.Linq;
 
     /// <summary>
-    /// Specified resource.
+    /// Common fields that are returned in the response for all Azure Resource
+    /// Manager resources
     /// </summary>
+    /// <remarks>
+    /// Common fields that are returned in the response for all Azure Resource
+    /// Manager resources
+    /// </remarks>
     public partial class Resource : Microsoft.Rest.Azure.IResource
     {
         /// <summary>
@@ -24,32 +29,27 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Initializes a new instance of the Resource class.
         /// </summary>
 
-        /// <param name="id">Resource ID
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
-
-        /// <param name="extendedLocation">Resource extended location.
-        /// </param>
-
-        /// <param name="tags">Resource tags
-        /// </param>
-        public Resource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ExtendedLocation extendedLocation = default(ExtendedLocation), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public Resource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
 
         {
             this.Id = id;
             this.Name = name;
             this.Type = type;
-            this.Location = location;
-            this.ExtendedLocation = extendedLocation;
-            this.Tags = tags;
+            this.SystemData = systemData;
             CustomInit();
         }
 
@@ -60,39 +60,30 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
         /// <summary>
-        /// Gets resource ID
+        /// Gets fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; private set; }
 
         /// <summary>
-        /// Gets resource name
+        /// Gets the name of the resource
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; private set; }
 
         /// <summary>
-        /// Gets resource type
+        /// Gets the type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; private set; }
 
         /// <summary>
-        /// Gets or sets resource location
+        /// Gets azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; set; }
-
-        /// <summary>
-        /// Gets or sets resource extended location.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
-        public ExtendedLocation ExtendedLocation {get; set; }
-
-        /// <summary>
-        /// Gets or sets resource tags
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
+        public SystemData SystemData {get; private set; }
     }
 }

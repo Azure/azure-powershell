@@ -13,16 +13,57 @@ namespace Microsoft.Azure.Management.Resources.Models
 
     public static class DeploymentStackProvisioningState
     {
+        /// <summary>
+        /// The deployment stack is currently being created
+        /// </summary>
         public const string Creating = "creating";
+        /// <summary>
+        /// The deployment stack is currently being validated
+        /// </summary>
         public const string Validating = "validating";
+        /// <summary>
+        /// The deployment stack is currently waiting
+        /// </summary>
         public const string Waiting = "waiting";
+        /// <summary>
+        /// The deployment stack is currently deploying
+        /// </summary>
         public const string Deploying = "deploying";
+        /// <summary>
+        /// The deployment stack is being cancelled
+        /// </summary>
         public const string Canceling = "canceling";
+        /// <summary>
+        /// The deployment stack is updating deny assignments
+        /// </summary>
         public const string UpdatingDenyAssignments = "updatingDenyAssignments";
+        /// <summary>
+        /// The deployment stack is deleting resources
+        /// </summary>
         public const string DeletingResources = "deletingResources";
+        /// <summary>
+        /// The deployment stack completed successfully
+        /// </summary>
         public const string Succeeded = "succeeded";
+        /// <summary>
+        /// The deployment stack has failed
+        /// </summary>
         public const string Failed = "failed";
+        /// <summary>
+        /// The deployment stack has been cancelled
+        /// </summary>
         public const string Canceled = "canceled";
+        /// <summary>
+        /// The deployment stack is being deleted
+        /// </summary>
         public const string Deleting = "deleting";
+        /// <summary>
+        /// The deployment stack is currently being initialized
+        /// </summary>
+        public const string Initializing = "initializing";
+        /// <summary>
+        /// The deployment stack is currently performing an operation
+        /// </summary>
+        public const string Running = "running";
     }
 }

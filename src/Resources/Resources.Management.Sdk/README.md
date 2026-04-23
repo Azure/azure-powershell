@@ -11,7 +11,7 @@ autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
 autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
 autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
 autorest --use:@autorest/powershell@4.x --tag=package-resources-2024-11
-autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
+autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2025-07
 autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
 ```
 
@@ -31,7 +31,7 @@ license-header: MICROSOFT_MIT_NO_VERSION
 ## Configuration
 
 ```yaml
-commit: 5e5d8196f6ba69545a9c4882ab4769d108b513c9
+commit: 652ad4cb131256f10a90ea2df207b38cf35d6671
 ```
 
 ### Tag: package-deploymentscripts-2023-08
@@ -156,6 +156,21 @@ These settings apply only when `--tag=package-deploymentstacks-2024-03` is speci
 ``` yaml $(tag) == 'package-deploymentstacks-2024-03'
 input-file:
 - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2024-03-01/deploymentStacks.json
+
+# Temporary override to make subscription id GUID a string.
+directive:
+  - from: deploymentStacks.json
+    where: $
+    transform: $ = $.replace(/common-types\/resource-management\/v5\/types.json#\/parameters\/SubscriptionIdParameter/g, 'common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter');
+```
+
+### Tag: package-deploymentstacks-2025-07
+
+These settings apply only when `--tag=package-deploymentstacks-2025-07` is specified on the command line.
+
+``` yaml $(tag) == 'package-deploymentstacks-2025-07'
+input-file:
+- https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/resources/resource-manager/Microsoft.Resources/deploymentStacks/stable/2025-07-01/deploymentStacks.json
 
 # Temporary override to make subscription id GUID a string.
 directive:

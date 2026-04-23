@@ -39,12 +39,17 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// delete the resource from Azure. Detach will leave the resource in it&#39;s
         /// current state.
         /// Possible values include: &#39;delete&#39;, &#39;detach&#39;</param>
-        public ActionOnUnmanage(string resources, string resourceGroups = default(string), string managementGroups = default(string))
+
+        /// <param name="resourcesWithoutDeleteSupport">Some resources do not support deletion.  This flag will denote how the
+        /// stack should handle those resources.
+        /// Possible values include: &#39;detach&#39;, &#39;fail&#39;</param>
+        public ActionOnUnmanage(string resources, string resourceGroups = default(string), string managementGroups = default(string), string resourcesWithoutDeleteSupport = default(string))
 
         {
             this.Resources = resources;
             this.ResourceGroups = resourceGroups;
             this.ManagementGroups = managementGroups;
+            this.ResourcesWithoutDeleteSupport = resourcesWithoutDeleteSupport;
             CustomInit();
         }
 
@@ -77,6 +82,13 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "managementGroups")]
         public string ManagementGroups {get; set; }
+
+        /// <summary>
+        /// Gets or sets some resources do not support deletion.  This flag will denote
+        /// how the stack should handle those resources. Possible values include: &#39;detach&#39;, &#39;fail&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resourcesWithoutDeleteSupport")]
+        public string ResourcesWithoutDeleteSupport {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -89,6 +101,7 @@ namespace Microsoft.Azure.Management.Resources.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Resources");
             }
+
 
 
 
