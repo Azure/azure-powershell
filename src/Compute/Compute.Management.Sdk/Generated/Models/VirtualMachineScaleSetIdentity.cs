@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// form:
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
         /// </param>
-        public VirtualMachineScaleSetIdentity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), System.Collections.Generic.IDictionary<string, CommonUserAssignedIdentitiesValue> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, CommonUserAssignedIdentitiesValue>))
+        public VirtualMachineScaleSetIdentity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), System.Collections.Generic.IDictionary<string, UserAssignedIdentitiesValue> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, UserAssignedIdentitiesValue>))
 
         {
             this.PrincipalId = principalId;
@@ -90,6 +90,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "userAssignedIdentities")]
-        public System.Collections.Generic.IDictionary<string, CommonUserAssignedIdentitiesValue> UserAssignedIdentities {get; set; }
+        public System.Collections.Generic.IDictionary<string, UserAssignedIdentitiesValue> UserAssignedIdentities {get; set; }
     }
 }

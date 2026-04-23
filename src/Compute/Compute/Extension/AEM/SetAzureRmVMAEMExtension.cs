@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -255,10 +255,10 @@ namespace Microsoft.Azure.Commands.Compute
         {
             // assure user assigned list
             //
-            IDictionary<string, CommonUserAssignedIdentitiesValue> pUserAssignedList = pVmIdentity.UserAssignedIdentities;
+            IDictionary<string, UserAssignedIdentitiesValue> pUserAssignedList = pVmIdentity.UserAssignedIdentities;
             if (null == pUserAssignedList)
             {
-                pUserAssignedList = new Dictionary<string, CommonUserAssignedIdentitiesValue>(1);
+                pUserAssignedList = new Dictionary<string, UserAssignedIdentitiesValue>(1);
                 pVmIdentity.UserAssignedIdentities = pUserAssignedList;
             }
 
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            pUserAssignedList[szPath] = new CommonUserAssignedIdentitiesValue();
+            pUserAssignedList[szPath] = new UserAssignedIdentitiesValue();
 
         }
 
@@ -285,11 +285,11 @@ namespace Microsoft.Azure.Commands.Compute
                 && null != pVM.Identity.UserAssignedIdentities
                 )
             {
-                foreach (KeyValuePair<string, CommonUserAssignedIdentitiesValue> kvp in pVM.Identity.UserAssignedIdentities)
+                foreach (KeyValuePair<string, UserAssignedIdentitiesValue> kvp in pVM.Identity.UserAssignedIdentities)
                 {
                     if (0 == string.Compare(kvp.Key, szPathIdentity, true))
                     {
-                        CommonUserAssignedIdentitiesValue uav = kvp.Value;
+                        UserAssignedIdentitiesValue uav = kvp.Value;
                         szClientId = uav.ClientId;
                         break;
                     }
@@ -322,11 +322,11 @@ namespace Microsoft.Azure.Commands.Compute
             else
             {
 
-                foreach (KeyValuePair<string, CommonUserAssignedIdentitiesValue> kvp in pVmIdentity.UserAssignedIdentities)
+                foreach (KeyValuePair<string, UserAssignedIdentitiesValue> kvp in pVmIdentity.UserAssignedIdentities)
                 {
                     if (0 == string.Compare(kvp.Key, szPathIdentity, true))
                     {
-                        CommonUserAssignedIdentitiesValue uav = kvp.Value;
+                        UserAssignedIdentitiesValue uav = kvp.Value;
                         szPrincipalId = uav.PrincipalId;
                         break;
                     }

@@ -517,18 +517,53 @@ directive:
     transform: |
       const traverse = (obj) => {
         if (obj === null || typeof obj !== 'object') return obj;
-        
+
         if (obj.$ref === '#/definitions/DiskPurchasePlan') {
           obj.$ref = '#/definitions/PurchasePlan';
         }
-        
+
         Object.keys(obj).forEach(key => {
           obj[key] = traverse(obj[key]);
         });
-        
+
         return obj;
       };
-      
+
+      return traverse($);
+
+  # The new ComputeRP.json (2025-11-01), DiskRP.json (2025-01-02) and GalleryRP.json
+  # (2025-03-03) define a definition literally named `Common.UserAssignedIdentitiesValue`
+  # (with a dot). AutoRest strips the dot when emitting models, producing
+  # `CommonUserAssignedIdentitiesValue` — a public-API breaking change vs the legacy
+  # `UserAssignedIdentitiesValue` model (BreakingChangeIssue 3030 on
+  # VirtualMachineIdentity, VirtualMachineScaleSetIdentity, EncryptionSetIdentity,
+  # GalleryIdentity .UserAssignedIdentities).
+  #
+  # Rename the swagger definition (and rewrite all $refs to it) so the generated model
+  # keeps the legacy name.
+  - from: swagger-document
+    where: $.definitions
+    transform: |
+      if ($['Common.UserAssignedIdentitiesValue']) {
+        if (!$.UserAssignedIdentitiesValue) {
+          $.UserAssignedIdentitiesValue = $['Common.UserAssignedIdentitiesValue'];
+        }
+        delete $['Common.UserAssignedIdentitiesValue'];
+      }
+      return $;
+  - from: swagger-document
+    where: $
+    transform: |
+      const traverse = (obj) => {
+        if (obj === null || typeof obj !== 'object') return obj;
+        if (typeof obj.$ref === 'string' && obj.$ref.endsWith('/Common.UserAssignedIdentitiesValue')) {
+          obj.$ref = obj.$ref.replace('/Common.UserAssignedIdentitiesValue', '/UserAssignedIdentitiesValue');
+        }
+        Object.keys(obj).forEach(key => {
+          obj[key] = traverse(obj[key]);
+        });
+        return obj;
+      };
       return traverse($);
 
   # Define AdditionalUnattendContent structure

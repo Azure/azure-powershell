@@ -668,13 +668,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSetUpdate.Identity = new VirtualMachineScaleSetIdentity();
                 }
 
-                this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities = new Dictionary<string, CommonUserAssignedIdentitiesValue>();
+                this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
 
                 foreach (var id in this.IdentityId)
                 {
                     if (!this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities.ContainsKey(id))
                     {
-                        this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities.Add(id, new CommonUserAssignedIdentitiesValue());
+                        this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
                     }
                 }
             }
@@ -1733,13 +1733,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.Identity = new VirtualMachineScaleSetIdentity();
                 }
 
-                this.VirtualMachineScaleSet.Identity.UserAssignedIdentities = new Dictionary<string, CommonUserAssignedIdentitiesValue>();
+                this.VirtualMachineScaleSet.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
 
                 foreach (var id in this.IdentityId)
                 {
                     if (!this.VirtualMachineScaleSet.Identity.UserAssignedIdentities.ContainsKey(id))
                     {
-                        this.VirtualMachineScaleSet.Identity.UserAssignedIdentities.Add(id, new CommonUserAssignedIdentitiesValue());
+                        this.VirtualMachineScaleSet.Identity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
                     }
                 }
             }
