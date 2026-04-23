@@ -543,16 +543,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             if (ex is CloudException cloudEx)
             {
                 // Map ARM API error details from the CloudException body, preserving the full nested error hierarchy.
-                // Using ex.InnerException here would traverse the .NET exception chain rather than the ARM error details,
-                // causing nested ARM errors (e.g. MultipleErrorsOccurred sub-errors) to be silently dropped.
+                // Using ex.InnerException when ARM details are present would traverse the .NET exception chain rather than
+                // the ARM error details, causing nested ARM errors (e.g. MultipleErrorsOccurred sub-errors) to be silently dropped.
+                // Fall back to ex.InnerException only when the ARM body carries no details (e.g. when Body itself is null).
                 var details = cloudEx.Body?.Details?
                     .Select(ConvertCloudErrorToErrorResponse)
                     .ToList();
+                var nestedDetails = details?.Count > 0
+                    ? details
+                    : HandleError(ex.InnerException);
+                var message = string.IsNullOrEmpty(cloudEx.Body?.Message)
+                    ? cloudEx.Message
+                    : cloudEx.Body.Message;
+
                 error = new ErrorResponse(
                     cloudEx.Body?.Code,
-                    cloudEx.Body?.Message,
+                    message,
                     cloudEx.Body?.Target,
-                    details?.Count > 0 ? details : null);
+                    nestedDetails);
             }
             else
             {
