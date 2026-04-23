@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Fixed misleading breaking change warning on `New-AzDnsResolverDomainList` that incorrectly stated the cmdlet was being deprecated
     - The cmdlet displayed "The cmdlet is being deprecated. There will be no replacement for it." when the intent was only to announce that the `Domain` parameter is no longer mandatory
+    - `New-AzDnsResolverDomainList` are now able to create domain lists without domains.
 
 ## Version 1.2.3
 * Added announcement for upcoming breaking changes as part of the 2025-10-01-preview API migration:
