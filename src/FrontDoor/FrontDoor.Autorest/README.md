@@ -447,4 +447,23 @@ directive:
     set:
       property: RulesEngineRule
 
+  # Hide the Network Experiment Profile / Experiment / Preconfigured Endpoint / Report cmdlets
+  # newly introduced by the 2025-11-01 swagger. These are not part of the public
+  # Az.FrontDoor surface area and should not be exposed.
+  - where:
+      subject: NetworkExperimentProfile
+    hide: true
+  - where:
+      subject: Experiment
+    hide: true
+  - where:
+      subject: PreconfiguredEndpoint
+    hide: true
+  - where:
+      subject: ReportLatencyScorecard
+    hide: true
+  - where:
+      subject: ReportTimesery
+    hide: true
+
 ```
