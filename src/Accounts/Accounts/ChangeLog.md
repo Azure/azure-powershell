@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated `System.Memory` to v4.5.5 to accommodate Storage SDK update.
 * Added `AzureAppConfigurationEndpointSuffix` and `AzureAppConfigurationEndpointResourceId` parameters to `Add-AzEnvironment` and `Set-AzEnvironment`
     - Users can now configure Azure App Configuration endpoints when adding or updating custom environments
 
