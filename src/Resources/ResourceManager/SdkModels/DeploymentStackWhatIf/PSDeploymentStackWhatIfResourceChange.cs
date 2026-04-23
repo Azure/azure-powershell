@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentS
         [JsonProperty("denyStatusChange")]
         public PSDeploymentStackWhatIfChangeBase DenyStatusChange { get; set; }
 
-        [JsonProperty("PSDeploymentStackWhatIfResourceConfigurationChanges")]
+        [JsonProperty("resourceConfigurationChanges")]
         public PSDeploymentStackWhatIfResourceConfigurationChanges PSDeploymentStackWhatIfResourceConfigurationChanges { get; set; }
 
         [JsonProperty("extension")]

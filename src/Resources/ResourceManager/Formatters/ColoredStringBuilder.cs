@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder Append(object value)
         {
-            this.stringBuilder.Append(value);
+            string indent = this.indentStack.Count > 0 ? string.Join("", this.indentStack) : string.Empty;
+            this.stringBuilder.Append(indent + value);
 
             return this;
         }
@@ -72,7 +73,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder AppendLine(string value)
         {
-            this.stringBuilder.AppendLine(value);
+            string indent = this.indentStack.Count > 0 ? string.Join("", this.indentStack) : string.Empty;
+            this.stringBuilder.AppendLine(indent + value);
 
             return this;
         }
