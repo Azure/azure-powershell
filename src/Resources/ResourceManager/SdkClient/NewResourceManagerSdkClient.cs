@@ -539,20 +539,51 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 return null;
             }
 
-            ErrorResponse error = null;
-            var innerException = HandleError(ex.InnerException);
-            if (ex is CloudException)
+            ErrorResponse error;
+            if (ex is CloudException cloudEx)
             {
-                var cloudEx = ex as CloudException;
-                error = new ErrorResponse(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
+                // Map ARM API error details from the CloudException body, preserving the full nested error hierarchy.
+                // Using ex.InnerException here would traverse the .NET exception chain rather than the ARM error details,
+                // causing nested ARM errors (e.g. MultipleErrorsOccurred sub-errors) to be silently dropped.
+                var details = cloudEx.Body?.Details?
+                    .Select(ConvertCloudErrorToErrorResponse)
+                    .ToList();
+                error = new ErrorResponse(
+                    cloudEx.Body?.Code,
+                    cloudEx.Body?.Message,
+                    cloudEx.Body?.Target,
+                    details?.Count > 0 ? details : null);
             }
             else
             {
+                var innerException = HandleError(ex.InnerException);
                 error = new ErrorResponse(null, ex.Message, null, innerException);
             }
 
             return new List<ErrorResponse> { error };
+        }
 
+        /// <summary>
+        /// Recursively converts an ARM <see cref="CloudError"/> to an <see cref="ErrorResponse"/>,
+        /// preserving all nested error details.
+        /// </summary>
+        private static ErrorResponse ConvertCloudErrorToErrorResponse(CloudError cloudError)
+        {
+            if (cloudError == null)
+            {
+                return null;
+            }
+
+            var subDetails = cloudError.Details?
+                .Select(ConvertCloudErrorToErrorResponse)
+                .Where(d => d != null)
+                .ToList();
+
+            return new ErrorResponse(
+                cloudError.Code,
+                cloudError.Message,
+                cloudError.Target,
+                subDetails?.Count > 0 ? subDetails : null);
         }
 
         private IPage<DeploymentOperation> ListDeploymentOperations(PSDeploymentCmdletParameters parameters)
