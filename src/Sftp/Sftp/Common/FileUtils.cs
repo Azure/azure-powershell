@@ -10,12 +10,17 @@ using System.Linq;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using System.Security.AccessControl;
 using System.Security.Cryptography;
+using System.Security.Principal;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
 {
     internal static class FileUtils
 {
+    [DllImport("libc", EntryPoint = "chmod", SetLastError = true)]
+    private static extern int NativeChmod(string pathname, uint mode);
+
     public static void MakeDirsForFile(string filePath)
     {
         if (string.IsNullOrEmpty(filePath))
@@ -372,141 +377,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                 var fileInfo = new FileInfo(filePath);
                 fileInfo.Attributes = FileAttributes.Normal;
 
-                // Set Windows ACL permissions
-                try
+                // Use .NET ACL APIs directly instead of spawning external processes
+                // (powershell.exe or icacls.exe) to eliminate command injection risk.
+                var fileSecurity = fileInfo.GetAccessControl();
+                fileSecurity.SetAccessRuleProtection(true, false);
+
+                // Remove all existing access rules
+                foreach (FileSystemAccessRule rule in
+                    fileSecurity.GetAccessRules(true, true, typeof(NTAccount)))
                 {
-                    // Use -File parameter to pass the path safely instead of
-                    // concatenating it into a script string, which would allow
-                    // a crafted path to escape the quoted context.
-                    string escapedPath = filePath.Replace("'", "''");
-                    string powerShellScript;
-                    if (permissions == SftpConstants.PrivateKeyPermissions)
-                    {
-                        powerShellScript = @"
-                            $acl = Get-Acl -LiteralPath '" + escapedPath + @"'
-                            $acl.SetAccessRuleProtection($true, $false)
-                            $acl.Access | ForEach-Object { $acl.RemoveAccessRule($_) }
-                            $currentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
-                            $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($currentUser, 'FullControl', 'Allow')
-                            $acl.SetAccessRule($accessRule)
-                            Set-Acl -LiteralPath '" + escapedPath + @"' -AclObject $acl
-                        ";
-                    }
-                    else // 644 octal - public key/certificate
-                    {
-                        powerShellScript = @"
-                            $acl = Get-Acl -LiteralPath '" + escapedPath + @"'
-                            $acl.SetAccessRuleProtection($true, $false)
-                            $acl.Access | ForEach-Object { $acl.RemoveAccessRule($_) }
-                            $currentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
-                            $userRule = New-Object System.Security.AccessControl.FileSystemAccessRule($currentUser, 'FullControl', 'Allow')
-                            $acl.SetAccessRule($userRule)
-                            $authUsersRule = New-Object System.Security.AccessControl.FileSystemAccessRule('Authenticated Users', 'Read', 'Allow')
-                            $acl.SetAccessRule($authUsersRule)
-                            Set-Acl -LiteralPath '" + escapedPath + @"' -AclObject $acl
-                        ";
-                    }
-
-                    var processInfo = new ProcessStartInfo
-                    {
-                        FileName = "powershell.exe",
-                        Arguments = $"-NoProfile -ExecutionPolicy Bypass -Command \"{powerShellScript}\"",
-                        UseShellExecute = false,
-                        CreateNoWindow = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true
-                    };
-
-                    using (var process = Process.Start(processInfo))
-                    {
-                        if (process != null)
-                        {
-                            process.WaitForExit();
-                            if (process.ExitCode != 0)
-                            {
-                                string error = process.StandardError.ReadToEnd();
-                                System.Diagnostics.Debug.WriteLine($"Warning: PowerShell ACL command failed for '{filePath}': {error}");
-                            }
-                        }
-                    }
+                    fileSecurity.RemoveAccessRule(rule);
                 }
-                catch (Exception ex)
+
+                var currentUser = WindowsIdentity.GetCurrent().Name;
+
+                if (permissions == SftpConstants.PrivateKeyPermissions)
                 {
-                    // Fallback to icacls
-                    try
-                    {
-                        string quotedPath = SftpUtils.EscapeProcessArgument(filePath);
-                        string icaclsArgs;
-                        if (permissions == SftpConstants.PrivateKeyPermissions)
-                        {
-                            icaclsArgs = $"{quotedPath} /inheritance:r /grant:r \"%USERNAME%\":F";
-                        }
-                        else // 644 octal
-                        {
-                            icaclsArgs = $"{quotedPath} /inheritance:r /grant:r \"%USERNAME%\":F /grant \"Authenticated Users\":R";
-                        }
-
-                        var icaclsProcessInfo = new ProcessStartInfo
-                        {
-                            FileName = "icacls.exe",
-                            Arguments = icaclsArgs,
-                            UseShellExecute = false,
-                            CreateNoWindow = true,
-                            RedirectStandardOutput = true,
-                            RedirectStandardError = true
-                        };
-
-                        using (var icaclsProcess = Process.Start(icaclsProcessInfo))
-                        {
-                            if (icaclsProcess != null)
-                            {
-                                icaclsProcess.WaitForExit();
-                                if (icaclsProcess.ExitCode != 0)
-                                {
-                                    string error = icaclsProcess.StandardError.ReadToEnd();
-                                    System.Diagnostics.Debug.WriteLine($"Warning: icacls command failed for '{filePath}': {error}");
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception icaclsEx)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"Warning: Could not set ACL permissions on '{filePath}'. PowerShell error: {ex.Message}, icacls error: {icaclsEx.Message}");
-                    }
+                    var accessRule = new FileSystemAccessRule(
+                        currentUser,
+                        FileSystemRights.FullControl,
+                        AccessControlType.Allow);
+                    fileSecurity.SetAccessRule(accessRule);
                 }
+                else // 644 octal - public key/certificate
+                {
+                    var userRule = new FileSystemAccessRule(
+                        currentUser,
+                        FileSystemRights.FullControl,
+                        AccessControlType.Allow);
+                    fileSecurity.SetAccessRule(userRule);
+
+                    var authUsersRule = new FileSystemAccessRule(
+                        "Authenticated Users",
+                        FileSystemRights.Read,
+                        AccessControlType.Allow);
+                    fileSecurity.SetAccessRule(authUsersRule);
+                }
+
+                fileInfo.SetAccessControl(fileSecurity);
             }
             else
             {
-                // Unix chmod
-                string octalPermissions = Convert.ToString(permissions, 8);
-
-                var processStartInfo = new ProcessStartInfo
+                // Use P/Invoke to set Unix file permissions directly instead of
+                // spawning a chmod process, to eliminate command injection risk.
+                int result = NativeChmod(filePath, (uint)permissions);
+                if (result != 0)
                 {
-                    FileName = "chmod",
-                    Arguments = $"{octalPermissions} {SftpUtils.EscapeProcessArgument(filePath)}",
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true
-                };
-
-                using (var process = Process.Start(processStartInfo))
-                {
-                    if (process != null)
-                    {
-                        process.WaitForExit();
-
-                        if (process.ExitCode != 0)
-                        {
-                            string error = process.StandardError.ReadToEnd();
-                            throw new AzPSInvalidOperationException(
-                                $"Failed to set file permissions on '{filePath}'. chmod exit code: {process.ExitCode}. Error: {error}");
-                        }
-                    }
-                    else
-                    {
-                        throw new AzPSInvalidOperationException("Failed to start chmod process");
-                    }
+                    int errno = Marshal.GetLastWin32Error();
+                    throw new AzPSInvalidOperationException(
+                        $"Failed to set file permissions on '{filePath}'. chmod error code: {errno}");
                 }
             }
         }

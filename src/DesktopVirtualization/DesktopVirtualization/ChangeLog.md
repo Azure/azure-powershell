@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added preannouncement for breaking changes in Az.DesktopVirtualization 6.0.0
+    - The parameter 'Tag' will be removed from the Update cmdlet of Application.
+    - The parameter 'Tag' will be removed from the Update cmdlet of Desktop.
 * Upgrade API version to 2026-01-01-preview
     - Added `New-AzWvdSessionHost` cmdlet to create session hosts in a host pool.
     - Added `Get-AzWvdSessionHostSingleRegistrationToken` cmdlet to list scoped registration tokens associated with a session host.

@@ -1,0 +1,79 @@
+schedules:
+- cron: "35 16 * * *"
+  displayName: 12:35 AM (UTC + 8:00) China Daily Run
+  branches:
+    include:
+    - main
+
+resources:
+  repositories:
+  - repository: SquadMappingWiki
+    type: git
+    name: internal.wiki
+
+jobs:
+- job: UpdateYaml
+  displayName: Update resourceManagement.yml with squad labels
+  pool: pool-windows-2022
+  uses:
+    repositories:
+    - SquadMappingWiki
+
+  steps:
+  - task: UseDotNet@2
+    displayName: Install .NET SDK
+    inputs:
+      packageType: sdk
+      version: 8.x
+
+  - task: NuGetAuthenticate@1
+    inputs:
+      forceReinstallCredentialProvider: false
+
+  - pwsh: |
+      dotnet --version
+      dotnet new tool-manifest --force
+      dotnet tool install powershell --version 7.4.*
+    displayName: Install PowerShell 7.4.x
+
+  - pwsh: |
+      dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -File ./tools/Github/ParseSquadMappingList.ps1 -AccessToken $env:SYSTEM_ACCESSTOKEN
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    displayName: Update resourceManagement.yml via squad mapping
+    condition: succeeded()
+
+  - pwsh: |
+      $hasChanges = git diff --name-only .github/policies
+      if ($null -eq $hasChanges -or $hasChanges.Count -eq 0) {
+          Write-Host "Squad mapping produced no changes."
+          Write-Host "##vso[task.setvariable variable=ChangesDetected]false"
+      } else {
+          Write-Host "There are changes in the repository:" $hasChanges
+          Write-Host "##vso[task.setvariable variable=ChangesDetected]true"
+      }
+    displayName: Check for changes
+
+  - template: util/get-github-pat-steps.yml
+
+  - pwsh: |
+      git config --global user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+      git config --global user.name "azure-powershell-bot"
+      git checkout -b "internal/sync-squad-mapping"
+
+      git add .github/policies
+      git commit -m "Sync squad mapping to resourceManagement.yml"
+
+      git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git
+      git push origin internal/sync-squad-mapping --force
+    displayName: Git commit and push
+    condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))
+
+  - pwsh: |
+      $Title = "{CI} Sync squad mapping into resourceManagement.yml"
+      $HeadBranch = "internal/sync-squad-mapping"
+      $BaseBranch = "main"
+      $Description = "This PR synchronizes squad labels, reviewers and mentionees into resourceManagement.yml based on the Squad Mapping wiki."
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
+    displayName: Create PR to main branch
+    condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))

@@ -1,0 +1,95 @@
+{
+  "resourceType": "configurationStores/replicas",
+  "apiVersion": "2024-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAppConfigurationReplica",
+      "description": "Gets the properties of the specified replica.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationreplica"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConfigStoreName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the properties of the specified replica.",
+          "parameters": [
+            {
+              "name": "-ConfigStoreName",
+              "value": "[Path.configStoreName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.replicaName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzAppConfigurationReplica",
+      "description": "Deletes a replica.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/replicas/{replicaName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/remove-azappconfigurationreplica"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConfigStoreName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a replica.",
+          "parameters": [
+            {
+              "name": "-ConfigStoreName",
+              "value": "[Path.configStoreName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.replicaName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
