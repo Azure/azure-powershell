@@ -115,6 +115,11 @@ directive:
       verb: Update
       subject: Endpoint
     hide: true
+  # Hide Update-AzStorageMoverConnection (no PATCH operation in API; New- already covers PUT)
+  - where:
+      verb: Update
+      subject: Connection
+    hide: true
   - where:
       model-name: Agent
       property-name: NumberOfCore

@@ -108,9 +108,6 @@ Properties not specified in the request body will be unchanged.
 Updates properties for an AzStorageContainer endpoint resource.
 Properties not specified in the request body will be unchanged.
 
-### [Update-AzStorageMoverConnection](Update-AzStorageMoverConnection.md)
-Update a Connection resource.
-
 ### [Update-AzStorageMoverJobDefinition](Update-AzStorageMoverJobDefinition.md)
 Update properties for a Job Definition resource.
 Properties not specified in the request body will be unchanged.
