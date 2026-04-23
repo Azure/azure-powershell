@@ -131,6 +131,7 @@ directive:
   - where:
       verb: New|Update
       subject: PolicyDnsSecurityRule
+      parameter-name: ActionBlockResponseCode
     set:
       breaking-change:
         change-description: The parameter 'ActionBlockResponseCode' has been removed. The block response code is no longer configurable in API version 2025-10-01-preview.
@@ -141,6 +142,7 @@ directive:
   - where:
       verb: New
       subject: PolicyDnsSecurityRule
+      parameter-name: DnsResolverDomainList
     set:
       breaking-change:
         change-description: The parameter 'DnsResolverDomainList' is no longer mandatory. DNS security rules will support managed domain lists as an alternative to user-defined domain lists.
@@ -151,6 +153,7 @@ directive:
   - where:
       verb: New
       subject: DnsResolverDomainList
+      parameter-name: Domain
     set:
       breaking-change:
         change-description: The parameter 'Domain' is no longer mandatory. Domain lists will support bulk upload via the new cmdlet 'Invoke-AzDnsResolverBulkDnsResolverDomainList'.
