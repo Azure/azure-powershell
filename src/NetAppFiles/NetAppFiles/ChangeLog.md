@@ -34,7 +34,7 @@
     - `Remove-AzNetAppFilesCache` - delete a cache
     - `Get-AzNetAppFilesCachePeeringPassphrase` - retrieve the cluster/vserver peering commands and passphrases for a cache
     - `Set-AzNetAppFilesCachePool` - move a cache to a different capacity pool
-    - `Reset-AzNetAppFilesCacheSmbPassword` - reset the cache's SMB password
+    - `Reset-AzNetAppFilesCacheSmbPassword` - reset the cache's SMB (Server Message Block) password
 * `Start-AzNetAppFilesPeerExternalCluster` now returns the cluster peering command and passphrase as a `PSClusterPeerCommandResponse` (was previously discarded)
 * Surfaced new replication properties on `PSNetAppFilesReplicationObject` (`(Get-AzNetAppFilesVolume).DataProtection.Replication`):
     - `ExternalReplicationSetupStatus`, `ExternalReplicationSetupInfo` - external replication setup state machine + next-step guidance
