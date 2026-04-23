@@ -14,26 +14,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageMoverConnecti
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-# NOTE: Recording files for these tests do not yet exist. Remove the -skip flag
-# after running `./test-module.ps1 -Record` against a live subscription with a
-# valid Private Link Service.
 Describe 'Remove-AzStorageMoverConnection' {
-    It 'Delete' -skip {
-        $connectionName = 'testRemoveConnection1' + $env.RandomString
+    It 'Delete' {
+        $connectionName = 'rc1' + $env.RandomString
         New-AzStorageMoverConnection -Name $connectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -PrivateLinkServiceId $env.PrivateLinkServiceId
         Remove-AzStorageMoverConnection -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Name $connectionName
         { Get-AzStorageMoverConnection -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Name $connectionName -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        $connectionName = 'testRemoveConnection2' + $env.RandomString
+    It 'DeleteViaIdentity' {
+        $connectionName = 'rc2' + $env.RandomString
         $connection = New-AzStorageMoverConnection -Name $connectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -PrivateLinkServiceId $env.PrivateLinkServiceId
         Remove-AzStorageMoverConnection -InputObject $connection
         { Get-AzStorageMoverConnection -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Name $connectionName -ErrorAction Stop } | Should -Throw
     }
 
-    It 'DeleteViaIdentityStorageMover' -skip {
-        $connectionName = 'testRemoveConnection3' + $env.RandomString
+    It 'DeleteViaIdentityStorageMover' {
+        $connectionName = 'rc3' + $env.RandomString
         New-AzStorageMoverConnection -Name $connectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -PrivateLinkServiceId $env.PrivateLinkServiceId
         $storageMover = Get-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $env.InitialStoMoverName
         Remove-AzStorageMoverConnection -StorageMoverInputObject $storageMover -Name $connectionName
