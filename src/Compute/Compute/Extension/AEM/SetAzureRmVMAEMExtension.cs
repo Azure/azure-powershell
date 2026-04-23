@@ -255,10 +255,10 @@ namespace Microsoft.Azure.Commands.Compute
         {
             // assure user assigned list
             //
-            IDictionary<string, UserAssignedIdentitiesValue> pUserAssignedList = pVmIdentity.UserAssignedIdentities;
+            IDictionary<string, CommonUserAssignedIdentitiesValue> pUserAssignedList = pVmIdentity.UserAssignedIdentities;
             if (null == pUserAssignedList)
             {
-                pUserAssignedList = new Dictionary<string, UserAssignedIdentitiesValue>(1);
+                pUserAssignedList = new Dictionary<string, CommonUserAssignedIdentitiesValue>(1);
                 pVmIdentity.UserAssignedIdentities = pUserAssignedList;
             }
 
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            pUserAssignedList[szPath] = new UserAssignedIdentitiesValue();
+            pUserAssignedList[szPath] = new CommonUserAssignedIdentitiesValue();
 
         }
 
@@ -285,11 +285,11 @@ namespace Microsoft.Azure.Commands.Compute
                 && null != pVM.Identity.UserAssignedIdentities
                 )
             {
-                foreach (KeyValuePair<string, UserAssignedIdentitiesValue> kvp in pVM.Identity.UserAssignedIdentities)
+                foreach (KeyValuePair<string, CommonUserAssignedIdentitiesValue> kvp in pVM.Identity.UserAssignedIdentities)
                 {
                     if (0 == string.Compare(kvp.Key, szPathIdentity, true))
                     {
-                        UserAssignedIdentitiesValue uav = kvp.Value;
+                        CommonUserAssignedIdentitiesValue uav = kvp.Value;
                         szClientId = uav.ClientId;
                         break;
                     }
@@ -322,11 +322,11 @@ namespace Microsoft.Azure.Commands.Compute
             else
             {
 
-                foreach (KeyValuePair<string, UserAssignedIdentitiesValue> kvp in pVmIdentity.UserAssignedIdentities)
+                foreach (KeyValuePair<string, CommonUserAssignedIdentitiesValue> kvp in pVmIdentity.UserAssignedIdentities)
                 {
                     if (0 == string.Compare(kvp.Key, szPathIdentity, true))
                     {
-                        UserAssignedIdentitiesValue uav = kvp.Value;
+                        CommonUserAssignedIdentitiesValue uav = kvp.Value;
                         szPrincipalId = uav.PrincipalId;
                         break;
                     }
