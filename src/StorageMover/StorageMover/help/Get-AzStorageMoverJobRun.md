@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageMover-help.xml
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobrun
 schema: 2.0.0
@@ -15,7 +15,21 @@ Gets a Job Run resource.
 ### List (Default)
 ```
 Get-AzStorageMoverJobRun -JobDefinitionName <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -StorageMoverName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityStorageMover
+```
+Get-AzStorageMoverJobRun -JobDefinitionName <String> -Name <String> -ProjectName <String>
+ -StorageMoverInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityProject
+```
+Get-AzStorageMoverJobRun -JobDefinitionName <String> -Name <String> -ProjectInputObject <IStorageMoverIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -25,28 +39,16 @@ Get-AzStorageMoverJobRun -JobDefinitionName <String> -Name <String> -ProjectName
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityJobDefinition
+```
+Get-AzStorageMoverJobRun -Name <String> -JobDefinitionInputObject <IStorageMoverIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzStorageMoverJobRun -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentityJobDefinition
-```
-Get-AzStorageMoverJobRun -JobDefinitionInputObject <IStorageMoverIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityProject
-```
-Get-AzStorageMoverJobRun -JobDefinitionName <String> -Name <String>
- -ProjectInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityStorageMover
-```
-Get-AzStorageMoverJobRun -JobDefinitionName <String> -Name <String> -ProjectName <String>
- -StorageMoverInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -213,7 +215,7 @@ The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityProject, GetViaIdentityStorageMover, List
+Parameter Sets: List, GetViaIdentityStorageMover, GetViaIdentityProject, Get
 Aliases:
 
 Required: True
@@ -228,7 +230,7 @@ The name of the Job Run resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityJobDefinition, GetViaIdentityProject, GetViaIdentityStorageMover
+Parameter Sets: GetViaIdentityStorageMover, GetViaIdentityProject, Get, GetViaIdentityJobDefinition
 Aliases: JobRunName
 
 Required: True
@@ -258,7 +260,7 @@ The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityStorageMover, List
+Parameter Sets: List, GetViaIdentityStorageMover, Get
 Aliases:
 
 Required: True
@@ -274,7 +276,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -304,7 +306,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -319,7 +321,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -343,4 +345,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

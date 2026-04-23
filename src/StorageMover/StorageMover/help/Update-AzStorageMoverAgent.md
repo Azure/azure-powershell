@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageMover-help.xml
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoveragent
 schema: 2.0.0
@@ -17,35 +17,35 @@ Update an Agent resource.
 Update-AzStorageMoverAgent -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
  [-SubscriptionId <String>] [-Description <String>]
  [-UploadLimitScheduleWeeklyRecurrence <IUploadLimitWeeklyRecurrence[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateViaJsonString
 ```
-Update-AzStorageMoverAgent -InputObject <IStorageMoverIdentity> [-Description <String>]
- [-UploadLimitScheduleWeeklyRecurrence <IUploadLimitWeeklyRecurrence[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStorageMoverAgent -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzStorageMoverAgent -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityStorageMoverExpanded
 ```
 Update-AzStorageMoverAgent -Name <String> -StorageMoverInputObject <IStorageMoverIdentity>
  [-Description <String>] [-UploadLimitScheduleWeeklyRecurrence <IUploadLimitWeeklyRecurrence[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-Update-AzStorageMoverAgent -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzStorageMoverAgent -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzStorageMoverAgent -InputObject <IStorageMoverIdentity> [-Description <String>]
+ [-UploadLimitScheduleWeeklyRecurrence <IUploadLimitWeeklyRecurrence[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +53,7 @@ Update an Agent resource.
 
 ## EXAMPLES
 
-### Example 1: Update an agent 
+### Example 1: Update an agent
 ```powershell
 $recurrence = New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day 'Monday','Tuesday','Friday' -LimitInMbps 100 -EndTimeHour 5 -StartTimeHour 1 -StartTimeMinute 30 -EndTimeMinute 0
 Update-AzStorageMoverAgent -ResourceGroupName myresourcegroup -StorageMoverName mystoragemover -Name myagent -Description "Update description" -UploadLimitScheduleWeeklyRecurrence $recurrence
@@ -94,7 +94,7 @@ UploadLimitScheduleWeeklyRecurrence : {{
                                         "limitInMbps": 100
                                       }}
 UptimeInSeconds                     : 3417
-Version                             : 
+Version                             :
 ```
 
 This command updates the description and the upload limit weekly recurrence of an agent.
@@ -122,7 +122,7 @@ A description for the Agent.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityStorageMoverExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -182,7 +182,7 @@ The name of the Agent resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityStorageMoverExpanded
 Aliases: AgentName
 
 Required: True
@@ -198,7 +198,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -228,7 +228,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -243,7 +243,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -258,7 +258,7 @@ The set of weekly repeating recurrences of the WAN-link upload limit schedule.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IUploadLimitWeeklyRecurrence[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityStorageMoverExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -313,4 +313,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

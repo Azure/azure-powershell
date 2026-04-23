@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageMover-help.xml
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/Az.StorageMover/new-AzStorageMoverUploadLimitWeeklyRecurrenceObject
 schema: 2.0.0
@@ -13,8 +13,9 @@ Create an in-memory object for UploadLimitWeeklyRecurrence.
 ## SYNTAX
 
 ```
-New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day <String[]> -EndTimeHour <Int32> -LimitInMbps <Int32>
- -StartTimeHour <Int32> [-EndTimeMinute <Int32>] [-StartTimeMinute <Int32>] [<CommonParameters>]
+New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day <String[]> -LimitInMbps <Int32> -EndTimeHour <Int32>
+ -StartTimeHour <Int32> [-EndTimeMinute <Int32>] [-StartTimeMinute <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +23,7 @@ Create an in-memory object for UploadLimitWeeklyRecurrence.
 
 ## EXAMPLES
 
-### Example 1: Create an upload limit weekly recurrence object 
+### Example 1: Create an upload limit weekly recurrence object
 ```powershell
 New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day 'Monday','Tuesday','Friday' -LimitInMbps 100 -EndTimeHour 5 -StartTimeHour 1 -StartTimeMinute 30 -EndTimeMinute 0
 ```
@@ -152,4 +153,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

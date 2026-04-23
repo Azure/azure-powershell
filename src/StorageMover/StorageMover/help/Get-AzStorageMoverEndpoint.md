@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageMover-help.xml
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverendpoint
 schema: 2.0.0
@@ -18,22 +18,23 @@ Get-AzStorageMoverEndpoint -ResourceGroupName <String> -StorageMoverName <String
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityStorageMover
+```
+Get-AzStorageMoverEndpoint -Name <String> -StorageMoverInputObject <IStorageMoverIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzStorageMoverEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzStorageMoverEndpoint -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentityStorageMover
-```
-Get-AzStorageMoverEndpoint -Name <String> -StorageMoverInputObject <IStorageMoverIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -145,7 +146,7 @@ The name of the Endpoint resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityStorageMover
+Parameter Sets: GetViaIdentityStorageMover, Get
 Aliases: EndpointName
 
 Required: True
@@ -161,7 +162,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -191,7 +192,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -206,7 +207,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -230,4 +231,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

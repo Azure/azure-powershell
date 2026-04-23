@@ -57,10 +57,10 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.3.4'; })
 RequiredAssemblies = 'StorageMover.Autorest/bin/Az.StorageMover.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'StorageMover.Autorest/Az.StorageMover.format.ps1xml'
@@ -91,7 +91,6 @@ FunctionsToExport = 'Get-AzStorageMover', 'Get-AzStorageMoverAgent',
                'Update-AzStorageMoverAzNfsFileShareEndpoint', 
                'Update-AzStorageMoverAzSmbFileShareEndpoint', 
                'Update-AzStorageMoverAzStorageContainerEndpoint', 
-               'Update-AzStorageMoverConnection', 
                'Update-AzStorageMoverJobDefinition', 
                'Update-AzStorageMoverMultiCloudConnectorEndpoint', 
                'Update-AzStorageMoverNfsEndpoint', 'Update-AzStorageMoverProject', 
@@ -101,7 +100,7 @@ FunctionsToExport = 'Get-AzStorageMover', 'Get-AzStorageMoverAgent',
 CmdletsToExport = @()
 
 # Variables to export from this module
-VariablesToExport = '*'
+VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'New-AzStorageMoverSmbFileShareEndpoint', 
@@ -122,7 +121,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'StorageMover'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','StorageMover'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -149,7 +148,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

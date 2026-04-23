@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageMover-help.xml
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobdefinition
 schema: 2.0.0
@@ -15,18 +15,14 @@ Gets a Job Definition resource.
 ### List (Default)
 ```
 Get-AzStorageMoverJobDefinition -ProjectName <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### Get
+### GetViaIdentityStorageMover
 ```
-Get-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
+Get-AzStorageMoverJobDefinition -Name <String> -ProjectName <String>
+ -StorageMoverInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -36,10 +32,17 @@ Get-AzStorageMoverJobDefinition -Name <String> -ProjectInputObject <IStorageMove
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityStorageMover
+### Get
 ```
-Get-AzStorageMoverJobDefinition -Name <String> -ProjectName <String>
- -StorageMoverInputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ -StorageMoverName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +52,7 @@ Gets a Job Definition resource.
 
 ### Example 1: Get all job definitions under a Storage mover
 ```powershell
-Get-AzStorageMoverJobDefinition -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover 
+Get-AzStorageMoverJobDefinition -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover
 ```
 
 ```output
@@ -151,7 +154,7 @@ The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityProject, GetViaIdentityStorageMover
+Parameter Sets: GetViaIdentityStorageMover, GetViaIdentityProject, Get
 Aliases: JobDefinitionName
 
 Required: True
@@ -181,7 +184,7 @@ The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityStorageMover, List
+Parameter Sets: List, GetViaIdentityStorageMover, Get
 Aliases:
 
 Required: True
@@ -197,7 +200,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -227,7 +230,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -242,7 +245,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -266,4 +269,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
