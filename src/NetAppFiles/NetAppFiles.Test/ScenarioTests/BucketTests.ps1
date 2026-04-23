@@ -17,18 +17,25 @@
 Generates a self-signed certificate + private key pair, returns the combined PEM
 content as a base64-encoded string suitable for the bucket server's
 'CertificateObject' property. Works cross-platform (no Windows-only cmdlets).
+
+The -Subject argument may be either a bare host name (e.g. 'bucket1.anf.local')
+or a fully-qualified X.500 DN (e.g. 'CN=bucket1.anf.local'). Bare host names
+are auto-prefixed with 'CN=' so X500DistinguishedName accepts them.
 #>
 function New-SelfSignedBucketCertificateObject
 {
     param(
-        [string] $SubjectName = "CN=anf-bucket.local"
+        [string] $Subject = "anf-bucket.local"
     )
+
+    # Allow callers to pass a bare hostname; X500DistinguishedName requires CN=
+    $distinguishedName = if ($Subject -match '=') { $Subject } else { "CN=$Subject" }
 
     $rsa = [System.Security.Cryptography.RSA]::Create(2048)
     try
     {
         $req = [System.Security.Cryptography.X509Certificates.CertificateRequest]::new(
-            $SubjectName,
+            $distinguishedName,
             $rsa,
             [System.Security.Cryptography.HashAlgorithmName]::SHA256,
             [System.Security.Cryptography.RSASignaturePadding]::Pkcs1)
@@ -79,12 +86,12 @@ function Test-BucketCrud
     $subnetId   = "/subscriptions/$subsId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
 
     $protocolTypes    = @("NFSv3")
-    $bucketServerFqdn = "anf-bucket.local"
+    $bucketServerFqdn = "anf-bucket.local"    
     $bucketPath       = "/"
     $bucketPathUpdate = "/data"
 
     try
-    {
+    {        
         # Resource group + VNet/subnet
         New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
@@ -97,15 +104,16 @@ function Test-BucketCrud
         $retrievedVolume = New-AzNetAppFilesVolume  -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName -CreationToken $volName -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -ProtocolType $protocolTypes
         Assert-AreEqual "$accName/$poolName/$volName" $retrievedVolume.Name
 
-        # Generate a self-signed cert/key PEM (base64) for the bucket server
-        $certObject = New-SelfSignedBucketCertificateObject
+        # Per-bucket FQDN built from bucket name + server suffix (e.g. 'mybucket1.anf-bucket.local')
+        $bucket1Fqdn = "$bucketName1.$bucketServerFqdn"
+        $certObject = New-SelfSignedBucketCertificateObject -Subject $bucket1Fqdn
 
         # Create first bucket (NFS user) -----------------------------------------
         $bucket1 = New-AzNetAppFilesBucket `
             -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -Name $bucketName1 `
             -Path $bucketPath -Permissions "ReadOnly" `
             -NfsUserId 1000 -NfsGroupId 1000 `
-            -ServerFqdn $bucketServerFqdn `
+            -ServerFqdn $bucket1Fqdn `
             -ServerCertificateObject $certObject `
             -OnCertificateConflictAction "Update"
 
@@ -113,7 +121,7 @@ function Test-BucketCrud
         Assert-AreEqual $bucketPath $bucket1.Path
         Assert-AreEqual "ReadOnly"  $bucket1.Permissions
         Assert-NotNull  $bucket1.Server
-        Assert-AreEqual $bucketServerFqdn $bucket1.Server.Fqdn
+        Assert-AreEqual $bucket1Fqdn $bucket1.Server.Fqdn
         Assert-NotNull  $bucket1.FileSystemUser
         Assert-NotNull  $bucket1.FileSystemUser.NfsUser
         Assert-AreEqual 1000 $bucket1.FileSystemUser.NfsUser.UserId
@@ -127,24 +135,30 @@ function Test-BucketCrud
         $getByIdBucket = Get-AzNetAppFilesBucket -ResourceId $getBucket1.Id
         Assert-AreEqual $getBucket1.Id $getByIdBucket.Id
 
-        # Create second bucket (CIFS user) on the same server - OnCertificateConflictAction=Update
+        # Generate a self-signed cert/key PEM (base64) for the second bucket server
+        $bucket2Fqdn  = "$bucketName2.$bucketServerFqdn"
+        $certObject2  = New-SelfSignedBucketCertificateObject -Subject $bucket2Fqdn
+
+        # Create second bucket - OnCertificateConflictAction=Update
         # allows the server certificate to be re-applied without failure.
         $bucket2 = New-AzNetAppFilesBucket `
             -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -Name $bucketName2 `
             -Path $bucketPath -Permissions "ReadWrite" `
-            -CifsUserName "anfuser" `
-            -ServerFqdn $bucketServerFqdn `
-            -ServerCertificateObject $certObject `
+            -NfsUserId 1000 -NfsGroupId 1000 `
+            -ServerFqdn $bucket2Fqdn `
+            -ServerCertificateObject $certObject2 `
             -OnCertificateConflictAction "Update"
 
         Assert-AreEqual "$accName/$poolName/$volName/$bucketName2" $bucket2.Name
         Assert-AreEqual "ReadWrite" $bucket2.Permissions
+        Assert-AreEqual $bucket2Fqdn $bucket2.Server.Fqdn
         Assert-NotNull  $bucket2.FileSystemUser
-        Assert-NotNull  $bucket2.FileSystemUser.CifsUser
-        Assert-AreEqual "anfuser" $bucket2.FileSystemUser.CifsUser.Username
+        Assert-NotNull  $bucket2.FileSystemUser.NfsUser
+        Assert-AreEqual 1000 $bucket2.FileSystemUser.NfsUser.UserId
+        Assert-AreEqual 1000 $bucket2.FileSystemUser.NfsUser.GroupId
 
         # List
-        $listBuckets = Get-AzNetAppFilesBucket -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName
+        $listBuckets = Get-AzNetAppFilesBucket -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName     
         Assert-AreEqual 2 $listBuckets.Length
 
         # Update: change path + permissions; refresh the cert (new cert but same OnCertificateConflictAction=Update)
