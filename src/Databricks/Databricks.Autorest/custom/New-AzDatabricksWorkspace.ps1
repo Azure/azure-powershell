@@ -327,7 +327,7 @@ function New-AzDatabricksWorkspace {
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
-        # .
+        # Status of the Enhanced Security Monitoring feature. Allowed values: 'Enabled', 'Disabled'.
         ${EnhancedSecurityMonitoring},
 
         [Parameter(ParameterSetName='CreateExpanded')]
@@ -335,7 +335,7 @@ function New-AzDatabricksWorkspace {
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
-        # .
+        # Status of the Automatic Cluster Update feature. Allowed values: 'Enabled', 'Disabled'.
         ${AutomaticClusterUpdate},
 
         [Parameter(ParameterSetName='CreateExpanded')]
@@ -352,7 +352,7 @@ function New-AzDatabricksWorkspace {
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
         [System.String]
-        # .
+        # Status of the Compliance Security Profile feature. Allowed values: 'Enabled', 'Disabled'.
         ${EnhancedSecurityCompliance},
 
         [Parameter(ParameterSetName='CreateExpanded')]

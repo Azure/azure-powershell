@@ -274,6 +274,8 @@ directive:
         labels:
           ManagedResourceGroupId: Managed Resource Group ID
   
+  # Generate a helper cmdlet to construct WorkspaceProviderAuthorization objects
+  # so users can easily create authorization entries to pass into workspace cmdlets.
   - model-cmdlet:
       - model-name: WorkspaceProviderAuthorization
         cmdlet-name: New-AzDatabricksWorkspaceProviderAuthorizationObject

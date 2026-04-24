@@ -199,7 +199,8 @@ Accept wildcard characters: False
 ```
 
 ### -AutomaticClusterUpdate
-.
+Status of the Automatic Cluster Update feature.
+Allowed values: 'Enabled', 'Disabled'.
 
 ```yaml
 Type: System.String
@@ -384,7 +385,8 @@ Accept wildcard characters: False
 ```
 
 ### -EnhancedSecurityCompliance
-.
+Status of the Compliance Security Profile feature.
+Allowed values: 'Enabled', 'Disabled'.
 
 ```yaml
 Type: System.String
@@ -399,7 +401,8 @@ Accept wildcard characters: False
 ```
 
 ### -EnhancedSecurityMonitoring
-.
+Status of the Enhanced Security Monitoring feature.
+Allowed values: 'Enabled', 'Disabled'.
 
 ```yaml
 Type: System.String
