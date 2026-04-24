@@ -13,46 +13,43 @@ namespace Microsoft.Azure.Management.Network
     public static partial class FirewallPolicyRuleCollectionGroupsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
+        /// Lists all FirewallPolicyRuleCollectionGroups in a FirewallPolicy resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
-        /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
-        /// </param>
-        public static void Delete(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
+        public static Microsoft.Rest.Azure.IPage<FirewallPolicyRuleCollectionGroup> List(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName)
         {
-                ((IFirewallPolicyRuleCollectionGroupsOperations)operations).DeleteAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName).GetAwaiter().GetResult();
+                return ((IFirewallPolicyRuleCollectionGroupsOperations)operations).ListAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
+        /// Lists all FirewallPolicyRuleCollectionGroups in a FirewallPolicy resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FirewallPolicyRuleCollectionGroup>> ListAsync(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Gets the specified FirewallPolicyRuleCollectionGroup.
@@ -61,13 +58,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
         /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static FirewallPolicyRuleCollectionGroup Get(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
         {
@@ -81,13 +79,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
         /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -106,13 +105,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
         /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static FirewallPolicyRuleCollectionGroup CreateOrUpdate(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, FirewallPolicyRuleCollectionGroup parameters)
         {
@@ -126,13 +126,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
         /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -145,85 +146,51 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Lists all FirewallPolicyRuleCollectionGroups in a FirewallPolicy resource.
+        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<FirewallPolicyRuleCollectionGroup> List(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName)
+        /// <param name='ruleCollectionGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static FirewallPolicyRuleCollectionGroupsDeleteHeaders Delete(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
         {
-                return ((IFirewallPolicyRuleCollectionGroupsOperations)operations).ListAsync(resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
+                return ((IFirewallPolicyRuleCollectionGroupsOperations)operations).DeleteAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists all FirewallPolicyRuleCollectionGroups in a FirewallPolicy resource.
+        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='ruleCollectionGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FirewallPolicyRuleCollectionGroup>> ListAsync(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<FirewallPolicyRuleCollectionGroupsDeleteHeaders> DeleteAsync(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
-        }
-        /// <summary>
-        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='firewallPolicyName'>
-        /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
-        /// </param>
-        public static void BeginDelete(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
-        {
-                ((IFirewallPolicyRuleCollectionGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='firewallPolicyName'>
-        /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates the specified FirewallPolicyRuleCollectionGroup.
@@ -232,13 +199,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
         /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static FirewallPolicyRuleCollectionGroup BeginCreateOrUpdate(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, FirewallPolicyRuleCollectionGroup parameters)
         {
@@ -252,13 +220,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
         /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -268,6 +237,53 @@ namespace Microsoft.Azure.Management.Network
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='firewallPolicyName'>
+        /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='ruleCollectionGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static FirewallPolicyRuleCollectionGroupsDeleteHeaders BeginDelete(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName)
+        {
+                return ((IFirewallPolicyRuleCollectionGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='firewallPolicyName'>
+        /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='ruleCollectionGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<FirewallPolicyRuleCollectionGroupsDeleteHeaders> BeginDeleteAsync(this IFirewallPolicyRuleCollectionGroupsOperations operations, string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, ruleCollectionGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

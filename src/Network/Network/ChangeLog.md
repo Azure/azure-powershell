@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added Managed HSM support to Application Gateway SSL certificate cmdlets (`New-AzApplicationGatewaySslCertificate`, `Set-AzApplicationGatewaySslCertificate`, `Add-AzApplicationGatewaySslCertificate`) with `-HsmKeyId` and `-HsmPublicCertData` parameters.
 * Added new cmdlets for DDoS Custom Policy management
     - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy with detection rules
     - `New-AzDdosCustomPolicy` requires at least one detection rule at creation time

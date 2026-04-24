@@ -14,19 +14,46 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IRouteMapsOperations
     {
         /// <summary>
+        /// Retrieves the details of all RouteMaps.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the details of all RouteMaps.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RouteMap>>> ListWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Retrieves the details of a RouteMap.
         /// </summary>
         /// <remarks>
         /// Retrieves the details of a RouteMap.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -49,13 +76,14 @@ namespace Microsoft.Azure.Management.Network
         /// Creates a RouteMap if it doesn&#39;t exist else updates the existing one.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='routeMapParameters'>
         /// Parameters supplied to create or update a RouteMap.
@@ -72,7 +100,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RouteMap>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string routeMapName, RouteMap routeMapParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RouteMap,RouteMapsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string routeMapName, RouteMap routeMapParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes a RouteMap.
@@ -81,13 +109,14 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a RouteMap.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -98,33 +127,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string routeMapName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieves the details of all RouteMaps.
-        /// </summary>
-        /// <remarks>
-        /// Retrieves the details of all RouteMaps.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group&#39;.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RouteMap>>> ListWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RouteMapsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string routeMapName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates a RouteMap if it doesn&#39;t exist else updates the existing one.
@@ -133,13 +136,14 @@ namespace Microsoft.Azure.Management.Network
         /// Creates a RouteMap if it doesn&#39;t exist else updates the existing one.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='routeMapParameters'>
         /// Parameters supplied to create or update a RouteMap.
@@ -156,7 +160,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RouteMap>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string routeMapName, RouteMap routeMapParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RouteMap,RouteMapsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string routeMapName, RouteMap routeMapParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes a RouteMap.
@@ -165,13 +169,14 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a RouteMap.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RouteMap&#39;s resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
-        /// The name of the VirtualHub containing the RouteMap.
+        /// The name of the VirtualHub.
         /// </param>
         /// <param name='routeMapName'>
-        /// The name of the RouteMap.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -182,7 +187,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string routeMapName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RouteMapsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string routeMapName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves the details of all RouteMaps.

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A common class for general resource information.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualNetworkGatewayConnectionListEntity : Resource
+    public partial class VirtualNetworkGatewayConnectionListEntity : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualNetworkGatewayConnectionListEntity class.
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="enablePrivateLinkFastPath">Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute
         /// FastPath (expressRouteGatewayBypass) must be enabled.
         /// </param>
-        public VirtualNetworkGatewayConnectionListEntity(VirtualNetworkConnectionGatewayReference virtualNetworkGateway1, string connectionType, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string authorizationKey = default(string), VirtualNetworkConnectionGatewayReference virtualNetworkGateway2 = default(VirtualNetworkConnectionGatewayReference), VirtualNetworkConnectionGatewayReference localNetworkGateway2 = default(VirtualNetworkConnectionGatewayReference), string connectionProtocol = default(string), int? routingWeight = default(int?), string connectionMode = default(string), string sharedKey = default(string), string connectionStatus = default(string), System.Collections.Generic.IList<TunnelConnectionHealth> tunnelConnectionStatus = default(System.Collections.Generic.IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), SubResource peer = default(SubResource), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> gatewayCustomBgpIPAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), System.Collections.Generic.IList<TrafficSelectorPolicy> trafficSelectorPolicies = default(System.Collections.Generic.IList<TrafficSelectorPolicy>), string resourceGuid = default(string), bool? expressRouteGatewayBypass = default(bool?), bool? enablePrivateLinkFastPath = default(bool?))
+        public VirtualNetworkGatewayConnectionListEntity(VirtualNetworkConnectionGatewayReference virtualNetworkGateway1, string connectionType, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string authorizationKey = default(string), VirtualNetworkConnectionGatewayReference virtualNetworkGateway2 = default(VirtualNetworkConnectionGatewayReference), VirtualNetworkConnectionGatewayReference localNetworkGateway2 = default(VirtualNetworkConnectionGatewayReference), string connectionProtocol = default(string), int? routingWeight = default(int?), string connectionMode = default(string), string sharedKey = default(string), string connectionStatus = default(string), System.Collections.Generic.IList<TunnelConnectionHealth> tunnelConnectionStatus = default(System.Collections.Generic.IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), CommonSubResource peer = default(CommonSubResource), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> gatewayCustomBgpIPAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), System.Collections.Generic.IList<TrafficSelectorPolicy> trafficSelectorPolicies = default(System.Collections.Generic.IList<TrafficSelectorPolicy>), string resourceGuid = default(string), bool? expressRouteGatewayBypass = default(bool?), bool? enablePrivateLinkFastPath = default(bool?))
 
         : base(id, name, type, location, tags)
         {
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to peerings resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.peer")]
-        public SubResource Peer {get; set; }
+        public CommonSubResource Peer {get; set; }
 
         /// <summary>
         /// Gets or sets enableBgp flag.

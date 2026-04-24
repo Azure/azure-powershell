@@ -13,165 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NetworkProfilesOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified network profile.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkProfileName'>
-        /// The name of the NetworkProfile.
-        /// </param>
-        public static void Delete(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName)
-        {
-                ((INetworkProfilesOperations)operations).DeleteAsync(resourceGroupName, networkProfileName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified network profile.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkProfileName'>
-        /// The name of the NetworkProfile.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkProfileName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets the specified network profile in a specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkProfileName'>
-        /// The name of the public IP prefix.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        public static NetworkProfile Get(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, string expand = default(string))
-        {
-                return ((INetworkProfilesOperations)operations).GetAsync(resourceGroupName, networkProfileName, expand).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified network profile in a specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkProfileName'>
-        /// The name of the public IP prefix.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkProfile> GetAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkProfileName, expand, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates a network profile.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkProfileName'>
-        /// The name of the network profile.
-        /// </param>
-        public static NetworkProfile CreateOrUpdate(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, NetworkProfile parameters)
-        {
-                return ((INetworkProfilesOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkProfileName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a network profile.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkProfileName'>
-        /// The name of the network profile.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkProfile> CreateOrUpdateAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, NetworkProfile parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkProfileName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates network profile tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkProfileName'>
-        /// The name of the network profile.
-        /// </param>
-        public static NetworkProfile UpdateTags(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, TagsObject parameters)
-        {
-                return ((INetworkProfilesOperations)operations).UpdateTagsAsync(resourceGroupName, networkProfileName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates network profile tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkProfileName'>
-        /// The name of the network profile.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkProfile> UpdateTagsAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkProfileName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all the network profiles in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -205,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<NetworkProfile> List(this INetworkProfilesOperations operations, string resourceGroupName)
         {
@@ -219,7 +60,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -232,20 +73,143 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets the specified network profile in a specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkProfileName'>
+        /// The name of the public IP prefix.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        public static NetworkProfile Get(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, string expand = default(string))
+        {
+                return ((INetworkProfilesOperations)operations).GetAsync(resourceGroupName, networkProfileName, expand).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified network profile in a specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkProfileName'>
+        /// The name of the public IP prefix.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkProfile> GetAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkProfileName, expand, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a network profile.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkProfileName'>
+        /// The name of the public IP prefix.
+        /// </param>
+        public static NetworkProfile CreateOrUpdate(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, NetworkProfile parameters)
+        {
+                return ((INetworkProfilesOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkProfileName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a network profile.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkProfileName'>
+        /// The name of the public IP prefix.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkProfile> CreateOrUpdateAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, NetworkProfile parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkProfileName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates network profile tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkProfileName'>
+        /// The name of the public IP prefix.
+        /// </param>
+        public static NetworkProfile UpdateTags(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, TagsObject parameters)
+        {
+                return ((INetworkProfilesOperations)operations).UpdateTagsAsync(resourceGroupName, networkProfileName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates network profile tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkProfileName'>
+        /// The name of the public IP prefix.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkProfile> UpdateTagsAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkProfileName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified network profile.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkProfileName'>
-        /// The name of the NetworkProfile.
+        /// The name of the public IP prefix.
         /// </param>
-        public static void BeginDelete(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName)
+        public static NetworkProfilesDeleteHeaders Delete(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName)
         {
-                ((INetworkProfilesOperations)operations).BeginDeleteAsync(resourceGroupName, networkProfileName).GetAwaiter().GetResult();
+                return ((INetworkProfilesOperations)operations).DeleteAsync(resourceGroupName, networkProfileName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -255,17 +219,59 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkProfileName'>
-        /// The name of the NetworkProfile.
+        /// The name of the public IP prefix.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkProfilesDeleteHeaders> DeleteAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkProfileName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkProfileName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified network profile.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkProfileName'>
+        /// The name of the public IP prefix.
+        /// </param>
+        public static NetworkProfilesDeleteHeaders BeginDelete(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName)
+        {
+                return ((INetworkProfilesOperations)operations).BeginDeleteAsync(resourceGroupName, networkProfileName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified network profile.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkProfileName'>
+        /// The name of the public IP prefix.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkProfilesDeleteHeaders> BeginDeleteAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkProfileName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets all the network profiles in a subscription.

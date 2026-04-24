@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// P2SConnectionConfiguration Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class P2SConnectionConfiguration : SubResource
+    public partial class P2SConnectionConfiguration : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the P2SConnectionConfiguration class.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="previousConfigurationPolicyGroupAssociations">List of previous Configuration Policy Groups that this
         /// P2SConnectionConfiguration was attached to.
         /// </param>
-        public P2SConnectionConfiguration(string id = default(string), string name = default(string), string etag = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string), AddressSpace vpnClientAddressPool = default(AddressSpace), bool? enableInternetSecurity = default(bool?), System.Collections.Generic.IList<SubResource> configurationPolicyGroupAssociations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<VpnServerConfigurationPolicyGroup> previousConfigurationPolicyGroupAssociations = default(System.Collections.Generic.IList<VpnServerConfigurationPolicyGroup>))
+        public P2SConnectionConfiguration(string id = default(string), string name = default(string), string etag = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string), CommonAddressSpace vpnClientAddressPool = default(CommonAddressSpace), bool? enableInternetSecurity = default(bool?), System.Collections.Generic.IList<CommonSubResource> configurationPolicyGroupAssociations = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<VpnServerConfigurationPolicyGroup> previousConfigurationPolicyGroupAssociations = default(System.Collections.Generic.IList<VpnServerConfigurationPolicyGroup>))
 
         : base(id)
         {
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Address space for P2S VpnClient.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vpnClientAddressPool")]
-        public AddressSpace VpnClientAddressPool {get; set; }
+        public CommonAddressSpace VpnClientAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets flag indicating whether the enable internet security flag is
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// P2SConnectionConfiguration is attached to.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.configurationPolicyGroupAssociations")]
-        public System.Collections.Generic.IList<SubResource> ConfigurationPolicyGroupAssociations {get; set; }
+        public System.Collections.Generic.IList<CommonSubResource> ConfigurationPolicyGroupAssociations {get; set; }
 
         /// <summary>
         /// Gets list of previous Configuration Policy Groups that this

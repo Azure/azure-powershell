@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class FirewallPolicyNatRuleCollectionActionType
     {
+        /// <summary>
+        /// DNAT
+        /// </summary>
         public const string Dnat = "DNAT";
     }
 }

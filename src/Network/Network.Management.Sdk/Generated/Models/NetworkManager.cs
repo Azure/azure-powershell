@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// The Managed Network resource
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class NetworkManager : Resource
+    public partial class NetworkManager : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the NetworkManager class.

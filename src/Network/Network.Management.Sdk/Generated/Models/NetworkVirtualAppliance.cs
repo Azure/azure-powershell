@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// NetworkVirtualAppliance Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class NetworkVirtualAppliance : Resource
+    public partial class NetworkVirtualAppliance : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the NetworkVirtualAppliance class.
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="privateIPAddress">A Internal Load Balancer&#39;s HA port frontend IP address. Can be used to set
         /// routes &amp; UDR to load balance traffic between NVA instances
         /// </param>
-        public NetworkVirtualAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string etag = default(string), string provisioningState = default(string), VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> nvaInterfaceConfigurations = default(System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties>), string privateIPAddress = default(string))
+        public NetworkVirtualAppliance(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), CommonManagedServiceIdentity identity = default(CommonManagedServiceIdentity), string etag = default(string), string provisioningState = default(string), VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), CommonSubResource virtualHub = default(CommonSubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<CommonSubResource> virtualApplianceSites = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> inboundSecurityRules = default(System.Collections.Generic.IList<CommonSubResource>), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> nvaInterfaceConfigurations = default(System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties>), string privateIPAddress = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// config blob.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
-        public ManagedServiceIdentity Identity {get; set; }
+        public CommonManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// deployed.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualHub")]
-        public SubResource VirtualHub {get; set; }
+        public CommonSubResource VirtualHub {get; set; }
 
         /// <summary>
         /// Gets or sets cloudInitConfigurationBlob storage URLs.
@@ -249,19 +249,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of references to VirtualApplianceSite.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualApplianceSites")]
-        public System.Collections.Generic.IList<SubResource> VirtualApplianceSites {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> VirtualApplianceSites {get; private set; }
 
         /// <summary>
         /// Gets list of references to VirtualApplianceConnections.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualApplianceConnections")]
-        public System.Collections.Generic.IList<SubResource> VirtualApplianceConnections {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> VirtualApplianceConnections {get; private set; }
 
         /// <summary>
         /// Gets list of references to InboundSecurityRules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.inboundSecurityRules")]
-        public System.Collections.Generic.IList<SubResource> InboundSecurityRules {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> InboundSecurityRules {get; private set; }
 
         /// <summary>
         /// Gets the deployment type. PartnerManaged for the SaaS NVA

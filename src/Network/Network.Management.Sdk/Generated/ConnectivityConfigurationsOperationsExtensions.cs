@@ -13,155 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ConnectivityConfigurationsOperationsExtensions
     {
         /// <summary>
-        /// Gets a Network Connectivity Configuration, specified by the resource group,
-        /// network manager name, and connectivity Configuration name
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The name of the network manager connectivity configuration.
-        /// </param>
-        public static ConnectivityConfiguration Get(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName)
-        {
-                return ((IConnectivityConfigurationsOperations)operations).GetAsync(resourceGroupName, networkManagerName, configurationName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a Network Connectivity Configuration, specified by the resource group,
-        /// network manager name, and connectivity Configuration name
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The name of the network manager connectivity configuration.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ConnectivityConfiguration> GetAsync(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates/Updates a new network manager connectivity configuration
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The name of the network manager connectivity configuration.
-        /// </param>
-        public static ConnectivityConfiguration CreateOrUpdate(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, ConnectivityConfiguration connectivityConfiguration)
-        {
-                return ((IConnectivityConfigurationsOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkManagerName, configurationName, connectivityConfiguration).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates/Updates a new network manager connectivity configuration
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The name of the network manager connectivity configuration.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ConnectivityConfiguration> CreateOrUpdateAsync(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, ConnectivityConfiguration connectivityConfiguration, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, connectivityConfiguration, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a network manager connectivity configuration, specified by the
-        /// resource group, network manager name, and connectivity configuration name
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The name of the network manager connectivity configuration.
-        /// </param>
-        /// <param name='force'>
-        /// Deletes the resource even if it is part of a deployed configuration. If the
-        /// configuration has been deployed, the service will do a cleanup deployment
-        /// in the background, prior to the delete.
-        /// </param>
-        public static ConnectivityConfigurationsDeleteHeaders Delete(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?))
-        {
-                return ((IConnectivityConfigurationsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, configurationName, force).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a network manager connectivity configuration, specified by the
-        /// resource group, network manager name, and connectivity configuration name
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='configurationName'>
-        /// The name of the network manager connectivity configuration.
-        /// </param>
-        /// <param name='force'>
-        /// Deletes the resource even if it is part of a deployed configuration. If the
-        /// configuration has been deployed, the service will do a cleanup deployment
-        /// in the background, prior to the delete.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ConnectivityConfigurationsDeleteHeaders> DeleteAsync(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, force, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
         /// Lists all the network manager connectivity configuration in a specified
         /// network manager.
         /// </summary>
@@ -169,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -197,7 +48,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -223,6 +74,98 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets a Network Connectivity Configuration, specified by the resource group,
+        /// network manager name, and connectivity Configuration name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='configurationName'>
+        /// The name of the network manager connectivity configuration.
+        /// </param>
+        public static ConnectivityConfiguration Get(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName)
+        {
+                return ((IConnectivityConfigurationsOperations)operations).GetAsync(resourceGroupName, networkManagerName, configurationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a Network Connectivity Configuration, specified by the resource group,
+        /// network manager name, and connectivity Configuration name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='configurationName'>
+        /// The name of the network manager connectivity configuration.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectivityConfiguration> GetAsync(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates/Updates a new network manager connectivity configuration
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='configurationName'>
+        /// The name of the network manager connectivity configuration.
+        /// </param>
+        public static ConnectivityConfiguration CreateOrUpdate(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, ConnectivityConfiguration connectivityConfiguration)
+        {
+                return ((IConnectivityConfigurationsOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkManagerName, configurationName, connectivityConfiguration).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates/Updates a new network manager connectivity configuration
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='configurationName'>
+        /// The name of the network manager connectivity configuration.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectivityConfiguration> CreateOrUpdateAsync(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, ConnectivityConfiguration connectivityConfiguration, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, connectivityConfiguration, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes a network manager connectivity configuration, specified by the
         /// resource group, network manager name, and connectivity configuration name
         /// </summary>
@@ -230,7 +173,64 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='configurationName'>
+        /// The name of the network manager connectivity configuration.
+        /// </param>
+        /// <param name='force'>
+        /// Deletes the resource even if it is part of a deployed configuration. If the
+        /// configuration has been deployed, the service will do a cleanup deployment
+        /// in the background, prior to the delete.
+        /// </param>
+        public static ConnectivityConfigurationsDeleteHeaders Delete(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?))
+        {
+                return ((IConnectivityConfigurationsOperations)operations).DeleteAsync(resourceGroupName, networkManagerName, configurationName, force).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a network manager connectivity configuration, specified by the
+        /// resource group, network manager name, and connectivity configuration name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='configurationName'>
+        /// The name of the network manager connectivity configuration.
+        /// </param>
+        /// <param name='force'>
+        /// Deletes the resource even if it is part of a deployed configuration. If the
+        /// configuration has been deployed, the service will do a cleanup deployment
+        /// in the background, prior to the delete.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectivityConfigurationsDeleteHeaders> DeleteAsync(this IConnectivityConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, force, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Deletes a network manager connectivity configuration, specified by the
+        /// resource group, network manager name, and connectivity configuration name
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.

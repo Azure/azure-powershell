@@ -13,145 +13,13 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ApplicationGatewayPrivateEndpointConnectionsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified private endpoint connection on application gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationGatewayName'>
-        /// The name of the application gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
-        /// </param>
-        public static void Delete(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName)
-        {
-                ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).DeleteAsync(resourceGroupName, applicationGatewayName, connectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified private endpoint connection on application gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationGatewayName'>
-        /// The name of the application gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Updates the specified private endpoint connection on application gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationGatewayName'>
-        /// The name of the application gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
-        /// </param>
-        public static ApplicationGatewayPrivateEndpointConnection Update(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, ApplicationGatewayPrivateEndpointConnection parameters)
-        {
-                return ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).UpdateAsync(resourceGroupName, applicationGatewayName, connectionName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates the specified private endpoint connection on application gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationGatewayName'>
-        /// The name of the application gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationGatewayPrivateEndpointConnection> UpdateAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, ApplicationGatewayPrivateEndpointConnection parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the specified private endpoint connection on application gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationGatewayName'>
-        /// The name of the application gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
-        /// </param>
-        public static ApplicationGatewayPrivateEndpointConnection Get(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName)
-        {
-                return ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).GetAsync(resourceGroupName, applicationGatewayName, connectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified private endpoint connection on application gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='applicationGatewayName'>
-        /// The name of the application gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationGatewayPrivateEndpointConnection> GetAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Lists all private endpoint connections on an application gateway.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
@@ -168,7 +36,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
@@ -184,23 +52,113 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets the specified private endpoint connection on application gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationGatewayName'>
+        /// The name of the application gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// Name of the private endpoint connection on an application gateway.
+        /// </param>
+        public static ApplicationGatewayPrivateEndpointConnection Get(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName)
+        {
+                return ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).GetAsync(resourceGroupName, applicationGatewayName, connectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified private endpoint connection on application gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationGatewayName'>
+        /// The name of the application gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// Name of the private endpoint connection on an application gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationGatewayPrivateEndpointConnection> GetAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates the specified private endpoint connection on application gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationGatewayName'>
+        /// The name of the application gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// Name of the private endpoint connection on an application gateway.
+        /// </param>
+        public static ApplicationGatewayPrivateEndpointConnection Update(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, ApplicationGatewayPrivateEndpointConnection parameters)
+        {
+                return ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).UpdateAsync(resourceGroupName, applicationGatewayName, connectionName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates the specified private endpoint connection on application gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationGatewayName'>
+        /// The name of the application gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// Name of the private endpoint connection on an application gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationGatewayPrivateEndpointConnection> UpdateAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, ApplicationGatewayPrivateEndpointConnection parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified private endpoint connection on application gateway.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
+        /// Name of the private endpoint connection on an application gateway.
         /// </param>
-        public static void BeginDelete(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName)
+        public static ApplicationGatewayPrivateEndpointConnectionsDeleteHeaders Delete(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName)
         {
-                ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, applicationGatewayName, connectionName).GetAwaiter().GetResult();
+                return ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).DeleteAsync(resourceGroupName, applicationGatewayName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -210,20 +168,23 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
+        /// Name of the private endpoint connection on an application gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationGatewayPrivateEndpointConnectionsDeleteHeaders> DeleteAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Updates the specified private endpoint connection on application gateway.
@@ -232,13 +193,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
+        /// Name of the private endpoint connection on an application gateway.
         /// </param>
         public static ApplicationGatewayPrivateEndpointConnection BeginUpdate(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, ApplicationGatewayPrivateEndpointConnection parameters)
         {
@@ -252,13 +213,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the application gateway private endpoint connection.
+        /// Name of the private endpoint connection on an application gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -268,6 +229,51 @@ namespace Microsoft.Azure.Management.Network
             using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified private endpoint connection on application gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationGatewayName'>
+        /// The name of the application gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// Name of the private endpoint connection on an application gateway.
+        /// </param>
+        public static ApplicationGatewayPrivateEndpointConnectionsDeleteHeaders BeginDelete(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName)
+        {
+                return ((IApplicationGatewayPrivateEndpointConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, applicationGatewayName, connectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified private endpoint connection on application gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='applicationGatewayName'>
+        /// The name of the application gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// Name of the private endpoint connection on an application gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ApplicationGatewayPrivateEndpointConnectionsDeleteHeaders> BeginDeleteAsync(this IApplicationGatewayPrivateEndpointConnectionsOperations operations, string resourceGroupName, string applicationGatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, applicationGatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

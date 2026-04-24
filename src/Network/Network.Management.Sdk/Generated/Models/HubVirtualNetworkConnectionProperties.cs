@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the hub virtual network connection resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public HubVirtualNetworkConnectionProperties(SubResource remoteVirtualNetwork = default(SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), bool? enableInternetSecurity = default(bool?), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string))
+        public HubVirtualNetworkConnectionProperties(CommonSubResource remoteVirtualNetwork = default(CommonSubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), bool? enableInternetSecurity = default(bool?), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string))
 
         {
             this.RemoteVirtualNetwork = remoteVirtualNetwork;
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to the remote virtual network.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteVirtualNetwork")]
-        public SubResource RemoteVirtualNetwork {get; set; }
+        public CommonSubResource RemoteVirtualNetwork {get; set; }
 
         /// <summary>
         /// Gets or sets deprecated: VirtualHub to RemoteVnet transit to enabled or

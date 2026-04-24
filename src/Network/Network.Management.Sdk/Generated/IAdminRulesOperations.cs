@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// List all network manager security configuration admin rules.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets a network manager security configuration admin rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates an admin rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes an admin rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes an admin rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.

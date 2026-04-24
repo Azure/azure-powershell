@@ -13,42 +13,63 @@ namespace Microsoft.Azure.Management.Network
     public static partial class DdosCustomPoliciesOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified DDoS custom policy.
+        /// Gets all the DDoS custom policies in a subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ddosCustomPolicyName'>
-        /// The name of the DDoS custom policy.
-        /// </param>
-        public static DdosCustomPoliciesDeleteHeaders Delete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
+        public static Microsoft.Rest.Azure.IPage<DdosCustomPolicy> ListAll(this IDdosCustomPoliciesOperations operations)
         {
-                return ((IDdosCustomPoliciesOperations)operations).DeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
+                return ((IDdosCustomPoliciesOperations)operations).ListAllAsync().GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified DDoS custom policy.
+        /// Gets all the DDoS custom policies in a subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='ddosCustomPolicyName'>
-        /// The name of the DDoS custom policy.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DdosCustomPoliciesDeleteHeaders> DeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DdosCustomPolicy>> ListAllAsync(this IDdosCustomPoliciesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Headers;
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets all the DDoS custom policies in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DdosCustomPolicy> List(this IDdosCustomPoliciesOperations operations, string resourceGroupName)
+        {
+                return ((IDdosCustomPoliciesOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all the DDoS custom policies in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DdosCustomPolicy>> ListAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>
@@ -58,7 +79,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
@@ -75,7 +96,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
@@ -97,7 +118,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
@@ -114,7 +135,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
@@ -136,7 +157,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
@@ -153,7 +174,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
@@ -175,14 +196,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
         /// </param>
-        public static DdosCustomPoliciesDeleteHeaders BeginDelete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
+        public static DdosCustomPoliciesDeleteHeaders Delete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
         {
-                return ((IDdosCustomPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
+                return ((IDdosCustomPoliciesOperations)operations).DeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -192,7 +213,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
@@ -200,9 +221,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DdosCustomPoliciesDeleteHeaders> BeginDeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DdosCustomPoliciesDeleteHeaders> DeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -214,7 +235,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
@@ -231,7 +252,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='ddosCustomPolicyName'>
         /// The name of the DDoS custom policy.
@@ -242,6 +263,111 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<DdosCustomPolicy> BeginCreateOrUpdateAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, DdosCustomPolicy parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified DDoS custom policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ddosCustomPolicyName'>
+        /// The name of the DDoS custom policy.
+        /// </param>
+        public static DdosCustomPoliciesDeleteHeaders BeginDelete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
+        {
+                return ((IDdosCustomPoliciesOperations)operations).BeginDeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified DDoS custom policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='ddosCustomPolicyName'>
+        /// The name of the DDoS custom policy.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DdosCustomPoliciesDeleteHeaders> BeginDeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Gets all the DDoS custom policies in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DdosCustomPolicy> ListAllNext(this IDdosCustomPoliciesOperations operations, string nextPageLink)
+        {
+                return ((IDdosCustomPoliciesOperations)operations).ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all the DDoS custom policies in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DdosCustomPolicy>> ListAllNextAsync(this IDdosCustomPoliciesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets all the DDoS custom policies in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<DdosCustomPolicy> ListNext(this IDdosCustomPoliciesOperations operations, string nextPageLink)
+        {
+                return ((IDdosCustomPoliciesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all the DDoS custom policies in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DdosCustomPolicy>> ListNextAsync(this IDdosCustomPoliciesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

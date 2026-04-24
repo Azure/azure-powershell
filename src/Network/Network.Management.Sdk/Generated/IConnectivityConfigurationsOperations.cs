@@ -14,6 +14,44 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IConnectivityConfigurationsOperations
     {
         /// <summary>
+        /// Lists all the network manager connectivity configuration in a specified
+        /// network manager.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the network manager connectivity configuration in a specified
+        /// network manager.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='top'>
+        /// An optional query parameter which specifies the maximum number of records
+        /// to be returned by the server.
+        /// </param>
+        /// <param name='skipToken'>
+        /// SkipToken is only used if a previous operation returned a partial result.
+        /// If a previous response contains a nextLink element, the value of the
+        /// nextLink element will include a skipToken parameter that specifies a
+        /// starting point to use for subsequent calls.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ConnectivityConfiguration>>> ListWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, int? top = default(int?), string skipToken = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Gets a Network Connectivity Configuration, specified by the resource group,
         /// network manager name, and connectivity Configuration name
         /// </summary>
@@ -22,7 +60,7 @@ namespace Microsoft.Azure.Management.Network
         /// network manager name, and connectivity Configuration name
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -51,7 +89,7 @@ namespace Microsoft.Azure.Management.Network
         /// Creates/Updates a new network manager connectivity configuration
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -86,7 +124,7 @@ namespace Microsoft.Azure.Management.Network
         /// resource group, network manager name, and connectivity configuration name
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -111,44 +149,6 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ConnectivityConfigurationsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string configurationName, bool? force = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the network manager connectivity configuration in a specified
-        /// network manager.
-        /// </summary>
-        /// <remarks>
-        /// Lists all the network manager connectivity configuration in a specified
-        /// network manager.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='top'>
-        /// An optional query parameter which specifies the maximum number of records
-        /// to be returned by the server.
-        /// </param>
-        /// <param name='skipToken'>
-        /// SkipToken is only used if a previous operation returned a partial result.
-        /// If a previous response contains a nextLink element, the value of the
-        /// nextLink element will include a skipToken parameter that specifies a
-        /// starting point to use for subsequent calls.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ConnectivityConfiguration>>> ListWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, int? top = default(int?), string skipToken = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Deletes a network manager connectivity configuration, specified by the
         /// resource group, network manager name, and connectivity configuration name
         /// </summary>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Network
         /// resource group, network manager name, and connectivity configuration name
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.

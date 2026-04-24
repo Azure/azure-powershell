@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the local network gateway resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public LocalNetworkGatewayPropertiesFormat(AddressSpace localNetworkAddressSpace = default(AddressSpace), string gatewayIPAddress = default(string), string fqdn = default(string), BgpSettings bgpSettings = default(BgpSettings), string resourceGuid = default(string), string provisioningState = default(string))
+        public LocalNetworkGatewayPropertiesFormat(CommonAddressSpace localNetworkAddressSpace = default(CommonAddressSpace), string gatewayIPAddress = default(string), string fqdn = default(string), BgpSettings bgpSettings = default(BgpSettings), string resourceGuid = default(string), string provisioningState = default(string))
 
         {
             this.LocalNetworkAddressSpace = localNetworkAddressSpace;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets local network site address space.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "localNetworkAddressSpace")]
-        public AddressSpace LocalNetworkAddressSpace {get; set; }
+        public CommonAddressSpace LocalNetworkAddressSpace {get; set; }
 
         /// <summary>
         /// Gets or sets iP address of local network gateway.

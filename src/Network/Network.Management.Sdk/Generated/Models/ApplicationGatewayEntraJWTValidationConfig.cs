@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Entra JWT Validation Configuration of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayEntraJWTValidationConfig : SubResource
+    public partial class ApplicationGatewayEntraJWTValidationConfig : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayEntraJWTValidationConfig class.

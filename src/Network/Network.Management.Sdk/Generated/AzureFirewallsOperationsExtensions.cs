@@ -13,192 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class AzureFirewallsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified Azure Firewall.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
-        /// </param>
-        public static void Delete(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName)
-        {
-                ((IAzureFirewallsOperations)operations).DeleteAsync(resourceGroupName, azureFirewallName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified Azure Firewall.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, azureFirewallName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets the specified Azure Firewall.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
-        /// </param>
-        public static AzureFirewall Get(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName)
-        {
-                return ((IAzureFirewallsOperations)operations).GetAsync(resourceGroupName, azureFirewallName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified Azure Firewall.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<AzureFirewall> GetAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, azureFirewallName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates the specified Azure Firewall.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
-        /// </param>
-        public static AzureFirewall CreateOrUpdate(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, AzureFirewall parameters)
-        {
-                return ((IAzureFirewallsOperations)operations).CreateOrUpdateAsync(resourceGroupName, azureFirewallName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates the specified Azure Firewall.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<AzureFirewall> CreateOrUpdateAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, AzureFirewall parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, azureFirewallName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates tags of an Azure Firewall resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
-        /// </param>
-        public static AzureFirewall UpdateTags(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, TagsObject parameters)
-        {
-                return ((IAzureFirewallsOperations)operations).UpdateTagsAsync(resourceGroupName, azureFirewallName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates tags of an Azure Firewall resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<AzureFirewall> UpdateTagsAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, azureFirewallName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists all Azure Firewalls in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<AzureFirewall> List(this IAzureFirewallsOperations operations, string resourceGroupName)
-        {
-                return ((IAzureFirewallsOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all Azure Firewalls in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AzureFirewall>> ListAsync(this IAzureFirewallsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all the Azure Firewalls in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -226,6 +40,195 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Lists all Azure Firewalls in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<AzureFirewall> List(this IAzureFirewallsOperations operations, string resourceGroupName)
+        {
+                return ((IAzureFirewallsOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all Azure Firewalls in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AzureFirewall>> ListAsync(this IAzureFirewallsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the specified Azure Firewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
+        /// </param>
+        public static AzureFirewall Get(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName)
+        {
+                return ((IAzureFirewallsOperations)operations).GetAsync(resourceGroupName, azureFirewallName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified Azure Firewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AzureFirewall> GetAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, azureFirewallName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates the specified Azure Firewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
+        /// </param>
+        public static AzureFirewall CreateOrUpdate(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, AzureFirewall parameters)
+        {
+                return ((IAzureFirewallsOperations)operations).CreateOrUpdateAsync(resourceGroupName, azureFirewallName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates the specified Azure Firewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AzureFirewall> CreateOrUpdateAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, AzureFirewall parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, azureFirewallName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates tags of an Azure Firewall resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
+        /// </param>
+        public static AzureFirewall UpdateTags(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, TagsObject parameters)
+        {
+                return ((IAzureFirewallsOperations)operations).UpdateTagsAsync(resourceGroupName, azureFirewallName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates tags of an Azure Firewall resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AzureFirewall> UpdateTagsAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, azureFirewallName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified Azure Firewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
+        /// </param>
+        public static AzureFirewallsDeleteHeaders Delete(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName)
+        {
+                return ((IAzureFirewallsOperations)operations).DeleteAsync(resourceGroupName, azureFirewallName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified Azure Firewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AzureFirewallsDeleteHeaders> DeleteAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, azureFirewallName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Retrieves a list of all IP prefixes that azure firewall has learned to not
         /// SNAT.
         /// </summary>
@@ -233,10 +236,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
         /// </param>
         public static IPPrefixesList ListLearnedPrefixes(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName)
         {
@@ -251,10 +254,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -273,7 +276,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -290,7 +293,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -312,10 +315,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
         /// </param>
         public static AzureFirewallPacketCaptureResponse PacketCaptureOperation(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters)
         {
@@ -329,10 +332,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -345,49 +348,13 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Deletes the specified Azure Firewall.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
-        /// </param>
-        public static void BeginDelete(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName)
-        {
-                ((IAzureFirewallsOperations)operations).BeginDeleteAsync(resourceGroupName, azureFirewallName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified Azure Firewall.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='azureFirewallName'>
-        /// The name of the Azure Firewall.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, azureFirewallName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Creates or updates the specified Azure Firewall.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -404,7 +371,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -426,7 +393,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -443,7 +410,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -459,6 +426,45 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Deletes the specified Azure Firewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
+        /// </param>
+        public static AzureFirewallsDeleteHeaders BeginDelete(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName)
+        {
+                return ((IAzureFirewallsOperations)operations).BeginDeleteAsync(resourceGroupName, azureFirewallName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified Azure Firewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the Azure Firewall.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AzureFirewallsDeleteHeaders> BeginDeleteAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, azureFirewallName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Retrieves a list of all IP prefixes that azure firewall has learned to not
         /// SNAT.
         /// </summary>
@@ -466,10 +472,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
         /// </param>
         public static IPPrefixesList BeginListLearnedPrefixes(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName)
         {
@@ -484,10 +490,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -506,7 +512,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -523,7 +529,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
@@ -545,10 +551,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
         /// </param>
         public static AzureFirewallPacketCaptureResponse BeginPacketCaptureOperation(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters)
         {
@@ -562,10 +568,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='azureFirewallName'>
-        /// The name of the azure firewall.
+        /// The name of the Azure Firewall.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -573,39 +579,6 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<AzureFirewallPacketCaptureResponse> BeginPacketCaptureOperationAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginPacketCaptureOperationWithHttpMessagesAsync(resourceGroupName, azureFirewallName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists all Azure Firewalls in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<AzureFirewall> ListNext(this IAzureFirewallsOperations operations, string nextPageLink)
-        {
-                return ((IAzureFirewallsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all Azure Firewalls in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AzureFirewall>> ListNextAsync(this IAzureFirewallsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -639,6 +612,39 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AzureFirewall>> ListAllNextAsync(this IAzureFirewallsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all Azure Firewalls in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<AzureFirewall> ListNext(this IAzureFirewallsOperations operations, string nextPageLink)
+        {
+                return ((IAzureFirewallsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all Azure Firewalls in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<AzureFirewall>> ListNextAsync(this IAzureFirewallsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

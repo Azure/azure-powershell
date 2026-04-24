@@ -13,159 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class BastionHostsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified Bastion Host.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        public static void Delete(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName)
-        {
-                ((IBastionHostsOperations)operations).DeleteAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified Bastion Host.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets the specified Bastion Host.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        public static BastionHost Get(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName)
-        {
-                return ((IBastionHostsOperations)operations).GetAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified Bastion Host.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<BastionHost> GetAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates the specified Bastion Host.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        public static BastionHost CreateOrUpdate(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, BastionHost parameters)
-        {
-                return ((IBastionHostsOperations)operations).CreateOrUpdateAsync(resourceGroupName, bastionHostName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates the specified Bastion Host.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<BastionHost> CreateOrUpdateAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, BastionHost parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates Tags for BastionHost resource
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        public static BastionHost UpdateTags(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject parameters)
-        {
-                return ((IBastionHostsOperations)operations).UpdateTagsAsync(resourceGroupName, bastionHostName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates Tags for BastionHost resource
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='bastionHostName'>
-        /// The name of the Bastion Host.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<BastionHost> UpdateTagsAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Lists all Bastion Hosts in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -199,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<BastionHost> ListByResourceGroup(this IBastionHostsOperations operations, string resourceGroupName)
         {
@@ -213,7 +60,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -226,20 +73,137 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets the specified Bastion Host.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        public static BastionHost Get(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName)
+        {
+                return ((IBastionHostsOperations)operations).GetAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified Bastion Host.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BastionHost> GetAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates the specified Bastion Host.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        public static BastionHost CreateOrUpdate(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, BastionHost parameters)
+        {
+                return ((IBastionHostsOperations)operations).CreateOrUpdateAsync(resourceGroupName, bastionHostName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates the specified Bastion Host.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BastionHost> CreateOrUpdateAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, BastionHost parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates Tags for BastionHost resource
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        public static BastionHost UpdateTags(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject parameters)
+        {
+                return ((IBastionHostsOperations)operations).UpdateTagsAsync(resourceGroupName, bastionHostName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates Tags for BastionHost resource
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BastionHost> UpdateTagsAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified Bastion Host.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        public static void BeginDelete(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName)
+        public static BastionHostsDeleteHeaders Delete(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName)
         {
-                ((IBastionHostsOperations)operations).BeginDeleteAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
+                return ((IBastionHostsOperations)operations).DeleteAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -249,7 +213,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -257,9 +221,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BastionHostsDeleteHeaders> DeleteAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Creates or updates the specified Bastion Host.
@@ -268,7 +235,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -285,7 +252,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -307,7 +274,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -324,7 +291,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
@@ -337,6 +304,45 @@ namespace Microsoft.Azure.Management.Network
             using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified Bastion Host.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        public static BastionHostsDeleteHeaders BeginDelete(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName)
+        {
+                return ((IBastionHostsOperations)operations).BeginDeleteAsync(resourceGroupName, bastionHostName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified Bastion Host.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='bastionHostName'>
+        /// The name of the Bastion Host.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<BastionHostsDeleteHeaders> BeginDeleteAsync(this IBastionHostsOperations operations, string resourceGroupName, string bastionHostName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, bastionHostName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

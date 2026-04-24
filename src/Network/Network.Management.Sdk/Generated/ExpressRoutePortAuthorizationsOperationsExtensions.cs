@@ -13,48 +13,42 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ExpressRoutePortAuthorizationsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified authorization from the specified express route port.
+        /// Gets all authorizations in an express route port.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
         /// </param>
-        /// <param name='authorizationName'>
-        /// The name of the authorization.
-        /// </param>
-        public static ExpressRoutePortAuthorizationsDeleteHeaders Delete(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName)
+        public static Microsoft.Rest.Azure.IPage<ExpressRoutePortAuthorization> List(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName)
         {
-                return ((IExpressRoutePortAuthorizationsOperations)operations).DeleteAsync(resourceGroupName, expressRoutePortName, authorizationName).GetAwaiter().GetResult();
+                return ((IExpressRoutePortAuthorizationsOperations)operations).ListAsync(resourceGroupName, expressRoutePortName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified authorization from the specified express route port.
+        /// Gets all authorizations in an express route port.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
-        /// </param>
-        /// <param name='authorizationName'>
-        /// The name of the authorization.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRoutePortAuthorizationsDeleteHeaders> DeleteAsync(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRoutePortAuthorization>> ListAsync(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Headers;
+                return _result.Body;
             }
         }
         /// <summary>
@@ -64,7 +58,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
@@ -84,7 +78,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
@@ -109,7 +103,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
@@ -129,7 +123,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
@@ -148,52 +142,13 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Gets all authorizations in an express route port.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='expressRoutePortName'>
-        /// The name of the express route port.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ExpressRoutePortAuthorization> List(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName)
-        {
-                return ((IExpressRoutePortAuthorizationsOperations)operations).ListAsync(resourceGroupName, expressRoutePortName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all authorizations in an express route port.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='expressRoutePortName'>
-        /// The name of the express route port.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRoutePortAuthorization>> ListAsync(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Deletes the specified authorization from the specified express route port.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
@@ -201,9 +156,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='authorizationName'>
         /// The name of the authorization.
         /// </param>
-        public static ExpressRoutePortAuthorizationsDeleteHeaders BeginDelete(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName)
+        public static ExpressRoutePortAuthorizationsDeleteHeaders Delete(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName)
         {
-                return ((IExpressRoutePortAuthorizationsOperations)operations).BeginDeleteAsync(resourceGroupName, expressRoutePortName, authorizationName).GetAwaiter().GetResult();
+                return ((IExpressRoutePortAuthorizationsOperations)operations).DeleteAsync(resourceGroupName, expressRoutePortName, authorizationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -213,7 +168,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
@@ -224,9 +179,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRoutePortAuthorizationsDeleteHeaders> BeginDeleteAsync(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ExpressRoutePortAuthorizationsDeleteHeaders> DeleteAsync(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -238,7 +193,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
@@ -258,7 +213,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
@@ -274,6 +229,51 @@ namespace Microsoft.Azure.Management.Network
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, authorizationParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified authorization from the specified express route port.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
+        /// </param>
+        public static ExpressRoutePortAuthorizationsDeleteHeaders BeginDelete(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName)
+        {
+                return ((IExpressRoutePortAuthorizationsOperations)operations).BeginDeleteAsync(resourceGroupName, expressRoutePortName, authorizationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified authorization from the specified express route port.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRoutePortAuthorizationsDeleteHeaders> BeginDeleteAsync(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

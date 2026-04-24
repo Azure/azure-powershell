@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="connectionState">The current state of the VirtualHub to Peer.
         /// Possible values include: &#39;Unknown&#39;, &#39;Connecting&#39;, &#39;Connected&#39;,
         /// &#39;NotConnected&#39;</param>
-        public BgpConnectionProperties(long? peerAsn = default(long?), string peerIP = default(string), SubResource hubVirtualNetworkConnection = default(SubResource), string provisioningState = default(string), string connectionState = default(string))
+        public BgpConnectionProperties(long? peerAsn = default(long?), string peerIP = default(string), CommonSubResource hubVirtualNetworkConnection = default(CommonSubResource), string provisioningState = default(string), string connectionState = default(string))
 
         {
             this.PeerAsn = peerAsn;
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the HubVirtualNetworkConnection resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hubVirtualNetworkConnection")]
-        public SubResource HubVirtualNetworkConnection {get; set; }
+        public CommonSubResource HubVirtualNetworkConnection {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

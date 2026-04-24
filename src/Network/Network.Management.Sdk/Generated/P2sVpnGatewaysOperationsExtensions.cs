@@ -13,194 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class P2SVpnGatewaysOperationsExtensions
     {
         /// <summary>
-        /// Retrieves the details of a virtual wan p2s vpn gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        public static P2SVpnGateway Get(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
-        {
-                return ((IP2SVpnGatewaysOperations)operations).GetAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of a virtual wan p2s vpn gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<P2SVpnGateway> GetAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates a virtual wan p2s vpn gateway if it doesn&#39;t exist else updates the
-        /// existing gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        public static P2SVpnGateway CreateOrUpdate(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnGateway p2SVpnGatewayParameters)
-        {
-                return ((IP2SVpnGatewaysOperations)operations).CreateOrUpdateAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates a virtual wan p2s vpn gateway if it doesn&#39;t exist else updates the
-        /// existing gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<P2SVpnGateway> CreateOrUpdateAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnGateway p2SVpnGatewayParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates virtual wan p2s vpn gateway tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        public static P2SVpnGateway UpdateTags(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, TagsObject p2SVpnGatewayParameters)
-        {
-                return ((IP2SVpnGatewaysOperations)operations).UpdateTagsAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates virtual wan p2s vpn gateway tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<P2SVpnGateway> UpdateTagsAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, TagsObject p2SVpnGatewayParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a virtual wan p2s vpn gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        public static void Delete(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
-        {
-                ((IP2SVpnGatewaysOperations)operations).DeleteAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a virtual wan p2s vpn gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Lists all the P2SVpnGateways in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<P2SVpnGateway> ListByResourceGroup(this IP2SVpnGatewaysOperations operations, string resourceGroupName)
-        {
-                return ((IP2SVpnGatewaysOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all the P2SVpnGateways in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<P2SVpnGateway>> ListByResourceGroupAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Lists all the P2SVpnGateways in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -228,30 +40,63 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Resets the primary of the p2s vpn gateway in the specified resource group.
+        /// Lists all the P2SVpnGateways in a resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<P2SVpnGateway> ListByResourceGroup(this IP2SVpnGatewaysOperations operations, string resourceGroupName)
+        {
+                return ((IP2SVpnGatewaysOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the P2SVpnGateways in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<P2SVpnGateway>> ListByResourceGroupAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a virtual wan p2s vpn gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
-        public static P2SVpnGateway Reset(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
+        public static P2SVpnGateway Get(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
         {
-                return ((IP2SVpnGatewaysOperations)operations).ResetAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
+                return ((IP2SVpnGatewaysOperations)operations).GetAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Resets the primary of the p2s vpn gateway in the specified resource group.
+        /// Retrieves the details of a virtual wan p2s vpn gateway.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -259,11 +104,171 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<P2SVpnGateway> ResetAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<P2SVpnGateway> GetAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ResetWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates a virtual wan p2s vpn gateway if it doesn&#39;t exist else updates the
+        /// existing gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static P2SVpnGateway CreateOrUpdate(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnGateway p2SVpnGatewayParameters)
+        {
+                return ((IP2SVpnGatewaysOperations)operations).CreateOrUpdateAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates a virtual wan p2s vpn gateway if it doesn&#39;t exist else updates the
+        /// existing gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<P2SVpnGateway> CreateOrUpdateAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnGateway p2SVpnGatewayParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates virtual wan p2s vpn gateway tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static P2SVpnGateway UpdateTags(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, TagsObject p2SVpnGatewayParameters)
+        {
+                return ((IP2SVpnGatewaysOperations)operations).UpdateTagsAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates virtual wan p2s vpn gateway tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<P2SVpnGateway> UpdateTagsAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, TagsObject p2SVpnGatewayParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a virtual wan p2s vpn gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static P2SVpnGatewaysDeleteHeaders Delete(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
+        {
+                return ((IP2SVpnGatewaysOperations)operations).DeleteAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a virtual wan p2s vpn gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<P2SVpnGatewaysDeleteHeaders> DeleteAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the
+        /// specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='p2SVpnGatewayName'>
+        /// The name of the P2S Vpn Gateway.
+        /// </param>
+        public static P2SVpnGatewaysDisconnectP2SVpnConnectionsHeaders DisconnectP2SVpnConnections(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request)
+        {
+                return ((IP2SVpnGatewaysOperations)operations).DisconnectP2SVpnConnectionsAsync(resourceGroupName, p2SVpnGatewayName, request).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the
+        /// specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='p2SVpnGatewayName'>
+        /// The name of the P2S Vpn Gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<P2SVpnGatewaysDisconnectP2SVpnConnectionsHeaders> DisconnectP2SVpnConnectionsAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DisconnectP2SVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2SVpnGatewayName, request, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -274,10 +279,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         public static VpnProfileResponse GenerateVpnProfile(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnProfileParameters parameters)
         {
@@ -292,10 +297,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -315,10 +320,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         public static P2SVpnGateway GetP2SVpnConnectionHealth(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
         {
@@ -333,10 +338,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -356,10 +361,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         public static P2SVpnConnectionHealth GetP2SVpnConnectionHealthDetailed(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnConnectionHealthRequest request)
         {
@@ -374,10 +379,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -390,42 +395,43 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the
-        /// specified resource group.
+        /// Resets the primary of the p2s vpn gateway in the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='p2SVpnGatewayName'>
-        /// The name of the P2S Vpn Gateway.
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
         /// </param>
-        public static void DisconnectP2SVpnConnections(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request)
+        public static P2SVpnGateway Reset(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
         {
-                ((IP2SVpnGatewaysOperations)operations).DisconnectP2SVpnConnectionsAsync(resourceGroupName, p2SVpnGatewayName, request).GetAwaiter().GetResult();
+                return ((IP2SVpnGatewaysOperations)operations).ResetAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the
-        /// specified resource group.
+        /// Resets the primary of the p2s vpn gateway in the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='p2SVpnGatewayName'>
-        /// The name of the P2S Vpn Gateway.
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DisconnectP2SVpnConnectionsAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<P2SVpnGateway> ResetAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DisconnectP2SVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2SVpnGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ResetWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Creates a virtual wan p2s vpn gateway if it doesn&#39;t exist else updates the
@@ -435,7 +441,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -453,7 +459,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -475,7 +481,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -492,7 +498,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -514,14 +520,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
-        public static void BeginDelete(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
+        public static P2SVpnGatewaysDeleteHeaders BeginDelete(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
         {
-                ((IP2SVpnGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
+                return ((IP2SVpnGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -531,7 +537,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -539,47 +545,52 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<P2SVpnGatewaysDeleteHeaders> BeginDeleteAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Resets the primary of the p2s vpn gateway in the specified resource group.
+        /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the
+        /// specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// <param name='p2SVpnGatewayName'>
+        /// The name of the P2S Vpn Gateway.
         /// </param>
-        public static P2SVpnGateway BeginReset(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
+        public static P2SVpnGatewaysDisconnectP2SVpnConnectionsHeaders BeginDisconnectP2SVpnConnections(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request)
         {
-                return ((IP2SVpnGatewaysOperations)operations).BeginResetAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
+                return ((IP2SVpnGatewaysOperations)operations).BeginDisconnectP2SVpnConnectionsAsync(resourceGroupName, p2SVpnGatewayName, request).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Resets the primary of the p2s vpn gateway in the specified resource group.
+        /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the
+        /// specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the P2SVpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// <param name='p2SVpnGatewayName'>
+        /// The name of the P2S Vpn Gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<P2SVpnGateway> BeginResetAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<P2SVpnGatewaysDisconnectP2SVpnConnectionsHeaders> BeginDisconnectP2SVpnConnectionsAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginResetWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginDisconnectP2SVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2SVpnGatewayName, request, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -590,10 +601,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         public static VpnProfileResponse BeginGenerateVpnProfile(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnProfileParameters parameters)
         {
@@ -608,10 +619,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -631,10 +642,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         public static P2SVpnGateway BeginGetP2SVpnConnectionHealth(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
         {
@@ -649,10 +660,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -672,10 +683,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         public static P2SVpnConnectionHealth BeginGetP2SVpnConnectionHealthDetailed(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnConnectionHealthRequest request)
         {
@@ -690,10 +701,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the P2SVpnGateway.
+        /// The name of the gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -706,72 +717,40 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the
-        /// specified resource group.
+        /// Resets the primary of the p2s vpn gateway in the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='p2SVpnGatewayName'>
-        /// The name of the P2S Vpn Gateway.
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
         /// </param>
-        public static void BeginDisconnectP2SVpnConnections(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request)
+        public static P2SVpnGateway BeginReset(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName)
         {
-                ((IP2SVpnGatewaysOperations)operations).BeginDisconnectP2SVpnConnectionsAsync(resourceGroupName, p2SVpnGatewayName, request).GetAwaiter().GetResult();
+                return ((IP2SVpnGatewaysOperations)operations).BeginResetAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the
-        /// specified resource group.
+        /// Resets the primary of the p2s vpn gateway in the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='p2SVpnGatewayName'>
-        /// The name of the P2S Vpn Gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDisconnectP2SVpnConnectionsAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string p2SVpnGatewayName, P2SVpnConnectionRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDisconnectP2SVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2SVpnGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Lists all the P2SVpnGateways in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<P2SVpnGateway> ListByResourceGroupNext(this IP2SVpnGatewaysOperations operations, string nextPageLink)
-        {
-                return ((IP2SVpnGatewaysOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all the P2SVpnGateways in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<P2SVpnGateway>> ListByResourceGroupNextAsync(this IP2SVpnGatewaysOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<P2SVpnGateway> BeginResetAsync(this IP2SVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginResetWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -805,6 +784,39 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<P2SVpnGateway>> ListNextAsync(this IP2SVpnGatewaysOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all the P2SVpnGateways in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<P2SVpnGateway> ListByResourceGroupNext(this IP2SVpnGatewaysOperations operations, string nextPageLink)
+        {
+                return ((IP2SVpnGatewaysOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the P2SVpnGateways in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<P2SVpnGateway>> ListByResourceGroupNextAsync(this IP2SVpnGatewaysOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

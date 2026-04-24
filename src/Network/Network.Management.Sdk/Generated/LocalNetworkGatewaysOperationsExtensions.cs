@@ -13,40 +13,34 @@ namespace Microsoft.Azure.Management.Network
     public static partial class LocalNetworkGatewaysOperationsExtensions
     {
         /// <summary>
-        /// Creates or updates a local network gateway in the specified resource group.
+        /// Gets all the local network gateways in a resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='localNetworkGatewayName'>
-        /// The name of the local network gateway.
-        /// </param>
-        public static LocalNetworkGateway CreateOrUpdate(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, LocalNetworkGateway parameters)
+        public static Microsoft.Rest.Azure.IPage<LocalNetworkGateway> List(this ILocalNetworkGatewaysOperations operations, string resourceGroupName)
         {
-                return ((ILocalNetworkGatewaysOperations)operations).CreateOrUpdateAsync(resourceGroupName, localNetworkGatewayName, parameters).GetAwaiter().GetResult();
+                return ((ILocalNetworkGatewaysOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Creates or updates a local network gateway in the specified resource group.
+        /// Gets all the local network gateways in a resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='localNetworkGatewayName'>
-        /// The name of the local network gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<LocalNetworkGateway> CreateOrUpdateAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, LocalNetworkGateway parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LocalNetworkGateway>> ListAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -58,7 +52,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
@@ -75,7 +69,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
@@ -91,30 +85,30 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Deletes the specified local network gateway.
+        /// Creates or updates a local network gateway in the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
         /// </param>
-        public static void Delete(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName)
+        public static LocalNetworkGateway CreateOrUpdate(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, LocalNetworkGateway parameters)
         {
-                ((ILocalNetworkGatewaysOperations)operations).DeleteAsync(resourceGroupName, localNetworkGatewayName).GetAwaiter().GetResult();
+                return ((ILocalNetworkGatewaysOperations)operations).CreateOrUpdateAsync(resourceGroupName, localNetworkGatewayName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified local network gateway.
+        /// Creates or updates a local network gateway in the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
@@ -122,9 +116,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LocalNetworkGateway> CreateOrUpdateAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, LocalNetworkGateway parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Updates a local network gateway tags.
@@ -133,7 +130,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
@@ -150,7 +147,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
@@ -166,36 +163,42 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Gets all the local network gateways in a resource group.
+        /// Deletes the specified local network gateway.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<LocalNetworkGateway> List(this ILocalNetworkGatewaysOperations operations, string resourceGroupName)
+        /// <param name='localNetworkGatewayName'>
+        /// The name of the local network gateway.
+        /// </param>
+        public static LocalNetworkGatewaysDeleteHeaders Delete(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName)
         {
-                return ((ILocalNetworkGatewaysOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
+                return ((ILocalNetworkGatewaysOperations)operations).DeleteAsync(resourceGroupName, localNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets all the local network gateways in a resource group.
+        /// Deletes the specified local network gateway.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='localNetworkGatewayName'>
+        /// The name of the local network gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LocalNetworkGateway>> ListAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LocalNetworkGatewaysDeleteHeaders> DeleteAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -205,7 +208,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
@@ -222,7 +225,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
@@ -244,14 +247,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
         /// </param>
-        public static void BeginDelete(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName)
+        public static LocalNetworkGatewaysDeleteHeaders BeginDelete(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName)
         {
-                ((ILocalNetworkGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, localNetworkGatewayName).GetAwaiter().GetResult();
+                return ((ILocalNetworkGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, localNetworkGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -261,7 +264,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='localNetworkGatewayName'>
         /// The name of the local network gateway.
@@ -269,9 +272,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LocalNetworkGatewaysDeleteHeaders> BeginDeleteAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets all the local network gateways in a resource group.

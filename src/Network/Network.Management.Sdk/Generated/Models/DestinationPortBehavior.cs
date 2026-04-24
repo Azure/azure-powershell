@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class DestinationPortBehavior
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// ListenIfAvailable
+        /// </summary>
         public const string ListenIfAvailable = "ListenIfAvailable";
     }
 }

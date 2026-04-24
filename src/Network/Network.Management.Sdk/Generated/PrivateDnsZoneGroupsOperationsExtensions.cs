@@ -13,46 +13,43 @@ namespace Microsoft.Azure.Management.Network
     public static partial class PrivateDnsZoneGroupsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified private dns zone group.
+        /// Gets all private dns zone groups in a private endpoint.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
-        /// </param>
-        public static void Delete(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName)
+        public static Microsoft.Rest.Azure.IPage<PrivateDnsZoneGroup> List(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName)
         {
-                ((IPrivateDnsZoneGroupsOperations)operations).DeleteAsync(resourceGroupName, privateEndpointName, privateDnsZoneGroupName).GetAwaiter().GetResult();
+                return ((IPrivateDnsZoneGroupsOperations)operations).ListAsync(resourceGroupName, privateEndpointName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified private dns zone group.
+        /// Gets all private dns zone groups in a private endpoint.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
-        /// </param>
-        /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateDnsZoneGroup>> ListAsync(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, privateDnsZoneGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, privateEndpointName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Gets the private dns zone group resource by specified private dns zone
@@ -62,13 +59,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
         /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// The name of the private endpoint.
         /// </param>
         public static PrivateDnsZoneGroup Get(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName)
         {
@@ -83,13 +80,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
         /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// The name of the private endpoint.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -109,13 +106,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
         /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// The name of the private endpoint.
         /// </param>
         public static PrivateDnsZoneGroup CreateOrUpdate(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, PrivateDnsZoneGroup parameters)
         {
@@ -130,13 +127,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
         /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// The name of the private endpoint.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -149,85 +146,49 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Gets all private dns zone groups in a private endpoint.
+        /// Deletes the specified private dns zone group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// <param name='privateDnsZoneGroupName'>
+        /// The name of the private endpoint.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<PrivateDnsZoneGroup> List(this IPrivateDnsZoneGroupsOperations operations, string privateEndpointName, string resourceGroupName)
+        public static PrivateDnsZoneGroupsDeleteHeaders Delete(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName)
         {
-                return ((IPrivateDnsZoneGroupsOperations)operations).ListAsync(privateEndpointName, resourceGroupName).GetAwaiter().GetResult();
+                return ((IPrivateDnsZoneGroupsOperations)operations).DeleteAsync(resourceGroupName, privateEndpointName, privateDnsZoneGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets all private dns zone groups in a private endpoint.
+        /// Deletes the specified private dns zone group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// <param name='privateDnsZoneGroupName'>
+        /// The name of the private endpoint.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PrivateDnsZoneGroup>> ListAsync(this IPrivateDnsZoneGroupsOperations operations, string privateEndpointName, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PrivateDnsZoneGroupsDeleteHeaders> DeleteAsync(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(privateEndpointName, resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, privateDnsZoneGroupName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
-        }
-        /// <summary>
-        /// Deletes the specified private dns zone group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
-        /// </param>
-        /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
-        /// </param>
-        public static void BeginDelete(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName)
-        {
-                ((IPrivateDnsZoneGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, privateEndpointName, privateDnsZoneGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified private dns zone group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
-        /// </param>
-        /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, privateDnsZoneGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a private dns zone group in the specified private
@@ -237,13 +198,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
         /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// The name of the private endpoint.
         /// </param>
         public static PrivateDnsZoneGroup BeginCreateOrUpdate(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, PrivateDnsZoneGroup parameters)
         {
@@ -258,13 +219,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
         /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// The name of the private endpoint.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -274,6 +235,51 @@ namespace Microsoft.Azure.Management.Network
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, privateEndpointName, privateDnsZoneGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified private dns zone group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint.
+        /// </param>
+        /// <param name='privateDnsZoneGroupName'>
+        /// The name of the private endpoint.
+        /// </param>
+        public static PrivateDnsZoneGroupsDeleteHeaders BeginDelete(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName)
+        {
+                return ((IPrivateDnsZoneGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, privateEndpointName, privateDnsZoneGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified private dns zone group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint.
+        /// </param>
+        /// <param name='privateDnsZoneGroupName'>
+        /// The name of the private endpoint.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<PrivateDnsZoneGroupsDeleteHeaders> BeginDeleteAsync(this IPrivateDnsZoneGroupsOperations operations, string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, privateEndpointName, privateDnsZoneGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

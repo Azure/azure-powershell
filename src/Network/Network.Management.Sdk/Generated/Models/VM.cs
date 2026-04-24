@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <summary>
     /// Describes a Virtual Machine.
     /// </summary>
-    public partial class VM : Resource
+    public partial class VM : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the VM class.

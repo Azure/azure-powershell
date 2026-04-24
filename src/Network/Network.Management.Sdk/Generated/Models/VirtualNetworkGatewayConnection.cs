@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A common class for general resource information.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualNetworkGatewayConnection : Resource
+    public partial class VirtualNetworkGatewayConnection : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualNetworkGatewayConnection class.
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="authenticationType">Gateway connection authentication type.
         /// Possible values include: &#39;PSK&#39;, &#39;Certificate&#39;</param>
-        public VirtualNetworkGatewayConnection(VirtualNetworkGateway virtualNetworkGateway1, string connectionType, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), CertificateAuthentication certificateAuthentication = default(CertificateAuthentication), string authorizationKey = default(string), VirtualNetworkGateway virtualNetworkGateway2 = default(VirtualNetworkGateway), LocalNetworkGateway localNetworkGateway2 = default(LocalNetworkGateway), System.Collections.Generic.IList<SubResource> ingressNatRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> egressNatRules = default(System.Collections.Generic.IList<SubResource>), string connectionProtocol = default(string), int? routingWeight = default(int?), int? dpdTimeoutSeconds = default(int?), string connectionMode = default(string), System.Collections.Generic.IList<VirtualNetworkGatewayConnectionTunnelProperties> tunnelProperties = default(System.Collections.Generic.IList<VirtualNetworkGatewayConnectionTunnelProperties>), string sharedKey = default(string), string connectionStatus = default(string), System.Collections.Generic.IList<TunnelConnectionHealth> tunnelConnectionStatus = default(System.Collections.Generic.IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), SubResource peer = default(SubResource), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> gatewayCustomBgpIPAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? useLocalAzureIPAddress = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), System.Collections.Generic.IList<TrafficSelectorPolicy> trafficSelectorPolicies = default(System.Collections.Generic.IList<TrafficSelectorPolicy>), string resourceGuid = default(string), bool? expressRouteGatewayBypass = default(bool?), bool? enablePrivateLinkFastPath = default(bool?), string authenticationType = default(string))
+        public VirtualNetworkGatewayConnection(VirtualNetworkGateway virtualNetworkGateway1, string connectionType, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), CertificateAuthentication certificateAuthentication = default(CertificateAuthentication), string authorizationKey = default(string), VirtualNetworkGateway virtualNetworkGateway2 = default(VirtualNetworkGateway), LocalNetworkGateway localNetworkGateway2 = default(LocalNetworkGateway), System.Collections.Generic.IList<CommonSubResource> ingressNatRules = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> egressNatRules = default(System.Collections.Generic.IList<CommonSubResource>), string connectionProtocol = default(string), int? routingWeight = default(int?), int? dpdTimeoutSeconds = default(int?), string connectionMode = default(string), System.Collections.Generic.IList<VirtualNetworkGatewayConnectionTunnelProperties> tunnelProperties = default(System.Collections.Generic.IList<VirtualNetworkGatewayConnectionTunnelProperties>), string sharedKey = default(string), string connectionStatus = default(string), System.Collections.Generic.IList<TunnelConnectionHealth> tunnelConnectionStatus = default(System.Collections.Generic.IList<TunnelConnectionHealth>), long? egressBytesTransferred = default(long?), long? ingressBytesTransferred = default(long?), CommonSubResource peer = default(CommonSubResource), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> gatewayCustomBgpIPAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? useLocalAzureIPAddress = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), System.Collections.Generic.IList<TrafficSelectorPolicy> trafficSelectorPolicies = default(System.Collections.Generic.IList<TrafficSelectorPolicy>), string resourceGuid = default(string), bool? expressRouteGatewayBypass = default(bool?), bool? enablePrivateLinkFastPath = default(bool?), string authenticationType = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -231,13 +231,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets list of ingress NatRules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ingressNatRules")]
-        public System.Collections.Generic.IList<SubResource> IngressNatRules {get; set; }
+        public System.Collections.Generic.IList<CommonSubResource> IngressNatRules {get; set; }
 
         /// <summary>
         /// Gets or sets list of egress NatRules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.egressNatRules")]
-        public System.Collections.Generic.IList<SubResource> EgressNatRules {get; set; }
+        public System.Collections.Generic.IList<CommonSubResource> EgressNatRules {get; set; }
 
         /// <summary>
         /// Gets or sets gateway connection type. Possible values include: &#39;IPsec&#39;, &#39;Vnet2Vnet&#39;, &#39;ExpressRoute&#39;, &#39;VPNClient&#39;
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to peerings resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.peer")]
-        public SubResource Peer {get; set; }
+        public CommonSubResource Peer {get; set; }
 
         /// <summary>
         /// Gets or sets enableBgp flag.

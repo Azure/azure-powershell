@@ -21,16 +21,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the ExpressRoutePortAuthorizationsDeleteHeaders class.
         /// </summary>
 
+        /// <param name="azureAsyncOperation">
+        /// </param>
+
         /// <param name="location">
         /// </param>
 
-        /// <param name="azureAsyncOperation">
+        /// <param name="retryAfter">
         /// </param>
-        public ExpressRoutePortAuthorizationsDeleteHeaders(string location = default(string), string azureAsyncOperation = default(string))
+        public ExpressRoutePortAuthorizationsDeleteHeaders(string azureAsyncOperation = default(string), string location = default(string), int? retryAfter = default(int?))
 
         {
-            this.Location = location;
             this.AzureAsyncOperation = azureAsyncOperation;
+            this.Location = location;
+            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -43,13 +47,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Gets or sets
         /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Azure-AsyncOperation")]
+        public string AzureAsyncOperation {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
         public string Location {get; set; }
 
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "Azure-AsyncOperation")]
-        public string AzureAsyncOperation {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
     }
 }

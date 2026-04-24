@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// IP configuration of an Azure Firewall.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AzureFirewallIPConfiguration : SubResource
+    public partial class AzureFirewallIPConfiguration : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the AzureFirewallIPConfiguration class.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="publicIPAddress">Reference to the PublicIP resource. This field is a mandatory input if
         /// subnet is not null.
         /// </param>
-        public AzureFirewallIPConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string privateIPAddress = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource))
+        public AzureFirewallIPConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string privateIPAddress = default(string), CommonSubResource subnet = default(CommonSubResource), CommonSubResource publicIPAddress = default(CommonSubResource))
 
         : base(id)
         {
@@ -112,13 +112,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// &#39;AzureFirewallSubnet&#39; or &#39;AzureFirewallManagementSubnet&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
-        public SubResource Subnet {get; set; }
+        public CommonSubResource Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets reference to the PublicIP resource. This field is a mandatory
         /// input if subnet is not null.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddress")]
-        public SubResource PublicIPAddress {get; set; }
+        public CommonSubResource PublicIPAddress {get; set; }
     }
 }

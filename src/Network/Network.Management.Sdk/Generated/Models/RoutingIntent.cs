@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// The routing intent child resource of a Virtual hub.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RoutingIntent : SubResource
+    public partial class RoutingIntent : CommonSubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the RoutingIntent class.
@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
-        /// </param>
-
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
+        /// <param name="name">Name of the resource.
         /// </param>
 
         /// <param name="type">Resource type.
+        /// </param>
+
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the RoutingIntent resource.
@@ -44,13 +43,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="routingPolicies">List of routing policies.
         /// </param>
-        public RoutingIntent(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), System.Collections.Generic.IList<RoutingPolicy> routingPolicies = default(System.Collections.Generic.IList<RoutingPolicy>))
+        public RoutingIntent(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<RoutingPolicy> routingPolicies = default(System.Collections.Generic.IList<RoutingPolicy>))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.RoutingPolicies = routingPolicies;
             CustomInit();
@@ -63,24 +60,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the RoutingIntent resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

@@ -13,140 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class RoutingIntentOperationsExtensions
     {
         /// <summary>
-        /// Creates a RoutingIntent resource if it doesn&#39;t exist else updates the
-        /// existing RoutingIntent.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the RoutingIntent.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routingIntentName'>
-        /// The name of the per VirtualHub singleton Routing Intent resource.
-        /// </param>
-        public static RoutingIntent CreateOrUpdate(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, RoutingIntent routingIntentParameters)
-        {
-                return ((IRoutingIntentOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualHubName, routingIntentName, routingIntentParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates a RoutingIntent resource if it doesn&#39;t exist else updates the
-        /// existing RoutingIntent.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the RoutingIntent.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routingIntentName'>
-        /// The name of the per VirtualHub singleton Routing Intent resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<RoutingIntent> CreateOrUpdateAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, RoutingIntent routingIntentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, routingIntentParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieves the details of a RoutingIntent.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the RoutingIntent.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routingIntentName'>
-        /// The name of the RoutingIntent.
-        /// </param>
-        public static RoutingIntent Get(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName)
-        {
-                return ((IRoutingIntentOperations)operations).GetAsync(resourceGroupName, virtualHubName, routingIntentName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of a RoutingIntent.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the RoutingIntent.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routingIntentName'>
-        /// The name of the RoutingIntent.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<RoutingIntent> GetAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a RoutingIntent.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the RoutingIntent.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routingIntentName'>
-        /// The name of the RoutingIntent.
-        /// </param>
-        public static void Delete(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName)
-        {
-                ((IRoutingIntentOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routingIntentName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a RoutingIntent.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the RoutingIntent.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='routingIntentName'>
-        /// The name of the RoutingIntent.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Retrieves the details of all RoutingIntent child resources of the
         /// VirtualHub.
         /// </summary>
@@ -154,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -172,7 +38,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -188,6 +54,53 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Retrieves the details of a RoutingIntent.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routingIntentName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static RoutingIntent Get(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName)
+        {
+                return ((IRoutingIntentOperations)operations).GetAsync(resourceGroupName, virtualHubName, routingIntentName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a RoutingIntent.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routingIntentName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<RoutingIntent> GetAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates a RoutingIntent resource if it doesn&#39;t exist else updates the
         /// existing RoutingIntent.
         /// </summary>
@@ -195,13 +108,110 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RoutingIntent.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='routingIntentName'>
-        /// The name of the per VirtualHub singleton Routing Intent resource.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static RoutingIntent CreateOrUpdate(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, RoutingIntent routingIntentParameters)
+        {
+                return ((IRoutingIntentOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualHubName, routingIntentName, routingIntentParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates a RoutingIntent resource if it doesn&#39;t exist else updates the
+        /// existing RoutingIntent.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routingIntentName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<RoutingIntent> CreateOrUpdateAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, RoutingIntent routingIntentParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, routingIntentParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a RoutingIntent.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routingIntentName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static RoutingIntentDeleteHeaders Delete(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName)
+        {
+                return ((IRoutingIntentOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, routingIntentName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a RoutingIntent.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routingIntentName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<RoutingIntentDeleteHeaders> DeleteAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Creates a RoutingIntent resource if it doesn&#39;t exist else updates the
+        /// existing RoutingIntent.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='routingIntentName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static RoutingIntent BeginCreateOrUpdate(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, RoutingIntent routingIntentParameters)
         {
@@ -216,13 +226,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RoutingIntent.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='routingIntentName'>
-        /// The name of the per VirtualHub singleton Routing Intent resource.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -241,17 +252,18 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RoutingIntent.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='routingIntentName'>
-        /// The name of the RoutingIntent.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
-        public static void BeginDelete(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName)
+        public static RoutingIntentDeleteHeaders BeginDelete(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName)
         {
-                ((IRoutingIntentOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, routingIntentName).GetAwaiter().GetResult();
+                return ((IRoutingIntentOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, routingIntentName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -261,20 +273,24 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the RoutingIntent.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
         /// <param name='routingIntentName'>
-        /// The name of the RoutingIntent.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RoutingIntentDeleteHeaders> BeginDeleteAsync(this IRoutingIntentOperations operations, string resourceGroupName, string virtualHubName, string routingIntentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, routingIntentName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Retrieves the details of all RoutingIntent child resources of the

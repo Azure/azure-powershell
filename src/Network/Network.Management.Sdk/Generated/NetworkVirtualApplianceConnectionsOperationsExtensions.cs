@@ -13,6 +13,90 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NetworkVirtualApplianceConnectionsOperationsExtensions
     {
         /// <summary>
+        /// Lists NetworkVirtualApplianceConnections under the NVA.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<NetworkVirtualApplianceConnection> List(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName)
+        {
+                return ((INetworkVirtualApplianceConnectionsOperations)operations).ListAsync(resourceGroupName, networkVirtualApplianceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists NetworkVirtualApplianceConnections under the NVA.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of Network Virtual Appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkVirtualApplianceConnection>> ListAsync(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of specified NVA connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of the Network Virtual Appliance.
+        /// </param>
+        /// <param name='connectionName'>
+        /// 
+        /// </param>
+        public static NetworkVirtualApplianceConnection Get(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName)
+        {
+                return ((INetworkVirtualApplianceConnectionsOperations)operations).GetAsync(resourceGroupName, networkVirtualApplianceName, connectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of specified NVA connection.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkVirtualApplianceName'>
+        /// The name of the Network Virtual Appliance.
+        /// </param>
+        /// <param name='connectionName'>
+        /// 
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceConnection> GetAsync(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, connectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates a connection to Network Virtual Appliance, if it doesn&#39;t exist else
         /// updates the existing NVA connection&#39;
         /// </summary>
@@ -20,13 +104,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
         /// The name of the Network Virtual Appliance.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the NVA connection.
+        /// 
         /// </param>
         public static NetworkVirtualApplianceConnection CreateOrUpdate(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName, NetworkVirtualApplianceConnection networkVirtualApplianceConnectionParameters)
         {
@@ -41,13 +125,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
         /// The name of the Network Virtual Appliance.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the NVA connection.
+        /// 
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -60,64 +144,19 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Retrieves the details of specified NVA connection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the NVA connection.
-        /// </param>
-        public static NetworkVirtualApplianceConnection Get(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName)
-        {
-                return ((INetworkVirtualApplianceConnectionsOperations)operations).GetAsync(resourceGroupName, networkVirtualApplianceName, connectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of specified NVA connection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the NVA connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkVirtualApplianceConnection> GetAsync(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Deletes a NVA connection.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
         /// The name of the Network Virtual Appliance.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the NVA connection.
+        /// 
         /// </param>
         public static NetworkVirtualApplianceConnectionsDeleteHeaders Delete(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName)
         {
@@ -131,13 +170,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
         /// The name of the Network Virtual Appliance.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the NVA connection.
+        /// 
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -150,45 +189,6 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Lists NetworkVirtualApplianceConnections under the NVA.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<NetworkVirtualApplianceConnection> List(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName)
-        {
-                return ((INetworkVirtualApplianceConnectionsOperations)operations).ListAsync(resourceGroupName, networkVirtualApplianceName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists NetworkVirtualApplianceConnections under the NVA.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkVirtualApplianceName'>
-        /// The name of the Network Virtual Appliance.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkVirtualApplianceConnection>> ListAsync(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Creates a connection to Network Virtual Appliance, if it doesn&#39;t exist else
         /// updates the existing NVA connection&#39;
         /// </summary>
@@ -196,13 +196,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
         /// The name of the Network Virtual Appliance.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the NVA connection.
+        /// 
         /// </param>
         public static NetworkVirtualApplianceConnection BeginCreateOrUpdate(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName, NetworkVirtualApplianceConnection networkVirtualApplianceConnectionParameters)
         {
@@ -217,13 +217,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
         /// The name of the Network Virtual Appliance.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the NVA connection.
+        /// 
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -242,13 +242,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
         /// The name of the Network Virtual Appliance.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the NVA connection.
+        /// 
         /// </param>
         public static NetworkVirtualApplianceConnectionsDeleteHeaders BeginDelete(this INetworkVirtualApplianceConnectionsOperations operations, string resourceGroupName, string networkVirtualApplianceName, string connectionName)
         {
@@ -262,13 +262,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkVirtualApplianceName'>
         /// The name of the Network Virtual Appliance.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the NVA connection.
+        /// 
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="isRoutingPreferenceInternet">Enable Routing Preference property for the Public IP Interface of the
         /// P2SVpnGateway.
         /// </param>
-        public P2SVpnGatewayProperties(SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<P2SConnectionConfiguration> p2SConnectionConfigurations = default(System.Collections.Generic.IList<P2SConnectionConfiguration>), string provisioningState = default(string), int? vpnGatewayScaleUnit = default(int?), SubResource vpnServerConfiguration = default(SubResource), VpnClientConnectionHealth vpnClientConnectionHealth = default(VpnClientConnectionHealth), System.Collections.Generic.IList<string> customDnsServers = default(System.Collections.Generic.IList<string>), bool? isRoutingPreferenceInternet = default(bool?))
+        public P2SVpnGatewayProperties(CommonSubResource virtualHub = default(CommonSubResource), System.Collections.Generic.IList<P2SConnectionConfiguration> p2SConnectionConfigurations = default(System.Collections.Generic.IList<P2SConnectionConfiguration>), string provisioningState = default(string), int? vpnGatewayScaleUnit = default(int?), CommonSubResource vpnServerConfiguration = default(CommonSubResource), VpnClientConnectionHealth vpnClientConnectionHealth = default(VpnClientConnectionHealth), System.Collections.Generic.IList<string> customDnsServers = default(System.Collections.Generic.IList<string>), bool? isRoutingPreferenceInternet = default(bool?))
 
         {
             this.VirtualHub = virtualHub;
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the VirtualHub to which the gateway belongs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualHub")]
-        public SubResource VirtualHub {get; set; }
+        public CommonSubResource VirtualHub {get; set; }
 
         /// <summary>
         /// Gets or sets list of all p2s connection configurations of the gateway.
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// attached to.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vpnServerConfiguration")]
-        public SubResource VpnServerConfiguration {get; set; }
+        public CommonSubResource VpnServerConfiguration {get; set; }
 
         /// <summary>
         /// Gets all P2S VPN clients&#39; connection health status.

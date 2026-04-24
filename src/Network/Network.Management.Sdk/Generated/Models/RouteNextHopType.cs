@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class RouteNextHopType
     {
+        /// <summary>
+        /// VirtualNetworkGateway
+        /// </summary>
         public const string VirtualNetworkGateway = "VirtualNetworkGateway";
+        /// <summary>
+        /// VnetLocal
+        /// </summary>
         public const string VnetLocal = "VnetLocal";
+        /// <summary>
+        /// Internet
+        /// </summary>
         public const string Internet = "Internet";
+        /// <summary>
+        /// VirtualAppliance
+        /// </summary>
         public const string VirtualAppliance = "VirtualAppliance";
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
     }
 }

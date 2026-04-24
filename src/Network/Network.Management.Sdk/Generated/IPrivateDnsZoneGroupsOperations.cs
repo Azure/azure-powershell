@@ -14,19 +14,16 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IPrivateDnsZoneGroupsOperations
     {
         /// <summary>
-        /// Deletes the specified private dns zone group.
+        /// Gets all private dns zone groups in a private endpoint.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified private dns zone group.
+        /// Gets all private dns zone groups in a private endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
-        /// </param>
-        /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +34,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PrivateDnsZoneGroup>>> ListWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the private dns zone group resource by specified private dns zone
@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Management.Network
         /// group name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
         /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// The name of the private endpoint.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -79,13 +79,13 @@ namespace Microsoft.Azure.Management.Network
         /// endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
         /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// The name of the private endpoint.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update private dns zone group
@@ -103,19 +103,22 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateDnsZoneGroup>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, PrivateDnsZoneGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateDnsZoneGroup,PrivateDnsZoneGroupsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, PrivateDnsZoneGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all private dns zone groups in a private endpoint.
+        /// Deletes the specified private dns zone group.
         /// </summary>
         /// <remarks>
-        /// Gets all private dns zone groups in a private endpoint.
+        /// Deletes the specified private dns zone group.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// <param name='privateDnsZoneGroupName'>
+        /// The name of the private endpoint.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -126,36 +129,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PrivateDnsZoneGroup>>> ListWithHttpMessagesAsync(string privateEndpointName, string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes the specified private dns zone group.
-        /// </summary>
-        /// <remarks>
-        /// Deletes the specified private dns zone group.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
-        /// </param>
-        /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<PrivateDnsZoneGroupsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates a private dns zone group in the specified private
@@ -166,13 +140,13 @@ namespace Microsoft.Azure.Management.Network
         /// endpoint.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint.
         /// </param>
         /// <param name='privateDnsZoneGroupName'>
-        /// The name of the private dns zone group.
+        /// The name of the private endpoint.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update private dns zone group
@@ -190,7 +164,33 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateDnsZoneGroup>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, PrivateDnsZoneGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PrivateDnsZoneGroup,PrivateDnsZoneGroupsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, PrivateDnsZoneGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes the specified private dns zone group.
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified private dns zone group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='privateEndpointName'>
+        /// The name of the private endpoint.
+        /// </param>
+        /// <param name='privateDnsZoneGroupName'>
+        /// The name of the private endpoint.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<PrivateDnsZoneGroupsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string privateEndpointName, string privateDnsZoneGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all private dns zone groups in a private endpoint.

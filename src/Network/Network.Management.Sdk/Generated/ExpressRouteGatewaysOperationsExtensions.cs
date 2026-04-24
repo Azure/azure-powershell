@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static ExpressRouteGatewayList ListByResourceGroup(this IExpressRouteGatewaysOperations operations, string resourceGroupName)
         {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -73,13 +73,52 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Fetches the details of a ExpressRoute gateway in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        public static ExpressRouteGateway Get(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName)
+        {
+                return ((IExpressRouteGatewaysOperations)operations).GetAsync(resourceGroupName, expressRouteGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Fetches the details of a ExpressRoute gateway in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRouteGatewayName'>
+        /// The name of the ExpressRoute gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteGateway> GetAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates or updates a ExpressRoute gateway in a specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
         /// The name of the ExpressRoute gateway.
@@ -96,7 +135,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
         /// The name of the ExpressRoute gateway.
@@ -118,10 +157,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ExpressRouteGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
-        /// The name of the gateway.
+        /// The name of the ExpressRoute gateway.
         /// </param>
         public static ExpressRouteGateway UpdateTags(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters)
         {
@@ -135,10 +174,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ExpressRouteGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
-        /// The name of the gateway.
+        /// The name of the ExpressRoute gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -151,30 +190,34 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Fetches the details of a ExpressRoute gateway in a resource group.
+        /// Deletes the specified ExpressRoute gateway in a resource group. An
+        /// ExpressRoute gateway resource can only be deleted when there are no
+        /// connection subresources.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
         /// The name of the ExpressRoute gateway.
         /// </param>
-        public static ExpressRouteGateway Get(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName)
+        public static ExpressRouteGatewaysDeleteHeaders Delete(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName)
         {
-                return ((IExpressRouteGatewaysOperations)operations).GetAsync(resourceGroupName, expressRouteGatewayName).GetAwaiter().GetResult();
+                return ((IExpressRouteGatewaysOperations)operations).DeleteAsync(resourceGroupName, expressRouteGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Fetches the details of a ExpressRoute gateway in a resource group.
+        /// Deletes the specified ExpressRoute gateway in a resource group. An
+        /// ExpressRoute gateway resource can only be deleted when there are no
+        /// connection subresources.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
         /// The name of the ExpressRoute gateway.
@@ -182,52 +225,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ExpressRouteGateway> GetAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ExpressRouteGatewaysDeleteHeaders> DeleteAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
-        }
-        /// <summary>
-        /// Deletes the specified ExpressRoute gateway in a resource group. An
-        /// ExpressRoute gateway resource can only be deleted when there are no
-        /// connection subresources.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='expressRouteGatewayName'>
-        /// The name of the ExpressRoute gateway.
-        /// </param>
-        public static void Delete(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName)
-        {
-                ((IExpressRouteGatewaysOperations)operations).DeleteAsync(resourceGroupName, expressRouteGatewayName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified ExpressRoute gateway in a resource group. An
-        /// ExpressRoute gateway resource can only be deleted when there are no
-        /// connection subresources.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='expressRouteGatewayName'>
-        /// The name of the ExpressRoute gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a ExpressRoute gateway in a specified resource group.
@@ -236,7 +239,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
         /// The name of the ExpressRoute gateway.
@@ -253,7 +256,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
         /// The name of the ExpressRoute gateway.
@@ -275,10 +278,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ExpressRouteGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
-        /// The name of the gateway.
+        /// The name of the ExpressRoute gateway.
         /// </param>
         public static ExpressRouteGateway BeginUpdateTags(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters)
         {
@@ -292,10 +295,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ExpressRouteGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
-        /// The name of the gateway.
+        /// The name of the ExpressRoute gateway.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -316,14 +319,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
         /// The name of the ExpressRoute gateway.
         /// </param>
-        public static void BeginDelete(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName)
+        public static ExpressRouteGatewaysDeleteHeaders BeginDelete(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName)
         {
-                ((IExpressRouteGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, expressRouteGatewayName).GetAwaiter().GetResult();
+                return ((IExpressRouteGatewaysOperations)operations).BeginDeleteAsync(resourceGroupName, expressRouteGatewayName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -335,7 +338,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRouteGatewayName'>
         /// The name of the ExpressRoute gateway.
@@ -343,9 +346,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ExpressRouteGatewaysDeleteHeaders> BeginDeleteAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
     }
 }

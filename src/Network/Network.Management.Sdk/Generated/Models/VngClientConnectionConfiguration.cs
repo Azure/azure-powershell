@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A vpn client connection configuration for client connection configuration.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VngClientConnectionConfiguration : SubResource
+    public partial class VngClientConnectionConfiguration : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the VngClientConnectionConfiguration class.
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="virtualNetworkGatewayPolicyGroups">List of references to virtualNetworkGatewayPolicyGroups
         /// </param>
-        public VngClientConnectionConfiguration(string id = default(string), string name = default(string), string etag = default(string), string provisioningState = default(string), AddressSpace vpnClientAddressPool = default(AddressSpace), System.Collections.Generic.IList<SubResource> virtualNetworkGatewayPolicyGroups = default(System.Collections.Generic.IList<SubResource>))
+        public VngClientConnectionConfiguration(string id = default(string), string name = default(string), string etag = default(string), string provisioningState = default(string), CommonAddressSpace vpnClientAddressPool = default(CommonAddressSpace), System.Collections.Generic.IList<CommonSubResource> virtualNetworkGatewayPolicyGroups = default(System.Collections.Generic.IList<CommonSubResource>))
 
         : base(id)
         {
@@ -89,12 +89,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Address space for P2S VpnClient.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vpnClientAddressPool")]
-        public AddressSpace VpnClientAddressPool {get; set; }
+        public CommonAddressSpace VpnClientAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets list of references to virtualNetworkGatewayPolicyGroups
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualNetworkGatewayPolicyGroups")]
-        public System.Collections.Generic.IList<SubResource> VirtualNetworkGatewayPolicyGroups {get; set; }
+        public System.Collections.Generic.IList<CommonSubResource> VirtualNetworkGatewayPolicyGroups {get; set; }
     }
 }

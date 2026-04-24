@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="vngClientConnectionConfigurations">per ip address pool connection policy for virtual network gateway P2S
         /// client.
         /// </param>
-        public VpnClientConfiguration(AddressSpace vpnClientAddressPool = default(AddressSpace), System.Collections.Generic.IList<VpnClientRootCertificate> vpnClientRootCertificates = default(System.Collections.Generic.IList<VpnClientRootCertificate>), System.Collections.Generic.IList<VpnClientRevokedCertificate> vpnClientRevokedCertificates = default(System.Collections.Generic.IList<VpnClientRevokedCertificate>), System.Collections.Generic.IList<string> vpnClientProtocols = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> vpnAuthenticationTypes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<IpsecPolicy> vpnClientIpsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), string radiusServerAddress = default(string), string radiusServerSecret = default(string), System.Collections.Generic.IList<RadiusServer> radiusServers = default(System.Collections.Generic.IList<RadiusServer>), string aadTenant = default(string), string aadAudience = default(string), string aadIssuer = default(string), System.Collections.Generic.IList<VngClientConnectionConfiguration> vngClientConnectionConfigurations = default(System.Collections.Generic.IList<VngClientConnectionConfiguration>))
+        public VpnClientConfiguration(CommonAddressSpace vpnClientAddressPool = default(CommonAddressSpace), System.Collections.Generic.IList<VpnClientRootCertificate> vpnClientRootCertificates = default(System.Collections.Generic.IList<VpnClientRootCertificate>), System.Collections.Generic.IList<VpnClientRevokedCertificate> vpnClientRevokedCertificates = default(System.Collections.Generic.IList<VpnClientRevokedCertificate>), System.Collections.Generic.IList<string> vpnClientProtocols = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> vpnAuthenticationTypes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<IpsecPolicy> vpnClientIpsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), string radiusServerAddress = default(string), string radiusServerSecret = default(string), System.Collections.Generic.IList<RadiusServer> radiusServers = default(System.Collections.Generic.IList<RadiusServer>), string aadTenant = default(string), string aadAudience = default(string), string aadIssuer = default(string), System.Collections.Generic.IList<VngClientConnectionConfiguration> vngClientConnectionConfigurations = default(System.Collections.Generic.IList<VngClientConnectionConfiguration>))
 
         {
             this.VpnClientAddressPool = vpnClientAddressPool;
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Address space for P2S VpnClient.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vpnClientAddressPool")]
-        public AddressSpace VpnClientAddressPool {get; set; }
+        public CommonAddressSpace VpnClientAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets vpnClientRootCertificate for virtual network gateway.
