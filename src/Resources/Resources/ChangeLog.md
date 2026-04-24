@@ -27,6 +27,10 @@
     - Added support for ExternalEvaluationEnforcementSettings to `New-AzPolicyDefinition` and `Update-AzPolicyDefinition`, including: `-ExternalEvaluationEnforcementSettingMissingTokenAction`, `-ExternalEvaluationEnforcementSettingResultLifespan`, `-ExternalEvaluationEnforcementSettingRoleDefinitionId`, `-EndpointSettingKind`, and `-EndpointSettingDetail` parameters
     - `-Version` parameter in `Get-AzPolicyDefinition` and `Get-AzPolicySetDefinition` can now be used in `ManagementGroupName`, `SubscriptionId`, and `Id` parameter sets
     - Added support for `-Version` parameter in Update/New/Remove-PolicyDefinition, and PolicySetDefinition where the Update and Remove commands target old versions.
+* Regenerated Deployment Stacks SDK from `2025-07-01` specification.
+* Added `-ResourcesWithoutDeleteSupport` parameter to `New-AzSubscriptionDeploymentStack`, `New-AzResourceGroupDeploymentStack`, `New-AzManagementGroupDeploymentStack`, their `Set-` and `Test-` counterparts, and `Remove-AzSubscriptionDeploymentStack`, `Remove-AzResourceGroupDeploymentStack`, `Remove-AzManagementGroupDeploymentStack` to control the action taken on resources that do not support deletion. Possible values: `Fail` (default) and `Detach`.
+* Added `-ValidationLevel` parameter to `New-`, `Set-`, and `Test-` deployment stack cmdlets at subscription, resource group, and management group scopes to control the deployment stack validation level. Possible values: `Provider` (default), `Template`, and `ProviderNoRbac`.
+* Surfaced `resourcesWithoutDeleteSupport` and `validationLevel` on `PSDeploymentStack` output.
 
 ## Version 9.1.0
 * Made `Remove-AzDenyAssignment` honor `-Confirm:$false` and idempotent when no matching deny assignment exists. The redundant `-Force` switch was removed (the cmdlet relies on the standard `SupportsShouldProcess`/`ConfirmImpact` pattern).

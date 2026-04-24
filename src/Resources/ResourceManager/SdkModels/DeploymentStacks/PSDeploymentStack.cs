@@ -15,7 +15,8 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
-using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.Resources.DeploymentStacks;
+    using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -41,6 +42,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string resourceGroupsCleanupAction { get; set; }
 
         public string managementGroupsCleanupAction { get; set; }
+
+        public string resourcesWithoutDeleteSupport { get; set; }
+
+        public string validationLevel { get; set; }
 
         public SystemData systemData { get; set; }
 
@@ -91,6 +96,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.resourcesCleanupAction = deploymentStack.ActionOnUnmanage.Resources;
             this.resourceGroupsCleanupAction = deploymentStack.ActionOnUnmanage.ResourceGroups;
             this.managementGroupsCleanupAction = deploymentStack.ActionOnUnmanage.ManagementGroups;
+            this.resourcesWithoutDeleteSupport = deploymentStack.ActionOnUnmanage.ResourcesWithoutDeleteSupport;
+            this.validationLevel = deploymentStack.ValidationLevel;
             this.location = deploymentStack.Location;
             this.parametersLink = deploymentStack.ParametersLink;
             this.debugSetting = deploymentStack.DebugSetting;

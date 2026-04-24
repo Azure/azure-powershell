@@ -287,6 +287,11 @@ Creates key credentials or password credentials for an service principal.
 ### [New-AzADUser](New-AzADUser.md)
 Adds new entity to users
 
+### [New-AzDenyAssignment](New-AzDenyAssignment.md)
+Creates a user-assigned deny assignment at the specified scope.
+By default, the deny assignment targets Everyone and requires at least one excluded principal.
+Alternatively, use -PrincipalId and -PrincipalType to target a specific user or service principal.
+
 ### [New-AzDeployment](New-AzDeployment.md)
 Create a deployment at the current subscription scope.
 
@@ -432,6 +437,9 @@ Removes key credentials or password credentials for an service principal.
 
 ### [Remove-AzADUser](Remove-AzADUser.md)
 Deletes entity from users.
+
+### [Remove-AzDenyAssignment](Remove-AzDenyAssignment.md)
+Removes a user-assigned deny assignment at the specified scope.
 
 ### [Remove-AzDeployment](Remove-AzDeployment.md)
 Removes a deployment and any associated operations

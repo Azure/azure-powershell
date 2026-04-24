@@ -18,7 +18,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.Resources.DeploymentStacks;
+    using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
     using System;
     using System.Collections;
     using System.Management.Automation;
@@ -85,6 +86,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             "is not set, the operation will fail. Only include this parameter if instructed to do so on a failed stack operation.")]
         public SwitchParameter BypassStackOutOfSyncError { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The action to take on resources that do not support deletion when they are removed from the deployment stack. " +
+            "Possible values include: 'Fail' (default) and 'Detach'.")]
+        public PSResourcesWithoutDeleteSupport? ResourcesWithoutDeleteSupport { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The validation level of the deployment stack. Possible values include: " +
+            "'Provider' (default), 'Template', and 'ProviderNoRbac'.")]
+        public PSValidationLevel? ValidationLevel { get; set; }
+
         #endregion
 
         #region Cmdlet Overrides
@@ -131,7 +140,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         denySettingsExcludedActions: DenySettingsExcludedAction,
                         denySettingsApplyToChildScopes: DenySettingsApplyToChildScopes.IsPresent,
                         tags: Tag,
-                        bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent
+                        bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent,
+                        resourcesWithoutDeleteSupport: ResourcesWithoutDeleteSupport?.ToString().ToLowerInvariant(),
+                        validationLevel: ValidationLevel?.ToString()
                     );
 
                     WriteObject(deploymentStack);
@@ -163,7 +174,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
             catch (Exception ex)
             {
-                if (ex is DeploymentStacksErrorException dex)
+                if (ex is ErrorResponseException dex)
                     throw new PSArgumentException(dex.Message + " : " + dex.Body.Error.Code + " : " + dex.Body.Error.Message);
                 else
                     WriteExceptionError(ex);

@@ -17,7 +17,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.Resources.DeploymentStacks;
+    using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
     using System;
     using System.Management.Automation;
 
@@ -66,7 +67,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     denySettingsExcludedActions: DenySettingsExcludedAction,
                     denySettingsApplyToChildScopes: DenySettingsApplyToChildScopes.IsPresent,
                     tags: Tag,
-                    bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent
+                    bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent,
+                    resourcesWithoutDeleteSupport: ResourcesWithoutDeleteSupport?.ToString().ToLowerInvariant(),
+                    validationLevel: ValidationLevel?.ToString()
                 );
 
                 if (PassThru.IsPresent)
@@ -76,7 +79,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
             catch (Exception ex)
             {
-                if (ex is DeploymentStacksErrorException dex)
+                if (ex is ErrorResponseException dex)
                     throw new PSArgumentException(dex.Message + " : " + dex.Body.Error.Code + " : " + dex.Body.Error.Message);
                 else
                     WriteExceptionError(ex);
