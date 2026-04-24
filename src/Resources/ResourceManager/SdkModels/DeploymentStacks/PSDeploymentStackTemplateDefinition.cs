@@ -11,8 +11,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
-using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.Resources.DeploymentStacks;
+    using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
