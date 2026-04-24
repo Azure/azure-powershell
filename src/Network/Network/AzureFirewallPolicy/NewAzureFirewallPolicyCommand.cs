@@ -142,17 +142,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Type of Managed Identity. Set to 'None' to remove the identity.")]
-        [ValidateSet(
-            nameof(MNM.ResourceIdentityType.SystemAssigned),
-            nameof(MNM.ResourceIdentityType.UserAssigned),
-            nameof(MNM.ResourceIdentityType.SystemAssignedUserAssigned),
-            nameof(MNM.ResourceIdentityType.None),
-            IgnoreCase = true)]
-        public string IdentityType { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Firewall Policy Identity to be assigned to Firewall Policy.")]
         [ValidateNotNullOrEmpty]
         public PSManagedServiceIdentity Identity { get; set; }
@@ -275,14 +264,6 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
             azureFirewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-
-            if (this.IsParameterBound(c => c.IdentityType) && this.IdentityType == "None")
-            {
-                azureFirewallPolicyModel.Identity = new MNM.ManagedServiceIdentity
-                {
-                    Type = MNM.ResourceIdentityType.None
-                };
-            }
 
             // Execute the Create AzureFirewall call
             this.AzureFirewallPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallPolicyModel);

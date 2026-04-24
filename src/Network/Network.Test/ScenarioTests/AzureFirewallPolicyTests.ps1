@@ -1643,15 +1643,6 @@ function Test-AzureFirewallPolicyExplicitProxyCRUD {
         Assert-AreEqual "UserAssigned" $getAzureFirewallPolicy.Identity.type
         Assert-AreEqual 1 $getAzureFirewallPolicy.Identity.userAssignedIdentities.Count
         Assert-True { $getAzureFirewallPolicy.Identity.userAssignedIdentities.ContainsKey($userAssignedManagedIdentity) }
-
-        #Disable Explicit Proxy Settings and Set IdentityType to None to remove UAMIs
-        $explicitProxySettings = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy:$false
-
-        $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -ExplicitProxy $explicitProxySettings -IdentityType "None"
-
-        #verification
-        Assert-Null $azureFirewallPolicy.Identity
-
     }
     finally {
         # Cleanup
