@@ -168,9 +168,9 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
-        public void TestAzureFirewallWithMultipleUAMI()
+        public void TestAzureFirewallPolicyRuleDescription()
         {
-            TestRunner.RunTestScript("Test-AzureFirewallWithMultipleUAMI");
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyRuleDescription");
         }
 
 
