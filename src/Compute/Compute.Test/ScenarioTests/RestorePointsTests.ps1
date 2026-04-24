@@ -74,21 +74,33 @@ function Test-RestorePointsInstantAccess
     $restorePointCollectionName = 'rpc-ia-123' ;
     $restorePointName = 'rp-ia-123' ;
     $vmname = 'vm-ia-123'
+    $ddDiskName = 'dd-disk-ia-123'
 
     try
     {
-        # InstantAccess is not supported in eastus/eastus2; use eastus2euap (canary region)
+        # InstantAccess requires eastus2euap (canary region) and API 2025-04-01
         $loc = "eastus2euap";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        #create a new vm
+        #create a new vm in zone 2 (required for PremiumV2_LRS disk attachment)
         $user = "Foo12";
         $password = "temppass12345T";
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
-        New-AzVM -ResourceGroupName $rgname -Name $vmname -Image Win2019Datacenter -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -Image Win2019Datacenter -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Zone 2
 
+        $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname -DisplayHint Expand;
+
+        # Attach a Premium SSD v2 (Direct Drive) data disk — required for Instant Access on app-consistent restore points
+        # PremiumV2_LRS requires an availability zone
+        $ddDiskConfig = New-AzDiskConfig -Location $loc -SkuName 'PremiumV2_LRS' -DiskSizeGB 32 `
+            -CreateOption Empty -DiskIOPSReadWrite 3000 -DiskMBpsReadWrite 125 -Zone '2'
+        $ddDisk = New-AzDisk -ResourceGroupName $rgname -DiskName $ddDiskName -Disk $ddDiskConfig
+        $vm1 = Add-AzVMDataDisk -VM $vm1 -Name $ddDiskName -ManagedDiskId $ddDisk.Id -Lun 0 -CreateOption Attach
+        Update-AzVM -ResourceGroupName $rgname -VM $vm1
+
+        # Refresh VM reference after disk attachment
         $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname -DisplayHint Expand;
 
         # Create restore point collection with InstantAccess enabled
@@ -105,9 +117,28 @@ function Test-RestorePointsInstantAccess
         $restorePoint = New-AzRestorePoint -ResourceGroupName $rgname -RestorePointCollectionName $restorePointCollectionName -Name $restorePointName -InstantAccessDurationInMinutes 120
         Assert-NotNull $restorePoint
 
-        # Get restore point and verify
+        # Get restore point and verify InstantAccessDurationInMinutes
         $getRestorePoint = Get-AzRestorePoint -ResourceGroupName $rgname -RestorePointCollectionName $restorePointCollectionName -Name $restorePointName
         Assert-NotNull $getRestorePoint
+        Assert-AreEqual 120 $getRestorePoint.InstantAccessDurationInMinutes
+
+        # Verify snapshotAccessState is AvailableWithInstantAccess via instance view expansion
+        $subscriptionId = (Get-AzContext).Subscription.Id
+        $instanceViewPath = "/subscriptions/$subscriptionId/resourceGroups/$rgname" +
+            "/providers/Microsoft.Compute/restorePointCollections/$restorePointCollectionName" +
+            "/restorePoints/$restorePointName" +
+            "?`$expand=instanceView&api-version=2025-04-01"
+        $instanceViewResponse = Invoke-AzRestMethod -Method GET -Path $instanceViewPath
+        $instanceViewContent = $instanceViewResponse.Content | ConvertFrom-Json
+        Assert-NotNull $instanceViewContent.properties.instanceView
+        $diskRestorePoints = $instanceViewContent.properties.instanceView.diskRestorePoints
+        Assert-NotNull $diskRestorePoints
+        Assert-True { $diskRestorePoints.Count -gt 0 }
+        # All disk restore points should be in an Instant Access state (InstantAccess = fast restore enabled,
+        # AvailableWithInstantAccess = also fully replicated for copy/download). Both confirm IA is working.
+        foreach ($drp in $diskRestorePoints) {
+            Assert-True { $drp.snapshotAccessState -eq "AvailableWithInstantAccess" -or $drp.snapshotAccessState -eq "InstantAccess" }
+        }
 
         # Update collection to disable InstantAccess
         $updatedCollection = Update-AzRestorePointCollection -ResourceGroupName $rgname -Name $restorePointCollectionName -InstantAccess $false
