@@ -466,4 +466,43 @@ directive:
       subject: ReportTimesery
     hide: true
 
+  # --------------------------------------------------------------------------
+  # LRO contract workaround for FrontDoorWebApplicationFirewallPolicies
+  # --------------------------------------------------------------------------
+  # The 2025-10-01 / 2025-11-01 swagger declares
+  #     x-ms-long-running-operation-options:
+  #       final-state-via: location
+  # on Policies_CreateOrUpdate (PUT) and Policies_Delete (DELETE), and the 201
+  # response schema declares a `Location` response header. However the live
+  # service returns 201 Created synchronously with the terminal resource body
+  # (provisioningState: Succeeded) and does NOT emit a Location, Azure-
+  # AsyncOperation, or Operation-Location header. The autorest.powershell v4
+  # generated client therefore ends up calling `new Uri("")` during LRO
+  # finalization and throws `UriFormatException: Invalid URI: The URI is empty.`
+  # (repro: New-AzFrontDoorWafPolicy UT; see FrontDoor.cs Policies*_Call).
+  #
+  # Until the AFD swagger / service contract is fixed upstream, rewrite
+  # final-state-via to `original-uri` so the client re-reads the terminal body
+  # from the original request URI (which the service already returns in
+  # Succeeded state). Scope is intentionally limited to the two exposed WAF
+  # Policies operations that we have empirically validated — do NOT broaden
+  # this to all operations.
+  #
+  # Policies_Update (PATCH) is already dropped via `remove-operation:
+  # Policies_Update` above, so no patch is needed there.
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}"].delete
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+
 ```
