@@ -22,6 +22,7 @@
 ## Upcoming Release
 * Added `-Feature` parameter to `Update-AzGalleryImageDefinition` cmdlet to allow updating existing gallery image features (such as DiskControllerTypes, SecurityType, IsAcceleratedNetwork, and IsHibernate). Each feature supports a `StartsAtVersion` property to specify the minimum gallery image version that supports the updated feature.
 * Added `-AllowUpdateImage` parameter to `Update-AzGalleryImageDefinition` cmdlet. Must be set to true when using the `-Feature` parameter to update gallery image features.
+* Compute ComputeRP related cmdlets will now use 2025-11-01 version of the ComputeRP API.
 
 ## Version 11.4.0
 * Added `-DiskIOPSReadWrite` and `-DiskMBpsReadWrite` parameters to `Add-AzVMDataDisk` cmdlet
