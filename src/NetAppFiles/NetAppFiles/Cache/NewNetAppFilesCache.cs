@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
                 Location = PoolObject.Location;
-                var nameParts = PoolObject.Name.Split('/');
+                var nameParts = ResourceIdHelpers.NamePartsFromId(PoolObject.Id);
                 AccountName = nameParts[0];
                 PoolName = nameParts[1];
             }

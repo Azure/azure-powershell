@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
             else if (ParameterSetName == ObjectParameterSet)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                var nameParts = InputObject.Name.Split('/');
+                var nameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = nameParts[0];
                 PoolName = nameParts[1];
                 Name = nameParts[2];

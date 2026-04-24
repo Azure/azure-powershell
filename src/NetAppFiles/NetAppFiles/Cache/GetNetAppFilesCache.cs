@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
             else if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
-                var nameParts = PoolObject.Name.Split('/');
+                var nameParts = ResourceIdHelpers.NamePartsFromId(PoolObject.Id);
                 AccountName = nameParts[0];
                 PoolName = nameParts[1];
             }

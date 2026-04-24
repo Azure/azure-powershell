@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Bucket
             else if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = VolumeObject.ResourceGroupName;
-                var nameParts = VolumeObject.Name.Split('/');
+                var nameParts = ResourceIdHelpers.NamePartsFromId(VolumeObject.Id);
                 AccountName = nameParts[0];
                 PoolName = nameParts[1];
                 VolumeName = nameParts[2];

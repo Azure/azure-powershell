@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
             else if (ParameterSetName == ObjectParameterSet)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                var nameParts = InputObject.Name.Split('/');
+                var nameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = nameParts[0];
                 PoolName = nameParts[1];
                 Name = nameParts[2];
