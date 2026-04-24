@@ -79,6 +79,7 @@ FunctionsToExport = 'Get-AzStorageMover', 'Get-AzStorageMoverAgent',
                'New-AzStorageMoverConnection', 'New-AzStorageMoverJobDefinition', 
                'New-AzStorageMoverMultiCloudConnectorEndpoint', 
                'New-AzStorageMoverNfsEndpoint', 'New-AzStorageMoverProject', 
+               'New-AzStorageMoverS3WithHmacEndpoint', 
                'New-AzStorageMoverSmbEndpoint', 
                'New-AzStorageMoverUploadLimitWeeklyRecurrenceObject', 
                'Remove-AzStorageMover', 'Remove-AzStorageMoverConnection', 
@@ -94,6 +95,7 @@ FunctionsToExport = 'Get-AzStorageMover', 'Get-AzStorageMoverAgent',
                'Update-AzStorageMoverJobDefinition', 
                'Update-AzStorageMoverMultiCloudConnectorEndpoint', 
                'Update-AzStorageMoverNfsEndpoint', 'Update-AzStorageMoverProject', 
+               'Update-AzStorageMoverS3WithHmacEndpoint', 
                'Update-AzStorageMoverSmbEndpoint'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
