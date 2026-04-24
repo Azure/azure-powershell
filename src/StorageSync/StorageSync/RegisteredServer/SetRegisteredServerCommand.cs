@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <value>The name.</value>
         [Parameter(Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
-           Mandatory = false,
+           Mandatory = true,
            ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.RegisteredServerNameParameter)]
         [ValidateNotNullOrEmpty]
@@ -150,9 +150,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 }
                 else
                 {
-                    resourceName = ServerId;
                     resourceGroupName = ResourceGroupName;
                     storageSyncServiceName = StorageSyncServiceName;
+
+                    if (this.IsParameterBound(c => c.ServerId))
+                    {
+                        resourceName = ServerId;
+                    }
+                    else
+                    {
+                        IEcsManagement ecsManagement = StorageSyncClientWrapper.StorageSyncResourceManager.CreateEcsManagement();
+                        int hr = ecsManagement.GetSyncServerId(out string localServerId);
+                        if (hr != 0 || !Guid.TryParse(localServerId, out _))
+                        {
+                            throw new PSArgumentException("Unable to retrieve the local server ID. Ensure the Azure File Sync agent is installed and running.");
+                        }
+                        resourceName = localServerId;
+                    }
                 }
 
                 if (this.IsParameterBound(c => c.Identity))
@@ -160,24 +174,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     identity = Identity;
                 }
 
-                if (this.IsParameterBound(c => c.ServerId))
-                {
-                    IEcsManagement ecsManagement = StorageSyncClientWrapper.StorageSyncResourceManager.CreateEcsManagement();
-                    int hr = ecsManagement.GetSyncServerId(out string localServerId);
-                    if (hr != 0 || !Guid.TryParse(localServerId, out Guid localServerGuid))
-                    {
-                        throw new PSArgumentException("Unable to retrieve the local server ID. Ensure the Azure File Sync agent is installed and running.");
-                    }
-                    if (!Guid.TryParse(resourceName, out Guid providedServerGuid) || providedServerGuid != localServerGuid)
-                    {
-                        throw new PSArgumentException($"The provided ServerId '{resourceName}' does not match the local machine's server ID '{localServerGuid}'. Run this command on the correct server.");
-                    }
-                }
-
-                RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, ServerId);
+                RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, resourceName);
                 if (registeredServer == null)
                 {
-                    throw new PSArgumentException($"Server {ServerId} not found.");
+                    throw new PSArgumentException($"Server {resourceName} not found.");
                 }
                 if (registeredServer.ServerRole == InternalObjects.ServerRoleType.ClusterName.ToString())
                 {
