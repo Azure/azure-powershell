@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
 
         [Parameter(Mandatory = false, HelpMessage = "Whether CIFS change notifications are enabled")]
         [PSArgumentCompleter("Disabled", "Enabled")]
-        public string CifsChangeNotifications { get; set; }
+        public string CifsChangeNotification { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether writeback is enabled for the cache")]
         [PSArgumentCompleter("Disabled", "Enabled")]
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
                 SmbSettings = smbSettings,
                 ThroughputMibps = ThroughputMibps,
                 KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
-                CifsChangeNotifications = CifsChangeNotifications,
+                CifsChangeNotifications = CifsChangeNotification,
                 WriteBack = WriteBack
             };
 

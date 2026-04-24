@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
 
         [Parameter(Mandatory = false, HelpMessage = "Whether Kerberos is enabled for the cache. Either 'Disabled' or 'Enabled'")]
         [PSArgumentCompleter("Disabled", "Enabled")]
-        public string Kerberos { get; set; }
+        public string KerberosEnabled { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Maximum throughput in MiB/s for manual qos cache")]
         public double? ThroughputMibps { get; set; }
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
 
         [Parameter(Mandatory = false, HelpMessage = "Whether CIFS change notification is enabled. Either 'Disabled' or 'Enabled'")]
         [PSArgumentCompleter("Disabled", "Enabled")]
-        public string CifsChangeNotifications { get; set; }
+        public string CifsChangeNotification { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether the global file lock is enabled. Either 'Disabled' or 'Enabled'")]
         [PSArgumentCompleter("Disabled", "Enabled")]
@@ -184,13 +184,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Cache
             {
                 ProtocolTypes = ProtocolType?.ToList(),
                 ExportPolicy = CacheExtensions.ConvertExportPolicyFromPs(ExportPolicy),
-                Kerberos = Kerberos,
+                Kerberos = KerberosEnabled,
                 SmbSettings = smbSettings,
                 ThroughputMibps = ThroughputMibps,
                 KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
                 Ldap = Ldap,
                 LdapServerType = LdapServerType,
-                CifsChangeNotifications = CifsChangeNotifications,
+                CifsChangeNotifications = CifsChangeNotification,
                 GlobalFileLocking = GlobalFileLocking,
                 WriteBack = WriteBack
             };

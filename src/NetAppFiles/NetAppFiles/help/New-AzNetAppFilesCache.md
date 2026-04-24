@@ -20,7 +20,7 @@ New-AzNetAppFilesCache -ResourceGroupName <String> -Location <String> -AccountNa
  -OriginPeerAddress <String[]> -OriginPeerVserverName <String> -OriginPeerVolumeName <String>
  [-ProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Kerberos <String>]
  [-ThroughputMibps <Double>] [-KeyVaultPrivateEndpointResourceId <String>] [-Ldap <String>]
- [-LdapServerType <String>] [-CifsChangeNotifications <String>] [-GlobalFileLocking <String>]
+ [-LdapServerType <String>] [-CifsChangeNotification <String>] [-GlobalFileLocking <String>]
  [-WriteBack <String>] [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-Zone <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -33,7 +33,7 @@ New-AzNetAppFilesCache -Name <String> -FilePath <String> -Size <Int64> -CacheSub
  -OriginPeerAddress <String[]> -OriginPeerVserverName <String> -OriginPeerVolumeName <String>
  [-ProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Kerberos <String>]
  [-ThroughputMibps <Double>] [-KeyVaultPrivateEndpointResourceId <String>] [-Ldap <String>]
- [-LdapServerType <String>] [-CifsChangeNotifications <String>] [-GlobalFileLocking <String>]
+ [-LdapServerType <String>] [-CifsChangeNotification <String>] [-GlobalFileLocking <String>]
  [-WriteBack <String>] [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-Zone <String[]>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
@@ -98,7 +98,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CifsChangeNotifications
+### -CifsChangeNotification
 Whether CIFS change notification is enabled.
 Either 'Disabled' or 'Enabled'
 
@@ -191,7 +191,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kerberos
+### -KerberosEnabled
 Whether Kerberos is enabled for the cache.
 Either 'Disabled' or 'Enabled'
 

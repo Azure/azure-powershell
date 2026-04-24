@@ -151,7 +151,7 @@ function Test-CacheCrud
         $updated = Update-AzNetAppFilesCache `
             -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $cacheName `
             -ThroughputMibps 64 `
-            -CifsChangeNotifications "Enabled" `
+            -CifsChangeNotification "Enabled" `
             -Tag @{$updateTagName = $updateTagValue}
 
         Assert-AreEqual 64 $updated.ThroughputMibps

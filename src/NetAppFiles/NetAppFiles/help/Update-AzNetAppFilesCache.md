@@ -16,7 +16,7 @@ Updates an existing Azure NetApp Files (ANF) Cache.
 ```
 Update-AzNetAppFilesCache -ResourceGroupName <String> -AccountName <String> -PoolName <String> -Name <String>
  [-Size <Int64>] [-ProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
- [-ThroughputMibps <Double>] [-KeyVaultPrivateEndpointResourceId <String>] [-CifsChangeNotifications <String>]
+ [-ThroughputMibps <Double>] [-KeyVaultPrivateEndpointResourceId <String>] [-CifsChangeNotification <String>]
  [-WriteBack <String>] [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -26,7 +26,7 @@ Update-AzNetAppFilesCache -ResourceGroupName <String> -AccountName <String> -Poo
 ```
 Update-AzNetAppFilesCache -ResourceId <String> [-Size <Int64>] [-ProtocolType <String[]>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-ThroughputMibps <Double>]
- [-KeyVaultPrivateEndpointResourceId <String>] [-CifsChangeNotifications <String>] [-WriteBack <String>]
+ [-KeyVaultPrivateEndpointResourceId <String>] [-CifsChangeNotification <String>] [-WriteBack <String>]
  [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -36,7 +36,7 @@ Update-AzNetAppFilesCache -ResourceId <String> [-Size <Int64>] [-ProtocolType <S
 ```
 Update-AzNetAppFilesCache -InputObject <PSNetAppFilesCache> [-Size <Int64>] [-ProtocolType <String[]>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-ThroughputMibps <Double>]
- [-KeyVaultPrivateEndpointResourceId <String>] [-CifsChangeNotifications <String>] [-WriteBack <String>]
+ [-KeyVaultPrivateEndpointResourceId <String>] [-CifsChangeNotification <String>] [-WriteBack <String>]
  [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -58,7 +58,7 @@ Resizes the cache to 200 GiB and raises throughput to 128 MiB/s.
 ### Example 2: Enable CIFS change notifications and update tags
 ```powershell
 Update-AzNetAppFilesCache -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfCache" `
-    -CifsChangeNotifications "Enabled" -Tag @{Owner = "ai-team"; Env = "prod"}
+    -CifsChangeNotification "Enabled" -Tag @{Owner = "ai-team"; Env = "prod"}
 ```
 
 Enables CIFS change notifications on the cache and replaces the resource tags.
@@ -80,7 +80,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CifsChangeNotifications
+### -CifsChangeNotification
 Whether CIFS change notifications are enabled
 
 ```yaml
