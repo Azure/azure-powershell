@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Commands.StorageSync.Interop.DataObjects;
+using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <value>The name.</value>
         [Parameter(Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.RegisteredServerNameParameter)]
         [ValidateNotNullOrEmpty]
@@ -157,6 +158,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 if (this.IsParameterBound(c => c.Identity))
                 {
                     identity = Identity;
+                }
+
+                if (this.IsParameterBound(c => c.ServerId))
+                {
+                    IEcsManagement ecsManagement = StorageSyncClientWrapper.StorageSyncResourceManager.CreateEcsManagement();
+                    int hr = ecsManagement.GetSyncServerId(out string localServerId);
+                    if (hr != 0 || !Guid.TryParse(localServerId, out Guid localServerGuid))
+                    {
+                        throw new PSArgumentException("Unable to retrieve the local server ID. Ensure the Azure File Sync agent is installed and running.");
+                    }
+                    if (!Guid.TryParse(resourceName, out Guid providedServerGuid) || providedServerGuid != localServerGuid)
+                    {
+                        throw new PSArgumentException($"The provided ServerId '{resourceName}' does not match the local machine's server ID '{localServerGuid}'. Run this command on the correct server.");
+                    }
                 }
 
                 RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, ServerId);
