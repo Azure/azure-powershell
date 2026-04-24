@@ -59,6 +59,9 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 ### [New-AzStorageMoverProject](New-AzStorageMoverProject.md)
 Create a Project resource, which is a logical grouping of related jobs.
 
+### [New-AzStorageMoverS3WithHmacEndpoint](New-AzStorageMoverS3WithHmacEndpoint.md)
+Creates an S3-compatible endpoint with HMAC credentials, which represents a data transfer source.
+
 ### [New-AzStorageMoverSmbEndpoint](New-AzStorageMoverSmbEndpoint.md)
 Creates an SMB endpoint resource, which represents a data transfer source or destination.
 
@@ -122,6 +125,10 @@ Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverProject](Update-AzStorageMoverProject.md)
 Update properties for a Project resource.
+Properties not specified in the request body will be unchanged.
+
+### [Update-AzStorageMoverS3WithHmacEndpoint](Update-AzStorageMoverS3WithHmacEndpoint.md)
+Updates properties for an S3-compatible endpoint with HMAC credentials.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverSmbEndpoint](Update-AzStorageMoverSmbEndpoint.md)
