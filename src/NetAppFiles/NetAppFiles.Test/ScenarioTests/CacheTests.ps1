@@ -57,8 +57,7 @@
 #   3. Sign in: 'Connect-AzAccount' and 'Set-AzContext -Subscription <id>'.
 #   4. From the repo root run (pwsh):
 #
-#        $env:TEST_HTTPMOCK_MODE = 'Record'
-#        $env:AZURE_TEST_MODE    = 'Record'
+#        $env:AZURE_TEST_MODE = 'Record'
 #        dotnet test src\NetAppFiles\NetAppFiles.Test\NetAppFiles.Test.csproj `
 #            --filter "FullyQualifiedName~TestCacheCrud" `
 #            --logger "console;verbosity=detailed"
@@ -66,6 +65,22 @@
 #   5. When the console prints '=== ON-PREM ONTAP ACTION REQUIRED ===',
 #      SSH into the CVO and paste the literal command block shown.
 #      The test resumes automatically; do NOT press any key in the test host.
+#
+#   ALTERNATIVE: VISUAL STUDIO TEST EXPLORER
+#   ----------------------------------------
+#   Yes -- these are standard xUnit [Fact]s and run in Test Explorer once the
+#   Skip argument is removed. The catch: VS does NOT inherit shell env vars,
+#   so set AZURE_TEST_MODE=Record at the USER level BEFORE launching VS:
+#
+#       [Environment]::SetEnvironmentVariable('AZURE_TEST_MODE','Record','User')
+#
+#   Then close and reopen Visual Studio (env vars are read at process start).
+#   In Test Explorer: right-click TestCacheCrud -> Run. The Write-Host banner
+#   with the on-prem ONTAP commands appears in the test's Output pane (click
+#   the test row, then 'Open additional output for this result'). Test
+#   Explorer respects Wait-AnfCacheState's internal timeouts; no per-test
+#   xUnit timeout is configured. Unset the var (or set it to 'Playback') when
+#   you are done so unrelated tests do not try to record.
 #
 # Re-add the Skip after recording so CI does not attempt live execution.
 # ---------------------------------------------------------------------------

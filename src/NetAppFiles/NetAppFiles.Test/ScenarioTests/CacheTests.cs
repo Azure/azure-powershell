@@ -66,8 +66,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         //        Set-AzContext -Subscription <subscription-id>
         //   4. From the repo root run (pwsh):
         //
-        //        $env:TEST_HTTPMOCK_MODE = 'Record'
-        //        $env:AZURE_TEST_MODE    = 'Record'
+        //        $env:AZURE_TEST_MODE = 'Record'
         //        dotnet test src\NetAppFiles\NetAppFiles.Test\NetAppFiles.Test.csproj `
         //            --filter "FullyQualifiedName~TestCacheCrud" `
         //            --logger "console;verbosity=detailed"
@@ -78,10 +77,26 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         //      the test host.
         //   6. Restore the Skip attribute before committing so CI does not attempt
         //      live execution.
+        //
+        // ALTERNATIVE: VISUAL STUDIO TEST EXPLORER
+        // ----------------------------------------
+        // These are standard xUnit [Fact]s and run in Test Explorer once the
+        // Skip argument is removed. The catch: VS does NOT inherit shell env vars,
+        // so set AZURE_TEST_MODE=Record at the USER level BEFORE launching VS:
+        //
+        //     [Environment]::SetEnvironmentVariable('AZURE_TEST_MODE','Record','User')
+        //
+        // Then close and reopen Visual Studio (env vars are read at process start).
+        // In Test Explorer: right-click TestCacheCrud -> Run. The Write-Host banner
+        // with the on-prem ONTAP peering commands appears in the test's Output pane
+        // (select the test row, then 'Open additional output for this result').
+        // Wait-AnfCacheState enforces its own timeouts internally; no [Fact(Timeout=)]
+        // is needed. Unset the var (or set it to 'Playback') when done so unrelated
+        // tests do not try to record.
         // ============================================================================
 
         private const string LiveOnlySkip =
-            "Live-only: requires on-prem ONTAP CVO and an engineer to paste cluster/vserver peering commands when prompted. Run with TEST_HTTPMOCK_MODE=Record. See header comment above for the full command.";
+            "Live-only: requires on-prem ONTAP CVO and an engineer to paste cluster/vserver peering commands when prompted. Run with AZURE_TEST_MODE=Record. See header comment above for the full command.";
 
         [Fact(Skip = LiveOnlySkip)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
