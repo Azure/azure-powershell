@@ -15,20 +15,229 @@
 # ---------------------------------------------------------------------------
 # ANF Cache (FlexCache) tests
 #
-# All scenarios in this file require a pre-existing on-prem ONTAP cluster
-# reachable from the cache peering subnet so it can be used as the FlexCache
-# origin. The required inputs that must be provided per environment are:
+# PREREQUISITE: ON-PREM ONTAP or CVO
+# -------------------------------
+# Every scenario in this file creates a real ANF Cache (FlexCache) resource
+# whose origin lives on an external on-prem ONTAP cluster (typically a Cloud
+# Volumes ONTAP / CVO instance). That cluster must be running and reachable
+# from the cache's peering subnet BEFORE the test runs:
 #
 #   $originPeerClusterName  - ONTAP cluster name of the external cluster
 #   $originPeerAddresses    - Intercluster LIF IP addresses (one per node)
 #   $originPeerVserverName  - External Vserver (SVM) hosting the origin volume
 #   $originPeerVolumeName   - External origin volume name
 #
-# Until that fixture is wired into the test environment, the xUnit wrappers
-# in CacheTests.cs are decorated with [Fact(Skip = "...")] so the runner
-# does not attempt to execute them. Re-enable each test by removing its Skip
-# argument once the corresponding ONTAP origin is available.
+# Update Get-CacheOriginPlaceholder below with the real values for your CVO,
+# and make sure you can SSH into the CVO from the workstation running the
+# test (you will be asked to paste two commands during the run).
+#
+# WHY THIS TEST IS INTERACTIVE
+# ---------------------------
+# FlexCache provisioning is a multi-stage handshake between Azure and the
+# on-prem ONTAP cluster:
+#
+#   Creating -> ClusterPeeringOfferSent -> VserverPeeringOfferSent -> Succeeded
+#
+# At each '*OfferSent' state the service is waiting for the on-prem operator
+# to accept the offer on the CVO via SSH. There is no public API to perform
+# this acceptance from Azure; it MUST be done on the CVO CLI. The test
+# therefore polls cacheState (the unambiguous service-side signal that the
+# previous on-prem step completed), prints the exact CVO commands the
+# engineer needs to paste, and resumes automatically once the state advances.
+# No sentinel files, no Read-Host prompts -- the state machine is the sync.
+#
+# HOW TO RUN LIVE
+# ---------------
+# All tests are decorated with [Fact(Skip = LiveOnlySkip)] in CacheTests.cs.
+# To run a single test live against real Azure + your CVO:
+#
+#   1. Edit Get-CacheOriginPlaceholder (below) with your CVO coordinates.
+#   2. Remove the Skip argument from the desired [Fact] in CacheTests.cs
+#      (e.g. just '[Fact]' instead of '[Fact(Skip = LiveOnlySkip)]').
+#   3. Sign in: 'Connect-AzAccount' and 'Set-AzContext -Subscription <id>'.
+#   4. From the repo root run (pwsh):
+#
+#        $env:TEST_HTTPMOCK_MODE = 'Record'
+#        $env:AZURE_TEST_MODE    = 'Record'
+#        dotnet test src\NetAppFiles\NetAppFiles.Test\NetAppFiles.Test.csproj `
+#            --filter "FullyQualifiedName~TestCacheCrud" `
+#            --logger "console;verbosity=detailed"
+#
+#   5. When the console prints '=== ON-PREM ONTAP ACTION REQUIRED ===',
+#      SSH into the CVO and paste the literal command block shown.
+#      The test resumes automatically; do NOT press any key in the test host.
+#
+# Re-add the Skip after recording so CI does not attempt live execution.
 # ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Live-test tunables for the interactive on-prem ONTAP peering flow.
+# Override per environment by editing these before running the test.
+# ---------------------------------------------------------------------------
+$script:CachePollSec                 = 30
+$script:CacheClusterOfferTimeoutMin  = 15
+$script:CacheVserverOfferTimeoutMin  = 30
+$script:CacheTerminalTimeoutMin      = 30
+
+<#
+.SYNOPSIS
+Returns $true when the test runner is in HTTP playback mode (replaying recorded
+SessionRecords). In that mode all polling/waiting helpers must short-circuit so
+recorded test runs do not sleep or write banners to the test output.
+#>
+function Test-AnfPlaybackMode
+{
+    try
+    {
+        return ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq 'Playback')
+    }
+    catch
+    {
+        # If the type is not loaded we are not running under the test recorder; treat as live.
+        return $false
+    }
+}
+
+<#
+.SYNOPSIS
+Polls Get-AzNetAppFilesCache until CacheState matches one of $ExpectedStates,
+or the timeout elapses. In Playback mode returns immediately without waiting.
+Returns the final cache object. Throws on timeout.
+#>
+function Wait-AnfCacheState
+{
+    param(
+        [Parameter(Mandatory=$true)] [string]   $ResourceGroup,
+        [Parameter(Mandatory=$true)] [string]   $AccountName,
+        [Parameter(Mandatory=$true)] [string]   $PoolName,
+        [Parameter(Mandatory=$true)] [string]   $Name,
+        [Parameter(Mandatory=$true)] [string[]] $ExpectedStates,
+        [int] $TimeoutMin = 30,
+        [int] $PollSec    = $script:CachePollSec
+    )
+
+    $cache = Get-AzNetAppFilesCache -ResourceGroupName $ResourceGroup -AccountName $AccountName -PoolName $PoolName -Name $Name
+
+    if (Test-AnfPlaybackMode)
+    {
+        return $cache
+    }
+
+    $expected = ($ExpectedStates -join ',')
+    Write-Host "[Wait-AnfCacheState] Waiting for cacheState in [$expected] (timeout ${TimeoutMin}m, poll ${PollSec}s)..."
+
+    $deadline = (Get-Date).AddMinutes($TimeoutMin)
+    while ($true)
+    {
+        $cache = Get-AzNetAppFilesCache -ResourceGroupName $ResourceGroup -AccountName $AccountName -PoolName $PoolName -Name $Name
+        $state = $cache.CacheState
+        $stamp = (Get-Date).ToString('HH:mm:ss')
+        Write-Host "[$stamp] cacheState=$state (waiting for [$expected])"
+
+        if ($ExpectedStates -contains $state)
+        {
+            return $cache
+        }
+
+        if ((Get-Date) -ge $deadline)
+        {
+            throw "Wait-AnfCacheState: timed out after ${TimeoutMin} minute(s) waiting for cacheState in [$expected]. Last observed: '$state'."
+        }
+
+        Start-Sleep -Seconds $PollSec
+    }
+}
+
+<#
+.SYNOPSIS
+Emits the on-prem ONTAP peering instructions for the engineer to execute on the
+CVO via SSH. Output includes BOTH a labeled JSON block (for programmatic copy)
+AND a literal copy-paste block (for paste-under-pressure into the CVO CLI).
+In Playback mode this is a no-op so recorded runs stay quiet.
+#>
+function Write-CacheManualPeeringInstructions
+{
+    param(
+        [Parameter(Mandatory=$true)] [object] $Passphrases,
+        [Parameter(Mandatory=$true)] [ValidateSet('Cluster','Vserver')] [string] $Stage
+    )
+
+    if (Test-AnfPlaybackMode) { return }
+
+    $bar = ('=' * 78)
+    Write-Host ""
+    Write-Host $bar
+    Write-Host "=== ON-PREM ONTAP ACTION REQUIRED: $Stage Peering"
+    Write-Host "=== SSH into the on-prem CVO, then perform the steps below."
+    Write-Host "=== Test will resume automatically when cacheState advances."
+    Write-Host $bar
+
+    Write-Host "--- BEGIN passphrasesObject (JSON) ---"
+    Write-Host ($Passphrases | ConvertTo-Json -Depth 5)
+    Write-Host "--- END passphrasesObject (JSON) ---"
+
+    Write-Host ""
+    Write-Host "--- BEGIN COPY-PASTE (CVO CLI) ---"
+    if ($Stage -eq 'Cluster')
+    {
+        Write-Host $Passphrases.ClusterPeeringCommand
+        Write-Host ""
+        Write-Host "# When prompted for the passphrase, paste:"
+        Write-Host $Passphrases.ClusterPeeringPassphrase
+    }
+    else
+    {
+        Write-Host $Passphrases.VserverPeeringCommand
+    }
+    Write-Host "--- END COPY-PASTE ---"
+
+    if ($Passphrases.CriticalWarning)
+    {
+        Write-Host ""
+        Write-Host "WARNING: $($Passphrases.CriticalWarning)"
+    }
+    Write-Host $bar
+    Write-Host ""
+}
+
+<#
+.SYNOPSIS
+Drives the full interactive on-prem ONTAP peering flow for a freshly-created
+cache. Polls CacheState through ClusterPeeringOfferSent and VserverPeeringOfferSent,
+emitting peering instructions for the engineer at each stage, and waits for the
+final terminal state. Returns the final cache object (asserted to be Succeeded).
+In Playback mode every wait short-circuits and no instructions are emitted.
+#>
+function Invoke-CacheInteractivePeering
+{
+    param(
+        [Parameter(Mandatory=$true)] [string] $ResourceGroup,
+        [Parameter(Mandatory=$true)] [string] $AccountName,
+        [Parameter(Mandatory=$true)] [string] $PoolName,
+        [Parameter(Mandatory=$true)] [string] $Name
+    )
+
+    Wait-AnfCacheState -ResourceGroup $ResourceGroup -AccountName $AccountName -PoolName $PoolName -Name $Name `
+        -ExpectedStates @('ClusterPeeringOfferSent') -TimeoutMin $script:CacheClusterOfferTimeoutMin | Out-Null
+
+    $passphrasesObject = Get-AzNetAppFilesCachePeeringPassphrase -ResourceGroupName $ResourceGroup -AccountName $AccountName -PoolName $PoolName -Name $Name
+    Write-CacheManualPeeringInstructions -Passphrases $passphrasesObject -Stage Cluster
+
+    Wait-AnfCacheState -ResourceGroup $ResourceGroup -AccountName $AccountName -PoolName $PoolName -Name $Name `
+        -ExpectedStates @('VserverPeeringOfferSent') -TimeoutMin $script:CacheVserverOfferTimeoutMin | Out-Null
+
+    Write-CacheManualPeeringInstructions -Passphrases $passphrasesObject -Stage Vserver
+
+    $final = Wait-AnfCacheState -ResourceGroup $ResourceGroup -AccountName $AccountName -PoolName $PoolName -Name $Name `
+        -ExpectedStates @('Succeeded','Failed') -TimeoutMin $script:CacheTerminalTimeoutMin
+
+    if (-not (Test-AnfPlaybackMode))
+    {
+        Assert-AreEqual 'Succeeded' $final.CacheState
+    }
+
+    return $final
+}
 
 <#
 .SYNOPSIS
@@ -127,6 +336,9 @@ function Test-CacheCrud
             -OriginPeerVolumeName  $origin.VolumeName `
             -ProtocolType @("NFSv3")
 
+        # Drive the interactive on-prem ONTAP peering flow to bring the cache to Succeeded.
+        Invoke-CacheInteractivePeering -ResourceGroup $resourceGroup -AccountName $accName -PoolName $poolName -Name $cacheName | Out-Null
+
         Assert-AreEqual "$accName/$poolName/$cacheName" $newCache.Name
         Assert-AreEqual $cacheSize  $newCache.Size
         Assert-AreEqual $cacheName  $newCache.FilePath
@@ -215,6 +427,9 @@ function Test-CachePipeline
             -OriginPeerVolumeName  $origin.VolumeName `
             -ProtocolType @("NFSv3")
 
+        # Drive the interactive on-prem ONTAP peering flow to bring the cache to Succeeded.
+        Invoke-CacheInteractivePeering -ResourceGroup $resourceGroup -AccountName $accName -PoolName $poolName -Name $cacheName | Out-Null
+
         # Pipe pool to Get-AzNetAppFilesCache
         $listFromPool = $env.Pool | Get-AzNetAppFilesCache
         Assert-AreEqual 1 $listFromPool.Length
@@ -227,56 +442,6 @@ function Test-CachePipeline
 
         # Pipe cache to Remove
         $updated | Remove-AzNetAppFilesCache -PassThru | Out-Null
-    }
-    finally
-    {
-        Clean-ResourceGroup $resourceGroup
-    }
-}
-
-<#
-.SYNOPSIS
-Get-AzNetAppFilesCachePeeringPassphrase returns cluster/vserver peering commands
-and passphrases that can be applied on the on-prem ONTAP origin to complete
-peering.
-#>
-function Test-CachePeeringPassphrase
-{
-    $resourceGroup = Get-ResourceGroupName
-    $accName       = Get-ResourceName
-    $poolName      = Get-ResourceName
-    $cacheName     = Get-ResourceName
-
-    $resourceLocation = "eastus"
-    $cacheSize        = 100 * 1024 * 1024 * 1024
-
-    try
-    {
-        $env    = New-CacheTestEnvironment -ResourceGroup $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName
-        $origin = Get-CacheOriginPlaceholder
-
-        $cache = New-AzNetAppFilesCache `
-            -ResourceGroupName $resourceGroup -Location $resourceLocation `
-            -AccountName $accName -PoolName $poolName -Name $cacheName `
-            -FilePath $cacheName -Size $cacheSize `
-            -CacheSubnetResourceId $env.CacheSubnetId `
-            -PeeringSubnetResourceId $env.PeeringSubnetId `
-            -EncryptionKeySource "Microsoft.NetApp" `
-            -OriginPeerClusterName $origin.ClusterName `
-            -OriginPeerAddress     $origin.Addresses `
-            -OriginPeerVserverName $origin.VserverName `
-            -OriginPeerVolumeName  $origin.VolumeName `
-            -ProtocolType @("NFSv3")
-
-        $passphrase = Get-AzNetAppFilesCachePeeringPassphrase -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $cacheName
-        Assert-NotNull $passphrase
-        Assert-NotNull $passphrase.ClusterPeeringCommand
-        Assert-NotNull $passphrase.ClusterPeeringPassphrase
-        Assert-NotNull $passphrase.VserverPeeringCommand
-
-        # Pipeline variant
-        $passphraseFromPipeline = $cache | Get-AzNetAppFilesCachePeeringPassphrase
-        Assert-NotNull $passphraseFromPipeline.ClusterPeeringCommand
     }
     finally
     {
@@ -321,6 +486,9 @@ function Test-CachePoolChange
             -OriginPeerVserverName $origin.VserverName `
             -OriginPeerVolumeName  $origin.VolumeName `
             -ProtocolType @("NFSv3")
+
+        # Drive the interactive on-prem ONTAP peering flow to bring the cache to Succeeded.
+        Invoke-CacheInteractivePeering -ResourceGroup $resourceGroup -AccountName $accName -PoolName $poolName1 -Name $cacheName | Out-Null
 
         # Move to second pool
         $moved = Set-AzNetAppFilesCachePool `
@@ -380,7 +548,10 @@ function Test-CacheResetSmbPassword
             -ProtocolType @("CIFS") `
             -SmbEncryption "Enabled"
 
-        $reset = Reset-AzNetAppFilesCacheSmbPassword -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $cacheName
+        # Drive the interactive on-prem ONTAP peering flow to bring the cache to Succeeded.
+        Invoke-CacheInteractivePeering -ResourceGroup $resourceGroup -AccountName $accName -PoolName $poolName -Name $cacheName | Out-Null
+
+        $reset = Reset-AzNetAppFilesCacheSmbPassword
         Assert-NotNull $reset
         Assert-AreEqual "$accName/$poolName/$cacheName" $reset.Name
     }

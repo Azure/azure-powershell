@@ -23,48 +23,88 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
         }
 
-        // ANF Cache (FlexCache) requires a pre-existing on-prem ONTAP cluster reachable from
-        // the cache's peering subnet to peer with as the origin volume. The required inputs are:
+        // ============================================================================
+        // ANF Cache (FlexCache) scenario tests -- LIVE ONLY
+        // ============================================================================
+        //
+        // PREREQUISITE: ON-PREM ONTAP or CVO
+        // -------------------------------
+        // Each test creates a real Microsoft.NetApp/netAppAccounts/capacityPools/caches
+        // resource that peers with an external on-prem ONTAP cluster (typically a
+        // Cloud Volumes ONTAP / CVO instance). That cluster must be running and
+        // reachable from the cache's peering subnet BEFORE the test runs, and you
+        // must have SSH access to it. Required origin inputs (set in
+        // Get-CacheOriginPlaceholder inside CacheTests.ps1):
         //   - OriginPeerClusterName  : ONTAP cluster name of the external cluster
         //   - OriginPeerAddress      : Intercluster LIF IP addresses, one per node
         //   - OriginPeerVserverName  : External Vserver (SVM) hosting the origin volume
         //   - OriginPeerVolumeName   : External origin volume name
-        // The Set-...CachePool / Reset-...CacheSmbPassword / Get-...CachePeeringPassphrase tests
-        // additionally require a successfully created cache (i.e. a real peered ONTAP origin).
         //
-        // We do not have an on-prem ONTAP fixture available in the test environment, so all of
-        // these tests are skipped. Re-enable them once a peered ONTAP cluster (or a service-side
-        // mock) is wired into the test fixture.
+        // WHY THIS TEST IS INTERACTIVE (and why it is Skip'd by default)
+        // --------------------------------------------------------------
+        // FlexCache provisioning is a multi-stage handshake:
+        //   Creating -> ClusterPeeringOfferSent -> VserverPeeringOfferSent -> Succeeded
+        // At each '*OfferSent' state the service waits for the on-prem operator to
+        // accept the offer on the CVO via SSH. There is no public API to perform
+        // this acceptance from Azure; it MUST be done on the CVO CLI. The PowerShell
+        // test therefore polls cacheState, prints the exact CVO commands to paste,
+        // and resumes automatically once the state advances. See
+        // Invoke-CacheInteractivePeering / Wait-AnfCacheState /
+        // Write-CacheManualPeeringInstructions in CacheTests.ps1.
+        //
+        // Because every run requires a human at the CVO, these tests cannot run in
+        // CI and are decorated with [Fact(Skip = LiveOnlySkip)].
+        //
+        // HOW TO RUN LIVE
+        // ---------------
+        //   1. Update Get-CacheOriginPlaceholder in CacheTests.ps1 with your CVO
+        //      coordinates.
+        //   2. Temporarily remove the Skip argument from the [Fact] you want to run
+        //      (e.g. '[Fact]' instead of '[Fact(Skip = LiveOnlySkip)]').
+        //   3. Sign into Azure in the same shell:
+        //        Connect-AzAccount
+        //        Set-AzContext -Subscription <subscription-id>
+        //   4. From the repo root run (pwsh):
+        //
+        //        $env:TEST_HTTPMOCK_MODE = 'Record'
+        //        $env:AZURE_TEST_MODE    = 'Record'
+        //        dotnet test src\NetAppFiles\NetAppFiles.Test\NetAppFiles.Test.csproj `
+        //            --filter "FullyQualifiedName~TestCacheCrud" `
+        //            --logger "console;verbosity=detailed"
+        //
+        //   5. When the console prints '=== ON-PREM ONTAP ACTION REQUIRED ===',
+        //      SSH into the CVO and paste the literal command block shown. The test
+        //      resumes automatically once cacheState advances; do NOT press a key in
+        //      the test host.
+        //   6. Restore the Skip attribute before committing so CI does not attempt
+        //      live execution.
+        // ============================================================================
 
-        [Fact(Skip = "Requires pre-provisioned on-prem ONTAP cluster reachable from the cache peering subnet. Enable once ONTAP fixture is available.")]
+        private const string LiveOnlySkip =
+            "Live-only: requires on-prem ONTAP CVO and an engineer to paste cluster/vserver peering commands when prompted. Run with TEST_HTTPMOCK_MODE=Record. See header comment above for the full command.";
+
+        [Fact(Skip = LiveOnlySkip)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCacheCrud()
         {
             TestRunner.RunTestScript("Test-CacheCrud");
         }
 
-        [Fact(Skip = "Requires pre-provisioned on-prem ONTAP cluster reachable from the cache peering subnet. Enable once ONTAP fixture is available.")]
+        [Fact(Skip = LiveOnlySkip)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCachePipeline()
         {
             TestRunner.RunTestScript("Test-CachePipeline");
         }
 
-        [Fact(Skip = "Requires pre-provisioned on-prem ONTAP cluster reachable from the cache peering subnet. Enable once ONTAP fixture is available.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCachePeeringPassphrase()
-        {
-            TestRunner.RunTestScript("Test-CachePeeringPassphrase");
-        }
-
-        [Fact(Skip = "Requires pre-provisioned on-prem ONTAP cluster reachable from the cache peering subnet AND a second target capacity pool. Enable once ONTAP fixture is available.")]
+        [Fact(Skip = LiveOnlySkip)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCachePoolChange()
         {
             TestRunner.RunTestScript("Test-CachePoolChange");
         }
 
-        [Fact(Skip = "Requires pre-provisioned on-prem ONTAP cluster reachable from the cache peering subnet and an SMB-enabled cache. Enable once ONTAP fixture is available.")]
+        [Fact(Skip = LiveOnlySkip)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCacheResetSmbPassword()
         {
