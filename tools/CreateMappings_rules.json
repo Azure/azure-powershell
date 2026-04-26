@@ -1023,5 +1023,9 @@
   {
     "module": "PlanetaryComputer",
     "alias": "PlanetaryComputer"
+  },
+  {
+    "module": "Relationships",
+    "alias": "Relationships"
   }
 ]
