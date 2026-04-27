@@ -25,7 +25,7 @@ Creates a Multi-Cloud Connector endpoint resource, which represents a data trans
 
 ### Example 1: Create a Multi-Cloud Connector endpoint
 ```powershell
-New-AzStorageMoverMultiCloudConnectorEndpoint -Name "my-mc-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -AWSS3BucketId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.AwsConnector/s3Buckets/testBucket" -MultiCloudConnectorId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.HybridConnectivity/publicCloudConnectors/TestConnector" -Description "Example multi cloud connector resource id"
+New-AzStorageMoverMultiCloudConnectorEndpoint -Name "my-mc-endpoint" -ResourceGroupName "my-resource-group" -StorageMoverName "my-storage-mover" -AWSS3BucketId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.AWSConnector/s3Buckets/testBucket" -MultiCloudConnectorId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.HybridConnectivity/publicCloudConnectors/TestConnector" -Description "Example multi cloud connector resource id"
 ```
 
 ```output
