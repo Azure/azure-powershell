@@ -1724,6 +1724,22 @@ function Test-AzureFirewallPolicyWithMultipleUAMI {
         Assert-AreEqual "UserAssigned" $getAzureFirewallPolicy.Identity.type
         Assert-AreEqual 1 $getAzureFirewallPolicy.Identity.userAssignedIdentities.Count
         Assert-True { $getAzureFirewallPolicy.Identity.userAssignedIdentities.ContainsKey($userAssignedManagedIdentity) }
+
+        #Pass Two UAMI for Explicit Proxy and TLS via both parameters
+        $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 86 -EnablePacFile  -PacFilePort 124 -PacFile $pacFile
+        # Set AzureFirewallPolicy
+        $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -ExplicitProxy $exProxy -TransportSecurityName $transportSecurityName -TransportSecurityKeyVaultSecretId $transportSecurityId -UserAssignedIdentityIds @($userAssignedManagedIdentity) -UserAssignedIdentityId $transportSecurityIdentity
+
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        Assert-NotNull $getAzureFirewallPolicy.ExplicitProxy
+        Assert-AreEqual 86 $getAzureFirewallPolicy.ExplicitProxy.HttpPort
+        Assert-AreEqual 124 $getAzureFirewallPolicy.ExplicitProxy.PacFilePort
+        Assert-AreEqual $pacFile $getAzureFirewallPolicy.ExplicitProxy.PacFile
+        Assert-AreEqual "UserAssigned" $getAzureFirewallPolicy.Identity.type
+        Assert-AreEqual 2 $getAzureFirewallPolicy.Identity.userAssignedIdentities.Count
+        Assert-True { $getAzureFirewallPolicy.Identity.userAssignedIdentities.ContainsKey($userAssignedManagedIdentity) }
+        Assert-True { $getAzureFirewallPolicy.Identity.userAssignedIdentities.ContainsKey($transportSecurityIdentity) }
     }
     finally {
         # Cleanup
