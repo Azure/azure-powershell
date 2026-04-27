@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             var outputsPS = new Dictionary<string, DeploymentVariable>();
 
             // Extract DeploymentVariables from the passed in json object.
-            var jObject = JObject.Parse(outputs.ToString());
+            var jObject = outputs as JObject ?? JObject.FromObject(outputs);
             foreach (var props in jObject.Properties())
             {
                 outputsPS[props.Name] = ExtractDeploymentVariableFromJObject(props.Value as JObject);
