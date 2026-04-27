@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change announcement for `Update-AzDatabricksVNetPeering`: parameters `AllowForwardedTraffic`, `AllowGatewayTransit`, `AllowVirtualNetworkAccess` and `UseRemoteGateway` will change from Boolean to SwitchParameter
 
 ## Version 1.11.0
 * Upgraded API version to 2026-01-01
