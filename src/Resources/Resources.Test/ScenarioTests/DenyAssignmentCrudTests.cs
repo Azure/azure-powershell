@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     /// <summary>
     /// Tests for New-AzDenyAssignment and Remove-AzDenyAssignment cmdlets.
-    /// PP1 model: principals = Everyone (SystemDefined), excludePrincipals required.
+    /// Covers both Everyone mode and per-principal (User/ServicePrincipal) mode.
     /// </summary>
     public class DenyAssignmentCrudTests : ResourcesTestRunner
     {
@@ -79,6 +79,52 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void NewDaWithCustomId()
         {
             TestRunner.RunTestScript("Test-NewDaWithCustomId");
+        }
+
+        // =============================================
+        // Per-Principal deny assignment tests
+        // =============================================
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void NewDaWithUserPrincipal()
+        {
+            TestRunner.RunTestScript("Test-NewDaWithUserPrincipal");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void NewDaWithServicePrincipal()
+        {
+            TestRunner.RunTestScript("Test-NewDaWithServicePrincipal");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void NewDaPerPrincipalNoExcludes()
+        {
+            TestRunner.RunTestScript("Test-NewDaPerPrincipalNoExcludes");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void NewDaPerPrincipalWithExcludes()
+        {
+            TestRunner.RunTestScript("Test-NewDaPerPrincipalWithExcludes");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void NewDaPerPrincipalGroupRejected()
+        {
+            TestRunner.RunTestScript("Test-NewDaPerPrincipalGroupRejected");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void NewDaPerPrincipalFromInputFile()
+        {
+            TestRunner.RunTestScript("Test-NewDaPerPrincipalFromInputFile");
         }
 
         // =============================================

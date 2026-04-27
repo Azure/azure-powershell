@@ -639,23 +639,43 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
             };
 
-            // PP1 model: principals must be Everyone (SystemDefined), actual targets go in excludePrincipals
-            if (options.PrincipalIds != null && options.PrincipalIds.Count > 0
-                && !(options.PrincipalIds.Count == 1 && options.PrincipalIds[0] == Guid.Empty.ToString()))
-            {
-                throw new ArgumentException(
-                    "PP1 deny assignments only support the Everyone principal (SystemDefined). " +
-                    "Custom principal IDs are not supported. Use ExcludePrincipalIds to exclude specific principals.");
-            }
+            // Build principals list based on mode
+            bool isEveryoneMode = options.PrincipalIds != null
+                && options.PrincipalIds.Count == 1
+                && Guid.TryParse(options.PrincipalIds[0], out Guid principalGuid)
+                && principalGuid == Guid.Empty;
 
-            var principals = new List<DenyAssignmentPrincipal>
+            bool isPerPrincipalMode = options.PrincipalIds != null
+                && options.PrincipalIds.Count > 0
+                && !isEveryoneMode;
+
+            List<DenyAssignmentPrincipal> principals;
+            if (isPerPrincipalMode)
             {
-                new DenyAssignmentPrincipal
+                // Per-principal mode: target a specific user or service principal
+                principals = new List<DenyAssignmentPrincipal>
                 {
-                    Id = Guid.Empty.ToString(),
-                    Type = "SystemDefined"
-                }
-            };
+                    new DenyAssignmentPrincipal
+                    {
+                        Id = options.PrincipalIds[0],
+                        Type = options.PrincipalTypes != null && options.PrincipalTypes.Count > 0
+                            ? options.PrincipalTypes[0]
+                            : "User"
+                    }
+                };
+            }
+            else
+            {
+                // Everyone mode (default): deny all principals
+                principals = new List<DenyAssignmentPrincipal>
+                {
+                    new DenyAssignmentPrincipal
+                    {
+                        Id = Guid.Empty.ToString(),
+                        Type = "SystemDefined"
+                    }
+                };
+            }
 
             var excludePrincipals = new List<DenyAssignmentPrincipal>();
             var excludeIds = options.ExcludePrincipalIds ?? new List<string>();

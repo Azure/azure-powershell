@@ -11,10 +11,10 @@ parameters:
   displayName: PowerShell 7.5.x Version
   type: string
   default: 7.5.*
-- name: latest_ps
-  displayName: PowerShell Latest Version
+- name: ps7_6
+  displayName: PowerShell 7.6.x Version
   type: string
-  default: latest
+  default: 7.6.*
 - name: preview_ps
   displayName: PowerShell Preview Version
   type: string
@@ -27,6 +27,10 @@ parameters:
   displayName: .NET SDK 9
   type: string
   default: 9.x
+- name: dotnet_sdk_10
+  displayName: .NET SDK 10
+  type: string
+  default: 10.x
 
 variables:
   winAgentPoolName: pool-windows-2022
@@ -61,10 +65,10 @@ jobs:
 
 - template: util/smoke-test-steps.yml
   parameters:
-    name: 'Win_Latest_PS_SmokeTest'
+    name: 'Win_PS7_6_X_SmokeTest'
     agentPoolName: ${{ variables.winAgentPoolName }}
-    psVersion: ${{ parameters.latest_ps }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_9 }}
+    psVersion: ${{ parameters.ps7_6 }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_10 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
@@ -89,10 +93,10 @@ jobs:
 
 - template: util/smoke-test-steps.yml
   parameters:
-    name: 'Linux_Latest_PS_SmokeTest'
+    name: 'Linux_PS7_6_X_SmokeTest'
     agentPoolName: ${{ variables.linuxAgentPoolName }}
-    psVersion: ${{ parameters.latest_ps }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_9 }}
+    psVersion: ${{ parameters.ps7_6 }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_10 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
@@ -101,6 +105,17 @@ jobs:
     psVersion: ${{ parameters.preview_ps }}
     dotnetVersion: ${{ parameters.dotnet_sdk_9 }}
 
+- job: CheckLatestPowerShellVersion
+  displayName: Check for latest PowerShell version
+  pool:
+    name: ${{ variables.linuxAgentPoolName }}
+  steps:
+  - task: PowerShell@2
+    displayName: Check for latest PowerShell version
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Live/CheckLatestPowerShellVersion.ps1
 # - template: util/smoke-test-steps.yml
 #   parameters:
 #     name: 'MacOS_PS7_4_X_SmokeTest'

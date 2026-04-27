@@ -14,7 +14,7 @@
 
 # Scenario tests for New-AzDenyAssignment and Remove-AzDenyAssignment
 
-# Helper: Get a valid user principal ID for the exclude list.
+# Helper: Get a valid user principal ID for the exclude list / per-principal tests.
 # In Record mode with SP auth, Graph API calls (Get-AzADUser) may fail
 # due to insufficient permissions. Use the known tenant admin user ID.
 function Get-TestExcludePrincipalId
@@ -31,9 +31,10 @@ function Get-TestExcludePrincipalId
     }
 }
 #
-# PP1 API model:
-#   - Principals must be Everyone (SystemDefined with Guid.Empty)
-#   - ExcludePrincipals is required (at least one)
+# UADA API model:
+#   - Principals can be Everyone (SystemDefined with Guid.Empty) or a specific User/ServicePrincipal
+#   - ExcludePrincipals is required for Everyone mode; optional for per-principal mode
+#   - Group type principals are not supported
 #   - DataActions not supported
 #   - DoNotApplyToChildScopes not supported
 #   - Read actions cannot be denied; only write/delete/action
@@ -196,7 +197,7 @@ function Test-NewDaFromInputFile
         excludePrincipalIds = @($excludePrincipalId)
     }
 
-    $tempFile = [System.IO.Path]::GetTempFileName() + ".json"
+    $tempFile = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), ([Guid]::NewGuid().ToString() + ".json"))
     $inputObj | ConvertTo-Json -Depth 5 | Set-Content -Path $tempFile
 
     try
@@ -396,4 +397,223 @@ function Test-NewAndRemoveDaEndToEnd
     # 4. Verify gone
     $gone = Get-AzDenyAssignment -Id $da.Id -ErrorAction SilentlyContinue
     Assert-Null $gone
+}
+
+# =============================================
+# Per-Principal deny assignment tests
+# =============================================
+
+# Helper: Get a test service principal ID
+function Get-TestServicePrincipalId
+{
+    if ($env:TEST_SERVICE_PRINCIPAL_ID) {
+        return $env:TEST_SERVICE_PRINCIPAL_ID
+    }
+    return "c090fe3f-66fa-4e18-8142-107d8f4cd0e4"  # DenyAssignmentTestApp
+}
+
+<#
+.SYNOPSIS
+Creates a deny assignment targeting a specific user principal.
+#>
+function Test-NewDaWithUserPrincipal
+{
+    $subscriptionScope = "/subscriptions/$((Get-AzContext).Subscription.Id)"
+    $userId = Get-TestExcludePrincipalId
+    $daName = "Test-DA-UserPrincipal-" + [Guid]::NewGuid().ToString().Substring(0, 8)
+
+    try
+    {
+        $da = New-AzDenyAssignment `
+            -DenyAssignmentName $daName `
+            -Description "Test deny assignment targeting a specific user" `
+            -Scope $subscriptionScope `
+            -Action "Microsoft.Storage/storageAccounts/write" `
+            -PrincipalId $userId `
+            -PrincipalType "User"
+
+        Assert-NotNull $da
+        Assert-AreEqual $daName $da.DenyAssignmentName
+        Assert-True { $da.Principals.Count -eq 1 }
+        Assert-AreEqual $userId $da.Principals[0].ObjectId
+        Assert-AreEqual "User" $da.Principals[0].ObjectType
+    }
+    finally
+    {
+        if ($da)
+        {
+            Remove-AzDenyAssignment -Id $da.Id -Force
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+Creates a deny assignment targeting a specific service principal.
+#>
+function Test-NewDaWithServicePrincipal
+{
+    $subscriptionScope = "/subscriptions/$((Get-AzContext).Subscription.Id)"
+    $spId = Get-TestServicePrincipalId
+    $daName = "Test-DA-SPPrincipal-" + [Guid]::NewGuid().ToString().Substring(0, 8)
+
+    try
+    {
+        $da = New-AzDenyAssignment `
+            -DenyAssignmentName $daName `
+            -Description "Test deny assignment targeting a specific service principal" `
+            -Scope $subscriptionScope `
+            -Action "Microsoft.Storage/storageAccounts/write" `
+            -PrincipalId $spId `
+            -PrincipalType "ServicePrincipal"
+
+        Assert-NotNull $da
+        Assert-AreEqual $daName $da.DenyAssignmentName
+        Assert-True { $da.Principals.Count -eq 1 }
+        Assert-AreEqual $spId $da.Principals[0].ObjectId
+        Assert-AreEqual "ServicePrincipal" $da.Principals[0].ObjectType
+    }
+    finally
+    {
+        if ($da)
+        {
+            Remove-AzDenyAssignment -Id $da.Id -Force
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+Verifies that ExcludePrincipalId is optional in per-principal mode.
+#>
+function Test-NewDaPerPrincipalNoExcludes
+{
+    $subscriptionScope = "/subscriptions/$((Get-AzContext).Subscription.Id)"
+    $userId = Get-TestExcludePrincipalId
+    $daName = "Test-DA-NoExcludes-" + [Guid]::NewGuid().ToString().Substring(0, 8)
+
+    try
+    {
+        # No ExcludePrincipalId — should succeed in per-principal mode
+        $da = New-AzDenyAssignment `
+            -DenyAssignmentName $daName `
+            -Description "Per-principal DA without excluded principals" `
+            -Scope $subscriptionScope `
+            -Action "Microsoft.Storage/storageAccounts/write" `
+            -PrincipalId $userId `
+            -PrincipalType "User"
+
+        Assert-NotNull $da
+        Assert-True { $da.ExcludePrincipals.Count -eq 0 -or $da.ExcludePrincipals -eq $null }
+    }
+    finally
+    {
+        if ($da)
+        {
+            Remove-AzDenyAssignment -Id $da.Id -Force
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+Verifies that ExcludePrincipalId works as an optional parameter in per-principal mode.
+#>
+function Test-NewDaPerPrincipalWithExcludes
+{
+    $subscriptionScope = "/subscriptions/$((Get-AzContext).Subscription.Id)"
+    $spId = Get-TestServicePrincipalId
+    $excludeUser = Get-TestExcludePrincipalId
+    $daName = "Test-DA-PerPrincipalExcl-" + [Guid]::NewGuid().ToString().Substring(0, 8)
+
+    try
+    {
+        $da = New-AzDenyAssignment `
+            -DenyAssignmentName $daName `
+            -Description "Per-principal DA with excluded principals" `
+            -Scope $subscriptionScope `
+            -Action "Microsoft.Storage/storageAccounts/write" `
+            -PrincipalId $spId `
+            -PrincipalType "ServicePrincipal" `
+            -ExcludePrincipalId $excludeUser `
+            -ExcludePrincipalType "User"
+
+        Assert-NotNull $da
+        Assert-True { $da.Principals.Count -eq 1 }
+        Assert-AreEqual $spId $da.Principals[0].ObjectId
+        Assert-True { $da.ExcludePrincipals.Count -ge 1 }
+    }
+    finally
+    {
+        if ($da)
+        {
+            Remove-AzDenyAssignment -Id $da.Id -Force
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+Verifies that Group principal type is rejected client-side.
+#>
+function Test-NewDaPerPrincipalGroupRejected
+{
+    $subscriptionScope = "/subscriptions/$((Get-AzContext).Subscription.Id)"
+    $groupId = [Guid]::NewGuid().ToString()
+
+    # Group type should be rejected by ValidateSet on the cmdlet parameter.
+    # The error will be a ParameterBindingValidationException.
+    Assert-Throws {
+        New-AzDenyAssignment `
+            -DenyAssignmentName "Test-DA-Group" `
+            -Scope $subscriptionScope `
+            -Action "Microsoft.Storage/storageAccounts/write" `
+            -PrincipalId $groupId `
+            -PrincipalType "Group"
+    }
+}
+
+<#
+.SYNOPSIS
+Creates a per-principal deny assignment from a JSON input file.
+#>
+function Test-NewDaPerPrincipalFromInputFile
+{
+    $subscriptionScope = "/subscriptions/$((Get-AzContext).Subscription.Id)"
+    $userId = Get-TestExcludePrincipalId
+    $daName = "Test-DA-PerPrincipalFile-" + [Guid]::NewGuid().ToString().Substring(0, 8)
+
+    $inputObj = @{
+        denyAssignmentName = $daName
+        description = "Per-principal DA created from input file"
+        actions = @("Microsoft.Storage/storageAccounts/write")
+        notActions = @()
+        dataActions = @()
+        notDataActions = @()
+        principalIds = @($userId)
+        principalTypes = @("User")
+    }
+
+    $tempFile = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), ([Guid]::NewGuid().ToString() + ".json"))
+    $inputObj | ConvertTo-Json -Depth 5 | Set-Content -Path $tempFile
+
+    try
+    {
+        $da = New-AzDenyAssignment `
+            -InputFile $tempFile `
+            -Scope $subscriptionScope
+
+        Assert-NotNull $da
+        Assert-AreEqual $daName $da.DenyAssignmentName
+        Assert-True { $da.Principals.Count -eq 1 }
+        Assert-AreEqual $userId $da.Principals[0].ObjectId
+    }
+    finally
+    {
+        if ($da)
+        {
+            Remove-AzDenyAssignment -Id $da.Id -Force
+        }
+        Remove-Item -Path $tempFile -Force -ErrorAction SilentlyContinue
+    }
 }

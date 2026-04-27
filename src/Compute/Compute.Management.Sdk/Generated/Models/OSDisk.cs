@@ -75,6 +75,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// value cannot be larger than 1023.
         /// </param>
 
+        /// <param name="storageFaultDomainAlignment">Specifies the storage fault domain alignment type for the disk.
+        /// Possible values include: &#39;Aligned&#39;, &#39;BestEffortAligned&#39;</param>
+
         /// <param name="managedDisk">The managed disk parameters.
         /// </param>
 
@@ -85,7 +88,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// For an ephemeral OS Disk, the default value is set to **Delete**. The user
         /// cannot change the delete option for an ephemeral OS Disk.
         /// Possible values include: &#39;Delete&#39;, &#39;Detach&#39;</param>
-        public OSDisk(string createOption, OperatingSystemTypes? osType = default(OperatingSystemTypes?), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGb = default(int?), ManagedDiskParameters managedDisk = default(ManagedDiskParameters), string deleteOption = default(string))
+        public OSDisk(string createOption, OperatingSystemTypes? osType = default(OperatingSystemTypes?), DiskEncryptionSettings encryptionSettings = default(DiskEncryptionSettings), string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGb = default(int?), string storageFaultDomainAlignment = default(string), ManagedDiskParameters managedDisk = default(ManagedDiskParameters), string deleteOption = default(string))
 
         {
             this.OsType = osType;
@@ -98,6 +101,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.DiffDiskSettings = diffDiskSettings;
             this.CreateOption = createOption;
             this.DiskSizeGB = diskSizeGb;
+            this.StorageFaultDomainAlignment = storageFaultDomainAlignment;
             this.ManagedDisk = managedDisk;
             this.DeleteOption = deleteOption;
             CustomInit();
@@ -188,6 +192,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         public int? DiskSizeGB {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the storage fault domain alignment type for the
+        /// disk. Possible values include: &#39;Aligned&#39;, &#39;BestEffortAligned&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "storageFaultDomainAlignment")]
+        public string StorageFaultDomainAlignment {get; set; }
+
+        /// <summary>
         /// Gets or sets the managed disk parameters.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "managedDisk")]
@@ -221,6 +232,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.EncryptionSettings.Validate();
             }
+
 
 
 
