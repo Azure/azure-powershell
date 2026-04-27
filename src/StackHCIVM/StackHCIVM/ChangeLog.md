@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Added breaking change announcements for upcoming SecureString parameter type changes in `New-AzStackHCIVMImage` and `New-AzStackHCIVMVirtualMachine`
 
 ## Version 1.1.0

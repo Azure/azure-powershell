@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.
+* Added `AzureAppConfigurationEndpointSuffix` and `AzureAppConfigurationEndpointResourceId` parameters to `Add-AzEnvironment` and `Set-AzEnvironment`
+    - Users can now configure Azure App Configuration endpoints when adding or updating custom environments
+
+## Version 5.3.4
 * Improved SSH certificate authentication for Az SSH cmdlets across all Azure clouds.
     - SSH certificate authentication now works across all Azure clouds without configuring the `-SshAuthScope` parameter.
     - The `-SshAuthScope` parameter in `Set-AzEnvironment` and `Add-AzEnvironment` does not take any effect.

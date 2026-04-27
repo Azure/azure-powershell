@@ -8,18 +8,20 @@ schema: 2.0.0
 # New-AzAppConfigurationStore
 
 ## SYNOPSIS
-create a configuration store with the specified parameters.
+Create a configuration store with the specified parameters.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> -Sku <String> [-CreateMode <String>] [-DisableLocalAuth] [-EnablePurgeProtection]
- [-EnableSystemAssignedIdentity] [-EncryptionKeyIdentifier <String>] [-KeyVaultIdentityClientId <String>]
- [-PublicNetworkAccess <String>] [-SoftDeleteRetentionInDay <Int32>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Location <String> -Sku <String> [-CreateMode <String>] [-DataPlaneProxyAuthenticationMode <String>]
+ [-DataPlaneProxyPrivateLinkDelegation <String>] [-DefaultKeyValueRevisionRetentionPeriodInSecond <Int64>]
+ [-DisableLocalAuth] [-EnablePurgeProtection] [-EnableSystemAssignedIdentity]
+ [-EncryptionKeyIdentifier <String>] [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <String>]
+ [-SoftDeleteRetentionInDay <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -37,7 +39,7 @@ New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-Subscri
 ```
 
 ## DESCRIPTION
-create a configuration store with the specified parameters.
+Create a configuration store with the specified parameters.
 
 ## EXAMPLES
 
@@ -95,6 +97,54 @@ Indicates whether the configuration store need to be recovered.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataPlaneProxyAuthenticationMode
+The data plane proxy authentication mode.
+This property manages the authentication mode of request to the data plane resources.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataPlaneProxyPrivateLinkDelegation
+The data plane proxy private link delegation.
+This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultKeyValueRevisionRetentionPeriodInSecond
+The duration in seconds to retain new key value revisions.
+Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores.
+
+```yaml
+Type: System.Int64
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -287,7 +337,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the container registry belongs.
+The name of the resource group that contains the Azure App Configuration store.
 
 ```yaml
 Type: System.String

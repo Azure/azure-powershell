@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.2
 * Updated preannouncement breaking changes date to May 2026.
 
 ## Version 1.5.1

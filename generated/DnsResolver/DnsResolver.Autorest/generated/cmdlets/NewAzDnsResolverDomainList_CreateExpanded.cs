@@ -71,6 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Cmdlets
         Description = @"The domains in the domain list.",
         SerializedName = @"domains",
         PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ParameterBreakingChange("Domain", "16.0.0", "2.0.0", "2026/05/01", ChangeDescription="The parameter 'Domain' is no longer mandatory. Domain lists will support bulk upload via the new cmdlet 'Invoke-AzDnsResolverBulkDnsResolverDomainList'.")]
         public string[] Domain { get => _parametersBody.Domain ?? null /* arrayOf */; set => _parametersBody.Domain = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>

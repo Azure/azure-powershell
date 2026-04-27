@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.20.0
 * Added `-DisableLocalAuth` parameter to `New-AzCosmosDBAccount` and `Update-AzCosmosDBAccount` to opt out of local authentication.
 * Added `-Capabilities` parameter to `Update-AzCosmosDBAccount` to allow adding or removing account capabilities.
 

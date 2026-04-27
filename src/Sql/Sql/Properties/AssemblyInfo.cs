@@ -48,4 +48,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("6.4.1")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Resources.Test")]
+[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Sql.Test")]
 #endif

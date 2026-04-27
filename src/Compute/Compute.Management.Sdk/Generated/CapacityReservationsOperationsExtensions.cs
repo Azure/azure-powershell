@@ -26,9 +26,15 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CapacityReservation> ListByCapacityReservationGroup(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName)
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation. Based on the expand
+        /// param(s) specified we return Virtual Machine or ScaleSet VM Instance or
+        /// both resource Ids which are associated to capacity reservation group in the
+        /// response.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CapacityReservation> ListByCapacityReservationGroup(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string expand = default(string))
         {
-                return ((ICapacityReservationsOperations)operations).ListByCapacityReservationGroupAsync(resourceGroupName, capacityReservationGroupName).GetAwaiter().GetResult();
+                return ((ICapacityReservationsOperations)operations).ListByCapacityReservationGroupAsync(resourceGroupName, capacityReservationGroupName, expand).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -45,12 +51,18 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
         /// </param>
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation. Based on the expand
+        /// param(s) specified we return Virtual Machine or ScaleSet VM Instance or
+        /// both resource Ids which are associated to capacity reservation group in the
+        /// response.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CapacityReservation>> ListByCapacityReservationGroupAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CapacityReservation>> ListByCapacityReservationGroupAsync(this ICapacityReservationsOperations operations, string resourceGroupName, string capacityReservationGroupName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByCapacityReservationGroupWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByCapacityReservationGroupWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, expand, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
