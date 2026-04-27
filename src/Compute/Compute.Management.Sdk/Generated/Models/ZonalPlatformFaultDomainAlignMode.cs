@@ -15,5 +15,10 @@ namespace Microsoft.Azure.Management.Compute.Models
     {
         public const string Aligned = "Aligned";
         public const string Unaligned = "Unaligned";
+        /// <summary>
+        /// Offload Alignment to VMSS. VMSS aligns disks that support enough Storage
+        /// Fault Domains, while keeping others unaligned.
+        /// </summary>
+        public const string BestEffortAligned = "BestEffortAligned";
     }
 }

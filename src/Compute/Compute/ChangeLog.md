@@ -28,6 +28,7 @@
     - `Update-AzGallery`: Added `-DisableSystemAssignedIdentity` parameter to remove system-assigned managed identity
     - `Update-AzGallery`: Added `-RemoveUserAssignedIdentity` parameter accepting a list of identity resource IDs to remove specific user-assigned identities, or 'All' to remove all user-assigned identities
     - `Get-AzGallery`: Now returns managed identity details in the `Identity` property
+* Compute ComputeRP related cmdlets will now use 2025-11-01 version of the ComputeRP API.
 
 ## Version 11.4.0
 * Added `-DiskIOPSReadWrite` and `-DiskMBpsReadWrite` parameters to `Add-AzVMDataDisk` cmdlet
