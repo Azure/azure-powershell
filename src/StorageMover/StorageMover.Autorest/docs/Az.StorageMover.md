@@ -72,7 +72,8 @@ Create an in-memory object for UploadLimitWeeklyRecurrence.
 Deletes a Storage Mover resource.
 
 ### [Remove-AzStorageMoverConnection](Remove-AzStorageMoverConnection.md)
-Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.
+Deletes a Connection resource.
+Returns 409 if there are active jobs using this connection.
 
 ### [Remove-AzStorageMoverEndpoint](Remove-AzStorageMoverEndpoint.md)
 Deletes an Endpoint resource.

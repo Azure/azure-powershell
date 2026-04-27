@@ -36,7 +36,7 @@ input-file:
   - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2025-12-01/storagemover.json
 
 # For new RP, the version is 0.1.0
-module-version: 1.7.0
+module-version: 2.0.0
 # Normally, title is the service name
 title: StorageMover
 subject-prefix: $(service-name)

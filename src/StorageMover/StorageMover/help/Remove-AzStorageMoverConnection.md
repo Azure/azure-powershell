@@ -32,7 +32,8 @@ Remove-AzStorageMoverConnection -Name <String> -StorageMoverInputObject <IStorag
 ```
 
 ## DESCRIPTION
-Deletes a Connection resource.\nReturns 409 if there are active jobs using this connection.
+Deletes a Connection resource.
+Returns 409 if there are active jobs using this connection.
 
 ## EXAMPLES
 
