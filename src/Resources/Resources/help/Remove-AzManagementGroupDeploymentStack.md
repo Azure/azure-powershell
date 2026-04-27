@@ -31,7 +31,7 @@ Remove-AzManagementGroupDeploymentStack -ResourceId <String> -ActionOnUnmanage <
 
 ### RemoveByStackObject
 ```
-Remove-AzManagementGroupDeploymentStack [-InputObjet] <PSDeploymentStack>
+Remove-AzManagementGroupDeploymentStack [-InputObject] <PSDeploymentStack>
  -ActionOnUnmanage <PSActionOnUnmanage> [-PassThru] [-Force] [-BypassStackOutOfSyncError]
  [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
@@ -113,7 +113,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObjet
+### -InputObject
 The stack PS object
 
 ```yaml

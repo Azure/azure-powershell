@@ -419,8 +419,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             bool denySettingsApplyToChildScopes,
             Hashtable tags,
             bool bypassStackOutOfSyncError,
-            string resourcesWithoutDeleteSupport = null,
-            string validationLevel = null
+            string resourcesWithoutDeleteSupport,
+            string validationLevel
             )
         {
             // Create Deployment stack deployment model:
@@ -465,27 +465,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         public void ResourceGroupValidateDeploymentStack(
-           string deploymentStackName,
-           string resourceGroupName,
-           string templateFile,
-           string templateUri,
-           string templateSpec,
-           Hashtable templateObject,
-           string parameterUri,
-           Hashtable parameters,
-           string description,
-           string resourcesCleanupAction,
-           string resourceGroupsCleanupAction,
-           string managementGroupsCleanupAction,
-           string denySettingsMode,
-           string[] denySettingsExcludedPrincipals,
-           string[] denySettingsExcludedActions,
-           bool denySettingsApplyToChildScopes,
-           Hashtable tags,
-           bool bypassStackOutOfSyncError,
-           string resourcesWithoutDeleteSupport = null,
-           string validationLevel = null
-           )
+            string deploymentStackName,
+            string resourceGroupName,
+            string templateFile,
+            string templateUri,
+            string templateSpec,
+            Hashtable templateObject,
+            string parameterUri,
+            Hashtable parameters,
+            string description,
+            string resourcesCleanupAction,
+            string resourceGroupsCleanupAction,
+            string managementGroupsCleanupAction,
+            string denySettingsMode,
+            string[] denySettingsExcludedPrincipals,
+            string[] denySettingsExcludedActions,
+            bool denySettingsApplyToChildScopes,
+            Hashtable tags,
+            bool bypassStackOutOfSyncError,
+            string resourcesWithoutDeleteSupport,
+            string validationLevel
+        )
         {
             // Create Deployment stack deployment model:
             var deploymentStackModel = CreateDeploymentStackModel(
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourceGroupsCleanupAction, 
             string managementGroupsCleanupAction,
             bool bypassStackOutOfSyncError,
-            string resourcesWithoutDeleteSupport = null
+            string resourcesWithoutDeleteSupport
         )
         {
             var deleteResponse = DeploymentStacksClient.DeploymentStacks
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourceGroupsCleanupAction, 
             string managementGroupsCleanupAction,
             bool bypassStackOutOfSyncError,
-            string resourcesWithoutDeleteSupport = null
+            string resourcesWithoutDeleteSupport
         )
         {
             var deleteResponse = DeploymentStacksClient.DeploymentStacks.DeleteAtSubscriptionWithHttpMessagesAsync(name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, unmanageActionResourcesWithoutDeleteSupport: resourcesWithoutDeleteSupport, bypassStackOutOfSyncError)
@@ -582,8 +582,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             bool denySettingsApplyToChildScopes,
             Hashtable tags,
             bool bypassStackOutOfSyncError,
-            string resourcesWithoutDeleteSupport = null,
-            string validationLevel = null
+            string resourcesWithoutDeleteSupport,
+            string validationLevel
         )
         {
             // Create Deployment stack deployment model:
@@ -627,29 +627,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return new PSDeploymentStack(finalStack);
         }
 
-    public void SubscriptionValidateDeploymentStack(
-        string deploymentStackName,
-        string location,
-        string templateFile,
-        string templateUri,
-        string templateSpec,
-        Hashtable templateObject,
-        string parameterUri,
-        Hashtable parameters,
-        string description,
-        string resourcesCleanupAction,
-        string resourceGroupsCleanupAction,
-        string managementGroupsCleanupAction,
-        string deploymentScope,
-        string denySettingsMode,
-        string[] denySettingsExcludedPrincipals,
-        string[] denySettingsExcludedActions,
-        bool denySettingsApplyToChildScopes,
-        Hashtable tags,
-        bool bypassStackOutOfSyncError,
-        string resourcesWithoutDeleteSupport = null,
-        string validationLevel = null
-)
+        public void SubscriptionValidateDeploymentStack(
+            string deploymentStackName,
+            string location,
+            string templateFile,
+            string templateUri,
+            string templateSpec,
+            Hashtable templateObject,
+            string parameterUri,
+            Hashtable parameters,
+            string description,
+            string resourcesCleanupAction,
+            string resourceGroupsCleanupAction,
+            string managementGroupsCleanupAction,
+            string deploymentScope,
+            string denySettingsMode,
+            string[] denySettingsExcludedPrincipals,
+            string[] denySettingsExcludedActions,
+            bool denySettingsApplyToChildScopes,
+            Hashtable tags,
+            bool bypassStackOutOfSyncError,
+            string resourcesWithoutDeleteSupport,
+            string validationLevel
+        )
         {
             // Create Deployment stack deployment model:
             var deploymentStackModel = CreateDeploymentStackModel(
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourceGroupsCleanupAction, 
             string managementGroupsCleanupAction,
             bool bypassStackOutOfSyncError,
-            string resourcesWithoutDeleteSupport = null
+            string resourcesWithoutDeleteSupport
         )
         {
             var deleteResponse = DeploymentStacksClient.DeploymentStacks
@@ -724,8 +724,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             bool denySettingsApplyToChildScopes,
             Hashtable tags,
             bool bypassStackOutOfSyncError,
-            string resourcesWithoutDeleteSupport = null,
-            string validationLevel = null
+            string resourcesWithoutDeleteSupport,
+            string validationLevel
         )
         {
             // Create Deployment stack deployment model:
@@ -757,7 +757,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var deploymentStack = DeploymentStacksClient.DeploymentStacks.BeginCreateOrUpdateAtManagementGroup(managementGroupId,
                 deploymentStackName, deploymentStackModel);
 
-            // TODO: This should not be a defaulted parameter
             var getStackFunc = this.GetStackAction(deploymentStackName, DeploymentStackScope.ManagementGroup, mgId: managementGroupId);
 
             var finalStack = this.waitStackCompletion(
@@ -773,29 +772,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         public void ManagementGroupValidateDeploymentStack(
-           string deploymentStackName,
-           string managementGroupId,
-           string location,
-           string templateFile,
-           string templateUri,
-           string templateSpec,
-           Hashtable templateObject,
-           string parameterUri,
-           Hashtable parameters,
-           string description,
-           string resourcesCleanupAction,
-           string resourceGroupsCleanupAction,
-           string managementGroupsCleanupAction,
-           string deploymentScope,
-           string denySettingsMode,
-           string[] denySettingsExcludedPrincipals,
-           string[] denySettingsExcludedActions,
-           bool denySettingsApplyToChildScopes,
-           Hashtable tags,
-           bool bypassStackOutOfSyncError,
-           string resourcesWithoutDeleteSupport = null,
-           string validationLevel = null
-       )
+            string deploymentStackName,
+            string managementGroupId,
+            string location,
+            string templateFile,
+            string templateUri,
+            string templateSpec,
+            Hashtable templateObject,
+            string parameterUri,
+            Hashtable parameters,
+            string description,
+            string resourcesCleanupAction,
+            string resourceGroupsCleanupAction,
+            string managementGroupsCleanupAction,
+            string deploymentScope,
+            string denySettingsMode,
+            string[] denySettingsExcludedPrincipals,
+            string[] denySettingsExcludedActions,
+            bool denySettingsApplyToChildScopes,
+            Hashtable tags,
+            bool bypassStackOutOfSyncError,
+            string resourcesWithoutDeleteSupport,
+            string validationLevel
+        )
         {
             // Create Deployment stack deployment model:
             var deploymentStackModel = CreateDeploymentStackModel(
@@ -825,27 +824,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         public DeploymentStack CreateDeploymentStackModel(
-           string location,
-           string templateFile,
-           string templateUri,
-           string templateSpec,
-           Hashtable templateObject,
-           string parameterUri,
-           Hashtable parameters,
-           string description,
-           string resourcesCleanupAction,
-           string resourceGroupsCleanupAction,
-           string managementGroupsCleanupAction,
-           string deploymentScope,
-           string denySettingsMode,
-           string[] denySettingsExcludedPrincipals,
-           string[] denySettingsExcludedActions,
-           bool denySettingsApplyToChildScopes,
-           Hashtable tags,
-           bool bypassStackOutOfSyncError,
-           string resourcesWithoutDeleteSupport = null,
-           string validationLevel = null
-       )
+            string location,
+            string templateFile,
+            string templateUri,
+            string templateSpec,
+            Hashtable templateObject,
+            string parameterUri,
+            Hashtable parameters,
+            string description,
+            string resourcesCleanupAction,
+            string resourceGroupsCleanupAction,
+            string managementGroupsCleanupAction,
+            string deploymentScope,
+            string denySettingsMode,
+            string[] denySettingsExcludedPrincipals,
+            string[] denySettingsExcludedActions,
+            bool denySettingsApplyToChildScopes,
+            Hashtable tags,
+            bool bypassStackOutOfSyncError,
+            string resourcesWithoutDeleteSupport,
+            string validationLevel
+        )
         {
             var actionOnUnmanage = new ActionOnUnmanage
             {

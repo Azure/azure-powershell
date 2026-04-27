@@ -26,7 +26,7 @@ Save-AzResourceGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
 
 ### SaveByStackObject
 ```
-Save-AzResourceGroupDeploymentStackTemplate [-InputObjet] <PSDeploymentStack> [-Pre]
+Save-AzResourceGroupDeploymentStackTemplate [-InputObject] <PSDeploymentStack> [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObjet
+### -InputObject
 The stack PS object
 
 ```yaml

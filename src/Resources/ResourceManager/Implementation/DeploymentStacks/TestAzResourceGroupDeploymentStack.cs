@@ -62,8 +62,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     denySettingsApplyToChildScopes: DenySettingsApplyToChildScopes.IsPresent,
                     tags: Tag,
                     bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent,
-                    resourcesWithoutDeleteSupport: ResourcesWithoutDeleteSupport?.ToString().ToLowerInvariant(),
-                    validationLevel: ValidationLevel?.ToString()
+                    resourcesWithoutDeleteSupport: ResourcesWithoutDeleteSupport.ToString().ToLowerInvariant(),
+                    validationLevel: ValidationLevel.ToString()
                 );
 
                 if (PassThru.IsPresent)

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ParameterSetName = RemoveByStackObjectParameterSetName,
             HelpMessage = "The stack PS object")]
         [ValidateNotNullOrEmpty]
-        public PSDeploymentStack InputObjet { get; set; }
+        public PSDeploymentStack InputObject { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Action to take on resources that become unmanaged on deletion or update of the deployment stack. Possible values include: " +
             "'detachAll' (do not delete any unmanaged resources), 'deleteResources' (delete all unmanaged resources that are not RGs or MGs)," +
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Parameter(Mandatory = false, HelpMessage = "The action to take on resources that do not support deletion when they are removed from the deployment stack. " +
             "Possible values include: 'Fail' (default) and 'Detach'.")]
-        public PSResourcesWithoutDeleteSupport? ResourcesWithoutDeleteSupport { get; set; }
+        public PSResourcesWithoutDeleteSupport ResourcesWithoutDeleteSupport { get; set; }
 
         #endregion
 
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var shouldDeleteResourceGroups = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll) ? true : false;
                 var shouldDeleteManagementGroups = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll) ? true : false;
 
-                if (InputObjet != null)
+                if (InputObject != null)
                 {
-                    ResourceId = InputObjet.id;
+                        ResourceId = InputObject.id;
                 }
 
                 // resolve Name and ManagementGroupId if ResourceId was provided
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             resourceGroupsCleanupAction: shouldDeleteResourceGroups ? "delete" : "detach",
                             managementGroupsCleanupAction: shouldDeleteManagementGroups ? "delete" : "detach",
                             bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent,
-                            resourcesWithoutDeleteSupport: ResourcesWithoutDeleteSupport?.ToString().ToLowerInvariant()
+                            resourcesWithoutDeleteSupport: ResourcesWithoutDeleteSupport.ToString().ToLowerInvariant()
                         );
                         if (PassThru.IsPresent)
                         {

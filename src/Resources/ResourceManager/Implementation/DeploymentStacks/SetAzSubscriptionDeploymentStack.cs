@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Parameter(Mandatory = false, HelpMessage = "The action to take on resources that do not support deletion when they are removed from the deployment stack. " +
             "Possible values include: 'Fail' (default) and 'Detach'.")]
-        public PSResourcesWithoutDeleteSupport? ResourcesWithoutDeleteSupport { get; set; }
+        public PSResourcesWithoutDeleteSupport ResourcesWithoutDeleteSupport { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The validation level of the deployment stack. Possible values include: " +
             "'Provider' (default), 'Template', and 'ProviderNoRbac'.")]
-        public PSValidationLevel? ValidationLevel { get; set; }
+        public PSValidationLevel ValidationLevel { get; set; }
 
         #endregion
 
@@ -137,8 +137,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         denySettingsApplyToChildScopes: DenySettingsApplyToChildScopes.IsPresent,
                         tags: Tag,
                         bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent,
-                        resourcesWithoutDeleteSupport: ResourcesWithoutDeleteSupport?.ToString().ToLowerInvariant(),
-                        validationLevel: ValidationLevel?.ToString()
+                        resourcesWithoutDeleteSupport: ResourcesWithoutDeleteSupport.ToString().ToLowerInvariant(),
+                        validationLevel: ValidationLevel.ToString()
                     );
 
                     WriteObject(deploymentStack);
