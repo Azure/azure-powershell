@@ -60,13 +60,11 @@ function New-AzStorageMoverS3WithHmacEndpoint {
         # The name of the Storage Mover resource.
         ${StorageMoverName},
 
-        [Parameter(ParameterSetName = 'CreateExpanded')]
-        [Parameter(Mandatory, HelpMessage="The URI which points to the S3 compatible source.")]
+        [Parameter(ParameterSetName = 'CreateExpanded', Mandatory, HelpMessage="The URI which points to the S3 compatible source.")]
         [string]
         ${SourceUri},
 
-        [Parameter(ParameterSetName = 'CreateExpanded')]
-        [Parameter(Mandatory, HelpMessage="The source type of the S3 compatible endpoint. Valid values: MINIO, IBM, GCS, ALIBABA, DELL_EMC, OTHER.")]
+        [Parameter(ParameterSetName = 'CreateExpanded', Mandatory, HelpMessage="The source type of the S3 compatible endpoint. Valid values: MINIO, IBM, GCS, ALIBABA, DELL_EMC, OTHER.")]
         [string]
         ${SourceType},
 
