@@ -354,7 +354,7 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
 
     # TESTING NOTES
-    # if running tests frequently, uncomment section that checks if NSGs need to be created and comment out the RG deletion in cleanupEnv
+    # if running tests frequently, comment out the RG deletion in cleanupEnv
 
 
     # --- common variables used in legacy tests ---
@@ -572,15 +572,13 @@ function cleanupEnv() {
     Write-Host -ForegroundColor Magenta "Cleaning up globals"
 
     # delete resource groups if present 
-#    foreach ($resourceGroupName in @($env.firstRgName, $env.secondRgName, $env.emptyRgName, $env.attestationRgName)) {
-#       Get-AzResourceGroup -Name $resourceGroupName -ErrorVariable rgNotPresent -ErrorAction SilentlyContinue
-#       if ($rgNotPresent) {
-#         Remove-AzResourceGroup -Name $resourceGroupName -Force
-#       }
-#    }
+    foreach ($resourceGroupName in @($env.firstRgName, $env.secondRgName, $env.emptyRgName, $env.attestationRgName)) {
+        Get-AzResourceGroup -Name $resourceGroupName -ErrorVariable rgNotPresent -ErrorAction SilentlyContinue
+        if (-not $rgNotPresent) {
+            Remove-AzResourceGroup -Name $resourceGroupName -Force
+        }
+    }
     
-    # what to clean up outside of rg's
-
     #delete role assignments created in setup
     Remove-AzRoleAssignment -ObjectId $env.mgDINEAssignmentIdentity -Scope "/providers/microsoft.management/managementgroups/$($env.managementGroup)" -RoleDefinitionName "Key Vault Contributor"
     Remove-AzRoleAssignment -ObjectId $env.subDINEAssignmentIdentity -Scope "/subscriptions/$($env.SubscriptionId)" -RoleDefinitionName "Key Vault Contributor"

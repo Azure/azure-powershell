@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-help.xml
+external help file: Az.PolicyInsights-help.xml
 Module Name: Az.PolicyInsights
 online version: https://learn.microsoft.com/powershell/module/az.policyinsights/get-azpolicyattestation
 schema: 2.0.0
@@ -36,10 +36,10 @@ Get-AzPolicyAttestation [-SubscriptionId <String[]>] -Name <String> -ResourceGro
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetByResourceId
+### GetOrListByResourceId
 ```
-Get-AzPolicyAttestation [-Name <String>] -ResourceId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyAttestation [-Name <String>] -ResourceId <String> [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByScope
@@ -51,12 +51,6 @@ Get-AzPolicyAttestation -Name <String> -Scope <String> [-DefaultProfile <PSObjec
 ### ScopeList
 ```
 Get-AzPolicyAttestation -Scope <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### ListByResourceId
-```
-Get-AzPolicyAttestation -ResourceId <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -239,7 +233,7 @@ Filter expression using OData notation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListBySubscriptionId, ListByResourceGroup, ScopeList, ListByResourceId
+Parameter Sets: ListBySubscriptionId, ListByResourceGroup, GetOrListByResourceId, ScopeList
 Aliases:
 
 Required: False
@@ -281,7 +275,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceId
+Parameter Sets: GetOrListByResourceId
 Aliases: AttestationName
 
 Required: False
@@ -308,11 +302,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ID of the resource that an attestation or attestations were made against.
+ID of the resource that an attestation or attestations were made against or an ID of an attestation.
+Cmdlet will return a single attestation if this is an ID of an attestation or will return a list of attestations if this is a resource ID that attestations were made against.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByResourceId, ListByResourceId
+Parameter Sets: GetOrListByResourceId
 Aliases:
 
 Required: True
@@ -361,7 +356,7 @@ If not provided, the maximum number of records returned is determined by the Azu
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ListBySubscriptionId, ListByResourceGroup, ScopeList, ListByResourceId
+Parameter Sets: ListBySubscriptionId, ListByResourceGroup, GetOrListByResourceId, ScopeList
 Aliases:
 
 Required: False

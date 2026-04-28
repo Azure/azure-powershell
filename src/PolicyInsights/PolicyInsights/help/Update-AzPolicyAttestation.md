@@ -17,7 +17,7 @@ Modifies a policy attestation.
 Update-AzPolicyAttestation -Name <String> [-SubscriptionId <String>] [-AssessmentDate <DateTime>]
  [-Comment <String>] [-ComplianceState <String>] [-Evidence <IAttestationEvidence[]>] [-ExpiresOn <DateTime>]
  [-Metadata <String>] [-Owner <String>] [-PolicyAssignmentId <String>] [-PolicyDefinitionReferenceId <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByResourceGroup
@@ -26,7 +26,7 @@ Update-AzPolicyAttestation -Name <String> [-SubscriptionId <String>] -ResourceGr
  [-AssessmentDate <DateTime>] [-Comment <String>] [-ComplianceState <String>]
  [-Evidence <IAttestationEvidence[]>] [-ExpiresOn <DateTime>] [-Metadata <String>] [-Owner <String>]
  [-PolicyAssignmentId <String>] [-PolicyDefinitionReferenceId <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByResourceId
@@ -34,7 +34,7 @@ Update-AzPolicyAttestation -Name <String> [-SubscriptionId <String>] -ResourceGr
 Update-AzPolicyAttestation [-Name <String>] -ResourceId <String> [-AssessmentDate <DateTime>]
  [-Comment <String>] [-ComplianceState <String>] [-Evidence <IAttestationEvidence[]>] [-ExpiresOn <DateTime>]
  [-Metadata <String>] [-Owner <String>] [-PolicyAssignmentId <String>] [-PolicyDefinitionReferenceId <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByScope
@@ -42,7 +42,7 @@ Update-AzPolicyAttestation [-Name <String>] -ResourceId <String> [-AssessmentDat
 Update-AzPolicyAttestation -Name <String> -Scope <String> [-AssessmentDate <DateTime>] [-Comment <String>]
  [-ComplianceState <String>] [-Evidence <IAttestationEvidence[]>] [-ExpiresOn <DateTime>] [-Metadata <String>]
  [-Owner <String>] [-PolicyAssignmentId <String>] [-PolicyDefinitionReferenceId <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -50,7 +50,7 @@ Update-AzPolicyAttestation -Name <String> -Scope <String> [-AssessmentDate <Date
 Update-AzPolicyAttestation -InputObject <IPolicyInsightsIdentity> [-AssessmentDate <DateTime>]
  [-Comment <String>] [-ComplianceState <String>] [-Evidence <IAttestationEvidence[]>] [-ExpiresOn <DateTime>]
  [-Metadata <String>] [-Owner <String>] [-PolicyAssignmentId <String>] [-PolicyDefinitionReferenceId <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -373,21 +373,6 @@ If the policy assignment assigns a policy set definition the attestation can cho
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

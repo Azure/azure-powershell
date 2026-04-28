@@ -61,7 +61,7 @@ function Get-AzPolicyAttestation {
 param(
     [Parameter(ParameterSetName='GetBySubscriptionId', Mandatory)]
     [Parameter(ParameterSetName='GetByResourceGroup', Mandatory)]
-    [Parameter(ParameterSetName='GetByResourceId')]
+    [Parameter(ParameterSetName='GetOrListByResourceId')]
     [Parameter(ParameterSetName='GetByScope', Mandatory)]
     [Alias('AttestationName')]
     [Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Category('Path')]
@@ -86,11 +86,11 @@ param(
     # The name of the resource group. The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='GetByResourceId', Mandatory)]
-    [Parameter(ParameterSetName='ListByResourceId', Mandatory)]
+    [Parameter(ParameterSetName='GetOrListByResourceId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Category('Path')]
     [System.String]
-    # ID of the resource that an attestation or attestations were made against.
+    # ID of the resource that an attestation or attestations were made against or an ID of an attestation.
+    # Cmdlet will return a single attestation if this is an ID of an attestation or will return a list of attestations if this is a resource ID that attestations were made against.
     ${ResourceId},
 
     [Parameter(ParameterSetName='GetByScope', Mandatory)]
@@ -108,7 +108,7 @@ param(
 
     [Parameter(ParameterSetName='ListBySubscriptionId')]
     [Parameter(ParameterSetName='ListByResourceGroup')]
-    [Parameter(ParameterSetName='ListByResourceId')]
+    [Parameter(ParameterSetName='GetOrListByResourceId')]
     [Parameter(ParameterSetName='ScopeList')]
     [Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Category('Query')]
     [System.String]
@@ -117,7 +117,7 @@ param(
 
     [Parameter(ParameterSetName='ListBySubscriptionId')]
     [Parameter(ParameterSetName='ListByResourceGroup')]
-    [Parameter(ParameterSetName='ListByResourceId')]
+    [Parameter(ParameterSetName='GetOrListByResourceId')]
     [Parameter(ParameterSetName='ScopeList')]
     [Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.Category('Query')]
     [System.Int32]
@@ -234,6 +234,15 @@ process {
         }
 
         $null = $PSBoundParameters.Remove("Scope")
+    }
+
+    # if in GetOrListByResourceId parameter set, ensure Name is not present alongside Top/Filter
+    if($PSCmdlet.ParameterSetName -eq 'GetOrListByResourceId')
+    {
+        if(($PSBoundParameters.ContainsKey("Name")) -and ($PSBoundParameters.ContainsKey("Top") -or $PSBoundParameters.ContainsKey("Filter")))
+        {
+            throw "The Top and Filter parameters cannot be used when the Name parameter is provided. The Top and Filter parameters can only be used when requesting a list of attestations."
+        }
     }
 
     Az.PolicyInsights.internal\Get-AzPolicyAttestation @PSBoundParameters

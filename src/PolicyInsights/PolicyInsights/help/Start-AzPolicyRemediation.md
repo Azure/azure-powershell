@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights.dll-help.xml
+external help file: Az.PolicyInsights-help.xml
 Module Name: Az.PolicyInsights
 online version: https://learn.microsoft.com/powershell/module/az.policyinsights/start-azpolicyremediation
 schema: 2.0.0
@@ -18,7 +18,7 @@ Start-AzPolicyRemediation -Name <String> [-SubscriptionId <String>] -PolicyAssig
  [-FailureThresholdPercentage <Single>] [-FilterLocation <String[]>] [-FilterResourceId <String[]>]
  [-ParallelDeployment <Int32>] [-PolicyDefinitionReferenceId <String>] [-ResourceCount <Int32>]
  [-ResourceDiscoveryMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByResourceGroup
@@ -27,7 +27,7 @@ Start-AzPolicyRemediation -Name <String> [-SubscriptionId <String>] -ResourceGro
  -PolicyAssignmentId <String> [-FailureThresholdPercentage <Single>] [-FilterLocation <String[]>]
  [-FilterResourceId <String[]>] [-ParallelDeployment <Int32>] [-PolicyDefinitionReferenceId <String>]
  [-ResourceCount <Int32>] [-ResourceDiscoveryMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByResourceId
@@ -36,7 +36,7 @@ Start-AzPolicyRemediation -Name <String> -ResourceId <String> -PolicyAssignmentI
  [-FailureThresholdPercentage <Single>] [-FilterLocation <String[]>] [-FilterResourceId <String[]>]
  [-ParallelDeployment <Int32>] [-PolicyDefinitionReferenceId <String>] [-ResourceCount <Int32>]
  [-ResourceDiscoveryMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByScope
@@ -44,7 +44,7 @@ Start-AzPolicyRemediation -Name <String> -ResourceId <String> -PolicyAssignmentI
 Start-AzPolicyRemediation -Name <String> -PolicyAssignmentId <String> [-FailureThresholdPercentage <Single>]
  [-FilterLocation <String[]>] [-FilterResourceId <String[]>] [-ParallelDeployment <Int32>]
  [-PolicyDefinitionReferenceId <String>] [-ResourceCount <Int32>] [-ResourceDiscoveryMode <String>]
- -Scope <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf]
+ -Scope <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Start-AzPolicyRemediation -Name <String> -ManagementGroupId <String> -PolicyAssi
  [-FailureThresholdPercentage <Single>] [-FilterLocation <String[]>] [-FilterResourceId <String[]>]
  [-ParallelDeployment <Int32>] [-PolicyDefinitionReferenceId <String>] [-ResourceCount <Int32>]
  [-ResourceDiscoveryMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -63,7 +63,7 @@ Start-AzPolicyRemediation -InputObject <IPolicyInsightsIdentity> -PolicyAssignme
  [-FailureThresholdPercentage <Single>] [-FilterLocation <String[]>] [-FilterResourceId <String[]>]
  [-ParallelDeployment <Int32>] [-PolicyDefinitionReferenceId <String>] [-ResourceCount <Int32>]
  [-ResourceDiscoveryMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -330,21 +330,6 @@ Required when the policy assignment being remediated assigns a policy set defini
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
