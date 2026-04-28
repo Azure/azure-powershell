@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.TestFx.Recorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -21,6 +22,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
     {
         public BucketTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
+            RecorderUtilities.JsonPathSanitizers.Add("$..accessKey");
+            RecorderUtilities.JsonPathSanitizers.Add("$..secretKey");
         }
 
         [Fact]
