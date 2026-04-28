@@ -31,7 +31,8 @@ license-header: MICROSOFT_MIT_NO_VERSION
 ## Configuration
 
 ```yaml
-commit: 50b98571a6a0697eda59cd2fd70edc4b09ee326c
+commit: 5e5d8196f6ba69545a9c4882ab4769d108b513c9
+deploymentStacksCommit: 5d175d6e1991ed64390a7b5673c3691722ba0259
 ```
 
 ### Tag: package-deploymentscripts-2023-08
@@ -155,7 +156,7 @@ These settings apply only when `--tag=package-deploymentstacks-2025-07` is speci
 
 ``` yaml $(tag) == 'package-deploymentstacks-2025-07'
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/deploymentStacks/stable/2025-07-01/deploymentStacks.json
+- https://github.com/Azure/azure-rest-api-specs/tree/$(deploymentStacksCommit)/specification/resources/resource-manager/Microsoft.Resources/deploymentStacks/stable/2025-07-01/deploymentStacks.json
 
 # Isolate deployment stacks output into its own subfolder and sub-namespace.
 # This avoids file-name collisions in the shared Generated/ folder with other
