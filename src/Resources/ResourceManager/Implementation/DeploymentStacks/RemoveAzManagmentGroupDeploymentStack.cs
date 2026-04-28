@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ParameterSetName = RemoveByStackObjectParameterSetName,
             HelpMessage = "The stack PS object")]
+        [Alias("InputObjet")]
         [ValidateNotNullOrEmpty]
         public PSDeploymentStack InputObject { get; set; }
 
@@ -88,7 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 if (InputObject != null)
                 {
-                        ResourceId = InputObject.id;
+                    ResourceId = InputObject.id;
                 }
 
                 // resolve Name and ManagementGroupId if ResourceId was provided

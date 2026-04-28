@@ -119,7 +119,7 @@ The stack PS object
 ```yaml
 Type: PSDeploymentStack
 Parameter Sets: RemoveByStackObject
-Aliases:
+Aliases: InputObjet
 
 Required: True
 Position: 0

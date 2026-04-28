@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ParameterSetName = SaveByStackObjectParameterSetName,
             HelpMessage = "The stack PS object")]
+        [Alias("InputObjet")]
         [ValidateNotNullOrEmpty]
         public PSDeploymentStack InputObject { get; set; }
 

@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ParameterSetName = RemoveByStackObjectParameterSetName,
             HelpMessage = "The stack PS object.")]
+        [Alias("InputObjet")]
         [ValidateNotNullOrEmpty]
         public PSDeploymentStack InputObject { get; set; }
 
@@ -88,9 +89,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var shouldDeleteResourceGroups = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll) ? true : false;
                 var shouldDeleteManagementGroups = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll) ? true : false;
 
-                        if (InputObject != null)
+                if (InputObject != null)
                 {
-                            ResourceId = InputObject.id;
+                    ResourceId = InputObject.id;
                 }
 
                 // resolve Name and ResourceGroupName if ResourceId was provided

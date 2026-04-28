@@ -65,7 +65,7 @@ The stack PS object
 ```yaml
 Type: PSDeploymentStack
 Parameter Sets: SaveByStackObject
-Aliases:
+Aliases: InputObjet
 
 Required: True
 Position: 0
