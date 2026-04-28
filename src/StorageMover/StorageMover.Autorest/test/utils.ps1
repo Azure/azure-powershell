@@ -159,6 +159,11 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
+    # Delete the Connection resource created by setupEnv/tests.
+    if ($env.ConnectionName) {
+        Remove-AzStorageMoverConnection -Name $env.ConnectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -ErrorAction SilentlyContinue
+    }
+
     # Delete the Private Link Service created by setupEnv. The PLS cannot be
     # deleted while it has Private Endpoint Connections referencing it, so we
     # first delete each linked private endpoint, then the PLS itself.
