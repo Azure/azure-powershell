@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Relationships-help.xml
 Module Name: Az.Relationships
 online version: https://learn.microsoft.com/powershell/module/az.relationships/new-azrelationshipsdependencyofrelationship
 schema: 2.0.0
@@ -15,20 +15,22 @@ Create a DependencyOfRelationship
 ### CreateExpanded (Default)
 ```
 New-AzRelationshipsDependencyOfRelationship -Name <String> -ResourceUri <String> [-TargetId <String>]
- [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzRelationshipsDependencyOfRelationship -Name <String> -ResourceUri <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzRelationshipsDependencyOfRelationship -Name <String> -ResourceUri <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +50,8 @@ Creates a DependencyOf relationship declaring that the resource group 'myRG' dep
 New-AzRelationshipsDependencyOfRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001" -Name "subDep" -TargetId "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/targetRG"
 ```
 
-Creates a DependencyOf relationship where the subscription depends on the resource group 'targetRG'. Source and target must be different resources.
+Creates a DependencyOf relationship where the subscription depends on the resource group 'targetRG'.
+Source and target must be different resources.
 
 ## PARAMETERS
 
@@ -231,4 +234,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

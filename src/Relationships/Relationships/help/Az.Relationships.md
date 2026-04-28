@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Relationships
-Module Guid: 14980744-8898-4fd3-91dc-dd5eb19e42a2
+Module Guid: accceef6-8113-453a-a31c-4f2ce57893d6
 Download Help Link: https://learn.microsoft.com/powershell/module/az.relationships
 Help Version: 1.0.0.0
 Locale: en-US
