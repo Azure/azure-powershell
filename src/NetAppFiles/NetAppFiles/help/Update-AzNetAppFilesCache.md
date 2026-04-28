@@ -69,7 +69,7 @@ Enables CIFS change notifications on the cache and replaces the resource tags.
 The name of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Whether CIFS change notifications are enabled
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 Export policy for the cache
 
 ```yaml
-Type: PSNetAppFilesVolumeExportPolicy
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 The cache object to update
 
 ```yaml
-Type: PSNetAppFilesCache
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesCache
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 Resource ID of the private endpoint for KeyVault
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 The name of the ANF cache
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases: CacheName
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 The name of the ANF capacity pool
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 Set of supported protocol types
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -219,7 +219,7 @@ Accept wildcard characters: False
 The resource group of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 The resource id of the ANF cache
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 Maximum storage quota for the file system in bytes
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
 
@@ -264,7 +264,7 @@ Accept wildcard characters: False
 Enables access-based enumeration for SMB shares
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -279,7 +279,7 @@ Accept wildcard characters: False
 Enables encryption for in-flight SMB3 data
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -294,7 +294,7 @@ Accept wildcard characters: False
 Enables non-browsable property for SMB shares
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -309,7 +309,7 @@ Accept wildcard characters: False
 A hashtable representing resource tags
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -324,7 +324,7 @@ Accept wildcard characters: False
 Maximum throughput in MiB/s for manual qos cache
 
 ```yaml
-Type: Double
+Type: System.Nullable`1[System.Double]
 Parameter Sets: (All)
 Aliases:
 
@@ -339,7 +339,7 @@ Accept wildcard characters: False
 Whether writeback is enabled for the cache
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -354,7 +354,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -370,7 +370,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

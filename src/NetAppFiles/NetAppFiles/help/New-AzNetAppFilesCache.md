@@ -18,7 +18,7 @@ New-AzNetAppFilesCache -ResourceGroupName <String> -Location <String> -AccountNa
  -Name <String> -FilePath <String> -Size <Int64> -CacheSubnetResourceId <String>
  -PeeringSubnetResourceId <String> -EncryptionKeySource <String> -OriginPeerClusterName <String>
  -OriginPeerAddress <String[]> -OriginPeerVserverName <String> -OriginPeerVolumeName <String>
- [-ProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Kerberos <String>]
+ [-ProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-KerberosEnabled <String>]
  [-ThroughputMibps <Double>] [-KeyVaultPrivateEndpointResourceId <String>] [-Ldap <String>]
  [-LdapServerType <String>] [-CifsChangeNotification <String>] [-GlobalFileLocking <String>]
  [-WriteBack <String>] [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>]
@@ -31,7 +31,7 @@ New-AzNetAppFilesCache -ResourceGroupName <String> -Location <String> -AccountNa
 New-AzNetAppFilesCache -Name <String> -FilePath <String> -Size <Int64> -CacheSubnetResourceId <String>
  -PeeringSubnetResourceId <String> -EncryptionKeySource <String> -OriginPeerClusterName <String>
  -OriginPeerAddress <String[]> -OriginPeerVserverName <String> -OriginPeerVolumeName <String>
- [-ProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Kerberos <String>]
+ [-ProtocolType <String[]>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-KerberosEnabled <String>]
  [-ThroughputMibps <Double>] [-KeyVaultPrivateEndpointResourceId <String>] [-Ldap <String>]
  [-LdapServerType <String>] [-CifsChangeNotification <String>] [-GlobalFileLocking <String>]
  [-WriteBack <String>] [-SmbEncryption <String>] [-SmbAccessBasedEnumeration <String>]
@@ -72,7 +72,7 @@ Creates a 100 GiB NFSv3 FlexCache whose origin is the `onprem-origin-vol` volume
 The name of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The Azure Resource URI for a delegated cache subnet that will be used to allocate data IPs
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ Whether CIFS change notification is enabled.
 Either 'Disabled' or 'Enabled'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -134,7 +134,7 @@ Source of the encryption key.
 Either 'Microsoft.NetApp' or 'Microsoft.KeyVault'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 Export policy for the cache
 
 ```yaml
-Type: PSNetAppFilesVolumeExportPolicy
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 The file path of the cache
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +180,7 @@ Whether the global file lock is enabled.
 Either 'Disabled' or 'Enabled'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +196,7 @@ Whether Kerberos is enabled for the cache.
 Either 'Disabled' or 'Enabled'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +211,7 @@ Accept wildcard characters: False
 Resource ID of the private endpoint for KeyVault when EncryptionKeySource is Microsoft.KeyVault
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +227,7 @@ Whether LDAP is enabled for the flexcache volume.
 Either 'Disabled' or 'Enabled'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -243,7 +243,7 @@ Type of LDAP server.
 Either 'ActiveDirectory' or 'OpenLDAP'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -258,7 +258,7 @@ Accept wildcard characters: False
 The location of the resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -273,7 +273,7 @@ Accept wildcard characters: False
 The name of the ANF cache
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: CacheName
 
@@ -288,7 +288,7 @@ Accept wildcard characters: False
 ONTAP Intercluster LIF IP addresses; one IP address per cluster node
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -303,7 +303,7 @@ Accept wildcard characters: False
 ONTAP cluster name of external cluster hosting the origin volume
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -318,7 +318,7 @@ Accept wildcard characters: False
 External origin volume name associated to this cache
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -333,7 +333,7 @@ Accept wildcard characters: False
 External Vserver (SVM) name hosting the origin volume
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -348,7 +348,7 @@ Accept wildcard characters: False
 The Azure Resource URI for a delegated subnet that will be used for ANF Intercluster Interface IP addresses
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -363,7 +363,7 @@ Accept wildcard characters: False
 The name of the ANF capacity pool
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -378,7 +378,7 @@ Accept wildcard characters: False
 The pool object for the new cache
 
 ```yaml
-Type: PSNetAppFilesPool
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -393,7 +393,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -408,7 +408,7 @@ Accept wildcard characters: False
 Set of supported protocol types (NFSv3, NFSv4 or SMB)
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -423,7 +423,7 @@ Accept wildcard characters: False
 The resource group of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -438,7 +438,7 @@ Accept wildcard characters: False
 Maximum storage quota allowed for the file system in bytes (50 GiB to 1 PiB)
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -454,7 +454,7 @@ Enables access-based enumeration for SMB shares.
 Either 'Disabled' or 'Enabled'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -470,7 +470,7 @@ Enables encryption for in-flight SMB3 data.
 Either 'Disabled' or 'Enabled'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -486,7 +486,7 @@ Enables non-browsable property for SMB shares.
 Either 'Disabled' or 'Enabled'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -501,7 +501,7 @@ Accept wildcard characters: False
 A hashtable representing resource tags
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -516,7 +516,7 @@ Accept wildcard characters: False
 Maximum throughput in MiB/s for manual qos cache
 
 ```yaml
-Type: Double
+Type: System.Nullable`1[System.Double]
 Parameter Sets: (All)
 Aliases:
 
@@ -532,7 +532,7 @@ Whether writeback is enabled for the cache.
 Either 'Disabled' or 'Enabled'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -547,7 +547,7 @@ Accept wildcard characters: False
 The availability zones for the cache
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -562,7 +562,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -578,7 +578,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

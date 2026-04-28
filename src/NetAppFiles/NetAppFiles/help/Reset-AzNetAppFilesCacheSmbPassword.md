@@ -50,7 +50,7 @@ Resets the SMB machine account password for `MyAnfCache` and returns the updated
 The name of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The cache object whose SMB password should be reset
 
 ```yaml
-Type: PSNetAppFilesCache
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesCache
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The name of the ANF cache
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases: CacheName
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 The name of the ANF capacity pool
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 The resource group of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 The resource id of the ANF cache
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -186,7 +186,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
