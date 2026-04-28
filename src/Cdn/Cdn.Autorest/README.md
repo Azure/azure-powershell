@@ -633,36 +633,6 @@ directive:
         $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
       }
       return $;
-  # --- endpoints/load, purge, start, stop ---
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/load"].post
-    transform: >-
-      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
-        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
-      }
-      return $;
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/purge"].post
-    transform: >-
-      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
-        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
-      }
-      return $;
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/start"].post
-    transform: >-
-      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
-        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
-      }
-      return $;
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/stop"].post
-    transform: >-
-      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
-        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
-      }
-      return $;
-
   # --- cdnWebApplicationFirewallPolicies ---
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}"].put
