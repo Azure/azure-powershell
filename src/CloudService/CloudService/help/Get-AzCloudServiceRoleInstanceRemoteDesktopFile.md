@@ -12,10 +12,18 @@ Gets a remote desktop file for a role instance in a cloud service.
 
 ## SYNTAX
 
+### Get (Default)
 ```
 Get-AzCloudServiceRoleInstanceRemoteDesktopFile -CloudServiceName <String> -ResourceGroupName <String>
  -RoleInstanceName <String> [-SubscriptionId <String[]>] -OutFile <String> [-DefaultProfile <PSObject>]
  [-PassThru] [<CommonParameters>]
+```
+
+### GetViaIdentityRoleInstance
+```
+Get-AzCloudServiceRoleInstanceRemoteDesktopFile -CloudServiceName <String>
+ -RoleInstanceInputObject <ICloudServiceIdentity> -OutFile <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +106,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -108,12 +116,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RoleInstanceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
+Parameter Sets: GetViaIdentityRoleInstance
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RoleInstanceName
 Name of the role instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -129,7 +152,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -143,6 +166,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 
 ## OUTPUTS
 
