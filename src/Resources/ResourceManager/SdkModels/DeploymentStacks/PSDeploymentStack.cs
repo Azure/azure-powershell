@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
-    using Microsoft.Azure.Management.Resources.DeploymentStacks;
     using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;

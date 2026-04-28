@@ -26,7 +26,6 @@ using System.Management.Automation;
 using System.Linq;
 using Microsoft.Rest.Azure;
 using System.Threading.Tasks;
-    using Microsoft.Azure.Management.Resources.DeploymentStacks;
     using Microsoft.Azure.Management.Resources.DeploymentStacks.Models;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
     {
         public const string ErrorFormat = "Error: Code={0}; Message={1}\r\n";
 
-        public IDeploymentStacksClient DeploymentStacksClient { get; set; }
+        public Microsoft.Azure.Management.Resources.DeploymentStacks.IDeploymentStacksClient DeploymentStacksClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
 
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private IAzureContext azureContext;
 
-        public DeploymentStacksSdkClient(IDeploymentStacksClient deploymentStacksClient)
+        public DeploymentStacksSdkClient(Microsoft.Azure.Management.Resources.DeploymentStacks.IDeploymentStacksClient deploymentStacksClient)
         {
             this.DeploymentStacksClient = deploymentStacksClient;
         }
