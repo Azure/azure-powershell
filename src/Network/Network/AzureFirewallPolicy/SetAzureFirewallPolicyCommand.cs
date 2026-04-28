@@ -149,14 +149,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "ResourceId of the user assigned identity to be assigned to Firewall Policy.")]
         [ValidateNotNullOrEmpty]
         [Alias("UserAssignedIdentity")]
-        public string UserAssignedIdentityId { get; set; }
+        public string[] UserAssignedIdentityId { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Multiple ResourceId of the user assigned identities to be assigned to Firewall Policy.")]
-        [ValidateNotNullOrEmpty]
-        [Alias("UserAssignedIdentities")]
-        public string[] UserAssignedIdentityIds { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -194,7 +188,7 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("TransportSecurityName must be provided with TransportSecurityKeyVaultSecretId");
                 }
 
-                if (this.Identity == null && this.UserAssignedIdentityId == null && this.UserAssignedIdentityIds == null)
+                if (this.Identity == null && this.UserAssignedIdentityId == null)
                 {
                     throw new ArgumentException("Identity must be provided with TransportSecurityKeyVaultSecretId");
                 }
@@ -258,8 +252,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.TransportSecurityName = this.IsParameterBound(c => c.TransportSecurityName) ? TransportSecurityName : (InputObject.TransportSecurity?.CertificateAuthority != null ? InputObject.TransportSecurity.CertificateAuthority.Name : null);
                 this.TransportSecurityKeyVaultSecretId = this.IsParameterBound(c => c.TransportSecurityKeyVaultSecretId) ? TransportSecurityKeyVaultSecretId : (InputObject.TransportSecurity?.CertificateAuthority != null ? InputObject.TransportSecurity.CertificateAuthority.KeyVaultSecretId : null);
                 this.Identity = this.IsParameterBound(c => c.Identity) ? Identity : (InputObject.Identity != null ? InputObject.Identity : null);
-                this.UserAssignedIdentityId = this.IsParameterBound(c => c.UserAssignedIdentityId) ? UserAssignedIdentityId : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.First().Key : null);
-                this.UserAssignedIdentityIds = this.IsParameterBound(c => c.UserAssignedIdentityIds) ? UserAssignedIdentityIds : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.Keys.ToArray() : null);
+                this.UserAssignedIdentityId = this.IsParameterBound(c => c.UserAssignedIdentityId) ? UserAssignedIdentityId : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.Keys.ToArray() : null);
                 this.SkuTier = this.IsParameterBound(c => c.SkuTier) ? SkuTier : (InputObject.Sku?.Tier != null ? InputObject.Sku.Tier : null);
                 this.PrivateRange = this.IsParameterBound(c => c.PrivateRange) ? PrivateRange : InputObject.PrivateRange;
                 this.ExplicitProxy = this.IsParameterBound(c => c.ExplicitProxy) ? ExplicitProxy : InputObject.ExplicitProxy;
@@ -287,23 +280,15 @@ namespace Microsoft.Azure.Commands.Network
 
                 AddPremiumProperties(firewallPolicy);
 
-                if (this.UserAssignedIdentityId != null || this.UserAssignedIdentityIds != null)
+                if (this.UserAssignedIdentityId != null)
                 {
                     var userAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>();
 
-                    if (this.UserAssignedIdentityId != null)
+                    foreach (var identityId in this.UserAssignedIdentityId)
                     {
-                        userAssignedIdentities.Add(this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
-                    }
-
-                    if (this.UserAssignedIdentityIds != null)
-                    {
-                        foreach (var identityId in this.UserAssignedIdentityIds)
+                        if (!userAssignedIdentities.ContainsKey(identityId))
                         {
-                            if (!userAssignedIdentities.ContainsKey(identityId))
-                            {
-                                userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
-                            }
+                            userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
                         }
                     }
 
@@ -354,24 +339,16 @@ namespace Microsoft.Azure.Commands.Network
 
                 AddPremiumProperties(firewallPolicy);
 
-                if (this.UserAssignedIdentityId != null || this.UserAssignedIdentityIds != null)
+                if (this.UserAssignedIdentityId != null)
                 {
 
                     var userAssignedIdentities = new Dictionary<string, PSManagedServiceIdentityUserAssignedIdentitiesValue>();
 
-                    if (this.UserAssignedIdentityId != null)
+                    foreach (var identityId in this.UserAssignedIdentityId)
                     {
-                        userAssignedIdentities.Add(this.UserAssignedIdentityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
-                    }
-
-                    if (this.UserAssignedIdentityIds != null)
-                    {
-                        foreach (var identityId in this.UserAssignedIdentityIds)
+                        if(!userAssignedIdentities.ContainsKey(identityId))
                         {
-                            if(!userAssignedIdentities.ContainsKey(identityId))
-                            {
-                                userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
-                            }
+                            userAssignedIdentities.Add(identityId, new PSManagedServiceIdentityUserAssignedIdentitiesValue());
                         }
                     }
 

@@ -18,8 +18,7 @@ New-AzFirewallPolicy -Name <String> -ResourceGroupName <String> -Location <Strin
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
- [-UserAssignedIdentityId <String>] [-UserAssignedIdentityIds <String[]>]
- [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
+ [-UserAssignedIdentityId <String[]>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
  [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -437,24 +436,9 @@ Accept wildcard characters: False
 ResourceId of the user assigned identity to be assigned to Firewall Policy.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: UserAssignedIdentity
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentityIds
-Multiple ResourceId of the user assigned identities to be assigned to Firewall Policy.
-
-```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases: UserAssignedIdentities
+Aliases: UserAssignedIdentity
 
 Required: False
 Position: Named
