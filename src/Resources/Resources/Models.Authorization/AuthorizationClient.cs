@@ -823,15 +823,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 roleDef = AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
                     roleDefinition.AssignableScopes.First(), roleDefinitionId.ToString(), parameters).ToPSRoleDefinition();
             }
-            catch (Hyak.Common.CloudException ce)
+            catch (ErrorResponseException ex)
             {
-                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized &&
-                    ce.Error.Code.Equals("TenantNotAllowed", StringComparison.InvariantCultureIgnoreCase))
+                if (ex.Response?.StatusCode == HttpStatusCode.Unauthorized &&
+                    ex.Body?.Error?.Code?.Equals("TenantNotAllowed", StringComparison.InvariantCultureIgnoreCase) == true)
                 {
                     throw new InvalidOperationException("The tenant is not currently authorized to create/update Custom role definition. Please refer to http://aka.ms/customrolespreview for more details");
                 }
-
-                throw;
+                throw AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
             }
 
             return roleDef;
