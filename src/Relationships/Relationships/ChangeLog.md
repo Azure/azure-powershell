@@ -18,9 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added test recordings for all Relationships module cmdlets
-    - Recorded tests for DependencyOf and ServiceGroupMember relationship CRUD operations
-    - Tests cover Get, New, Remove, and Update cmdlets with multiple parameter sets
 
 ## Version 0.1.0
 * First preview release for module Az.Relationships
