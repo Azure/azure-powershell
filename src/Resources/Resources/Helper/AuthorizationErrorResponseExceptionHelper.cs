@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Management.Authorization.Models;
+using Newtonsoft.Json.Linq;
+using System;
 
 namespace Microsoft.Azure.Commands.Resources.Helper
 {
@@ -26,6 +28,10 @@ namespace Microsoft.Azure.Commands.Resources.Helper
     /// </summary>
     internal static class AuthorizationErrorResponseExceptionHelper
     {
+        // Telemetry-safe placeholder used when no service-supplied error code is available.
+        // Avoids any risk of leaking PII via ex.Message if the SDK template ever changes.
+        private const string UnknownErrorCode = "UnknownAuthorizationError";
+
         /// <summary>
         /// Creates an <see cref="AzPSCloudException"/> from an <see cref="ErrorResponseException"/>,
         /// extracting the service error details from either the structured Body or the raw response content.
@@ -42,15 +48,14 @@ namespace Microsoft.Azure.Commands.Resources.Helper
                 message = $"{ex.Message}. {ex.Body.Error.Code}: {ex.Body.Error.Message}";
                 desensitizedMessage = ex.Body.Error.Code;
             }
-            else if (ex.Response?.Content != null)
+            else if (!string.IsNullOrEmpty(ex.Response?.Content))
             {
-                message = $"{ex.Message}. Response: {ex.Response.Content}";
-                desensitizedMessage = ex.Message;
+                (message, desensitizedMessage) = ParseErrorContent(ex.Message, ex.Response.Content);
             }
             else
             {
                 message = ex.Message;
-                desensitizedMessage = ex.Message;
+                desensitizedMessage = UnknownErrorCode;
             }
 
             return new AzPSCloudException(message, desensitizedMessage, ex)
@@ -58,6 +63,31 @@ namespace Microsoft.Azure.Commands.Resources.Helper
                 Request = ex.Request,
                 Response = ex.Response,
             };
+        }
+
+        // Builds the (user-facing message, telemetry-safe code) pair from a raw response body.
+        // On a successful parse of the standard Azure error JSON shape
+        // ({ "error": { "code": "...", "message": "..." } }) we surface code+message;
+        // otherwise we fall back to embedding the raw content with an UnknownErrorCode tag.
+        private static (string Message, string Desensitized) ParseErrorContent(string original, string content)
+        {
+            try
+            {
+                var error = JObject.Parse(content)["error"] as JObject;
+                var code = error?.Value<string>("code");
+                var detail = error?.Value<string>("message");
+
+                if (!string.IsNullOrEmpty(code) || !string.IsNullOrEmpty(detail))
+                {
+                    return ($"{original}. {code}: {detail}", string.IsNullOrEmpty(code) ? UnknownErrorCode : code);
+                }
+            }
+            catch (Exception)
+            {
+                // Fall through to raw-content fallback.
+            }
+
+            return ($"{original}. Response: {content}", UnknownErrorCode);
         }
     }
 }

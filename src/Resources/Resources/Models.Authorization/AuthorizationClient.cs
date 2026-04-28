@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Resources.Helper;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
