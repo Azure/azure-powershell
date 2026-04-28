@@ -726,10 +726,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         /// <summary>
         /// Removes a deny assignment by its fully qualified ID or by name + scope.
+        /// Idempotent: returns null (without throwing) when no matching deny assignment exists.
         /// </summary>
         public PSDenyAssignment RemoveDenyAssignment(string denyAssignmentId, string denyAssignmentName, string scope, string subscriptionId)
         {
-            // Resolve the deny assignment to delete
             PSDenyAssignment toDelete = null;
 
             if (!string.IsNullOrEmpty(denyAssignmentId))
@@ -747,8 +747,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
                 catch (Microsoft.Rest.Azure.CloudException ex) when (ex.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    throw new KeyNotFoundException(
-                        string.Format("Deny assignment '{0}' not found at scope '{1}'.", denyAssignmentId, resolvedScope));
+                    // Idempotent: nothing to delete.
+                    return null;
                 }
             }
             else if (!string.IsNullOrEmpty(denyAssignmentName) && !string.IsNullOrEmpty(scope))
@@ -761,8 +761,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 var matches = FilterDenyAssignments(options, subscriptionId);
                 if (matches == null || matches.Count == 0)
                 {
-                    throw new KeyNotFoundException(
-                        string.Format("No deny assignment named '{0}' found at scope '{1}'.", denyAssignmentName, scope));
+                    // Idempotent: nothing to delete.
+                    return null;
                 }
                 if (matches.Count > 1)
                 {
@@ -777,8 +777,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 throw new ArgumentException("Either denyAssignmentId or (denyAssignmentName + scope) must be provided.");
             }
 
-            AuthorizationManagementClient.DenyAssignments
-                .Delete(toDelete.Scope, toDelete.Id.GuidFromFullyQualifiedId());
+            try
+            {
+                AuthorizationManagementClient.DenyAssignments
+                    .Delete(toDelete.Scope, toDelete.Id.GuidFromFullyQualifiedId());
+            }
+            catch (Microsoft.Rest.Azure.CloudException ex) when (ex.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                // Idempotent: tolerate a race where the DA was deleted between Get and Delete.
+                return null;
+            }
 
             return toDelete;
         }
