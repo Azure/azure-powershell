@@ -20,8 +20,8 @@ Describe 'New-AzStorageMoverConnection' {
         $description = 'test connection description'
         $connection = New-AzStorageMoverConnection -Name $connectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -PrivateLinkServiceId $env.PrivateLinkServiceId -Description $description
         $connection.Name | Should -Be $connectionName
-        $connection.Property.Description | Should -Be $description
-        $connection.Property.PrivateLinkServiceId | Should -Be $env.PrivateLinkServiceId
+        $connection.Description | Should -Be $description
+        $connection.PrivateLinkServiceId | Should -Be $env.PrivateLinkServiceId
         Remove-AzStorageMoverConnection -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Name $connectionName
     }
 
@@ -31,7 +31,7 @@ Describe 'New-AzStorageMoverConnection' {
         $storageMover = Get-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $env.InitialStoMoverName
         $connection = New-AzStorageMoverConnection -Name $connectionName -StorageMoverInputObject $storageMover -PrivateLinkServiceId $env.PrivateLinkServiceId -Description $description
         $connection.Name | Should -Be $connectionName
-        $connection.Property.Description | Should -Be $description
+        $connection.Description | Should -Be $description
         Remove-AzStorageMoverConnection -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Name $connectionName
     }
 
