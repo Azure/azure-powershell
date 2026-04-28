@@ -22,6 +22,7 @@
 * Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.
 * Added `AzureAppConfigurationEndpointSuffix` and `AzureAppConfigurationEndpointResourceId` parameters to `Add-AzEnvironment` and `Set-AzEnvironment`
     - Users can now configure Azure App Configuration endpoints when adding or updating custom environments
+* Fixed `Get-AzAccessToken` failing with 'failed to retrieve access token for resource' when signed in via `Connect-AzAccount -AccessToken` and requesting a token for `https://management.azure.com/` [#28028]
 
 ## Version 5.3.4
 * Improved SSH certificate authentication for Az SSH cmdlets across all Azure clouds.
