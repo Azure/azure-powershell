@@ -15,11 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnProfile'))
 }
 
 Describe 'Update-AzCdnProfile' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:profileName = 'cdnpps01-upd'
+        New-AzCdnProfile -SkuName 'Standard_Microsoft' -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    AfterAll {
+        Remove-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
+
+    It 'UpdateExpanded' {
+        Update-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Tag @{ Tag1 = 11; Tag2 = 22 }
+        $u = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
+        $u.Tag['Tag1'] | Should -Be '11'
+        $u.Tag['Tag2'] | Should -Be '22'
+    }
+
+    It 'UpdateViaIdentityExpanded' {
+        $p = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
+        Update-AzCdnProfile -Tag @{ Tag1 = 33 } -InputObject $p
+        $u = Get-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
+        $u.Tag['Tag1'] | Should -Be '33'
     }
 }

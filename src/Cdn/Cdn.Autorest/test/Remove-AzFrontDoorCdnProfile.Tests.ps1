@@ -15,8 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnProfile'
 }
 
 Describe 'Remove-AzFrontDoorCdnProfile' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:profileName = 'fdp-pstest-rm'
+        New-AzFrontDoorCdnProfile -SkuName 'Standard_AzureFrontDoor' -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+    }
+
+    It 'Delete' {
+        $res = Remove-AzFrontDoorCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -PassThru
+        $res | Should -Be 'True'
     }
 
     It 'DeleteViaIdentity' -skip {

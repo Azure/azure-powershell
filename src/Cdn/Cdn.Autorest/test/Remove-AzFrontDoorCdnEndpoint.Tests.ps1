@@ -15,8 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnEndpoint
 }
 
 Describe 'Remove-AzFrontDoorCdnEndpoint' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:endpointName = 'e-clipstest-rm'
+        New-AzFrontDoorCdnEndpoint -EndpointName $script:endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+    }
+
+    It 'Delete' {
+        Remove-AzFrontDoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $script:endpointName
+        { Get-AzFrontDoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $script:endpointName -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentityProfile' -skip {

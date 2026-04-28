@@ -15,8 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnEndpoint'))
 }
 
 Describe 'Update-AzCdnEndpoint' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:endpointName = 'e-clipstest310-update'
+        $script:origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
+        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $script:origin | Out-Null
+    }
+
+    AfterAll {
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
+
+    It 'UpdateExpanded' {
+        Update-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -Tag @{ Tag1 = 11; Tag2 = 22 }
+        $updated = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $updated.Tag['Tag1'] | Should -Be '11'
+    }
+
+    It 'UpdateViaIdentityExpanded' {
+        $endpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Update-AzCdnEndpoint -Tag @{ Tag1 = 33 } -InputObject $endpoint
+        $updated = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $updated.Tag['Tag1'] | Should -Be '33'
     }
 
     It 'UpdateViaJsonString' -skip {
@@ -32,10 +51,6 @@ Describe 'Update-AzCdnEndpoint' {
     }
 
     It 'UpdateViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -15,19 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnProfile'))
 }
 
 Describe 'Get-AzFrontDoorCdnProfile' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:profileName = 'fdp-pstest-get'
+        New-AzFrontDoorCdnProfile -SkuName 'Standard_AzureFrontDoor' -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+    }
+
+    AfterAll {
+        Remove-AzFrontDoorCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
+
+    It 'List' {
+        $ps = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName
+        $ps.Count | Should -BeGreaterOrEqual 1
+    }
+
+    It 'Get' {
+        $p = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $script:profileName
+        $p.Name | Should -Be $script:profileName
+    }
+
+    It 'GetViaIdentity' {
+        $p = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $script:profileName
+        $p2 = Get-AzFrontDoorCdnProfile -InputObject $p
+        $p2.Name | Should -Be $script:profileName
     }
 
     It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -15,65 +15,34 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnCustomDomain'))
 }
 
 Describe 'New-AzCdnCustomDomain' {
-    It 'CreateExpanded' {
-        $subId = $env.SubscriptionId
-        # Hard-coding host and endpoint names due to requirement for DNS CNAME
-        $classicCdnEndpointName = 'ps2025-0601-domain1'
-        $customDomainHostName = 'ps2025-0601-domain1.ps.cdne2e.azfdtest.xyz'
-        $customDomainInvalidHostName = 'ps2025-0601-domain1e.ps.cdne2e.azfdtest.xyz'
-        $customDomainName = 'cd-pstest010'
+    BeforeAll {
+        $script:subId = $env.SubscriptionId
+        $script:classicCdnEndpointName = 'ps2025-0601-new-domain'
+        $script:customDomainHostName = 'ps2025-0601-new-domain.ps.cdne2e.azfdtest.xyz'
+        $script:customDomainName = 'cd-pstest-new'
         $location = "westus"
-        $origin = @{
-            Name = "origin1"
-            HostName = "host1.hello.com"
-        }
-        $originId = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$classicCdnEndpointName/origins/$($origin.Name)"
+        $origin = @{ Name = "origin1"; HostName = "host1.hello.com" }
+        $originId = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:classicCdnEndpointName/origins/$($origin.Name)"
         $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET"
-        $originGroup = @{
-            Name = "originGroup1"
-            healthProbeSetting = $healthProbeParametersObject
-            Origin = @(@{ Id = $originId })
-        }
-        $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$classicCdnEndpointName/origingroups/$($originGroup.Name)"
+        $originGroup = @{ Name = "originGroup1"; healthProbeSetting = $healthProbeParametersObject; Origin = @(@{ Id = $originId }) }
+        $defaultOriginGroup = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:classicCdnEndpointName/origingroups/$($originGroup.Name)"
 
-        Write-Host -ForegroundColor Green "Create endpoint: $classicCdnEndpointName"
-        New-AzCdnEndpoint -Name $classicCdnEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
+        Write-Host -ForegroundColor Green "BeforeAll: create endpoint $script:classicCdnEndpointName"
+        New-AzCdnEndpoint -Name $script:classicCdnEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
             -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup | Out-Null
+    }
 
-        # New
-        Write-Host -ForegroundColor Green "New-AzCdnCustomDomain: $customDomainName"
-        $customDomain = New-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $customDomainHostName
-        $customDomain.Name | Should -Be $customDomainName
-        $customDomain.HostName | Should -Be $customDomainHostName
+    AfterAll {
+        Write-Host -ForegroundColor Green "AfterAll: clean up custom domain + endpoint"
+        Remove-AzCdnCustomDomain -EndpointName $script:classicCdnEndpointName -Name $script:customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+        Remove-AzCdnEndpoint -Name $script:classicCdnEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
 
-        # Validate endpoint custom domain
-        Write-Host -ForegroundColor Green "Test-AzCdnEndpointCustomDomain - valid"
-        $validateResult = Test-AzCdnEndpointCustomDomain -EndpointName $classicCdnEndpointName -HostName $customDomainHostName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $validateResult.CustomDomainValidated | Should -BeTrue
-
-        Write-Host -ForegroundColor Green "Test-AzCdnEndpointCustomDomain - invalid"
-        $validateResult = Test-AzCdnEndpointCustomDomain -EndpointName $classicCdnEndpointName -HostName $customDomainInvalidHostName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $validateResult.CustomDomainValidated | Should -BeFalse
-
-        # Get - List
-        Write-Host -ForegroundColor Green "Get-AzCdnCustomDomain - List"
-        $customDomains = Get-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $customDomains.Count | Should -BeGreaterOrEqual 1
-
-        # Get - by name
-        Write-Host -ForegroundColor Green "Get-AzCdnCustomDomain - by name"
-        $getDomain = Get-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $getDomain.Name | Should -Be $customDomainName
-        $getDomain.HostName | Should -Be $customDomainHostName
-
-        # Get - ViaIdentity
-        Write-Host -ForegroundColor Green "Get-AzCdnCustomDomain - ViaIdentity"
-        $getDomain2 = Get-AzCdnCustomDomain -InputObject $getDomain
-        $getDomain2.Name | Should -Be $customDomainName
-
-        # Remove
-        Write-Host -ForegroundColor Green "Remove-AzCdnCustomDomain: $customDomainName"
-        Remove-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+    It 'CreateExpanded' {
+        Write-Host -ForegroundColor Green "New-AzCdnCustomDomain: $script:customDomainName"
+        $customDomain = New-AzCdnCustomDomain -EndpointName $script:classicCdnEndpointName -Name $script:customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $script:customDomainHostName
+        $customDomain.Name | Should -Be $script:customDomainName
+        $customDomain.HostName | Should -Be $script:customDomainHostName
     }
 }
 

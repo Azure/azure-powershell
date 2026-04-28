@@ -15,8 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnOrigin'))
 }
 
 Describe 'Update-AzCdnOrigin' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:endpointName = 'e-clipstest-origin-upd'
+        $origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
+        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $origin | Out-Null
+    }
+
+    AfterAll {
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
+
+    It 'UpdateExpanded' {
+        $u = Update-AzCdnOrigin -Name 'origin1' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName 'www.azure.com' -HttpPort 456 -HttpsPort 789
+        $u.HostName | Should -Be 'www.azure.com'
+        $u.HttpPort | Should -Be 456
+        $u.HttpsPort | Should -Be 789
+    }
+
+    It 'UpdateViaIdentityExpanded' {
+        $o = Get-AzCdnOrigin -Name 'origin1' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $u = Update-AzCdnOrigin -HostName 'www.azure.com' -HttpPort 123 -HttpsPort 666 -InputObject $o
+        $u.HttpPort | Should -Be 123
+        $u.HttpsPort | Should -Be 666
     }
 
     It 'UpdateViaJsonString' -skip {
@@ -40,10 +60,6 @@ Describe 'Update-AzCdnOrigin' {
     }
 
     It 'UpdateViaIdentityEndpoint' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

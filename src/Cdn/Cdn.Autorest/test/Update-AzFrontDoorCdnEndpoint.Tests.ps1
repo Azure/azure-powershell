@@ -15,8 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnEndpoint
 }
 
 Describe 'Update-AzFrontDoorCdnEndpoint' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:endpointName = 'e-clipstest-upd'
+        New-AzFrontDoorCdnEndpoint -EndpointName $script:endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+    }
+
+    AfterAll {
+        Remove-AzFrontDoorCdnEndpoint -EndpointName $script:endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
+
+    It 'UpdateExpanded' {
+        Update-AzFrontDoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $script:endpointName -EnabledState 'Disabled'
+        $u = Get-AzFrontDoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $script:endpointName
+        $u.EnabledState | Should -Be 'Disabled'
+    }
+
+    It 'UpdateViaIdentityExpanded' {
+        $e = Get-AzFrontDoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $script:endpointName
+        Update-AzFrontDoorCdnEndpoint -EnabledState 'Enabled' -InputObject $e
+        $u = Get-AzFrontDoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $script:endpointName
+        $u.EnabledState | Should -Be 'Enabled'
     }
 
     It 'UpdateViaJsonString' -skip {
@@ -32,10 +50,6 @@ Describe 'Update-AzFrontDoorCdnEndpoint' {
     }
 
     It 'UpdateViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

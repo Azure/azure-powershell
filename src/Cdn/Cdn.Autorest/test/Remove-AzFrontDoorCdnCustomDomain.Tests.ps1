@@ -15,8 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnCustomDo
 }
 
 Describe 'Remove-AzFrontDoorCdnCustomDomain' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:domainName = 'domain-psName-rm'
+        $tls = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType 'ManagedCertificate' -MinimumTlsVersion 'TLS12'
+        New-AzFrontDoorCdnCustomDomain -CustomDomainName $script:domainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName 'pstestrm.dev.cdn.azure.cn' -TlsSetting $tls | Out-Null
+    }
+
+    It 'Delete' {
+        Remove-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $script:domainName
+        { Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $script:domainName -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentityProfile' -skip {

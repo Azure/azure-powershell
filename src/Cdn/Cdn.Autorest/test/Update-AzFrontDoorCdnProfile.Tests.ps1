@@ -15,8 +15,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfile'
 }
 
 Describe 'Update-AzFrontDoorCdnProfile' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:profileName = 'fdp-pstest-upd'
+        New-AzFrontDoorCdnProfile -SkuName 'Standard_AzureFrontDoor' -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+    }
+
+    AfterAll {
+        Remove-AzFrontDoorCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
+
+    It 'UpdateExpanded' {
+        $rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny -State Enabled
+        Update-AzFrontDoorCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Tag @{ Tag1 = 11 } -OriginResponseTimeoutSecond 30 -IdentityType SystemAssigned -LogScrubbingRule @($rule) -LogScrubbingState Enabled
+        $u = Get-AzFrontDoorCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
+        $u.Tag['Tag1'] | Should -Be '11'
+        $u.OriginResponseTimeoutSecond | Should -Be '30'
+        $u.IdentityType | Should -Be 'SystemAssigned'
+        $u.LogScrubbingRule.Count | Should -Be 1
+    }
+
+    It 'UpdateViaIdentityExpanded' {
+        $p = Get-AzFrontDoorCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
+        Update-AzFrontDoorCdnProfile -Tag @{ Tag1 = 33 } -OriginResponseTimeoutSecond 60 -InputObject $p
+        $u = Get-AzFrontDoorCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName
+        $u.Tag['Tag1'] | Should -Be '33'
+        $u.OriginResponseTimeoutSecond | Should -Be '60'
     }
 
     It 'UpdateViaJsonFilePath' -skip {
@@ -24,10 +47,6 @@ Describe 'Update-AzFrontDoorCdnProfile' {
     }
 
     It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

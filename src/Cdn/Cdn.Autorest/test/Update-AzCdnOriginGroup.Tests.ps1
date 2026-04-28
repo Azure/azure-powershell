@@ -15,8 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnOriginGroup'))
 }
 
 Describe 'Update-AzCdnOriginGroup' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:subId = $env.SubscriptionId
+        $script:endpointName = 'e-clipstest-og-upd'
+        $origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
+        $script:originId = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:endpointName/origins/origin1"
+        $hp = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath '/health.aspx' -ProbeProtocol 'Https' -ProbeRequestType 'GET'
+        $og = @{ Name = 'originGroup1'; healthProbeSetting = $hp; Origin = @(@{ Id = $script:originId }) }
+        $defaultOG = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:endpointName/origingroups/originGroup1"
+        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $origin -OriginGroup $og -DefaultOriginGroupId $defaultOG | Out-Null
+    }
+
+    AfterAll {
+        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+    }
+
+    It 'UpdateExpanded' {
+        $hp3 = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath '/updated.aspx' -ProbeProtocol 'Https' -ProbeRequestType 'GET'
+        Update-AzCdnOriginGroup -EndpointName $script:endpointName -Name 'originGroup1' -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HealthProbeSetting $hp3 -Origin @(@{ Id = $script:originId })
+        $u = Get-AzCdnOriginGroup -Name 'originGroup1' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $u.HealthProbeSetting.ProbeIntervalInSecond | Should -Be 60
+        $u.HealthProbeSetting.ProbePath | Should -Be '/updated.aspx'
     }
 
     It 'UpdateViaJsonString' -skip {

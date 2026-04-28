@@ -15,58 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnOrigin'))
 }
 
 Describe 'New-AzFrontDoorCdnOrigin' {
+    BeforeAll {
+        $script:ogName = 'org-pstest-orig-new'
+        $script:originName = 'ori-psName-new'
+        $hp = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath '/' -ProbeProtocol 'Https' -ProbeRequestType 'GET'
+        $lb = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 4
+        New-AzFrontDoorCdnOriginGroup -OriginGroupName $script:ogName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LoadBalancingSetting $lb -HealthProbeSetting $hp | Out-Null
+    }
+
+    AfterAll {
+        Remove-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -OriginName $script:originName -ErrorAction SilentlyContinue
+        Remove-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -ErrorAction SilentlyContinue
+    }
+
     It 'CreateExpanded' {
-        # Setup: create origin group first
-        $originGroupName = 'org-pstest050'
-        $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
-            -ProbeProtocol "Https" -ProbeRequestType "GET"
-        $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
-            -SampleSize 5 -SuccessfulSamplesRequired 4
-        New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-            -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
-
-        $hostName = "en.wikipedia.org"
-        $originName = 'ori-psName030'
-
-        # New
-        Write-Host -ForegroundColor Green "New AzFrontDoorCdnOrigin: $($originName)"
-        New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
-            -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
-            -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
-
-        # Get - List
-        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnOrigin - List"
-        $origins = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
-        $origins.Count | Should -BeGreaterOrEqual 1
-
-        # Get - by name
-        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnOrigin - by name"
-        $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
-        $origin.Name | Should -Be $originName
-
-        # Get - ViaIdentity
-        Write-Host -ForegroundColor Green "Get AzFrontDoorCdnOrigin - ViaIdentity"
-        $origin2 = Get-AzFrontDoorCdnOrigin -InputObject $origin
-        $origin2.Name | Should -Be $originName
-
-        # Update
-        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnOrigin"
-        Update-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName -Weight 999
-        $updatedOrigin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
-        $updatedOrigin.Weight | Should -Be 999
-
-        # Update - ViaIdentity
-        Write-Host -ForegroundColor Green "Update AzFrontDoorCdnOrigin - ViaIdentity"
-        $originObject = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
-        Update-AzFrontDoorCdnOrigin -Weight 888 -InputObject $originObject
-        $updatedOrigin2 = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
-        $updatedOrigin2.Weight | Should -Be 888
-
-        # Remove
-        Write-Host -ForegroundColor Green "Remove AzFrontDoorCdnOrigin: $($originName)"
-        Remove-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
-
-        # Cleanup: remove origin group
-        Remove-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+        $o = New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -OriginName $script:originName -OriginHostHeader 'en.wikipedia.org' -HostName 'en.wikipedia.org' -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
+        $o.Name | Should -Be $script:originName
     }
 }

@@ -15,8 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnProfile'))
 }
 
 Describe 'Remove-AzCdnProfile' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $script:profileName = 'cdnpps01-rm'
+        New-AzCdnProfile -SkuName 'Standard_Microsoft' -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+    }
+
+    It 'Delete' {
+        $res = Remove-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -PassThru
+        $res | Should -Be 'True'
     }
 
     It 'DeleteViaIdentity' -skip {

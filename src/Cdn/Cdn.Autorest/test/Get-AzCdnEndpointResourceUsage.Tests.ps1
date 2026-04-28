@@ -45,6 +45,6 @@ Describe 'Get-AzCdnEndpointResourceUsage'  {
         $geofilterUsage.CurrentValue | Should -Be 1
 
         # Cleanup
-        Remove-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $profileName
+        Remove-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $profileName -ErrorAction SilentlyContinue
     }
 }
