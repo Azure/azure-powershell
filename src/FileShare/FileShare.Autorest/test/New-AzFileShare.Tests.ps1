@@ -27,7 +27,7 @@ Describe 'New-AzFileShare' {
                                       -ProvisionedThroughputMiBPerSec 228 `
                                       -Redundancy "Local" `
                                       -PublicNetworkAccess "Enabled" `
-                                      -NfProtocolPropertyRootSquash "NoRootSquash" `
+                                      -RootSquash "NoRootSquash" `
                                       -Tag @{"environment" = "test"; "purpose" = "testing"}
             $config.Name | Should -Be $env.fileShareName01
             $config.ProvisioningState | Should -Be "Succeeded"

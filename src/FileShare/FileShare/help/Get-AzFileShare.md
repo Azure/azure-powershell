@@ -55,7 +55,7 @@ MaxBurstIoPerSecCredit                    : 36000000
 MediaTier                                 : SSD
 MountName                                 : testshare
 Name                                      : testshare
-NfProtocolPropertyRootSquash              : AllSquash
+RootSquash                                : AllSquash
 PrivateEndpointConnection                 : {}
 Protocol                                  : NFS
 ProvisionedIoPerSec                       : 5000
@@ -65,7 +65,7 @@ ProvisionedStorageNextAllowedDowngrade    : 2/26/2026 6:56:35 AM
 ProvisionedThroughputMiBPerSec            : 125
 ProvisionedThroughputNextAllowedDowngrade : 2/26/2026 6:56:35 AM
 ProvisioningState                         : Succeeded
-PublicAccessPropertyAllowedSubnet         : {/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1,
+AllowedSubnet                             : {/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1,
                                             /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet2}
 PublicNetworkAccess                       : Enabled
 Redundancy                                : Local
