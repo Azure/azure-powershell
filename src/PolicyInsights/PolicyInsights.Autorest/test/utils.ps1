@@ -35,7 +35,8 @@ function Start-TestSleep {
 Gets test query interval start, which is 5 days before the current time of live running the tests. 
 #>
 function Get-TestQueryIntervalStart {
-   Get-Date -Format "yyyy-MM-dd HH:mm:ssZ" -Date (Get-Date -AsUTC).AddDays(-5)
+    Get-Date -Date (Get-Date -AsUTC).AddDays(-5)
+    #Get-Date -Format "yyyy-MM-dd HH:mm:ssZ" -Date (Get-Date -AsUTC).AddDays(-5)
 }
 
 <#
@@ -43,7 +44,8 @@ function Get-TestQueryIntervalStart {
 Gets test query interval end, which is the UTC time at time of live running the tests.
 #>
 function Get-TestQueryIntervalEnd {
-   Get-Date -Format "yyyy-MM-dd HH:mm:ssZ" -AsUTC
+    Get-Date -AsUTC
+    #Get-Date -Format "yyyy-MM-dd HH:mm:ssZ" -AsUTC
 }
 
 <#
@@ -572,12 +574,12 @@ function cleanupEnv() {
     Write-Host -ForegroundColor Magenta "Cleaning up globals"
 
     # delete resource groups if present 
-    foreach ($resourceGroupName in @($env.firstRgName, $env.secondRgName, $env.emptyRgName, $env.attestationRgName)) {
-        Get-AzResourceGroup -Name $resourceGroupName -ErrorVariable rgNotPresent -ErrorAction SilentlyContinue
-        if (-not $rgNotPresent) {
-            Remove-AzResourceGroup -Name $resourceGroupName -Force
-        }
-    }
+    #foreach ($resourceGroupName in @($env.firstRgName, $env.secondRgName, $env.emptyRgName, $env.attestationRgName)) {
+    #    Get-AzResourceGroup -Name $resourceGroupName -ErrorVariable rgNotPresent -ErrorAction SilentlyContinue
+    #    if (-not $rgNotPresent) {
+    #        Remove-AzResourceGroup -Name $resourceGroupName
+    #    }
+    #}
     
     #delete role assignments created in setup
     Remove-AzRoleAssignment -ObjectId $env.mgDINEAssignmentIdentity -Scope "/providers/microsoft.management/managementgroups/$($env.managementGroup)" -RoleDefinitionName "Key Vault Contributor"
