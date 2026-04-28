@@ -37,7 +37,9 @@ Get-AzNetAppFilesBucket -ResourceId <String> [-DefaultProfile <IAzureContextCont
 ## EXAMPLES
 
 ### Example 1
+```powershell
 Get-AzNetAppFilesBucket -ResourceGroupName myRG -AccountName account1 -PoolName pool1 -VolumeName volume1 -Name bucketName1
+```
 
 This command gets the Bucket named "bucketName1" from the Volume named "volume1".
 
