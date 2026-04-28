@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.2
 * Preview release of API version 2026-03-01-preview for Az.DeviceRegistry. New cmdlets include:
     - `Get-AzDeviceRegistryCredentials`: Get a Credential for a namespace
     - `New-AzDeviceRegistryCredentials`: Create a Credential for a namespace
