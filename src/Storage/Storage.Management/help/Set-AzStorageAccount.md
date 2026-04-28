@@ -1142,7 +1142,7 @@ Accept wildcard characters: False
 ```
 
 ### -MinimumTlsVersion
-The minimum TLS version to be permitted on requests to storage.
+The minimum TLS version to be permitted on requests to storage. TLS 1.3 is not yet supported.
 
 ```yaml
 Type: System.String
@@ -1179,6 +1179,21 @@ NetworkRuleSet is used to define a set of configuration rules for firewalls and 
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

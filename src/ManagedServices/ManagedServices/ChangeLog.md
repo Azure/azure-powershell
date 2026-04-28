@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.1.3
+* Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
+
 ## Version 3.1.2
 * Update the outputs of breaking change announcements.
 

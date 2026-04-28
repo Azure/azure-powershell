@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// (Windows):** 15 characters &lt;br&gt;&lt;br&gt; **Max-length (Linux):** 64 characters.
         /// &lt;br&gt;&lt;br&gt; For naming conventions and restrictions see [Azure infrastructure
         /// services implementation
-        /// guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+        /// guidelines](https://learn.microsoft.com/previous-versions/azure/virtual-machines/linux/infrastructure-example?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json#1-naming-conventions).
         /// </param>
 
         /// <param name="osName">The Operating System running on the hybrid machine.
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// (Windows):** 15 characters &lt;br&gt;&lt;br&gt; **Max-length (Linux):** 64 characters.
         /// &lt;br&gt;&lt;br&gt; For naming conventions and restrictions see [Azure infrastructure
         /// services implementation
-        /// guidelines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#1-naming-conventions).
+        /// guidelines](https://learn.microsoft.com/previous-versions/azure/virtual-machines/linux/infrastructure-example?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json#1-naming-conventions).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "computerName")]
         public string ComputerName {get; set; }

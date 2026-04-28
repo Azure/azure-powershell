@@ -40,3 +40,4 @@ ContentType Etag                                        Key      Label LastModif
 ```
 
 You can get a key-value in an App Configuration store with the key name.
+

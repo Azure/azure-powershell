@@ -9570,7 +9570,15 @@ param(
     # Specifies the Path where the log files are to be saved.
     # Has to be an absolute Path.
     # Default value would be: C:\ProgramData\AzureStackHCI
-    ${LogsDirectory}
+    ${LogsDirectory},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether to use the stable HCI Arc agent for server registration.
+    # When set to true, uses the stable HCI Arc agent.
+    # When set to false or not specified, uses the default Azure Connected Machine Agent.
+    ${useStableAgentVersion}
 )
 
 begin {

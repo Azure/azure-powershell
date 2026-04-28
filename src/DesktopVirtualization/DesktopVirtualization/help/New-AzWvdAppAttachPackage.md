@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdAppAttachPackage
 
 ## SYNOPSIS
-create an App Attach package.
+Create an App Attach package.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-Subscript
 ```
 
 ## DESCRIPTION
-create an App Attach package.
+Create an App Attach package.
 
 ## EXAMPLES
 

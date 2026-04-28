@@ -19,6 +19,21 @@
 -->
 
 ## Upcoming Release
+* Added confirmation prompt when an SSH key pair already exists at the target location
+    - Both 'New-AzSftpCertificate' and 'Connect-AzSftp' now detect existing key pairs before generating new ones
+    - Users are prompted to choose whether to overwrite existing keys or reuse them
+    - Added '-Force' parameter to bypass the confirmation prompt
+* Improved verbose and debug logging across all cmdlets
+    - Added timing information for key pair generation, certificate requests, and SFTP session duration
+    - Enhanced SSH client validation logging with resolved executable paths
+    - Added structured log prefixes (KeyPair, CertGen, SSH, SFTP, Auth, Cleanup) for easier filtering
+    - Improved credential cleanup logging with operation-level status messages
+* Fixed command injection vulnerability in file permission handling [Security]
+    - Replaced 'powershell.exe' and 'icacls.exe' subprocess calls with direct .NET ACL APIs on Windows
+    - Replaced 'chmod' subprocess call with native P/Invoke on Unix
+    - Canonicalized file paths in SSH key generation methods to prevent path traversal
+
+## Version 0.1.2
 * Fixed argument injection vulnerability in SFTP process-launch utilities [Security]
     - Added input validation to reject control characters and double-quote characters that break argument boundaries
     - Added proper argument escaping (quoting) when building ProcessStartInfo.Arguments to preserve argument boundaries for values that contain spaces

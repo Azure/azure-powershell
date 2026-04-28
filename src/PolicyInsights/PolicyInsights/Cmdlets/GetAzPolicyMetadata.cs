@@ -14,19 +14,27 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
 {
-    using System.Linq;
-    using System.Management.Automation;
-    using System.Threading;
     using Microsoft.Azure.Commands.PolicyInsights.Common;
     using Microsoft.Azure.Commands.PolicyInsights.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Management.PolicyInsights;
     using Microsoft.Azure.Management.PolicyInsights.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System.Linq;
+    using System.Management.Automation;
+    using System.Threading;
 
     /// <summary>
     /// Gets policy metadata.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(
+        typeof(PSPolicyMetadata),
+        deprecateByAzVersion: "16.0.0",
+        deprecateByVersion: "2.0.0",
+        ReplacementCmdletOutputTypeName = "PolicyMetadata",
+        NewOutputProperties = new string[] { "ResourceGroupName" }
+    )]
     [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + "PolicyMetadata"), OutputType(typeof(PSPolicyMetadata))]
     public class GetAzPolicyMetadata : PolicyInsightsCmdletBase
     {
