@@ -811,7 +811,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/10a238d6-a139-46d0-818d-d091394072b6/resourceGroups/dc-cmdlet-test-rgps2886/providers/Microsoft.Sql/servers/dc-cmdlet-serverps2886/firewallRules/dcRule?api-version=2014-04-01",
+      "RequestUri": "/subscriptions/10a238d6-a139-46d0-818d-d091394072b6/resourceGroups/dc-cmdlet-test-rgps2886/providers/Microsoft.Sql/servers/dc-cmdlet-serverps2886/firewallRules/dcRule?api-version=2023-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTBhMjM4ZDYtYTEzOS00NmQwLTgxOGQtZDA5MTM5NDA3MmI2L3Jlc291cmNlR3JvdXBzL2RjLWNtZGxldC10ZXN0LXJncHMyODg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvZGMtY21kbGV0LXNlcnZlcnBzMjg4Ni9maXJld2FsbFJ1bGVzL2RjUnVsZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -865,7 +865,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/10a238d6-a139-46d0-818d-d091394072b6/resourceGroups/dc-cmdlet-test-rgps2886/providers/Microsoft.Sql/servers/dc-cmdlet-serverps2886/firewallRules/dcRule?api-version=2014-04-01",
+      "RequestUri": "/subscriptions/10a238d6-a139-46d0-818d-d091394072b6/resourceGroups/dc-cmdlet-test-rgps2886/providers/Microsoft.Sql/servers/dc-cmdlet-serverps2886/firewallRules/dcRule?api-version=2023-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTBhMjM4ZDYtYTEzOS00NmQwLTgxOGQtZDA5MTM5NDA3MmI2L3Jlc291cmNlR3JvdXBzL2RjLWNtZGxldC10ZXN0LXJncHMyODg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvZGMtY21kbGV0LXNlcnZlcnBzMjg4Ni9maXJld2FsbFJ1bGVzL2RjUnVsZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
