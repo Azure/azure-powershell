@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Description(@"Gets a list of key-values.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/kv", ApiVersion = "1.0")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/kv", ApiVersion = "2024-09-01")]
     public partial class GetAzAppConfigurationKeyValue_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IContext
@@ -60,13 +60,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         private string _acceptDatetime;
 
         /// <summary>
-        /// Requests the server to respond with the state of the resource at the specified time.
+        /// Requests the server to respond with the state of the resource at the specified
+        /// time.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Requests the server to respond with the state of the resource at the specified time.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Requests the server to respond with the state of the resource at the specified\ntime.")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Requests the server to respond with the state of the resource at the specified time.",
+        Description = @"Requests the server to respond with the state of the resource at the specified
+        time.",
         SerializedName = @"Accept-Datetime",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
@@ -76,13 +78,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         private string _after;
 
         /// <summary>
-        /// Instructs the server to return elements that appear after the element referred to by the specified token.
+        /// Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Instructs the server to return elements that appear after the element referred to by the specified token.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Instructs the server to return elements that appear after the element referred\nto by the specified token.")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Instructs the server to return elements that appear after the element referred to by the specified token.",
+        Description = @"Instructs the server to return elements that appear after the element referred
+        to by the specified token.",
         SerializedName = @"After",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Query)]
@@ -138,18 +142,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>Backing field for <see cref="IfMatch" /> property.</summary>
+        private string _ifMatch;
+
+        /// <summary>
+        /// Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Used to perform an operation only if the targeted resource's etag matches the
+        value provided.",
+        SerializedName = @"If-Match",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
+        public string IfMatch { get => this._ifMatch; set => this._ifMatch = value; }
+
+        /// <summary>Backing field for <see cref="IfNoneMatch" /> property.</summary>
+        private string _ifNoneMatch;
+
+        /// <summary>
+        /// Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Used to perform an operation only if the targeted resource's etag does not
+        match the value provided.",
+        SerializedName = @"If-None-Match",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
+        public string IfNoneMatch { get => this._ifNoneMatch; set => this._ifNoneMatch = value; }
+
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>Backing field for <see cref="Key" /> property.</summary>
         private string _key;
 
-        /// <summary>A filter used to match keys.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A filter used to match keys.")]
+        /// <summary>
+        /// A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A filter used to match keys. Syntax reference:\nhttps://aka.ms/azconfig/docs/keyvaluefiltering")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"A filter used to match keys.",
+        Description = @"A filter used to match keys. Syntax reference:
+        https://aka.ms/azconfig/docs/keyvaluefiltering",
         SerializedName = @"key",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Query)]
@@ -158,12 +202,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         /// <summary>Backing field for <see cref="Label" /> property.</summary>
         private string _label;
 
-        /// <summary>A filter used to match labels</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A filter used to match labels")]
+        /// <summary>
+        /// A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A filter used to match labels. Syntax reference:\nhttps://aka.ms/azconfig/docs/keyvaluefiltering")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"A filter used to match labels",
+        Description = @"A filter used to match labels. Syntax reference:
+        https://aka.ms/azconfig/docs/keyvaluefiltering",
         SerializedName = @"label",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Query)]
@@ -214,6 +262,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("key", "label", "content_type", "value", "last_modified", "tags", "locked", "etag")]
         public System.Collections.Generic.List<string> Select { get => this._select; set => this._select = value; }
 
+        /// <summary>Backing field for <see cref="Snapshot" /> property.</summary>
+        private string _snapshot;
+
+        /// <summary>
+        /// A filter used get key-values for a snapshot. The value should be the name of
+        /// the snapshot. Not valid when used with 'key' and 'label' filters.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A filter used get key-values for a snapshot. The value should be the name of\nthe snapshot. Not valid when used with 'key' and 'label' filters.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A filter used get key-values for a snapshot. The value should be the name of
+        the snapshot. Not valid when used with 'key' and 'label' filters.",
+        SerializedName = @"snapshot",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Query)]
+        public string Snapshot { get => this._snapshot; set => this._snapshot = value; }
+
         /// <summary>Backing field for <see cref="SyncToken" /> property.</summary>
         private string _syncToken;
 
@@ -227,6 +293,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
         public string SyncToken { get => this._syncToken; set => this._syncToken = value; }
+
+        /// <summary>Backing field for <see cref="Tag" /> property.</summary>
+        private System.Collections.Generic.List<string> _tag;
+
+        /// <summary>
+        /// A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A filter used to query by tags. Syntax reference:\nhttps://aka.ms/azconfig/docs/keyvaluefiltering")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A filter used to query by tags. Syntax reference:
+        https://aka.ms/azconfig/docs/keyvaluefiltering",
+        SerializedName = @"tags",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Query)]
+        public System.Collections.Generic.List<string> Tag { get => this._tag; set => this._tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -442,12 +527,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.GetKeyValues(this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null, this.InvocationInformation.BoundParameters.ContainsKey("AcceptDatetime") ? AcceptDatetime : null, this.InvocationInformation.BoundParameters.ContainsKey("Key") ? Key : null, this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null, this.InvocationInformation.BoundParameters.ContainsKey("After") ? After : null, this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, Endpoint, onOk, onDefault, this, Pipeline);
+                    await this.Client.GetKeyValues(this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null, this.InvocationInformation.BoundParameters.ContainsKey("AcceptDatetime") ? AcceptDatetime : null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("Key") ? Key : null, this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null, this.InvocationInformation.BoundParameters.ContainsKey("After") ? After : null, this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, this.InvocationInformation.BoundParameters.ContainsKey("Snapshot") ? Snapshot : null, this.InvocationInformation.BoundParameters.ContainsKey("Tag") ? Tag : null /* arrayOf */, Endpoint, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint,Key=this.InvocationInformation.BoundParameters.ContainsKey("Key") ? Key : null,Label=this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null,SyncToken=this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null,After=this.InvocationInformation.BoundParameters.ContainsKey("After") ? After : null,AcceptDatetime=this.InvocationInformation.BoundParameters.ContainsKey("AcceptDatetime") ? AcceptDatetime : null,Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint,Key=this.InvocationInformation.BoundParameters.ContainsKey("Key") ? Key : null,Label=this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null,SyncToken=this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null,After=this.InvocationInformation.BoundParameters.ContainsKey("After") ? After : null,AcceptDatetime=this.InvocationInformation.BoundParameters.ContainsKey("AcceptDatetime") ? AcceptDatetime : null,Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */,Snapshot=this.InvocationInformation.BoundParameters.ContainsKey("Snapshot") ? Snapshot : null,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null,Tag=this.InvocationInformation.BoundParameters.ContainsKey("Tag") ? Tag : null /* arrayOf */})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -529,7 +614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                 {
                     return ;
                 }
-                // onOk - response for 200 / application/vnd.microsoft.appconfig.kvset+json/application/json/application/problem+json
+                // onOk - response for 200 / application/vnd.microsoft.appconfig.kvset+json/application/problem+json/application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult
                 var result = (await response);
                 // response should be returning an array of some kind. +Pageable
