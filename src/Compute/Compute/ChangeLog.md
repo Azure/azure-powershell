@@ -22,11 +22,21 @@
 ## Upcoming Release
 * Added `-Feature` parameter to `Update-AzGalleryImageDefinition` cmdlet to allow updating existing gallery image features (such as DiskControllerTypes, SecurityType, IsAcceleratedNetwork, and IsHibernate). Each feature supports a `StartsAtVersion` property to specify the minimum gallery image version that supports the updated feature.
 * Added `-AllowUpdateImage` parameter to `Update-AzGalleryImageDefinition` cmdlet. Must be set to true when using the `-Feature` parameter to update gallery image features.
+
 * Added `-InstantAccess` parameter to `New-AzRestorePointCollection` cmdlet to enable instant access snapshots for restore points on Premium SSD v2 and Ultra disks
 * Added `-InstantAccess` parameter to `Update-AzRestorePointCollection` cmdlet to enable or disable instant access on an existing restore point collection
 * Added `-InstantAccessDurationInMinutes` parameter to `New-AzRestorePoint` cmdlet to specify the duration (1-300 minutes) for which the instant access snapshot is retained
 * Added `InstantAccess` property to `PSRestorePointCollection` output type
 * Added `InstantAccessDurationInMinutes` property to `PSRestorePoint` output type
+
+* Added managed identity support for Azure Compute Galleries
+    - `New-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` parameters to assign managed identities at creation time
+    - `Update-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` parameters to add managed identities to an existing gallery. `-UserAssignedIdentity` appends to existing identities
+    - `Update-AzGallery`: Added `-DisableSystemAssignedIdentity` parameter to remove system-assigned managed identity
+    - `Update-AzGallery`: Added `-RemoveUserAssignedIdentity` parameter accepting a list of identity resource IDs to remove specific user-assigned identities, or 'All' to remove all user-assigned identities
+    - `Get-AzGallery`: Now returns managed identity details in the `Identity` property
+* Compute ComputeRP related cmdlets will now use 2025-11-01 version of the ComputeRP API.
+
 
 ## Version 11.4.0
 * Added `-DiskIOPSReadWrite` and `-DiskMBpsReadWrite` parameters to `Add-AzVMDataDisk` cmdlet
