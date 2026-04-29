@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime
 {
     public interface IHeaderSerializable
     {

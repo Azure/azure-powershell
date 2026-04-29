@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Models.IScheduler))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Description(@"update a Scheduler")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}", ApiVersion = "2025-11-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}", ApiVersion = "2026-02-01")]
     public partial class UpdateAzDurableTaskScheduler_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.IContext
@@ -143,6 +143,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
+
+        /// <summary>Allow or disallow public network access to durable task scheduler</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Allow or disallow public network access to durable task scheduler")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DurableTask.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Allow or disallow public network access to durable task scheduler",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DurableTask.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get => _propertiesBody.PublicNetworkAccess ?? null; set => _propertiesBody.PublicNetworkAccess = value; }
 
         /// <summary>
         /// The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy

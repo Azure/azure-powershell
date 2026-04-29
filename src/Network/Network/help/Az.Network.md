@@ -904,6 +904,12 @@ Invokes a Start/Status/Stop packet capture operation request on Azure Firewall
 ### [Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic](Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
 Invoke network configuration diagnostic session for specified network profiles on target resource.
 
+### [Invoke-AzPublicIpAddressCloudServiceReservation](Invoke-AzPublicIpAddressCloudServiceReservation.md)
+Reserves or rolls back allocation for a cloud service public IP address.
+
+### [Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp](Invoke-AzPublicIpAddressDisassociateCloudServiceReservedIp.md)
+Disassociates a standalone reserved public IP from a cloud service public IP address.
+
 ### [Invoke-AzVirtualNetworkGatewayAbortMigration](Invoke-AzVirtualNetworkGatewayAbortMigration.md)
 Trigger abort migration for virtual network gateway.
 

@@ -549,9 +549,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='hibernate'>
         /// Optional parameter to hibernate a virtual machine.
         /// </param>
-        public static void Deallocate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?))
+        /// <param name='forceDeallocate'>
+        /// Optional parameter to force deallocate a virtual machine. Default is false.
+        /// </param>
+        public static void Deallocate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?), bool? forceDeallocate = default(bool?))
         {
-                ((IVirtualMachinesOperations)operations).DeallocateAsync(resourceGroupName, vmName, hibernate).GetAwaiter().GetResult();
+                ((IVirtualMachinesOperations)operations).DeallocateAsync(resourceGroupName, vmName, hibernate, forceDeallocate).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -570,12 +573,15 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='hibernate'>
         /// Optional parameter to hibernate a virtual machine.
         /// </param>
+        /// <param name='forceDeallocate'>
+        /// Optional parameter to force deallocate a virtual machine. Default is false.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeallocateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeallocateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?), bool? forceDeallocate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeallocateWithHttpMessagesAsync(resourceGroupName, vmName, hibernate, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.DeallocateWithHttpMessagesAsync(resourceGroupName, vmName, hibernate, forceDeallocate, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Sets the OS state of the virtual machine to generalized. It is recommended
@@ -1521,9 +1527,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='hibernate'>
         /// Optional parameter to hibernate a virtual machine.
         /// </param>
-        public static void BeginDeallocate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?))
+        /// <param name='forceDeallocate'>
+        /// Optional parameter to force deallocate a virtual machine. Default is false.
+        /// </param>
+        public static void BeginDeallocate(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?), bool? forceDeallocate = default(bool?))
         {
-                ((IVirtualMachinesOperations)operations).BeginDeallocateAsync(resourceGroupName, vmName, hibernate).GetAwaiter().GetResult();
+                ((IVirtualMachinesOperations)operations).BeginDeallocateAsync(resourceGroupName, vmName, hibernate, forceDeallocate).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1542,12 +1551,15 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='hibernate'>
         /// Optional parameter to hibernate a virtual machine.
         /// </param>
+        /// <param name='forceDeallocate'>
+        /// Optional parameter to force deallocate a virtual machine. Default is false.
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeallocateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeallocateAsync(this IVirtualMachinesOperations operations, string resourceGroupName, string vmName, bool? hibernate = default(bool?), bool? forceDeallocate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeallocateWithHttpMessagesAsync(resourceGroupName, vmName, hibernate, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginDeallocateWithHttpMessagesAsync(resourceGroupName, vmName, hibernate, forceDeallocate, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Installs patches on the VM.

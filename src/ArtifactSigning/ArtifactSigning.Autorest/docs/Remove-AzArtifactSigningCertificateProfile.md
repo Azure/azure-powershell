@@ -37,17 +37,17 @@ Delete a certificate profile.
 
 ## EXAMPLES
 
-### Example 1: Delete Artifact signing Certificate Profile
+### Example 1: Delete Artifact Signing Certificate Profile
 ```powershell
 Remove-AzArtifactSigningCertificateProfile -AccountName test -ResourceGroupName test -ProfileName test
 ```
 
-This command deletes a artifact signing certificate profile.
+This command deletes an Artifact Signing Certificate Profile.
 
 ## PARAMETERS
 
 ### -AccountName
-Trusted Signing account name.
+Artifact Signing account name.
 
 ```yaml
 Type: System.String

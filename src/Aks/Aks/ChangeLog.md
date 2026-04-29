@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Set `useAADAuth` to `true` by default in the omsagent addon profile when enabling the Monitoring addon via `Enable-AzAksAddOn` and `New-AzAksCluster`
+    - This ensures compatibility with the latest Azure Monitor agent which requires AAD authentication
 
 ## Version 7.1.1
 * Fixed the default SSH key generation logic in `New-AzAksCluster` to enforce RSA key type (instead of ed25519 that became the default in OpenSSH 9.4 and above)

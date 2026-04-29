@@ -102,6 +102,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("BillingConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IBillingConfiguration) content.GetValueForProperty("BillingConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfiguration, Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BenefitPlan"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlan = (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IBenefitPlans) content.GetValueForProperty("BenefitPlan",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlan, Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BenefitPlansTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ConnectionIntent"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).ConnectionIntent = (string) content.GetValueForProperty("ConnectionIntent",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).ConnectionIntent, global::System.Convert.ToString);
@@ -113,6 +121,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             if (content.Contains("DeviceVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).DeviceVersion = (string) content.GetValueForProperty("DeviceVersion",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).DeviceVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingConfigurationAutoRenew"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationAutoRenew = (string) content.GetValueForProperty("BillingConfigurationAutoRenew",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationAutoRenew, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingConfigurationBillingStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationBillingStatus = (string) content.GetValueForProperty("BillingConfigurationBillingStatus",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationBillingStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingConfigurationCurrent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationCurrent = (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IBillingPeriod) content.GetValueForProperty("BillingConfigurationCurrent",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationCurrent, Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingPeriodTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BillingConfigurationUpcoming"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationUpcoming = (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IBillingPeriod) content.GetValueForProperty("BillingConfigurationUpcoming",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationUpcoming, Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingPeriodTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CurrentPricingModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentPricingModel = (string) content.GetValueForProperty("CurrentPricingModel",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentPricingModel, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpcomingPricingModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingPricingModel = (string) content.GetValueForProperty("UpcomingPricingModel",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingPricingModel, global::System.Convert.ToString);
+            }
+            if (content.Contains("BenefitPlanAzureHybridWindowsServerBenefit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlanAzureHybridWindowsServerBenefit = (string) content.GetValueForProperty("BenefitPlanAzureHybridWindowsServerBenefit",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlanAzureHybridWindowsServerBenefit, global::System.Convert.ToString);
+            }
+            if (content.Contains("BenefitPlanWindowsServerVMCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlanWindowsServerVMCount = (int?) content.GetValueForProperty("BenefitPlanWindowsServerVMCount",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlanWindowsServerVMCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CurrentCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentCore = (int?) content.GetValueForProperty("CurrentCore",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CurrentStartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentStartDate = (global::System.DateTime?) content.GetValueForProperty("CurrentStartDate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("CurrentEndDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentEndDate = (global::System.DateTime?) content.GetValueForProperty("CurrentEndDate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("UpcomingCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingCore = (int?) content.GetValueForProperty("UpcomingCore",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("UpcomingStartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingStartDate = (global::System.DateTime?) content.GetValueForProperty("UpcomingStartDate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("UpcomingEndDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingEndDate = (global::System.DateTime?) content.GetValueForProperty("UpcomingEndDate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             AfterDeserializeDictionary(content);
         }
@@ -131,6 +195,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("BillingConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IBillingConfiguration) content.GetValueForProperty("BillingConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfiguration, Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BenefitPlan"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlan = (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IBenefitPlans) content.GetValueForProperty("BenefitPlan",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlan, Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BenefitPlansTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ConnectionIntent"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).ConnectionIntent = (string) content.GetValueForProperty("ConnectionIntent",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).ConnectionIntent, global::System.Convert.ToString);
@@ -142,6 +214,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             if (content.Contains("DeviceVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).DeviceVersion = (string) content.GetValueForProperty("DeviceVersion",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).DeviceVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingConfigurationAutoRenew"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationAutoRenew = (string) content.GetValueForProperty("BillingConfigurationAutoRenew",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationAutoRenew, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingConfigurationBillingStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationBillingStatus = (string) content.GetValueForProperty("BillingConfigurationBillingStatus",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationBillingStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingConfigurationCurrent"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationCurrent = (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IBillingPeriod) content.GetValueForProperty("BillingConfigurationCurrent",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationCurrent, Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingPeriodTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("BillingConfigurationUpcoming"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationUpcoming = (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IBillingPeriod) content.GetValueForProperty("BillingConfigurationUpcoming",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BillingConfigurationUpcoming, Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingPeriodTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CurrentPricingModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentPricingModel = (string) content.GetValueForProperty("CurrentPricingModel",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentPricingModel, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpcomingPricingModel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingPricingModel = (string) content.GetValueForProperty("UpcomingPricingModel",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingPricingModel, global::System.Convert.ToString);
+            }
+            if (content.Contains("BenefitPlanAzureHybridWindowsServerBenefit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlanAzureHybridWindowsServerBenefit = (string) content.GetValueForProperty("BenefitPlanAzureHybridWindowsServerBenefit",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlanAzureHybridWindowsServerBenefit, global::System.Convert.ToString);
+            }
+            if (content.Contains("BenefitPlanWindowsServerVMCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlanWindowsServerVMCount = (int?) content.GetValueForProperty("BenefitPlanWindowsServerVMCount",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).BenefitPlanWindowsServerVMCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CurrentCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentCore = (int?) content.GetValueForProperty("CurrentCore",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("CurrentStartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentStartDate = (global::System.DateTime?) content.GetValueForProperty("CurrentStartDate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("CurrentEndDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentEndDate = (global::System.DateTime?) content.GetValueForProperty("CurrentEndDate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).CurrentEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("UpcomingCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingCore = (int?) content.GetValueForProperty("UpcomingCore",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("UpcomingStartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingStartDate = (global::System.DateTime?) content.GetValueForProperty("UpcomingStartDate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("UpcomingEndDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingEndDate = (global::System.DateTime?) content.GetValueForProperty("UpcomingEndDate",((Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.IDisconnectedOperationUpdatePropertiesInternal)this).UpcomingEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             AfterDeserializePSObject(content);
         }
