@@ -77,7 +77,7 @@ This command creates a sync member for an Azure SQL database.
 $credential = Get-Credential
 New-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" -SyncDirection "OneWayMemberToHub" `
 -MemberDatabaseType "SqlServerDatabase" -SqlServerDatabaseId "dbId" -syncAgentResourceGroupName "syncAgentResourceGroupName" -syncAgentServerName "syncAgentServerName" `
--syncAgentDatabaseName "syncAgentDatabaseName" -syncAgentName "agentName" | Format-List
+-syncAgentName "agentName" | Format-List
 ```
 
 ```output

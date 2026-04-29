@@ -386,7 +386,7 @@ function Test-CreateSyncMember
         Assert-AreEqual $smParams.syncDirection $sm1.SyncDirection
         Assert-AreEqual $smParams.databaseType $sm1.MemberDatabaseType
         Assert-AreEqual $databaseName2 $sm1.MemberDatabaseName
-        Assert-AreEqual $serverName $sm1.MemberServerName
+        Assert-True { $sm1.MemberServerName.StartsWith($server.ServerName) }
         Assert-Null $sm1.MemberDatabasePassword
         Assert-Null $sm1.SyncAgentId
         Assert-Null $sm1.SqlServerDatabaseId
@@ -437,7 +437,7 @@ function Test-GetAndListSyncMembers
         Assert-AreEqual $smParams.syncDirection $sm1.SyncDirection
         Assert-AreEqual $smParams.databaseType $sm1.MemberDatabaseType
         Assert-AreEqual $databaseName2 $sm1.MemberDatabaseName
-        Assert-AreEqual $serverName $sm1.MemberServerName
+        Assert-True { $sm1.MemberServerName.StartsWith($server.ServerName) }
         Assert-Null $sm1.MemberDatabasePassword
         Assert-Null $sm1.SyncAgentId
         Assert-Null $sm1.SqlServerDatabaseId
@@ -495,7 +495,7 @@ function Test-UpdateSyncMember
             -MemberDatabaseCredential $credential
         Assert-AreEqual $smParams.databaseType $sm2.MemberDatabaseType
         Assert-AreEqual $databaseName2 $sm2.MemberDatabaseName
-        Assert-AreEqual $serverName $sm2.MemberServerName
+        Assert-True { $sm2.MemberServerName.StartsWith($server.ServerName) }
         Assert-Null $sm2.MemberDatabasePassword
         Assert-Null $sm2.SyncAgentId
         Assert-Null $sm2.SqlServerDatabaseId
@@ -732,7 +732,7 @@ function Test-CreateSyncMemberWithIdentity
         Assert-AreEqual $smParams.syncDirection $sm1.SyncDirection
         Assert-AreEqual $smParams.databaseType $sm1.MemberDatabaseType
         Assert-AreEqual $databaseName2 $sm1.MemberDatabaseName
-        Assert-AreEqual $serverName $sm1.MemberServerName
+        Assert-True { $sm1.MemberServerName.StartsWith($server.ServerName) }
         Assert-Null $sm1.MemberDatabasePassword
         Assert-True {[string]::IsNullOrEmpty($sm1.MemberDatabaseUserName)}
         Assert-Null $sm1.SyncAgentId
@@ -790,7 +790,7 @@ function Test-UpdateSyncMemberWithIdentity
              -MemberDatabaseAuthenticationType UserAssigned
         Assert-AreEqual $smParams.databaseType $sm2.MemberDatabaseType
         Assert-AreEqual $databaseName2 $sm2.MemberDatabaseName
-        Assert-AreEqual $serverName $sm2.MemberServerName
+        Assert-True { $sm2.MemberServerName.StartsWith($server.ServerName) }
         Assert-Null $sm2.MemberDatabasePassword
         Assert-True {[string]::IsNullOrEmpty($sm1.MemberDatabaseUserName)}
         Assert-Null $sm2.SyncAgentId

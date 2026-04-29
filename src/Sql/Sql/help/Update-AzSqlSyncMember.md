@@ -67,7 +67,7 @@ Update-AzSqlSyncMember -DatabaseName 'Database01' -MemberDatabaseCredential <PSC
 ```powershell
 Update-AzSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" `
 -MemberDatabaseAuthenticationType "userAssigned" `
--IdentityId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" | Format-List
+-ResourceId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" | Format-List
 ```
 
 ```output

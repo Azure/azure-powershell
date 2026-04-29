@@ -30,7 +30,7 @@ The **New-AzSqlSyncGroup** cmdlet creates an Azure SQL Database Sync Group.
 $credential = Get-Credential
 New-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" -ConflictResolutionPolicy "HubWin" `
 -DatabaseCredential $credential -IntervalInSeconds 100 -SyncDatabaseServerName "syncDatabaseServer01" -SyncDatabaseName "syncDatabaseName01" `
--SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" -Schema ".\schema.json" | Format-List
+-SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" -SchemaFile ".\schema.json" | Format-List
 ```
 
 ```output
@@ -65,7 +65,7 @@ New-AzSqlSyncGroup -ResourceGroupName "ResourceGroup02" -ServerName "Server02" -
 -SyncDatabaseServerName "Server02" -SyncDatabaseName "Database02" `
 -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup02" `
 -HubDatabaseAuthenticationType "userAssigned" `
--ResourceId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" -Schema ".\schema.json" | Format-List
+-ResourceId "/subscriptions/{subscriptionId}/resourceGroups/group1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi" -SchemaFile ".\schema.json" | Format-List
 ```
 
 ```output
