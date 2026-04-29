@@ -18,6 +18,27 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated to API version 2026-01-01
+* Added new cmdlets for the Buckets resource (alias `Anf*` for Azure NetApp Files):
+    - `Get-AzNetAppFilesBucket` - list or get a bucket on a volume
+    - `New-AzNetAppFilesBucket` - create a bucket on a volume
+    - `Update-AzNetAppFilesBucket` - update bucket properties
+    - `Remove-AzNetAppFilesBucket` - delete a bucket
+    - `New-AzNetAppFilesBucketCredential` - generate Access/Secret key pair (returns the credentials)
+    - `Set-AzNetAppFilesBucketAkvCredential` - generate Access/Secret key pair and store it in Azure Key Vault (AKV)
+    - `Update-AzNetAppFilesBucketCertificate` - refresh the bucket server certificate from Azure Key Vault (AKV)
+* Added new cmdlets for the Caches resource (alias `Anf*` for Azure NetApp Files):
+    - `Get-AzNetAppFilesCache` - list caches in a capacity pool or get a single cache
+    - `New-AzNetAppFilesCache` - create a cache in a capacity pool
+    - `Update-AzNetAppFilesCache` - update cache properties
+    - `Remove-AzNetAppFilesCache` - delete a cache
+    - `Get-AzNetAppFilesCachePeeringPassphrase` - retrieve the cluster/vserver peering commands and passphrases for a cache
+    - `Set-AzNetAppFilesCachePool` - move a cache to a different capacity pool
+    - `Reset-AzNetAppFilesCacheSmbPassword` - reset the cache's Server Message Block (SMB) password
+* `Start-AzNetAppFilesPeerExternalCluster` now returns the cluster peering command and passphrase as a `PSClusterPeerCommandResponse` (was previously discarded)
+* Surfaced new replication properties on `PSNetAppFilesReplicationObject` (`(Get-AzNetAppFilesVolume).DataProtection.Replication`):
+    - `ExternalReplicationSetupStatus`, `ExternalReplicationSetupInfo` - external replication setup state machine + next-step guidance
+    - `MirrorState`, `RelationshipStatus` - current mirror state and transfer status
 
 ## Version 1.1.0
 * Updated to api-version 2025-12-01
