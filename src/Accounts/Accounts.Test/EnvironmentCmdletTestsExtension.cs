@@ -132,6 +132,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             env.SetProperty("ManagedHsmServiceEndpointSuffix", "managedhsm.azure.cn");
             env.SetProperty("MicrosoftGraphEndpointResourceId", "https://microsoftgraph.chinacloudapi.cn/");
             env.SetProperty("MicrosoftGraphUrl", "https://microsoftgraph.chinacloudapi.cn");
+            env.SetProperty("AzureAppConfigurationEndpointSuffix", "azconfig.azure.cn");
+            env.SetProperty("AzureAppConfigurationEndpointResourceId", "https://azconfig.azure.cn");
             env.SetProperty("ContainerRegistryEndpointResourceId", "https://management.chinacloudapi.cn");
             return env;
         }
@@ -184,6 +186,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             env.SetProperty("ManagedHsmServiceEndpointSuffix", "managedhsm.usgovcloudapi.net");
             env.SetProperty("MicrosoftGraphEndpointResourceId", "https://graph.microsoft.us/");
             env.SetProperty("MicrosoftGraphUrl", "https://graph.microsoft.us");
+            env.SetProperty("AzureAppConfigurationEndpointSuffix", "azconfig.azure.us");
+            env.SetProperty("AzureAppConfigurationEndpointResourceId", "https://azconfig.azure.us");
             env.SetProperty("ContainerRegistryEndpointResourceId", "https://management.usgovcloudapi.net");
             return env;
         }

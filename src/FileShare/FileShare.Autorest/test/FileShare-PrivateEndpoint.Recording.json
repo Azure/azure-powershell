@@ -1,0 +1,521 @@
+{
+  "FileShare-PrivateEndpoint+FileShare with Private Network Access+Should create FileShare with private network access+$PUT+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"purpose\": \"pe-testing\",\r\n    \"network\": \"private\"\r\n  },\r\n  \"location\": \"eastasia\",\r\n  \"properties\": {\r\n    \"mediaTier\": \"SSD\",\r\n    \"redundancy\": \"Local\",\r\n    \"protocol\": \"NFS\",\r\n    \"provisionedStorageGiB\": 1024,\r\n    \"provisionedIOPerSec\": 4024,\r\n    \"provisionedThroughputMiBPerSec\": 228,\r\n    \"publicNetworkAccess\": \"Disabled\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "360" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operationresults/3901d0d0-1ef1-4683-a646-575fdbff33e5?api-version=2025-09-01-preview\u0026t=639095851010835916\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=dZom_HCKS3qUFsBi7q0QVMsyl3nRrVKlmCRkEyItqNsVQOjFGXCXMsgCy2A99MTUv9XZwMVbPBJeRRapih1FeNxBCSGPt-N5vv-9lo6EM76nY1kAaxpCstDkQBEb2tKIwmBS6baWypc0EtCxBuCFw7-k16Gh-Q_wUcvKNHpi5-XtrBIYyQOZlnIZbauuGU-RPRmz8UqU_T9iH0nnnFZwg5obAf8syLYPMsgWv5tvSXunfbPCtjIuwm11I8DdHryqK25V7G9zURiMR057W-fh8-CBtxMXH38AvzviIYrSHAzUuvijULb6PJZB_ijuLosZ_LbL5O3Lc9DbWDzIoc6sTQ\u0026h=YX1QewLv4xqBc6Ecs3ABx2hTcqBCsKShyqORoImk2Do" ],
+        "Retry-After": [ "5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "b8e68a8cc4d92f2e66ac24fe8bae68d5" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/3901d0d0-1ef1-4683-a646-575fdbff33e5?api-version=2025-09-01-preview\u0026t=639095851010835916\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=VGMqt0qucTWM_SrMX_ZpZlxphrVez8cN9wR-neiEuFF6rLg1xP6l0nTB2QqHmV10esfU9Div0osSXWJg-6DqHoS9DqhBVbXQqtbseslHppuF3a2IJ2F50cjek6y0xP-xKt6r_gCoy2etXXkLoAz7HujQY6-siai2Un9n_7cU74QQeIPfBVu8yYx2zkRZWFnSt1MHJWwrJUBF13oMpUm5C5FixfGSfumc_pC-ouTmiMhMWFE6Cvf1pltn3bxhmELis1Ubr2lDldAQoSAO1gpLK6FXNmc-rxifc9zUwLiOuEEzMr9yLaj_k4dmrYxoCIXugB8NQDflxldvcXHR2I5W_g\u0026h=1bEfj9RQXuOiqyZFE9lk4_pCHlh6Wlhp2U8jk2sRgzc" ],
+        "x-ms-operation-identifier": [ "tenantId=70a036f6-8e4d-4615-bad6-149c02e7720d,objectId=d5eeff31-8291-4132-87aa-433ae5b67920/eastasia/37d1a51a-b4d7-430d-ab39-fd2336248a4b" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "a1bc022f-5524-4799-a6d2-47641eb38df5" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20260320T063141Z:a1bc022f-5524-4799-a6d2-47641eb38df5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 69B67E4A8BA44450AAFB52F58D976D1B Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:31:40Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:31:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "765" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"mediaTier\":\"SSD\",\"redundancy\":\"Local\",\"protocol\":\"NFS\",\"provisionedStorageGiB\":1024,\"provisionedIOPerSec\":4024,\"provisionedThroughputMiBPerSec\":228,\"provisioningState\":\"Creating\",\"publicNetworkAccess\":\"Disabled\"},\"tags\":{\"purpose\":\"pe-testing\",\"network\":\"private\"},\"location\":\"eastasia\",\"id\":\"/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01\",\"name\":\"share-pe-fixed01\",\"type\":\"Microsoft.FileShares/fileShares\",\"systemData\":{\"createdBy\":\"ankushb@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-20T06:31:40.6617106+00:00\",\"lastModifiedBy\":\"ankushb@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-20T06:31:40.6617106+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "FileShare-PrivateEndpoint+FileShare with Private Network Access+Should create FileShare with private network access+$GET+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/3901d0d0-1ef1-4683-a646-575fdbff33e5?api-version=2025-09-01-preview\u0026t=639095851010835916\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=VGMqt0qucTWM_SrMX_ZpZlxphrVez8cN9wR-neiEuFF6rLg1xP6l0nTB2QqHmV10esfU9Div0osSXWJg-6DqHoS9DqhBVbXQqtbseslHppuF3a2IJ2F50cjek6y0xP-xKt6r_gCoy2etXXkLoAz7HujQY6-siai2Un9n_7cU74QQeIPfBVu8yYx2zkRZWFnSt1MHJWwrJUBF13oMpUm5C5FixfGSfumc_pC-ouTmiMhMWFE6Cvf1pltn3bxhmELis1Ubr2lDldAQoSAO1gpLK6FXNmc-rxifc9zUwLiOuEEzMr9yLaj_k4dmrYxoCIXugB8NQDflxldvcXHR2I5W_g\u0026h=1bEfj9RQXuOiqyZFE9lk4_pCHlh6Wlhp2U8jk2sRgzc+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/3901d0d0-1ef1-4683-a646-575fdbff33e5?api-version=2025-09-01-preview\u0026t=639095851010835916\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=VGMqt0qucTWM_SrMX_ZpZlxphrVez8cN9wR-neiEuFF6rLg1xP6l0nTB2QqHmV10esfU9Div0osSXWJg-6DqHoS9DqhBVbXQqtbseslHppuF3a2IJ2F50cjek6y0xP-xKt6r_gCoy2etXXkLoAz7HujQY6-siai2Un9n_7cU74QQeIPfBVu8yYx2zkRZWFnSt1MHJWwrJUBF13oMpUm5C5FixfGSfumc_pC-ouTmiMhMWFE6Cvf1pltn3bxhmELis1Ubr2lDldAQoSAO1gpLK6FXNmc-rxifc9zUwLiOuEEzMr9yLaj_k4dmrYxoCIXugB8NQDflxldvcXHR2I5W_g\u0026h=1bEfj9RQXuOiqyZFE9lk4_pCHlh6Wlhp2U8jk2sRgzc",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "deb0d8a2-61f9-4082-9164-1a9a02063431" ],
+        "CommandName": [ "New-AzFileShare" ],
+        "FullCommandName": [ "New-AzFileShare_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.4", "Az.FileShare/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "4a74f56756c64e079a586c8dc396dc1c" ],
+        "x-ms-operation-identifier": [ "tenantId=70a036f6-8e4d-4615-bad6-149c02e7720d,objectId=d5eeff31-8291-4132-87aa-433ae5b67920/westus2/1e041cf8-5980-472a-b048-a805da63d9d1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "e847385f-2acf-4dac-a0a7-da95d273f0c9" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260320T063146Z:e847385f-2acf-4dac-a0a7-da95d273f0c9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9C68ABBF329A4503987B3261957D93C6 Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:31:46Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:31:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "383" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/3901d0d0-1ef1-4683-a646-575fdbff33e5\",\"name\":\"3901d0d0-1ef1-4683-a646-575fdbff33e5\",\"status\":\"Succeeded\",\"startTime\":\"2026-03-20T06:31:40.950068+00:00\",\"endTime\":\"2026-03-20T06:31:44.2981811+00:00\"}",
+      "isContentBase64": false
+    }
+  },
+  "FileShare-PrivateEndpoint+FileShare with Private Network Access+Should create FileShare with private network access+$GET+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "deb0d8a2-61f9-4082-9164-1a9a02063431" ],
+        "CommandName": [ "New-AzFileShare" ],
+        "FullCommandName": [ "New-AzFileShare_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.4", "Az.FileShare/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "a79739d20a6a6a6c005c0a5f4da2c7ed" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
+        "x-ms-correlation-request-id": [ "696693ab-1ce6-4677-83ce-16ccecb93557" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20260320T063147Z:696693ab-1ce6-4677-83ce-16ccecb93557" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7064FC3AFDC94F07993CB69AFAE2BC9E Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:31:46Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:31:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1267" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"mountName\":\"share-pe-fixed01\",\"hostName\":\"fs-vlmpjgtrxn2jp2f4t.z19.file.storage.azure.net\",\"mediaTier\":\"SSD\",\"redundancy\":\"Local\",\"protocol\":\"NFS\",\"provisionedStorageGiB\":1024,\"provisionedStorageNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"provisionedIOPerSec\":4024,\"provisionedIOPerSecNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"provisionedThroughputMiBPerSec\":228,\"provisionedThroughputNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"includedBurstIOPerSec\":12072,\"maxBurstIOPerSecCredits\":28972800,\"nfsProtocolProperties\":{\"rootSquash\":\"NoRootSquash\"},\"publicAccessProperties\":{\"allowedSubnets\":[]},\"provisioningState\":\"Succeeded\",\"publicNetworkAccess\":\"Disabled\",\"privateEndpointConnections\":[]},\"tags\":{\"purpose\":\"pe-testing\",\"network\":\"private\"},\"location\":\"eastasia\",\"id\":\"/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01\",\"name\":\"share-pe-fixed01\",\"type\":\"Microsoft.FileShares/fileShares\",\"systemData\":{\"createdBy\":\"ankushb@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-20T06:31:40.6617106+00:00\",\"lastModifiedBy\":\"ankushb@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-20T06:31:40.6617106+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "FileShare-PrivateEndpoint+FileShare with Private Network Access+Should verify FileShare is not publicly accessible+$GET+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "b52ce2fc-50da-4e69-9dbe-102ecf420358" ],
+        "CommandName": [ "Get-AzFileShare" ],
+        "FullCommandName": [ "Get-AzFileShare_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.4", "Az.FileShare/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "9ee53cc13875cee90e10181022fce95c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "88778fb0-1522-4c24-adea-f9516a39cbef" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20260320T063147Z:88778fb0-1522-4c24-adea-f9516a39cbef" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EC2129CF2BAD4D03887AC3964D96532F Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:31:47Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:31:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1267" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"mountName\":\"share-pe-fixed01\",\"hostName\":\"fs-vlmpjgtrxn2jp2f4t.z19.file.storage.azure.net\",\"mediaTier\":\"SSD\",\"redundancy\":\"Local\",\"protocol\":\"NFS\",\"provisionedStorageGiB\":1024,\"provisionedStorageNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"provisionedIOPerSec\":4024,\"provisionedIOPerSecNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"provisionedThroughputMiBPerSec\":228,\"provisionedThroughputNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"includedBurstIOPerSec\":12072,\"maxBurstIOPerSecCredits\":28972800,\"nfsProtocolProperties\":{\"rootSquash\":\"NoRootSquash\"},\"publicAccessProperties\":{\"allowedSubnets\":[]},\"provisioningState\":\"Succeeded\",\"publicNetworkAccess\":\"Disabled\",\"privateEndpointConnections\":[]},\"tags\":{\"purpose\":\"pe-testing\",\"network\":\"private\"},\"location\":\"eastasia\",\"id\":\"/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01\",\"name\":\"share-pe-fixed01\",\"type\":\"Microsoft.FileShares/fileShares\",\"systemData\":{\"createdBy\":\"ankushb@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-20T06:31:40.6617106+00:00\",\"lastModifiedBy\":\"ankushb@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-20T06:31:40.6617106+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "FileShare-PrivateEndpoint+Private Endpoint Creation and Configuration+Should create Private Endpoint for FileShare+$GET+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "5fd0b7f4-6c7e-4445-865d-e8891e07cb10" ],
+        "CommandName": [ "Get-AzFileShare" ],
+        "FullCommandName": [ "Get-AzFileShare_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.4", "Az.FileShare/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0e46c6d7c537cde5230ea9d785c4083e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "a479bc95-b422-49db-8e0a-be5f840b45af" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20260320T063149Z:a479bc95-b422-49db-8e0a-be5f840b45af" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2A83381E2BF141C3894FAA45CB9C3EA5 Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:31:48Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:31:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1267" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"mountName\":\"share-pe-fixed01\",\"hostName\":\"fs-vlmpjgtrxn2jp2f4t.z19.file.storage.azure.net\",\"mediaTier\":\"SSD\",\"redundancy\":\"Local\",\"protocol\":\"NFS\",\"provisionedStorageGiB\":1024,\"provisionedStorageNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"provisionedIOPerSec\":4024,\"provisionedIOPerSecNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"provisionedThroughputMiBPerSec\":228,\"provisionedThroughputNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"includedBurstIOPerSec\":12072,\"maxBurstIOPerSecCredits\":28972800,\"nfsProtocolProperties\":{\"rootSquash\":\"NoRootSquash\"},\"publicAccessProperties\":{\"allowedSubnets\":[]},\"provisioningState\":\"Succeeded\",\"publicNetworkAccess\":\"Disabled\",\"privateEndpointConnections\":[]},\"tags\":{\"purpose\":\"pe-testing\",\"network\":\"private\"},\"location\":\"eastasia\",\"id\":\"/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01\",\"name\":\"share-pe-fixed01\",\"type\":\"Microsoft.FileShares/fileShares\",\"systemData\":{\"createdBy\":\"ankushb@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-20T06:31:40.6617106+00:00\",\"lastModifiedBy\":\"ankushb@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-20T06:31:40.6617106+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "FileShare-PrivateEndpoint+Network Security and Access Control+Should verify FileShare is only accessible via Private Endpoint+$GET+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "8dc52469-8da1-4242-9c32-b7808985dc08" ],
+        "CommandName": [ "Get-AzFileShare" ],
+        "FullCommandName": [ "Get-AzFileShare_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.4", "Az.FileShare/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "cc54682381c2bd357e51a93e9807a1e5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "4c4f83ca-8a66-4860-8fd6-42bd414e977f" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20260320T063234Z:4c4f83ca-8a66-4860-8fd6-42bd414e977f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 959E20578C234A00AD58D88FD417567E Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:32:34Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:32:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1953" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"mountName\":\"share-pe-fixed01\",\"hostName\":\"fs-vlmpjgtrxn2jp2f4t.z19.file.storage.azure.net\",\"mediaTier\":\"SSD\",\"redundancy\":\"Local\",\"protocol\":\"NFS\",\"provisionedStorageGiB\":1024,\"provisionedStorageNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"provisionedIOPerSec\":4024,\"provisionedIOPerSecNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"provisionedThroughputMiBPerSec\":228,\"provisionedThroughputNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"includedBurstIOPerSec\":12072,\"maxBurstIOPerSecCredits\":28972800,\"nfsProtocolProperties\":{\"rootSquash\":\"NoRootSquash\"},\"publicAccessProperties\":{\"allowedSubnets\":[]},\"provisioningState\":\"Succeeded\",\"publicNetworkAccess\":\"Disabled\",\"privateEndpointConnections\":[{\"properties\":{\"privateEndpoint\":{\"id\":\"/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.Network/privateEndpoints/pe-fileshare-fixed01\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"\",\"actionsRequired\":\"None\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01/privateEndpointConnections/pe-fileshare-fixed01.bb16a89e-3b26-4371-a2f8-fa6ab6842626\",\"name\":\"pe-fileshare-fixed01.bb16a89e-3b26-4371-a2f8-fa6ab6842626\",\"type\":\"Microsoft.FileShares/privateEndpointConnections\"}]},\"tags\":{\"purpose\":\"pe-testing\",\"network\":\"private\"},\"location\":\"eastasia\",\"id\":\"/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01\",\"name\":\"share-pe-fixed01\",\"type\":\"Microsoft.FileShares/fileShares\",\"systemData\":{\"createdBy\":\"ankushb@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-20T06:31:40.6617106+00:00\",\"lastModifiedBy\":\"ankushb@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-20T06:31:40.6617106+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "FileShare-PrivateEndpoint+Network Security and Access Control+Should update FileShare with network access rules+$PATCH+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Disabled\"\r\n  },\r\n  \"tags\": {\r\n    \"security\": \"high\",\r\n    \"access\": \"private-only\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "141" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operationresults/efdf268b-d1a3-4480-8e5e-6efa1c590601?api-version=2025-09-01-preview\u0026t=639095851553900818\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=LMsYehJoO8Axaa4FHBvOmTVd0mEzU0iYn3Uyng14NoH7pDBPKBqUgljQsjcHwbTJeXXGbaSNdtHvlgMRQhAm5eXNED9evVXWQQJYrhUgV9zXSqAXHzknZJPwzL9LXQaNEWeZ0FNXNkpMNTSsP6xbAtYyGw8WnoI-gTDvVcKDXby1iOYLF9k211AT-wG8Vaxim7GmQ1Qko6n-xLobEg4iSs8JzFOInBrX10l52abV06eE8nO-zTkXHBXlEgsoELPz-AzE7zd9hLC1xB10schFxpIt4d4UJMJVCGJRETNceZQeJm27YOC4izjLZMFgjThXEf13s8vrM8PsWyfilT5Uig\u0026h=rkokO7LrL6e1mkSdH4jIqoc7cJZrDigKcWGTl2kmnao" ],
+        "Retry-After": [ "5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "f3a5a264adaa6199d1084010f0ec519a" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/efdf268b-d1a3-4480-8e5e-6efa1c590601?api-version=2025-09-01-preview\u0026t=639095851553744556\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=Iw43ajQZFLAClzoOiUF744ufHvBEJSkZ39dfhs8h5Cc2Xld0KtIZkPnhJo2crBepFNDgZ1SshK7oS1y68hpJSdtCy3SJfUKHBfifNPG1rVZ4diTVmYAkxRWTUvn2r_pmvSgQ-qN-GMEmVqIDCbyZjw5jsxB8pXt9oawBVzKPqCdyhRYRSt9p49LCpZTktlaC_fMINtEFX0Vq306wMZA115sMB3zlbzWr9Q88G-VInNXw2gbNS7QowUtM5CBUtBWPbNE2acI6q1FvxwXvyC1D3XaJi3BvPApeehTZk00d9oG2iXlR3VWZ7KlSSFoDQNeO4bwIpaLv5qYpvKNRTbmrBA\u0026h=ka_Pk84cDTAQYqOwsrav_iyd_AajCHuZlqWSgzPsf8s" ],
+        "x-ms-operation-identifier": [ "tenantId=70a036f6-8e4d-4615-bad6-149c02e7720d,objectId=d5eeff31-8291-4132-87aa-433ae5b67920/eastasia/e8106d7b-68b0-4286-9801-1260466c7d32" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "d271ebd5-5252-4b1e-8893-067b70f2a3ed" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20260320T063235Z:d271ebd5-5252-4b1e-8893-067b70f2a3ed" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FBB079030BA34E03B06ABF7182D41E20 Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:32:35Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:32:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "FileShare-PrivateEndpoint+Network Security and Access Control+Should update FileShare with network access rules+$GET+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/efdf268b-d1a3-4480-8e5e-6efa1c590601?api-version=2025-09-01-preview\u0026t=639095851553744556\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=Iw43ajQZFLAClzoOiUF744ufHvBEJSkZ39dfhs8h5Cc2Xld0KtIZkPnhJo2crBepFNDgZ1SshK7oS1y68hpJSdtCy3SJfUKHBfifNPG1rVZ4diTVmYAkxRWTUvn2r_pmvSgQ-qN-GMEmVqIDCbyZjw5jsxB8pXt9oawBVzKPqCdyhRYRSt9p49LCpZTktlaC_fMINtEFX0Vq306wMZA115sMB3zlbzWr9Q88G-VInNXw2gbNS7QowUtM5CBUtBWPbNE2acI6q1FvxwXvyC1D3XaJi3BvPApeehTZk00d9oG2iXlR3VWZ7KlSSFoDQNeO4bwIpaLv5qYpvKNRTbmrBA\u0026h=ka_Pk84cDTAQYqOwsrav_iyd_AajCHuZlqWSgzPsf8s+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/efdf268b-d1a3-4480-8e5e-6efa1c590601?api-version=2025-09-01-preview\u0026t=639095851553744556\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=Iw43ajQZFLAClzoOiUF744ufHvBEJSkZ39dfhs8h5Cc2Xld0KtIZkPnhJo2crBepFNDgZ1SshK7oS1y68hpJSdtCy3SJfUKHBfifNPG1rVZ4diTVmYAkxRWTUvn2r_pmvSgQ-qN-GMEmVqIDCbyZjw5jsxB8pXt9oawBVzKPqCdyhRYRSt9p49LCpZTktlaC_fMINtEFX0Vq306wMZA115sMB3zlbzWr9Q88G-VInNXw2gbNS7QowUtM5CBUtBWPbNE2acI6q1FvxwXvyC1D3XaJi3BvPApeehTZk00d9oG2iXlR3VWZ7KlSSFoDQNeO4bwIpaLv5qYpvKNRTbmrBA\u0026h=ka_Pk84cDTAQYqOwsrav_iyd_AajCHuZlqWSgzPsf8s",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "4188bb1b-2425-45c6-ac48-2e5a525a6a36" ],
+        "CommandName": [ "Update-AzFileShare" ],
+        "FullCommandName": [ "Update-AzFileShare_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.4", "Az.FileShare/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e149bcc8c40c8b2f8590a008b92d58f3" ],
+        "x-ms-operation-identifier": [ "tenantId=70a036f6-8e4d-4615-bad6-149c02e7720d,objectId=d5eeff31-8291-4132-87aa-433ae5b67920/westus2/61bc46a3-dec4-49ed-9e18-a4bbee622896" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "c25e6102-3ed5-4a56-afd4-2546bf88d666" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260320T063241Z:c25e6102-3ed5-4a56-afd4-2546bf88d666" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0E81980BA9CD4E9289A8BB25B3F060B7 Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:32:40Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:32:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "384" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/efdf268b-d1a3-4480-8e5e-6efa1c590601\",\"name\":\"efdf268b-d1a3-4480-8e5e-6efa1c590601\",\"status\":\"Succeeded\",\"startTime\":\"2026-03-20T06:32:35.3104758+00:00\",\"endTime\":\"2026-03-20T06:32:36.5527293+00:00\"}",
+      "isContentBase64": false
+    }
+  },
+  "FileShare-PrivateEndpoint+Network Security and Access Control+Should update FileShare with network access rules+$GET+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operationresults/efdf268b-d1a3-4480-8e5e-6efa1c590601?api-version=2025-09-01-preview\u0026t=639095851553900818\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=LMsYehJoO8Axaa4FHBvOmTVd0mEzU0iYn3Uyng14NoH7pDBPKBqUgljQsjcHwbTJeXXGbaSNdtHvlgMRQhAm5eXNED9evVXWQQJYrhUgV9zXSqAXHzknZJPwzL9LXQaNEWeZ0FNXNkpMNTSsP6xbAtYyGw8WnoI-gTDvVcKDXby1iOYLF9k211AT-wG8Vaxim7GmQ1Qko6n-xLobEg4iSs8JzFOInBrX10l52abV06eE8nO-zTkXHBXlEgsoELPz-AzE7zd9hLC1xB10schFxpIt4d4UJMJVCGJRETNceZQeJm27YOC4izjLZMFgjThXEf13s8vrM8PsWyfilT5Uig\u0026h=rkokO7LrL6e1mkSdH4jIqoc7cJZrDigKcWGTl2kmnao+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operationresults/efdf268b-d1a3-4480-8e5e-6efa1c590601?api-version=2025-09-01-preview\u0026t=639095851553900818\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=LMsYehJoO8Axaa4FHBvOmTVd0mEzU0iYn3Uyng14NoH7pDBPKBqUgljQsjcHwbTJeXXGbaSNdtHvlgMRQhAm5eXNED9evVXWQQJYrhUgV9zXSqAXHzknZJPwzL9LXQaNEWeZ0FNXNkpMNTSsP6xbAtYyGw8WnoI-gTDvVcKDXby1iOYLF9k211AT-wG8Vaxim7GmQ1Qko6n-xLobEg4iSs8JzFOInBrX10l52abV06eE8nO-zTkXHBXlEgsoELPz-AzE7zd9hLC1xB10schFxpIt4d4UJMJVCGJRETNceZQeJm27YOC4izjLZMFgjThXEf13s8vrM8PsWyfilT5Uig\u0026h=rkokO7LrL6e1mkSdH4jIqoc7cJZrDigKcWGTl2kmnao",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "4188bb1b-2425-45c6-ac48-2e5a525a6a36" ],
+        "CommandName": [ "Update-AzFileShare" ],
+        "FullCommandName": [ "Update-AzFileShare_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.4", "Az.FileShare/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "a91e2487f5259a6abf3366ff99f75a49" ],
+        "x-ms-operation-identifier": [ "tenantId=70a036f6-8e4d-4615-bad6-149c02e7720d,objectId=d5eeff31-8291-4132-87aa-433ae5b67920/westus/4189c0bf-5236-45fe-bdcd-b518d6b47504" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "e5d63356-1257-4011-ade1-b302b5b74810" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260320T063242Z:e5d63356-1257-4011-ade1-b302b5b74810" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 34CE6B5310B84E5B8DC33C2857EA52B4 Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:32:41Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:32:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1234" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"mountName\":\"share-pe-fixed01\",\"hostName\":\"fs-vlmpjgtrxn2jp2f4t.z19.file.storage.azure.net\",\"mediaTier\":\"SSD\",\"redundancy\":\"Local\",\"protocol\":\"NFS\",\"provisionedStorageGiB\":1024,\"provisionedStorageNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"provisionedIOPerSec\":4024,\"provisionedIOPerSecNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"provisionedThroughputMiBPerSec\":228,\"provisionedThroughputNextAllowedDowngrade\":\"2026-03-20T06:31:43+00:00\",\"includedBurstIOPerSec\":12072,\"maxBurstIOPerSecCredits\":28972800,\"nfsProtocolProperties\":{\"rootSquash\":\"NoRootSquash\"},\"publicAccessProperties\":{\"allowedSubnets\":[]},\"provisioningState\":\"Succeeded\",\"publicNetworkAccess\":\"Disabled\"},\"tags\":{\"security\":\"high\",\"access\":\"private-only\"},\"location\":\"eastasia\",\"id\":\"/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01\",\"name\":\"share-pe-fixed01\",\"type\":\"Microsoft.FileShares/fileShares\",\"systemData\":{\"createdBy\":\"ankushb@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-03-20T06:31:40.6617106+00:00\",\"lastModifiedBy\":\"ankushb@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-03-20T06:31:40.6617106+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "FileShare-PrivateEndpoint+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/resourceGroups/rg-fileshare-test/providers/Microsoft.FileShares/fileShares/share-pe-fixed01?api-version=2025-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "5573b4a0-5792-46f5-ab21-498fc8791ce7" ],
+        "CommandName": [ "Remove-AzFileShare" ],
+        "FullCommandName": [ "Remove-AzFileShare_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.4", "Az.FileShare/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operationresults/53021e74-838d-438a-9d04-ad935ac26af7?api-version=2025-09-01-preview\u0026t=639095851949571236\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=bRiv5WnL36QSBJF2qZaylBd_s21HY3p2v_9arv2Ypwsmwho1RTDGSSdrTbakPuX2A00go3wJbWnn8eJzDlOwrd2qn-GMSOh5MhMidNfz7nQe5S2NNjjQ2wAL2hDhtMhvZLJDHX-xXHTILn7yZ5QwPxCZncG6jPyHfi5-hlGg-VGIhPaFosCKTgDQV23XFfSCGoHyu8Xa5WmuMNVqMCM3a-_PEnui7X_Ix3so_quPBCsG2tsjWqFjlcUcvslcNeGrDvaqpeDfGiJgS7CecgihNe_ZCQzM5hC04LYz-HbL3h2xdmtY_fAzg4QNVnuGvnhrE7UQIbbROEiEToN0dhlXDA\u0026h=RzMuMjn7l2tvJbBwtwmGzef-6Q3BRPPICiMoHwu_hwI" ],
+        "Retry-After": [ "5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "57b5615f8d6b38c848a47ca527da13d0" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/53021e74-838d-438a-9d04-ad935ac26af7?api-version=2025-09-01-preview\u0026t=639095851949571236\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=Ow9lZ6CwH9JGeMMpSqJNUGVmgVQAJnsoylgvIh5Op5ELui_8gWnjh2CBy4ZT58YOIW9S16sJh9it08K8b1vDjzwcElFKN4Ge4J_Mtmpeyjiwmz8qgDR5Lv6Oa9PoSB0PX_nxOs-L0aWe7CmGYzcN8LczDYHXRUm_iJPYsMIrZQp6l_A848zOa9b10_79RdxFY2zhQjCkRuPm2kEGxH7i9_mP0bEW6eGaZxaq52_nop4TrYtJ90V0--bz62p2D61wlD6__OrljZ4W3anutEYys2LYxYU4dDCcxiaEEhKYh3qyQaUaF-cmDzxzmPvpMqU2HxfOsv_ffkCQxpVVnLt8fA\u0026h=x0rkN1Odq7EOG_R0QzWVxto4YvZWwds6kgwjrU_yN7Y" ],
+        "x-ms-operation-identifier": [ "tenantId=70a036f6-8e4d-4615-bad6-149c02e7720d,objectId=d5eeff31-8291-4132-87aa-433ae5b67920/eastasia/19c1eaa1-a41f-4de9-9d9f-4bd1ff05a127" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "963cca17-022b-43bb-b49b-f6494198740c" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20260320T063314Z:963cca17-022b-43bb-b49b-f6494198740c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6B85BC9C8A954E94B8DB8A030091250E Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:33:14Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:33:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "FileShare-PrivateEndpoint+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/53021e74-838d-438a-9d04-ad935ac26af7?api-version=2025-09-01-preview\u0026t=639095851949571236\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=Ow9lZ6CwH9JGeMMpSqJNUGVmgVQAJnsoylgvIh5Op5ELui_8gWnjh2CBy4ZT58YOIW9S16sJh9it08K8b1vDjzwcElFKN4Ge4J_Mtmpeyjiwmz8qgDR5Lv6Oa9PoSB0PX_nxOs-L0aWe7CmGYzcN8LczDYHXRUm_iJPYsMIrZQp6l_A848zOa9b10_79RdxFY2zhQjCkRuPm2kEGxH7i9_mP0bEW6eGaZxaq52_nop4TrYtJ90V0--bz62p2D61wlD6__OrljZ4W3anutEYys2LYxYU4dDCcxiaEEhKYh3qyQaUaF-cmDzxzmPvpMqU2HxfOsv_ffkCQxpVVnLt8fA\u0026h=x0rkN1Odq7EOG_R0QzWVxto4YvZWwds6kgwjrU_yN7Y+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/53021e74-838d-438a-9d04-ad935ac26af7?api-version=2025-09-01-preview\u0026t=639095851949571236\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=Ow9lZ6CwH9JGeMMpSqJNUGVmgVQAJnsoylgvIh5Op5ELui_8gWnjh2CBy4ZT58YOIW9S16sJh9it08K8b1vDjzwcElFKN4Ge4J_Mtmpeyjiwmz8qgDR5Lv6Oa9PoSB0PX_nxOs-L0aWe7CmGYzcN8LczDYHXRUm_iJPYsMIrZQp6l_A848zOa9b10_79RdxFY2zhQjCkRuPm2kEGxH7i9_mP0bEW6eGaZxaq52_nop4TrYtJ90V0--bz62p2D61wlD6__OrljZ4W3anutEYys2LYxYU4dDCcxiaEEhKYh3qyQaUaF-cmDzxzmPvpMqU2HxfOsv_ffkCQxpVVnLt8fA\u0026h=x0rkN1Odq7EOG_R0QzWVxto4YvZWwds6kgwjrU_yN7Y",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "5573b4a0-5792-46f5-ab21-498fc8791ce7" ],
+        "CommandName": [ "Remove-AzFileShare" ],
+        "FullCommandName": [ "Remove-AzFileShare_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.4", "Az.FileShare/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0a8467bd75ac0bd02871b9e03d89e576" ],
+        "x-ms-operation-identifier": [ "tenantId=70a036f6-8e4d-4615-bad6-149c02e7720d,objectId=d5eeff31-8291-4132-87aa-433ae5b67920/westus2/2137afea-3e8c-4edd-aa16-e34e43a86620" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "6fb3c64b-aa65-42e9-bc4c-015f5b359b07" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260320T063320Z:6fb3c64b-aa65-42e9-bc4c-015f5b359b07" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 817B3DC10963431587D6212C7C2BF2DF Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:33:20Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:33:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "384" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operations/53021e74-838d-438a-9d04-ad935ac26af7\",\"name\":\"53021e74-838d-438a-9d04-ad935ac26af7\",\"status\":\"Succeeded\",\"startTime\":\"2026-03-20T06:33:14.8876739+00:00\",\"endTime\":\"2026-03-20T06:33:17.8629047+00:00\"}",
+      "isContentBase64": false
+    }
+  },
+  "FileShare-PrivateEndpoint+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operationresults/53021e74-838d-438a-9d04-ad935ac26af7?api-version=2025-09-01-preview\u0026t=639095851949571236\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=bRiv5WnL36QSBJF2qZaylBd_s21HY3p2v_9arv2Ypwsmwho1RTDGSSdrTbakPuX2A00go3wJbWnn8eJzDlOwrd2qn-GMSOh5MhMidNfz7nQe5S2NNjjQ2wAL2hDhtMhvZLJDHX-xXHTILn7yZ5QwPxCZncG6jPyHfi5-hlGg-VGIhPaFosCKTgDQV23XFfSCGoHyu8Xa5WmuMNVqMCM3a-_PEnui7X_Ix3so_quPBCsG2tsjWqFjlcUcvslcNeGrDvaqpeDfGiJgS7CecgihNe_ZCQzM5hC04LYz-HbL3h2xdmtY_fAzg4QNVnuGvnhrE7UQIbbROEiEToN0dhlXDA\u0026h=RzMuMjn7l2tvJbBwtwmGzef-6Q3BRPPICiMoHwu_hwI+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4/providers/Microsoft.FileShares/locations/eastasia/partitions/4d042dc6-fe17-4698-a23f-ec6a8d1e98f4-share-pe-fixed01/operationresults/53021e74-838d-438a-9d04-ad935ac26af7?api-version=2025-09-01-preview\u0026t=639095851949571236\u0026c=MIIHkTCCBnmgAwIBAgIRAP3XwgmMzTECUfmSl92xlr4wDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UEAxMrQ0NNRSBHMSBUTFMgUlNBIDIwNDggU0hBMjU2IDIwNDkgV1VTMiBDQSAwMTAeFw0yNjAyMTgxOTI2MTVaFw0yNjA4MTQwMTI2MTVaMEAxPjA8BgNVBAMTNWFzeW5jb3BlcmF0aW9uc2lnbmluZ2NlcnRpZmljYXRlLm1hbmFnZW1lbnQuYXp1cmUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo9Pc18CqanpQBuVpwZeW6ftvAUrV1zyKxWqSZpbIL42U_Jj9iHpzxEnsIZOYE_kbZfMTgd5PpldnVNCi6LJDjHqUTVyk7hrJsHu5g26WbtPo8I4pTs73Hbg0fH9t5drjQxKndWNfDoEhU8rg2BJZqeHRNWhEu4fOr55VHZVG3Os3qdNT2bxGwb3Unw7ckS_h1BJAjRZVHB_WfNzbEJzHtZfH7dAueGKdK7vlWONKLfbeqefD0GohG523GgpK0NliMx4kgPEvBawbXfbEkKXxyWDIEVRYJ3U_2bQr2WJzkGnedHl3ajlOPTP_E8R_hux9HT0GNDim9DtAiwwvJ0G0WQIDAQABo4IEjjCCBIowgZ0GA1UdIASBlTCBkjAMBgorBgEEAYI3ewEBMGYGCisGAQQBgjd7AgIwWDBWBggrBgEFBQcCAjBKHkgAMwAzAGUAMAAxADkAMgAxAC0ANABkADYANAAtADQAZgA4AGMALQBhADAANQA1AC0ANQBiAGQAYQBmAGYAZAA1AGUAMwAzAGQwDAYKKwYBBAGCN3sDAjAMBgorBgEEAYI3ewQCMAwGA1UdEwEB_wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA4GA1UdDwEB_wQEAwIFoDAdBgNVHQ4EFgQUDGTTa3iaby77H47gObo2Apfkos8wHwYDVR0jBBgwFoAUrONy-gOyc549lcjvh1uu3Ruh7WgwggGuBgNVHR8EggGlMIIBoTBooGagZIZiaHR0cDovL3ByaW1hcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwaqBooGaGZGh0dHA6Ly9zZWNvbmRhcnktY2RuLnBraS5jb3JlLndpbmRvd3MubmV0L3dlc3R1czIvY3Jscy9jY21ld2VzdHVzMnBraS9jY21ld2VzdHVzMmljYTAxLzEvY3VycmVudC5jcmwwWaBXoFWGU2h0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NybHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS8xL2N1cnJlbnQuY3JsMG6gbKBqhmhodHRwOi8vY2NtZXdlc3R1czJwa2kud2VzdHVzMi5wa2kuY29yZS53aW5kb3dzLm5ldC9jZXJ0aWZpY2F0ZUF1dGhvcml0aWVzL2NjbWV3ZXN0dXMyaWNhMDEvMS9jdXJyZW50LmNybDCCAbcGCCsGAQUFBwEBBIIBqTCCAaUwbAYIKwYBBQUHMAKGYGh0dHA6Ly9wcmltYXJ5LWNkbi5wa2kuY29yZS53aW5kb3dzLm5ldC93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBuBggrBgEFBQcwAoZiaHR0cDovL3NlY29uZGFyeS1jZG4ucGtpLmNvcmUud2luZG93cy5uZXQvd2VzdHVzMi9jYWNlcnRzL2NjbWV3ZXN0dXMycGtpL2NjbWV3ZXN0dXMyaWNhMDEvY2VydC5jZXIwXQYIKwYBBQUHMAKGUWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS93ZXN0dXMyL2NhY2VydHMvY2NtZXdlc3R1czJwa2kvY2NtZXdlc3R1czJpY2EwMS9jZXJ0LmNlcjBmBggrBgEFBQcwAoZaaHR0cDovL2NjbWV3ZXN0dXMycGtpLndlc3R1czIucGtpLmNvcmUud2luZG93cy5uZXQvY2VydGlmaWNhdGVBdXRob3JpdGllcy9jY21ld2VzdHVzMmljYTAxMA0GCSqGSIb3DQEBCwUAA4IBAQCAiSgRRieCQ7TFs673ul2Oa3PSQDB_d1JEs8LII_8zd2Dep4Yr3Ovjr94CWqiL6MJ9GecNesIasT0Zg064dCHFGszP5JB0b37ex5GgGiNa8wIxbWHgC2F47dErNySICb6l0HAT7eccbClk05R7dbCu6yOF2EqKVOThSUPQTmCiuJb-AxkO8sjZO6w60d_peGhM3RsnJrJ0UrhlM4cW31vPI1b7um__lceKo4-BhRYpfZlzr1HQHRay6xdlBw-jZ55uAOiC-WfGp1fw2qrCGcnTvpGofzHQofVs0qB-WBbG-mQBPZ51H-Z7ej1Eacbr5kp9jYHeMNp5gU7OmLWRXRsf\u0026s=bRiv5WnL36QSBJF2qZaylBd_s21HY3p2v_9arv2Ypwsmwho1RTDGSSdrTbakPuX2A00go3wJbWnn8eJzDlOwrd2qn-GMSOh5MhMidNfz7nQe5S2NNjjQ2wAL2hDhtMhvZLJDHX-xXHTILn7yZ5QwPxCZncG6jPyHfi5-hlGg-VGIhPaFosCKTgDQV23XFfSCGoHyu8Xa5WmuMNVqMCM3a-_PEnui7X_Ix3so_quPBCsG2tsjWqFjlcUcvslcNeGrDvaqpeDfGiJgS7CecgihNe_ZCQzM5hC04LYz-HbL3h2xdmtY_fAzg4QNVnuGvnhrE7UQIbbROEiEToN0dhlXDA\u0026h=RzMuMjn7l2tvJbBwtwmGzef-6Q3BRPPICiMoHwu_hwI",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "5573b4a0-5792-46f5-ab21-498fc8791ce7" ],
+        "CommandName": [ "Remove-AzFileShare" ],
+        "FullCommandName": [ "Remove-AzFileShare_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.1.0", "PSVersion/v7.5.4", "Az.FileShare/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "692e2a1f696109add4f9828311d6342b" ],
+        "x-ms-operation-identifier": [ "tenantId=70a036f6-8e4d-4615-bad6-149c02e7720d,objectId=d5eeff31-8291-4132-87aa-433ae5b67920/westcentralus/db04461e-101a-4491-878f-9614569e23b9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-correlation-request-id": [ "e9fa65a8-679c-4a0c-ac98-c7e580ff4172" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20260320T063321Z:e9fa65a8-679c-4a0c-ac98-c7e580ff4172" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: BBD4EE29C4014187BF91F1C51502CCF1 Ref B: CO6AA3150220037 Ref C: 2026-03-20T06:33:20Z" ],
+        "Date": [ "Fri, 20 Mar 2026 06:33:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

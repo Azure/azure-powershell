@@ -192,6 +192,102 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BenefitPlans</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BenefitPlans#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AzureHybridWindowsServerBenefit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WindowsServerVMCount</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AzureHybridWindowsServerBenefit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WindowsServerVMCount</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingConfiguration#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AutoRenew</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BillingStatus</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AutoRenew</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BillingStatus</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingPeriod</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.BillingPeriod#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Core</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndDate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PricingModel</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartDate</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Core</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndDate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PricingModel</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartDate</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.DisconnectedOperation</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.DisconnectedOperation#Multiple</TypeName>
@@ -410,6 +506,9 @@
             <Label>ArtifactName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>HardwareSettingName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ImageName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -427,6 +526,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>ArtifactName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HardwareSettingName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ImageName</PropertyName>
@@ -529,6 +631,168 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.HardwareSetting</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.HardwareSetting#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.HardwareSettingListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.HardwareSettingListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.HardwareSettingProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.HardwareSettingProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DeviceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DiskSpaceInGb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HardwareSku</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MemoryInGb</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Node</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Oem</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SolutionBuilderExtension</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TotalCore</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VersionAtRegistration</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DeviceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DiskSpaceInGb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HardwareSku</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MemoryInGb</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Node</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Oem</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SolutionBuilderExtension</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TotalCore</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VersionAtRegistration</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -737,6 +1001,52 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ReleaseVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.ImageUpdateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.ImageUpdateProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AgentVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FeatureUpdate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecurityUpdate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemReboot</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AgentVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FeatureUpdate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecurityUpdate</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemReboot</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

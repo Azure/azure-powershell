@@ -10,15 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Cmdlets;
     using System;
 
-    /// <summary>
-    /// Checks that the trusted signing account name is valid and is not already in use.
-    /// </summary>
+    /// <summary>Checks if the artifact signing account name is valid and is not already in use.</summary>
     /// <remarks>
     /// [OpenAPI] CheckNameAvailability=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.CodeSigning/checkNameAvailability"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsDiagnostic.Test, @"AzArtifactSigningAccountNameAvailability_CheckViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICheckNameAvailabilityResult))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Description(@"Checks that the trusted signing account name is valid and is not already in use.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Description(@"Checks if the artifact signing account name is valid and is not already in use.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.CodeSigning/checkNameAvailability", ApiVersion = "2025-10-13")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.NotSuggestDefaultParameterSet]

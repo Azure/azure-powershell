@@ -697,6 +697,13 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.INamespacedNameResource ResourceModifierReference');
+
+  - where:
+      verb: Backup|Edit|Find|Get|Initialize|New|Set|Start|Stop|Suspend|Sync|Test|Update
+      subject: BackupInstance|BackupInstanceAdhoc|BackupInstanceBackup|BackupInstanceProtection|BackupInstanceReadiness|BackupInstanceRestore|BackupInstanceUpdate|BackupPolicy|BackupVault|Job|MSIPermission|Operation|OperationStatus|PolicyRetentionRuleClientObject|PolicyTagClientObject|PolicyTagCriteriaClientObject|PolicyTemplate|PolicyTriggerClientObject|ResourceGuard|ResourceGuardMapping|RestorableTimeRange|RestoreRequest|RetentionLifeCycleClientObject|SoftDeletedBackupInstance
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```
 
 ## Alternate settings
