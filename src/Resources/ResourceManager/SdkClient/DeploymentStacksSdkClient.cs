@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
@@ -28,8 +29,10 @@ using Microsoft.Rest.Azure;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using AzSdkModels = Microsoft.Azure.Management.Resources.Models;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
@@ -90,7 +93,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             Subscription,
             ManagementGroup
         }
-
         /// <summary>
         /// Parameter-less constructor for mocking
         /// </summary>
@@ -507,16 +509,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         internal void DeleteResourceGroupDeploymentStack(
-            string resourceGroupName, 
-            string name, 
-            string resourcesCleanupAction, 
-            string resourceGroupsCleanupAction, 
+            string resourceGroupName,
+            string name,
+            string resourcesCleanupAction,
+            string resourceGroupsCleanupAction,
             string managementGroupsCleanupAction,
             bool bypassStackOutOfSyncError
         )
         {
             var deleteResponse = DeploymentStacksClient.DeploymentStacks
-                .DeleteAtResourceGroupWithHttpMessagesAsync(resourceGroupName, name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, bypassStackOutOfSyncError)
+                .DeleteAtResourceGroupWithHttpMessagesAsync(
+                    resourceGroupName, 
+                    name, 
+                    resourcesCleanupAction, 
+                    resourceGroupsCleanupAction, 
+                    managementGroupsCleanupAction, 
+                    null, // unmanageActionResourcesWithoutDeleteSupport
+                    bypassStackOutOfSyncError ? (bool?)true : null)
                 .GetAwaiter()
                 .GetResult();
 
@@ -531,14 +540,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         internal void DeleteSubscriptionDeploymentStack(
-            string name, 
-            string resourcesCleanupAction, 
-            string resourceGroupsCleanupAction, 
+            string name,
+            string resourcesCleanupAction,
+            string resourceGroupsCleanupAction,
             string managementGroupsCleanupAction,
             bool bypassStackOutOfSyncError
         )
         {
-            var deleteResponse = DeploymentStacksClient.DeploymentStacks.DeleteAtSubscriptionWithHttpMessagesAsync(name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, bypassStackOutOfSyncError)
+            var deleteResponse = DeploymentStacksClient.DeploymentStacks
+                .DeleteAtSubscriptionWithHttpMessagesAsync(
+                    name, 
+                    resourcesCleanupAction, 
+                    resourceGroupsCleanupAction, 
+                    managementGroupsCleanupAction, 
+                    null, // unmanageActionResourcesWithoutDeleteSupport
+                    bypassStackOutOfSyncError ? (bool?)true : null)
                 .GetAwaiter()
                 .GetResult();
 
@@ -613,27 +629,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return new PSDeploymentStack(finalStack);
         }
 
-    public void SubscriptionValidateDeploymentStack(
-        string deploymentStackName,
-        string location,
-        string templateFile,
-        string templateUri,
-        string templateSpec,
-        Hashtable templateObject,
-        string parameterUri,
-        Hashtable parameters,
-        string description,
-        string resourcesCleanupAction,
-        string resourceGroupsCleanupAction,
-        string managementGroupsCleanupAction,
-        string deploymentScope,
-        string denySettingsMode,
-        string[] denySettingsExcludedPrincipals,
-        string[] denySettingsExcludedActions,
-        bool denySettingsApplyToChildScopes,
-        Hashtable tags,
-        bool bypassStackOutOfSyncError
-)
+        public void SubscriptionValidateDeploymentStack(
+            string deploymentStackName,
+            string location,
+            string templateFile,
+            string templateUri,
+            string templateSpec,
+            Hashtable templateObject,
+            string parameterUri,
+            Hashtable parameters,
+            string description,
+            string resourcesCleanupAction,
+            string resourceGroupsCleanupAction,
+            string managementGroupsCleanupAction,
+            string deploymentScope,
+            string denySettingsMode,
+            string[] denySettingsExcludedPrincipals,
+            string[] denySettingsExcludedActions,
+            bool denySettingsApplyToChildScopes,
+            Hashtable tags,
+            bool bypassStackOutOfSyncError
+        )
         {
             // Create Deployment stack deployment model:
             var deploymentStackModel = CreateDeploymentStackModel(
@@ -661,16 +677,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         internal void DeleteManagementGroupDeploymentStack(
-            string name, 
-            string managementGroupId, 
-            string resourcesCleanupAction, 
-            string resourceGroupsCleanupAction, 
+            string name,
+            string managementGroupId,
+            string resourcesCleanupAction,
+            string resourceGroupsCleanupAction,
             string managementGroupsCleanupAction,
             bool bypassStackOutOfSyncError
         )
         {
             var deleteResponse = DeploymentStacksClient.DeploymentStacks
-                    .DeleteAtManagementGroupWithHttpMessagesAsync(managementGroupId, name, resourcesCleanupAction, resourceGroupsCleanupAction, managementGroupsCleanupAction, bypassStackOutOfSyncError)
+                    .DeleteAtManagementGroupWithHttpMessagesAsync(
+                        managementGroupId, 
+                        name, 
+                        resourcesCleanupAction, 
+                        resourceGroupsCleanupAction, 
+                        managementGroupsCleanupAction, 
+                        null, // unmanageActionResourcesWithoutDeleteSupport
+                        bypassStackOutOfSyncError ? (bool?)true : null)
                     .GetAwaiter()
                     .GetResult();
 
@@ -818,13 +841,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
            bool bypassStackOutOfSyncError
        )
         {
-            var actionOnUnmanage = new ActionOnUnmanage
+            var actionOnUnmanage = new AzSdkModels.ActionOnUnmanage
             {
                 Resources = resourcesCleanupAction,
                 ResourceGroups = resourceGroupsCleanupAction,
                 ManagementGroups = managementGroupsCleanupAction
             };
-            var denySettings = new DenySettings
+            var denySettings = new AzSdkModels.DenySettings
             {
                 Mode = denySettingsMode,
                 ExcludedPrincipals = denySettingsExcludedPrincipals,
@@ -863,12 +886,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 // NOTE(jcotillo): JsonExtensions.FromJson<> extension uses a custom serialization settings
                 // that preserves DateTime values as string (DateParseHandling = DateParseHandling.None),
                 // plus other custom settings (see: JsonExtensions.JsonObjectTypeSerializer)
-                deploymentStackModel.Template =
-                    FileUtilities.DataStore.ReadFileAsStream(templateFile).FromJson<JObject>();
+                var templateJObject = FileUtilities.DataStore.ReadFileAsStream(templateFile).FromJson<JObject>();
+                deploymentStackModel.Template = templateJObject.ToObject<Dictionary<string, object>>();
             }
             else
             {
-                deploymentStackModel.Template = templateObject.ToJToken();
+                var templateJToken = templateObject.ToJToken();
+                deploymentStackModel.Template = templateJToken.ToObject<Dictionary<string, object>>();
             }
 
             // Evaluate Template Parameters:
@@ -1056,7 +1080,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private PSDeploymentStackValidationInfo ValidateDeploymentStack(DeploymentStack deploymentStack, string deploymentStackName, DeploymentStackScope scope, string scopeName = "")
         {
-            var validationResult = RunDeploymentStackValidation(deploymentStack, deploymentStackName, scope, scopeName);   
+            var validationResult = RunDeploymentStackValidation(deploymentStack, deploymentStackName, scope, scopeName);
 
             if (validationResult.Error != null)
             {
@@ -1069,13 +1093,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
 
                 WriteError(sb.ToString());
-                
+
                 throw new InvalidOperationException($"Validation for deployment stack '{deploymentStackName}' failed.");
             }
             else
             {
                 WriteVerbose(ProjectResources.TemplateValid);
-                
+
                 return validationResult;
             }
         }

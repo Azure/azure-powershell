@@ -19,6 +19,16 @@
 -->
 
 ## Upcoming Release
+* Renamed all 12 Deployment Stack WhatIf cmdlets from `*DeploymentStackWhatIf` to `*DeploymentStackWhatIfResult` to reflect the actual API resource name (`deploymentStacksWhatIfResults`)
+* Deployment Stack WhatIf formatter improvements for CLI consistency
+    - Fixed `= DeploymentScope: null` being shown when DeploymentScope has no change - now matches CLI behavior
+    - Added API version `[apiVersion]` to resource headings in WhatIf output (sources from top-level or `resourceConfigurationChanges.after`)
+    - Fixed array-type property changes in `ResourceConfigurationChanges.Delta` not being formatted correctly
+* Added `-WithPropertyChanges` switch to `Get-AzResourceGroupDeploymentStackWhatIf`, `Get-AzSubscriptionDeploymentStackWhatIf`, and `Get-AzManagementGroupDeploymentStackWhatIf`
+    - Without the switch, uses GET (returns stored result without delta)
+    - With the switch, calls the WhatIf POST endpoint and returns the result with resource property changes (delta) populated
+* `New-Az*DeploymentStackWhatIf` and `Set-Az*DeploymentStackWhatIf` cmdlets now automatically call the WhatIf POST endpoint after CreateOrUpdate, returning results with property changes populated by default
+
 * Added `-PrincipalId` and `-PrincipalType` parameters to `New-AzDenyAssignment` to support per-principal deny assignments targeting a specific User or ServicePrincipal, in addition to the existing Everyone mode.
 * Added `New-AzDenyAssignment` cmdlet for creating user-assigned deny assignments using the `2024-07-01-preview` API. Deny assignments allow denying specific write, delete, and action operations to all principals at a given scope while excluding specified principals.
 * Added `Remove-AzDenyAssignment` cmdlet for removing user-assigned deny assignments by ID, name and scope, or pipeline input.

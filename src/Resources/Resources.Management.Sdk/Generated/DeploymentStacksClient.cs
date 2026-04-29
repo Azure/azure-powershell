@@ -66,6 +66,18 @@ namespace Microsoft.Azure.Management.Resources
         /// </summary>
         public virtual IDeploymentStacksOperations DeploymentStacks { get; private set; }
         /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtManagementGroupOperations
+        /// </summary>
+        public virtual IDeploymentStacksWhatIfResultsAtManagementGroupOperations DeploymentStacksWhatIfResultsAtManagementGroup { get; private set; }
+        /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtSubscriptionOperations
+        /// </summary>
+        public virtual IDeploymentStacksWhatIfResultsAtSubscriptionOperations DeploymentStacksWhatIfResultsAtSubscription { get; private set; }
+        /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtResourceGroupOperations
+        /// </summary>
+        public virtual IDeploymentStacksWhatIfResultsAtResourceGroupOperations DeploymentStacksWhatIfResultsAtResourceGroup { get; private set; }
+        /// <summary>
         /// Initializes a new instance of the DeploymentStacksClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -304,8 +316,11 @@ namespace Microsoft.Azure.Management.Resources
         private void Initialize()
         {
             this.DeploymentStacks = new DeploymentStacksOperations(this);
+            this.DeploymentStacksWhatIfResultsAtManagementGroup = new DeploymentStacksWhatIfResultsAtManagementGroupOperations(this);
+            this.DeploymentStacksWhatIfResultsAtSubscription = new DeploymentStacksWhatIfResultsAtSubscriptionOperations(this);
+            this.DeploymentStacksWhatIfResultsAtResourceGroup = new DeploymentStacksWhatIfResultsAtResourceGroupOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-03-01";
+            this.ApiVersion = "2025-07-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

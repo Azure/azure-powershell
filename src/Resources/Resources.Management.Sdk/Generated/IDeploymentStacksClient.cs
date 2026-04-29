@@ -74,5 +74,20 @@ namespace Microsoft.Azure.Management.Resources
         /// </summary>
         IDeploymentStacksOperations DeploymentStacks { get; }
 
+        /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtManagementGroupOperations
+        /// </summary>
+        IDeploymentStacksWhatIfResultsAtManagementGroupOperations DeploymentStacksWhatIfResultsAtManagementGroup { get; }
+
+        /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtSubscriptionOperations
+        /// </summary>
+        IDeploymentStacksWhatIfResultsAtSubscriptionOperations DeploymentStacksWhatIfResultsAtSubscription { get; }
+
+        /// <summary>
+        /// Gets the IDeploymentStacksWhatIfResultsAtResourceGroupOperations
+        /// </summary>
+        IDeploymentStacksWhatIfResultsAtResourceGroupOperations DeploymentStacksWhatIfResultsAtResourceGroup { get; }
+
     }
 }

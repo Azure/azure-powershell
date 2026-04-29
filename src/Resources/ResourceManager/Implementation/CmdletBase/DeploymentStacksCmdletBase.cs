@@ -55,5 +55,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 this.deploymentStacksSdkClient = value;
             }
         }
+
+        /// <summary>
+        /// Deployment stacks what-if client instance field
+        /// </summary>
+        private DeploymentStacksWhatIfSdkClient deploymentStacksWhatIfSdkClient;
+
+        /// <summary>
+        /// Gets or sets the deployment stacks what-if sdk client (separate resource type)
+        /// </summary>
+        public DeploymentStacksWhatIfSdkClient DeploymentStacksWhatIfSdkClient
+        {
+            get
+            {
+                if (this.deploymentStacksWhatIfSdkClient == null)
+                {
+                    this.deploymentStacksWhatIfSdkClient = new DeploymentStacksWhatIfSdkClient(DefaultContext);
+                }
+
+                this.deploymentStacksWhatIfSdkClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this.deploymentStacksWhatIfSdkClient.ErrorLogger = WriteErrorWithTimestamp;
+                this.deploymentStacksWhatIfSdkClient.WarningLogger = WriteWarningWithTimestamp;
+
+                return this.deploymentStacksWhatIfSdkClient;
+            }
+
+            set
+            {
+                this.deploymentStacksWhatIfSdkClient = value;
+            }
+        }
     }
 }
