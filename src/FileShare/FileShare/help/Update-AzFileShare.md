@@ -51,10 +51,12 @@ Update a FileShare
 
 ### Example 1: Update a file share
 ```powershell
-Update-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -RootSquash RootSquash -ProvisionedIoPerSec 5001 -ProvisionedStorageGiB 101 -ProvisionedThroughputMiBPerSec 126 -PublicNetworkAccess Disabled -Tag @{tag1="value1"} -AllowedSubnet $vnet1
+Update-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -RootSquash RootSquash -ProvisionedIoPerSec 5001 -ProvisionedStorageGiB 101 -ProvisionedThroughputMiBPerSec 126 -PublicNetworkAccess Disabled -Tag @{tag1="value1"} -AllowedSubnet $vnet1 -EncryptionInTransitRequired Enabled
 ```
 
 ```output
+AllowedSubnet                             : {/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1}
+EncryptionInTransitRequired               : Enabled
 HostName                                  : fs-xxxxxxxxxxxxxxxxx.z41.file.storage.azure.net
 Id                                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.FileShares/fileShares/testshare
 IncludedBurstIoPerSec                     : 15000
@@ -63,7 +65,6 @@ MaxBurstIoPerSecCredit                    : 36007200
 MediaTier                                 : SSD
 MountName                                 : testshare
 Name                                      : testshare
-RootSquash                                : RootSquash
 PrivateEndpointConnection                 :
 Protocol                                  : NFS
 ProvisionedIoPerSec                       : 5001
@@ -73,10 +74,10 @@ ProvisionedStorageNextAllowedDowngrade    : 2/27/2026 8:38:36 AM
 ProvisionedThroughputMiBPerSec            : 126
 ProvisionedThroughputNextAllowedDowngrade : 2/27/2026 8:38:36 AM
 ProvisioningState                         : Succeeded
-AllowedSubnet                             : {/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1}
 PublicNetworkAccess                       : Disabled
 Redundancy                                : Local
 ResourceGroupName                         : myresourcegroup
+RootSquash                                : RootSquash
 SystemDataCreatedAt                       :
 SystemDataCreatedBy                       :
 SystemDataCreatedByType                   :

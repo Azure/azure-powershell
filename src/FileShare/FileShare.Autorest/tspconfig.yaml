@@ -5,7 +5,7 @@ options:
     clear-output-folder: true
     debug: true
     azure: true
-    module-version: 0.1.0
+    module-version: 1.0.0
     prefix: "Az"
     subject-prefix: "FileShare"
     service-name: FileShare

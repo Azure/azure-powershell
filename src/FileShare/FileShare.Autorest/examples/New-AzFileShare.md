@@ -1,9 +1,12 @@
 ### Example 1: Create a file share
 ```powershell
-New-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -Location uaecentral -MediaTier SSD -RootSquash AllSquash -Protocol NFS -ProvisionedIoPerSec 5000 -ProvisionedStorageGiB 100 -ProvisionedThroughputMiBPerSec 125 -AllowedSubnet $vnet1,$vnet2 -Tag @{"tag1" = "value1"; "tag2" = "value2" }
+New-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -Location uaecentral -MediaTier SSD -RootSquash AllSquash -Protocol NFS -ProvisionedIoPerSec 5000 -ProvisionedStorageGiB 100 -ProvisionedThroughputMiBPerSec 125 -AllowedSubnet $vnet1,$vnet2 -Tag @{"tag1" = "value1"; "tag2" = "value2" } -EncryptionInTransitRequired Enabled
 ```
 
 ```output
+AllowedSubnet                             : {/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1,
+                                            /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet2}
+EncryptionInTransitRequired               : Enabled
 HostName                                  : fs-xxxxxxxxxxxxxxxxx.z41.file.storage.azure.net
 Id                                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.FileShares/fileShares/testshare
 IncludedBurstIoPerSec                     : 15000
@@ -12,7 +15,6 @@ MaxBurstIoPerSecCredit                    : 36000000
 MediaTier                                 : SSD
 MountName                                 : testshare
 Name                                      : testshare
-RootSquash                                : AllSquash
 PrivateEndpointConnection                 : {}
 Protocol                                  : NFS
 ProvisionedIoPerSec                       : 5000
@@ -22,11 +24,10 @@ ProvisionedStorageNextAllowedDowngrade    : 2/26/2026 6:56:35 AM
 ProvisionedThroughputMiBPerSec            : 125
 ProvisionedThroughputNextAllowedDowngrade : 2/26/2026 6:56:35 AM
 ProvisioningState                         : Succeeded
-AllowedSubnet                             : {/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1,
-                                            /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet2}
 PublicNetworkAccess                       : Enabled
 Redundancy                                : Local
 ResourceGroupName                         : myresourcegroup
+RootSquash                                : AllSquash
 SystemDataCreatedAt                       :
 SystemDataCreatedBy                       :
 SystemDataCreatedByType                   :
