@@ -134,7 +134,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
             var result = AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
 
             result.Message.Should().Contain("Operation returned an invalid status code 'BadRequest'");
+            // Short content is embedded as-is (after whitespace collapsing) in the fallback.
             result.Message.Should().Contain($"Response: {malformed}");
+            // Full body remains accessible on the wrapped Response for debugging.
+            result.Response.Content.Should().Be(malformed);
         }
 
         [Fact]
@@ -156,6 +159,28 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateDescriptiveException_WithLargeUnparseableContent_TruncatesInMessageButPreservesFullBody()
+        {
+            // 1500 chars, well over the 500-char display limit, with embedded newlines.
+            var largeContent = new string('a', 700) + "\n\n" + new string('b', 800);
+            var ex = new ErrorResponseException("Operation returned an invalid status code 'BadRequest'")
+            {
+                Response = new HttpResponseMessageWrapper(
+                    new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest),
+                    largeContent)
+            };
+
+            var result = AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
+
+            result.Message.Should().Contain("... (truncated)");
+            result.Message.Should().NotContain("\n\n");                // whitespace collapsed
+            result.Message.Length.Should().BeLessThan(largeContent.Length);
+            // Full body must remain available on the wrapped response for debugging.
+            result.Response.Content.Should().Be(largeContent);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateDescriptiveException_WithBothBodyAndResponseContent_PrefersStructuredBody()
         {
             var ex = new ErrorResponseException("Operation returned an invalid status code 'Conflict'")
@@ -171,6 +196,40 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests
             result.Message.Should().Contain("BodyCode");
             result.Message.Should().Contain("Body message.");
             result.Message.Should().NotContain("ResponseCode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateDescriptiveException_WithCodeOnlyInResponseContent_OmitsTrailingColon()
+        {
+            var ex = new ErrorResponseException("Operation returned an invalid status code 'BadRequest'")
+            {
+                Response = new HttpResponseMessageWrapper(
+                    new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest),
+                    "{\"error\":{\"code\":\"OnlyCode\"}}")
+            };
+
+            var result = AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
+
+            result.Message.Should().EndWith("OnlyCode");
+            result.Message.Should().NotContain("OnlyCode:");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateDescriptiveException_WithMessageOnlyInResponseContent_OmitsLeadingColon()
+        {
+            var ex = new ErrorResponseException("Operation returned an invalid status code 'BadRequest'")
+            {
+                Response = new HttpResponseMessageWrapper(
+                    new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest),
+                    "{\"error\":{\"message\":\"Only the message was provided.\"}}")
+            };
+
+            var result = AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
+
+            result.Message.Should().EndWith("Only the message was provided.");
+            result.Message.Should().NotContain(": Only the message");
         }
     }
 }

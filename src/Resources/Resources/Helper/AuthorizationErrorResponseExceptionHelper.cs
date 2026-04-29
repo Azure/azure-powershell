@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Management.Authorization.Models;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Resources.Helper
 {
@@ -31,6 +32,10 @@ namespace Microsoft.Azure.Commands.Resources.Helper
         // Telemetry-safe placeholder used when no service-supplied error code is available.
         // Avoids any risk of leaking PII via ex.Message if the SDK template ever changes.
         private const string UnknownErrorCode = "UnknownAuthorizationError";
+
+        // Maximum number of characters of raw response content embedded in the user-facing
+        // exception message. The full body remains available on ex.Response.Content for debugging.
+        private const int MaxRawContentLength = 500;
 
         /// <summary>
         /// Creates an <see cref="AzPSCloudException"/> from an <see cref="ErrorResponseException"/>,
@@ -79,7 +84,10 @@ namespace Microsoft.Azure.Commands.Resources.Helper
 
                 if (!string.IsNullOrEmpty(code) || !string.IsNullOrEmpty(detail))
                 {
-                    return ($"{original}. {code}: {detail}", string.IsNullOrEmpty(code) ? UnknownErrorCode : code);
+                    var suffix = !string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(detail)
+                        ? $"{code}: {detail}"
+                        : (code ?? detail);
+                    return ($"{original}. {suffix}", string.IsNullOrEmpty(code) ? UnknownErrorCode : code);
                 }
             }
             catch (Exception)
@@ -87,7 +95,18 @@ namespace Microsoft.Azure.Commands.Resources.Helper
                 // Fall through to raw-content fallback.
             }
 
-            return ($"{original}. Response: {content}", UnknownErrorCode);
+            return ($"{original}. Response: {TruncateForDisplay(content)}", UnknownErrorCode);
+        }
+
+        // Collapses runs of whitespace and truncates overly long bodies so a multi-line/large
+        // service response doesn't flood the console. The full body is still available via
+        // AzPSCloudException.Response.Content for debugging.
+        private static string TruncateForDisplay(string content)
+        {
+            var collapsed = Regex.Replace(content.Trim(), @"\s+", " ");
+            return collapsed.Length <= MaxRawContentLength
+                ? collapsed
+                : collapsed.Substring(0, MaxRawContentLength) + "... (truncated)";
         }
     }
 }
