@@ -23,13 +23,13 @@ Describe 'AzPipelineGroup' {
                 -SubscriptionId $env.subscriptionId `
                 -ExtendedLocationName $env.extLocName `
                 -ExtendedLocationType CustomLocation `
-                -NetworkingConfiguration @() `
                 -Replica 1 `
                 -Exporter @{name="gigla1"; type="AzureMonitorWorkspaceLogs"; azureMonitorWorkspaceLog=@{api=@{dataCollectionEndpointUrl="https://myexporter.eastus-1.ingest.monitor.azure.com"; dataCollectionRule="dcr-00000000000000000000000000000000"; stream="Custom-MyTableRawData"; schema=@{recordMap=@(@{from="body"; to="Body"},@{from="severity_text"; to="SeverityText"},@{from="time_unix_nano"; to="TimeGenerated"})}}}} `
                 -Processor @{name="batchproc1"; type="Batch"; batch=@{batchSize=10}} `
-                -Receiver @(@{name="otlp1"; type="OTLP"; otlp=@{endpoint="0.0.0.0:7777"}}, @{name="myudpreceiveralittlelong26283032"; type="UDP"; udp=@{endpoint="0.0.0.0:5555"}}, @{name="mysyslog1"; type="Syslog"; syslog=@{endpoint="0.0.0.0:4444"}}) `
-                -ServicePipeline @{name="MyPipeline1"; type="Logs"; receiver=@("otlp1", "myudpreceiveralittlelong26283032", "mysyslog1"); processor=@("batchproc1"); exporter=@("gigla1")}
-
+                -Receiver @(@{name="otlp1"; type="OTLP"; otlp=@{endpoint="0.0.0.0:7777"}}, @{name="mysyslog1"; type="Syslog"; syslog=@{endpoint="0.0.0.0:4444"}}) `
+                -TlsConfiguration: @{name="dev-disabled-tls"; mode="disabled"} `
+                -ExecutionPlacement: @{distribuition=@{maxInstancesPerHost=1}} `
+                -ServicePipeline @{name="MyPipeline1"; type="Logs"; receiver=@("otlp1", "mysyslog1"); processor=@("batchproc1"); exporter=@("gigla1")}
             $config.Name | Should -Be $env.pipelineGroupName
         } | Should -Not -Throw
     }

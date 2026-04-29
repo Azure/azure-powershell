@@ -30,6 +30,12 @@ function Start-TestSleep {
     }
 }
 
+function Get-EnvOrDefault([string]$Name, [string]$Default) {
+    $val = [Environment]::GetEnvironmentVariable($Name)
+    if ([string]::IsNullOrWhiteSpace($val)) { return $Default }
+    return $val
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -43,10 +49,11 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.pipelineGroupName = "testgroup"
-    $env.resourceGroup = "kubetest"
-    $env.location = "centraluseuap"
-    $env.extLocName = "/subscriptions/b09d4a2d-699b-4c76-8c7a-d97165a77a3b/resourceGroups/kubetest/providers/Microsoft.ExtendedLocation/customLocations/customloctest"
+
+    $env.pipelineGroupName = Get-EnvOrDefault 'PIPELINEGROUP_NAME' 'psTestPipelineGroup'
+    $env.resourceGroup     = Get-EnvOrDefault 'RESOURCE_GROUP' 'rg-placeholder'
+    $env.location          = Get-EnvOrDefault 'LOCATION' 'westus2'
+    $env.extLocName        = Get-EnvOrDefault 'EXTENDED_LOCATION_RESOURCE_ID' "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.ExtendedLocation/customLocations/cl-placeholder-$($env.location)"
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
