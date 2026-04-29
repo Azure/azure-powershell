@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Relationships-help.xml
 Module Name: Az.Relationships
 online version: https://learn.microsoft.com/powershell/module/az.relationships/update-azrelationshipsservicegroupmemberrelationship
 schema: 2.0.0
@@ -15,15 +15,15 @@ Update a ServiceGroupMemberRelationship
 ### UpdateExpanded (Default)
 ```
 Update-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String> [-TargetId <String>]
- [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzRelationshipsServiceGroupMemberRelationship -InputObject <IRelationshipsIdentity>
- [-TargetId <String>] [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzRelationshipsServiceGroupMemberRelationship -InputObject <IRelationshipsIdentity> [-TargetId <String>]
+ [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -206,4 +206,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

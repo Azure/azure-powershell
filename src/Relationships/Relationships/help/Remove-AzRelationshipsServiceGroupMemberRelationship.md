@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Relationships-help.xml
 Module Name: Az.Relationships
 online version: https://learn.microsoft.com/powershell/module/az.relationships/remove-azrelationshipsservicegroupmemberrelationship
 schema: 2.0.0
@@ -15,13 +15,15 @@ Delete a ServiceGroupMemberRelationship
 ### Delete (Default)
 ```
 Remove-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzRelationshipsServiceGroupMemberRelationship -InputObject <IRelationshipsIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +36,8 @@ Delete a ServiceGroupMemberRelationship
 Remove-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership"
 ```
 
-Removes the ServiceGroupMember relationship, detaching the resource group from the Service Group. The delete operation is asynchronous.
+Removes the ServiceGroupMember relationship, detaching the resource group from the Service Group.
+The delete operation is asynchronous.
 
 ## PARAMETERS
 
@@ -189,4 +192,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

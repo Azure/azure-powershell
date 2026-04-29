@@ -91,6 +91,7 @@ $PowerStatus = @{
 }
 
 $HighAvailability = @{
+    Unknown = "Unknown";
     NO = "No";
     YES = "Yes";
 }
@@ -111,7 +112,8 @@ $VmReplicationValidationMessage = "Replication could not be initiated. Please en
 $VmReplicationValidationMessages = @{
     VmPoweredOff            = "The VM is currently powered off. $VmReplicationValidationMessage";
     AlreadyInReplication    = "The VM is already in replication. $VmReplicationValidationMessage";
-    VmNotHighlyAvailable    = "VM not highly available. $VmReplicationValidationMessage";
+    VmNotHighlyAvailable    = "The VM is not highly available. $VmReplicationValidationMessage";
+    VmUnknownHighlyAvailable = "The VM has unknown high availability status. $VmReplicationValidationMessage";
     HyperVIntegrationServicesNotRunning = "Hyper-V Integration Services are not running on VM. $VmReplicationValidationMessage";
     VmWareToolsNotInstalled = "VMware Tools are not installed on the VM. To preserve static IPs during migration, install VMware Tools and wait up to 30 minutes for the system to detect the changes.";
     VmWareToolsNotRunning   = "VMware Tools are not running on the VM. To preserve static IPs during migration, ensure VMware Tools are running and wait up to 30 minutes for the system to detect the changes.";

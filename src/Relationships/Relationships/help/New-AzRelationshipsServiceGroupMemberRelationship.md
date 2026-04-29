@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Relationships-help.xml
 Module Name: Az.Relationships
 online version: https://learn.microsoft.com/powershell/module/az.relationships/new-azrelationshipsservicegroupmemberrelationship
 schema: 2.0.0
@@ -15,20 +15,22 @@ Create a ServiceGroupMemberRelationship
 ### CreateExpanded (Default)
 ```
 New-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String> [-TargetId <String>]
- [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-TargetTenant <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzRelationshipsServiceGroupMemberRelationship -Name <String> -ResourceUri <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,14 +43,15 @@ Create a ServiceGroupMemberRelationship
 New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/myRG" -Name "myMembership" -TargetId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
 ```
 
-Creates a ServiceGroupMember relationship that makes the resource group 'myRG' a member of the Service Group 'myServiceGroup'. The target must be an existing Service Group.
+Creates a ServiceGroupMember relationship that makes the resource group 'myRG' a member of the Service Group 'myServiceGroup'.
+The target must be an existing Service Group.
 
 ### Example 2: Make a subscription a member of a Service Group
 ```powershell
 New-AzRelationshipsServiceGroupMemberRelationship -ResourceUri "/subscriptions/00000000-0000-0000-0000-000000000001" -Name "subMembership" -TargetId "/providers/Microsoft.Management/serviceGroups/myServiceGroup"
 ```
 
-Makes the subscription a member of the Service Group 'myServiceGroup'.
+Makes the subscription a direct member of the Service Group 'myServiceGroup'.
 
 ## PARAMETERS
 
@@ -231,4 +234,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
