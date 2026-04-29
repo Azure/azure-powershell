@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         public int? ErrorCode { get; set; }
 
         /// <summary>
-        /// Gets or sets the number of times the error occured.
+        /// Gets or sets the number of times the error occurred.
         /// </summary>
-        /// <value>The number of times the error occured.</value>
+        /// <value>The number of times the error occurred.</value>
         public long? Count { get; set; }
     }
 }

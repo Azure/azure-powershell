@@ -173,6 +173,11 @@ namespace Microsoft.Azure.Management.Compute
         IVirtualMachineScaleSetExtensionsOperations VirtualMachineScaleSetExtensions { get; }
 
         /// <summary>
+        /// Gets the IVirtualMachineScaleSetLifeCycleHookEventsOperations
+        /// </summary>
+        IVirtualMachineScaleSetLifeCycleHookEventsOperations VirtualMachineScaleSetLifeCycleHookEvents { get; }
+
+        /// <summary>
         /// Gets the IVirtualMachineScaleSetVMSOperations
         /// </summary>
         IVirtualMachineScaleSetVMSOperations VirtualMachineScaleSetVMS { get; }

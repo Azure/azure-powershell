@@ -192,6 +192,14 @@ namespace Microsoft.Azure.Commands.Profile
         public string AzureAttestationServiceEndpointResourceId { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns suffix of Azure App Configuration.")]
+        public string AzureAppConfigurationEndpointSuffix { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier of the Azure App Configuration service that is the recipient of the requested token.")]
+        public string AzureAppConfigurationEndpointResourceId { get; set; }
+
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Dns suffix of Azure Synapse Analytics.")]
         [Parameter(ParameterSetName = MetadataParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Dns suffix of Azure Synapse Analytics.")]
@@ -226,7 +234,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string MicrosoftGraphUrl { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The scope for authentication when SSH to an Azure VM.")]
+            HelpMessage = "This parameter is deprecated and will be removed in a future release. The SSH authentication scope is now determined automatically and does not need to be configured.")]
         public string SshAuthScope { get; set; }
 
         protected override bool RequireDefaultContext()
@@ -387,6 +395,10 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(AzureAttestationServiceEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAttestationServiceEndpointResourceId,
                                     nameof(AzureAttestationServiceEndpointResourceId));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointSuffix,
+                                    nameof(AzureAppConfigurationEndpointSuffix));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointResourceId,
+                                    nameof(AzureAppConfigurationEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix,
                                     nameof(AzureSynapseAnalyticsEndpointSuffix));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId,

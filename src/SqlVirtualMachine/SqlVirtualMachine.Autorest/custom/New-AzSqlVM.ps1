@@ -34,6 +34,11 @@ https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvm
 function New-AzSqlVM {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                                     *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+    ***************************************************************************************************")]
     param(
         [Parameter(Mandatory)]
         [Alias('SqlVirtualMachineName', 'SqlVMName')]

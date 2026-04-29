@@ -133,7 +133,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client.Broker",
-          "version": "4.82.1"
+          "version": "4.83.1"
         }
       }
     },
@@ -142,7 +142,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client",
-          "version": "4.82.1"
+          "version": "4.83.1"
         }
       }
     },
@@ -151,7 +151,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client.Extensions.Msal",
-          "version": "4.82.1"
+          "version": "4.83.1"
         }
       }
     },
@@ -214,7 +214,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Memory",
-          "version": "4.5.5"
+          "version": "4.6.3"
         }
       }
     },

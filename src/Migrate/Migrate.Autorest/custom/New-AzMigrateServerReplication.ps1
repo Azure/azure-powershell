@@ -22,6 +22,11 @@ The New-AzMigrateServerReplication cmdlet starts the replication for a particula
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessage("**********************************************************************************************`n
+  * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+  * At least one change applies to this cmdlet.                                                     *`n
+  * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+  ***************************************************************************************************")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false)]
     param(
@@ -193,6 +198,18 @@ function New-AzMigrateServerReplication {
         # Specifies the Operating System disk for the source server to be migrated.
         ${OSDiskID},
 
+        [ValidateSet("Standard" , "TrustedLaunch")]
+        [ArgumentCompleter( { "Standard" , "TrustedLaunch" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the security type for the Azure VM.
+        ${TargetSecurityType},
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.Boolean]
+        # Specifies if secure boot needs to be enabled on target VM.
+        ${TargetVMSecureBootEnabled},
+
         [Parameter(ParameterSetName = 'ByIdDefaultUser')]
         [Parameter(ParameterSetName = 'ByInputObjectDefaultUser')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -276,6 +293,8 @@ function New-AzMigrateServerReplication {
         $HasResync = $PSBoundParameters.ContainsKey('PerformAutoResync')
         $HasDiskEncryptionSetID = $PSBoundParameters.ContainsKey('DiskEncryptionSetID')
         $HasTargetVMSize = $PSBoundParameters.ContainsKey('TargetVMSize')
+        $HasTargetSecurityType = $PSBoundParameters.ContainsKey('TargetSecurityType')
+        $HasTargetVMSecureBootEnabled = $PSBoundParameters.ContainsKey('TargetVMSecureBootEnabled')
 
         $null = $PSBoundParameters.Remove('ReplicationContainerMapping')
         $null = $PSBoundParameters.Remove('VMWarerunasaccountID')
@@ -303,6 +322,8 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('LinuxLicenseType')
         $null = $PSBoundParameters.Remove('LicenseType')
         $null = $PSBoundParameters.Remove('DiskEncryptionSetID')
+        $null = $PSBoundParameters.Remove('TargetSecurityType')
+        $null = $PSBoundParameters.Remove('TargetVMSecureBootEnabled')
 
         $null = $PSBoundParameters.Remove('MachineId')
         $null = $PSBoundParameters.Remove('InputObject')
@@ -557,6 +578,21 @@ public static int hashForArtifact(String artifact)
         $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
         $ProviderSpecificDetails.LicenseType = $LicenseType
         $ProviderSpecificDetails.PerformAutoResync = $PerformAutoResync
+        if ($HasTargetVMSecureBootEnabled) {
+            $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmsecureBootEnabled = $TargetVMSecureBootEnabled.ToString().ToLower()
+        } elseif ($HasTargetSecurityType -and $TargetSecurityType -eq "TrustedLaunch") {
+            $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmsecureBootEnabled = "true"
+        }
+
+        if ($HasTargetSecurityType -and $TargetSecurityType -ne "Standard") {
+            $ProviderSpecificDetails.TargetVMSecurityProfileTargetVmsecurityType = $TargetSecurityType
+            $ProviderSpecificDetails.TargetVMSecurityProfileIsTargetVmtpmEnabled = $true
+        } elseif ($HasTargetSecurityType -and $TargetSecurityType -eq "Standard" -and $HasTargetVMSecureBootEnabled) {
+            throw "SecureBoot is not supported when security type is 'Standard'. Please specify a supported security type such as 'TrustedLaunch' when enabling SecureBoot."
+        } elseif (-not $HasTargetSecurityType -and $HasTargetVMSecureBootEnabled) {
+            throw "TargetSecurityType must be specified (for example, 'TrustedLaunch') when enabling SecureBoot."
+        }
+
         if ($HasTargetAVSet) {
             $ProviderSpecificDetails.TargetAvailabilitySetId = $TargetAvailabilitySet
         }

@@ -62,6 +62,26 @@ flatten-userassignedidentity: false
 
 directive:
   - where:
+      verb: Update
+      subject: Application
+      parameter-name: Tag
+    set:
+      breaking-change:
+        change-description: The parameter 'Tag' will be removed from the Update cmdlet of Application.
+        deprecated-by-version: 6.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/06/02
+  - where:
+      verb: Update
+      subject: Desktop
+      parameter-name: Tag
+    set:
+      breaking-change:
+        change-description: The parameter 'Tag' will be removed from the Update cmdlet of Desktop.
+        deprecated-by-version: 6.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/06/02
+  - where:
       variant: ^CreateViaIdentity.*$
     remove: true
   - where:

@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// <summary>update a certificate profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="body">Parameters to create the certificate profile</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// <summary>update a certificate profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="jsonString">Json string supplied to the CertificateProfilesCreate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// <summary>update a certificate profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="jsonString">Json string supplied to the CertificateProfilesCreate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// <summary>update a certificate profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="body">Parameters to create the certificate profile</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="body">Parameters to create the certificate profile</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -668,7 +668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// <summary>Delete a certificate profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -925,7 +925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -950,7 +950,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// <summary>Get details of a certificate profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1106,7 +1106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// <summary>Get details of a certificate profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -1263,7 +1263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -1285,10 +1285,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>List certificate profiles under a trusted signing account.</summary>
+        /// <summary>List certificate profiles under an artifact signing account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1329,7 +1329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>List certificate profiles under a trusted signing account.</summary>
+        /// <summary>List certificate profiles under an artifact signing account.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1383,7 +1383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>List certificate profiles under a trusted signing account.</summary>
+        /// <summary>List certificate profiles under an artifact signing account.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -1435,10 +1435,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>List certificate profiles under a trusted signing account.</summary>
+        /// <summary>List certificate profiles under an artifact signing account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -1597,7 +1597,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -1619,7 +1619,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// <summary>Revoke a certificate under a certificate profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="body">Parameters to revoke the certificate profile</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -1735,7 +1735,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// <summary>Revoke a certificate under a certificate profile.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="jsonString">Json string supplied to the CertificateProfilesRevokeCertificate operation</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -1842,7 +1842,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="profileName">Certificate profile name.</param>
         /// <param name="body">Parameters to revoke the certificate profile</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1867,9 +1867,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>
-        /// Checks that the trusted signing account name is valid and is not already in use.
-        /// </summary>
+        /// <summary>Checks if the artifact signing account name is valid and is not already in use.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="body">The CheckAvailability request</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1913,9 +1911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>
-        /// Checks that the trusted signing account name is valid and is not already in use.
-        /// </summary>
+        /// <summary>Checks if the artifact signing account name is valid and is not already in use.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The CheckAvailability request</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1969,9 +1965,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>
-        /// Checks that the trusted signing account name is valid and is not already in use.
-        /// </summary>
+        /// <summary>Checks if the artifact signing account name is valid and is not already in use.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The CheckAvailability request</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2023,9 +2017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>
-        /// Checks that the trusted signing account name is valid and is not already in use.
-        /// </summary>
+        /// <summary>Checks if the artifact signing account name is valid and is not already in use.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="jsonString">Json string supplied to the CodeSigningAccountsCheckNameAvailability operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2068,9 +2060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>
-        /// Checks that the trusted signing account name is valid and is not already in use.
-        /// </summary>
+        /// <summary>Checks if the artifact signing account name is valid and is not already in use.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="jsonString">Json string supplied to the CodeSigningAccountsCheckNameAvailability operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2111,9 +2101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>
-        /// Checks that the trusted signing account name is valid and is not already in use.
-        /// </summary>
+        /// <summary>Checks if the artifact signing account name is valid and is not already in use.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="body">The CheckAvailability request</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2290,11 +2278,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>create a trusted Signing Account.</summary>
+        /// <summary>create an artifact Signing Account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
-        /// <param name="body">Parameters to create the trusted signing account</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
+        /// <param name="body">Parameters to create the artifact signing account</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2339,9 +2327,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>create a trusted Signing Account.</summary>
+        /// <summary>create an artifact Signing Account.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Parameters to create the trusted signing account</param>
+        /// <param name="body">Parameters to create the artifact signing account</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2398,9 +2386,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>create a trusted Signing Account.</summary>
+        /// <summary>create an artifact Signing Account.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Parameters to create the trusted signing account</param>
+        /// <param name="body">Parameters to create the artifact signing account</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.SerializationMode"/>.</param>
@@ -2455,10 +2443,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>create a trusted Signing Account.</summary>
+        /// <summary>create an artifact Signing Account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="jsonString">Json string supplied to the CodeSigningAccountsCreate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2503,10 +2491,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>create a trusted Signing Account.</summary>
+        /// <summary>create an artifact Signing Account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="jsonString">Json string supplied to the CodeSigningAccountsCreate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -2549,11 +2537,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>create a trusted Signing Account.</summary>
+        /// <summary>create an artifact Signing Account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
-        /// <param name="body">Parameters to create the trusted signing account</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
+        /// <param name="body">Parameters to create the artifact signing account</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.SerializationMode"/>.</param>
@@ -2898,8 +2886,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
-        /// <param name="body">Parameters to create the trusted signing account</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
+        /// <param name="body">Parameters to create the artifact signing account</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -2920,10 +2908,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Delete a trusted signing account.</summary>
+        /// <summary>Delete an artifact signing account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2964,7 +2952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Delete a trusted signing account.</summary>
+        /// <summary>Delete an artifact signing account.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3174,7 +3162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -3193,10 +3181,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Get a trusted Signing Account.</summary>
+        /// <summary>Get an artifact Signing Account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3236,7 +3224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Get a trusted Signing Account.</summary>
+        /// <summary>Get an artifact Signing Account.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3289,7 +3277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Get a trusted Signing Account.</summary>
+        /// <summary>Get an artifact Signing Account.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3340,10 +3328,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Get a trusted Signing Account.</summary>
+        /// <summary>Get an artifact Signing Account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -3497,7 +3485,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -3516,7 +3504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Lists trusted signing accounts within a resource group.</summary>
+        /// <summary>Lists artifact signing accounts within a resource group.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3557,7 +3545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Lists trusted signing accounts within a resource group.</summary>
+        /// <summary>Lists artifact signing accounts within a resource group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3608,7 +3596,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Lists trusted signing accounts within a resource group.</summary>
+        /// <summary>Lists artifact signing accounts within a resource group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3657,7 +3645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Lists trusted signing accounts within a resource group.</summary>
+        /// <summary>Lists artifact signing accounts within a resource group.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3832,7 +3820,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Lists trusted signing accounts within a subscription.</summary>
+        /// <summary>Lists artifact signing accounts within a subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3870,7 +3858,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Lists trusted signing accounts within a subscription.</summary>
+        /// <summary>Lists artifact signing accounts within a subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3918,7 +3906,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Lists trusted signing accounts within a subscription.</summary>
+        /// <summary>Lists artifact signing accounts within a subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3964,7 +3952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>Lists trusted signing accounts within a subscription.</summary>
+        /// <summary>Lists artifact signing accounts within a subscription.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -4132,11 +4120,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>update a trusted signing account.</summary>
+        /// <summary>update an artifact signing account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
-        /// <param name="body">Parameters supplied to update the trusted signing account</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
+        /// <param name="body">Parameters supplied to update the artifact signing account</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4181,9 +4169,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>update a trusted signing account.</summary>
+        /// <summary>update an artifact signing account.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Parameters supplied to update the trusted signing account</param>
+        /// <param name="body">Parameters supplied to update the artifact signing account</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4240,9 +4228,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>update a trusted signing account.</summary>
+        /// <summary>update an artifact signing account.</summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="body">Parameters supplied to update the trusted signing account</param>
+        /// <param name="body">Parameters supplied to update the artifact signing account</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.SerializationMode"/>.</param>
@@ -4297,10 +4285,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>update a trusted signing account.</summary>
+        /// <summary>update an artifact signing account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="jsonString">Json string supplied to the CodeSigningAccountsUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4345,10 +4333,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>update a trusted signing account.</summary>
+        /// <summary>update an artifact signing account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
         /// <param name="jsonString">Json string supplied to the CodeSigningAccountsUpdate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -4391,11 +4379,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
             }
         }
 
-        /// <summary>update a trusted signing account.</summary>
+        /// <summary>update an artifact signing account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
-        /// <param name="body">Parameters supplied to update the trusted signing account</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
+        /// <param name="body">Parameters supplied to update the artifact signing account</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.SerializationMode"/>.</param>
@@ -4742,8 +4730,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
-        /// <param name="accountName">Trusted Signing account name.</param>
-        /// <param name="body">Parameters supplied to update the trusted signing account</param>
+        /// <param name="accountName">Artifact Signing account name.</param>
+        /// <param name="body">Parameters supplied to update the artifact signing account</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.

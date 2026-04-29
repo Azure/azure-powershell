@@ -75,6 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             {
                 return;
             }
+            {_updateProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonObject>("updateProperties"), out var __jsonUpdateProperties) ? Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models.ImageUpdateProperties.FromJson(__jsonUpdateProperties) : _updateProperty;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_releaseVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonString>("releaseVersion"), out var __jsonReleaseVersion) ? (string)__jsonReleaseVersion : (string)_releaseVersion;}
             {_releaseDisplayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonString>("releaseDisplayName"), out var __jsonReleaseDisplayName) ? (string)__jsonReleaseDisplayName : (string)_releaseDisplayName;}
@@ -103,6 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Models
             if (returnNow)
             {
                 return container;
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._updateProperty ? (Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.Json.JsonNode) this._updateProperty.ToJson(null,serializationMode) : null, "updateProperties" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.SerializationMode.IncludeRead))
             {
