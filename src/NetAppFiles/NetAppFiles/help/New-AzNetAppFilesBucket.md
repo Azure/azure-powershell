@@ -19,7 +19,7 @@ New-AzNetAppFilesBucket -ResourceGroupName <String> -AccountName <String> -PoolN
  [-NfsGroupId <Int64>] [-CifsUserName <String>] [-ServerFqdn <String>] [-ServerCertificateObject <String>]
  [-OnCertificateConflictAction <String>] [-CertificateKeyVaultUri <String>] [-CertificateName <String>]
  [-CredentialsKeyVaultUri <String>] [-CredentialsSecretName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ New-AzNetAppFilesBucket -Name <String> [-Path <String>] [-Permissions <String>] 
  [-NfsGroupId <Int64>] [-CifsUserName <String>] [-ServerFqdn <String>] [-ServerCertificateObject <String>]
  [-OnCertificateConflictAction <String>] [-CertificateKeyVaultUri <String>] [-CertificateName <String>]
  [-CredentialsKeyVaultUri <String>] [-CredentialsSecretName <String>] -VolumeObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -275,21 +275,6 @@ Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
