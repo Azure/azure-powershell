@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Relationships-help.xml
 Module Name: Az.Relationships
 online version: https://learn.microsoft.com/powershell/module/az.relationships/get-azrelationshipsservicegroupmemberrelationship
 schema: 2.0.0
@@ -121,4 +121,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
