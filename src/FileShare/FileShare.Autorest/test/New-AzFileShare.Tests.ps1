@@ -103,9 +103,6 @@ Describe 'New-AzFileShare' {
     
     It 'CreateUpdate FileShare With all parameters' {
         {
-            # To run the test case in a clear enviroment, first create a subnet with following command and update "subnetId" in env.json 
-            # $subnetId = (New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location "eastus2euap" -AddressPrefix 10.0.0.0/24 -Name $vnetName | Add-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/28" -ServiceEndpoint "Microsoft.Storage"  | Set-AzVirtualNetwork).Id
-
             $config = New-AzFileShare -ResourceName $env.fileShareName04 `
                                       -ResourceGroupName $env.resourceGroup `
                                       -Location $env.location `
