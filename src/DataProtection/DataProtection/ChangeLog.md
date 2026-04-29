@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.10.0
 * Added auto-protection support for Blob and ADLS (Azure Data Lake Storage) backup in `New-AzDataProtectionBackupConfigurationClientObject`
     - Added `-AutoProtection` switch parameter to enable auto-protection
     - Added `-AutoProtectionExclusionRule` parameter to specify exclusion rules for auto-protection

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Upgraded API version from 2022-05-01 to 2024-06-01
 * Added support for App Configuration store replicas
     - Added `New-AzAppConfigurationReplica`

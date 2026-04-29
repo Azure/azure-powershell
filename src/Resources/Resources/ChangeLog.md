@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 9.1.0
 * Made `Remove-AzDenyAssignment` honor `-Confirm:$false` and idempotent when no matching deny assignment exists. The redundant `-Force` switch was removed (the cmdlet relies on the standard `SupportsShouldProcess`/`ConfirmImpact` pattern).
 * Improved error messages for role assignment and role definition operations to include the underlying service error code and message instead of just the HTTP status code. [#19605] [#19374]
 * Added `-PrincipalId` and `-PrincipalType` to `New-AzDenyAssignment` to support per-principal deny assignments targeting a specific User or ServicePrincipal, in addition to the existing Everyone mode.
