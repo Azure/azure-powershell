@@ -23,15 +23,15 @@
     - Added `New-AzAppConfigurationReplica`
     - Added `Get-AzAppConfigurationReplica`
     - Added `Remove-AzAppConfigurationReplica`
-* Added `DataPlaneProxyAuthenticationMode`, `DataPlaneProxyPrivateLinkDelegation`, and `DefaultKeyValueRevisionRetentionPeriodInSecond` parameters to `New-AzAppConfigurationStore` and `Update-AzAppConfigurationStore`
-* Removed `SoftDeleteRetentionInDay` parameter from `Update-AzAppConfigurationStore` as it is a create-only property
+* Added `DataPlaneProxyAuthenticationMode`, `DataPlaneProxyPrivateLinkDelegation`, and `DefaultKeyValueRevisionRetentionPeriodInSecond` to `New-AzAppConfigurationStore` and `Update-AzAppConfigurationStore`
+* Removed `SoftDeleteRetentionInDay` from `Update-AzAppConfigurationStore` as it is a create-only property
 * Added data plane snapshot cmdlets for Azure App Configuration
     - Added `New-AzAppConfigurationSnapshot`
     - Added `Get-AzAppConfigurationSnapshot`
     - Added `Update-AzAppConfigurationSnapshot`
     - Added `Test-AzAppConfigurationSnapshot`
-* Added `Snapshot` parameter to `Get-AzAppConfigurationKeyValue` to support retrieving key-values by snapshot name
-* Added `Get-AzAppConfigurationOperationDetail` cmdlet to retrieve data plane operation details
+* Added `Snapshot` to `Get-AzAppConfigurationKeyValue` to support retrieving key-values by snapshot name
+* Added `Get-AzAppConfigurationOperationDetail` to retrieve data plane operation details
 
 ## Version 2.0.1
 * Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'
