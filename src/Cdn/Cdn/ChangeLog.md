@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Announced upcoming breaking changes for all `Az*CdnEdgeAction*` cmdlets and the `SubjectAlternativeName` parameter of `New-AzCdnSecretCustomerCertificateParametersObject`, which will be removed in a future release.
+
+## Version 6.0.1
 * Bug fix for https://github.com/Azure/azure-powershell/issues/29231
 
 ## Version 6.0.0

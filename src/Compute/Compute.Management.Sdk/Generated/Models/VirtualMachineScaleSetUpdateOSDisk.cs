@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// cannot be larger than 1023
         /// </param>
 
+        /// <param name="storageFaultDomainAlignment">Specifies the storage fault domain alignment type for the disk.
+        /// Possible values include: &#39;Aligned&#39;, &#39;BestEffortAligned&#39;</param>
+
         /// <param name="image">The Source User Image VirtualHardDisk. This VirtualHardDisk will be copied
         /// before using it to attach to the Virtual Machine. If SourceImage is
         /// provided, the destination VirtualHardDisk should not exist.
@@ -62,13 +65,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// **Delete**. For an Ephemeral OS Disk, the default value is set to
         /// **Delete**. User cannot change the delete option for Ephemeral OS Disk.
         /// Possible values include: &#39;Delete&#39;, &#39;Detach&#39;</param>
-        public VirtualMachineScaleSetUpdateOSDisk(CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGb = default(int?), VirtualHardDisk image = default(VirtualHardDisk), System.Collections.Generic.IList<string> vhdContainers = default(System.Collections.Generic.IList<string>), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters), string deleteOption = default(string))
+        public VirtualMachineScaleSetUpdateOSDisk(CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGb = default(int?), string storageFaultDomainAlignment = default(string), VirtualHardDisk image = default(VirtualHardDisk), System.Collections.Generic.IList<string> vhdContainers = default(System.Collections.Generic.IList<string>), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters), string deleteOption = default(string))
 
         {
             this.Caching = caching;
             this.WriteAcceleratorEnabled = writeAcceleratorEnabled;
             this.DiffDiskSettings = diffDiskSettings;
             this.DiskSizeGB = diskSizeGb;
+            this.StorageFaultDomainAlignment = storageFaultDomainAlignment;
             this.Image = image;
             this.VhdContainers = vhdContainers;
             this.ManagedDisk = managedDisk;
@@ -110,6 +114,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeGB")]
         public int? DiskSizeGB {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the storage fault domain alignment type for the
+        /// disk. Possible values include: &#39;Aligned&#39;, &#39;BestEffortAligned&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "storageFaultDomainAlignment")]
+        public string StorageFaultDomainAlignment {get; set; }
 
         /// <summary>
         /// Gets or sets the Source User Image VirtualHardDisk. This VirtualHardDisk

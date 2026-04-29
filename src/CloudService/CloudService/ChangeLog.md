@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.2
 * Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
 
 ## Version 2.1.1

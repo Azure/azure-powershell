@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.DnsResolver",
-  "ModuleVersion": "1.2.1",
+  "ModuleVersion": "1.2.3",
   "Cmdlets": [
     {
       "VerbName": "Get",
