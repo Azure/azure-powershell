@@ -24,17 +24,17 @@
     - `New-AzNetAppFilesBucket`
     - `Update-AzNetAppFilesBucket`
     - `Remove-AzNetAppFilesBucket`
-    - `New-AzNetAppFilesBucketCredential` - generate Access/Secret key pair (returns the credentials)
-    - `Set-AzNetAppFilesBucketAkvCredential` - generate Access/Secret key pair and store it in Azure Key Vault (AKV)
-    - `Update-AzNetAppFilesBucketCertificate` - refresh the bucket server certificate from Azure Key Vault (AKV)
+    - `New-AzNetAppFilesBucketCredential`
+    - `Set-AzNetAppFilesBucketAkvCredential`
+    - `Update-AzNetAppFilesBucketCertificate`
 * Added new cmdlets for the Caches resource (alias `Anf*` for Azure NetApp Files):
     - `Get-AzNetAppFilesCache`
     - `New-AzNetAppFilesCache`
     - `Update-AzNetAppFilesCache`
     - `Remove-AzNetAppFilesCache`
-    - `Get-AzNetAppFilesCachePeeringPassphrase` - retrieve the cluster/vserver peering commands and passphrases for a cache
-    - `Set-AzNetAppFilesCachePool` - move a cache to a different capacity pool
-    - `Reset-AzNetAppFilesCacheSmbPassword` - reset the cache's Server Message Block (SMB) password
+    - `Get-AzNetAppFilesCachePeeringPassphrase`
+    - `Set-AzNetAppFilesCachePool`
+    - `Reset-AzNetAppFilesCacheSmbPassword`
 * `Start-AzNetAppFilesPeerExternalCluster` now returns the cluster peering command and passphrase as a `PSClusterPeerCommandResponse` (was previously discarded)
 * Surfaced new replication properties on `PSNetAppFilesReplicationObject` (`(Get-AzNetAppFilesVolume).DataProtection.Replication`):
     - `ExternalReplicationSetupStatus`, `ExternalReplicationSetupInfo` - external replication setup state machine + next-step guidance
