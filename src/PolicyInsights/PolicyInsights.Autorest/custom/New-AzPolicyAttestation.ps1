@@ -219,6 +219,12 @@ param(
 
 process {
 
+    # Make a copy of the original Parameters
+    $originalParameters = @{}
+    foreach($key in $PSBoundParameters.Keys) {
+        $originalParameters[$key] = $PSBoundParameters[$key]
+    }
+
     # pre process the "Scope" parameter into other parameters if it's present
     if($PSBoundParameters.ContainsKey("Scope"))
     {
@@ -276,7 +282,10 @@ process {
     # call the internal generated cmdlet now
     Az.PolicyInsights.internal\New-AzPolicyAttestation @PSBoundParameters
 
-    # Resetting modified/added parameters in case multiple objects are piped in
+    # Restoring original parameters to ensure safety in piping scenarios
     $PSBoundParameters.Clear()
+    foreach($key in $originalParameters.Keys) {
+        $PSBoundParameters[$key] = $originalParameters[$key]
+    }
 }
 }

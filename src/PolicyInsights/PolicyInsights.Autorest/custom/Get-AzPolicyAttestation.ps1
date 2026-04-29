@@ -176,6 +176,12 @@ param(
 
 process {
 
+    # Make a copy of the original Parameters
+    $originalParameters = @{}
+    foreach($key in $PSBoundParameters.Keys) {
+        $originalParameters[$key] = $PSBoundParameters[$key]
+    }
+
     # We want to support the ResourceId parameter being provided as the full attestation ResourceId
     # so the below section handles that possibility 
     if($PSBoundParameters.ContainsKey("ResourceId"))
@@ -247,7 +253,10 @@ process {
 
     Az.PolicyInsights.internal\Get-AzPolicyAttestation @PSBoundParameters
 
-    # Resetting modified/added parameters in case multiple objects are piped in
+    # Restoring original parameters to ensure safety in piping scenarios
     $PSBoundParameters.Clear()
+    foreach($key in $originalParameters.Keys) {
+        $PSBoundParameters[$key] = $originalParameters[$key]
+    }
 }
 }

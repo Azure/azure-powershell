@@ -221,6 +221,12 @@ param(
 
 process {
 
+    # Make a copy of the original Parameters
+    $originalParameters = @{}
+    foreach($key in $PSBoundParameters.Keys) {
+        $originalParameters[$key] = $PSBoundParameters[$key]
+    }
+
     # ResourceId validation in generated code for ViaIdentity is broken so we workaround it by extracting 
     # the id from the InputObject and having it parsed as Scope afterwards
     if($PSBoundParameters.ContainsKey("InputObject"))
@@ -324,7 +330,10 @@ process {
     # call the internal generated cmdlet now
     Az.PolicyInsights.internal\Update-AzPolicyAttestation @PSBoundParameters
 
-    # Resetting modified/added parameters in case multiple objects are piped in
+    # Restoring original parameters to ensure safety in piping scenarios
     $PSBoundParameters.Clear()
+    foreach($key in $originalParameters.Keys) {
+        $PSBoundParameters[$key] = $originalParameters[$key]
+    }
 }
 }

@@ -247,6 +247,12 @@ param(
 
 process {
 
+    # Make a copy of the original Parameters
+    $originalParameters = @{}
+    foreach($key in $PSBoundParameters.Keys) {
+        $originalParameters[$key] = $PSBoundParameters[$key]
+    }
+
     # Generated code can't parse which scope of InputObject is being passed in so it's easiest to parse it into other parameters 
     if($PSBoundParameters.ContainsKey("InputObject"))
     {        
@@ -365,7 +371,10 @@ process {
 
     $PSCmdlet.WriteObject($output, $true)
 
-    # Resetting modified/added parameters in case multiple objects are piped in
+    # Restoring original parameters to ensure safety in piping scenarios
     $PSBoundParameters.Clear()
+    foreach($key in $originalParameters.Keys) {
+        $PSBoundParameters[$key] = $originalParameters[$key]
+    }
 }
 }
