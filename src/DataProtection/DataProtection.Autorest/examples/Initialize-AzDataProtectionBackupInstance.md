@@ -72,3 +72,23 @@ Name BackupInstanceName
 
 The first command specifies the Blob storage account id. The second command gets the backup vault. The third command gets a Blob policy within the vault.
 The fourth command initializes the backup configuration. The fifth command initializes the backup instance.ype AzureDatabaseForMySQL to initialize backup instance for AzureDatabaseForMySQL.
+
+### Example 5: Configure auto-protection for Azure Data Lake Storage
+```powershell
+$storageAccountId = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}"
+$vault = Get-AzDataProtectionBackupVault -ResourceGroupName $resourceGroupName -VaultName $vaultName
+$adlsPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vault.Name -Name $policyName
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureDataLakeStorage -AutoProtection
+$backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDataLakeStorage -DatasourceLocation $vault.Location -PolicyId $adlsPolicy.Id -DatasourceId $storageAccountId -BackupConfiguration $backupConfig
+$backupInstance
+```
+
+```output
+Name BackupInstanceName
+---- ------------------
+     smcanadls2autoprotection-smcanadls2autoprotection-ed68435e-069t-4b4a-9d84-d0c194800fc2
+```
+
+The first command specifies the ADLS storage account id. The second command gets the backup vault. The third command gets an ADLS policy within the vault.
+The fourth command creates a backup configuration with auto-protection enabled — new containers will be automatically protected.
+The fifth command initializes the backup instance with auto-protection. This object can now be used to configure backup using New-AzDataProtectionBackupInstance.

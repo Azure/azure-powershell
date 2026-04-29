@@ -25,11 +25,11 @@ Fetches the Cross Region Restore Job
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ICrossRegionRestoreJobRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ICrossRegionRestoreJobRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupJobResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -60,7 +60,7 @@ PARAMETER <ICrossRegionRestoreJobRequest>: Details of CRR Job to be fetched
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectioncrossregionrestorejobdetail
 #>
 function Get-AzDataProtectionCrossRegionRestoreJobDetail {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupJobResource])]
 [CmdletBinding(DefaultParameterSetName='GetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -98,7 +98,7 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ICrossRegionRestoreJobRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ICrossRegionRestoreJobRequest]
     # Details of CRR Job to be fetched
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

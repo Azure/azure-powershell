@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Resources.Helper;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Rest.Azure.OData;
@@ -81,8 +82,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public IEnumerable<PSRoleDefinition> FilterRoleDefinitions(string name, string scope, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             ODataQuery<RoleDefinitionFilter> odataFilter = new ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
-            return AuthorizationManagementClient.RoleDefinitions.List(scope, odataFilter)
-                  .Select(r => r.ToPSRoleDefinition());
+            try
+            {
+                return AuthorizationManagementClient.RoleDefinitions.List(scope, odataFilter)
+                      .Select(r => r.ToPSRoleDefinition());
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
+            }
         }
 
         public IEnumerable<PSRoleDefinition> FilterRoleDefinitions(FilterRoleDefinitionOptions options)
@@ -171,7 +179,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 ConditionVersion = parameters.ConditionVersion
             };
 
-            return AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId.ToString(), createParameters).ToPSRoleAssignment(this, ActiveDirectoryClient);
+            try
+            {
+                return AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId.ToString(), createParameters).ToPSRoleAssignment(this, ActiveDirectoryClient);
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
+            }
         }
 
         /// <summary>
@@ -377,7 +392,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 ConditionVersion = ConditionVersion
             };
 
-            return AuthorizationManagementClient.RoleAssignments.Create(scope, roleAssignmentId, createParameters).ToPSRoleAssignment(this, ActiveDirectoryClient);
+            try
+            {
+                return AuthorizationManagementClient.RoleAssignments.Create(scope, roleAssignmentId, createParameters).ToPSRoleAssignment(this, ActiveDirectoryClient);
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
+            }
         }
 
         /// <summary>
@@ -808,15 +830,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 roleDef = AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
                     roleDefinition.AssignableScopes.First(), roleDefinitionId.ToString(), parameters).ToPSRoleDefinition();
             }
-            catch (Hyak.Common.CloudException ce)
+            catch (ErrorResponseException ex)
             {
-                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized &&
-                    ce.Error.Code.Equals("TenantNotAllowed", StringComparison.InvariantCultureIgnoreCase))
+                if (ex.Response?.StatusCode == HttpStatusCode.Unauthorized &&
+                    ex.Body?.Error?.Code?.Equals("TenantNotAllowed", StringComparison.InvariantCultureIgnoreCase) == true)
                 {
                     throw new InvalidOperationException("The tenant is not currently authorized to create/update Custom role definition. Please refer to http://aka.ms/customrolespreview for more details");
                 }
-
-                throw;
+                throw AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
             }
 
             return roleDef;
