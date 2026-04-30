@@ -28,10 +28,10 @@
 * Added `-InstantAccessDurationInMinutes` parameter to `New-AzRestorePoint` cmdlet to specify the duration (1-300 minutes) for which the instant access snapshot is retained
 
 * Added managed identity support for Azure Compute Galleries
-    - `New-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` parameters to assign managed identities at creation time
-    - `Update-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` parameters to add managed identities to an existing gallery. `-UserAssignedIdentity` appends to existing identities
-    - `Update-AzGallery`: Added `-DisableSystemAssignedIdentity` parameter to remove system-assigned managed identity
-    - `Update-AzGallery`: Added `-RemoveUserAssignedIdentity` parameter accepting a list of identity resource IDs to remove specific user-assigned identities, or 'All' to remove all user-assigned identities
+    - `New-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` to assign managed identities at creation time
+    - `Update-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` to add managed identities to an existing gallery. `-UserAssignedIdentity` appends to existing identities
+    - `Update-AzGallery`: Added `-DisableSystemAssignedIdentity` to remove system-assigned managed identity
+    - `Update-AzGallery`: Added `-RemoveUserAssignedIdentity` accepting a list of identity resource IDs to remove specific user-assigned identities, or 'All' to remove all user-assigned identities
     - `Get-AzGallery`: Now returns managed identity details in the `Identity` property
 * Compute ComputeRP related cmdlets will now use 2025-11-01 version of the ComputeRP API.
 

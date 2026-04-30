@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/unlock-azdataprotectionresourceguardoperation
 schema: 2.0.0
@@ -14,9 +14,9 @@ Unlocks the critical operation which is protected by the resource guard
 
 ```
 Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-ResourceGuardOperationRequest <String[]>] [-ResourceToBeDeleted <String>]
- [-Token <String>] [-SecureToken <SecureString>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ResourceGuardOperationRequest <String[]>] [-ResourceToBeDeleted <String>]
+ [-SecureToken <SecureString>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,6 +99,7 @@ Pass access token in case of cross tenant resource guard.
 ## PARAMETERS
 
 ### -DefaultProfile
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -263,3 +264,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

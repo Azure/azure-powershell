@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.1
 * `Az.PostgreSql` will be retired in an upcoming release.
     - To continue managing Azure Database for PostgreSQL resources, move to `Az.PostgreSqlFlexibleServer`.
     - When the replacement module is released, it will be available to install from https://www.powershellgallery.com/packages/Az.PostgreSqlFlexibleServer
