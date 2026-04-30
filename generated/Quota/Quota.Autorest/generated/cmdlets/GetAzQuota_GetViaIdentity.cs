@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"Get the quota limit of a resource. The response can be used to determine the remaining quota to calculate a new quota limit that can be submitted with a PUT request.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}", ApiVersion = "2023-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}", ApiVersion = "2025-09-01")]
     public partial class GetAzQuota_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IContext

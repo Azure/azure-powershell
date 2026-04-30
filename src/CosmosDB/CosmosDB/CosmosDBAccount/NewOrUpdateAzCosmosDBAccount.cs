@@ -67,6 +67,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.KeyVaultUriHelpMessage)]
         public string KeyVaultKeyUri { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.DisableLocalAuthHelpMessage)]
+        public bool? DisableLocalAuth { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableAnalyticalStorageHelpMessage)]
         public bool? EnableAnalyticalStorage { get; set; }
 

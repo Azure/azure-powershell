@@ -16,40 +16,40 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDisconnectedOperatio
 
 Describe 'Update-AzDisconnectedOperationsDisconnectedOperation' {
     It 'UpdateExpanded' {
-        $result = Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -RegistrationStatus $env.RegistrationStatusRegistered
+        $result = Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -RegistrationStatus $env.RegistrationStatusUnregistered
 
         $result | Should -Not -BeNullOrEmpty
-        $result.RegistrationStatus | Should -Be "Registered"
+        $result.RegistrationStatus | Should -Be "Unregistered"
         $result.Name | Should -Be $env.Name
         $result.ResourceGroupName | Should -Be $env.ResourceGroupName
         $result.Type | Should -Be "Microsoft.Edge/disconnectedOperations"
 
-        Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -RegistrationStatus $env.RegistrationStatusUnregistered
+        Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -RegistrationStatus $env.RegistrationStatusRegistered
 
     }
 
     It 'UpdateViaJsonString' {
-        $result = Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -JsonString '{"properties":{"registrationStatus": "Registered"}}'
+        $result = Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -JsonString '{"properties":{"registrationStatus": "Unregistered"}}'
 
         $result | Should -Not -BeNullOrEmpty
-        $result.RegistrationStatus | Should -Be "Registered"
+        $result.RegistrationStatus | Should -Be "Unregistered"
         $result.Name | Should -Be $env.Name
         $result.ResourceGroupName | Should -Be $env.ResourceGroupName
         $result.Type | Should -Be "Microsoft.Edge/disconnectedOperations"
 
-        Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -RegistrationStatus $env.RegistrationStatusUnregistered
+        Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -RegistrationStatus $env.RegistrationStatusRegistered
     }
 
     It 'UpdateViaJsonFilePath' {
         $result = Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -JsonFilePath (Join-Path $PSScriptRoot './jsonFiles/UpdateDisconnectedOperations.json')
 
         $result | Should -Not -BeNullOrEmpty
-        $result.RegistrationStatus | Should -Be "Registered"
+        $result.RegistrationStatus | Should -Be "Unregistered"
         $result.Name | Should -Be $env.Name
         $result.ResourceGroupName | Should -Be $env.ResourceGroupName
         $result.Type | Should -Be "Microsoft.Edge/disconnectedOperations"
 
-        Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -RegistrationStatus $env.RegistrationStatusUnregistered
+        Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -RegistrationStatus $env.RegistrationStatusRegistered
     }
 
     It 'UpdateViaIdentityExpanded' {
@@ -59,14 +59,14 @@ Describe 'Update-AzDisconnectedOperationsDisconnectedOperation' {
             "SubscriptionId" = $env.SubscriptionId;
         }
 
-        $result = Update-AzDisconnectedOperationsDisconnectedOperation -InputObject $disconnectedOperationInputObject -RegistrationStatus $env.RegistrationStatusRegistered
+        $result = Update-AzDisconnectedOperationsDisconnectedOperation -InputObject $disconnectedOperationInputObject -RegistrationStatus $env.RegistrationStatusUnregistered
 
         $result | Should -Not -BeNullOrEmpty
-        $result.RegistrationStatus | Should -Be "Registered"
+        $result.RegistrationStatus | Should -Be "Unregistered"
         $result.Name | Should -Be $env.Name
         $result.ResourceGroupName | Should -Be $env.ResourceGroupName
         $result.Type | Should -Be "Microsoft.Edge/disconnectedOperations"
 
-        Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -RegistrationStatus $env.RegistrationStatusUnregistered
+        Update-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -RegistrationStatus $env.RegistrationStatusRegistered
     }
 }

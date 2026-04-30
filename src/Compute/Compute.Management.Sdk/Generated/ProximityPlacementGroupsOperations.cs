@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
                 }
             }
-            string apiVersion = "2025-04-01";
+            string apiVersion = "2025-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
             }
-            string apiVersion = "2025-04-01";
+            string apiVersion = "2025-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Management.Compute
             }
 
 
-            string apiVersion = "2025-04-01";
+            string apiVersion = "2025-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -764,7 +764,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "proximityPlacementGroupName");
             }
 
-            string apiVersion = "2025-04-01";
+            string apiVersion = "2025-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1018,7 +1018,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "proximityPlacementGroupName");
             }
 
-            string apiVersion = "2025-04-01";
+            string apiVersion = "2025-11-01";
             ProximityPlacementGroupUpdate parameters = new ProximityPlacementGroupUpdate();
             if(tags != null)
             {
@@ -1253,7 +1253,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "proximityPlacementGroupName");
             }
 
-            string apiVersion = "2025-04-01";
+            string apiVersion = "2025-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

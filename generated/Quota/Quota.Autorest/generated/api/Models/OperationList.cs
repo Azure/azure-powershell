@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Extensions;
 
+    /// <summary>The paginated list of connected cluster API operations.</summary>
     public partial class OperationList :
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IOperationList,
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IOperationListInternal
@@ -15,13 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>URL to get the next page of items.</summary>
+        /// <summary>The link to fetch the next page of connected cluster API operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IOperationResponse> _value;
 
+        /// <summary>The list of connected cluster API operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Origin(Microsoft.Azure.PowerShell.Cmdlets.Quota.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IOperationResponse> Value { get => this._value; set => this._value = value; }
 
@@ -31,39 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
 
         }
     }
+    /// The paginated list of connected cluster API operations.
     public partial interface IOperationList :
         Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next page of items.</summary>
+        /// <summary>The link to fetch the next page of connected cluster API operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"URL to get the next page of items.",
+        Description = @"The link to fetch the next page of connected cluster API operations.",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-
+        /// <summary>The list of connected cluster API operations.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"",
+        Description = @"The list of connected cluster API operations.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IOperationResponse) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IOperationResponse> Value { get; set; }
 
     }
+    /// The paginated list of connected cluster API operations.
     internal partial interface IOperationListInternal
 
     {
-        /// <summary>URL to get the next page of items.</summary>
+        /// <summary>The link to fetch the next page of connected cluster API operations.</summary>
         string NextLink { get; set; }
-
+        /// <summary>The list of connected cluster API operations.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IOperationResponse> Value { get; set; }
 
     }

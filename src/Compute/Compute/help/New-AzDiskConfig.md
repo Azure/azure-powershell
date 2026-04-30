@@ -27,7 +27,7 @@ New-AzDiskConfig [[-SkuName] <String>] [-Tier <String>] [-LogicalSectorSize <Int
  [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>]
  [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>] [-ActionOnDiskDelay <String>]
  [-SecurityMetadataUri <String>] [-SecurityDataUri <String>] [-SupportedSecurityOption <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

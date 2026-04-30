@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.11.1
+* Added breaking change announcement for `Update-AzDatabricksVNetPeering`: parameters `AllowForwardedTraffic`, `AllowGatewayTransit`, `AllowVirtualNetworkAccess` and `UseRemoteGateway` will change from Boolean to SwitchParameter
+
+## Version 1.11.0
+* Upgraded API version to 2026-01-01
+    - Added ComputeMode parameter to New-AzDatabricksWorkspace cmdlet supporting 'Hybrid' and 'Serverless' compute modes
+    - Changed ComplianceStandard parameter type from enum to String[] for greater flexibility
+
+## Version 1.10.2
 * Update the deprecated-by-azversion and change-effective-date of breaking change announcements.
 
 ## Version 1.10.1
