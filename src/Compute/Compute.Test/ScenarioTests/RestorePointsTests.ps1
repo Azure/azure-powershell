@@ -84,8 +84,7 @@ function Test-RestorePointsInstantAccess
 
         #create a new vm in zone 2 (required for PremiumV2_LRS disk attachment)
         $user = "Foo12";
-        $password = "temppass12345T";
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $securePassword = ConvertTo-SecureString ("P@ss!" + [System.Guid]::NewGuid().ToString("N") + "a1") -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
         New-AzVM -ResourceGroupName $rgname -Name $vmname -Image Win2019Datacenter -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Zone 2
