@@ -65,6 +65,7 @@ Accept wildcard characters: False
 ### -InstantAccess
 Enables or disables instant access snapshot for restore points created under this restore point collection for Premium SSD v2 or Ultra disk. When set to $true, instant access snapshots are instantaneously available for disk restore with fast restore performance.
 
+This parameter is supported only when the Compute API version is `2025-04-01` or later and the `AppConsistentInstantAccessSnapshotForDirectDriveDisks` feature flag is enabled for the subscription. In unsupported subscriptions or regions, this parameter may be ignored or the request may be rejected.
 ```yaml
 Type: System.Boolean
 Parameter Sets: (All)
