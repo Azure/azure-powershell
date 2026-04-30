@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionbackupvaultinazgraph
 schema: 2.0.0
@@ -13,8 +13,8 @@ Searches for Backup vaults in Azure Resource Graph and retrieves the expected en
 ## SYNTAX
 
 ```
-Search-AzDataProtectionBackupVaultInAzGraph -Subscription <String[]> [-ResourceGroup <String[]>]
- [-Vault <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Search-AzDataProtectionBackupVaultInAzGraph -Subscription <String[]> [-DefaultProfile <PSObject>]
+ [-ResourceGroup <String[]>] [-Vault <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,7 @@ This command gets a specific vault by given vault name from ARG (Azure Resource 
 ## PARAMETERS
 
 ### -DefaultProfile
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -108,3 +109,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
@@ -110,7 +111,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
             else if (ParameterSetName == ObjectParameterSet)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 Name = NameParts[2];
