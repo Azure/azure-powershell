@@ -19,7 +19,7 @@ Update-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [
 ```
 
 ## DESCRIPTION
-Update Restore Point Collection. Can update Tags and InstantAccess setting.
+Update Restore Point Collection. Can update tags and the InstantAccess setting.
 
 ## EXAMPLES
 
