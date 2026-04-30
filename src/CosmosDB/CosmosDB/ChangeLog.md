@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.0.9
 * Added support for specifying default throughput bucket.
 * Updated Azure.Core from 1.45.0 to 1.47.3
 * Source list parameter for redistribute throughput optional as it is no longer required
