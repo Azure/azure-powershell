@@ -26,8 +26,6 @@
 * Added `-InstantAccess` parameter to `New-AzRestorePointCollection` cmdlet to enable instant access snapshots for restore points on Premium SSD v2 and Ultra disks
 * Added `-InstantAccess` parameter to `Update-AzRestorePointCollection` cmdlet to enable or disable instant access on an existing restore point collection
 * Added `-InstantAccessDurationInMinutes` parameter to `New-AzRestorePoint` cmdlet to specify the duration (1-300 minutes) for which the instant access snapshot is retained
-* Added `InstantAccess` property to `PSRestorePointCollection` output type
-* Added `InstantAccessDurationInMinutes` property to `PSRestorePoint` output type
 
 * Added managed identity support for Azure Compute Galleries
     - `New-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` parameters to assign managed identities at creation time
