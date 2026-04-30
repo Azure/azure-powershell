@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the `System.Formats.Asn1` dependency to v8.0.1.
 
 ## Version 0.1.6
 * Updated docs and code comments to reference artifact signing accounts instead of trusted signing accounts.
