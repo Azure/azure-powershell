@@ -33,7 +33,7 @@ Creates a new Restore Point
 
 ### Example 2
 ```powershell
-New-AzRestorePoint -ResourceGroupName "MyResourceGroup" -RestorePointCollectionName "MyRPCollection" -Name "MyRestorePoint"-InstantAccessDurationInMinutes 120
+New-AzRestorePoint -ResourceGroupName "MyResourceGroup" -RestorePointCollectionName "MyRPCollection" -Name "MyRestorePoint" -InstantAccessDurationInMinutes 120
 ```
 
 Creates a new application-consistent Restore Point with a 120-minute instant access snapshot duration.
