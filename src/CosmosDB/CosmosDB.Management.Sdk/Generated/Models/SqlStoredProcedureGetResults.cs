@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// An Azure Cosmos DB storedProcedure.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SqlStoredProcedureGetResults : ARMResourceProperties
+    public partial class SqlStoredProcedureGetResults : Resource
     {
         /// <summary>
         /// Initializes a new instance of the SqlStoredProcedureGetResults class.
@@ -25,33 +25,39 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the SqlStoredProcedureGetResults class.
         /// </summary>
 
-        /// <param name="id">The unique resource identifier of the ARM resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the ARM resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of Azure resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">The location of the resource group to which the resource belongs.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
-        /// <param name="tags">Tags are a list of key-value pairs that describe the resource. These tags
-        /// can be used in viewing and grouping this resource (across resource groups).
-        /// A maximum of 15 tags can be provided for a resource. Each tag must have a
-        /// key no greater than 128 characters and value no greater than 256
-        /// characters. For example, the default experience for a template type is set
-        /// with &#34;defaultExperience&#34;: &#34;Cassandra&#34;. Current &#34;defaultExperience&#34; values
-        /// also include &#34;Table&#34;, &#34;Graph&#34;, &#34;DocumentDB&#34;, and &#34;MongoDB&#34;.
+        /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
+        /// </param>
+
+        /// <param name="identity">Identity for the resource.
         /// </param>
 
         /// <param name="resource">
         /// </param>
-        public SqlStoredProcedureGetResults(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SqlStoredProcedureGetPropertiesResource resource = default(SqlStoredProcedureGetPropertiesResource))
+        public SqlStoredProcedureGetResults(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), SqlStoredProcedureGetPropertiesResource resource = default(SqlStoredProcedureGetPropertiesResource))
 
-        : base(id, name, type, location, tags)
+        : base(id, name, type, systemData)
         {
+            this.Tags = tags;
+            this.Location = location;
+            this.Identity = identity;
             this.Resource = resource;
             CustomInit();
         }
@@ -61,6 +67,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets resource tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets the geo-location where the resource lives
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets identity for the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets or sets
@@ -75,6 +99,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </exception>
         public virtual void Validate()
         {
+
+
+
             if (this.Resource != null)
             {
                 this.Resource.Validate();
