@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         // Summary:
         //     Gets or sets the time in minutes the snapshot is retained as instant access for
         //     restoring Premium SSD v2 or Ultra disk with fast restore performance in this restore point.
+        // NOTE: This property is intentionally maintained by hand in this Generated/Models file.
+        // If this file is regenerated, keep the corresponding generator/template/spec inputs in sync.
         public int? InstantAccessDurationInMinutes { get; set; }
 
     }
