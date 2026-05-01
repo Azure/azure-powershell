@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRUD and node pool CRU" -Platform Linux -PowerShellVersion Latest -ScenarioScript `
+Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRUD and node pool CRU" -Platform Windows -PowerShellVersion Latest -ScenarioScript `
 {
     param ($rg)
 
@@ -15,8 +15,8 @@ Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRU
     $pipName = New-LiveTestResourceName
 
     # step 1: create an aks cluster with a node pool
-    'y' | ssh-keygen -t rsa -f id_rsa -q -N '"123456"'
-    $sshKeyValue = Get-Content id_rsa.pub -Raw
+#     'y' | ssh-keygen -t rsa -f id_rsa -q -N '"123456"'
+#     $sshKeyValue = Get-Content id_rsa.pub -Raw
 
     $kvName = "LiveTestKeyVault"
     $aksSPIdKey = "AKSSPId"
@@ -40,7 +40,7 @@ Invoke-LiveTestScenario -Name "Test_AKS_CRUD" -Description "Test AKS cluster CRU
 
     Write-Host "##[section]Start creating AKS cluster : New-AzAksCluster"
 
-    New-AzAksCluster -ResourceGroupName $rgName -Name $kubeName -Location $location -SshKeyValue $sshKeyValue -ServicePrincipalIdAndSecret $servicePrincipalCredential -KubernetesVersion $kubeVersion -NodeName $sysNodeName -NodePoolMode System -NodeOsSKU AzureLinux -NodeVmSize Standard_D2_v3 -AutoUpgradeChannel node-image -NodeCount 2 -EnableNodeAutoScaling -NodeMinCount 1 -NodeMaxCount 3 -NetworkPlugin azure -NodeVnetSubnetID $snet.Id -LoadBalancerOutboundIp $pip.Id
+    New-AzAksCluster -ResourceGroupName $rgName -Name $kubeName -Location $location -GenerateSshKey -ServicePrincipalIdAndSecret $servicePrincipalCredential -KubernetesVersion $kubeVersion -NodeName $sysNodeName -NodePoolMode System -NodeOsSKU AzureLinux -NodeVmSize Standard_D2s_v3 -AutoUpgradeChannel node-image -NodeCount 2 -EnableNodeAutoScaling -NodeMinCount 1 -NodeMaxCount 3 -NetworkPlugin azure -NodeVnetSubnetID $snet.Id -LoadBalancerOutboundIp $pip.Id
 
     Write-Host "##[section]Finished creating AKS cluster : New-AzAksCluster"
 
