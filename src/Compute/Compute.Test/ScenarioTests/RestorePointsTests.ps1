@@ -122,21 +122,15 @@ function Test-RestorePointsInstantAccess
         Assert-AreEqual 120 $getRestorePoint.InstantAccessDurationInMinutes
 
         # Verify snapshotAccessState is AvailableWithInstantAccess via instance view expansion
-        $subscriptionId = (Get-AzContext).Subscription.Id
-        $instanceViewPath = "/subscriptions/$subscriptionId/resourceGroups/$rgname" +
-            "/providers/Microsoft.Compute/restorePointCollections/$restorePointCollectionName" +
-            "/restorePoints/$restorePointName" +
-            "?`$expand=instanceView&api-version=2025-04-01"
-        $instanceViewResponse = Invoke-AzRestMethod -Method GET -Path $instanceViewPath
-        $instanceViewContent = $instanceViewResponse.Content | ConvertFrom-Json
-        Assert-NotNull $instanceViewContent.properties.instanceView
-        $diskRestorePoints = $instanceViewContent.properties.instanceView.diskRestorePoints
+        $rpWithView = Get-AzRestorePoint -ResourceGroupName $rgname -RestorePointCollectionName $restorePointCollectionName -Name $restorePointName -InstanceView
+        Assert-NotNull $rpWithView.InstanceView
+        $diskRestorePoints = $rpWithView.InstanceView.DiskRestorePoints
         Assert-NotNull $diskRestorePoints
         Assert-True { $diskRestorePoints.Count -gt 0 }
         # All disk restore points should be in an Instant Access state (InstantAccess = fast restore enabled,
         # AvailableWithInstantAccess = also fully replicated for copy/download). Both confirm IA is working.
         foreach ($drp in $diskRestorePoints) {
-            Assert-True { $drp.snapshotAccessState -eq "AvailableWithInstantAccess" -or $drp.snapshotAccessState -eq "InstantAccess" }
+            Assert-True { $drp.SnapshotAccessState -eq "AvailableWithInstantAccess" -or $drp.SnapshotAccessState -eq "InstantAccess" }
         }
 
         # Update collection to disable InstantAccess
