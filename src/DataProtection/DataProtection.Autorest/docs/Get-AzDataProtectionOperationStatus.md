@@ -140,7 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IOperationResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IOperationResource
 
 ## NOTES
 

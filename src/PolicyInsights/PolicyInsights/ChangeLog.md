@@ -39,6 +39,9 @@
 * The output type of `Stop-AzPolicyRemediation` will change from `bool` to `Remediation`
     - `Stop-AzPolicyRemediation` will now have a `NoWait` switch parameter as well as returning the Remediation object instead of just a boolean
 
+## Version 1.7.4
+* Added Breaking Change notifications to many of the cmdlets in Az.PolicyInsights.
+
 ## Version 1.7.3
 * Updated Azure.Core from 1.47.3 to 1.50.0
 

@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionbackupinstanceinazgraph
 schema: 2.0.0
@@ -13,9 +13,9 @@ Searches for Backup instances in Azure Resource Graph and retrieves the expected
 ## SYNTAX
 
 ```
-Search-AzDataProtectionBackupInstanceInAzGraph -Subscription <String[]> -DatasourceType <DatasourceTypes>
- [-ResourceGroup <String[]>] [-Vault <String[]>] [-ProtectionStatus <ProtectionStatus[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Search-AzDataProtectionBackupInstanceInAzGraph -DatasourceType <DatasourceTypes> -Subscription <String[]>
+ [-DefaultProfile <PSObject>] [-ProtectionStatus <ProtectionStatus[]>] [-ResourceGroup <String[]>]
+ [-Vault <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +82,6 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
 
 Required: True
 Position: Named
@@ -92,6 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -112,7 +112,6 @@ Protection Status of the item
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProtectionStatus[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: ConfiguringProtection, ProtectionConfigured, ConfiguringProtectionFailed, ProtectionError
 
 Required: False
 Position: Named
@@ -178,3 +177,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
