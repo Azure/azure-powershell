@@ -16,22 +16,22 @@
 
 <#
 .Synopsis
-Create an in-memory object for Port.
+Create an in-memory object for ContainerPort.
 .Description
-Create an in-memory object for Port.
+Create an in-memory object for ContainerPort.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Port
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.ContainerPort
 .Link
-https://learn.microsoft.com/powershell/module/Az.ContainerInstance/new-azcontainergroupportobject
+https://learn.microsoft.com/powershell/module/Az.ContainerInstance/new-azcontainerinstanceportobject
 #>
-function New-AzContainerGroupPortObject {
+function New-AzContainerInstancePortObject {
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Port')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.ContainerPort')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="The port number.")]
+        [Parameter(Mandatory, HelpMessage="The port number exposed within the container group.")]
         [int]
         $Port,
         [Parameter(HelpMessage="The protocol associated with the port.")]
@@ -41,10 +41,10 @@ function New-AzContainerGroupPortObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Port]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.ContainerPort]::New()
 
         if ($PSBoundParameters.ContainsKey('Port')) {
-            $Object.Port1 = $Port
+            $Object.Port = $Port
         }
         if ($PSBoundParameters.ContainsKey('Protocol')) {
             $Object.Protocol = $Protocol

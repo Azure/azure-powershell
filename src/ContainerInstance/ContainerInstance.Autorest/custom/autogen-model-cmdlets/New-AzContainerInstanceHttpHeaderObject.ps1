@@ -16,38 +16,37 @@
 
 <#
 .Synopsis
-Create an in-memory object for Port.
+Create an in-memory object for HttpHeader.
 .Description
-Create an in-memory object for Port.
+Create an in-memory object for HttpHeader.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Port
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.HttpHeader
 .Link
-https://learn.microsoft.com/powershell/module/Az.ContainerInstance/new-azcontainergroupportobject
+https://learn.microsoft.com/powershell/module/Az.ContainerInstance/new-azcontainerinstancehttpheaderobject
 #>
-function New-AzContainerGroupPortObject {
+function New-AzContainerInstanceHttpHeaderObject {
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Port')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.HttpHeader')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="The port number.")]
-        [int]
-        $Port,
-        [Parameter(HelpMessage="The protocol associated with the port.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PSArgumentCompleterAttribute("TCP", "UDP")]
+        [Parameter(HelpMessage="The header name.")]
         [string]
-        $Protocol
+        $Name,
+        [Parameter(HelpMessage="The header value.")]
+        [string]
+        $Value
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Port]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.HttpHeader]::New()
 
-        if ($PSBoundParameters.ContainsKey('Port')) {
-            $Object.Port1 = $Port
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            $Object.Name = $Name
         }
-        if ($PSBoundParameters.ContainsKey('Protocol')) {
-            $Object.Protocol = $Protocol
+        if ($PSBoundParameters.ContainsKey('Value')) {
+            $Object.Value = $Value
         }
         return $Object
     }
