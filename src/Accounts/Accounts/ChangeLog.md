@@ -20,8 +20,10 @@
 
 ## Upcoming Release
 * Aligned authentication dependency versions with the module manifest.
+
+## Version 5.4.0
 * Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.
-* Added `AzureAppConfigurationEndpointSuffix` and `AzureAppConfigurationEndpointResourceId` parameters to `Add-AzEnvironment` and `Set-AzEnvironment`
+* Added `AzureAppConfigurationEndpointSuffix` and `AzureAppConfigurationEndpointResourceId` to `Add-AzEnvironment` and `Set-AzEnvironment`
     - Users can now configure Azure App Configuration endpoints when adding or updating custom environments
 
 ## Version 5.3.4

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.4
 * Added Breaking Change notifications to many of the cmdlets in Az.PolicyInsights.
 
 ## Version 1.7.3
