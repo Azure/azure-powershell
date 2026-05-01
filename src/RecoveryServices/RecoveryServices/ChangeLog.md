@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Removed an unused dependency from the Az.RecoveryServices module package.
+* Removed unused System.Configuration.ConfigurationManager dependency from the Az.RecoveryServices module package.
 
 ## Version 7.11.2
 * Added Cross region restore support for upcoming regions Southeast Asia 3
