@@ -28,7 +28,7 @@ Describe 'AzPipelineGroup' {
                 -Processor @{name="batchproc1"; type="Batch"; batch=@{batchSize=10}} `
                 -Receiver @(@{name="otlp1"; type="OTLP"; otlp=@{endpoint="0.0.0.0:7777"}}, @{name="mysyslog1"; type="Syslog"; syslog=@{endpoint="0.0.0.0:4444"}}) `
                 -TlsConfiguration: @{name="dev-disabled-tls"; mode="disabled"} `
-                -ExecutionPlacement: @{distribuition=@{maxInstancesPerHost=1}} `
+                -ExecutionPlacement: @{distribution=@{maxInstancesPerHost=1}} `
                 -ServicePipeline @{name="MyPipeline1"; type="Logs"; receiver=@("otlp1", "mysyslog1"); processor=@("batchproc1"); exporter=@("gigla1")}
             $config.Name | Should -Be $env.pipelineGroupName
         } | Should -Not -Throw
