@@ -22,7 +22,6 @@
 * Upgraded Azure Monitor Pipelines API version from 2024-10-01-preview to GA version 2026-04-01
     - Added 'DistributionMaxInstancesPerHost' parameter to control maximum instances per compute unit
     - Added 'ExecutionPlacementConstraint' parameter to guide where pipeline group instances should run
-    - Added 'PersistencePersistentVolumeName' parameter to specify a mounted persistent volume
     - Added 'TlsConfiguration' parameter to configure TLS (Transport Layer Security) settings for pipeline group receivers
     - Removed 'NetworkingConfiguration' parameter from 'New-AzPipelineGroup' and 'Update-AzPipelineGroup'
     - Removed UDP receiver type support from pipeline group receivers
