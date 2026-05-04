@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             else if (ParameterSetName == ObjectParameterSet)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 Name = NameParts[2];
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             else if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
-                var NameParts = PoolObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(PoolObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }
