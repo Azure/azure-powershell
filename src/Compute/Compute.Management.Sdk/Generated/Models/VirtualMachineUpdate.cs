@@ -74,6 +74,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// VM/VMSS.
         /// </param>
 
+        /// <param name="resiliencyProfile">Resiliency profile for the virtual machine.
+        /// </param>
+
         /// <param name="scheduledEventsPolicy">Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets
         /// Scheduled Event related configurations for the virtual machine.
         /// </param>
@@ -180,7 +183,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="timeCreated">Specifies the time at which the Virtual Machine resource was created.
         /// Minimum api-version: 2021-11-01.
         /// </param>
-        public VirtualMachineUpdate(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Plan plan = default(Plan), VirtualMachineIdentity identity = default(VirtualMachineIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), BillingProfile billingProfile = default(BillingProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), System.DateTime? timeCreated = default(System.DateTime?))
+        public VirtualMachineUpdate(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Plan plan = default(Plan), VirtualMachineIdentity identity = default(VirtualMachineIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), BillingProfile billingProfile = default(BillingProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), ResiliencyProfile resiliencyProfile = default(ResiliencyProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), System.DateTime? timeCreated = default(System.DateTime?))
 
         : base(tags)
         {
@@ -196,6 +199,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.DiagnosticsProfile = diagnosticsProfile;
             this.BillingProfile = billingProfile;
             this.ApplicationProfile = applicationProfile;
+            this.ResiliencyProfile = resiliencyProfile;
             this.ScheduledEventsPolicy = scheduledEventsPolicy;
             this.AvailabilitySet = availabilitySet;
             this.VirtualMachineScaleSet = virtualMachineScaleSet;
@@ -307,6 +311,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.applicationProfile")]
         public ApplicationProfile ApplicationProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets resiliency profile for the virtual machine.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resiliencyProfile")]
+        public ResiliencyProfile ResiliencyProfile {get; set; }
 
         /// <summary>
         /// Gets or sets specifies Redeploy, Reboot and
@@ -486,6 +496,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.StorageProfile.Validate();
             }
+
 
 
 

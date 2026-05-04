@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdScalingPlan
 
 ## SYNOPSIS
-update a scaling plan.
+Update a scaling plan.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Update-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-Descript
 ```
 
 ## DESCRIPTION
-update a scaling plan.
+Update a scaling plan.
 
 ## EXAMPLES
 

@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzPostgreSqlServerSecurityAlertPolicy_Create", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.CmdletBreakingChange("16.0.0", "-", "2026/06/02", ChangeDescription="This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerSecurityAlertPolicy))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description(@"Creates or updates a threat detection policy.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Generated]

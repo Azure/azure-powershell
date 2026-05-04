@@ -93,7 +93,7 @@
     },
     {
         "PackageName": "System.Memory",
-        "PackageVersion": "4.5.5",
+        "PackageVersion": "4.6.3",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
         "PowerShell7Plus": false
