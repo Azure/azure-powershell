@@ -17,6 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzPipelineGroup'))
 Describe 'AzPipelineGroup' {
     It 'CreateExpanded' {
         {
+            #$DebugPreference = 'Continue'
+            $constraint = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PlacementConstraint]::new()
+            $constraint.Capability = "gpu-enabled"
+            $constraint.Operator = "Exists"
             $config = New-AzPipelineGroup -Name $env.pipelineGroupName `
                 -ResourceGroupName $env.resourceGroup `
                 -Location $env.location `
@@ -28,9 +32,14 @@ Describe 'AzPipelineGroup' {
                 -Processor @{name="batchproc1"; type="Batch"; batch=@{batchSize=10}} `
                 -Receiver @(@{name="otlp1"; type="OTLP"; otlp=@{endpoint="0.0.0.0:7777"}}, @{name="mysyslog1"; type="Syslog"; syslog=@{endpoint="0.0.0.0:4444"}}) `
                 -TlsConfiguration: @{name="dev-disabled-tls"; mode="disabled"} `
-                -ExecutionPlacement: @{distribution=@{maxInstancesPerHost=1}} `
+                -ExecutionPlacementConstraint @($constraint) `
+                -DistributionMaxInstancesPerHost 1 `
                 -ServicePipeline @{name="MyPipeline1"; type="Logs"; receiver=@("otlp1", "mysyslog1"); processor=@("batchproc1"); exporter=@("gigla1")}
             $config.Name | Should -Be $env.pipelineGroupName
+            $config.TlsConfiguration.Name | Should -Be "dev-disabled-tls"
+            $config.TlsConfiguration.Mode | Should -Be "disabled"
+            $config.ExecutionPlacementConstraint.Count | Should -Be 1
+            $config.DistributionMaxInstancesPerHost | Should -Be 1
         } | Should -Not -Throw
     }
 

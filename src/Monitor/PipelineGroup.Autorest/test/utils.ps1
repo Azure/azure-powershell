@@ -30,9 +30,11 @@ function Start-TestSleep {
     }
 }
 
-function Get-EnvOrDefault([string]$Name, [string]$Default) {
+function Get-RequiredEnv([string]$Name) {
     $val = [Environment]::GetEnvironmentVariable($Name)
-    if ([string]::IsNullOrWhiteSpace($val)) { return $Default }
+    if ([string]::IsNullOrWhiteSpace($val)) {
+        throw "Required environment variable '$Name' is not set."
+    }
     return $val
 }
 
@@ -50,10 +52,10 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
 
-    $env.pipelineGroupName = Get-EnvOrDefault 'PIPELINEGROUP_NAME' 'psTestPipelineGroup'
-    $env.resourceGroup     = Get-EnvOrDefault 'RESOURCE_GROUP' 'rg-placeholder'
-    $env.location          = Get-EnvOrDefault 'LOCATION' 'westus2'
-    $env.extLocName        = Get-EnvOrDefault 'EXTENDED_LOCATION_RESOURCE_ID' "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.ExtendedLocation/customLocations/cl-placeholder-$($env.location)"
+    $env.pipelineGroupName = Get-RequiredEnv 'PIPELINEGROUP_NAME'
+    $env.resourceGroup     = Get-RequiredEnv 'RESOURCE_GROUP'
+    $env.location          = Get-RequiredEnv 'LOCATION'
+    $env.extLocName        = Get-RequiredEnv 'EXTENDED_LOCATION_RESOURCE_ID'
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
