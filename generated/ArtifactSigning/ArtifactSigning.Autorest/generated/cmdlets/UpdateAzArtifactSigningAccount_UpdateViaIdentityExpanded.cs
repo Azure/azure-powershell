@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Cmdlets;
     using System;
 
-    /// <summary>update a trusted signing account.</summary>
+    /// <summary>update an artifact signing account.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzArtifactSigningAccount_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccount))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Description(@"update a trusted signing account.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Description(@"update an artifact signing account.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}", ApiVersion = "2025-10-13")]
     public partial class UpdateAzArtifactSigningAccount_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Parameters for creating or updating a trusted signing account.</summary>
+        /// <summary>Parameters for creating or updating an artifact signing account.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccountPatch _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.CodeSigningAccountPatch();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>

@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 
+## Version 1.11.1
+* Added breaking change announcement for `Update-AzDatabricksVNetPeering`: parameters `AllowForwardedTraffic`, `AllowGatewayTransit`, `AllowVirtualNetworkAccess` and `UseRemoteGateway` will change from Boolean to SwitchParameter
+
 ## Version 1.11.0
 * Upgraded API version to 2026-01-01
     - Added ComputeMode parameter to New-AzDatabricksWorkspace cmdlet supporting 'Hybrid' and 'Serverless' compute modes

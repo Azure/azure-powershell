@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.PowerShell;
 
-    /// <summary>SKU of the trusted signing account.</summary>
+    /// <summary>SKU of the artifact signing account.</summary>
     [System.ComponentModel.TypeConverter(typeof(AccountSkuTypeConverter))]
     public partial class AccountSku
     {
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
             return ToJsonString();
         }
     }
-    /// SKU of the trusted signing account.
+    /// SKU of the artifact signing account.
     [System.ComponentModel.TypeConverter(typeof(AccountSkuTypeConverter))]
     public partial interface IAccountSku
 

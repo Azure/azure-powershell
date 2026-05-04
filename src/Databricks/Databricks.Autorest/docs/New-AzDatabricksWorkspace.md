@@ -245,22 +245,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultCatalogInitialName
-Specifies the initial Name of default catalog.
-If not specified, the name of the workspace will be used.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultCatalogInitialType
 Defines the initial type of the default catalog.
 Possible values (case-insensitive): HiveMetastore, UnityCatalog

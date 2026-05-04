@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
     /// <summary>
     /// Encapsulates runtime state information.
     /// </summary>
-    public class RuntimeState
+    internal class RuntimeState
     {
         public bool DeleteCredentials { get; set; }
         public string LocalUser { get; set; }

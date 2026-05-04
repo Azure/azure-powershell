@@ -29,11 +29,11 @@ $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instances[0
 $validateRestore = Test-AzDataProtectionBackupInstanceRestore -ResourceGroupName $ResourceGroupName -Name $instance[0].Name -VaultName $VaultName -RestoreRequest $RestoreRequestObject -SubscriptionId $SubscriptionId -RestoreToSecondaryRegion
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IValidateRestoreRequestObject
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IValidateRestoreRequestObject
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -82,7 +82,7 @@ RESTOREREQUESTOBJECT <IAzureBackupRestoreRequest>: Gets or sets the restore requ
 https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancerestore
 #>
 function Test-AzDataProtectionBackupInstanceRestore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='ValidateViaIdentity1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate1', Mandatory)]
@@ -128,7 +128,7 @@ param(
     [Parameter(ParameterSetName='Validate1', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ValidateViaIdentity1', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IValidateRestoreRequestObject]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IValidateRestoreRequestObject]
     # Validate restore request object
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -136,7 +136,7 @@ param(
     [Parameter(ParameterSetName='ValidateExpanded1', Mandatory)]
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRestoreRequest]
     # Gets or sets the restore request object.
     # To construct, see NOTES section for RESTOREREQUESTOBJECT properties and create a hash table.
     ${RestoreRequestObject},

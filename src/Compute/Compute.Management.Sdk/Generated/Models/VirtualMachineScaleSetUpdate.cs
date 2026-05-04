@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="zones">The virtual machine scale set zones.
         /// </param>
 
+        /// <param name="placement">User-defined constraints for virtual machine scale set hardware placement.
+        /// </param>
+
         /// <param name="upgradePolicy">The upgrade policy.
         /// </param>
 
@@ -94,8 +97,11 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="zonalPlatformFaultDomainAlignMode">Specifies the align mode between Virtual Machine Scale Set compute and
         /// storage Fault Domain count.
-        /// Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;</param>
-        public VirtualMachineScaleSetUpdate(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), UpgradePolicy upgradePolicy = default(UpgradePolicy), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), SkuProfile skuProfile = default(SkuProfile), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMS = default(bool?), bool? singlePlacementGroup = default(bool?), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), string zonalPlatformFaultDomainAlignMode = default(string))
+        /// Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;, &#39;BestEffortAligned&#39;</param>
+
+        /// <param name="lifecycleHooksProfile">Specifies the lifecycle hooks profile for the virtual machine scale set.
+        /// </param>
+        public VirtualMachineScaleSetUpdate(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), Placement placement = default(Placement), UpgradePolicy upgradePolicy = default(UpgradePolicy), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), SkuProfile skuProfile = default(SkuProfile), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetUpdateVMProfile virtualMachineProfile = default(VirtualMachineScaleSetUpdateVMProfile), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMS = default(bool?), bool? singlePlacementGroup = default(bool?), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SubResource proximityPlacementGroup = default(SubResource), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), string zonalPlatformFaultDomainAlignMode = default(string), LifecycleHooksProfile lifecycleHooksProfile = default(LifecycleHooksProfile))
 
         : base(tags)
         {
@@ -103,6 +109,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.Plan = plan;
             this.Identity = identity;
             this.Zones = zones;
+            this.Placement = placement;
             this.UpgradePolicy = upgradePolicy;
             this.AdditionalCapabilities = additionalCapabilities;
             this.ResiliencyPolicy = resiliencyPolicy;
@@ -117,6 +124,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.PriorityMixPolicy = priorityMixPolicy;
             this.SpotRestorePolicy = spotRestorePolicy;
             this.ZonalPlatformFaultDomainAlignMode = zonalPlatformFaultDomainAlignMode;
+            this.LifecycleHooksProfile = lifecycleHooksProfile;
             CustomInit();
         }
 
@@ -150,6 +158,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "zones")]
         public System.Collections.Generic.IList<string> Zones {get; set; }
+
+        /// <summary>
+        /// Gets or sets user-defined constraints for virtual machine scale set
+        /// hardware placement.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "placement")]
+        public Placement Placement {get; set; }
 
         /// <summary>
         /// Gets or sets the upgrade policy.
@@ -246,10 +261,17 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies the align mode between Virtual Machine Scale Set
-        /// compute and storage Fault Domain count. Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;
+        /// compute and storage Fault Domain count. Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;, &#39;BestEffortAligned&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.zonalPlatformFaultDomainAlignMode")]
         public string ZonalPlatformFaultDomainAlignMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the lifecycle hooks profile for the virtual machine
+        /// scale set.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lifecycleHooksProfile")]
+        public LifecycleHooksProfile LifecycleHooksProfile {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -258,6 +280,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 
@@ -280,6 +303,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.PriorityMixPolicy.Validate();
             }
+
 
 
         }

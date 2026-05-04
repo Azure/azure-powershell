@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzPostgreSqlDatabase_Update", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.CmdletBreakingChange("16.0.0", "-", "2026/06/02", ChangeDescription="This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description(@"Creates a new database or updates an existing database.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Generated]

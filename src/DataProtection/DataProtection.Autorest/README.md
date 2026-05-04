@@ -31,11 +31,11 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-commit: 18609d68cf243ee3ce35d7c005ff3c7dd2cd9477
+commit: 263c810dfe74ca6c7283d88c8a42d6ad93e20660
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2025-09-01/dataprotection.json
+  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2026-03-01/dataprotection.json
 title: DataProtection
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
@@ -684,19 +684,26 @@ directive:
     - ValidateCrossRegionRestoreRequestObject
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBaseBackupPolicy Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBaseBackupPolicy Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ITriggerContext Trigger');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ITriggerContext Trigger');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupParameters BackupParameter');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupParameters BackupParameter');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRecoveryPoint Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRecoveryPoint Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.INamespacedNameResource ResourceModifierReference');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.INamespacedNameResource ResourceModifierReference');
+
+  - where:
+      verb: Backup|Edit|Find|Get|Initialize|New|Set|Start|Stop|Suspend|Sync|Test|Update
+      subject: BackupInstance|BackupInstanceAdhoc|BackupInstanceBackup|BackupInstanceProtection|BackupInstanceReadiness|BackupInstanceRestore|BackupInstanceUpdate|BackupPolicy|BackupVault|Job|MSIPermission|Operation|OperationStatus|PolicyRetentionRuleClientObject|PolicyTagClientObject|PolicyTagCriteriaClientObject|PolicyTemplate|PolicyTriggerClientObject|ResourceGuard|ResourceGuardMapping|RestorableTimeRange|RestoreRequest|RetentionLifeCycleClientObject|SoftDeletedBackupInstance
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```
 
 ## Alternate settings

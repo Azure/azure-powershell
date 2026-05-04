@@ -59,6 +59,11 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
 #>
 function Update-AzRedisEnterpriseCacheDatabase {
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026. *`n
+    * At least one change applies to this cmdlet.                                                     *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+    ***************************************************************************************************")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
