@@ -446,3 +446,47 @@ function Test-VirtualMachineProfileWithoutAUC
     Assert-False {$p.OSProfile.WindowsConfiguration.ProvisionVMAgent};
 
 }
+
+<#
+.SYNOPSIS
+Test Add-AzVMDataDisk with SecurityEncryptionType and SecureVMDiskEncryptionSet for Confidential VM data disk encryption
+#>
+function Test-AddAzVMDataDiskWithSecurityEncryption
+{
+    $vmsize = 'Standard_A2';
+    $vmname = 'pstestvm' + ((Get-Random) % 10000);
+    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+
+    # Storage
+    $stoname = 'hpfteststo' + ((Get-Random) % 10000);
+    $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+
+    $p = Set-AzVMOSDisk -VM $p -Name 'osDisk' -VhdUri $osDiskVhdUri -Caching 'ReadWrite' -CreateOption Empty;
+
+    # Test adding a managed data disk with SecurityEncryptionType only
+    $managedDataDiskId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/disks/testConfidentialDataDisk";
+    $securityEncryptionType = "DiskWithVMGuestState";
+
+    $p = Add-AzVMDataDisk -VM $p -Name 'testConfidentialDataDisk' -Lun 0 -CreateOption Attach `
+                          -ManagedDiskId $managedDataDiskId -StorageAccountType 'Premium_LRS' `
+                          -SecurityEncryptionType $securityEncryptionType;
+
+    Assert-AreEqual $managedDataDiskId $p.StorageProfile.DataDisks[0].ManagedDisk.Id;
+    Assert-AreEqual 'Premium_LRS' $p.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType;
+    Assert-AreEqual $securityEncryptionType $p.StorageProfile.DataDisks[0].ManagedDisk.SecurityProfile.SecurityEncryptionType;
+    Assert-Null $p.StorageProfile.DataDisks[0].ManagedDisk.SecurityProfile.DiskEncryptionSet;
+
+    # Test adding a managed data disk with both SecurityEncryptionType and SecureVMDiskEncryptionSet
+    $managedDataDisk2Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/disks/testConfidentialDataDisk2";
+    $secureVMDiskEncryptionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/diskEncryptionSets/testDES";
+
+    $p = Add-AzVMDataDisk -VM $p -Name 'testConfidentialDataDisk2' -Lun 1 -CreateOption Attach `
+                          -ManagedDiskId $managedDataDisk2Id -StorageAccountType 'Premium_LRS' `
+                          -SecurityEncryptionType $securityEncryptionType `
+                          -SecureVMDiskEncryptionSet $secureVMDiskEncryptionSetId;
+
+    Assert-AreEqual $managedDataDisk2Id $p.StorageProfile.DataDisks[1].ManagedDisk.Id;
+    Assert-AreEqual 'Premium_LRS' $p.StorageProfile.DataDisks[1].ManagedDisk.StorageAccountType;
+    Assert-AreEqual $securityEncryptionType $p.StorageProfile.DataDisks[1].ManagedDisk.SecurityProfile.SecurityEncryptionType;
+    Assert-AreEqual $secureVMDiskEncryptionSetId $p.StorageProfile.DataDisks[1].ManagedDisk.SecurityProfile.DiskEncryptionSet.Id;
+}

@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-SecurityEncryptionType` and `-SecureVMDiskEncryptionSet` parameters to `Add-AzVMDataDisk` cmdlet to support Confidential VM (CVM) data disk encryption. This enables binding data disk encryption keys to the VM's TPM (Trusted Platform Module) for end-to-end confidential computing protection.
 
 ## Version 11.5.0
 * Added `-Feature` parameter to `Update-AzGalleryImageDefinition` to allow updating existing gallery image features (such as DiskControllerTypes, SecurityType, IsAcceleratedNetwork, and IsHibernate). Each feature supports a `StartsAtVersion` property to specify the minimum gallery image version that supports the updated feature.
