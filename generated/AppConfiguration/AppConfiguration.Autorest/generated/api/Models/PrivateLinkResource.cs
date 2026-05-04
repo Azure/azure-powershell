@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         public string Id { get => this._id; }
 
         /// <summary>Internal Acessors for GroupId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourceInternal.GroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).GroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).GroupId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourceInternal.GroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).GroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).GroupId = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourceInternal.Id { get => this._id; set { {_id = value;} } }
@@ -37,10 +37,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
         Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourceProperties Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourceInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.PrivateLinkResourceProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for RequiredMember</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourceInternal.RequiredMember { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredMember; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredMember = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourceInternal.RequiredMember { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredMember; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredMember = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for RequiredZoneName</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourceInternal.RequiredZoneName { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredZoneName; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredZoneName = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourceInternal.RequiredZoneName { get => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredZoneName; set => ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourcePropertiesInternal)Property).RequiredZoneName = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IPrivateLinkResourceInternal.Type { get => this._type; set { {_type = value;} } }

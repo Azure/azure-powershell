@@ -23,7 +23,7 @@ This operation will stop protection of a backup instance and data will be held f
 Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IStopProtectionRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IStopProtectionRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
@@ -109,7 +109,7 @@ param(
 
     [Parameter(ParameterSetName='StopViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IStopProtectionRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IStopProtectionRequest]
     # Request body of Stop protection when MUA is Enabled
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
