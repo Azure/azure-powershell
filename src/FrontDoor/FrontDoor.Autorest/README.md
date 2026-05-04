@@ -467,6 +467,43 @@ directive:
     hide: true
 
   # --------------------------------------------------------------------------
+  # Preserve direct Id / Name / Type members for static analysis compatibility
+  # --------------------------------------------------------------------------
+  # FrontendEndpoint and RulesEngine model definitions inherit id/name/type via
+  # allOf from BasicResource* in the 2025-10-01 and 2025-11-01 swagger. The
+  # generated C# classes still expose these properties, but the public model
+  # interfaces only inherit them from the base interfaces. The Azure PowerShell
+  # breaking-change analyzer compares direct interface members and reports false
+  # removals for IFrontendEndpoint.Id/Name/Type and IRulesEngine.Id/Name/Type.
+  #
+  # Expand only these two affected models so their generated public interfaces
+  # keep the same direct members as the released Az.FrontDoor surface. Do not
+  # broaden this to every allOf resource model without checking the generated
+  # interface diff and static-analysis output.
+  - from: swagger-document
+    where: $.definitions.FrontendEndpoint
+    transform: >-
+      if ($.allOf && $.allOf.some(item => item.$ref === "#/definitions/BasicResourceWithSettableIDName")) {
+        $.properties = $.properties || {};
+        $.properties.id = { "type": "string", "description": "Resource ID." };
+        $.properties.name = { "type": "string", "description": "Resource name." };
+        $.properties.type = { "type": "string", "description": "Resource type.", "readOnly": true };
+        delete $.allOf;
+      }
+      return $;
+  - from: swagger-document
+    where: $.definitions.RulesEngine
+    transform: >-
+      if ($.allOf && $.allOf.some(item => item.$ref === "#/definitions/BasicResource")) {
+        $.properties = $.properties || {};
+        $.properties.id = { "type": "string", "description": "Resource ID.", "readOnly": true };
+        $.properties.name = { "type": "string", "description": "Resource name.", "readOnly": true };
+        $.properties.type = { "type": "string", "description": "Resource type.", "readOnly": true };
+        delete $.allOf;
+      }
+      return $;
+
+  # --------------------------------------------------------------------------
   # LRO contract workaround for FrontDoorWebApplicationFirewallPolicies
   # --------------------------------------------------------------------------
   # The 2025-10-01 / 2025-11-01 swagger declares
