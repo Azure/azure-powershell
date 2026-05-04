@@ -20,6 +20,14 @@
 
 -->
 ## Upcoming Release
+* Added BestEffortAligned storage Fault Domain (FD) alignment support for Virtual Machine Scale Set (VMSS) Flex
+    - Added `-ZonalPlatformFaultDomainAlignMode` parameter to `New-AzVmssConfig` to configure VMSS-level storage FD alignment mode. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'.
+    - Added `-ZonalPlatformFaultDomainAlignMode` parameter to `New-AzVmss` (SimpleParameterSet) to configure VMSS-level storage FD alignment mode.
+    - Added `-ZonalPlatformFaultDomainAlignMode` parameter to `Update-AzVmss` to update VMSS-level storage FD alignment mode on an existing VMSS.
+    - Added `-OsDiskStorageFaultDomainAlignment` parameter to `Set-AzVmssStorageProfile` to set per-disk storage FD alignment for the OS disk in a VMSS template. Valid values are 'Aligned' and 'BestEffortAligned'.
+    - Added `-StorageFaultDomainAlignment` parameter to `Add-AzVmssDataDisk` to set per-disk storage FD alignment for data disks in a VMSS template. Valid values are 'Aligned' and 'BestEffortAligned'.
+    - Added `-StorageFaultDomainAlignment` parameter to `Set-AzVMOSDisk` to set per-disk storage FD alignment for the OS disk on VMs within a VMSS Flex. Valid values are 'Aligned' and 'BestEffortAligned'.
+    - Added `-StorageFaultDomainAlignment` parameter to `Add-AzVMDataDisk` to set per-disk storage FD alignment for data disks on VMs within a VMSS Flex. Valid values are 'Aligned' and 'BestEffortAligned'.
 
 ## Version 11.5.0
 * Added `-Feature` parameter to `Update-AzGalleryImageDefinition` to allow updating existing gallery image features (such as DiskControllerTypes, SecurityType, IsAcceleratedNetwork, and IsHibernate). Each feature supports a `StartsAtVersion` property to specify the minimum gallery image version that supports the updated feature.

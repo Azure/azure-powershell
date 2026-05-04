@@ -6346,3 +6346,87 @@ function Test-VirtualMachineScaleSetHighSpeedInterconnectPlacement
         Clean-ResourceGroup $rgname;
     }
 }
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set with ZonalPlatformFaultDomainAlignMode (BestEffortAligned storage FD alignment)
+#>
+function Test-VirtualMachineScaleSetZonalPlatformFaultDomainAlignMode
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    $loc = "eastus2";
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vs' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        # Create VMSS with BestEffortAligned ZonalPlatformFaultDomainAlignMode using SimpleParameterSet
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName `
+            -DomainNameLabel $domainNameLabel1 -ZonalPlatformFaultDomainAlignMode "BestEffortAligned" `
+            -OrchestrationMode "Flexible";
+
+        Assert-AreEqual $vmss.ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
+
+        # Update the VMSS ZonalPlatformFaultDomainAlignMode
+        $updatedVmss = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName `
+            -ZonalPlatformFaultDomainAlignMode "Aligned";
+
+        Assert-AreEqual $updatedVmss.ZonalPlatformFaultDomainAlignMode "Aligned";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzVmssConfig with ZonalPlatformFaultDomainAlignMode and per-disk StorageFaultDomainAlignment
+#>
+function Test-VirtualMachineScaleSetConfigStorageFaultDomainAlignment
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+    $loc = "eastus2";
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a VMSS config with BestEffortAligned VMSS-level alignment
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName "Standard_D4s_v3" `
+            -OrchestrationMode "Flexible" -ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
+
+        Assert-AreEqual $vmssConfig.ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
+
+        # Set OS disk with BestEffortAligned per-disk alignment
+        Set-AzVmssStorageProfile -VirtualMachineScaleSet $vmssConfig `
+            -OsDiskCreateOption "FromImage" -OsDiskStorageFaultDomainAlignment "BestEffortAligned" `
+            -ImageReferencePublisher "MicrosoftWindowsServer" -ImageReferenceOffer "WindowsServer" `
+            -ImageReferenceSku "2022-Datacenter" -ImageReferenceVersion "latest" `
+            -ManagedDisk "Standard_LRS";
+
+        Assert-AreEqual $vmssConfig.VirtualMachineProfile.StorageProfile.OsDisk.StorageFaultDomainAlignment "BestEffortAligned";
+
+        # Add data disk with Aligned per-disk alignment
+        Add-AzVmssDataDisk -VirtualMachineScaleSet $vmssConfig -Lun 0 -CreateOption "Empty" `
+            -DiskSizeGB 128 -StorageAccountType "Standard_LRS" -StorageFaultDomainAlignment "Aligned";
+
+        Assert-AreEqual $vmssConfig.VirtualMachineProfile.StorageProfile.DataDisks[0].StorageFaultDomainAlignment "Aligned";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
