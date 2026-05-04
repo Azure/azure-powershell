@@ -46,44 +46,87 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Refreshes a hub database schema.
+        /// Lists sync groups under a hub database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SyncGroup> ListByDatabase(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName)
+        {
+                return ((ISyncGroupsOperations)operations).ListByDatabaseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists sync groups under a hub database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SyncGroup>> ListByDatabaseAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets a sync group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
         /// </param>
-        public static void RefreshHubSchema(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        public static SyncGroup Get(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
-                ((ISyncGroupsOperations)operations).RefreshHubSchemaAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
+                return ((ISyncGroupsOperations)operations).GetAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Refreshes a hub database schema.
+        /// Gets a sync group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -91,9 +134,213 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task RefreshHubSchemaAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SyncGroup> GetAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.RefreshHubSchemaWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a sync group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        public static SyncGroup CreateOrUpdate(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, SyncGroup parameters)
+        {
+                return ((ISyncGroupsOperations)operations).CreateOrUpdateAsync(resourceGroupName, serverName, databaseName, syncGroupName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a sync group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SyncGroup> CreateOrUpdateAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, SyncGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates a sync group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        public static SyncGroup Update(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, SyncGroup parameters)
+        {
+                return ((ISyncGroupsOperations)operations).UpdateAsync(resourceGroupName, serverName, databaseName, syncGroupName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates a sync group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SyncGroup> UpdateAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, SyncGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a sync group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        public static SyncGroupsDeleteHeaders Delete(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        {
+                return ((ISyncGroupsOperations)operations).DeleteAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a sync group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SyncGroupsDeleteHeaders> DeleteAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Cancels a sync group synchronization.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        public static void CancelSync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        {
+                ((ISyncGroupsOperations)operations).CancelSyncAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Cancels a sync group synchronization.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task CancelSyncAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.CancelSyncWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets a collection of hub database schemas.
@@ -102,14 +349,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -126,14 +372,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -155,14 +400,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -191,14 +435,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -226,44 +469,42 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Cancels a sync group synchronization.
+        /// Refreshes a hub database schema.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
         /// </param>
-        public static void CancelSync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        public static SyncGroupsRefreshHubSchemaHeaders RefreshHubSchema(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
-                ((ISyncGroupsOperations)operations).CancelSyncAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
+                return ((ISyncGroupsOperations)operations).RefreshHubSchemaAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Cancels a sync group synchronization.
+        /// Refreshes a hub database schema.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -271,9 +512,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task CancelSyncAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SyncGroupsRefreshHubSchemaHeaders> RefreshHubSchemaAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.CancelSyncWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.RefreshHubSchemaWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Triggers a sync group synchronization.
@@ -282,14 +526,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -306,14 +549,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -326,326 +568,19 @@ namespace Microsoft.Azure.Management.Sql
             (await operations.TriggerSyncWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets a sync group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        public static SyncGroup Get(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
-        {
-                return ((ISyncGroupsOperations)operations).GetAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a sync group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SyncGroup> GetAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Creates or updates a sync group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        public static SyncGroup CreateOrUpdate(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, SyncGroup parameters)
-        {
-                return ((ISyncGroupsOperations)operations).CreateOrUpdateAsync(resourceGroupName, serverName, databaseName, syncGroupName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a sync group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SyncGroup> CreateOrUpdateAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, SyncGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a sync group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        public static void Delete(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
-        {
-                ((ISyncGroupsOperations)operations).DeleteAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a sync group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Updates a sync group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        public static SyncGroup Update(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, SyncGroup parameters)
-        {
-                return ((ISyncGroupsOperations)operations).UpdateAsync(resourceGroupName, serverName, databaseName, syncGroupName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates a sync group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<SyncGroup> UpdateAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, SyncGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists sync groups under a hub database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<SyncGroup> ListByDatabase(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName)
-        {
-                return ((ISyncGroupsOperations)operations).ListByDatabaseAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists sync groups under a hub database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SyncGroup>> ListByDatabaseAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Refreshes a hub database schema.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        public static void BeginRefreshHubSchema(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
-        {
-                ((ISyncGroupsOperations)operations).BeginRefreshHubSchemaAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Refreshes a hub database schema.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginRefreshHubSchemaAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginRefreshHubSchemaWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Creates or updates a sync group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -662,14 +597,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -685,70 +619,19 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes a sync group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        public static void BeginDelete(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
-        {
-                ((ISyncGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a sync group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
-        /// </param>
-        /// <param name='syncGroupName'>
-        /// The name of the sync group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Updates a sync group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -765,14 +648,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the database on which the sync group is hosted.
+        /// The name of the database.
         /// </param>
         /// <param name='syncGroupName'>
         /// The name of the sync group.
@@ -785,6 +667,108 @@ namespace Microsoft.Azure.Management.Sql
             using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a sync group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        public static SyncGroupsDeleteHeaders BeginDelete(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        {
+                return ((ISyncGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a sync group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SyncGroupsDeleteHeaders> BeginDeleteAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Refreshes a hub database schema.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        public static SyncGroupsRefreshHubSchemaHeaders BeginRefreshHubSchema(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName)
+        {
+                return ((ISyncGroupsOperations)operations).BeginRefreshHubSchemaAsync(resourceGroupName, serverName, databaseName, syncGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Refreshes a hub database schema.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='syncGroupName'>
+        /// The name of the sync group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SyncGroupsRefreshHubSchemaHeaders> BeginRefreshHubSchemaAsync(this ISyncGroupsOperations operations, string resourceGroupName, string serverName, string databaseName, string syncGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginRefreshHubSchemaWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, syncGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -816,6 +800,39 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SyncDatabaseIdProperties>> ListSyncDatabaseIdsNextAsync(this ISyncGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListSyncDatabaseIdsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists sync groups under a hub database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<SyncGroup> ListByDatabaseNext(this ISyncGroupsOperations operations, string nextPageLink)
+        {
+                return ((ISyncGroupsOperations)operations).ListByDatabaseNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists sync groups under a hub database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SyncGroup>> ListByDatabaseNextAsync(this ISyncGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByDatabaseNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -882,39 +899,6 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SyncGroupLogProperties>> ListLogsNextAsync(this ISyncGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListLogsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists sync groups under a hub database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<SyncGroup> ListByDatabaseNext(this ISyncGroupsOperations operations, string nextPageLink)
-        {
-                return ((ISyncGroupsOperations)operations).ListByDatabaseNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists sync groups under a hub database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SyncGroup>> ListByDatabaseNextAsync(this ISyncGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByDatabaseNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

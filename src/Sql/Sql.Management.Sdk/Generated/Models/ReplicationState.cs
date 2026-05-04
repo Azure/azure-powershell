@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ReplicationState
     {
+        /// <summary>
+        /// PENDING
+        /// </summary>
         public const string Pending = "PENDING";
+        /// <summary>
+        /// SEEDING
+        /// </summary>
         public const string Seeding = "SEEDING";
+        /// <summary>
+        /// CATCH_UP
+        /// </summary>
         public const string CatchUP = "CATCH_UP";
+        /// <summary>
+        /// SUSPENDED
+        /// </summary>
         public const string Suspended = "SUSPENDED";
     }
 }

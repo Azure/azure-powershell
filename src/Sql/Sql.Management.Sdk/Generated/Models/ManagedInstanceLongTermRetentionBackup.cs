@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ManagedInstanceLongTermRetentionBackup class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="managedInstanceName">The managed instance that the backup database belongs to.
@@ -54,9 +60,12 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="backupStorageRedundancy">The storage redundancy type of the backup
         /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
-        public ManagedInstanceLongTermRetentionBackup(string id = default(string), string name = default(string), string type = default(string), string managedInstanceName = default(string), System.DateTime? managedInstanceCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string))
 
-        : base(id, name, type)
+        /// <param name="backupStorageAccessTier">The BackupStorageAccessTier for the LTR backup
+        /// Possible values include: &#39;Hot&#39;, &#39;Archive&#39;</param>
+        public ManagedInstanceLongTermRetentionBackup(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string managedInstanceName = default(string), System.DateTime? managedInstanceCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string), string backupStorageAccessTier = default(string))
+
+        : base(id, name, type, systemData)
         {
             this.ManagedInstanceName = managedInstanceName;
             this.ManagedInstanceCreateTime = managedInstanceCreateTime;
@@ -65,6 +74,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.BackupTime = backupTime;
             this.BackupExpirationTime = backupExpirationTime;
             this.BackupStorageRedundancy = backupStorageRedundancy;
+            this.BackupStorageAccessTier = backupStorageAccessTier;
             CustomInit();
         }
 
@@ -115,5 +125,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backupStorageRedundancy")]
         public string BackupStorageRedundancy {get; private set; }
+
+        /// <summary>
+        /// Gets the BackupStorageAccessTier for the LTR backup Possible values include: &#39;Hot&#39;, &#39;Archive&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backupStorageAccessTier")]
+        public string BackupStorageAccessTier {get; private set; }
     }
 }

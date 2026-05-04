@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the JobExecution class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="provisioningState">The ARM provisioning state of the job execution.
@@ -75,9 +81,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="target">The target that this execution is executed on.
         /// </param>
-        public JobExecution(string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), int? jobVersion = default(int?), string stepName = default(string), int? stepId = default(int?), System.Guid? jobExecutionId = default(System.Guid?), string lifecycle = default(string), System.DateTime? createTime = default(System.DateTime?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), int? currentAttempts = default(int?), System.DateTime? currentAttemptStartTime = default(System.DateTime?), string lastMessage = default(string), JobExecutionTarget target = default(JobExecutionTarget))
+        public JobExecution(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), int? jobVersion = default(int?), string stepName = default(string), int? stepId = default(int?), System.Guid? jobExecutionId = default(System.Guid?), string lifecycle = default(string), System.DateTime? createTime = default(System.DateTime?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), int? currentAttempts = default(int?), System.DateTime? currentAttemptStartTime = default(System.DateTime?), string lastMessage = default(string), JobExecutionTarget target = default(JobExecutionTarget))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.ProvisioningState = provisioningState;
             this.JobVersion = jobVersion;

@@ -29,11 +29,15 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="maxCapacity">The maximum capacity any one database can consume.
         /// </param>
-        public ElasticPoolPerDatabaseSettings(double? minCapacity = default(double?), double? maxCapacity = default(double?))
+
+        /// <param name="autoPauseDelay">Auto Pause Delay for per database within pool
+        /// </param>
+        public ElasticPoolPerDatabaseSettings(double? minCapacity = default(double?), double? maxCapacity = default(double?), int? autoPauseDelay = default(int?))
 
         {
             this.MinCapacity = minCapacity;
             this.MaxCapacity = maxCapacity;
+            this.AutoPauseDelay = autoPauseDelay;
             CustomInit();
         }
 
@@ -54,5 +58,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "maxCapacity")]
         public double? MaxCapacity {get; set; }
+
+        /// <summary>
+        /// Gets or sets auto Pause Delay for per database within pool
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "autoPauseDelay")]
+        public int? AutoPauseDelay {get; set; }
     }
 }

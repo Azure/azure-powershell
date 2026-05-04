@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class SyncGroupState
     {
+        /// <summary>
+        /// NotReady
+        /// </summary>
         public const string NotReady = "NotReady";
+        /// <summary>
+        /// Error
+        /// </summary>
         public const string Error = "Error";
+        /// <summary>
+        /// Warning
+        /// </summary>
         public const string Warning = "Warning";
+        /// <summary>
+        /// Progressing
+        /// </summary>
         public const string Progressing = "Progressing";
+        /// <summary>
+        /// Good
+        /// </summary>
         public const string Good = "Good";
     }
 }

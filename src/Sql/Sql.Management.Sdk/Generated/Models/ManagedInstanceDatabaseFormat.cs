@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ManagedInstanceDatabaseFormat
     {
+        /// <summary>
+        /// AlwaysUpToDate
+        /// </summary>
         public const string AlwaysUpToDate = "AlwaysUpToDate";
+        /// <summary>
+        /// SQLServer2022
+        /// </summary>
         public const string SQLServer2022 = "SQLServer2022";
+        /// <summary>
+        /// SQLServer2025
+        /// </summary>
         public const string SQLServer2025 = "SQLServer2025";
     }
 }

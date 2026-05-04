@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class AlwaysEncryptedEnclaveType
     {
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
+        /// <summary>
+        /// VBS
+        /// </summary>
         public const string VBS = "VBS";
     }
 }

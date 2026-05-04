@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -66,8 +64,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -87,8 +84,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -113,15 +109,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the managed instance key to be operated on (updated or
-        /// created).
+        /// The name of the managed instance key to be retrieved.
         /// </param>
         public static ManagedInstanceKey CreateOrUpdate(this IManagedInstanceKeysOperations operations, string resourceGroupName, string managedInstanceName, string keyName, ManagedInstanceKey parameters)
         {
@@ -135,15 +129,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the managed instance key to be operated on (updated or
-        /// created).
+        /// The name of the managed instance key to be retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -162,18 +154,17 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the managed instance key to be deleted.
+        /// The name of the managed instance key to be retrieved.
         /// </param>
-        public static void Delete(this IManagedInstanceKeysOperations operations, string resourceGroupName, string managedInstanceName, string keyName)
+        public static ManagedInstanceKeysDeleteHeaders Delete(this IManagedInstanceKeysOperations operations, string resourceGroupName, string managedInstanceName, string keyName)
         {
-                ((IManagedInstanceKeysOperations)operations).DeleteAsync(resourceGroupName, managedInstanceName, keyName).GetAwaiter().GetResult();
+                return ((IManagedInstanceKeysOperations)operations).DeleteAsync(resourceGroupName, managedInstanceName, keyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -183,21 +174,23 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the managed instance key to be deleted.
+        /// The name of the managed instance key to be retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IManagedInstanceKeysOperations operations, string resourceGroupName, string managedInstanceName, string keyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedInstanceKeysDeleteHeaders> DeleteAsync(this IManagedInstanceKeysOperations operations, string resourceGroupName, string managedInstanceName, string keyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, keyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, keyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Creates or updates a managed instance key.
@@ -206,15 +199,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the managed instance key to be operated on (updated or
-        /// created).
+        /// The name of the managed instance key to be retrieved.
         /// </param>
         public static ManagedInstanceKey BeginCreateOrUpdate(this IManagedInstanceKeysOperations operations, string resourceGroupName, string managedInstanceName, string keyName, ManagedInstanceKey parameters)
         {
@@ -228,15 +219,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the managed instance key to be operated on (updated or
-        /// created).
+        /// The name of the managed instance key to be retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -255,18 +244,17 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the managed instance key to be deleted.
+        /// The name of the managed instance key to be retrieved.
         /// </param>
-        public static void BeginDelete(this IManagedInstanceKeysOperations operations, string resourceGroupName, string managedInstanceName, string keyName)
+        public static ManagedInstanceKeysDeleteHeaders BeginDelete(this IManagedInstanceKeysOperations operations, string resourceGroupName, string managedInstanceName, string keyName)
         {
-                ((IManagedInstanceKeysOperations)operations).BeginDeleteAsync(resourceGroupName, managedInstanceName, keyName).GetAwaiter().GetResult();
+                return ((IManagedInstanceKeysOperations)operations).BeginDeleteAsync(resourceGroupName, managedInstanceName, keyName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -276,21 +264,23 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
         /// <param name='keyName'>
-        /// The name of the managed instance key to be deleted.
+        /// The name of the managed instance key to be retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IManagedInstanceKeysOperations operations, string resourceGroupName, string managedInstanceName, string keyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedInstanceKeysDeleteHeaders> BeginDeleteAsync(this IManagedInstanceKeysOperations operations, string resourceGroupName, string managedInstanceName, string keyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, keyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, keyName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a list of managed instance keys.

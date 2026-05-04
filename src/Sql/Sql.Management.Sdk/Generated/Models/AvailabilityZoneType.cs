@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class AvailabilityZoneType
     {
+        /// <summary>
+        /// NoPreference
+        /// </summary>
         public const string NoPreference = "NoPreference";
+        /// <summary>
+        /// 1
+        /// </summary>
         public const string One = "1";
+        /// <summary>
+        /// 2
+        /// </summary>
         public const string Two = "2";
+        /// <summary>
+        /// 3
+        /// </summary>
         public const string Three = "3";
     }
 }

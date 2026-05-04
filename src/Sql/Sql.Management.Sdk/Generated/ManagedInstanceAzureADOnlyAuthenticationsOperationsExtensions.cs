@@ -13,14 +13,52 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class ManagedInstanceAzureAdOnlyAuthenticationsOperationsExtensions
     {
         /// <summary>
+        /// Gets a list of server Azure Active Directory only authentications.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ManagedInstanceAzureADOnlyAuthentication> ListByInstance(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName)
+        {
+                return ((IManagedInstanceAzureAdOnlyAuthenticationsOperations)operations).ListByInstanceAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a list of server Azure Active Directory only authentications.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedInstanceAzureADOnlyAuthentication>> ListByInstanceAsync(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByInstanceWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets a specific Azure Active Directory only authentication property.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -37,8 +75,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -61,8 +98,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -80,8 +116,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -103,15 +138,14 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
-        public static void Delete(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName)
+        public static ManagedInstanceAzureAdOnlyAuthenticationsDeleteHeaders Delete(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName)
         {
-                ((IManagedInstanceAzureAdOnlyAuthenticationsOperations)operations).DeleteAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+                return ((IManagedInstanceAzureAdOnlyAuthenticationsOperations)operations).DeleteAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -121,8 +155,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -130,49 +163,11 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedInstanceAzureAdOnlyAuthenticationsDeleteHeaders> DeleteAsync(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Gets a list of server Azure Active Directory only authentications.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ManagedInstanceAzureADOnlyAuthentication> ListByInstance(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName)
-        {
-                return ((IManagedInstanceAzureAdOnlyAuthenticationsOperations)operations).ListByInstanceAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a list of server Azure Active Directory only authentications.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ManagedInstanceAzureADOnlyAuthentication>> ListByInstanceAsync(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByInstanceWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -183,8 +178,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -202,8 +196,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -225,15 +218,14 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
         /// </param>
-        public static void BeginDelete(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName)
+        public static ManagedInstanceAzureAdOnlyAuthenticationsDeleteHeaders BeginDelete(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName)
         {
-                ((IManagedInstanceAzureAdOnlyAuthenticationsOperations)operations).BeginDeleteAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
+                return ((IManagedInstanceAzureAdOnlyAuthenticationsOperations)operations).BeginDeleteAsync(resourceGroupName, managedInstanceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -243,8 +235,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -252,9 +243,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedInstanceAzureAdOnlyAuthenticationsDeleteHeaders> BeginDeleteAsync(this IManagedInstanceAzureAdOnlyAuthenticationsOperations operations, string resourceGroupName, string managedInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a list of server Azure Active Directory only authentications.

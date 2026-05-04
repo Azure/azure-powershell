@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class AggregationFunctionType
     {
+        /// <summary>
+        /// avg
+        /// </summary>
         public const string Avg = "avg";
+        /// <summary>
+        /// min
+        /// </summary>
         public const string Min = "min";
+        /// <summary>
+        /// max
+        /// </summary>
         public const string Max = "max";
+        /// <summary>
+        /// stdev
+        /// </summary>
         public const string Stdev = "stdev";
+        /// <summary>
+        /// sum
+        /// </summary>
         public const string Sum = "sum";
     }
 }

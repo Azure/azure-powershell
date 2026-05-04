@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class CatalogCollationType
     {
+        /// <summary>
+        /// DATABASE_DEFAULT
+        /// </summary>
         public const string DatabaseDefault = "DATABASE_DEFAULT";
+        /// <summary>
+        /// SQL_Latin1_General_CP1_CI_AS
+        /// </summary>
         public const string SQLLatin1GeneralCP1CIAS = "SQL_Latin1_General_CP1_CI_AS";
     }
 }

@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class PrivateLinkServiceConnectionStateActionsRequire
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
     }
 }

@@ -21,12 +21,20 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the DatabasesCreateOrUpdateHeaders class.
         /// </summary>
 
+        /// <param name="azureAsyncOperation">
+        /// </param>
+
         /// <param name="location">
         /// </param>
-        public DatabasesCreateOrUpdateHeaders(string location = default(string))
+
+        /// <param name="retryAfter">
+        /// </param>
+        public DatabasesCreateOrUpdateHeaders(string azureAsyncOperation = default(string), string location = default(string), int? retryAfter = default(int?))
 
         {
+            this.AzureAsyncOperation = azureAsyncOperation;
             this.Location = location;
+            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -39,7 +47,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Gets or sets
         /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Azure-AsyncOperation")]
+        public string AzureAsyncOperation {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
         public string Location {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
     }
 }

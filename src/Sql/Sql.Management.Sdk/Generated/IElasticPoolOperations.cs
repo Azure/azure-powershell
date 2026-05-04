@@ -14,50 +14,19 @@ namespace Microsoft.Azure.Management.Sql
     public partial interface IElasticPoolOperations
     {
         /// <summary>
-        /// Cancels the asynchronous operation on the elastic pool.
-        /// </summary>
-        /// <remarks>
-        /// Cancels the asynchronous operation on the elastic pool.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='elasticPoolName'>
-        /// 
-        /// </param>
-        /// <param name='operationId'>
-        /// The operation identifier.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> CancelWithHttpMessagesAsync(string resourceGroupName, string serverName, string elasticPoolName, System.Guid operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Gets a list of operations performed on the elastic pool.
         /// </summary>
         /// <remarks>
         /// Gets a list of operations performed on the elastic pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='elasticPoolName'>
-        /// 
+        /// The name of the elastic pool.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -72,6 +41,35 @@ namespace Microsoft.Azure.Management.Sql
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ElasticPoolOperation>>> ListByElasticPoolWithHttpMessagesAsync(string resourceGroupName, string serverName, string elasticPoolName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Cancels the asynchronous operation on the elastic pool.
+        /// </summary>
+        /// <remarks>
+        /// Cancels the asynchronous operation on the elastic pool.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='elasticPoolName'>
+        /// The name of the elastic pool.
+        /// </param>
+        /// <param name='operationId'>
+        /// The operation identifier.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> CancelWithHttpMessagesAsync(string resourceGroupName, string serverName, string elasticPoolName, System.Guid operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a list of operations performed on the elastic pool.

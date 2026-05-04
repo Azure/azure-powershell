@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -37,8 +36,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -60,8 +58,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -81,8 +78,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -107,8 +103,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -128,8 +123,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -148,58 +142,13 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes a managed database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        public static void Delete(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName)
-        {
-                ((IManagedDatabasesOperations)operations).DeleteAsync(resourceGroupName, managedInstanceName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a managed database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Updates an existing database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -219,8 +168,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -239,14 +187,13 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Cancels a managed database move operation.
+        /// Deletes a managed database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -254,20 +201,19 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void CancelMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters)
+        public static ManagedDatabasesDeleteHeaders Delete(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName)
         {
-                ((IManagedDatabasesOperations)operations).CancelMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
+                return ((IManagedDatabasesOperations)operations).DeleteAsync(resourceGroupName, managedInstanceName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Cancels a managed database move operation.
+        /// Deletes a managed database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -278,9 +224,57 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task CancelMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedDatabasesDeleteHeaders> DeleteAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.CancelMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Cancels a managed database move operation.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static ManagedDatabasesCancelMoveHeaders CancelMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters)
+        {
+                return ((IManagedDatabasesOperations)operations).CancelMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Cancels a managed database move operation.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedDatabasesCancelMoveHeaders> CancelMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CancelMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Completes a managed database move operation.
@@ -289,8 +283,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -298,9 +291,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void CompleteMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters)
+        public static ManagedDatabasesCompleteMoveHeaders CompleteMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters)
         {
-                ((IManagedDatabasesOperations)operations).CompleteMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
+                return ((IManagedDatabasesOperations)operations).CompleteMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -310,8 +303,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -322,9 +314,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task CompleteMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedDatabasesCompleteMoveHeaders> CompleteMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.CompleteMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.CompleteMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Completes the restore operation on a managed database.
@@ -333,8 +328,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -342,9 +336,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void CompleteRestore(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, CompleteDatabaseRestoreDefinition parameters)
+        public static ManagedDatabasesCompleteRestoreHeaders CompleteRestore(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, CompleteDatabaseRestoreDefinition parameters)
         {
-                ((IManagedDatabasesOperations)operations).CompleteRestoreAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
+                return ((IManagedDatabasesOperations)operations).CompleteRestoreAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -354,8 +348,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -366,9 +359,57 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task CompleteRestoreAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, CompleteDatabaseRestoreDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedDatabasesCompleteRestoreHeaders> CompleteRestoreAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, CompleteDatabaseRestoreDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.CompleteRestoreWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.CompleteRestoreWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Reevaluates the inaccessibility state of a managed database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static ManagedDatabase ReevaluateInaccessibleDatabaseState(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName)
+        {
+                return ((IManagedDatabasesOperations)operations).ReevaluateInaccessibleDatabaseStateAsync(resourceGroupName, managedInstanceName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Reevaluates the inaccessibility state of a managed database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedDatabase> ReevaluateInaccessibleDatabaseStateAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ReevaluateInaccessibleDatabaseStateWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Starts a managed database move operation.
@@ -377,8 +418,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -386,9 +426,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void StartMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseStartMoveDefinition parameters)
+        public static ManagedDatabasesStartMoveHeaders StartMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseStartMoveDefinition parameters)
         {
-                ((IManagedDatabasesOperations)operations).StartMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
+                return ((IManagedDatabasesOperations)operations).StartMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -398,8 +438,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -410,9 +449,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task StartMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseStartMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedDatabasesStartMoveHeaders> StartMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseStartMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.StartMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.StartMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a list of inaccessible managed databases in a managed instance
@@ -421,8 +463,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -439,8 +480,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -462,8 +502,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -483,8 +522,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -503,58 +541,13 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Deletes a managed database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        public static void BeginDelete(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName)
-        {
-                ((IManagedDatabasesOperations)operations).BeginDeleteAsync(resourceGroupName, managedInstanceName, databaseName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a managed database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='managedInstanceName'>
-        /// The name of the managed instance.
-        /// </param>
-        /// <param name='databaseName'>
-        /// The name of the database.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Updates an existing database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -574,8 +567,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -594,14 +586,13 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Cancels a managed database move operation.
+        /// Deletes a managed database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -609,20 +600,19 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void BeginCancelMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters)
+        public static ManagedDatabasesDeleteHeaders BeginDelete(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName)
         {
-                ((IManagedDatabasesOperations)operations).BeginCancelMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
+                return ((IManagedDatabasesOperations)operations).BeginDeleteAsync(resourceGroupName, managedInstanceName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Cancels a managed database move operation.
+        /// Deletes a managed database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -633,9 +623,57 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginCancelMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedDatabasesDeleteHeaders> BeginDeleteAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginCancelMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Cancels a managed database move operation.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static ManagedDatabasesCancelMoveHeaders BeginCancelMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters)
+        {
+                return ((IManagedDatabasesOperations)operations).BeginCancelMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Cancels a managed database move operation.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedDatabasesCancelMoveHeaders> BeginCancelMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCancelMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Completes a managed database move operation.
@@ -644,8 +682,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -653,9 +690,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void BeginCompleteMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters)
+        public static ManagedDatabasesCompleteMoveHeaders BeginCompleteMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters)
         {
-                ((IManagedDatabasesOperations)operations).BeginCompleteMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
+                return ((IManagedDatabasesOperations)operations).BeginCompleteMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -665,8 +702,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -677,9 +713,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginCompleteMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedDatabasesCompleteMoveHeaders> BeginCompleteMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginCompleteMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginCompleteMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Completes the restore operation on a managed database.
@@ -688,8 +727,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -697,9 +735,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void BeginCompleteRestore(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, CompleteDatabaseRestoreDefinition parameters)
+        public static ManagedDatabasesCompleteRestoreHeaders BeginCompleteRestore(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, CompleteDatabaseRestoreDefinition parameters)
         {
-                ((IManagedDatabasesOperations)operations).BeginCompleteRestoreAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
+                return ((IManagedDatabasesOperations)operations).BeginCompleteRestoreAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -709,8 +747,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -721,9 +758,57 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginCompleteRestoreAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, CompleteDatabaseRestoreDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedDatabasesCompleteRestoreHeaders> BeginCompleteRestoreAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, CompleteDatabaseRestoreDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginCompleteRestoreWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginCompleteRestoreWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Reevaluates the inaccessibility state of a managed database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static ManagedDatabase BeginReevaluateInaccessibleDatabaseState(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName)
+        {
+                return ((IManagedDatabasesOperations)operations).BeginReevaluateInaccessibleDatabaseStateAsync(resourceGroupName, managedInstanceName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Reevaluates the inaccessibility state of a managed database.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ManagedDatabase> BeginReevaluateInaccessibleDatabaseStateAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginReevaluateInaccessibleDatabaseStateWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Starts a managed database move operation.
@@ -732,8 +817,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -741,9 +825,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void BeginStartMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseStartMoveDefinition parameters)
+        public static ManagedDatabasesStartMoveHeaders BeginStartMove(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseStartMoveDefinition parameters)
         {
-                ((IManagedDatabasesOperations)operations).BeginStartMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
+                return ((IManagedDatabasesOperations)operations).BeginStartMoveAsync(resourceGroupName, managedInstanceName, databaseName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -753,8 +837,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -765,9 +848,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginStartMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseStartMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedDatabasesStartMoveHeaders> BeginStartMoveAsync(this IManagedDatabasesOperations operations, string resourceGroupName, string managedInstanceName, string databaseName, ManagedDatabaseStartMoveDefinition parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginStartMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginStartMoveWithHttpMessagesAsync(resourceGroupName, managedInstanceName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a list of managed databases.

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class TimeBasedImmutabilityMode
     {
+        /// <summary>
+        /// Locked
+        /// </summary>
         public const string Locked = "Locked";
+        /// <summary>
+        /// Unlocked
+        /// </summary>
         public const string Unlocked = "Unlocked";
     }
 }

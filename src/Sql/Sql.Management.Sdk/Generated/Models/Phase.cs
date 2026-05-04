@@ -13,11 +13,29 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class Phase
     {
+        /// <summary>
+        /// LogTransitionInProgress
+        /// </summary>
         public const string LogTransitionInProgress = "LogTransitionInProgress";
+        /// <summary>
+        /// Copying
+        /// </summary>
         public const string Copying = "Copying";
+        /// <summary>
+        /// BuildingHyperscaleComponents
+        /// </summary>
         public const string BuildingHyperscaleComponents = "BuildingHyperscaleComponents";
+        /// <summary>
+        /// Catchup
+        /// </summary>
         public const string Catchup = "Catchup";
+        /// <summary>
+        /// WaitingForCutover
+        /// </summary>
         public const string WaitingForCutover = "WaitingForCutover";
+        /// <summary>
+        /// CutoverInProgress
+        /// </summary>
         public const string CutoverInProgress = "CutoverInProgress";
     }
 }

@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ServerTrustGroup class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="groupMembers">Group members information for the server trust group.
@@ -39,9 +45,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="trustScopes">Trust scope of the server trust group.
         /// </param>
-        public ServerTrustGroup(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IList<ServerInfo> groupMembers = default(System.Collections.Generic.IList<ServerInfo>), System.Collections.Generic.IList<string> trustScopes = default(System.Collections.Generic.IList<string>))
+        public ServerTrustGroup(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IList<ServerInfo> groupMembers = default(System.Collections.Generic.IList<ServerInfo>), System.Collections.Generic.IList<string> trustScopes = default(System.Collections.Generic.IList<string>))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.GroupMembers = groupMembers;
             this.TrustScopes = trustScopes;

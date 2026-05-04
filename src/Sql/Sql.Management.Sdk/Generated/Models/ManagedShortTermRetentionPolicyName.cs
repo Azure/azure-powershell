@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ManagedShortTermRetentionPolicyName
     {
+        /// <summary>
+        /// default
+        /// </summary>
         public const string Default = "default";
     }
 }

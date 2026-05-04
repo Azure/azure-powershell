@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class SecondaryType
     {
+        /// <summary>
+        /// Geo
+        /// </summary>
         public const string Geo = "Geo";
+        /// <summary>
+        /// Named
+        /// </summary>
         public const string Named = "Named";
+        /// <summary>
+        /// Standby
+        /// </summary>
         public const string Standby = "Standby";
     }
 }

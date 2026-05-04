@@ -25,19 +25,25 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the FailoverGroup class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">Resource location.
         /// </param>
 
         /// <param name="readWriteEndpoint">Read-write endpoint of the failover group instance.
@@ -60,12 +66,12 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="secondaryType">Databases secondary type on partner server.
         /// Possible values include: &#39;Geo&#39;, &#39;Standby&#39;</param>
-        public FailoverGroup(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), FailoverGroupReadWriteEndpoint readWriteEndpoint = default(FailoverGroupReadWriteEndpoint), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string), System.Collections.Generic.IList<PartnerInfo> partnerServers = default(System.Collections.Generic.IList<PartnerInfo>), System.Collections.Generic.IList<string> databases = default(System.Collections.Generic.IList<string>), string secondaryType = default(string))
+        public FailoverGroup(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), FailoverGroupReadWriteEndpoint readWriteEndpoint = default(FailoverGroupReadWriteEndpoint), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), string replicationRole = default(string), string replicationState = default(string), System.Collections.Generic.IList<PartnerInfo> partnerServers = default(System.Collections.Generic.IList<PartnerInfo>), System.Collections.Generic.IList<string> databases = default(System.Collections.Generic.IList<string>), string secondaryType = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
-            this.Location = location;
             this.Tags = tags;
+            this.Location = location;
             this.ReadWriteEndpoint = readWriteEndpoint;
             this.ReadOnlyEndpoint = readOnlyEndpoint;
             this.ReplicationRole = replicationRole;
@@ -83,16 +89,16 @@ namespace Microsoft.Azure.Management.Sql.Models
 
 
         /// <summary>
-        /// Gets resource location.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; private set; }
-
-        /// <summary>
         /// Gets or sets resource tags.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets resource location.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
+        public string Location {get; private set; }
 
         /// <summary>
         /// Gets or sets read-write endpoint of the failover group instance.

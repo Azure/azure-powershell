@@ -63,6 +63,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="zonePinning">Whether or not zone pinning is supported.
         /// </param>
 
+        /// <param name="supportedZones">List of supported availability zones
+        /// </param>
+
         /// <param name="supportedFreeLimitExhaustionBehaviors">List of supported free limit exhaustion behaviors
         /// </param>
 
@@ -71,7 +74,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="reason">The reason for the capability not being available.
         /// </param>
-        public ServiceObjectiveCapability(System.Guid? id = default(System.Guid?), string name = default(string), System.Collections.Generic.IList<MaxSizeRangeCapability> supportedMaxSizes = default(System.Collections.Generic.IList<MaxSizeRangeCapability>), PerformanceLevelCapability performanceLevel = default(PerformanceLevelCapability), Sku sku = default(Sku), System.Collections.Generic.IList<LicenseTypeCapability> supportedLicenseTypes = default(System.Collections.Generic.IList<LicenseTypeCapability>), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), bool? zoneRedundant = default(bool?), AutoPauseDelayTimeRange supportedAutoPauseDelay = default(AutoPauseDelayTimeRange), System.Collections.Generic.IList<MinCapacityCapability> supportedMinCapacities = default(System.Collections.Generic.IList<MinCapacityCapability>), string computeModel = default(string), System.Collections.Generic.IList<MaintenanceConfigurationCapability> supportedMaintenanceConfigurations = default(System.Collections.Generic.IList<MaintenanceConfigurationCapability>), bool? zonePinning = default(bool?), System.Collections.Generic.IList<FreeLimitExhaustionBehaviorCapability> supportedFreeLimitExhaustionBehaviors = default(System.Collections.Generic.IList<FreeLimitExhaustionBehaviorCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public ServiceObjectiveCapability(System.Guid? id = default(System.Guid?), string name = default(string), System.Collections.Generic.IList<MaxSizeRangeCapability> supportedMaxSizes = default(System.Collections.Generic.IList<MaxSizeRangeCapability>), PerformanceLevelCapability performanceLevel = default(PerformanceLevelCapability), Sku sku = default(Sku), System.Collections.Generic.IList<LicenseTypeCapability> supportedLicenseTypes = default(System.Collections.Generic.IList<LicenseTypeCapability>), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), bool? zoneRedundant = default(bool?), AutoPauseDelayTimeRange supportedAutoPauseDelay = default(AutoPauseDelayTimeRange), System.Collections.Generic.IList<MinCapacityCapability> supportedMinCapacities = default(System.Collections.Generic.IList<MinCapacityCapability>), string computeModel = default(string), System.Collections.Generic.IList<MaintenanceConfigurationCapability> supportedMaintenanceConfigurations = default(System.Collections.Generic.IList<MaintenanceConfigurationCapability>), bool? zonePinning = default(bool?), System.Collections.Generic.IList<ZonePinningCapability> supportedZones = default(System.Collections.Generic.IList<ZonePinningCapability>), System.Collections.Generic.IList<FreeLimitExhaustionBehaviorCapability> supportedFreeLimitExhaustionBehaviors = default(System.Collections.Generic.IList<FreeLimitExhaustionBehaviorCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
 
         {
             this.Id = id;
@@ -87,6 +90,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.ComputeModel = computeModel;
             this.SupportedMaintenanceConfigurations = supportedMaintenanceConfigurations;
             this.ZonePinning = zonePinning;
+            this.SupportedZones = supportedZones;
             this.SupportedFreeLimitExhaustionBehaviors = supportedFreeLimitExhaustionBehaviors;
             this.Status = status;
             this.Reason = reason;
@@ -178,6 +182,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         public bool? ZonePinning {get; private set; }
 
         /// <summary>
+        /// Gets list of supported availability zones
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "supportedZones")]
+        public System.Collections.Generic.IList<ZonePinningCapability> SupportedZones {get; private set; }
+
+        /// <summary>
         /// Gets list of supported free limit exhaustion behaviors
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "supportedFreeLimitExhaustionBehaviors")]
@@ -209,6 +219,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             {
                 this.Sku.Validate();
             }
+
 
 
 

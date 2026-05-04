@@ -14,6 +14,9 @@ namespace Microsoft.Azure.Management.Sql.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CheckNameAvailabilityResourceType
     {
+        /// <summary>
+        /// Microsoft.Sql/servers
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Microsoft.Sql/servers")]
         MicrosoftSqlServers
     }

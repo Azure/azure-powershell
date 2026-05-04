@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Sql.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BlobAuditingPolicyState
     {
+        /// <summary>
+        /// Enabled
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Enabled")]
         Enabled,
+        /// <summary>
+        /// Disabled
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Disabled")]
         Disabled
     }

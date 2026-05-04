@@ -25,16 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ManagedServerSecurityAlertPolicy class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="systemData">SystemData of SecurityAlertPolicyResource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="state">Specifies the state of the policy, whether it is enabled or disabled or a
@@ -67,9 +70,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
         public ManagedServerSecurityAlertPolicy(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), SecurityAlertsPolicyState? state = default(SecurityAlertsPolicyState?), System.Collections.Generic.IList<string> disabledAlerts = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> emailAddresses = default(System.Collections.Generic.IList<string>), bool? emailAccountAdmins = default(bool?), string storageEndpoint = default(string), string storageAccountAccessKey = default(string), int? retentionDays = default(int?), System.DateTime? creationTime = default(System.DateTime?))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
-            this.SystemData = systemData;
             this.State = state;
             this.DisabledAlerts = disabledAlerts;
             this.EmailAddresses = emailAddresses;
@@ -86,12 +88,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets systemData of SecurityAlertPolicyResource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
 
         /// <summary>
         /// Gets or sets specifies the state of the policy, whether it is enabled or

@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ProvisioningState
     {
+        /// <summary>
+        /// Created
+        /// </summary>
         public const string Created = "Created";
+        /// <summary>
+        /// InProgress
+        /// </summary>
         public const string InProgress = "InProgress";
+        /// <summary>
+        /// Succeeded
+        /// </summary>
         public const string Succeeded = "Succeeded";
+        /// <summary>
+        /// Failed
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// Canceled
+        /// </summary>
         public const string Canceled = "Canceled";
     }
 }

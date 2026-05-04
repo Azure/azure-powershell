@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class BackupStorageAccessTier
     {
+        /// <summary>
+        /// Hot
+        /// </summary>
         public const string Hot = "Hot";
+        /// <summary>
+        /// Archive
+        /// </summary>
         public const string Archive = "Archive";
     }
 }

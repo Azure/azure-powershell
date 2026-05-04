@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class PrivateEndpointProvisioningState
     {
+        /// <summary>
+        /// Approving
+        /// </summary>
         public const string Approving = "Approving";
+        /// <summary>
+        /// Ready
+        /// </summary>
         public const string Ready = "Ready";
+        /// <summary>
+        /// Dropping
+        /// </summary>
         public const string Dropping = "Dropping";
+        /// <summary>
+        /// Failed
+        /// </summary>
         public const string Failed = "Failed";
+        /// <summary>
+        /// Rejecting
+        /// </summary>
         public const string Rejecting = "Rejecting";
     }
 }

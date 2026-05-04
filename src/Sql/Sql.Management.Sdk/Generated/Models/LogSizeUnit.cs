@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class LogSizeUnit
     {
+        /// <summary>
+        /// Megabytes
+        /// </summary>
         public const string Megabytes = "Megabytes";
+        /// <summary>
+        /// Gigabytes
+        /// </summary>
         public const string Gigabytes = "Gigabytes";
+        /// <summary>
+        /// Terabytes
+        /// </summary>
         public const string Terabytes = "Terabytes";
+        /// <summary>
+        /// Petabytes
+        /// </summary>
         public const string Petabytes = "Petabytes";
+        /// <summary>
+        /// Percent
+        /// </summary>
         public const string Percent = "Percent";
     }
 }

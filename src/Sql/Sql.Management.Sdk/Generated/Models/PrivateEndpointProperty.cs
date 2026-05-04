@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 {
     using System.Linq;
 
-    public partial class PrivateEndpointProperty : Microsoft.Rest.Azure.IResource
+    public partial class PrivateEndpointProperty
     {
         /// <summary>
         /// Initializes a new instance of the PrivateEndpointProperty class.

@@ -19,14 +19,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<JobPrivateEndpoint> ListByAgent(this IJobPrivateEndpointsOperations operations, string resourceGroupName, string serverName, string jobAgentName)
         {
@@ -40,14 +39,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -66,14 +64,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint to get.
@@ -90,14 +87,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
         /// The name of the private endpoint to get.
@@ -119,17 +115,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
+        /// The name of the private endpoint to get.
         /// </param>
         public static JobPrivateEndpoint CreateOrUpdate(this IJobPrivateEndpointsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, JobPrivateEndpoint parameters)
         {
@@ -143,17 +138,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
+        /// The name of the private endpoint to get.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -172,21 +166,20 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint to delete.
+        /// The name of the private endpoint to get.
         /// </param>
-        public static void Delete(this IJobPrivateEndpointsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName)
+        public static JobPrivateEndpointsDeleteHeaders Delete(this IJobPrivateEndpointsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName)
         {
-                ((IJobPrivateEndpointsOperations)operations).DeleteAsync(resourceGroupName, serverName, jobAgentName, privateEndpointName).GetAwaiter().GetResult();
+                return ((IJobPrivateEndpointsOperations)operations).DeleteAsync(resourceGroupName, serverName, jobAgentName, privateEndpointName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -196,24 +189,26 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint to delete.
+        /// The name of the private endpoint to get.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IJobPrivateEndpointsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<JobPrivateEndpointsDeleteHeaders> DeleteAsync(this IJobPrivateEndpointsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, privateEndpointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, privateEndpointName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Creates or updates a private endpoint.
@@ -222,17 +217,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
+        /// The name of the private endpoint to get.
         /// </param>
         public static JobPrivateEndpoint BeginCreateOrUpdate(this IJobPrivateEndpointsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, JobPrivateEndpoint parameters)
         {
@@ -246,17 +240,16 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint.
+        /// The name of the private endpoint to get.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -275,21 +268,20 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint to delete.
+        /// The name of the private endpoint to get.
         /// </param>
-        public static void BeginDelete(this IJobPrivateEndpointsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName)
+        public static JobPrivateEndpointsDeleteHeaders BeginDelete(this IJobPrivateEndpointsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName)
         {
-                ((IJobPrivateEndpointsOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, jobAgentName, privateEndpointName).GetAwaiter().GetResult();
+                return ((IJobPrivateEndpointsOperations)operations).BeginDeleteAsync(resourceGroupName, serverName, jobAgentName, privateEndpointName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -299,24 +291,26 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='privateEndpointName'>
-        /// The name of the private endpoint to delete.
+        /// The name of the private endpoint to get.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IJobPrivateEndpointsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<JobPrivateEndpointsDeleteHeaders> BeginDeleteAsync(this IJobPrivateEndpointsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string privateEndpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, privateEndpointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, privateEndpointName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a list of job agent private endpoints.

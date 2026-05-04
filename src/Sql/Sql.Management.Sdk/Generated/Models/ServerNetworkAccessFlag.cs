@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ServerNetworkAccessFlag
     {
+        /// <summary>
+        /// Enabled
+        /// </summary>
         public const string Enabled = "Enabled";
+        /// <summary>
+        /// Disabled
+        /// </summary>
         public const string Disabled = "Disabled";
     }
 }

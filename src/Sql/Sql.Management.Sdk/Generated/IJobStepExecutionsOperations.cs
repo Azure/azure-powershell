@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists the step executions of a job execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job to get.
         /// </param>
         /// <param name='jobExecutionId'>
-        /// The id of the job execution
+        /// The unique id of the job execution
         /// </param>
         /// <param name='createTimeMin'>
         /// If specified, only job executions created at or after the specified time
@@ -81,8 +80,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a step execution of a job execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.

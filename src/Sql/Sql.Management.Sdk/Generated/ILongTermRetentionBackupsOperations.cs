@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists all long term retention backups for a database.
         /// </remarks>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a long term retention backup.
         /// </remarks>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -180,16 +180,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Change a long term retention backup access tier.
         /// </remarks>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         /// <param name='parameters'>
         /// 
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Lock time based immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Remove legal hold immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Remove time based immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Set legal hold immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -415,8 +415,7 @@ namespace Microsoft.Azure.Management.Sql
         /// resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -451,8 +450,7 @@ namespace Microsoft.Azure.Management.Sql
         /// groups.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -490,11 +488,10 @@ namespace Microsoft.Azure.Management.Sql
         /// resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -530,8 +527,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -566,11 +562,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -599,20 +594,19 @@ namespace Microsoft.Azure.Management.Sql
         /// Change a long term retention backup access tier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         /// <param name='parameters'>
         /// 
@@ -638,8 +632,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Copy an existing long term retention backup to a different server.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -677,10 +670,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Lock time based immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -712,10 +705,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Remove legal hold immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -747,10 +740,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Remove time based immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -782,10 +775,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Set legal hold immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -817,8 +810,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -856,7 +848,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a long term retention backup.
         /// </remarks>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -885,16 +877,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Change a long term retention backup access tier.
         /// </remarks>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         /// <param name='parameters'>
         /// 
@@ -955,7 +947,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Lock time based immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -987,7 +979,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Remove legal hold immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1019,7 +1011,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Remove time based immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1051,7 +1043,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Set legal hold immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1118,11 +1110,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1151,20 +1142,19 @@ namespace Microsoft.Azure.Management.Sql
         /// Change a long term retention backup access tier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// 
+        /// The name of the server
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// The name of the database
         /// </param>
         /// <param name='backupName'>
-        /// 
+        /// The backup name.
         /// </param>
         /// <param name='parameters'>
         /// 
@@ -1190,8 +1180,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Copy an existing long term retention backup to a different server.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1229,10 +1218,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Lock time based immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1264,10 +1253,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Remove legal hold immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1299,10 +1288,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Remove time based immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1334,10 +1323,10 @@ namespace Microsoft.Azure.Management.Sql
         /// Set legal hold immutability of an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the database.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
-        /// 
+        /// The location of the database.
         /// </param>
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
@@ -1369,8 +1358,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.

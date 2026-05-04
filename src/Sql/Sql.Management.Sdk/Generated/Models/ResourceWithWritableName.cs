@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Sql.Models
     /// <summary>
     /// ARM resource.
     /// </summary>
-    public partial class ResourceWithWritableName : Microsoft.Rest.Azure.IResource
+    public partial class ResourceWithWritableName
     {
         /// <summary>
         /// Initializes a new instance of the ResourceWithWritableName class.

@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class MaxSizeUnit
     {
+        /// <summary>
+        /// Megabytes
+        /// </summary>
         public const string Megabytes = "Megabytes";
+        /// <summary>
+        /// Gigabytes
+        /// </summary>
         public const string Gigabytes = "Gigabytes";
+        /// <summary>
+        /// Terabytes
+        /// </summary>
         public const string Terabytes = "Terabytes";
+        /// <summary>
+        /// Petabytes
+        /// </summary>
         public const string Petabytes = "Petabytes";
     }
 }

@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the LongTermRetentionPolicy class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="timeBasedImmutability">The setting for whether to enable time-based immutability for future
@@ -55,9 +61,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="weekOfYear">The week of year to take the yearly backup in an ISO 8601 format.
         /// </param>
-        public LongTermRetentionPolicy(string id = default(string), string name = default(string), string type = default(string), string timeBasedImmutability = default(string), string timeBasedImmutabilityMode = default(string), string weeklyRetention = default(string), string monthlyRetention = default(string), string yearlyRetention = default(string), int? weekOfYear = default(int?))
+        public LongTermRetentionPolicy(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string timeBasedImmutability = default(string), string timeBasedImmutabilityMode = default(string), string weeklyRetention = default(string), string monthlyRetention = default(string), string yearlyRetention = default(string), int? weekOfYear = default(int?))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.TimeBasedImmutability = timeBasedImmutability;
             this.TimeBasedImmutabilityMode = timeBasedImmutabilityMode;

@@ -52,7 +52,10 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="rank">
         /// Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;, &#39;Critical&#39;</param>
-        public SensitivityLabelProperties(string schemaName = default(string), string tableName = default(string), string columnName = default(string), string labelName = default(string), string labelId = default(string), string informationType = default(string), string informationTypeId = default(string), bool? isDisabled = default(bool?), SensitivityLabelRank? rank = default(SensitivityLabelRank?))
+
+        /// <param name="clientClassificationSource">
+        /// Possible values include: &#39;None&#39;, &#39;Native&#39;, &#39;Recommended&#39;, &#39;MIP&#39;</param>
+        public SensitivityLabelProperties(string schemaName = default(string), string tableName = default(string), string columnName = default(string), string labelName = default(string), string labelId = default(string), string informationType = default(string), string informationTypeId = default(string), bool? isDisabled = default(bool?), SensitivityLabelRank? rank = default(SensitivityLabelRank?), string clientClassificationSource = default(string))
 
         {
             this.SchemaName = schemaName;
@@ -64,6 +67,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.InformationTypeId = informationTypeId;
             this.IsDisabled = isDisabled;
             this.Rank = rank;
+            this.ClientClassificationSource = clientClassificationSource;
             CustomInit();
         }
 
@@ -128,5 +132,11 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "rank")]
         public SensitivityLabelRank? Rank {get; set; }
+
+        /// <summary>
+        /// Gets or sets Possible values include: &#39;None&#39;, &#39;Native&#39;, &#39;Recommended&#39;, &#39;MIP&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clientClassificationSource")]
+        public string ClientClassificationSource {get; set; }
     }
 }

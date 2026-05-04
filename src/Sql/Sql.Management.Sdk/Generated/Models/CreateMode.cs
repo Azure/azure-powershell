@@ -13,15 +13,45 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class CreateMode
     {
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
+        /// <summary>
+        /// Copy
+        /// </summary>
         public const string Copy = "Copy";
+        /// <summary>
+        /// Secondary
+        /// </summary>
         public const string Secondary = "Secondary";
+        /// <summary>
+        /// PointInTimeRestore
+        /// </summary>
         public const string PointInTimeRestore = "PointInTimeRestore";
+        /// <summary>
+        /// Restore
+        /// </summary>
         public const string Restore = "Restore";
+        /// <summary>
+        /// Recovery
+        /// </summary>
         public const string Recovery = "Recovery";
+        /// <summary>
+        /// RestoreExternalBackup
+        /// </summary>
         public const string RestoreExternalBackup = "RestoreExternalBackup";
+        /// <summary>
+        /// RestoreExternalBackupSecondary
+        /// </summary>
         public const string RestoreExternalBackupSecondary = "RestoreExternalBackupSecondary";
+        /// <summary>
+        /// RestoreLongTermRetentionBackup
+        /// </summary>
         public const string RestoreLongTermRetentionBackup = "RestoreLongTermRetentionBackup";
+        /// <summary>
+        /// OnlineSecondary
+        /// </summary>
         public const string OnlineSecondary = "OnlineSecondary";
     }
 }

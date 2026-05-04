@@ -14,8 +14,14 @@ namespace Microsoft.Azure.Management.Sql.Models
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobScheduleType
     {
+        /// <summary>
+        /// Once
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Once")]
         Once,
+        /// <summary>
+        /// Recurring
+        /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "Recurring")]
         Recurring
     }

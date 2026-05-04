@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="endIPv6Address">The end IP address of the firewall rule. Must be IPv6 format. Must be
-        /// greater than or equal to startIpAddress.
+        /// greater than or equal to startIpv6Address.
         /// </param>
         public IPv6ServerFirewallRuleProperties(string startIPv6Address = default(string), string endIPv6Address = default(string))
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <summary>
         /// Gets or sets the end IP address of the firewall rule. Must be IPv6 format.
-        /// Must be greater than or equal to startIpAddress.
+        /// Must be greater than or equal to startIpv6Address.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endIPv6Address")]
         public string EndIPv6Address {get; set; }

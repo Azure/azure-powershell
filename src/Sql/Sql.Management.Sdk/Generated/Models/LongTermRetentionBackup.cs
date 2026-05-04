@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the LongTermRetentionBackup class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="serverName">The server name that the backup database belong to.
@@ -77,9 +83,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="backupStorageAccessTier">The BackupStorageAccessTier for the LTR backup
         /// Possible values include: &#39;Hot&#39;, &#39;Archive&#39;</param>
-        public LongTermRetentionBackup(string id = default(string), string name = default(string), string type = default(string), string serverName = default(string), System.DateTime? serverCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), bool? isBackupImmutable = default(bool?), string timeBasedImmutability = default(string), string timeBasedImmutabilityMode = default(string), string legalHoldImmutability = default(string), string backupStorageAccessTier = default(string))
+        public LongTermRetentionBackup(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string serverName = default(string), System.DateTime? serverCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), bool? isBackupImmutable = default(bool?), string timeBasedImmutability = default(string), string timeBasedImmutabilityMode = default(string), string legalHoldImmutability = default(string), string backupStorageAccessTier = default(string))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.ServerName = serverName;
             this.ServerCreateTime = serverCreateTime;

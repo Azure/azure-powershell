@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class PrincipalType
     {
+        /// <summary>
+        /// User
+        /// </summary>
         public const string User = "User";
+        /// <summary>
+        /// Group
+        /// </summary>
         public const string Group = "Group";
+        /// <summary>
+        /// Application
+        /// </summary>
         public const string Application = "Application";
     }
 }

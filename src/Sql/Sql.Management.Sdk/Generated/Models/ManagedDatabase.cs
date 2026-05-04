@@ -25,19 +25,25 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ManagedDatabase class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="collation">Collation of the managed database.
@@ -135,9 +141,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// in the database are ledger tables. Note: the value of this property cannot
         /// be changed after the database has been created.
         /// </param>
-        public ManagedDatabase(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string collation = default(string), string status = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? earliestRestorePoint = default(System.DateTime?), System.DateTime? restorePointInTime = default(System.DateTime?), string defaultSecondaryLocation = default(string), string catalogCollation = default(string), string createMode = default(string), string storageContainerUri = default(string), string sourceDatabaseId = default(string), string crossSubscriptionSourceDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string crossSubscriptionRestorableDroppedDatabaseId = default(string), string storageContainerIdentity = default(string), string storageContainerSasToken = default(string), string failoverGroupId = default(string), string recoverableDatabaseId = default(string), string longTermRetentionBackupResourceId = default(string), bool? autoCompleteRestore = default(bool?), string lastBackupName = default(string), string crossSubscriptionTargetManagedInstanceId = default(string), bool? isLedgerOn = default(bool?))
 
-        : base(location, id, name, type, tags)
+        /// <param name="extendedAccessibilityInfo">Additional observability and troubleshooting information for databases in
+        /// ‘Inaccessible’ state.
+        /// </param>
+        public ManagedDatabase(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string collation = default(string), string status = default(string), System.DateTime? creationDate = default(System.DateTime?), System.DateTime? earliestRestorePoint = default(System.DateTime?), System.DateTime? restorePointInTime = default(System.DateTime?), string defaultSecondaryLocation = default(string), string catalogCollation = default(string), string createMode = default(string), string storageContainerUri = default(string), string sourceDatabaseId = default(string), string crossSubscriptionSourceDatabaseId = default(string), string restorableDroppedDatabaseId = default(string), string crossSubscriptionRestorableDroppedDatabaseId = default(string), string storageContainerIdentity = default(string), string storageContainerSasToken = default(string), string failoverGroupId = default(string), string recoverableDatabaseId = default(string), string longTermRetentionBackupResourceId = default(string), bool? autoCompleteRestore = default(bool?), string lastBackupName = default(string), string crossSubscriptionTargetManagedInstanceId = default(string), bool? isLedgerOn = default(bool?), ManagedDatabaseExtendedAccessibilityInfo extendedAccessibilityInfo = default(ManagedDatabaseExtendedAccessibilityInfo))
+
+        : base(location, id, name, type, systemData, tags)
         {
             this.Collation = collation;
             this.Status = status;
@@ -161,6 +171,7 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.LastBackupName = lastBackupName;
             this.CrossSubscriptionTargetManagedInstanceId = crossSubscriptionTargetManagedInstanceId;
             this.IsLedgerOn = isLedgerOn;
+            this.ExtendedAccessibilityInfo = extendedAccessibilityInfo;
             CustomInit();
         }
 
@@ -328,6 +339,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isLedgerOn")]
         public bool? IsLedgerOn {get; set; }
+
+        /// <summary>
+        /// Gets additional observability and troubleshooting information for databases
+        /// in ‘Inaccessible’ state.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.extendedAccessibilityInfo")]
+        public ManagedDatabaseExtendedAccessibilityInfo ExtendedAccessibilityInfo {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -354,6 +372,10 @@ namespace Microsoft.Azure.Management.Sql.Models
 
 
 
+            if (this.ExtendedAccessibilityInfo != null)
+            {
+                this.ExtendedAccessibilityInfo.Validate();
+            }
         }
     }
 }

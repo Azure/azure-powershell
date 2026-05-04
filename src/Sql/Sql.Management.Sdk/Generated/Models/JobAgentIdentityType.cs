@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class JobAgentIdentityType
     {
+        /// <summary>
+        /// None
+        /// </summary>
         public const string None = "None";
+        /// <summary>
+        /// SystemAssigned
+        /// </summary>
         public const string SystemAssigned = "SystemAssigned";
+        /// <summary>
+        /// UserAssigned
+        /// </summary>
         public const string UserAssigned = "UserAssigned";
+        /// <summary>
+        /// SystemAssignedUserAssigned
+        /// </summary>
         public const string SystemAssignedUserAssigned = "SystemAssignedUserAssigned";
     }
 }

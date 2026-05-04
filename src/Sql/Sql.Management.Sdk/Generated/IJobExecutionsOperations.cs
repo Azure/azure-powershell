@@ -20,14 +20,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists all executions in a job agent.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='createTimeMin'>
         /// If specified, only job executions created at or after the specified time
@@ -75,8 +74,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists a job&#39;s executions.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -85,7 +83,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='createTimeMin'>
         /// If specified, only job executions created at or after the specified time
@@ -133,8 +131,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a job execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -169,8 +166,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a job execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -179,10 +175,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='jobExecutionId'>
-        /// The job execution id to create the job execution under.
+        /// The id of the job execution
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -196,7 +192,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobExecution>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobExecution,JobExecutionsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Requests cancellation of a job execution.
@@ -205,8 +201,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Requests cancellation of a job execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -218,7 +213,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job.
         /// </param>
         /// <param name='jobExecutionId'>
-        /// The id of the job execution to cancel.
+        /// The id of the job execution
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -238,14 +233,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Starts an elastic job execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='jobName'>
         /// The name of the job to get.
@@ -262,7 +256,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobExecution>> CreateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobExecution,JobExecutionsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates a job execution.
@@ -271,8 +265,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a job execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -281,10 +274,10 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='jobName'>
-        /// The name of the job to get.
+        /// The name of the job.
         /// </param>
         /// <param name='jobExecutionId'>
-        /// The job execution id to create the job execution under.
+        /// The id of the job execution
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -298,7 +291,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobExecution>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobExecution,JobExecutionsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Starts an elastic job execution.
@@ -307,14 +300,13 @@ namespace Microsoft.Azure.Management.Sql
         /// Starts an elastic job execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='jobAgentName'>
-        /// The name of the job agent.
+        /// The name of the job agent to be retrieved.
         /// </param>
         /// <param name='jobName'>
         /// The name of the job to get.
@@ -331,7 +323,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobExecution>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<JobExecution,JobExecutionsCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all executions in a job agent.

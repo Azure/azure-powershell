@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ServerAzureADAdministrator class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="administratorType">Type of the sever administrator.
@@ -48,9 +54,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="azureAdOnlyAuthentication">Azure Active Directory only Authentication enabled.
         /// </param>
-        public ServerAzureADAdministrator(string id = default(string), string name = default(string), string type = default(string), string administratorType = default(string), string login = default(string), System.Guid? sid = default(System.Guid?), System.Guid? tenantId = default(System.Guid?), bool? azureAdOnlyAuthentication = default(bool?))
+        public ServerAzureADAdministrator(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string administratorType = default(string), string login = default(string), System.Guid? sid = default(System.Guid?), System.Guid? tenantId = default(System.Guid?), bool? azureAdOnlyAuthentication = default(bool?))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.AdministratorType = administratorType;
             this.Login = login;

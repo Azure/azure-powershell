@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the BackupShortTermRetentionPolicy class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="retentionDays">The backup retention period in days. This is how many days Point-in-Time
@@ -42,9 +48,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// between each differential backup will be supported. This is only applicable
         /// to live databases but not dropped databases.
         /// Possible values include: &#39;12&#39;, &#39;24&#39;</param>
-        public BackupShortTermRetentionPolicy(string id = default(string), string name = default(string), string type = default(string), int? retentionDays = default(int?), int? diffBackupIntervalInHours = default(int?))
+        public BackupShortTermRetentionPolicy(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), int? retentionDays = default(int?), double? diffBackupIntervalInHours = default(double?))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.RetentionDays = retentionDays;
             this.DiffBackupIntervalInHours = diffBackupIntervalInHours;
@@ -70,6 +76,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// only applicable to live databases but not dropped databases. Possible values include: &#39;12&#39;, &#39;24&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.diffBackupIntervalInHours")]
-        public int? DiffBackupIntervalInHours {get; set; }
+        public double? DiffBackupIntervalInHours {get; set; }
     }
 }

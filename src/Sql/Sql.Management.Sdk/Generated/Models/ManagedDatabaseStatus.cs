@@ -13,17 +13,53 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ManagedDatabaseStatus
     {
+        /// <summary>
+        /// Online
+        /// </summary>
         public const string Online = "Online";
+        /// <summary>
+        /// Offline
+        /// </summary>
         public const string Offline = "Offline";
+        /// <summary>
+        /// Shutdown
+        /// </summary>
         public const string Shutdown = "Shutdown";
+        /// <summary>
+        /// Creating
+        /// </summary>
         public const string Creating = "Creating";
+        /// <summary>
+        /// Inaccessible
+        /// </summary>
         public const string Inaccessible = "Inaccessible";
+        /// <summary>
+        /// Restoring
+        /// </summary>
         public const string Restoring = "Restoring";
+        /// <summary>
+        /// Updating
+        /// </summary>
         public const string Updating = "Updating";
+        /// <summary>
+        /// Stopping
+        /// </summary>
         public const string Stopping = "Stopping";
+        /// <summary>
+        /// Stopped
+        /// </summary>
         public const string Stopped = "Stopped";
+        /// <summary>
+        /// Starting
+        /// </summary>
         public const string Starting = "Starting";
+        /// <summary>
+        /// DbMoving
+        /// </summary>
         public const string DbMoving = "DbMoving";
+        /// <summary>
+        /// DbCopying
+        /// </summary>
         public const string DbCopying = "DbCopying";
     }
 }

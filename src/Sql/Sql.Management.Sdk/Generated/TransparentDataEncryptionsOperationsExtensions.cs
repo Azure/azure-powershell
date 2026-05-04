@@ -19,15 +19,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption
-        /// is defined.
+        /// The name of the database.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<LogicalDatabaseTransparentDataEncryption> ListByDatabase(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
@@ -41,15 +39,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption
-        /// is defined.
+        /// The name of the database.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -68,15 +64,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption
-        /// is defined.
+        /// The name of the database.
         /// </param>
         public static LogicalDatabaseTransparentDataEncryption Get(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
@@ -90,15 +84,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption
-        /// is defined.
+        /// The name of the database.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -117,15 +109,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is
-        /// defined.
+        /// The name of the database.
         /// </param>
         public static LogicalDatabaseTransparentDataEncryption CreateOrUpdate(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, LogicalDatabaseTransparentDataEncryption parameters)
         {
@@ -139,15 +129,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is
-        /// defined.
+        /// The name of the database.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -160,21 +148,113 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Resume ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static LogicalDatabaseTransparentDataEncryption Resume(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName)
+        {
+                return ((ITransparentDataEncryptionsOperations)operations).ResumeAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Resume ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<LogicalDatabaseTransparentDataEncryption> ResumeAsync(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ResumeWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Suspend ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static LogicalDatabaseTransparentDataEncryption Suspend(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName)
+        {
+                return ((ITransparentDataEncryptionsOperations)operations).SuspendAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Suspend ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<LogicalDatabaseTransparentDataEncryption> SuspendAsync(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.SuspendWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Updates a logical database&#39;s transparent data encryption configuration.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is
-        /// defined.
+        /// The name of the database.
         /// </param>
         public static LogicalDatabaseTransparentDataEncryption BeginCreateOrUpdate(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, LogicalDatabaseTransparentDataEncryption parameters)
         {
@@ -188,15 +268,13 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is
-        /// defined.
+        /// The name of the database.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -204,6 +282,100 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task<LogicalDatabaseTransparentDataEncryption> BeginCreateOrUpdateAsync(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, LogicalDatabaseTransparentDataEncryption parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Resume ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static LogicalDatabaseTransparentDataEncryption BeginResume(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName)
+        {
+                return ((ITransparentDataEncryptionsOperations)operations).BeginResumeAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Resume ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<LogicalDatabaseTransparentDataEncryption> BeginResumeAsync(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginResumeWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Suspend ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        public static LogicalDatabaseTransparentDataEncryption BeginSuspend(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName)
+        {
+                return ((ITransparentDataEncryptionsOperations)operations).BeginSuspendAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Suspend ongoing logical database&#39;s Transparent Data Encryption scan
+        /// configuration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<LogicalDatabaseTransparentDataEncryption> BeginSuspendAsync(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginSuspendWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class InstancePoolLicenseType
     {
+        /// <summary>
+        /// LicenseIncluded
+        /// </summary>
         public const string LicenseIncluded = "LicenseIncluded";
+        /// <summary>
+        /// BasePrice
+        /// </summary>
         public const string BasePrice = "BasePrice";
     }
 }

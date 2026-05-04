@@ -36,18 +36,23 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="supportedJobAgentVersions">The list of supported job agent versions.
         /// </param>
 
+        /// <param name="isZoneResilientProvisioningAllowed">Whether or not the subscription is allowed to provision zone resilient
+        /// resources.
+        /// </param>
+
         /// <param name="status">The status of the capability.
         /// Possible values include: &#39;Visible&#39;, &#39;Available&#39;, &#39;Default&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="reason">The reason for the capability not being available.
         /// </param>
-        public LocationCapabilities(string name = default(string), System.Collections.Generic.IList<ServerVersionCapability> supportedServerVersions = default(System.Collections.Generic.IList<ServerVersionCapability>), System.Collections.Generic.IList<ManagedInstanceVersionCapability> supportedManagedInstanceVersions = default(System.Collections.Generic.IList<ManagedInstanceVersionCapability>), System.Collections.Generic.IList<JobAgentVersionCapability> supportedJobAgentVersions = default(System.Collections.Generic.IList<JobAgentVersionCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public LocationCapabilities(string name = default(string), System.Collections.Generic.IList<ServerVersionCapability> supportedServerVersions = default(System.Collections.Generic.IList<ServerVersionCapability>), System.Collections.Generic.IList<ManagedInstanceVersionCapability> supportedManagedInstanceVersions = default(System.Collections.Generic.IList<ManagedInstanceVersionCapability>), System.Collections.Generic.IList<JobAgentVersionCapability> supportedJobAgentVersions = default(System.Collections.Generic.IList<JobAgentVersionCapability>), bool? isZoneResilientProvisioningAllowed = default(bool?), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
 
         {
             this.Name = name;
             this.SupportedServerVersions = supportedServerVersions;
             this.SupportedManagedInstanceVersions = supportedManagedInstanceVersions;
             this.SupportedJobAgentVersions = supportedJobAgentVersions;
+            this.IsZoneResilientProvisioningAllowed = isZoneResilientProvisioningAllowed;
             this.Status = status;
             this.Reason = reason;
             CustomInit();
@@ -82,6 +87,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "supportedJobAgentVersions")]
         public System.Collections.Generic.IList<JobAgentVersionCapability> SupportedJobAgentVersions {get; private set; }
+
+        /// <summary>
+        /// Gets whether or not the subscription is allowed to provision zone resilient
+        /// resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isZoneResilientProvisioningAllowed")]
+        public bool? IsZoneResilientProvisioningAllowed {get; private set; }
 
         /// <summary>
         /// Gets the status of the capability. Possible values include: &#39;Visible&#39;, &#39;Available&#39;, &#39;Default&#39;, &#39;Disabled&#39;

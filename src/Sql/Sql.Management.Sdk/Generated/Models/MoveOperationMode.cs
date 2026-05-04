@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class MoveOperationMode
     {
+        /// <summary>
+        /// Move
+        /// </summary>
         public const string Move = "Move";
+        /// <summary>
+        /// Copy
+        /// </summary>
         public const string Copy = "Copy";
     }
 }

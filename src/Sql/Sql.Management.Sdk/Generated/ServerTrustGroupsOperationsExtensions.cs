@@ -13,14 +13,52 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class ServerTrustGroupsOperationsExtensions
     {
         /// <summary>
+        /// Lists a server trust group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The name of the region where the resource is located.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ServerTrustGroup> ListByLocation(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName)
+        {
+                return ((IServerTrustGroupsOperations)operations).ListByLocationAsync(resourceGroupName, locationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists a server trust group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='locationName'>
+        /// The name of the region where the resource is located.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServerTrustGroup>> ListByLocationAsync(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByLocationWithHttpMessagesAsync(resourceGroupName, locationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Gets a server trust group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The name of the region where the resource is located.
@@ -40,8 +78,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The name of the region where the resource is located.
@@ -66,8 +103,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The name of the region where the resource is located.
@@ -87,8 +123,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The name of the region where the resource is located.
@@ -113,8 +148,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The name of the region where the resource is located.
@@ -122,9 +156,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='serverTrustGroupName'>
         /// The name of the server trust group.
         /// </param>
-        public static void Delete(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName, string serverTrustGroupName)
+        public static ServerTrustGroupsDeleteHeaders Delete(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName, string serverTrustGroupName)
         {
-                ((IServerTrustGroupsOperations)operations).DeleteAsync(resourceGroupName, locationName, serverTrustGroupName).GetAwaiter().GetResult();
+                return ((IServerTrustGroupsOperations)operations).DeleteAsync(resourceGroupName, locationName, serverTrustGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -134,8 +168,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The name of the region where the resource is located.
@@ -146,49 +179,11 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName, string serverTrustGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ServerTrustGroupsDeleteHeaders> DeleteAsync(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName, string serverTrustGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, locationName, serverTrustGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Lists a server trust group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='locationName'>
-        /// The name of the region where the resource is located.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ServerTrustGroup> ListByLocation(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName)
-        {
-                return ((IServerTrustGroupsOperations)operations).ListByLocationAsync(resourceGroupName, locationName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists a server trust group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='locationName'>
-        /// The name of the region where the resource is located.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServerTrustGroup>> ListByLocationAsync(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByLocationWithHttpMessagesAsync(resourceGroupName, locationName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, locationName, serverTrustGroupName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -198,8 +193,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -216,8 +210,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -239,8 +232,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The name of the region where the resource is located.
@@ -260,8 +252,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The name of the region where the resource is located.
@@ -286,8 +277,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The name of the region where the resource is located.
@@ -295,9 +285,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='serverTrustGroupName'>
         /// The name of the server trust group.
         /// </param>
-        public static void BeginDelete(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName, string serverTrustGroupName)
+        public static ServerTrustGroupsDeleteHeaders BeginDelete(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName, string serverTrustGroupName)
         {
-                ((IServerTrustGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, locationName, serverTrustGroupName).GetAwaiter().GetResult();
+                return ((IServerTrustGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, locationName, serverTrustGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -307,8 +297,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='locationName'>
         /// The name of the region where the resource is located.
@@ -319,9 +308,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName, string serverTrustGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ServerTrustGroupsDeleteHeaders> BeginDeleteAsync(this IServerTrustGroupsOperations operations, string resourceGroupName, string locationName, string serverTrustGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, locationName, serverTrustGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, locationName, serverTrustGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Lists a server trust group.

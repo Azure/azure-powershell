@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class EncryptionProtectorName
     {
+        /// <summary>
+        /// current
+        /// </summary>
         public const string Current = "current";
     }
 }

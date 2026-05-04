@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="stepsList">The operation steps list.
         /// </param>
-        public ManagedInstanceOperationSteps(string totalSteps = default(string), int? currentStep = default(int?), System.Collections.Generic.IList<UpsertManagedServerOperationStep> stepsList = default(System.Collections.Generic.IList<UpsertManagedServerOperationStep>))
+        public ManagedInstanceOperationSteps(string totalSteps = default(string), int? currentStep = default(int?), System.Collections.Generic.IList<UpsertManagedServerOperationStepWithEstimatesAndDuration> stepsList = default(System.Collections.Generic.IList<UpsertManagedServerOperationStepWithEstimatesAndDuration>))
 
         {
             this.TotalSteps = totalSteps;
@@ -63,6 +63,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Gets the operation steps list.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "stepsList")]
-        public System.Collections.Generic.IList<UpsertManagedServerOperationStep> StepsList {get; private set; }
+        public System.Collections.Generic.IList<UpsertManagedServerOperationStepWithEstimatesAndDuration> StepsList {get; private set; }
     }
 }

@@ -13,29 +13,101 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class DatabaseStatus
     {
+        /// <summary>
+        /// Online
+        /// </summary>
         public const string Online = "Online";
+        /// <summary>
+        /// Restoring
+        /// </summary>
         public const string Restoring = "Restoring";
+        /// <summary>
+        /// RecoveryPending
+        /// </summary>
         public const string RecoveryPending = "RecoveryPending";
+        /// <summary>
+        /// Recovering
+        /// </summary>
         public const string Recovering = "Recovering";
+        /// <summary>
+        /// Suspect
+        /// </summary>
         public const string Suspect = "Suspect";
+        /// <summary>
+        /// Offline
+        /// </summary>
         public const string Offline = "Offline";
+        /// <summary>
+        /// Standby
+        /// </summary>
         public const string Standby = "Standby";
+        /// <summary>
+        /// Shutdown
+        /// </summary>
         public const string Shutdown = "Shutdown";
+        /// <summary>
+        /// EmergencyMode
+        /// </summary>
         public const string EmergencyMode = "EmergencyMode";
+        /// <summary>
+        /// AutoClosed
+        /// </summary>
         public const string AutoClosed = "AutoClosed";
+        /// <summary>
+        /// Copying
+        /// </summary>
         public const string Copying = "Copying";
+        /// <summary>
+        /// Creating
+        /// </summary>
         public const string Creating = "Creating";
+        /// <summary>
+        /// Inaccessible
+        /// </summary>
         public const string Inaccessible = "Inaccessible";
+        /// <summary>
+        /// OfflineSecondary
+        /// </summary>
         public const string OfflineSecondary = "OfflineSecondary";
+        /// <summary>
+        /// Pausing
+        /// </summary>
         public const string Pausing = "Pausing";
+        /// <summary>
+        /// Paused
+        /// </summary>
         public const string Paused = "Paused";
+        /// <summary>
+        /// Resuming
+        /// </summary>
         public const string Resuming = "Resuming";
+        /// <summary>
+        /// Scaling
+        /// </summary>
         public const string Scaling = "Scaling";
+        /// <summary>
+        /// OfflineChangingDwPerformanceTiers
+        /// </summary>
         public const string OfflineChangingDwPerformanceTiers = "OfflineChangingDwPerformanceTiers";
+        /// <summary>
+        /// OnlineChangingDwPerformanceTiers
+        /// </summary>
         public const string OnlineChangingDwPerformanceTiers = "OnlineChangingDwPerformanceTiers";
+        /// <summary>
+        /// Disabled
+        /// </summary>
         public const string Disabled = "Disabled";
+        /// <summary>
+        /// Stopping
+        /// </summary>
         public const string Stopping = "Stopping";
+        /// <summary>
+        /// Stopped
+        /// </summary>
         public const string Stopped = "Stopped";
+        /// <summary>
+        /// Starting
+        /// </summary>
         public const string Starting = "Starting";
     }
 }

@@ -24,17 +24,23 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the DatabaseSchema class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
-        public DatabaseSchema(string id = default(string), string name = default(string), string type = default(string))
 
-        : base(id, name, type)
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+        public DatabaseSchema(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData))
+
+        : base(id, name, type, systemData)
         {
             CustomInit();
         }

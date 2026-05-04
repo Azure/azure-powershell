@@ -13,6 +13,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class RestoreDetailsName
     {
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
     }
 }

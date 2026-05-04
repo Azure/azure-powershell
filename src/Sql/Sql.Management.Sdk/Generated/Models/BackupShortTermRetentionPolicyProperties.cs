@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// between each differential backup will be supported. This is only applicable
         /// to live databases but not dropped databases.
         /// Possible values include: &#39;12&#39;, &#39;24&#39;</param>
-        public BackupShortTermRetentionPolicyProperties(int? retentionDays = default(int?), int? diffBackupIntervalInHours = default(int?))
+        public BackupShortTermRetentionPolicyProperties(int? retentionDays = default(int?), double? diffBackupIntervalInHours = default(double?))
 
         {
             this.RetentionDays = retentionDays;
@@ -59,6 +59,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// only applicable to live databases but not dropped databases. Possible values include: &#39;12&#39;, &#39;24&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diffBackupIntervalInHours")]
-        public int? DiffBackupIntervalInHours {get; set; }
+        public double? DiffBackupIntervalInHours {get; set; }
     }
 }

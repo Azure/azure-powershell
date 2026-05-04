@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class JobTargetType
     {
+        /// <summary>
+        /// TargetGroup
+        /// </summary>
         public const string TargetGroup = "TargetGroup";
+        /// <summary>
+        /// SqlDatabase
+        /// </summary>
         public const string SqlDatabase = "SqlDatabase";
+        /// <summary>
+        /// SqlElasticPool
+        /// </summary>
         public const string SqlElasticPool = "SqlElasticPool";
+        /// <summary>
+        /// SqlShardMap
+        /// </summary>
         public const string SqlShardMap = "SqlShardMap";
+        /// <summary>
+        /// SqlServer
+        /// </summary>
         public const string SqlServer = "SqlServer";
     }
 }

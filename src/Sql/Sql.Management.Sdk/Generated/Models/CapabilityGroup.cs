@@ -13,11 +13,29 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class CapabilityGroup
     {
+        /// <summary>
+        /// supportedEditions
+        /// </summary>
         public const string SupportedEditions = "supportedEditions";
+        /// <summary>
+        /// supportedElasticPoolEditions
+        /// </summary>
         public const string SupportedElasticPoolEditions = "supportedElasticPoolEditions";
+        /// <summary>
+        /// supportedManagedInstanceVersions
+        /// </summary>
         public const string SupportedManagedInstanceVersions = "supportedManagedInstanceVersions";
+        /// <summary>
+        /// supportedInstancePoolEditions
+        /// </summary>
         public const string SupportedInstancePoolEditions = "supportedInstancePoolEditions";
+        /// <summary>
+        /// supportedManagedInstanceEditions
+        /// </summary>
         public const string SupportedManagedInstanceEditions = "supportedManagedInstanceEditions";
+        /// <summary>
+        /// supportedJobAgentVersions
+        /// </summary>
         public const string SupportedJobAgentVersions = "supportedJobAgentVersions";
     }
 }

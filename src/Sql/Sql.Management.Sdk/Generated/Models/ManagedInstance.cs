@@ -25,19 +25,25 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ManagedInstance class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="location">Resource location.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="location">The geo-location where the resource lives
         /// </param>
 
         /// <param name="identity">The Azure Active Directory identity of the managed instance.
@@ -218,9 +224,9 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="requestedLogicalAvailabilityZone">Specifies the logical availability zone Managed Instance is pinned to.
         /// Possible values include: &#39;NoPreference&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;</param>
-        public ManagedInstance(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), Sku sku = default(Sku), string provisioningState = default(string), ServicePrincipal servicePrincipal = default(ServicePrincipal), string pricingModel = default(string), string managedInstanceCreateMode = default(string), string fullyQualifiedDomainName = default(string), bool? isGeneralPurposeV2 = default(bool?), string administratorLogin = default(string), string administratorLoginPassword = default(string), string subnetId = default(string), string state = default(string), string licenseType = default(string), string hybridSecondaryUsage = default(string), string hybridSecondaryUsageDetected = default(string), int? vCores = default(int?), int? storageSizeInGb = default(int?), int? storageIOps = default(int?), int? storageThroughputMBps = default(int?), int? memorySizeInGb = default(int?), string collation = default(string), string dnsZone = default(string), string dnsZonePartner = default(string), bool? publicDataEndpointEnabled = default(bool?), string sourceManagedInstanceId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), string proxyOverride = default(string), string timezoneId = default(string), string instancePoolId = default(string), string maintenanceConfigurationId = default(string), System.Collections.Generic.IList<ManagedInstancePecProperty> privateEndpointConnections = default(System.Collections.Generic.IList<ManagedInstancePecProperty>), string minimalTlsVersion = default(string), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), bool? zoneRedundant = default(bool?), string primaryUserAssignedIdentityId = default(string), string keyId = default(string), ManagedInstanceExternalAdministrator administrators = default(ManagedInstanceExternalAdministrator), string virtualClusterId = default(string), string externalGovernanceStatus = default(string), System.DateTime? createTime = default(System.DateTime?), string authenticationMetadata = default(string), string databaseFormat = default(string), string requestedLogicalAvailabilityZone = default(string))
+        public ManagedInstance(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), Sku sku = default(Sku), string provisioningState = default(string), ServicePrincipal servicePrincipal = default(ServicePrincipal), string pricingModel = default(string), string managedInstanceCreateMode = default(string), string fullyQualifiedDomainName = default(string), bool? isGeneralPurposeV2 = default(bool?), string administratorLogin = default(string), string administratorLoginPassword = default(string), string subnetId = default(string), string state = default(string), string licenseType = default(string), string hybridSecondaryUsage = default(string), string hybridSecondaryUsageDetected = default(string), int? vCores = default(int?), int? storageSizeInGb = default(int?), int? storageIOps = default(int?), int? storageThroughputMBps = default(int?), int? memorySizeInGb = default(int?), string collation = default(string), string dnsZone = default(string), string dnsZonePartner = default(string), bool? publicDataEndpointEnabled = default(bool?), string sourceManagedInstanceId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), string proxyOverride = default(string), string timezoneId = default(string), string instancePoolId = default(string), string maintenanceConfigurationId = default(string), System.Collections.Generic.IList<ManagedInstancePecProperty> privateEndpointConnections = default(System.Collections.Generic.IList<ManagedInstancePecProperty>), string minimalTlsVersion = default(string), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), bool? zoneRedundant = default(bool?), string primaryUserAssignedIdentityId = default(string), string keyId = default(string), ManagedInstanceExternalAdministrator administrators = default(ManagedInstanceExternalAdministrator), string virtualClusterId = default(string), string externalGovernanceStatus = default(string), System.DateTime? createTime = default(System.DateTime?), string authenticationMetadata = default(string), string databaseFormat = default(string), string requestedLogicalAvailabilityZone = default(string))
 
-        : base(location, id, name, type, tags)
+        : base(location, id, name, type, systemData, tags)
         {
             this.Identity = identity;
             this.Sku = sku;

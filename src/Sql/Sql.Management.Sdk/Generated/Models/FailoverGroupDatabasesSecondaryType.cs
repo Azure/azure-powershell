@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class FailoverGroupDatabasesSecondaryType
     {
+        /// <summary>
+        /// Geo
+        /// </summary>
         public const string Geo = "Geo";
+        /// <summary>
+        /// Standby
+        /// </summary>
         public const string Standby = "Standby";
     }
 }

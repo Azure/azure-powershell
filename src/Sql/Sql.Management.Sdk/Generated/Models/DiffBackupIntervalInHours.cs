@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class DiffBackupIntervalInHours
     {
+        /// <summary>
+        /// 12
+        /// </summary>
         public const string Twelve = "12";
+        /// <summary>
+        /// 24
+        /// </summary>
         public const string TwentyFour = "24";
     }
 }

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class ServerKeyType
     {
+        /// <summary>
+        /// ServiceManaged
+        /// </summary>
         public const string ServiceManaged = "ServiceManaged";
+        /// <summary>
+        /// AzureKeyVault
+        /// </summary>
         public const string AzureKeyVault = "AzureKeyVault";
     }
 }

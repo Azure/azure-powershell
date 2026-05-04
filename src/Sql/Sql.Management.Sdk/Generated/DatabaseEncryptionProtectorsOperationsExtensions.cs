@@ -19,8 +19,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -28,9 +27,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void Revalidate(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName)
+        public static DatabaseEncryptionProtectorsRevalidateHeaders Revalidate(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
-                ((IDatabaseEncryptionProtectorsOperations)operations).RevalidateAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+                return ((IDatabaseEncryptionProtectorsOperations)operations).RevalidateAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -52,9 +50,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task RevalidateAsync(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DatabaseEncryptionProtectorsRevalidateHeaders> RevalidateAsync(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.RevalidateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.RevalidateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Reverts an existing encryption protector for a particular database.
@@ -63,8 +64,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void Revert(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName)
+        public static DatabaseEncryptionProtectorsRevertHeaders Revert(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
-                ((IDatabaseEncryptionProtectorsOperations)operations).RevertAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+                return ((IDatabaseEncryptionProtectorsOperations)operations).RevertAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -84,8 +84,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -96,9 +95,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task RevertAsync(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DatabaseEncryptionProtectorsRevertHeaders> RevertAsync(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.RevertWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.RevertWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Revalidates an existing encryption protector for a particular database.
@@ -107,8 +109,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -116,9 +117,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void BeginRevalidate(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName)
+        public static DatabaseEncryptionProtectorsRevalidateHeaders BeginRevalidate(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
-                ((IDatabaseEncryptionProtectorsOperations)operations).BeginRevalidateAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+                return ((IDatabaseEncryptionProtectorsOperations)operations).BeginRevalidateAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -128,8 +129,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -140,9 +140,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginRevalidateAsync(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DatabaseEncryptionProtectorsRevalidateHeaders> BeginRevalidateAsync(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginRevalidateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Reverts an existing encryption protector for a particular database.
@@ -151,8 +154,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -160,9 +162,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='databaseName'>
         /// The name of the database.
         /// </param>
-        public static void BeginRevert(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName)
+        public static DatabaseEncryptionProtectorsRevertHeaders BeginRevert(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
-                ((IDatabaseEncryptionProtectorsOperations)operations).BeginRevertAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+                return ((IDatabaseEncryptionProtectorsOperations)operations).BeginRevertAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -172,8 +174,7 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -184,9 +185,12 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginRevertAsync(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DatabaseEncryptionProtectorsRevertHeaders> BeginRevertAsync(this IDatabaseEncryptionProtectorsOperations operations, string resourceGroupName, string serverName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginRevertWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginRevertWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
     }
 }

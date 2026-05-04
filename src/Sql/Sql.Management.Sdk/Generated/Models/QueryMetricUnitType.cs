@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Sql.Models
 
     public static class QueryMetricUnitType
     {
+        /// <summary>
+        /// percentage
+        /// </summary>
         public const string Percentage = "percentage";
+        /// <summary>
+        /// KB
+        /// </summary>
         public const string KB = "KB";
+        /// <summary>
+        /// microseconds
+        /// </summary>
         public const string Microseconds = "microseconds";
+        /// <summary>
+        /// count
+        /// </summary>
         public const string Count = "count";
     }
 }
