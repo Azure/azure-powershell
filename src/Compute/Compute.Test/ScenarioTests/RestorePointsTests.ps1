@@ -32,7 +32,7 @@ function Test-RestorePoints
 
         #create a new vm
         $user = "Foo12";
-        $password = "temppass12345T";
+        $password = "*****";
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
