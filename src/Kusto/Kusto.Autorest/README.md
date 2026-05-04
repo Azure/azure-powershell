@@ -165,7 +165,7 @@ directive:
   # Autorest V4 generated GET+PUT api Update cmdlets, can be added upon service team request
   - where:
       verb: Update
-      subject: DatabasePrincipalAssignment|ClusterPrincipalAssignment|AttachedDatabaseConfiguration
+      subject: DatabasePrincipalAssignment|ClusterPrincipalAssignment|AttachedDatabaseConfiguration|PrivateEndpointConnection
     remove: true
       
   # Correct some generated code

@@ -36,27 +36,12 @@ Deletes a private endpoint connection with a given name.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an existing Kusto PrivateEndpointConnection by name
 ```powershell
-{{ Add code here }}
+Remove-AzKustoPrivateEndpointConnection -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "testprivateconnection-12345678-1234-1234-1234-123456789098"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+The above command deletes the Kusto PrivateEndpointConnection named "testprivateconnection-12345678-1234-1234-1234-123456789098" in the cluster "mycluster" found in the resource group "testrg".
 
 ## PARAMETERS
 

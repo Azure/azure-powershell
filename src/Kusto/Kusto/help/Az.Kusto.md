@@ -212,9 +212,6 @@ Update a data connection.
 ### [Update-AzKustoManagedPrivateEndpoint](Update-AzKustoManagedPrivateEndpoint.md)
 Update a managed private endpoint.
 
-### [Update-AzKustoPrivateEndpointConnection](Update-AzKustoPrivateEndpointConnection.md)
-Approve or reject a private endpoint connection with a given name.
-
 ### [Update-AzKustoSandboxCustomImage](Update-AzKustoSandboxCustomImage.md)
 Update a sandbox custom image.
 

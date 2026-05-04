@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Kusto
-Module Guid: bb1802ad-3127-41c9-b7d1-5842bba6fec4
+Module Guid: 04ffad84-367b-441f-bb50-32480557d17e
 Download Help Link: https://learn.microsoft.com/powershell/module/az.kusto
 Help Version: 1.0.0.0
 Locale: en-US
@@ -211,9 +211,6 @@ Update a data connection.
 
 ### [Update-AzKustoManagedPrivateEndpoint](Update-AzKustoManagedPrivateEndpoint.md)
 Update a managed private endpoint.
-
-### [Update-AzKustoPrivateEndpointConnection](Update-AzKustoPrivateEndpointConnection.md)
-Approve or reject a private endpoint connection with a given name.
 
 ### [Update-AzKustoSandboxCustomImage](Update-AzKustoSandboxCustomImage.md)
 Update a sandbox custom image.

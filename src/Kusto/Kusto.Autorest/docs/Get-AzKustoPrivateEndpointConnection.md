@@ -41,27 +41,32 @@ Gets a private endpoint connection.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all Kusto PrivateEndpointConnection in a cluster by name
 ```powershell
-{{ Add code here }}
+Get-AzKustoPrivateEndpointConnection -ClusterName "mycluster" -ResourceGroupName "testrg" -SubscriptionId "12345678-1234-1234-1234-123456789098"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                                       Type
+----                                                       ----
+privateEndpointConnectionName1                             Microsoft.Kusto/Clusters/PrivateEndpointConnections
+privateEndpointConnectionName2                             Microsoft.Kusto/Clusters/PrivateEndpointConnections
 ```
 
-{{ Add description here }}
+The above command returns all Kusto PrivateEndpointConnection in the cluster "mycluster" found in the resource group "testrg".
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific Kusto PrivateEndpointConnection by name
 ```powershell
-{{ Add code here }}
+Get-AzKustoPrivateEndpointConnection -ClusterName "mycluster" -ResourceGroupName "testrg" -SubscriptionId "12345678-1234-1234-1234-123456789098" -Name "privateEndpointConnectionName"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                                       Type
+----                                                       ----
+privateEndpointConnectionName                              Microsoft.Kusto/Clusters/PrivateEndpointConnections
 ```
 
-{{ Add description here }}
+The above command returns the Kusto PrivateEndpointConnection named "privateEndpointConnectionName" in the cluster "mycluster" found in the resource group "testrg".
 
 ## PARAMETERS
 

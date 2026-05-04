@@ -42,27 +42,31 @@ Gets a private link resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all PrivateLinkResource in a cluster
 ```powershell
-{{ Add code here }}
+Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                                       Type
+----                                                       ----
+mycluster/cluster                                		   Microsoft.Kusto/Clusters/PrivateLinkResources
 ```
 
-{{ Add description here }}
+The above command returns all PrivateLinkResource in the cluster "mycluster" found in the resource group "testrg".
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific PrivateLinkResource by name
 ```powershell
-{{ Add code here }}
+Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "testrg" -Name "ManagedPrivateEndpointName"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                                       Type
+----                                                       ----
+mycluster/cluster                                		   Microsoft.Kusto/Clusters/PrivateLinkResources
 ```
 
-{{ Add description here }}
+The above command returns the PrivateLinkResource named "mycluster/cluster" in the cluster "mycluster" found in the resource group "testrg".
 
 ## PARAMETERS
 
