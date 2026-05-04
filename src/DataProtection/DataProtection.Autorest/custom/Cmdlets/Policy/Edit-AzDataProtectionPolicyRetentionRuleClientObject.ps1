@@ -1,4 +1,4 @@
-﻿
+
 
 function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]

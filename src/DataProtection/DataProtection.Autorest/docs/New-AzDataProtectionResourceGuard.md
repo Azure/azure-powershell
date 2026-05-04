@@ -14,8 +14,8 @@ Creates a resource guard under a resource group
 
 ```
 New-AzDataProtectionResourceGuard -Location <String> -Name <String> -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [-ETag <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ETag <String>] [-IdentityType <String>] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +55,21 @@ Accept wildcard characters: False
 
 ### -ETag
 Optional ETag
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+This parameter is no longer in use and will be deprecated
 
 ```yaml
 Type: System.String

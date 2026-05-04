@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/undo-azdataprotectionbackupinstancedeletion
 schema: 2.0.0
@@ -15,8 +15,8 @@ Undeletes a soft deleted backup instance
 ### Undelete (Default)
 ```
 Undo-AzDataProtectionBackupInstanceDeletion -BackupInstanceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -VaultName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -VaultName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UndeleteViaIdentityBackupVault
@@ -28,8 +28,8 @@ Undo-AzDataProtectionBackupInstanceDeletion -BackupInstanceName <String>
 
 ### UndeleteViaIdentity
 ```
-Undo-AzDataProtectionBackupInstanceDeletion -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Undo-AzDataProtectionBackupInstanceDeletion -InputObject <IDataProtectionIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Undeletes a soft deleted backup instance
 ### Example 1: Undelete the soft deleted backup instance
 ```powershell
 $softDeletedBI = Get-AzDataProtectionSoftDeletedBackupInstance -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName
-Undo-AzDataProtectionBackupInstanceDeletion -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $softDeletedBI[0].Name
+Undo-AzDataProtectionBackupInstanceDeletion -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $softDeletedBI[0].Name 
 ```
 
 The first command is used to fetch the backup instances which are in soft deleted for a give backup vault.
@@ -246,3 +246,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

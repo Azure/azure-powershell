@@ -25,3 +25,32 @@ BlobBackupDatasourceParameters {conabb, conwxy, conzzz}
 ```
 
 This command can be used to create a backup configuration client object used for configuring backup for vaulted Blob backup containers.
+
+### Example 3: Create a BackupConfiguration for enabling auto-protection for AzureBlob.
+```powershell
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -AutoProtection
+```
+
+```output
+ObjectType                                          AutoProtectionSettingEnabled AutoProtectionSettingObjectType
+----------                                          --------------------------- ------------------------------
+BlobBackupDatasourceParametersForAutoProtection      True                        BlobBackupRuleBasedAutoProtectionSettings
+```
+
+This command creates a backup configuration client object with auto-protection enabled for Azure Blob. When auto-protection is enabled, new containers will be automatically protected without requiring manual configuration.
+
+### Example 4: Create a BackupConfiguration for enabling auto-protection for AzureDataLakeStorage with exclusion rules.
+```powershell
+$rule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupAutoProtectionRule]::new()
+$rule.ObjectType = "BlobBackupAutoProtectionRule"
+$rule.Pattern = "logs-"
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureDataLakeStorage -AutoProtection -AutoProtectionExclusionRule @($rule)
+```
+
+```output
+ObjectType                                              AutoProtectionSettingEnabled AutoProtectionSettingObjectType
+----------                                              --------------------------- ------------------------------
+AdlsBlobBackupDatasourceParametersForAutoProtection      True                        BlobBackupRuleBasedAutoProtectionSettings
+```
+
+This command creates a backup configuration client object with auto-protection enabled for Azure Data Lake Storage. The exclusion rule excludes containers whose names match the prefix "logs-" from auto-protection.

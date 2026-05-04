@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionresourceguard
 schema: 2.0.0
@@ -13,9 +13,10 @@ Updates a resource guard belonging to a resource group
 ## SYNTAX
 
 ```
-Update-AzDataProtectionResourceGuard -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
- [-ETag <String>] [-Tag <Hashtable>] [-CriticalOperationExclusionList <String[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDataProtectionResourceGuard -Name <String> -ResourceGroupName <String>
+ [-CriticalOperationExclusionList <String[]>] [-DefaultProfile <PSObject>] [-ETag <String>]
+ [-IdentityType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +39,7 @@ ETag Id                                                                         
 ```
 
 The first command is used to fetch the resource guard to be updated.
-The second and third command is used to fetch the critical operations user want to update.
+The second and third command is used to fecth the critical operations user want to update.
 
 The fourth command is used to exclude some critical operations from the resource guard
 
@@ -62,6 +63,7 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 
+
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -76,6 +78,21 @@ Accept wildcard characters: False
 
 ### -ETag
 Optional ETag
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+This parameter is no longer in use and will be deprecated
 
 ```yaml
 Type: System.String
@@ -187,8 +204,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IResourceGuardResource
 
 ## NOTES
 
 ## RELATED LINKS
+

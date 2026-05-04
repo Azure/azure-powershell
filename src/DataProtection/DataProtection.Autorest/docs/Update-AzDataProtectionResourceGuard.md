@@ -15,7 +15,8 @@ Updates a resource guard belonging to a resource group
 ```
 Update-AzDataProtectionResourceGuard -Name <String> -ResourceGroupName <String>
  [-CriticalOperationExclusionList <String[]>] [-DefaultProfile <PSObject>] [-ETag <String>]
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +39,7 @@ ETag Id                                                                         
 ```
 
 The first command is used to fetch the resource guard to be updated.
-The second and third command is used to fetch the critical operations user want to update.
+The second and third command is used to fecth the critical operations user want to update.
 
 The fourth command is used to exclude some critical operations from the resource guard
 
@@ -77,6 +78,21 @@ Accept wildcard characters: False
 
 ### -ETag
 Optional ETag
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+This parameter is no longer in use and will be deprecated
 
 ```yaml
 Type: System.String

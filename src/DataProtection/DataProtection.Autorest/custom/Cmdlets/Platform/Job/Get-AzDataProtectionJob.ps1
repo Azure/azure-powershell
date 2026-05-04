@@ -1,4 +1,4 @@
-﻿function Get-AzDataProtectionJob
+function Get-AzDataProtectionJob
 {
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource')]
     [CmdletBinding(PositionalBinding=$false)]

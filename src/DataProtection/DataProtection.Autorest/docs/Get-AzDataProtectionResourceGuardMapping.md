@@ -24,12 +24,6 @@ Get-AzDataProtectionResourceGuardMapping -InputObject <IDataProtectionIdentity> 
  [<CommonParameters>]
 ```
 
-### GetViaIdentityBackupVault
-```
-Get-AzDataProtectionResourceGuardMapping -BackupVaultInputObject <IDataProtectionIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List
 ```
 Get-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
@@ -66,21 +60,6 @@ The output of this command is used to ensure whether MUA is enabled on the backu
 
 ## PARAMETERS
 
-### -BackupVaultInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-Parameter Sets: GetViaIdentityBackupVault
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -99,6 +78,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity

@@ -1,4 +1,4 @@
-﻿
+
 
 function Get-AzDataProtectionPolicyTemplate {
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]

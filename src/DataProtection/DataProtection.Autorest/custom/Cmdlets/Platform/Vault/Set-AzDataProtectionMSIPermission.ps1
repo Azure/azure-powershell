@@ -1,4 +1,4 @@
-﻿function Get-VaultIdentity {
+function Get-VaultIdentity {
     
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
     param (

@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionsoftdeletedbackupvault
 schema: 2.0.0
@@ -18,18 +18,10 @@ Get-AzDataProtectionSoftDeletedBackupVault -Location <String> [-SubscriptionId <
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentityLocation
-```
-Get-AzDataProtectionSoftDeletedBackupVault -DeletedVaultName <String>
- -LocationInputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### Get
 ```
 Get-AzDataProtectionSoftDeletedBackupVault -DeletedVaultName <String> -Location <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +92,7 @@ The name of the DeletedBackupVaultResource
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityLocation, Get
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -115,7 +107,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -125,28 +117,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocationInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-Parameter Sets: GetViaIdentityLocation
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -161,12 +138,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDeletedBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IDeletedBackupVaultResource
 
 ## NOTES
 
 ## RELATED LINKS
+

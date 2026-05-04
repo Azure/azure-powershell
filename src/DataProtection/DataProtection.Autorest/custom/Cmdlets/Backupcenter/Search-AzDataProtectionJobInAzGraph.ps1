@@ -1,4 +1,4 @@
-﻿function Search-AzDataProtectionJobInAzGraph
+function Search-AzDataProtectionJobInAzGraph
 {
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false)]

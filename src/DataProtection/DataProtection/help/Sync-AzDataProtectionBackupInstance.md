@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/sync-azdataprotectionbackupinstance
 schema: 2.0.0
@@ -12,39 +12,10 @@ Sync backup instance again in case of failure\nThis action will retry last faile
 
 ## SYNTAX
 
-### SyncExpanded (Default)
 ```
-Sync-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -VaultName <String> [-SyncType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SyncViaJsonString
-```
-Sync-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -VaultName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SyncViaJsonFilePath
-```
-Sync-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -VaultName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SyncViaIdentityBackupVaultExpanded
-```
-Sync-AzDataProtectionBackupInstance -Name <String> -BackupVaultInputObject <IDataProtectionIdentity>
- [-SyncType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SyncViaIdentityBackupVault
-```
-Sync-AzDataProtectionBackupInstance -Name <String> -BackupVaultInputObject <IDataProtectionIdentity>
- -Parameter <ISyncBackupInstanceRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Sync-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String>
+ [-SubscriptionId <String>] [-SyncType <SyncType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,21 +48,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackupVaultInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-Parameter Sets: SyncViaIdentityBackupVaultExpanded, SyncViaIdentityBackupVault
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -102,36 +58,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Sync operation
-
-```yaml
-Type: System.String
-Parameter Sets: SyncViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Sync operation
-
-```yaml
-Type: System.String
-Parameter Sets: SyncViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -168,21 +94,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Sync BackupInstance Request
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISyncBackupInstanceRequest
-Parameter Sets: SyncViaIdentityBackupVault
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -204,7 +115,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: SyncExpanded, SyncViaJsonString, SyncViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -220,7 +131,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SyncExpanded, SyncViaJsonString, SyncViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -235,8 +146,8 @@ Field indicating sync type e.g.
 to sync only in case of failure or in all cases
 
 ```yaml
-Type: System.String
-Parameter Sets: SyncExpanded, SyncViaIdentityBackupVaultExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SyncType
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -251,7 +162,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: SyncExpanded, SyncViaJsonString, SyncViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -297,10 +208,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISyncBackupInstanceRequest
-
 ## OUTPUTS
 
 ### System.Boolean
@@ -308,3 +215,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

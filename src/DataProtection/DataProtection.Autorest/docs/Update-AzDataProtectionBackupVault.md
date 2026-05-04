@@ -281,21 +281,6 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EncryptionSetting
-Customer Managed Key details of the resource.
-
-```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IEncryptionSettings
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:

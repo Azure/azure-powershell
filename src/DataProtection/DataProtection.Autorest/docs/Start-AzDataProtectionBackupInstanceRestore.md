@@ -24,8 +24,8 @@ Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String>
 ### TriggerExpanded
 ```
 Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ObjectType <String>
- -ResourceGroupName <String> -RestoreTargetInfo <IRestoreTargetInfoBase> -SourceDataStoreType <String>
- -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
+ -ResourceGroupName <String> -RestoreTargetInfo <IRestoreTargetInfoBase>
+ -SourceDataStoreType <SourceDataStoreType> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
  [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity] [-NoWait]
  [-ResourceGuardOperationRequest <String[]>] [-RestoreToSecondaryRegion] [-SecureToken <SecureString>]
  [-SourceResourceId <String>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
@@ -206,13 +206,13 @@ $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId "xxxxx
 ```
 
 The first, second commands fetch the instance and recovery point for the instance.
-The third and fourth command initializes the target container id and target storage account ARM id.
+The third and fourthcommand initializes the target container id and target storage account ARM id.
 The fifth command initializes the restore request object for AzureDatabaseForPGFlexServer restore.
 This example also works for datasource type AzureDatabaseForMySQL.
 The sixth command assigns the permissions to the backup vault and other permissions necessary for triggering the restore for AzureDatabaseForPGFlexServer.
 The last command triggers the restore for AzureDatabaseForPGFlexServer.
 
-### Example 10: Trigger vaulted backup containers ItemLevelRestore with PrefixMatch for Azureblob.
+### Example 10: Trigger vaulted backup conatiners ItemLevelRestore with PrefixMatch for Azureblob.
 ```powershell
 $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "storageAcountName" }
 $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
@@ -230,7 +230,7 @@ $restoreJobILR = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId "xx
 The first, second commands fetch the instance and recovery point for the instance.
 The third command fetches the containers which are protected with vaulted policy.
 The fourth command initializes the prefix array for each container.
-PrefixMatch is a hashtable where each key is the container name being restored and the value is a list of string prfixes for container names for Item level recovery.
+PrefixMatch is a hashtable where each key is the conatiner name being restored and the value is a list of string prfixes for container names for Item level recovery.
 The fifth command initializes the target storage account Id.
 The sixth command initializes the restore request object for AzureBlob restore with parameters ContainersList, PrefixMatch.
 The seventh command triggers validate before restore.
@@ -384,6 +384,7 @@ Accept wildcard characters: False
 
 ### -Parameter
 Restore request object to be initialized using Initialize-AzDataProtectionRestoreRequest cmdlet
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
@@ -430,6 +431,7 @@ Accept wildcard characters: False
 
 ### -RestoreTargetInfo
 Gets or sets the restore target information
+To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IRestoreTargetInfoBase
@@ -478,7 +480,7 @@ Accept wildcard characters: False
 Type of the source data store
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SourceDataStoreType
 Parameter Sets: TriggerExpanded
 Aliases:
 

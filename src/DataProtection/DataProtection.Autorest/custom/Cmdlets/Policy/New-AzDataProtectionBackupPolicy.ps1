@@ -1,4 +1,4 @@
-﻿function New-AzDataProtectionBackupPolicy
+function New-AzDataProtectionBackupPolicy
 {
 
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource')]

@@ -1,6 +1,5 @@
-﻿
+
 function New-AzDataProtectionRestoreConfigurationClientObject{
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates new restore configuration object')]

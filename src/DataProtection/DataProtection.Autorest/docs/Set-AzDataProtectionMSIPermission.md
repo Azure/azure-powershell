@@ -121,6 +121,7 @@ The above command is used to assign permissions to the backup vault "VaultName" 
 
 ### -BackupInstance
 Backup instance request object which will be used to configure backup
+To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
@@ -181,6 +182,7 @@ Accept wildcard characters: False
 
 ### -RestoreRequest
 Restore request object which will be used for restore
+To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest

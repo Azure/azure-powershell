@@ -1,4 +1,4 @@
-﻿function Search-AzDataProtectionBackupVaultInAzGraph
+function Search-AzDataProtectionBackupVaultInAzGraph
 {
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false)]

@@ -121,6 +121,7 @@ Accept wildcard characters: False
 
 ### -RestoreRequest
 Restore request object for which to validate
+To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest

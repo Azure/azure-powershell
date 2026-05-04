@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionresourceguard
 schema: 2.0.0
@@ -13,9 +13,9 @@ Creates a resource guard under a resource group
 ## SYNTAX
 
 ```
-New-AzDataProtectionResourceGuard -ResourceGroupName <String> -Name <String> -Location <String>
- [-SubscriptionId <String>] [-ETag <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDataProtectionResourceGuard -Location <String> -Name <String> -ResourceGroupName <String>
+ [-DefaultProfile <PSObject>] [-ETag <String>] [-IdentityType <String>] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +40,7 @@ The above command is used to create a resource guard "mua-resource-guard" under 
 
 ### -DefaultProfile
 
+
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -54,6 +55,21 @@ Accept wildcard characters: False
 
 ### -ETag
 Optional ETag
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+This parameter is no longer in use and will be deprecated
 
 ```yaml
 Type: System.String
@@ -180,8 +196,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IResourceGuardResource
 
 ## NOTES
 
 ## RELATED LINKS
+

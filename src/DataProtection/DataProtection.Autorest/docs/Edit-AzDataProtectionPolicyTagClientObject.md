@@ -60,6 +60,7 @@ This command removes Weekly tag from backup policy.
 
 ### -Criteria
 Criterias to be associated with the schedule tag.
+To construct, see NOTES section for CRITERIA properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IScheduleBasedBackupCriteria[]
@@ -90,6 +91,7 @@ Accept wildcard characters: False
 
 ### -Policy
 Backup Policy Object.
+To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy

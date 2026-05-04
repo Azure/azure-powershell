@@ -59,6 +59,7 @@ Accept wildcard characters: False
 
 ### -BackupInstance
 Backup Instance
+To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstance

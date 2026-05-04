@@ -1,4 +1,4 @@
-﻿function Update-AzDataProtectionBackupVault
+function Update-AzDataProtectionBackupVault
 {
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource')]
     [CmdletBinding(DefaultParameterSetName="UpdateExpanded", PositionalBinding=$false, SupportsShouldProcess)]
@@ -22,27 +22,27 @@
         [System.String]
         ${VaultName},
 
-        [Parameter(ParameterSetName="UpdateExpanded",HelpMessage='Determines whether to enable a system-assigned identity for the resource.')]
-        [System.Nullable[System.Boolean]]
-        ${EnableSystemAssignedIdentity},
+        [Parameter(ParameterSetName="UpdateExpanded",HelpMessage='The identityType which can take values: "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None"')]
+        [System.String]
+        ${IdentityType},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState]
         [ValidateSet('Enabled','Disabled')]
         ${AzureMonitorAlertsForAllJobFailure},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState]
         [ValidateSet('Disabled','Unlocked', 'Locked')]
         ${ImmutabilityState},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Cross region restore state of the vault. Allowed values are Disabled, Enabled.')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossRegionRestoreState]
         [ValidateSet('Disabled','Enabled')]
         ${CrossRegionRestoreState},
         
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState]
         [ValidateSet('Disabled','Enabled', 'PermanentlyDisabled')]
         ${CrossSubscriptionRestoreState},
         
@@ -51,7 +51,7 @@
         ${SoftDeleteRetentionDurationInDay},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Soft delete state of the vault. Allowed values are Off, On, AlwaysOn')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState]
         [ValidateSet('Off','On', 'AlwaysOn')]  
         ${SoftDeleteState},
 
@@ -59,16 +59,17 @@
         [System.Collections.Hashtable]
         ${Tag},
 
-        [Parameter(ParameterSetName="UpdateExpanded",HelpMessage='The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}."')]
-        [System.String[]]
-        ${UserAssignedIdentity},
+        [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Gets or sets the user assigned identities.')]
+        [Alias('UserAssignedIdentity', 'AssignUserIdentity')]
+        [System.Collections.Hashtable]
+        ${IdentityUserAssignedIdentity},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='Enable CMK encryption state for a Backup Vault.')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.EncryptionState]
         ${CmkEncryptionState},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='The identity type to be used for CMK encryption - SystemAssigned or UserAssigned Identity.')]
-        [System.String]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.IdentityType]
         ${CmkIdentityType},
 
         [Parameter(ParameterSetName="UpdateExpanded",Mandatory=$false, HelpMessage='This parameter is required if the identity type is UserAssigned. Add the user assigned managed identity id to be used which has access permissions to the Key Vault.')]
@@ -172,7 +173,7 @@
             return
         }
 
-        $hasEnableSystemAssignedIdentity = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
+        $hasIdentityType = $PSBoundParameters.Remove("IdentityType")
         $hasAzureMonitorAlertsForAllJobFailure = $PSBoundParameters.Remove("AzureMonitorAlertsForAllJobFailure")
         $hasImmutabilityState = $PSBoundParameters.Remove("ImmutabilityState")
         $hasCrossRegionRestoreState = $PSBoundParameters.Remove("CrossRegionRestoreState")
@@ -205,7 +206,7 @@
 
         $PSBoundParameters.Add("EncryptionSetting", $encryptionSettings)
 
-        if ($hasEnableSystemAssignedIdentity) { $PSBoundParameters.Add("EnableSystemAssignedIdentity", $EnableSystemAssignedIdentity) }
+        if ($hasIdentityType) { $PSBoundParameters.Add("IdentityType", $IdentityType) }
         if ($hasAzureMonitorAlertsForAllJobFailure) { $PSBoundParameters.Add("AzureMonitorAlertsForAllJobFailure", $AzureMonitorAlertsForAllJobFailure) }
         if ($hasImmutabilityState) { $PSBoundParameters.Add("ImmutabilityState", $ImmutabilityState) }
         if ($hasCrossRegionRestoreState) { $PSBoundParameters.Add("CrossRegionRestoreState", $CrossRegionRestoreState) }

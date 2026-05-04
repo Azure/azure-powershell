@@ -31,19 +31,6 @@ Get-AzDataProtectionRecoveryPoint -InputObject <IDataProtectionIdentity> [-Defau
  [<CommonParameters>]
 ```
 
-### GetViaIdentityBackupInstance
-```
-Get-AzDataProtectionRecoveryPoint -BackupInstanceInputObject <IDataProtectionIdentity> -Id <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityBackupVault
-```
-Get-AzDataProtectionRecoveryPoint -BackupInstanceName <String>
- -BackupVaultInputObject <IDataProtectionIdentity> -Id <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets a Recovery Point using recoveryPointId for a Datasource.
 
@@ -101,48 +88,18 @@ One of these recovery points can be used to trigger cross region restore to seco
 
 ## PARAMETERS
 
-### -BackupInstanceInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-Parameter Sets: GetViaIdentityBackupInstance
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -BackupInstanceName
 The name of the backup instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityBackupVault, List
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupVaultInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
-Parameter Sets: GetViaIdentityBackupVault
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -182,7 +139,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityBackupInstance, GetViaIdentityBackupVault
+Parameter Sets: Get
 Aliases: RecoveryPointId
 
 Required: True
@@ -194,6 +151,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
