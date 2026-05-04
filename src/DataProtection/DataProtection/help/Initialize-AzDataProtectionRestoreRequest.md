@@ -27,7 +27,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Res
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -ItemLevelRecovery
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType>
  -TargetResourceId <String> [-ContainersList <String[]>] [-PrefixMatch <Hashtable>] [-RecoveryPoint <String>]
- [-RestoreConfiguration <PSObject>] [-UserAssignedIdentityArmId <String>]
+ [-RenameTo <Hashtable>] [-RestoreConfiguration <PSObject>] [-UserAssignedIdentityArmId <String>]
  [-UseSystemAssignedIdentity <Boolean?>] [<CommonParameters>]
 ```
 
@@ -189,7 +189,31 @@ Last command constructs the cross region restore request object for restore as f
 Please note that we set RestoreLocation parameter to $vault.ReplicatedRegion[0] (paired region) instead of $vault.Location for normal restore.
 Use Test-AzDataProtectionBackupInstanceRestore, Start-AzDataProtectionBackupInstanceRestore commands to validate and trigger restore.
 
-### Example 7: Get restore request object for alternate location vaulted restore for AzureKubernetesService
+### Example 7: Get restore request object for vaulted AzureBlob alternate location item level restore with container renaming
+```powershell
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "storageAccountName" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
+$backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
+$renameTo = @{}
+$renameTo[$backedUpContainers[0]] = "newContainerName1"
+$renameTo[$backedUpContainers[1]] = "newContainerName2"
+$targetStorageAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/targetStorageAccount"
+$restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation "vaultLocation" -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccountId -ContainersList $backedUpContainers[0,1] -RenameTo $renameTo
+```
+
+```output
+ObjectType                                  RestoreTargetInfoObjectType  RestoreTargetInfoRecoveryOption RestoreTargetInfoRestoreLocation SourceDataStoreType RecoveryPointId
+----------                                  ---------------------------  ------------------------------- -------------------------------- ------------------- ---------------
+AzureBackupRecoveryPointBasedRestoreRequest  itemLevelRestoreTargetInfo   FailIfExists                    vaultLocation                    VaultStore
+```
+
+The first and second commands fetch the backup instance and recovery points.
+The third command retrieves the list of containers that are protected under the vaulted backup policy.
+The fourth through sixth commands build a RenameTo hashtable that maps each original container name to a new container name for the restore.
+The seventh command sets the target storage account ARM ID for the alternate location restore.
+The last command initializes the restore request with -ItemLevelRecovery, -ContainersList, and -RenameTo to perform an alternate-location vaulted blob restore while renaming the specified containers.
+
+### Example 8: Get restore request object for alternate location vaulted restore for AzureKubernetesService
 ```powershell
 
 $subId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -382,6 +406,22 @@ This parameter is mandatory for rehydrate restore of archived points.
 ```yaml
 Type: System.String
 Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR, RestoreAsFiles
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RenameTo
+Use this parameter to rename container(s) for alternate location ILR.
+Input for this parameter is a hashtable where each key is the original container name and each value is the new name for the corresponding container.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: AlternateLocationILR
 Aliases:
 
 Required: False
