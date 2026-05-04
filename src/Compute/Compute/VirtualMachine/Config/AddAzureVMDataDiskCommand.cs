@@ -164,6 +164,13 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specifies the bandwidth in MB per second for the managed disk when StorageAccountType is UltraSSD_LRS or PremiumV2_LRS.")]
         public long? DiskMBpsReadWrite { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the storage fault domain alignment type for the data disk. Valid values are 'Aligned' and 'BestEffortAligned'. Only valid for VMs within a VMSS Flex; CRP returns BadRequest for standalone VMs.")]
+        [PSArgumentCompleter("Aligned", "BestEffortAligned")]
+        public string StorageFaultDomainAlignment { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(VmNormalDiskParameterSet))
@@ -201,7 +208,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Id = this.SourceResourceId 
                     },
                     DiskIOPSReadWrite = this.DiskIOPSReadWrite,
-                    DiskMBpsReadWrite = this.DiskMBpsReadWrite
+                    DiskMBpsReadWrite = this.DiskMBpsReadWrite,
+                    StorageFaultDomainAlignment = this.IsParameterBound(c => c.StorageFaultDomainAlignment) ? this.StorageFaultDomainAlignment : null
                 });
 
                 this.VM.StorageProfile = storageProfile;
@@ -245,7 +253,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Id = this.SourceResourceId
                     },
                     DiskIOPSReadWrite = this.DiskIOPSReadWrite,
-                    DiskMBpsReadWrite = this.DiskMBpsReadWrite
+                    DiskMBpsReadWrite = this.DiskMBpsReadWrite,
+                    StorageFaultDomainAlignment = this.IsParameterBound(c => c.StorageFaultDomainAlignment) ? this.StorageFaultDomainAlignment : null
                 });
 
                 this.VM.StorageProfile = storageProfile;
