@@ -14,15 +14,16 @@ Deletes a key-value.
 
 ### Delete (Default)
 ```
-Remove-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String>] [-IfMatch <String>]
- [-SyncToken <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String>]
+ [-ClientRequestId <String>] [-IfMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzAppConfigurationKeyValue -Endpoint <String> -InputObject <IAppConfigurationdataIdentity>
- [-Label <String>] [-IfMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Label <String>] [-ClientRequestId <String>] [-IfMatch <String>] [-SyncToken <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +52,21 @@ Value        : value1
 Remove a key-value in an App Configuration store
 
 ## PARAMETERS
+
+### -ClientRequestId
+An opaque, globally-unique, client-generated string identifier for the request.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -84,7 +100,8 @@ Accept wildcard characters: False
 ```
 
 ### -IfMatch
-Used to perform an operation only if the targeted resource's etag matches the value provided.
+Used to perform an operation only if the targeted resource's etag matches the
+value provided.
 
 ```yaml
 Type: System.String

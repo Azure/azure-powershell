@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupvault
 schema: 2.0.0
@@ -15,27 +15,26 @@ For example, updating tags for a resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDataProtectionBackupVault [-Token <String>] [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
- [-CrossRegionRestoreState <CrossRegionRestoreState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
- [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
+Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-Token <String>] [-AsJob]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CmkEncryptionKeyUri <String>]
  [-CmkEncryptionState <EncryptionState>] [-CmkIdentityType <IdentityType>]
- [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>] [-SecureToken <SecureString>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CmkUserAssignedIdentityId <String>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
+ [-NoWait] [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>]
+ [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Token <String>]
+Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Token <String>] [-AsJob]
  [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-EncryptionSetting <IEncryptionSettings>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
+ [-EncryptionSetting <IEncryptionSettings>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>] [-NoWait]
  [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -286,7 +285,7 @@ Customer Managed Key details of the resource.
 To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IEncryptionSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IEncryptionSettings
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -554,8 +553,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource
 
 ## NOTES
 
 ## RELATED LINKS
+
