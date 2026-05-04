@@ -214,7 +214,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Memory",
-          "version": "4.5.5"
+          "version": "4.6.3"
         }
       }
     },

@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/suspend-azdataprotectionbackupinstancebackup
 schema: 2.0.0
@@ -14,18 +14,17 @@ This operation will stop backup for a backup instance and retains the backup dat
 
 ### Suspend (Default)
 ```
-Suspend-AzDataProtectionBackupInstanceBackup -ResourceGroupName <String> -BackupInstanceName <String>
- -VaultName <String> [-SubscriptionId <String>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
- [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Suspend-AzDataProtectionBackupInstanceBackup -BackupInstanceName <String> -ResourceGroupName <String>
+ -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PassThru]
+ [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>] [-SubscriptionId <String>]
+ [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SuspendViaIdentity
 ```
-Suspend-AzDataProtectionBackupInstanceBackup [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
- [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- -InputObject <IDataProtectionIdentity> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Suspend-AzDataProtectionBackupInstanceBackup -InputObject <IDataProtectionIdentity> [-AsJob]
+ [-DefaultProfile <PSObject>] [-NoWait] [-PassThru] [-ResourceGuardOperationRequest <String[]>]
+ [-SecureToken <SecureString>] [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,6 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -270,3 +270,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
