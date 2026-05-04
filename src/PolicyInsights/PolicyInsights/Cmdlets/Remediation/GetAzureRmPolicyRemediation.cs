@@ -14,9 +14,6 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.PolicyInsights.Common;
     using Microsoft.Azure.Commands.PolicyInsights.Models.Remediation;
     using Microsoft.Azure.Commands.PolicyInsights.Properties;
@@ -24,11 +21,24 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.PolicyInsights;
     using Microsoft.Azure.Management.PolicyInsights.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Management.Automation;
 
     /// <summary>
     /// Gets policy remediations.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(
+        typeof(PSRemediation),
+        deprecateByAzVersion: "16.0.0",
+        deprecateByVersion: "2.0.0",
+        ReplacementCmdletOutputTypeName = "Remediation",
+        DeprecatedOutputProperties = new string[] { "Filters", "DeploymentSummary", "FailureThreshold", "ParallelDeployments" },
+        NewOutputProperties = new string[] { "FilterLocation", "FilterResourceId", "DeploymentStatusFailedDeployment", "DeploymentStatusSuccessfulDeployment", "DeploymentStatusTotalDeployment", "FailureThresholdPercentage", "ParallelDeployment",
+            "ResourceGroupName", "SystemDataCreatedAt", "SystemDataCreatedBy", "SystemDataCreatedByType", "SystemDataLastModifiedAt", "SystemDataLastModifiedBy", "SystemDataLastModifiedByType" }
+    )]
     [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + "PolicyRemediation", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSRemediation))]
     public class GetAzureRmPolicyRemediation : RemediationCmdletBase
     {
