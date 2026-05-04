@@ -83,7 +83,8 @@ Id                              : /subscriptions/00000000-0000-0000-0000-0000000
                                   iders/Microsoft.Monitor/pipelineGroups/testgroup
 Location                        : centraluseuap
 Name                            : testgroup
-NetworkingConfiguration         :
+TlsConfiguration                :
+ExecutionPlacement              :
 PersistencePersistentVolumeName :
 Processor                       : {{
                                     "batch": {
@@ -170,7 +171,8 @@ Id                              : /subscriptions/00000000-0000-0000-0000-0000000
                                   iders/Microsoft.Monitor/pipelineGroups/testgroup
 Location                        : centraluseuap
 Name                            : testgroup
-NetworkingConfiguration         : {}
+TlsConfiguration                : {}
+ExecutionPlacement              : {}
 PersistencePersistentVolumeName :
 Processor                       : {{
                                     "batch": {

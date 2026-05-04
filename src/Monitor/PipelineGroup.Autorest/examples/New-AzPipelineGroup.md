@@ -39,7 +39,7 @@ Id                              : /subscriptions/00000000-0000-0000-0000-0000000
                                   iders/Microsoft.Monitor/pipelineGroups/testgroup
 Location                        : centraluseuap
 Name                            : testgroup
-TlsConfigurations               :
+TlsConfiguration                :
 ExecutionPlacement              :
 PersistencePersistentVolumeName :
 Processor                       : {{

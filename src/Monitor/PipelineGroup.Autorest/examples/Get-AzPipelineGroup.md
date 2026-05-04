@@ -39,7 +39,7 @@ Id                              : /subscriptions/00000000-0000-0000-0000-0000000
                                   ers/Microsoft.Monitor/pipelineGroups/mygroup
 Location                        : eastus2euap
 Name                            : mygroup
-TlsConfigurations               :
+TlsConfiguration                :
 ExecutionPlacement              :
 PersistencePersistentVolumeName :
 Processor                       : {{
