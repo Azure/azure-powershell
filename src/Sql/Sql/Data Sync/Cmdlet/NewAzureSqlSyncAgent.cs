@@ -114,6 +114,17 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 // Unexpected exception encountered
                 throw;
             }
+            catch (CloudException ex)
+            {
+                if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    // This is what we want.  We looked and there is no sync agent with this name.
+                    return null;
+                }
+
+                // Unexpected exception encountered
+                throw;
+            }
 
             // The sync agent already exists
             throw new PSArgumentException(

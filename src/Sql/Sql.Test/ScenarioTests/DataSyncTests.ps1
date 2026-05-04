@@ -620,8 +620,8 @@ function Test-CreateSyncGroupWithIdentity
     $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
     $params = Get-SqlSyncGroupTestEnvironmentParameters
 
-    New-AzUserAssignedIdentity -ResourceGroupName $rg.ResourceGroupName -Name "TestUAMI" -Location "southeastasia"
-    $uamiId = (Get-AzUserAssignedIdentity -ResourceGroupName  $rg.ResourceGroupName -Name "TestUAMI").Id
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $uamiId = "/subscriptions/$subscriptionId/resourcegroups/$($rg.ResourceGroupName)/providers/Microsoft.ManagedIdentity/userAssignedIdentities/TestUAMI"
 
     Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -UserAssignedIdentityId $uamiId `
     -IdentityType UserAssigned -PrimaryUserAssignedIdentityId $uamiId -AssignIdentity 
@@ -661,8 +661,8 @@ function Test-UpdateSyncGroupWithIdentity
     $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
     $params = Get-SqlSyncGroupTestEnvironmentParameters
 
-    New-AzUserAssignedIdentity -ResourceGroupName $rg.ResourceGroupName -Name "TestUAMI" -Location "southeastasia"
-    $uamiId = (Get-AzUserAssignedIdentity -ResourceGroupName  $rg.ResourceGroupName -Name "TestUAMI").Id
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $uamiId = "/subscriptions/$subscriptionId/resourcegroups/$($rg.ResourceGroupName)/providers/Microsoft.ManagedIdentity/userAssignedIdentities/TestUAMI"
 
     Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -UserAssignedIdentityId $uamiId `
     -IdentityType UserAssigned -PrimaryUserAssignedIdentityId $uamiId -AssignIdentity 
@@ -707,8 +707,8 @@ function Test-CreateSyncMemberWithIdentity
     $syncDatabaseName = Get-DatabaseName
     $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
 
-    New-AzUserAssignedIdentity -ResourceGroupName $rg.ResourceGroupName -Name "TestUAMI" -Location "southeastasia"
-    $uamiId = (Get-AzUserAssignedIdentity -ResourceGroupName  $rg.ResourceGroupName -Name "TestUAMI").Id
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $uamiId = "/subscriptions/$subscriptionId/resourcegroups/$($rg.ResourceGroupName)/providers/Microsoft.ManagedIdentity/userAssignedIdentities/TestUAMI"
 
     Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -UserAssignedIdentityId $uamiId `
     -IdentityType UserAssigned -PrimaryUserAssignedIdentityId $uamiId -AssignIdentity 
@@ -763,8 +763,8 @@ function Test-UpdateSyncMemberWithIdentity
     $syncDatabaseName = Get-DatabaseName
     $syncdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $syncDatabaseName -Force
     
-    New-AzUserAssignedIdentity -ResourceGroupName $rg.ResourceGroupName -Name "TestUAMI" -Location "southeastasia"
-    $uamiId = (Get-AzUserAssignedIdentity -ResourceGroupName  $rg.ResourceGroupName -Name "TestUAMI").Id
+    $subscriptionId = (Get-AzContext).Subscription.Id
+    $uamiId = "/subscriptions/$subscriptionId/resourcegroups/$($rg.ResourceGroupName)/providers/Microsoft.ManagedIdentity/userAssignedIdentities/TestUAMI"
 
     Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -UserAssignedIdentityId $uamiId `
     -IdentityType UserAssigned -PrimaryUserAssignedIdentityId $uamiId -AssignIdentity 
