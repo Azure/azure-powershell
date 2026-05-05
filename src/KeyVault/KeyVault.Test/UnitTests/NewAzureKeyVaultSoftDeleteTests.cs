@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Rest.Azure;
@@ -20,9 +21,14 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Management.Automation;
+using System.Net;
+using System.Net.Http;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using KVSku = Microsoft.Azure.Management.KeyVault.Models.Sku;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 {
@@ -32,14 +38,32 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
     /// </summary>
     public class NewAzureKeyVaultSoftDeleteTests : KeyVaultUnitTestBase
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CreateNewVault_Sets_EnableSoftDelete_True_In_VaultProperties()
+        private VaultCreateOrUpdateParameters _capturedSdkParameters;
+        private VaultManagementClient _vaultManagementClient;
+
+        /// <summary>
+        /// A fake HTTP handler that returns an empty resource list for any GET (FilterResources)
+        /// and prevents real network calls during unit tests.
+        /// </summary>
+        private class FakeHttpHandler : HttpClientHandler
         {
-            // Arrange
-            VaultCreateOrUpdateParameters capturedParameters = null;
-            var mockVaultsOperations = new Mock<IVaultsOperations>();
-            mockVaultsOperations
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                var response = new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent("{\"value\":[]}")
+                };
+                response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+                return Task.FromResult(response);
+            }
+        }
+
+        private void SetupVaultManagementClient()
+        {
+            _capturedSdkParameters = null;
+
+            var mockVaultsOps = new Mock<IVaultsOperations>();
+            mockVaultsOps
                 .Setup(v => v.CreateOrUpdateWithHttpMessagesAsync(
                     It.IsAny<string>(),
                     It.IsAny<string>(),
@@ -47,14 +71,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                     It.IsAny<Dictionary<string, List<string>>>(),
                     It.IsAny<CancellationToken>()))
                 .Callback<string, string, VaultCreateOrUpdateParameters, Dictionary<string, List<string>>, CancellationToken>(
-                    (rg, name, parameters, headers, ct) => capturedParameters = parameters)
+                    (rg, name, parameters, headers, ct) => _capturedSdkParameters = parameters)
                 .Returns(Task.FromResult(new AzureOperationResponse<Vault>
                 {
                     Body = new Vault(
                         properties: new VaultProperties
                         {
                             TenantId = Guid.NewGuid(),
-                            Sku = new Sku(SkuName.Standard),
+                            Sku = new KVSku(SkuName.Standard),
                             AccessPolicies = new AccessPolicyEntry[] { },
                             VaultUri = "https://testvault.vault.azure.net"
                         },
@@ -62,14 +86,75 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                         location: "eastus")
                 }));
 
-            var mockClient = new Mock<IKeyVaultManagementClient>();
-            mockClient.Setup(c => c.Vaults).Returns(mockVaultsOperations.Object);
+            var mockKvMgmtClient = new Mock<IKeyVaultManagementClient>();
+            mockKvMgmtClient.Setup(c => c.Vaults).Returns(mockVaultsOps.Object);
 
-            var vaultManagementClient = new VaultManagementClient();
-            // Use reflection to set the private KeyVaultManagementClient property
-            var prop = typeof(VaultManagementClient).GetProperty("KeyVaultManagementClient",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            prop.SetValue(vaultManagementClient, mockClient.Object);
+            _vaultManagementClient = new VaultManagementClient();
+            typeof(VaultManagementClient)
+                .GetProperty("KeyVaultManagementClient", BindingFlags.NonPublic | BindingFlags.Instance)
+                .SetValue(_vaultManagementClient, mockKvMgmtClient.Object);
+        }
+
+        private ResourceManagementClient CreateFakeResourceClient()
+        {
+            var client = new ResourceManagementClient(
+                new Microsoft.Rest.TokenCredentials("fake-token"),
+                new FakeHttpHandler());
+            client.SubscriptionId = "00000000-0000-0000-0000-000000000000";
+            return client;
+        }
+
+        /// <summary>
+        /// Exercises NewAzureKeyVault.ExecuteCmdlet() end-to-end and verifies that
+        /// the cmdlet hardcodes EnableSoftDelete=true in the outgoing request.
+        /// This test would FAIL if the assignment at NewAzureKeyVault.cs line 171
+        /// were removed, because VaultManagementClient is a pure pass-through
+        /// (as proved by VaultManagementClient_Does_Not_Default_EnableSoftDelete).
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ExecuteCmdlet_Sets_EnableSoftDelete_True_In_Request()
+        {
+            // Arrange
+            SetupVaultManagementClient();
+
+            var cmdRuntimeMock = new Mock<ICommandRuntime>();
+            cmdRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            var cmdlet = new NewAzureKeyVault
+            {
+                CommandRuntime = cmdRuntimeMock.Object,
+                Name = "test-vault",
+                ResourceGroupName = "test-rg",
+                Location = "eastus"
+            };
+            cmdlet.KeyVaultManagementClient = _vaultManagementClient;
+            cmdlet.ResourceClient = CreateFakeResourceClient();
+
+            // Act
+            cmdlet.ExecuteCmdlet();
+
+            // Assert
+            Assert.NotNull(_capturedSdkParameters);
+            Assert.True(_capturedSdkParameters.Properties.EnableSoftDelete,
+                "NewAzureKeyVault.ExecuteCmdlet() must set EnableSoftDelete=true in the request body " +
+                "so that Azure Policy checks requiring the property to be present are satisfied.");
+        }
+
+        /// <summary>
+        /// Proves VaultManagementClient.CreateNewVault is a pure pass-through:
+        /// it does NOT inject a default for EnableSoftDelete.
+        /// Combined with ExecuteCmdlet_Sets_EnableSoftDelete_True_In_Request, this proves
+        /// that only the cmdlet's hardcoded assignment provides the value.
+        /// If someone removes EnableSoftDelete=true from NewAzureKeyVault.cs,
+        /// the request would go out with EnableSoftDelete=null and Azure Policy would reject it.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VaultManagementClient_Does_Not_Default_EnableSoftDelete()
+        {
+            // Arrange
+            SetupVaultManagementClient();
 
             var createParameters = new VaultCreationOrUpdateParameters
             {
@@ -79,19 +164,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 SkuFamilyName = "A",
                 SkuName = "Standard",
                 TenantId = Guid.NewGuid(),
-                EnableSoftDelete = true,
+                EnableSoftDelete = null, // Deliberately not set
                 SoftDeleteRetentionInDays = 90,
                 NetworkAcls = new NetworkRuleSet()
             };
 
             // Act
-            vaultManagementClient.CreateNewVault(createParameters);
+            _vaultManagementClient.CreateNewVault(createParameters);
 
-            // Assert
-            Assert.NotNull(capturedParameters);
-            Assert.True(capturedParameters.Properties.EnableSoftDelete,
-                "CreateNewVault must set EnableSoftDelete=true in the request body " +
-                "to satisfy Azure Policy checks");
+            // Assert - null in means null out; client does NOT inject a default
+            Assert.NotNull(_capturedSdkParameters);
+            Assert.Null(_capturedSdkParameters.Properties.EnableSoftDelete);
         }
     }
 }
