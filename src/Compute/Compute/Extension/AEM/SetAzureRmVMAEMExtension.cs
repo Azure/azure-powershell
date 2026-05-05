@@ -65,14 +65,16 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.")]
+                HelpMessage = "Deprecated parameter. If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.")]
+        [Obsolete("The old extension is deprecated.")]
         public SwitchParameter EnableWAD { get; set; }
 
         [Parameter(
                 Mandatory = false,
                 Position = 2,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "Name of the storage account that should be used to store analytics data.")]
+                HelpMessage = "Deprecated parameter. Name of the storage account that should be used to store analytics data.")]
+        [Obsolete("The old extension is deprecated.")]
         public string WADStorageAccountName { get; set; }
 
         [Parameter(
@@ -86,7 +88,8 @@ namespace Microsoft.Azure.Commands.Compute
                 Mandatory = false,
                 Position = 4,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "Disables the settings for table content")]
+                HelpMessage = "Deprecated parameter. Disables the settings for table content")]
+        [Obsolete("The old extension is deprecated.")]
         public SwitchParameter SkipStorage { get; set; }
 
         [Parameter(Mandatory = false,
@@ -106,7 +109,8 @@ namespace Microsoft.Azure.Commands.Compute
                 Position = 6,
                 ParameterSetName = "NewExtension",
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "Install the new extension.")]
+                HelpMessage = "Deprecated parameter. Install the new extension.")]
+        [Obsolete("The old extension is deprecated.")]
         public SwitchParameter InstallNewExtension { get; set; }
 
         [Parameter(
@@ -198,35 +202,29 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 var aemExtension = AEMHelper.GetAEMExtension(selectedVM, this.OSType);
-                /*
-                 * no extension + new extension switch => install new extension
-                 * new extension + new extension switch => install new extension
-                 * new extension + no extension switch => install new extension
-                 * no extension + no new extension switch => install old extension
-                 * old extension + no new extension switch => install old extension
-                 * old extension + new extension switch => error                 
-                 */
-                if ((aemExtension == null && InstallNewExtension.IsPresent)
-                    || (AEMHelper.IsNewExtension(aemExtension, this.OSType)))
+
+                // use the new extension by default, the old one is deprecated and will be completely removed
+                //
+                if (null != aemExtension && AEMHelper.IsOldExtension(aemExtension, this.OSType))
+                {
+                    if (InstallNewExtension.IsPresent)
+                    {
+                        this._Helper.WriteVerbose($"Migration from the old extension to the new one is not supported. " +
+                           $"Please remove the old extension first. (" +
+                           $"Extension installed={aemExtension != null} " +
+                           $"IsNewExtension={AEMHelper.IsNewExtension(aemExtension, this.OSType)} " +
+                           $"IsOldExtension={AEMHelper.IsOldExtension(aemExtension, this.OSType)}" +
+                           $"InstallNewExtension={InstallNewExtension.IsPresent}");
+                        this._Helper.WriteError("Migration from the old extension to the new one is not supported. Please remove the old extension first.");
+                        return;
+                    }
+                    this._Helper.WriteWarning("[WARN] You have the old extension installed. The old extension is deprecated. Please uninstall it and then install the new one.");
+                    this.SetOldExtension(selectedVM, selectedVMStatus);
+                } else
                 {
                     this.SetNewExtension(selectedVM, selectedVMStatus);
                 }
-                else if ((aemExtension == null && !InstallNewExtension.IsPresent)
-                    || (AEMHelper.IsOldExtension(aemExtension, this.OSType) && !InstallNewExtension.IsPresent))
-                {
-                    this.SetOldExtension(selectedVM, selectedVMStatus);
-                }
-                else
-                {
-                    this._Helper.WriteVerbose($"Migration from the old extension to the new one is not supported. " +
-                        $"Please remove the old extension first. (" +
-                        $"Extension installed={aemExtension != null} " +
-                        $"IsNewExtension={AEMHelper.IsNewExtension(aemExtension, this.OSType)} " +
-                        $"IsOldExtension={AEMHelper.IsOldExtension(aemExtension, this.OSType)}" +
-                        $"InstallNewExtension={InstallNewExtension.IsPresent}");
-                    this._Helper.WriteError("Migration from the old extension to the new one is not supported. Please remove the old extension first.");
-                    return;
-                }
+
             });
         }
 
