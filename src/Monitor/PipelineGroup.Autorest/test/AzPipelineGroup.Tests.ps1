@@ -17,7 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzPipelineGroup'))
 Describe 'AzPipelineGroup' {
     It 'CreateExpanded' {
         {
-            #$DebugPreference = 'Continue'
             $constraint = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.PlacementConstraint]::new()
             $constraint.Capability = "gpu-enabled"
             $constraint.Operator = "Exists"
