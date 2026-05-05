@@ -1,0 +1,4 @@
+- [x] create an agent
+- [x] update azure.identity and msal
+- [x] update other dependencies
+- [ ] System.Text.Json might not be necessary for PowerShell 7+?
