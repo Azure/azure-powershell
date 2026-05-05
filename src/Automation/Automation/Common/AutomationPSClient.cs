@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="context"></param>
         public AutomationPSClient(IAzureContext context)
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (addSystemId == true)
             {
-                accountCreateOrUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+                accountCreateOrUpdateParameters.Identity = new AutomationManagement.Models.Identity(null, null, ResourceIdentityType.SystemAssigned);
             }
             if ((userIds != null) && userIds.Any())
             {
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     IdType = ResourceIdentityType.SystemAssignedUserAssigned;
                 }
 
-                accountCreateOrUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+                accountCreateOrUpdateParameters.Identity = new AutomationManagement.Models.Identity(null, null, IdType, userIdDict);
             }
             if (enableAMK == true)
             {
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (addSystemId == true)
             {
-                accountUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+                accountUpdateParameters.Identity = new AutomationManagement.Models.Identity(null, null, ResourceIdentityType.SystemAssigned);
             }
             if ((userIds != null) && userIds.Any())
             {
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     IdType = ResourceIdentityType.SystemAssignedUserAssigned;
                 }
 
-                accountUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+                accountUpdateParameters.Identity = new AutomationManagement.Models.Identity(null, null, IdType, userIdDict);
             }
             if (enableAMK == true)
             {
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     module = this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
                 }
-                
+
                 return new Module(resourceGroupName, automationAccountName, module);
             }
             catch (ErrorResponseException cloudException)
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 else
                 {
                     response = this.automationManagementClient.Module.ListByAutomationAccount(resourceGroupName, automationAccountName);
-                }                
+                }
             }
             else
             {
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 else
                 {
                     response = this.automationManagementClient.Module.ListByAutomationAccountNext(nextLink);
-                }                
+                }
             }
 
             nextLink = response.NextPageLink;
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     moduleCreateOrUpdateParameters
                     );
                     }
-                    
+
                 }
                 return this.GetModule(resourceGroupName, automationAccountName, name, IsPowerShell72Module);
             }
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 else
                 {
                     this.automationManagementClient.Module.Delete(resourceGroupName, automationAccountName, name);
-                }                
+                }
             }
             catch (ErrorResponseException cloudException)
             {
@@ -1129,7 +1129,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             if (response == null || response.Value == null) return null;
 
             // PowerShell Workflow runbook jobs would have the below additional properties, remove them from job output
-            // we do not know the runbook type, remove will only remove if exists 
+            // we do not know the runbook type, remove will only remove if exists
             response.Value.Remove("PSComputerName");
             response.Value.Remove("PSShowComputerName");
             response.Value.Remove("PSSourceJobInstanceId");
@@ -1165,7 +1165,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     paramValue = kvp.Value;
                 }
 
-                // for primitive outputs, the record will be in form "value" : "primitive type value". Return the key and return the primitive type value  
+                // for primitive outputs, the record will be in form "value" : "primitive type value". Return the key and return the primitive type value
                 if (response.Value.Count == 1 && response.Value.ContainsKey("value"))
                 {
                     return paramValue;

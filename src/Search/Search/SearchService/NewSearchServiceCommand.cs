@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     partitionCount: PartitionCount,
                     hostingMode: (HostingMode?)HostingMode,
                     publicNetworkAccess: publicNetworkAccess,
-                    identity: (Identity)identity,
+                    identity: (Azure.Management.Search.Models.Identity)identity,
                     networkRuleSet: networkRuleSet,
                     disableLocalAuth: DisableLocalAuth,
                     authOptions: (DataPlaneAuthOptions)authOptions,

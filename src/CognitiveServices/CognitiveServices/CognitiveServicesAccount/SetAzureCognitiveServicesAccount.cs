@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 sku = new Sku(this.SkuName);
             }
-            
+
             Dictionary<string, string> tags = null;
             if (this.Tag != null)
             {
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     resourceIdentityType = ResourceIdentityType.SystemAssignedUserAssigned;
                 }
 
-                updateParameters.Identity = new Identity(resourceIdentityType);
+                updateParameters.Identity = new Azure.Management.CognitiveServices.Models.Identity(resourceIdentityType);
                 if (this.UserAssignedIdentityId != null)
                 {
                     updateParameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();

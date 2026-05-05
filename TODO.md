@@ -1,4 +1,6 @@
 - [x] create an agent
 - [x] update azure.identity and msal
+  - [x] address namespace conflict of types named Identity because Azure.Core pulls in namespaces of Microsoft.Identity (because of Microsoft.Identity.Client)
 - [x] update other dependencies
 - [ ] System.Text.Json might not be necessary for PowerShell 7+?
+- [ ] Errors of "Could not load file or assembly 'Microsoft.Azure.PowerShell.AssemblyLoading, Version=5.3.3.0" during smoke test. Might be regression of parallal loading, need to investigate.
