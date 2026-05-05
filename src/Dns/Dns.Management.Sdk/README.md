@@ -25,9 +25,9 @@ use-extension:
 
 ###
 ``` yaml
-commit: a3126a361b75f952ece050b2cf67c11d4e542ef8
+commit: a52080de43d785c4aaf3048e84e6a215d6267333
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/dns/resource-manager/Microsoft.Network/preview/2023-07-01-preview/dns.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/dns/resource-manager/Microsoft.Network/Dns/preview/2023-07-01-preview/dns.json
 
 output-folder: Generated
 

@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -126,6 +126,42 @@ function Test-AliasRecordSet
 
 	Assert-ThrowsLike { Get-AzDnsRecordSet -Name $aliasRecordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType } "*does not exist*"
 
+	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Test Traffic Manager Profile (TMLink) Record Set
+#>
+function Test-TrafficManagerProfileRecordSet
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$recordType = "CNAME"
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
+
+	# Create a Traffic Manager profile for testing
+	$tmProfileName = "tmprofile" + $(getAssetname)
+	$tmProfile = New-AzTrafficManagerProfile -Name $tmProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -TrafficRoutingMethod Priority -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/" -RelativeDnsName $tmProfileName -Ttl 30
+
+	# Create record set with TrafficManagerProfileId (TMLink)
+	$createdRecord = New-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -TrafficManagerProfileId $tmProfile.Id
+
+	Assert-NotNull $createdRecord
+	Assert-AreEqual $zoneName $createdRecord.ZoneName
+	Assert-AreEqual $recordName $createdRecord.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $createdRecord.ResourceGroupName
+	Assert-AreEqual $tmProfile.Id $createdRecord.TrafficManagerProfileId
+
+	# Get and verify read-back
+	$retrievedRecord = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType
+	Assert-AreEqual $tmProfile.Id $retrievedRecord.TrafficManagerProfileId
+
+	# Cleanup
+	$retrievedRecord | Remove-AzDnsRecordSet -Confirm:$false
+	Remove-AzTrafficManagerProfile -Name $tmProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
 	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

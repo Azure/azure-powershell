@@ -34,17 +34,20 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The zone in which to create the record set (without a terminating dot).", ParameterSetName = "Fields")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The zone in which to create the record set (without a terminating dot).", ParameterSetName = "AliasFields")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The zone in which to create the record set (without a terminating dot).", ParameterSetName = "TmFields")]
         [ValidateNotNullOrEmpty]
         public string ZoneName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the zone belongs.", ParameterSetName = "Fields")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the zone belongs.", ParameterSetName = "AliasFields")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the zone belongs.", ParameterSetName = "TmFields")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The DnsZone object representing the zone in which to create the record set.", ParameterSetName = "Object")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The DnsZone object representing the zone in which to create the record set.", ParameterSetName = "AliasObject")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The DnsZone object representing the zone in which to create the record set.", ParameterSetName = "TmObject")]
         [ValidateNotNullOrEmpty]
         public DnsZone Zone { get; set; }
 
@@ -52,6 +55,8 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "Object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasObject")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasFields")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "TmFields")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "TmObject")]
         [ValidateNotNullOrEmpty]
         public uint Ttl
         {
@@ -72,6 +77,10 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = true, HelpMessage = "Alias Target Resource Id.", ParameterSetName = "AliasFields")]
         [Parameter(Mandatory = true, HelpMessage = "Alias Target Resource Id.", ParameterSetName = "AliasObject")]
         public string TargetResourceId { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "Traffic Manager profile resource Id (TMLink). Provide the full resource Id of an Azure Traffic Manager profile to create a TMLink record set.", ParameterSetName = "TmFields")]
+        [Parameter(Mandatory = true, HelpMessage = "Traffic Manager profile resource Id (TMLink). Provide the full resource Id of an Azure Traffic Manager profile to create a TMLink record set.", ParameterSetName = "TmObject")]
+        public string TrafficManagerProfileId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Metadata { get; set; }
@@ -94,12 +103,12 @@ namespace Microsoft.Azure.Commands.Dns
                 throw new System.ArgumentException(ProjectResources.Error_AddRecordSOA);
             }
 
-            if (ParameterSetName == "Fields" || ParameterSetName == "AliasFields")
+            if (ParameterSetName == "Fields" || ParameterSetName == "AliasFields" || ParameterSetName == "TmFields")
             {
                 zoneName = this.ZoneName;
                 resourceGroupname = this.ResourceGroupName;
             }
-            else if (ParameterSetName == "Object" || ParameterSetName == "AliasObject")
+            else if (ParameterSetName == "Object" || ParameterSetName == "AliasObject" || ParameterSetName == "TmObject")
             {
                 zoneName = this.Zone.Name;
                 resourceGroupname = this.Zone.ResourceGroupName;
@@ -115,7 +124,7 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
             }
 
-            if (this.DnsRecords == null && string.IsNullOrEmpty(this.TargetResourceId))
+            if (this.DnsRecords == null && string.IsNullOrEmpty(this.TargetResourceId) && string.IsNullOrEmpty(this.TrafficManagerProfileId))
             {
                 this.WriteWarning(ProjectResources.Warning_DnsRecordsParamNeedsToBeSpecified);
             }
@@ -134,7 +143,8 @@ namespace Microsoft.Azure.Commands.Dns
                         this.Metadata,
                         this.Overwrite,
                         this.DnsRecords,
-                        this.TargetResourceId);
+                        this.TargetResourceId,
+                        this.TrafficManagerProfileId);
 
                     if (result != null)
                     {

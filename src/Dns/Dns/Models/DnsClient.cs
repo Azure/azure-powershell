@@ -171,9 +171,10 @@ namespace Microsoft.Azure.Commands.Dns
             Hashtable tags,
             bool overwrite,
             DnsRecordBase[] resourceRecords,
-            string targetResourceId)
+            string targetResourceId,
+            string trafficManagerProfileId)
         {
-            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, recordType, ttl, tags, resourceRecords, targetResourceId);
+            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, recordType, ttl, tags, resourceRecords, targetResourceId, trafficManagerProfileId);
 
             var response = this.DnsManagementClient.RecordSets.CreateOrUpdate(
                 resourceGroupName,
@@ -193,7 +194,8 @@ namespace Microsoft.Azure.Commands.Dns
             uint? ttl,
             Hashtable tags,
             DnsRecordBase[] resourceRecords,
-            string targetResourceId)
+            string targetResourceId,
+            string trafficManagerProfileId)
         {
 
             var properties = new RecordSet
@@ -220,6 +222,11 @@ namespace Microsoft.Azure.Commands.Dns
                 if (!string.IsNullOrEmpty(targetResourceId))
                 {
                     properties.TargetResource = new Sdk.SubResource(targetResourceId);
+                }
+
+                if (!string.IsNullOrEmpty(trafficManagerProfileId))
+                {
+                    properties.TrafficManagementProfile = new Sdk.SubResource(trafficManagerProfileId);
                 }
             }
 
@@ -305,6 +312,7 @@ namespace Microsoft.Azure.Commands.Dns
                 {
                     Ttl = recordSet.Ttl,
                     TargetResource = string.IsNullOrWhiteSpace(recordSet.TargetResourceId) ? null : new Sdk.SubResource(recordSet.TargetResourceId),
+                    TrafficManagementProfile = string.IsNullOrWhiteSpace(recordSet.TrafficManagerProfileId) ? null : new Sdk.SubResource(recordSet.TrafficManagerProfileId),
                     Metadata = TagsConversionHelper.CreateTagDictionary(recordSet.Metadata, validate: true),
                     AaaaRecords =
                         recordSet.RecordType == RecordType.Aaaa
@@ -470,6 +478,7 @@ namespace Microsoft.Azure.Commands.Dns
                 Ttl = (uint)mamlRecordSet.Ttl.GetValueOrDefault(),
                 ZoneName = zoneName,
                 TargetResourceId = mamlRecordSet.TargetResource != null ? mamlRecordSet.TargetResource.Id : string.Empty,
+                TrafficManagerProfileId = mamlRecordSet.TrafficManagementProfile != null ? mamlRecordSet.TrafficManagementProfile.Id : string.Empty,
                 ProvisioningState = mamlRecordSet.ProvisioningState,
             };
         }

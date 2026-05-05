@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `-TrafficManagerProfileId` parameter to `New-AzDnsRecordSet` for creating DNS record sets linked to Azure Traffic Manager profiles (TMLink)
 
 ## Version 2.0.0
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
