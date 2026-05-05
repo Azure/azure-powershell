@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the success message of browser-based interactive login to warn users against using this authentication method and recommend switching to Web Account Manager (WAM) for a more robust authentication mechanism.
 
 ## Version 5.4.0
 * Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.
