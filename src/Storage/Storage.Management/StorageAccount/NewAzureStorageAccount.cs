@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// <summary>
         /// Set AzureActiveDirectoryKerberosForFile parameter set name
         /// </summary>
-        private const string AzureActiveDirectoryKerberosForFileParameterSet = "AzureActiveDirectoryKerberosForFile";        
+        private const string AzureActiveDirectoryKerberosForFileParameterSet = "AzureActiveDirectoryKerberosForFile";
 
         [Parameter(
             Position = 0,
@@ -455,8 +455,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Set the Encryption KeyType for Table. -Account, Table will be encrypted with account-scoped encryption key. -Service, Table will always be encrypted with Service-Managed keys. The default value is Service.")]
-        [ValidateSet(StorageModels.KeyType.Service, 
-            StorageModels.KeyType.Account, 
+        [ValidateSet(StorageModels.KeyType.Service,
+            StorageModels.KeyType.Account,
             IgnoreCase = true)]
         public string EncryptionKeyTypeForTable { get; set; }
 
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string AllowedCopyScope { get; set; }
 
         [Parameter(
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, " +
             "which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier. Possible values include: 'Standard', 'AzureDnsZone'.")]
         [PSArgumentCompleter("Standard", "AzureDnsZone")]
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (AssignIdentity.IsPresent || this.UserAssignedIdentityId != null || this.IdentityType != null)
             {
-                createParameters.Identity = new Identity() { Type = StorageModels.IdentityType.SystemAssigned };
+                createParameters.Identity = new StorageModels.Identity() { Type = StorageModels.IdentityType.SystemAssigned };
                 if (this.IdentityType != null)
                 {
                     createParameters.Identity.Type = GetIdentityTypeString(this.IdentityType);
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         || string.IsNullOrEmpty(this.ActiveDirectoryAzureStorageSid)
                         )
                     {
-                        throw new System.ArgumentNullException("ActiveDirectoryDomainName, ActiveDirectoryNetBiosDomainName, ActiveDirectoryForestName, ActiveDirectoryDomainGuid, ActiveDirectoryDomainSid, ActiveDirectoryAzureStorageSid", 
+                        throw new System.ArgumentNullException("ActiveDirectoryDomainName, ActiveDirectoryNetBiosDomainName, ActiveDirectoryForestName, ActiveDirectoryDomainGuid, ActiveDirectoryDomainSid, ActiveDirectoryAzureStorageSid",
                             "To enable ActiveDirectoryDomainServicesForFile, user must specify all of: ActiveDirectoryDomainName, ActiveDirectoryNetBiosDomainName, ActiveDirectoryForestName, ActiveDirectoryDomainGuid, ActiveDirectoryDomainSid, ActiveDirectoryAzureStorageSid.");
                     }
                     createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AD;
@@ -863,12 +863,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 if ((this.KeyVaultUri != null && this.KeyName == null) || (this.KeyVaultUri == null && this.KeyName != null))
                 {
-                    throw new ArgumentException("KeyVaultUri and KeyName must be specify together"); 
+                    throw new ArgumentException("KeyVaultUri and KeyName must be specify together");
                 }
 
                 if (this.KeyVersion != null && (this.KeyVaultUri == null || this.KeyName == null))
                 {
-                    throw new ArgumentException("KeyVersion can only be specified when specify KeyVaultUri and KeyName together.", "KeyVersion"); 
+                    throw new ArgumentException("KeyVersion can only be specified when specify KeyVaultUri and KeyName together.", "KeyVersion");
                 }
 
                 if ((this.KeyVaultUserAssignedIdentityId != null || this.KeyVaultFederatedClientId != null) && (this.KeyVaultUri == null || this.KeyName == null))
@@ -951,7 +951,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         SasExpirationAction = ExpirationAction.Log;
                     }
-                    else if (String.Equals(SasExpirationAction, ExpirationAction.Block, StringComparison.OrdinalIgnoreCase)) 
+                    else if (String.Equals(SasExpirationAction, ExpirationAction.Block, StringComparison.OrdinalIgnoreCase))
                     {
                         SasExpirationAction = ExpirationAction.Block;
                     }

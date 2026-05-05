@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private bool? publishMicrosoftEndpoint = null;
-        
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Indicates whether internet  routing storage endpoints are to be published")]
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 minimumTlsVersion = value;
             }
         }
-        private string minimumTlsVersion = null;    
+        private string minimumTlsVersion = null;
 
         [Parameter(
             Mandatory = false,
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 {
                     if(!this.force && this.OriginStorageAccountProperties.Kind == Kind.Storage)
                     {
-                        shouldContinueMessage = "Upgrading a General Purpose v1 storage account to a general-purpose v2 account is free. You may specify the desired account tier during the upgrade process. If an account tier is not specified on upgrade, the default account tier of the upgraded account will be Hot. " + 
+                        shouldContinueMessage = "Upgrading a General Purpose v1 storage account to a general-purpose v2 account is free. You may specify the desired account tier during the upgrade process. If an account tier is not specified on upgrade, the default account tier of the upgraded account will be Hot. " +
                             "However, changing the storage access tier after the upgrade may result in changes to your bill so it is recommended to specify the new account tier during upgrade. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more.";
                     }
                     else if (!this.force && this.OriginStorageAccountProperties.Kind == Kind.BlobStorage)
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                     if (AssignIdentity.IsPresent || this.UserAssignedIdentityId != null || this.IdentityType != null)
                     {
-                        updateParameters.Identity = new Identity() { Type = StorageModels.IdentityType.SystemAssigned };
+                        updateParameters.Identity = new StorageModels.Identity() { Type = StorageModels.IdentityType.SystemAssigned };
                         if (this.IdentityType != null)
                         {
                             updateParameters.Identity.Type = GetIdentityTypeString(this.IdentityType);
@@ -750,7 +750,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             updateParameters.Encryption.EncryptionIdentity.EncryptionFederatedIdentityClientId = this.KeyVaultFederatedClientId;
                         }
                     }
-                      
+
                     if (NetworkRuleSet != null)
                     {
                         updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
@@ -946,7 +946,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         updateParameters.AllowBlobPublicAccess = this.allowBlobPublicAccess;
                     }
                     if (this.RoutingChoice != null || this.publishMicrosoftEndpoint != null || this.publishInternetEndpoint != null)
-                    { 
+                    {
                         updateParameters.RoutingPreference = new RoutingPreference(this.RoutingChoice, this.publishMicrosoftEndpoint, this.publishInternetEndpoint);
                     }
                     if (allowSharedKeyAccess != null)
@@ -962,8 +962,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         // If user not set action, and the account not already has the action value, Set the default action to Log to be aligned as before PSH release.
                         if (SasExpirationAction == null)
                         {
-                            SasExpirationAction = (this.OriginStorageAccountProperties.SasPolicy != null && this.OriginStorageAccountProperties.SasPolicy.ExpirationAction != null) 
-                                ? this.OriginStorageAccountProperties.SasPolicy.ExpirationAction 
+                            SasExpirationAction = (this.OriginStorageAccountProperties.SasPolicy != null && this.OriginStorageAccountProperties.SasPolicy.ExpirationAction != null)
+                                ? this.OriginStorageAccountProperties.SasPolicy.ExpirationAction
                                 : ExpirationAction.Log;
                         }
                         else
