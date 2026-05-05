@@ -96,11 +96,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IResourceInternal)__resource).SystemDataLastModifiedByType; }
 
         /// <summary>Backing field for <see cref="Tag" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags _tag;
+        private Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceTags _tag;
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.Tags()); set => this._tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.TrackedResourceTags()); set => this._tag = value; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -151,8 +151,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         Update = true,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags) })]
-        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags Tag { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceTags) })]
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceTags Tag { get; set; }
 
     }
     /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models
         /// <summary>The geo-location where the resource lives</summary>
         string Location { get; set; }
         /// <summary>Resource tags.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags Tag { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceTags Tag { get; set; }
 
     }
 }

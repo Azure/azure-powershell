@@ -1,0 +1,71 @@
+<!--
+    Please leave this section at the top of the change log.
+
+    Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
+
+    ## Upcoming Release
+    * Overview of change #1
+        - Additional information about change #1
+    * Overview of change #2
+        - Additional information about change #2
+        - Additional information about change #2
+    * Overview of change #3
+    * Overview of change #4
+        - Additional information about change #4
+
+    ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
+    * Overview of change #1
+        - Additional information about change #1
+-->
+
+## Upcoming Release
+
+## Version 0.2.0
+* Added confirmation prompt when an SSH key pair already exists at the target location
+    - Both 'New-AzSftpCertificate' and 'Connect-AzSftp' now detect existing key pairs before generating new ones
+    - Users are prompted to choose whether to overwrite existing keys or reuse them
+    - Added '-Force' parameter to bypass the confirmation prompt
+* Improved verbose and debug logging across all cmdlets
+    - Added timing information for key pair generation, certificate requests, and SFTP session duration
+    - Enhanced SSH client validation logging with resolved executable paths
+    - Added structured log prefixes (KeyPair, CertGen, SSH, SFTP, Auth, Cleanup) for easier filtering
+    - Improved credential cleanup logging with operation-level status messages
+* Fixed command injection vulnerability in file permission handling [Security]
+    - Replaced 'powershell.exe' and 'icacls.exe' subprocess calls with direct .NET ACL APIs on Windows
+    - Replaced 'chmod' subprocess call with native P/Invoke on Unix
+    - Canonicalized file paths in SSH key generation methods to prevent path traversal
+
+## Version 0.1.2
+* Fixed argument injection vulnerability in SFTP process-launch utilities [Security]
+    - Added input validation to reject control characters and double-quote characters that break argument boundaries
+    - Added proper argument escaping (quoting) when building ProcessStartInfo.Arguments to preserve argument boundaries for values that contain spaces
+    - Paths containing parentheses or other common filesystem characters (e.g. 'C:\Program Files (x86)') continue to work correctly
+
+## Version 0.1.1
+* Added `BufferSizeInBytes` parameter to `Connect-AzSftp` cmdlet
+    - Allows users to specify buffer size in bytes for SFTP file transfers using the sftp -B flag
+    - Default value is 262144 (256 KB)
+* Added `StorageAccountEndpoint` parameter to `Connect-AzSftp` cmdlet
+    - Allows users to specify a custom storage account endpoint suffix
+    - Useful for connecting to storage accounts with custom endpoints
+
+## Version 0.1.0
+* Initial release of Az.Sftp module
+* Added `New-AzSftpCertificate` cmdlet for generating SSH certificates using Microsoft Entra credentials
+    - Automatic SSH key pair generation
+    - Certificate generation for existing public keys
+    - Support for custom certificate paths
+    - Cross-platform SSH client detection
+* Added `Connect-AzSftp` cmdlet for establishing SFTP connections to Azure Storage accounts
+    - Fully managed authentication with automatic certificate generation
+    - Certificate-based authentication using existing SSH certificates
+    - Key-based authentication with automatic certificate generation
+    - Support for custom SFTP arguments and SSH client locations
+* Support for multiple authentication modes:
+    - LocalUser parameter for local user authentication
+    - Interactive authentication (username/password) when using LocalUser
+    - Enhanced parameter sets for better user experience
+* Cross-platform support (Windows, Linux, macOS)
+* Comprehensive help documentation following Azure PowerShell standards
+* Extensive test suite covering all scenarios
+* Security features including secure key handling and short-lived certificates

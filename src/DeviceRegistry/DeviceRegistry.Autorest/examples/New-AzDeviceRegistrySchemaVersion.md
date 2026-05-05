@@ -7,7 +7,7 @@ New-AzDeviceRegistrySchemaVersion -ResourceGroupName "my-resource-group" -Schema
 Description                  : Schema version 1
 Hash                         : d62557cd31b6297be0142a2800f7df7055d04cf047295d17ddbc864209893938
 Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microso
-                               ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/myschema/schemaversions/1
+                               ft.deviceregistry/schemaregistries/aio-sr-06f973e875/schemas/myschema/schemaversions/1
 Name                         : 1
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
@@ -34,7 +34,7 @@ New-AzDeviceRegistrySchemaVersion -ResourceGroupName "my-resource-group" -Schema
 Description                  : Schema version 1
 Hash                         : d62557cd31b6297be0142a2800f7df7055d04cf047295d17ddbc864209893938
 Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microso
-                               ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/myschema/schemaversions/1
+                               ft.deviceregistry/schemaregistries/aio-sr-06f973e875/schemas/myschema/schemaversions/1
 Name                         : 1
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
@@ -62,7 +62,7 @@ New-AzDeviceRegistrySchemaVersion -ResourceGroupName "my-resource-group" -Schema
 Description                  : Schema version 1
 Hash                         : d62557cd31b6297be0142a2800f7df7055d04cf047295d17ddbc864209893938
 Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourcegroups/my-resource-group/providers/microso
-                               ft.deviceregistry/schemaregistries/aio-sr-d179cdfcb7/schemas/myschema/schemaversions/1
+                               ft.deviceregistry/schemaregistries/aio-sr-06f973e875/schemas/myschema/schemaversions/1
 Name                         : 1
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group

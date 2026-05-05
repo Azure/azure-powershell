@@ -1,3 +1,43 @@
+function New-SlnFile {
+    param (
+        [string]$SolutionName,
+        [string]$SolutionPath,
+        [switch]$Force
+    )
+    if (-not $SolutionName) {
+        throw "SolutionName is required."
+    }
+    if (-not $SolutionPath) {
+        throw "SolutionPath is required."
+    }
+
+    $dotnetVersionRaw = (& dotnet --version 2>$null)
+    if (-not $dotnetVersionRaw) {
+        throw "dotnet CLI was not found or returned an empty version."
+    }
+
+    $dotnetVersionRaw = $dotnetVersionRaw.Trim()
+    $dotnetVersion = $dotnetVersionRaw -as [version]
+    $dotnetMajor = 0
+    if ($dotnetVersion) {
+        $dotnetMajor = $dotnetVersion.Major
+    }
+    elseif ($dotnetVersionRaw -match '^\d+') {
+        $dotnetMajor = [int]$Matches[0]
+    }
+
+    $args = @('new', 'sln', '-n', $SolutionName, '-o', $SolutionPath)
+    if ($dotnetMajor -ge 10) {
+        $args += '--format'
+        $args += 'sln'
+    }
+    if ($Force) {
+        $args += '--force'
+    }
+
+    & dotnet @args
+}
+
 function Get-CsprojFromModule {
     param (
         [string[]]$BuildModuleList,
@@ -93,7 +133,8 @@ function Invoke-SubModuleGeneration {
     Set-Location -Path $GenerateDirectory
     $tspLocationPath = Join-Path $GenerateDirectory "tsp-location.yaml"
     if (Test-Path $tspLocationPath) {
-        tsp-client update >> $GenerateLog
+        # Not good practice to do this, this requires 'PrepareAutorestModule.ps1' to prepare AzDev
+        New-DevTSPModule >> $GenerateLog
     }
     else {
         if ($IsInvokedByPipeline) {
@@ -167,12 +208,12 @@ function Update-GeneratedSubModule {
     $formatName = Get-ChildItem $SourceDirectory | Where-Object { $_.Name -match "Az\.${subModuleNameTrimmed}\.format\.ps1xml" } | Foreach-Object {$_.Name}
     $csprojName = Get-ChildItem $SourceDirectory | Where-Object { $_.Name -match "Az\.${subModuleNameTrimmed}\.csproj" } | Foreach-Object {$_.Name}
     $fileToUpdate = @('generated', 'resources', $psd1Name, $psm1Name, $formatName, 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
-    # Copy from src/ to generated/
+    # Move from src/ to generated/
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
         $moveTo = Join-Path $GeneratedDirectory $_
-        Write-Host "Copying $moveFrom to $moveTo ..." -ForegroundColor Cyan
-        Copy-Item -Path $moveFrom -Destination $moveTo -Recurse -Force
+        Write-Host "Moving $moveFrom to $moveTo ..." -ForegroundColor Cyan
+        Move-Item -Path $moveFrom -Destination $moveTo -Force
     }
     $cSubModuleNameTrimmed = $subModuleNameTrimmed
     if ($csprojName -match "^Az\.(?<cSubModuleName>\w+)\.csproj$") {

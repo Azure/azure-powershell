@@ -44,6 +44,33 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+
+    $env.resourceGroup = 'storageDiscoveryTestRg'
+    $env.region = 'eastus2'
+    $env.testWorkspaceName1 = 'pshtestworkspace1'
+    $env.testWorkspaceName2 = 'pshtestworkspace2'
+    $env.workspaceRoot = @("/subscriptions/$($env.SubscriptionId)")
+    
+    Write-Host 'Start to create test resource group' $env.resourceGroup
+    try {
+        Get-AzResourceGroup -Name $env.resourceGroup -ErrorAction Stop
+        Write-Host 'Get created group'
+    } catch {
+        New-AzResourceGroup -Name $env.resourceGroup -Location $env.region
+    }
+
+    # Create test storage discovery resources if needed
+    # Note: Add specific StorageDiscovery resource creation here based on the cmdlets available
+    # Example structure based on the module pattern:
+    try {
+        $null = Get-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName1 -ResourceGroupName $env.resourceGroup -ErrorAction Stop
+    }
+    catch {
+        # Create discovery workspace with appropriate parameters
+        $scope1 = New-AzStorageDiscoveryScopeObject -DisplayName "scope1" -ResourceType "Microsoft.Storage/storageAccounts" -TagKeysOnly "key1" -Tag @{"tag1" = "value1"; "tag2" = "value2"}
+        $null = New-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName1 -ResourceGroupName $env.resourceGroup -Location $env.region -WorkspaceRoot $env.workspaceRoot -Sku Standard -Scope $scope1 -Description "test storage discovery workspace 1"
+    }
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -52,5 +79,12 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    # Remove test storage discovery resources
+    if (Get-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName1 -ResourceGroupName $env.resourceGroup -ErrorAction SilentlyContinue) {
+        Remove-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName1 -ResourceGroupName $env.resourceGroup
+    }
+    if (Get-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName2 -ResourceGroupName $env.resourceGroup -ErrorAction SilentlyContinue) {
+        Remove-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName2 -ResourceGroupName $env.resourceGroup
+    }
 }
 

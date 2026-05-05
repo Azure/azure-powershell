@@ -39,9 +39,11 @@ INPUTOBJECT <IOracleIdentity>: Identity Parameter
   [Autonomousdbversionsname <String>]: AutonomousDbVersion name
   [Cloudexadatainfrastructurename <String>]: CloudExadataInfrastructure name
   [Cloudvmclustername <String>]: CloudVmCluster name
+  [DbSystemName <String>]: The name of the DbSystem
   [Dbnodeocid <String>]: DbNode OCID.
   [Dbserverocid <String>]: DbServer OCID.
   [Dbsystemshapename <String>]: DbSystemShape name
+  [Dbversionsname <String>]: DbVersion name
   [Dnsprivateviewocid <String>]: DnsPrivateView OCID
   [Dnsprivatezonename <String>]: DnsPrivateZone name
   [ExadbVMClusterName <String>]: The name of the ExadbVmCluster
@@ -52,6 +54,8 @@ INPUTOBJECT <IOracleIdentity>: Identity Parameter
   [Giversionname <String>]: GiVersion name
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
+  [NetworkAnchorName <String>]: The name of the NetworkAnchor
+  [ResourceAnchorName <String>]: The name of the ResourceAnchor
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Systemversionname <String>]: SystemVersion name
@@ -65,9 +69,11 @@ LOCATIONINPUTOBJECT <IOracleIdentity>: Identity Parameter
   [Autonomousdbversionsname <String>]: AutonomousDbVersion name
   [Cloudexadatainfrastructurename <String>]: CloudExadataInfrastructure name
   [Cloudvmclustername <String>]: CloudVmCluster name
+  [DbSystemName <String>]: The name of the DbSystem
   [Dbnodeocid <String>]: DbNode OCID.
   [Dbserverocid <String>]: DbServer OCID.
   [Dbsystemshapename <String>]: DbSystemShape name
+  [Dbversionsname <String>]: DbVersion name
   [Dnsprivateviewocid <String>]: DnsPrivateView OCID
   [Dnsprivatezonename <String>]: DnsPrivateZone name
   [ExadbVMClusterName <String>]: The name of the ExadbVmCluster
@@ -78,6 +84,8 @@ LOCATIONINPUTOBJECT <IOracleIdentity>: Identity Parameter
   [Giversionname <String>]: GiVersion name
   [Id <String>]: Resource identity path
   [Location <String>]: The name of the Azure region.
+  [NetworkAnchorName <String>]: The name of the NetworkAnchor
+  [ResourceAnchorName <String>]: The name of the ResourceAnchor
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [Systemversionname <String>]: SystemVersion name
@@ -131,6 +139,12 @@ param(
     [System.String]
     # If provided, filters the results for the given shape
     ${Shape},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Query')]
+    [System.String]
+    # Filters the result for the given Shape Attribute, such as BLOCK_STORAGE or SMART_STORAGE.
+    ${ShapeAttribute},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.Oracle.Category('Query')]

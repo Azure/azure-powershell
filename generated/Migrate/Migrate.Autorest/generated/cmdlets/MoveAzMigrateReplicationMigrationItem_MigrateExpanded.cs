@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Move, @"AzMigrateReplicationMigrationItem_MigrateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"The operation to initiate migration of the item.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrate", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrate", ApiVersion = "2025-08-01")]
     public partial class MoveAzMigrateReplicationMigrationItem_MigrateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Input for migrate.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrateInput _migrateInputBody = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.MigrateInput();
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrateInput _migrateInputBody = new Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.MigrateInput();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -147,8 +147,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         ReadOnly = false,
         Description = @"The provider specific details.",
         SerializedName = @"providerSpecificDetails",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrateProviderSpecificInput) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrateProviderSpecificInput ProviderSpecificDetail { get => _migrateInputBody.ProviderSpecificDetail ?? null /* object */; set => _migrateInputBody.ProviderSpecificDetail = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrateProviderSpecificInput) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrateProviderSpecificInput ProviderSpecificDetail { get => _migrateInputBody.ProviderSpecificDetail ?? null /* object */; set => _migrateInputBody.ProviderSpecificDetail = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -217,12 +217,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -260,8 +260,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
             clone._migrateInputBody = this._migrateInputBody;
-            clone.ResourceName = this.ResourceName;
             clone.ResourceGroupName = this.ResourceGroupName;
+            clone.ResourceName = this.ResourceName;
             clone.SubscriptionId = this.SubscriptionId;
             clone.FabricName = this.FabricName;
             clone.ProtectionContainerName = this.ProtectionContainerName;
@@ -444,12 +444,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ReplicationMigrationItemsMigrate(ResourceName, ResourceGroupName, SubscriptionId, FabricName, ProtectionContainerName, MigrationItemName, _migrateInputBody, onOk, this, Pipeline);
+                    await this.Client.ReplicationMigrationItemsMigrate(ResourceGroupName, ResourceName, SubscriptionId, FabricName, ProtectionContainerName, MigrationItemName, _migrateInputBody, onOk, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceName=ResourceName,ResourceGroupName=ResourceGroupName,SubscriptionId=SubscriptionId,FabricName=FabricName,ProtectionContainerName=ProtectionContainerName,MigrationItemName=MigrationItemName,body=_migrateInputBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,ResourceName=ResourceName,SubscriptionId=SubscriptionId,FabricName=FabricName,ProtectionContainerName=ProtectionContainerName,MigrationItemName=MigrationItemName,body=_migrateInputBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -485,12 +485,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem> response)
         {
             using( NoSynchronizationContext )
             {
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IMigrationItem
                 WriteObject((await response));
             }
         }

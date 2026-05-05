@@ -16,7 +16,8 @@ Creates an exception on the Firewall Policy
 New-AzApplicationGatewayFirewallPolicyException -MatchVariable <String> -Value <String[]>
  -ValueMatchOperator <String> [-SelectorMatchOperator <String>] [-Selector <String>]
  [-ExceptionManagedRuleSet <PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet[]>]
- [-DefaultProfile <IAzureContextContainer>]  [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,8 +48,11 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ### -ExceptionManagedRuleSet
 The managed rule sets that are associated with the exception.
+
+
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet[]
 Parameter Sets: (All)
@@ -60,8 +64,11 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ### -MatchVariable
 The variable on which we evaluate the exception condition.
+
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -77,6 +84,8 @@ Accept wildcard characters: False
 
 ### -Selector
 When the matchVariable points to a key-value pair (e.g, RequestHeader), this identifies the key.
+
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -88,8 +97,11 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ### -SelectorMatchOperator
 When the matchVariable points to a key-value pair (e.g, RequestHeader), this operates on the selector.
+
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -102,8 +114,27 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -Value
+Allowed values for the matchVariable.
+
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ValueMatchOperator
 Operates on the allowed values for the matchVariable.
+
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -116,24 +147,46 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-### -Value
-Allowed values for the matchVariable.
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
 
-Required: True
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
+
 ### None
 ## OUTPUTS
+
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyException
 ## NOTES
+
 ## RELATED LINKS

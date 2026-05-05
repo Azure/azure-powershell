@@ -11,41 +11,24 @@ namespace Microsoft.Azure.Management.Search.Models
     /// </summary>
 
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PublicNetworkAccess
+    public static class PublicNetworkAccess
     {
-        [System.Runtime.Serialization.EnumMember(Value = "enabled")]
-        Enabled,
-        [System.Runtime.Serialization.EnumMember(Value = "disabled")]
-        Disabled
-    }
-    internal static class PublicNetworkAccessEnumExtension
-    {
-        internal static string ToSerializedValue(this PublicNetworkAccess? value)
-        {
-            return value == null ? null : ((PublicNetworkAccess)value).ToSerializedValue();
-        }
-        internal static string ToSerializedValue(this PublicNetworkAccess value)
-        {
-            switch( value )
-            {
-                case PublicNetworkAccess.Enabled:
-                    return "enabled";
-                case PublicNetworkAccess.Disabled:
-                    return "disabled";
-            }
-            return null;
-        }
-        internal static PublicNetworkAccess? ParsePublicNetworkAccess(this string value)
-        {
-            switch( value )
-            {
-                case "enabled":
-                    return PublicNetworkAccess.Enabled;
-                case "disabled":
-                    return PublicNetworkAccess.Disabled;
-            }
-            return null;
-        }
+        /// <summary>
+        /// The search service is accessible from traffic originating from the public
+        /// internet.
+        /// </summary>
+        public const string Enabled = "enabled";
+        /// <summary>
+        /// The search service is not accessible from traffic originating from the
+        /// public internet. Access is only permitted over approved private endpoint
+        /// connections.
+        /// </summary>
+        public const string Disabled = "disabled";
+        /// <summary>
+        /// The network security perimeter configuration rules allow or disallow public
+        /// network access to the resource. Requires an associated network security
+        /// perimeter.
+        /// </summary>
+        public const string SecuredByPerimeter = "securedByPerimeter";
     }
 }

@@ -66,6 +66,7 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 			  databaseName = "sql-dm-cmdlet-db" + $testSuffix;
 			  userName = "testuser";
 			  loginName = "testlogin";
+			  <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 			  pwd = "testp@ssMakingIt1007Longer";
 			  table1="table1";
 			  column1 = "column1";
@@ -383,6 +384,65 @@ function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
 			  vaultName = "akvtdekeyvaultcl";
 			  keyName = "key1"
 			  location = "westcentralus";
+			  }
+}
+
+<#
+.SYNOPSIS
+Creates a test Environment for the TDE with AKV tests for server level TDE and returns the parameters of the created environment
+It creates a new server, with the current user as entra admin on the server, then creates a new key vault and a key in it, and grants the server access to the key vault. 
+Finally, it returns all the necessary parameters to perform the tests.
+#>
+function SetupDynamicTestEnvironmentForServerTDEScenariosAndReturnParameters ($location = "eastus2euap")
+{
+	$rg = Create-ResourceGroupForTest
+	$entraAdmin="pstestumi" # DEVNOTE: This is a new managed identity(UMI) created for testing purpose. Please create a new UMI in case you need to re record the test, and update the client id and object id below.
+	$umiClientId = "a3cea2f0-4c2d-4bad-917f-9f6534b5ee0a"
+	$umiObjectId = "89cdfc0e-3f82-4e08-86d4-d0092eb4cd6e"
+	$serverName = Get-ServerName
+	$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -Location $location -ServerName $serverName -ServerVersion "12.0" -ExternalAdminName $entraAdmin -ExternalAdminSID $umiClientId -EnableActiveDirectoryOnlyAuthentication -AssignIdentity
+	$keyNameInAKV = 'testkey1'
+	$keyVault = Create-AzureKeyVaultForTest $rg.ResourceGroupName $location
+
+	Set-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey -BypassObjectIdValidation
+
+	$akvKey = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name $keyNameInAKV -Destination Software
+
+	return @{ rg = $rg;
+			  server = $server;
+			  keyVault = $keyVault;
+			  keyNameInAKV = $keyNameInAKV;
+			  akvKey = $akvKey;
+			  }
+}
+
+<#
+.SYNOPSIS
+Creates a test Environment for the TDE with AKV tests for database level TDE and returns the parameters of the created environment
+It creates a new server, with the current user as entra admin on the server, then creates a new key vault and a key in it. 
+Finally, it returns all the necessary parameters to perform the tests.
+#>
+function SetupDynamicTestEnvironmentForDatabaseLevelTDECMKScenariosAndReturnParameters ($location = "eastus2euap")
+{
+	$rg = Create-ResourceGroupForTest
+	$entraAdmin="pstestumi" # DEVNOTE: This is a new managed identity(UMI) created for testing purpose. Please create a new UMI in case you need to re record the test, and update the client id and object id below.
+	$umiClientId = "a3cea2f0-4c2d-4bad-917f-9f6534b5ee0a"
+	$umiObjectId = "89cdfc0e-3f82-4e08-86d4-d0092eb4cd6e"
+	$serverName = Get-ServerName
+	$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -Location $location -ServerName $serverName -ServerVersion "12.0" -ExternalAdminSID $umiClientId -ExternalAdminName $entraAdmin -EnableActiveDirectoryOnlyAuthentication -AssignIdentity
+		
+	$keyNameInAKV = 'testkey1'
+	$keyVault = Create-AzureKeyVaultForTest $rg.ResourceGroupName $location
+	$akvKey = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name $keyNameInAKV -Destination Software
+	Assert-NotNull $akvKey
+
+	Set-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $umiObjectId -PermissionsToKeys all -BypassObjectIdValidation
+
+	return @{ rg = $rg;
+			  server = $server;
+			  keyVault = $keyVault;
+			  keyNameInAKV = $keyNameInAKV;
+			  akvKey = $akvKey;
 			  }
 }
 
@@ -1009,6 +1069,16 @@ function Get-DefaultManagedInstanceParametersV2()
 	}
 }
 
+function Get-DefaultManagedInstanceParametersV3()
+{
+	return @{
+		rg = "uroskrstic";
+		location = "westeurope";
+		subnet = "/subscriptions/62e48210-5e43-423e-889b-c277f3e08c39/resourceGroups/uroskrstic/providers/Microsoft.Network/virtualNetworks/vnet-uroskrstic-flexi-test-azpowershell/subnets/ManagedInstance";
+		subscriptionId = "62e48210-5e43-423e-889b-c277f3e08c39";
+	}
+}
+
 function Get-DefaultManagedInstanceNameAndRgForAADAdmin()
 {
 	return @{
@@ -1027,11 +1097,21 @@ function Get-DefaultManagedInstanceParametersHermesTesting()
 	}
 }
 
+function Get-DefaultManagedInstanceParametersMemorySizeInGBTesting()
+{
+	return @{
+		rg = "uroskrstic";
+		location = "northeurope";
+		subnet = "/subscriptions/62e48210-5e43-423e-889b-c277f3e08c39/resourceGroups/Gen8MMNeu/providers/Microsoft.Network/virtualNetworks/vnet-clperf-gen8mm-baseline-neu-gp8/subnets/ManagedInstance";
+		subscriptionId = "62e48210-5e43-423e-889b-c277f3e08c39";
+	}
+}
+
 <#
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql managed instance CRUD tests
 #>
-function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId, $isV2)
+function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId, $isV2, $isV3)
 {
 	if($vCore -eq $null)
 	{
@@ -1045,7 +1125,10 @@ function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId, $isV2
 
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
-	if($isV2) {
+	if ($isV3) {
+		$params = Get-DefaultManagedInstanceParametersV3
+	}
+	elseif($isV2) {
 		$params = Get-DefaultManagedInstanceParametersV2
 	}
 	else {
@@ -1322,4 +1405,15 @@ function Get-PublicMaintenanceConfigurationId($location, $scheduleName)
 	$configName = Get-PublicMaintenanceConfigurationName $location $scheduleName
 
 	return "/subscriptions/${subscriptionId}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/${configName}";
+}
+
+<#
+	.SYNOPSIS
+	Creates the test key vault for TDE tests
+#>
+function Create-AzureKeyVaultForTest ($resourceGroupName, $location = "eastus2euap")
+{
+	$keyVaultName = "kv$(Get-Random -Minimum 1 -Maximum 999)"
+	$keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $resourceGroupName -Location $location -EnablePurgeProtection -DisableRbacAuthorization
+	return $keyVault
 }

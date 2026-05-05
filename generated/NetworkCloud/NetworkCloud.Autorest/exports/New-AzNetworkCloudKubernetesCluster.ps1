@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new Kubernetes cluster or update the properties of the existing one.
+Create a new Kubernetes cluster or create the properties of the existing one.
 .Description
-Create a new Kubernetes cluster or update the properties of the existing one.
+Create a new Kubernetes cluster or create the properties of the existing one.
 .Example
 $tagHash = @{tags = "tag1" }
 $agentPoolConfiguration = @{
@@ -46,43 +46,43 @@ New-AzNetworkCloudKubernetesCluster -ResourceGroupName resourceGroupName `
                 -Tag $tagHash
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 ATTACHEDNETWORKCONFIGURATIONL2NETWORK <IL2NetworkAttachmentConfiguration[]>: The list of Layer 2 Networks and related configuration for attachment.
-  NetworkId <String>: The resource ID of the network that is being configured for attachment.
-  [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [NetworkId <String>]: The resource ID of the network that is being configured for attachment.
+  [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
 
 ATTACHEDNETWORKCONFIGURATIONL3NETWORK <IL3NetworkAttachmentConfiguration[]>: The list of Layer 3 Networks and related configuration for attachment.
   NetworkId <String>: The resource ID of the network that is being configured for attachment.
-  [IpamEnabled <L3NetworkConfigurationIpamEnabled?>]: The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
-  [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [IpamEnabled <String>]: The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
+  [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
 
 ATTACHEDNETWORKCONFIGURATIONTRUNKEDNETWORK <ITrunkedNetworkAttachmentConfiguration[]>: The list of Trunked Networks and related configuration for attachment.
-  NetworkId <String>: The resource ID of the network that is being configured for attachment.
-  [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [NetworkId <String>]: The resource ID of the network that is being configured for attachment.
+  [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
 
 BGPADVERTISEMENT <IBgpAdvertisement[]>: The association of IP address pools to the communities and peers, allowing for announcement of IPs.
-  IPAddressPool <String[]>: The names of the IP address pools associated with this announcement.
-  [AdvertiseToFabric <AdvertiseToFabric?>]: The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
-  [Community <String[]>]: The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
-  [Peer <String[]>]: The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
+  IPAddressPool <List<String>>: The names of the IP address pools associated with this announcement.
+  [AdvertiseToFabric <String>]: The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
+  [Community <List<String>>]: The names of the BGP communities to be associated with the announcement, utilizing a BGP community string in 1234:1234 format.
+  [Peer <List<String>>]: The names of the BGP peers to limit this advertisement to. If no values are specified, all BGP peers will receive this advertisement.
 
 BGPIPADDRESSPOOL <IIPAddressPool[]>: The list of pools of IP addresses that can be allocated to load balancer services.
-  Address <String[]>: The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
   Name <String>: The name used to identify this IP address pool for association with a BGP advertisement.
-  [AutoAssign <BfdEnabled?>]: The indicator to determine if automatic allocation from the pool should occur.
-  [OnlyUseHostIP <BfdEnabled?>]: The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
+  [Address <List<String>>]: The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
+  [AutoAssign <String>]: The indicator to determine if automatic allocation from the pool should occur.
+  [OnlyUseHostIP <String>]: The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
 
 BGPPEER <IServiceLoadBalancerBgpPeer[]>: The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
   Name <String>: The name used to identify this BGP peer for association with a BGP advertisement.
   PeerAddress <String>: The IPv4 or IPv6 address used to connect this BGP session.
   PeerAsn <Int64>: The autonomous system number expected from the remote end of the BGP session.
-  [BfdEnabled <BfdEnabled?>]: The indicator of BFD enablement for this BgpPeer.
-  [BgpMultiHop <BgpMultiHop?>]: The indicator to enable multi-hop peering support.
+  [BfdEnabled <String>]: The indicator of BFD enablement for this BgpPeer.
+  [BgpMultiHop <String>]: The indicator to enable multi-hop peering support.
   [HoldTime <String>]: Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP hold time value. This field uses ISO 8601 duration format, for example P1H.
   [KeepAliveTime <String>]: Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The requested BGP keepalive time value. This field uses ISO 8601 duration format, for example P1H.
   [MyAsn <Int64?>]: The autonomous system number used for the local end of the BGP session.
@@ -94,38 +94,38 @@ CONTROLPLANENODECONFIGURATIONADMINPUBLICKEY <ISshPublicKey[]>: The SSH configura
 
 INITIALAGENTPOOLCONFIGURATION <IInitialAgentPoolConfiguration[]>: The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource.
   Count <Int64>: The number of virtual machines that use this configuration.
-  Mode <AgentPoolMode>: The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
+  Mode <String>: The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
   Name <String>: The name that will be used for the agent pool resource representing this agent pool.
   VMSkuName <String>: The name of the VM SKU that determines the size of resources allocated for node VMs.
   [AdministratorConfigurationAdminUsername <String>]: The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
-  [AdministratorConfigurationSshPublicKey <ISshPublicKey[]>]: The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
+  [AdministratorConfigurationSshPublicKey <List<ISshPublicKey>>]: The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
     KeyData <String>: The SSH public key data.
   [AgentOptionHugepagesCount <Int64?>]: The number of hugepages to allocate.
-  [AgentOptionHugepagesSize <HugepagesSize?>]: The size of the hugepages to allocate.
-  [AttachedNetworkConfigurationL2Network <IL2NetworkAttachmentConfiguration[]>]: The list of Layer 2 Networks and related configuration for attachment.
+  [AgentOptionHugepagesSize <String>]: The size of the hugepages to allocate.
+  [AttachedNetworkConfigurationL2Network <List<IL2NetworkAttachmentConfiguration>>]: The list of Layer 2 Networks and related configuration for attachment.
+    [NetworkId <String>]: The resource ID of the network that is being configured for attachment.
+    [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [AttachedNetworkConfigurationL3Network <List<IL3NetworkAttachmentConfiguration>>]: The list of Layer 3 Networks and related configuration for attachment.
     NetworkId <String>: The resource ID of the network that is being configured for attachment.
-    [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
-  [AttachedNetworkConfigurationL3Network <IL3NetworkAttachmentConfiguration[]>]: The list of Layer 3 Networks and related configuration for attachment.
-    NetworkId <String>: The resource ID of the network that is being configured for attachment.
-    [IpamEnabled <L3NetworkConfigurationIpamEnabled?>]: The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
-    [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
-  [AttachedNetworkConfigurationTrunkedNetwork <ITrunkedNetworkAttachmentConfiguration[]>]: The list of Trunked Networks and related configuration for attachment.
-    NetworkId <String>: The resource ID of the network that is being configured for attachment.
-    [PluginType <KubernetesPluginType?>]: The indicator of how this network will be utilized by the Kubernetes cluster.
-  [AvailabilityZone <String[]>]: The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
-  [Label <IKubernetesLabel[]>]: The labels applied to the nodes in this agent pool.
-    Key <String>: The name of the label or taint.
-    Value <String>: The value of the label or taint.
-  [Taint <IKubernetesLabel[]>]: The taints applied to the nodes in this agent pool.
+    [IpamEnabled <String>]: The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
+    [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [AttachedNetworkConfigurationTrunkedNetwork <List<ITrunkedNetworkAttachmentConfiguration>>]: The list of Trunked Networks and related configuration for attachment.
+    [NetworkId <String>]: The resource ID of the network that is being configured for attachment.
+    [PluginType <String>]: The indicator of how this network will be utilized by the Kubernetes cluster.
+  [AvailabilityZone <List<String>>]: The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
+  [Label <List<IKubernetesLabel>>]: The labels applied to the nodes in this agent pool.
+    [Key <String>]: The name of the label or taint.
+    [Value <String>]: The value of the label or taint.
+  [Taint <List<IKubernetesLabel>>]: The taints applied to the nodes in this agent pool.
   [UpgradeSettingDrainTimeout <Int64?>]: The maximum time in seconds that is allowed for a node drain to complete before proceeding with the upgrade of the agent pool. If not specified during creation, a value of 1800 seconds is used.
   [UpgradeSettingMaxSurge <String>]: The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 1 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
   [UpgradeSettingMaxUnavailable <String>]: The maximum number or percentage of nodes that can be unavailable during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified during creation, a value of 0 is used. One of MaxSurge and MaxUnavailable must be greater than 0.
 
 L2SERVICELOADBALANCERCONFIGURATIONIPADDRESSPOOL <IIPAddressPool[]>: The list of pools of IP addresses that can be allocated to load balancer services.
-  Address <String[]>: The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
   Name <String>: The name used to identify this IP address pool for association with a BGP advertisement.
-  [AutoAssign <BfdEnabled?>]: The indicator to determine if automatic allocation from the pool should occur.
-  [OnlyUseHostIP <BfdEnabled?>]: The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
+  [Address <List<String>>]: The list of IP address ranges. Each range can be a either a subnet in CIDR format or an explicit start-end range of IP addresses. For a BGP service load balancer configuration, only CIDR format is supported and excludes /32 (IPv4) and /128 (IPv6) prefixes.
+  [AutoAssign <String>]: The indicator to determine if automatic allocation from the pool should occur.
+  [OnlyUseHostIP <String>]: The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
 
 SSHPUBLICKEY <ISshPublicKey[]>: The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
   KeyData <String>: The SSH public key data.
@@ -133,14 +133,15 @@ SSHPUBLICKEY <ISshPublicKey[]>: The SSH configuration for the operating systems 
 https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudkubernetescluster
 #>
 function New-AzNetworkCloudKubernetesCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IKubernetesCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IKubernetesCluster])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
+    [Alias('KubernetesClusterName')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [System.String]
     # The name of the Kubernetes cluster.
-    ${KubernetesClusterName},
+    ${Name},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
@@ -172,151 +173,143 @@ param(
     # Other values will result in error from server as they are not supported.
     ${IfNoneMatch},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Int64]
     # The number of virtual machines that use this configuration.
     ${ControlPlaneNodeConfigurationCount},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The name of the VM SKU supplied during creation.
     ${ControlPlaneNodeConfigurationVMSkuName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The resource ID of the extended location on which the resource will be created.
     ${ExtendedLocationName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The extended location type, for example, CustomLocation.
     ${ExtendedLocationType},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IInitialAgentPoolConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IInitialAgentPoolConfiguration[]]
     # The agent pools that are created with this Kubernetes cluster for running critical system services and workloads.
     # This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster.
     # After creation, the management of agent pools is done using the agentPools sub-resource.
-    # To construct, see NOTES section for INITIALAGENTPOOLCONFIGURATION properties and create a hash table.
     ${InitialAgentPoolConfiguration},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The Kubernetes version for this cluster.
     ${KubernetesVersion},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The resource ID of the associated Cloud Services network.
     ${NetworkConfigurationCloudServicesNetworkId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The resource ID of the Layer 3 network that is used for creation of the Container Networking Interface network.
     ${NetworkConfigurationCniNetworkId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String[]]
     # The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.
     ${AadConfigurationAdminGroupObjectId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes.
     # If not supplied, a user name will be chosen by the service.
     ${AdminUsername},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL2NetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2NetworkAttachmentConfiguration[]]
     # The list of Layer 2 Networks and related configuration for attachment.
-    # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL2NETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationL2Network},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IL3NetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL3NetworkAttachmentConfiguration[]]
     # The list of Layer 3 Networks and related configuration for attachment.
-    # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONL3NETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationL3Network},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ITrunkedNetworkAttachmentConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrunkedNetworkAttachmentConfiguration[]]
     # The list of Trunked Networks and related configuration for attachment.
-    # To construct, see NOTES section for ATTACHEDNETWORKCONFIGURATIONTRUNKEDNETWORK properties and create a hash table.
     ${AttachedNetworkConfigurationTrunkedNetwork},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IBgpAdvertisement[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBgpAdvertisement[]]
     # The association of IP address pools to the communities and peers, allowing for announcement of IPs.
-    # To construct, see NOTES section for BGPADVERTISEMENT properties and create a hash table.
     ${BgpAdvertisement},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IIPAddressPool[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool[]]
     # The list of pools of IP addresses that can be allocated to load balancer services.
-    # To construct, see NOTES section for BGPIPADDRESSPOOL properties and create a hash table.
     ${BgpIPAddressPool},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IServiceLoadBalancerBgpPeer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IServiceLoadBalancerBgpPeer[]]
     # The list of additional BgpPeer entities that the Kubernetes cluster will peer with.
     # All peering must be explicitly defined.
-    # To construct, see NOTES section for BGPPEER properties and create a hash table.
     ${BgpPeer},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.FabricPeeringEnabled]
+    [System.String]
     # The indicator to specify if the load balancer peers with the network fabric.
     ${BgpServiceLoadBalancerConfigurationFabricPeeringEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]]
     # The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster.
     # In some cases, specification of public keys may be required to produce a working environment.
-    # To construct, see NOTES section for CONTROLPLANENODECONFIGURATIONADMINPUBLICKEY properties and create a hash table.
     ${ControlPlaneNodeConfigurationAdminPublicKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes.
     # If not supplied, a user name will be chosen by the service.
     ${ControlPlaneNodeConfigurationAdminUsername},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String[]]
@@ -324,36 +317,35 @@ param(
     # If not specified, all availability zones will be used.
     ${ControlPlaneNodeConfigurationAvailabilityZone},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.IIPAddressPool[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IIPAddressPool[]]
     # The list of pools of IP addresses that can be allocated to load balancer services.
-    # To construct, see NOTES section for L2SERVICELOADBALANCERCONFIGURATIONIPADDRESSPOOL properties and create a hash table.
     ${L2ServiceLoadBalancerConfigurationIPAddressPool},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The location of the managed resource group.
     # If not specified, the location of the parent resource is chosen.
     ${ManagedResourceGroupConfigurationLocation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The name for the managed resource group.
     # If not specified, the unique name is automatically generated.
     ${ManagedResourceGroupConfigurationName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The IP address assigned to the Kubernetes DNS service.
     # It must be within the Kubernetes service address range specified in service CIDR.
     ${NetworkConfigurationDnsServiceIP},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String[]]
@@ -362,7 +354,7 @@ param(
     # Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
     ${NetworkConfigurationPodCidr},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String[]]
@@ -371,21 +363,32 @@ param(
     # Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
     ${NetworkConfigurationServiceCidr},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20250201.ISshPublicKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ISshPublicKey[]]
     # The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster.
     # In some cases, specification of public keys may be required to produce a working environment.
-    # To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
     ${SshPublicKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -455,6 +458,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -475,10 +487,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.NetworkCloud.private\New-AzNetworkCloudKubernetesCluster_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.NetworkCloud.private\New-AzNetworkCloudKubernetesCluster_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.NetworkCloud.private\New-AzNetworkCloudKubernetesCluster_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -492,6 +504,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

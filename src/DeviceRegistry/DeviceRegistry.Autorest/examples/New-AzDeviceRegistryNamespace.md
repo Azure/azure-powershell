@@ -31,7 +31,7 @@ MessagingEndpoint            : {
                                  },
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net",
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
                                    "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.IotHub/namespaces/contoso-edge-namespace2"
                                  }
                                }
@@ -72,7 +72,7 @@ MessagingEndpoint            : {
                                  },
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net",
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
                                    "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.IotHub/namespaces/contoso-edge-namespace2"
                                  }
                                }
@@ -114,7 +114,7 @@ MessagingEndpoint            : {
                                  },
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net",
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
                                    "resourceId": "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.IotHub/namespaces/contoso-edge-namespace2"
                                  }
                                }

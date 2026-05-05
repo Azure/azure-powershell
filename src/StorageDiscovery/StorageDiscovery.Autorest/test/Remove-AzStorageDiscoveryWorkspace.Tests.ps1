@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageDiscoveryWork
 }
 
 Describe 'Remove-AzStorageDiscoveryWorkspace' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName2 -ResourceGroupName $env.resourceGroup
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

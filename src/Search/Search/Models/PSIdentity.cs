@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
 
         public static explicit operator PSIdentity(Identity v)
         {
-            PSIdentityType? identityType = (PSIdentityType?)v?.Type;
+            PSIdentityType? identityType = v?.Type.ParsePSIdentityType();
 
             if (identityType.HasValue)
             {
@@ -47,11 +47,11 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
 
         public static explicit operator Identity(PSIdentity v)
         {
-            IdentityType? identityType = (IdentityType?)v?.Type;
-            if (identityType.HasValue)
+            string identityType = v?.Type.ToString();
+            if (identityType != null)
             {
                 return new Identity(
-                    type: identityType.Value,
+                    type: identityType,
                     principalId: v?.PrincipalId,
                     tenantId: v?.TenantId);
             }

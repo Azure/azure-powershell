@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzElasticTagRule
 
 ## SYNOPSIS
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Update-AzElasticTagRule -MonitorInputObject <IElasticIdentity> -RuleSetName <Str
 ```
 
 ## DESCRIPTION
-update a tag rule set for a given monitor resource.
+Update a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 
 ## EXAMPLES
 

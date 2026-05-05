@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.HttpPath(Path = "/providers/Microsoft.StorageDiscovery/operations", ApiVersion = "2025-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.HttpPath(Path = "/providers/Microsoft.StorageDiscovery/operations", ApiVersion = "2025-09-01")]
     public partial class GetAzStorageDiscoveryOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IContext

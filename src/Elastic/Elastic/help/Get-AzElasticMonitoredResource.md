@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticMonitoredResource
 
 ## SYNOPSIS
-List the resources currently being monitored by the Elastic monitor resource.
+List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzElasticMonitoredResource -Name <String> -ResourceGroupName <String> [-Subs
 ```
 
 ## DESCRIPTION
-List the resources currently being monitored by the Elastic monitor resource.
+List all resources currently being monitored by the Elastic monitor resource, helping you manage observability.
 
 ## EXAMPLES
 

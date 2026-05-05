@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Description(@"List NamespaceAsset resources by Namespace")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets", ApiVersion = "2025-07-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets", ApiVersion = "2025-10-01")]
     public partial class GetAzDeviceRegistryNamespaceAsset_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IContext

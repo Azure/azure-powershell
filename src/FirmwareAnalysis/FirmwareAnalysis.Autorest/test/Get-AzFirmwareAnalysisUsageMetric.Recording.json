@@ -1,0 +1,48 @@
+{
+  "Get-AzFirmwareAnalysisUsageMetric+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/07aed47b-60ad-4d6e-a07a-89b602418441/resourceGroups/sdk-tests-rg/providers/Microsoft.IoTFirmwareDefense/workspaces/default/usageMetrics/current?api-version=2025-08-02+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/07aed47b-60ad-4d6e-a07a-89b602418441/resourceGroups/sdk-tests-rg/providers/Microsoft.IoTFirmwareDefense/workspaces/default/usageMetrics/current?api-version=2025-08-02",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "7c0422ea-8520-450e-ae6d-4fc9ec1927ca" ],
+        "CommandName": [ "Get-AzFirmwareAnalysisUsageMetric" ],
+        "FullCommandName": [ "Get-AzFirmwareAnalysisUsageMetric_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.11", "Az.FirmwareAnalysis/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6c885de3-382b-4ead-acf0-9c1c31df4d02/eastus/ad225cc7-2230-46b0-8a6d-250dd93ff0fb" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-envoy-upstream-service-time": [ "10" ],
+        "x-ms-request-id": [ "02c493f6-7acd-402b-80bb-dbe31a83b221" ],
+        "x-ms-correlation-request-id": [ "5bf4bbb2-41e2-458f-8443-191a4fa09346" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "EASTUS:20250911T195746Z:5bf4bbb2-41e2-458f-8443-191a4fa09346" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9FD9D8C7B99C431E86D571A9048A83DD Ref B: BL2AA2011002023 Ref C: 2025-09-11T19:57:46Z" ],
+        "Date": [ "Thu, 11 Sep 2025 19:57:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "315" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/07aed47b-60ad-4d6e-a07a-89b602418441/resourceGroups/sdk-tests-rg/providers/Microsoft.IoTFirmwareDefense/workspaces/default/usageMetrics/current\",\"name\":\"current\",\"type\":\"Microsoft.IoTFirmwareDefense/workspaces/usageMetrics\",\"properties\":{\"monthlyFirmwareUploadCount\":1,\"totalFirmwareCount\":1}}",
+      "isContentBase64": false
+    }
+  }
+}

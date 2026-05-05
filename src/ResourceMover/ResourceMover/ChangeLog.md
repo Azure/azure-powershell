@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.2
+* Updated preannouncement breaking changes date to May 2026.
+
+## Version 1.3.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## Version 1.3.0
 * Upgraded nuget package to signed package.
 

@@ -10,14 +10,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>update a OpenAI integration rule for a given monitor resource.</summary>
+    /// <summary>
+    /// update an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and
+    /// monitoring.
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/openAIIntegrations/{integrationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzElasticOpenAi_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IOpenAiIntegrationRpmodel))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"update a OpenAI integration rule for a given monitor resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"update an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
     public partial class UpdateAzElasticOpenAi_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,
@@ -117,6 +120,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
 
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>The connector id of Open AI resource</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The connector id of Open AI resource")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The connector id of Open AI resource",
+        SerializedName = @"openAIConnectorId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OpenAiConnectorId { get => _body.OpenAiConnectorId ?? null; set => _body.OpenAiConnectorId = value; }
 
         /// <summary>The API endpoint for Open AI resource</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The API endpoint for Open AI resource")]
@@ -451,6 +465,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("OpenAiResourceEndpoint")))
             {
                 this.OpenAiResourceEndpoint = (string)(this.MyInvocation?.BoundParameters["OpenAiResourceEndpoint"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("OpenAiConnectorId")))
+            {
+                this.OpenAiConnectorId = (string)(this.MyInvocation?.BoundParameters["OpenAiConnectorId"]);
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Key")))
             {

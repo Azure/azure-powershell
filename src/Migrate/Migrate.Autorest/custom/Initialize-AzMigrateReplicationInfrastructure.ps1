@@ -134,7 +134,8 @@ function Initialize-AzMigrateReplicationInfrastructure {
         Import-Module Az.Resources
         Import-Module Az.Storage
         Import-Module Az.RecoveryServices
-        Import-Module $PSScriptRoot\Helper\AzLocalCommonSettings.ps1
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonSettings.ps1")
+        Import-Module $helperPath
         
         # Validate user specified target region
         $TargetRegion = $TargetRegion.ToLower()
@@ -419,7 +420,7 @@ public static int hashForArtifact(String artifact)
             $policyName = $MigratePrefix + $SiteName + "policy"
             $existingPolicyObject = Get-AzMigrateReplicationPolicy -PolicyName $policyName -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if (!$existingPolicyObject) {
-                $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtPolicyCreationInput]::new()
+                $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.VMwareCbtPolicyCreationInput]::new()
                 $providerSpecificPolicy.AppConsistentFrequencyInMinute = 240
                 $providerSpecificPolicy.InstanceType = "VMwareCbt"
                 $providerSpecificPolicy.RecoveryPointHistoryInMinute = 360
@@ -443,7 +444,7 @@ public static int hashForArtifact(String artifact)
                         Write-Host $mappingName, " for ", $applianceName, $LogStringSkipping
                     }
                     else {
-                        $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtContainerMappingInput]::new()
+                        $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.VMwareCbtContainerMappingInput]::new()
                         $providerSpecificInput.InstanceType = "VMwareCbt"
                         $providerSpecificInput.TargetLocation = $TargetRegion
                         

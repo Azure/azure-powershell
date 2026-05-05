@@ -74,9 +74,10 @@ function New-AzMigrateLocalDiskMappingObject {
     process {
         $isDynamicDisk = [System.Convert]::ToBoolean($IsDynamic)
         $osDisk = [System.Convert]::ToBoolean($IsOSDisk)
+        $hasPhysicalSectorSize = $PSBoundParameters.ContainsKey('PhysicalSectorSize')
 
-        if ($Format -eq "VHD" -and $PhysicalSectorSize -ne 512) {
-            throw "PhysicalSectorSize must be 512 for VHD format."
+        if ($Format -eq "VHD" -and $hasPhysicalSectorSize -and $PhysicalSectorSize -ne 512) {
+            throw "PhysicalSectorSize must be 512 for VHD format but $PhysicalSectorSize is given."
         }
 
         $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput]::new(

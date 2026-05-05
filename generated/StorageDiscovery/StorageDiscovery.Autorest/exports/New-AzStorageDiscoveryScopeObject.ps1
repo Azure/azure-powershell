@@ -30,7 +30,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-TAG <ITags>: Resource tags.
+TAG <IStorageDiscoveryScopeTags>: Resource tags.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/Az.StorageDiscovery/new-azstoragediscoveryscopeobject
@@ -54,7 +54,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScopeTags]
     # Resource tags.
     ${Tag},
 

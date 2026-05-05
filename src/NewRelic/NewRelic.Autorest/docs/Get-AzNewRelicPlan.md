@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNewRelicPlan
 
 ## SYNOPSIS
-List plans data
+Lists the plans data linked to your organization, providing an overview of the available plans
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzNewRelicPlan [-SubscriptionId <String[]>] [-AccountId <String>] [-Organiza
 ```
 
 ## DESCRIPTION
-List plans data
+Lists the plans data linked to your organization, providing an overview of the available plans
 
 ## EXAMPLES
 

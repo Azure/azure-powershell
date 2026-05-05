@@ -102,14 +102,23 @@ function Remove-AzMigrateLocalServerReplication {
     )
     
     process {
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonSettings.ps1")
+        Import-Module $helperPath
+        $helperPath = [System.IO.Path]::Combine($PSScriptRoot, "Helper", "AzLocalCommonHelper.ps1")
+        Import-Module $helperPath
+
         $shouldForceRemove = [System.Convert]::ToBoolean($ForceRemove)
         $null = $PSBoundParameters.Remove('ForceRemove')
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('InputObject')
         $null = $PSBoundParameters.Remove('WhatIf')
         $null = $PSBoundParameters.Remove('Confirm')
-        $parameterSet = $PSCmdlet.ParameterSetName
 
+        # Set common ErrorVariable and ErrorAction for get behaviors
+        $null = $PSBoundParameters.Add('ErrorVariable', 'notPresent')
+        $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
+
+        $parameterSet = $PSCmdlet.ParameterSetName
         if ($parameterSet -eq 'ByInputObject') {            
             $TargetObjectID = $InputObject.Id
         }
@@ -119,35 +128,38 @@ function Remove-AzMigrateLocalServerReplication {
         $vaultName = $protectedItemIdArray[8]
         $protectedItemName = $protectedItemIdArray[10]
 
+        # Get protected item with ResourceGroupName, VaultName, Name
         $null = $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
         $null = $PSBoundParameters.Add("VaultName", $vaultName)
         $null = $PSBoundParameters.Add("Name", $protectedItemName)
-
-        $ProtectedItem = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateProtectedItem' `
-            -Parameters $PSBoundParameters `
-            -ErrorMessage "Replication item is not found with Id '$TargetObjectID'."
-
+        $ProtectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters
+        if ($null -eq $ProtectedItem)
+        {
+            throw New-AzMigrateProtectedItemNotFoundException -Id $TargetObjectID
+        }
         $null = $PSBoundParameters.Remove('Name')
 
         if ("DisableProtection" -notin $ProtectedItem.Property.AllowedJob)
         {
-            throw "Replication item with Id '$TargetObjectID' cannot be removed at this moment. Current protection state is '$($protectedItem.Property.ProtectionStateDescription)'."
+            throw "Replication item with Id '$TargetObjectID' cannot be removed at this moment. Current protection state is '$($protectedItem.Property.ProtectionStateDescription)'. Allowed jobs are: $($ProtectedItem.Property.AllowedJob -join ', ')."
         }
-        
-        $null = $PSBoundParameters.Add('ProtectedItemName', $protectedItemName)
-        $null = $PSBoundParameters.Add('NoWait', $true)
-        $null = $PSBoundParameters.Add('ForceDelete', $shouldForceRemove)
+
+        # Remove common ErrorVariable and ErrorAction for get behaviors
+        $null = $PSBoundParameters.Remove('ErrorVariable')
+        $null = $PSBoundParameters.Remove('ErrorAction')
 
         if ($PSCmdlet.ShouldProcess($TargetObjectID, "Stop/Complete VM replication.")) {
+            # Remove protected item with ResourceGroupName, VaultName, ProtectedItemName
+            $null = $PSBoundParameters.Add('ProtectedItemName', $protectedItemName)
+            $null = $PSBoundParameters.Add('NoWait', $true)
+            $null = $PSBoundParameters.Add('ForceDelete', $shouldForceRemove)
             $operation = Az.Migrate.Internal\Remove-AzMigrateProtectedItem @PSBoundParameters
-
-            $jobName = $operation.Target.Split("/")[-1].Split("?")[0].Split("_")[0]
-
-            $null = $PSBoundParameters.Remove('ProtectedItemName')
-            $null = $PSBoundParameters.Remove('NoWait')
             $null = $PSBoundParameters.Remove('ForceDelete')
+            $null = $PSBoundParameters.Remove('NoWait')
+            $null = $PSBoundParameters.Remove('ProtectedItemName')
 
+            # Get job with ResourceGroupName, VaultName, JobName
+            $jobName = $operation.Target.Split("/")[-1].Split("?")[0].Split("_")[0]
             $null = $PSBoundParameters.Add('JobName', $jobName)
             return Az.Migrate.Internal\Get-AzMigrateLocalReplicationJob @PSBoundParameters
         }

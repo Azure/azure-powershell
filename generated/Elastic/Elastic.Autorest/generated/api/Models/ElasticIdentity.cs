@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="ConfigurationName" /> property.</summary>
+        private string _configurationName;
+
+        /// <summary>The configuration name. Only 'default' value is supported.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
+        public string ConfigurationName { get => this._configurationName; set => this._configurationName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -63,6 +70,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
     public partial interface IElasticIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IJsonSerializable
     {
+        /// <summary>The configuration name. Only 'default' value is supported.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The configuration name. Only 'default' value is supported.",
+        SerializedName = @"configurationName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConfigurationName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
@@ -134,6 +152,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
     internal partial interface IElasticIdentityInternal
 
     {
+        /// <summary>The configuration name. Only 'default' value is supported.</summary>
+        string ConfigurationName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>OpenAI Integration name</summary>

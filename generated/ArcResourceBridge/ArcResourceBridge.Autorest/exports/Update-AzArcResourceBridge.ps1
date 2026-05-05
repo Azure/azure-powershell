@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
+Update an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
 .Description
-Updates an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
+Update an Appliance with the specified Resource Name in the specified Resource Group and Subscription.
 .Example
 Update-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group -Tag @{"111"="222";"aaa"="bbb"}
 .Example
@@ -27,7 +27,7 @@ Get-AzArcResourceBridge -ResourceGroupName azps_test_group -Name azps-resource-b
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance
+Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,16 +43,20 @@ INPUTOBJECT <IArcResourceBridgeIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.arcresourcebridge/update-azarcresourcebridge
 #>
 function Update-AzArcResourceBridge {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [System.String]
     # Appliances name.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -60,6 +64,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -70,15 +76,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IArcResourceBridgeIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IPatchableApplianceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IPatchableApplianceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -136,6 +154,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -157,10 +184,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.ArcResourceBridge.private\Update-AzArcResourceBridge_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ArcResourceBridge.private\Update-AzArcResourceBridge_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.ArcResourceBridge.private\Update-AzArcResourceBridge_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ArcResourceBridge.private\Update-AzArcResourceBridge_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -174,6 +201,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

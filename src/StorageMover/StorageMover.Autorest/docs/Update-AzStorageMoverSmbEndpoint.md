@@ -70,7 +70,7 @@ Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverNam
 ```
 
 ```output
-Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegorup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
 Name                         : myendpoint
 Property                     : {
                                  "endpointType": "SmbMount",
@@ -276,7 +276,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IEndpoint
 
 ## NOTES
 

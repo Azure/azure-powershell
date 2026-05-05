@@ -36,40 +36,38 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "version": "1.1"
+                                   "version": "1.0"
                                  },
                                  "endpoint2": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxxx/resourceGroups/my-resource-group/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/foodevice
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-create-json-file-path
 Location                     : eastus2
 Manufacturer                 : Contoso
 Model                        : foo123
-Name                         : foodevice
+Name                         : test-ns-ddevice-create-json-file-path
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
-SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
+SystemDataCreatedAt          : 10/17/2025 12:09:47 AM
 SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 7/24/2025 10:34:19 PM
+SystemDataLastModifiedAt     : 10/17/2025 12:09:47 AM
 SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
@@ -98,40 +96,38 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "version": "1.1"
+                                   "version": "1.0"
                                  },
                                  "endpoint2": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxxx/resourceGroups/my-resource-group/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/foodevice
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-create-json-file-path
 Location                     : eastus2
 Manufacturer                 : Contoso
 Model                        : foo123
-Name                         : foodevice
+Name                         : test-ns-ddevice-create-json-file-path
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
-SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
+SystemDataCreatedAt          : 10/17/2025 12:09:47 AM
 SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 7/24/2025 10:34:19 PM
+SystemDataLastModifiedAt     : 10/17/2025 12:09:47 AM
 SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {
@@ -166,40 +162,38 @@ Attribute                    : {
 DiscoveryId                  : myDiscoveryId
 EndpointInbound              : {
                                  "endpoint1": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint1.westeurope-1.iothub.azure.net",
-                                   "version": "1.1"
+                                   "version": "1.0"
                                  },
                                  "endpoint2": {
-                                   "endpointType": "Microsoft.IotHub",
+                                   "endpointType": "Microsoft.Devices/IotHubs",
                                    "address": "https://myendpoint2.westeurope-1.iothub.azure.net",
                                    "version": "2.0"
                                  }
                                }
-ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.ExtendedLocation/customLocations/location-2pnh4
+ExtendedLocationName         : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxxx/resourceGroups/my-resource-group/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType         : CustomLocation
 ExternalDeviceId             :
-Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microso
-                               ft.DeviceRegistry/namespaces/my-namespace/discoveredDevices/foodevice
+Id                           : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxxx/resourceGroups/my-resource-group/providers/Microsoft.DeviceRegistry/namespaces/adr-namespace/discoveredDevices/test-ns-ddevice-create-json-file-path
 Location                     : eastus2
 Manufacturer                 : Contoso
 Model                        : foo123
-Name                         : foodevice
+Name                         : test-ns-ddevice-create-json-file-path
 OperatingSystem              : Linux
-OperatingSystemVersion       : 2000
+OperatingSystemVersion       : 1000
 OutboundAssigned             : {
                                  "myendpoint2": {
                                    "endpointType": "Microsoft.Devices/IoTHubs",
-                                   "address": "https://myendpoint2.westeurope-1.edge.azure.net"
+                                   "address": "https://myendpoint2.westeurope-1.iothub.azure.net"
                                  }
                                }
 ProvisioningState            : Succeeded
 ResourceGroupName            : my-resource-group
-SystemDataCreatedAt          : 7/24/2025 9:38:24 PM
+SystemDataCreatedAt          : 10/17/2025 12:09:47 AM
 SystemDataCreatedBy          : user@outlook.com
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 7/24/2025 10:34:19 PM
+SystemDataLastModifiedAt     : 10/17/2025 12:09:47 AM
 SystemDataLastModifiedBy     : user@outlook.com
 SystemDataLastModifiedByType : User
 Tag                          : {

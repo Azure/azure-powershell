@@ -1,0 +1,95 @@
+{
+  "resourceType": "amlFilesystems/importJobs",
+  "apiVersion": "2025-07-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.storagecache"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStorageCacheImportJob",
+      "description": "Returns an import job.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheimportjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AmlFilesystemName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns an import job.",
+          "parameters": [
+            {
+              "name": "-AmlFilesystemName",
+              "value": "[Path.amlFilesystemName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.importJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStorageCacheImportJob",
+      "description": "Schedules an import job for deletion.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/importJobs/{importJobName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/remove-azstoragecacheimportjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AmlFilesystemName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Schedules an import job for deletion.",
+          "parameters": [
+            {
+              "name": "-AmlFilesystemName",
+              "value": "[Path.amlFilesystemName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.importJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

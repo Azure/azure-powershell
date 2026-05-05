@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         private const string UserAssignedManagedIdentityResourceType = "Microsoft.ManagedIdentity/userAssignedIdentities";
 
         /// <summary>
-        /// Gets the oid claim from the token payload
+        /// Gets the Oid claim from the token payload
         /// </summary>
-        /// <param name="token"> the access token </param>
-        /// <returns> true, oid if successfully parsed, else return false, guid.empty </returns>
+        /// <param name="token">The access token </param>
+        /// <returns> The Oid as a Guid if successfully parsed, otherwise throws an exception </returns>
         public static Guid GetTokenOid(string token)
         {
             // try to deserialize the json string to aadtoken object
@@ -24,6 +24,22 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
 
             // parse the oid string to guid object
             return Guid.Parse(aadToken?.Oid);
+        }
+        /// <summary>
+        /// Gets the tenantId claim from the token payload
+        /// </summary>
+        /// <param name="token"> The access token </param>
+        /// <returns> The tenantId as a Guid if successfully parsed, otherwise throws an exception </returns>
+        public static Guid GetTokenTenantId(string token)
+        {
+            // try to deserialize the json string to aadtoken object
+            var aadToken = TryGetAadTokenFromAccessTokenString(token);
+
+            if(!Guid.TryParse(aadToken.TenantId, out Guid tenantId))
+            {
+                throw new ArgumentException("Token TenantId is invalid");
+            }
+            return tenantId;
         }
 
         /// <summary>
@@ -106,6 +122,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
 
         [JsonProperty(PropertyName = ManagedIdentityClaimNames.ManagedIdentityResourceId)]
         public string MIResourceId { get; set; }
+
+        [JsonProperty(PropertyName = ManagedIdentityClaimNames.TenantId)]
+        public string TenantId { get; set; }
     }
 
     public static class ManagedIdentityClaimNames
@@ -113,5 +132,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
         public const string Oid = "oid";
 
         public const string ManagedIdentityResourceId = "xms_mirid";
+
+        public const string TenantId = "tid";
     }
 }

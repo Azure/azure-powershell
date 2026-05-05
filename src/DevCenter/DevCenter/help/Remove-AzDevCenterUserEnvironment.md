@@ -15,20 +15,20 @@ Deletes an environment and all its associated resources
 ### Delete (Default)
 ```
 Remove-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity>
+Remove-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity> [-Force]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityByDevCenter
 ```
-Remove-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
+Remove-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCenterdataIdentity> [-Force]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -36,7 +36,7 @@ Remove-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCent
 ### DeleteByDevCenter
 ```
 Remove-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-UserId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -132,6 +132,22 @@ Parameter Sets: Delete, DeleteViaIdentity
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+The query option to force environment deletion even if the environment definition does not exist.
+This is a best-effort delete, and anything custom that forces resource creation beyond the associated resource group may not be deleted.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -270,7 +286,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
 
 ## NOTES
 

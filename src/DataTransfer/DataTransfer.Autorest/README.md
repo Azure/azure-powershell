@@ -117,7 +117,7 @@ directive:
   # - remove-operation: Pipelines_ListBySubscription
   - remove-operation: Operations_List
   - remove-operation: ListFlowsByPipeline_List
-  - remove-operation: Pipelines_ExecuteAction
+  # - remove-operation: Pipelines_ExecuteAction
 
   - where:
       parameter-name: Pipeline
@@ -244,4 +244,10 @@ directive:
       subject: ^ListPendingFlow
     set:
       subject: PendingFlow
+
+  ## Hide execute action cmdlet. This is exposed by custom commands
+  - where:
+      verb: Invoke
+      subject: ^ExecutePipelineAction
+    hide: true
 ```

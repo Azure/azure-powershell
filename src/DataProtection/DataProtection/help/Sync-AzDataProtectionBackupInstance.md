@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/sync-azdataprotectionbackupinstance
 schema: 2.0.0
@@ -8,18 +8,18 @@ schema: 2.0.0
 # Sync-AzDataProtectionBackupInstance
 
 ## SYNOPSIS
-Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
+Sync backup instance again in case of failure\nThis action will retry last failed operation and will bring backup instance to valid state
 
 ## SYNTAX
 
 ```
 Sync-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String>
  [-SubscriptionId <String>] [-SyncType <SyncType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Sync backup instance again in case of failure\r\nThis action will retry last failed operation and will bring backup instance to valid state
+Sync backup instance again in case of failure\nThis action will retry last failed operation and will bring backup instance to valid state
 
 ## EXAMPLES
 
@@ -215,3 +215,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

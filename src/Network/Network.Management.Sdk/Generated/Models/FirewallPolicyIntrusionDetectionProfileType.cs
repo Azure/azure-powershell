@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class FirewallPolicyIntrusionDetectionProfileType
     {
-        public const string Basic = "Basic";
-        public const string Standard = "Standard";
-        public const string Advanced = "Advanced";
+        public const string Off = "Off";
+        public const string Emerging = "Emerging";
+        public const string Core = "Core";
         public const string Extended = "Extended";
     }
 }

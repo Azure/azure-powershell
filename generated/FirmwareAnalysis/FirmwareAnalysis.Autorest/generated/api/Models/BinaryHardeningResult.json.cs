@@ -65,13 +65,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 return;
             }
-            {_feature = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonObject>("features"), out var __jsonFeatures) ? Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeatures.FromJson(__jsonFeatures) : _feature;}
+            {_securityHardeningFeature = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonObject>("securityHardeningFeatures"), out var __jsonSecurityHardeningFeatures) ? Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.BinaryHardeningFeatures.FromJson(__jsonSecurityHardeningFeatures) : _securityHardeningFeature;}
             {_binaryHardeningId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("binaryHardeningId"), out var __jsonBinaryHardeningId) ? (string)__jsonBinaryHardeningId : (string)_binaryHardeningId;}
-            {_architecture = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("architecture"), out var __jsonArchitecture) ? (string)__jsonArchitecture : (string)_architecture;}
+            {_executableArchitecture = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("executableArchitecture"), out var __jsonExecutableArchitecture) ? (string)__jsonExecutableArchitecture : (string)_executableArchitecture;}
             {_filePath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("filePath"), out var __jsonFilePath) ? (string)__jsonFilePath : (string)_filePath;}
-            {_class = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("class"), out var __jsonClass) ? (string)__jsonClass : (string)_class;}
+            {_executableClass = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("executableClass"), out var __jsonExecutableClass) ? (string)__jsonExecutableClass : (string)_executableClass;}
             {_runpath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("runpath"), out var __jsonRunpath) ? (string)__jsonRunpath : (string)_runpath;}
             {_rpath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("rpath"), out var __jsonRpath) ? (string)__jsonRpath : (string)_rpath;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
 
@@ -106,13 +107,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 return container;
             }
-            AddIf( null != this._feature ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) this._feature.ToJson(null,serializationMode) : null, "features" ,container.Add );
+            AddIf( null != this._securityHardeningFeature ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) this._securityHardeningFeature.ToJson(null,serializationMode) : null, "securityHardeningFeatures" ,container.Add );
             AddIf( null != (((object)this._binaryHardeningId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._binaryHardeningId.ToString()) : null, "binaryHardeningId" ,container.Add );
-            AddIf( null != (((object)this._architecture)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._architecture.ToString()) : null, "architecture" ,container.Add );
+            AddIf( null != (((object)this._executableArchitecture)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._executableArchitecture.ToString()) : null, "executableArchitecture" ,container.Add );
             AddIf( null != (((object)this._filePath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._filePath.ToString()) : null, "filePath" ,container.Add );
-            AddIf( null != (((object)this._class)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._class.ToString()) : null, "class" ,container.Add );
+            AddIf( null != (((object)this._executableClass)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._executableClass.ToString()) : null, "executableClass" ,container.Add );
             AddIf( null != (((object)this._runpath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._runpath.ToString()) : null, "runpath" ,container.Add );
             AddIf( null != (((object)this._rpath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._rpath.ToString()) : null, "rpath" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

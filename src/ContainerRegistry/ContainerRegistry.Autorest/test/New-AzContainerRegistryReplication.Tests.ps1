@@ -20,7 +20,9 @@ Describe 'New-AzContainerRegistryReplication' {
     }
 
     It 'CreateByRegistry' {
-        $obj = Get-AzContainerRegistry -Name $env.rstr1 -ResourceGroupName $env.ResourceGroup 
-        {New-AzContainerRegistryReplication -Name $env.rstr4 -Registry $obj -Location westus3  } | Should -Not -Throw
+        {
+            $obj = Get-AzContainerRegistry -Name $env.rstr1 -ResourceGroupName $env.ResourceGroup 
+            New-AzContainerRegistryReplication -Name $env.rstr4 -Registry $obj -Location westus3  
+        } | Should -Not -Throw
     }
 }

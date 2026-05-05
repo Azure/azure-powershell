@@ -22,7 +22,7 @@ New-AzSnapshotConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-PublicNetworkAccess <String>] [-AcceleratedNetwork <Boolean>]
  [-DataAccessAuthMode <String>] [-Architecture <String>] [-ElasticSanResourceId <String>]
- [-TierOption <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-TierOption <String>] [-InstantAccessDurationMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -300,6 +300,21 @@ Specifies an incremental snapshot. Incremental snapshots on the same disk occupy
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InstantAccessDurationMinutes
+For snapshots created from Premium SSD v2 or Ultra disk, this property determines the time in minutes the snapshot is retained for instant access to enable faster restore.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

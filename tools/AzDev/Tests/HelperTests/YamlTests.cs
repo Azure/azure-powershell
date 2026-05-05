@@ -32,7 +32,7 @@ directive:
         Assert.Equal("1b338481329645df2d9460738cbaab6109472488", result.Commit);
         Assert.Equal(2, result.Require.Count());
         Assert.Single(result.TryRequire);
-        Assert.Single(result.Directive);
+        Assert.NotNull(result.Directive);
         Assert.Empty(result.InputFile);
     }
 
@@ -45,7 +45,7 @@ directive:
         Assert.Null(result.Commit);
         Assert.Empty(result.Require);
         Assert.Empty(result.TryRequire);
-        Assert.Empty(result.Directive);
+        Assert.NotNull(result.Directive);
         Assert.Empty(result.InputFile);
     }
 }

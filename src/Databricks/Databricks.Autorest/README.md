@@ -28,15 +28,15 @@ For information on how to develop for `Az.Databricks`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 8dc708fdac9cb97b346ddb38106ac16e668f64cd
-tag: package-2024-05-01
+commit: efa49a123da7ce3ffe093a13832258305f529711
+tag: package-2026-01-01
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-  - $(repo)/specification/databricks/resource-manager/readme.md
+  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/Databricks/readme.md
 try-require:
   - $(repo)/specification/databricks/resource-manager/readme.powershell.md
 
-module-version: 1.2.0
+module-version: 1.11.0
 title: Databricks
 subject-prefix: $(service-name)
 
@@ -281,4 +281,95 @@ directive:
           - ManagedResourceGroupId
         labels:
           ManagedResourceGroupId: Managed Resource Group ID
+
+  - where:
+      verb: Get
+      subject: AccessConnector
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - ReferedBy
+        new-output-properties:
+          - ReferedBy
+        change-description: The types of the properties 'ReferedBy' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+
+  - where:
+      verb: New|Update
+      subject: AccessConnector
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - ReferedBy
+          - EnableSystemAssignedIdentity
+          - UserAssignedIdentity
+        new-output-properties:
+          - ReferedBy
+          - EnableSystemAssignedIdentity
+          - UserAssignedIdentity
+        change-description: (1) The types of the properties 'ReferedBy' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]' (2) IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+
+  - where:
+      verb: Get
+      subject: OutboundNetworkDependenciesEndpoint
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - Endpoint
+        new-output-properties:
+          - Endpoint
+        change-description: The types of the properties 'Endpoint' will be changed from 'Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IEndpointDependency' to 'System.Collections.Generic.List`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IEndpointDependency]'
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+
+  - where:
+      verb: Get|New
+      subject: VNetPeering
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - DatabrickAddressSpaceAddressPrefix
+          - RemoteAddressSpaceAddressPrefix
+        new-output-properties:
+          - DatabrickAddressSpaceAddressPrefix
+          - RemoteAddressSpaceAddressPrefix
+        change-description: The types of the properties 'DatabrickAddressSpaceAddressPrefix' and 'RemoteAddressSpaceAddressPrefix' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+
+  - where:
+      verb: Get
+      subject: Workspace
+    set:
+      breaking-change:
+        deprecated-output-properties:
+          - PrivateEndpointConnection
+          - Authorization
+          - ComplianceSecurityProfileComplianceStandard
+        new-output-properties:
+          - PrivateEndpointConnection
+          - Authorization
+          - ComplianceSecurityProfileComplianceStandard
+        change-description: The types of the properties 'PrivateEndpointConnection', 'Authorization' and 'ComplianceSecurityProfileComplianceStandard' will be changed from object to 'List'.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
+
+  - where:
+      verb: Update
+      subject: VNetPeering
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-change: Update-AzDatabricksVNetPeering
+        change-description: The parameter types of 'AllowForwardedTraffic', 'AllowGatewayTransit', 'AllowVirtualNetworkAccess' and 'UseRemoteGateway' will be changed from 'System.Boolean' to 'System.Management.Automation.SwitchParameter'. To disable these options, omit the switch parameter instead of passing ':$false', as '-SwitchParam:$false' may not behave as expected due to a known PowerShell issue (see https://github.com/PowerShell/PowerShell/issues/25027).
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 ```

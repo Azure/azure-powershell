@@ -46,6 +46,28 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizing</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizing#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ErrorDetail</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ErrorDetail#Multiple</TypeName>
@@ -710,6 +732,9 @@
           <TableColumnHeader>
             <Label>MinReadyCapacity</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PostProvisioningDelay</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -719,6 +744,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MinReadyCapacity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PostProvisioningDelay</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

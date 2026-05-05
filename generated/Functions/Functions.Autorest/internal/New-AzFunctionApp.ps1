@@ -43,6 +43,12 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -StorageAccountName MyStorageAccountName `
                   -Environment MyEnvironment `
                   -WorkloadProfileName MyWorkloadProfileName
+.Example
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -FlexConsumptionLocation LocationWhereFlexConsumptionIsSupported `
+                  -StorageAccountName MyStorageAccountName `
+                  -Runtime PowerShell
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
@@ -135,7 +141,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkflowName <String>]: Workflow name.
 
 SCALEANDCONCURRENCYALWAYSREADY <IFunctionsAlwaysReadyConfig[]>: 'Always Ready' configuration for the function app.
-  [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+  [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
   [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
@@ -169,7 +175,7 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
   [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+    [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
     [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
     [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -339,7 +345,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
     [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
       [ChangeStep <Double?>]: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       [MaxReroutePercentage <Double?>]: Specifies upper boundary below which ReroutePercentage will stay.
@@ -469,6 +475,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
+  [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
   [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
     [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
@@ -479,7 +486,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
   [HostNamesDisabled <Boolean?>]: <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.          If <code>true</code>, the app is only accessible via API management process.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
-  [HttpPerInstanceConcurrency <Single?>]: The maximum number of concurrent HTTP trigger invocations per instance.
+  [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
   [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
@@ -496,10 +503,10 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
   [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
-    [InstanceCount <Single?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
+    [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
-  [ScaleAndConcurrencyInstanceMemoryMb <Single?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-  [ScaleAndConcurrencyMaximumInstanceCount <Single?>]: The maximum number of instances for the function app.
+  [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
+  [ScaleAndConcurrencyMaximumInstanceCount <Int32?>]: The maximum number of instances for the function app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
@@ -840,6 +847,13 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to use end to end encryption between the FrontEnd and the Worker
+    ${EndToEndEncryptionEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Name of extended location.
     ${ExtendedLocationName},
@@ -871,7 +885,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # The maximum number of concurrent HTTP trigger invocations per instance.
     ${HttpPerInstanceConcurrency},
 
@@ -1004,7 +1018,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # Set the amount of memory allocated to each instance of the function app in MB.
     # CPU and network bandwidth are allocated proportionally.
     ${ScaleAndConcurrencyInstanceMemoryMb},
@@ -1012,7 +1026,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Single]
+    [System.Int32]
     # The maximum number of instances for the function app.
     ${ScaleAndConcurrencyMaximumInstanceCount},
 

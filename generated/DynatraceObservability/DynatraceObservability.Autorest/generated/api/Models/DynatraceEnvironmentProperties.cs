@@ -24,6 +24,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Inlined)]
         public string AccountInfoAccountId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)AccountInfo).AccountId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)AccountInfo).AccountId = value ?? null; }
 
+        /// <summary>Name of the customer account / company</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Inlined)]
+        public string AccountInfoCompanyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)AccountInfo).CompanyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)AccountInfo).CompanyName = value ?? null; }
+
         /// <summary>Region in which the account is created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Origin(Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.PropertyOrigin.Inlined)]
         public string AccountInfoRegionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)AccountInfo).RegionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfoInternal)AccountInfo).RegionId = value ?? null; }
@@ -61,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnProperties Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal.SingleSignOnProperty { get => (this._singleSignOnProperty = this._singleSignOnProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.DynatraceSingleSignOnProperties()); set { {_singleSignOnProperty = value;} } }
 
         /// <summary>Internal Acessors for SingleSignOnPropertyProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal.SingleSignOnPropertyProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnPropertiesInternal)SingleSignOnProperty).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnPropertiesInternal)SingleSignOnProperty).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceEnvironmentPropertiesInternal.SingleSignOnPropertyProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnPropertiesInternal)SingleSignOnProperty).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnPropertiesInternal)SingleSignOnProperty).ProvisioningState = value ?? null; }
 
         /// <summary>Backing field for <see cref="SingleSignOnProperty" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IDynatraceSingleSignOnProperties _singleSignOnProperty;
@@ -118,6 +122,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         SerializedName = @"accountId",
         PossibleTypes = new [] { typeof(string) })]
         string AccountInfoAccountId { get; set; }
+        /// <summary>Name of the customer account / company</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the customer account / company",
+        SerializedName = @"companyName",
+        PossibleTypes = new [] { typeof(string) })]
+        string AccountInfoCompanyName { get; set; }
         /// <summary>Region in which the account is created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Runtime.Info(
         Required = false,
@@ -251,6 +266,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models
         Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IAccountInfo AccountInfo { get; set; }
         /// <summary>Account Id of the account this environment is linked to</summary>
         string AccountInfoAccountId { get; set; }
+        /// <summary>Name of the customer account / company</summary>
+        string AccountInfoCompanyName { get; set; }
         /// <summary>Region in which the account is created</summary>
         string AccountInfoRegionId { get; set; }
         /// <summary>Dynatrace Environment Information</summary>

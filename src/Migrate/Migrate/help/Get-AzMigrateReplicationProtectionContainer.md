@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectioncontainer
 schema: 2.0.0
@@ -15,20 +15,22 @@ Gets the details of a protection container.
 ### List1 (Default)
 ```
 Get-AzMigrateReplicationProtectionContainer -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzMigrateReplicationProtectionContainer -FabricName <String> -ProtectionContainerName <String>
- -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzMigrateReplicationProtectionContainer -FabricName <String> -ResourceGroupName <String>
- -ResourceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateReplicationProtectionContainer -ResourceGroupName <String> -ResourceName <String>
+ -FabricName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzMigrateReplicationProtectionContainer -ResourceGroupName <String> -ResourceName <String>
+ -FabricName <String> -ProtectionContainerName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +87,7 @@ Fabric name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -162,9 +164,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainer
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IProtectionContainer
 
 ## NOTES
 
 ## RELATED LINKS
-

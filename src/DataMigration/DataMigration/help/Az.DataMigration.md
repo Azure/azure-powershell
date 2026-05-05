@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.DataMigration Module
 ## Description
-{{Azure DataMigration Service Module}}
+Microsoft Azure PowerShell: Azure DataMigration Service Module
 
 ## Az.DataMigration Cmdlets
 ### [Get-AzDataMigrationAssessment](Get-AzDataMigrationAssessment.md)
@@ -58,6 +58,9 @@ Initiate cutover for in-progress online database migration to SQL Managed Instan
 
 ### [Invoke-AzDataMigrationCutoverToSqlVM](Invoke-AzDataMigrationCutoverToSqlVM.md)
 Initiate cutover for in-progress online database migration to SQL VM.
+
+### [Invoke-AzDataMigrationRetryToSqlDb](Invoke-AzDataMigrationRetryToSqlDb.md)
+Retry on going migration for the database.
 
 ### [New-AzDataMigrationAzureActiveDirectoryApp](New-AzDataMigrationAzureActiveDirectoryApp.md)
 Create a new instance DataMigration Microsoft Entra Application details.
@@ -110,7 +113,7 @@ Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server
 ### [New-AzDataMigrationToSqlDb](New-AzDataMigrationToSqlDb.md)
 Create a new database migration to a given SQL Db.
 This command can migrate data from the selected source database tables to the target database tables.
-If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target database.
+If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.
 
 ### [New-AzDataMigrationToSqlManagedInstance](New-AzDataMigrationToSqlManagedInstance.md)
 Create a new database migration to a given SQL Managed Instance.
@@ -138,6 +141,12 @@ Removes an Azure Database Migration Service (classic) task from Azure.
 
 ### [Remove-AzDataMigrationToSqlDb](Remove-AzDataMigrationToSqlDb.md)
 Remove the specified database migration for a given SQL Db.
+
+### [Remove-AzDataMigrationToSqlManagedInstance](Remove-AzDataMigrationToSqlManagedInstance.md)
+Delete Database Migration resource.
+
+### [Remove-AzDataMigrationToSqlVM](Remove-AzDataMigrationToSqlVM.md)
+Delete Database Migration resource.
 
 ### [Start-AzDataMigrationService](Start-AzDataMigrationService.md)
 Starts an instance of the Azure Database Migration Service (classic) in a stopped state. 

@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Cmdlets;
     using System;
 
-    /// <summary>List all available API operations provided by Microsoft.Dashboard.</summary>
+    /// <summary>List the operations for the provider</summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/providers/Microsoft.Dashboard/operations"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzGrafanaOperation_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IOperation))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Description(@"List all available API operations provided by Microsoft.Dashboard.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.HttpPath(Path = "/providers/Microsoft.Dashboard/operations", ApiVersion = "2022-08-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.HttpPath(Path = "/providers/Microsoft.Dashboard/operations", ApiVersion = "2025-08-01")]
     public partial class GetAzGrafanaOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IContext

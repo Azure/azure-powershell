@@ -22,7 +22,7 @@ New-AzDeviceRegistryNamespaceAsset -AssetName <String> -NamespaceName <String> -
  [-DefaultManagementGroupsConfiguration <String>] [-DefaultStreamsConfiguration <String>]
  [-DefaultStreamsDestination <IStreamDestination[]>] [-Description <String>] [-DeviceRefDeviceName <String>]
  [-DeviceRefEndpointName <String>] [-DiscoveredAssetRef <String[]>] [-DisplayName <String>]
- [-DocumentationUri <String>] [-Enabled] [-Event <INamespaceEvent[]>] [-ExternalAssetId <String>]
+ [-DocumentationUri <String>] [-Enabled] [-EventGroup <INamespaceEventGroup[]>] [-ExternalAssetId <String>]
  [-HardwareRevision <String>] [-ManagementGroup <IManagementGroup[]>] [-Manufacturer <String>]
  [-ManufacturerUri <String>] [-Model <String>] [-ProductCode <String>] [-SerialNumber <String>]
  [-SoftwareRevision <String>] [-Stream <INamespaceStream[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
@@ -50,7 +50,154 @@ Create a NamespaceAsset
 
 ### Example 1: Create Namespace Asset with Expanded Parameters
 ```powershell
-New-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -AssetName "my-asset" -Location "eastus" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-2pnh4" -ExtendedLocationType "CustomLocation" -DeviceRefDeviceName "my-device" -DeviceRefEndpointName "my-endpoint" -ExternalAssetId "my-external-asset-id" -DisplayName "My Asset Display Name" -Manufacturer "Contoso" -ManufacturerUri "https://www.contoso.com/manufacturerUri" -Model "ContosoModel" -ProductCode "SA34VDG" -SoftwareRevision "2.0" -HardwareRevision "1.0" -SerialNumber "64-103816-519918-8" -DocumentationUri "https://www.example.com/manual/"
+$eventGroups = @(
+    @{
+        name = "eventGroup1"
+        dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/EventGroup1"
+        eventGroupConfiguration = '{"publishingInterval":10,"samplingInterval":15,"queueSize":20}'
+        typeRef = "eventGroup1TypeRef"
+        events = @(
+            @{
+                name = "event1"
+                dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5"
+                eventConfiguration = '{"publishingInterval":7,"samplingInterval":1,"queueSize":8}'
+                destinations = @(
+                    @{
+                        target = "Mqtt"
+                        configuration = @{
+                            topic = "/contoso/testEvent1"
+                            retain = "Keep"
+                            qos = "Qos0"
+                            ttl = 7200
+                        }
+                    }
+                )
+                typeRef = "event1Ref"
+            }
+        )
+    },
+    @{
+        name = "eventGroup2"
+        events = @(
+            @{
+                name = "event2"
+                dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8"
+                eventConfiguration = '{"publishingInterval":7,"samplingInterval":1,"queueSize":8}'
+                destinations = @(
+                    @{
+                        target = "Storage"
+                        configuration = @{
+                            path = "/tmp/event2"
+                        }
+                    }
+                )
+                typeRef = "event2Ref"
+            }
+        )
+    }
+)
+
+$managementGroups = @(
+    @{
+        name = "managementGroup1"
+        managementGroupConfiguration = '{"retryCount":10,"retryBackoffInterval":15}'
+        typeRef = "managementGroup1TypeRef"
+        defaultTopic = "/contoso/managementGroup1"
+        defaultTimeoutInSeconds = 100
+        actions = @(
+            @{
+                name = "action1"
+                actionConfiguration = '{"retryCount":5,"retryBackoffInterval":5}'
+                targetUri = "/onvif/device_service?ONVIFProfile=Profile1"
+                typeRef = "action1TypeRef"
+                topic = "/contoso/managementGroup1/action1"
+                actionType = "Call"
+                timeoutInSeconds = 60
+            },
+            @{
+                name = "action2"
+                actionConfiguration = '{"retryCount":5,"retryBackoffInterval":5}'
+                targetUri = "/onvif/device_service?ONVIFProfile=Profile2"
+                typeRef = "action2TypeRef"
+                topic = "/contoso/managementGroup1/action2"
+                actionType = "Call"
+                timeoutInSeconds = 60
+            }
+        )
+    }
+)
+
+$datasets = @(
+    @{
+        name = "dataset1"
+        dataSource = "nsu=http://microsoft.com/Opc/OpcPlc"
+    },
+    @{
+        name = "dataSet2"
+        dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5"
+        typeRef = "dataset1TypeRef"
+        datasetConfiguration = '{"publishingInterval":10,"samplingInterval":15,"queueSize":20}'
+        destinations = @(
+            @{
+                target = "Mqtt"
+                configuration = @{
+                    topic = "/contoso/test2"
+                    retain = "Keep"
+                    qos = "Qos1"
+                    ttl = 3600
+                }
+            }
+        )
+        dataPoints = @(
+            @{
+                name = "dataset1DataPoint1"
+                dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3"
+                dataPointConfiguration = '{"publishingInterval":8,"samplingInterval":8,"queueSize":4}'
+                typeRef = "dataset1DataPoint1TypeRef"
+            },
+            @{
+                name = "dataset1DataPoint2"
+                dataSource = "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4"
+                dataPointConfiguration = '{"publishingInterval":8,"samplingInterval":8,"queueSize":4}'
+                typeRef = "dataset1DataPoint2TypeRef"
+            }
+        )
+    }
+)
+
+$streams = @(
+    @{
+        name = "stream1"
+        streamConfiguration = '{"publishingInterval":8,"samplingInterval":8,"queueSize":4}'
+        typeRef = "stream1TypeRef"
+        destinations = @(
+            @{
+                target = "Storage"
+                configuration = @{
+                    path = "/tmp/stream1"
+                }
+            }
+        )
+    },
+    @{
+        name = "stream2"
+        streamConfiguration = '{"publishingInterval":8,"samplingInterval":8,"queueSize":4}'
+        typeRef = "stream2TypeRef"
+        destinations = @(
+            @{
+                target = "Mqtt"
+                configuration = @{
+                    topic = "/contoso/testStream2"
+                    retain = "Never"
+                    qos = "Qos0"
+                    ttl = 7200
+                }
+            }
+        )
+    }
+)
+
+New-AzDeviceRegistryNamespaceAsset -ResourceGroupName "my-resource-group" -NamespaceName "my-namespace" -AssetName "my-asset" -Location "eastus" -ExtendedLocationName "/subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers/Microsoft.ExtendedLocation/customLocations/location-mkzkq" -ExtendedLocationType "CustomLocation" -DeviceRefDeviceName "my-device" -DeviceRefEndpointName "my-endpoint" -ExternalAssetId "my-external-asset-id" -DisplayName "My Asset Display Name" -Manufacturer "Contoso" -ManufacturerUri "https://www.contoso.com/manufacturerUri" -Model "ContosoModel" -ProductCode "SA34VDG" -SoftwareRevision "2.0" -HardwareRevision "1.0" -SerialNumber "64-103816-519918-8" -DocumentationUri "https://www.example.com/manual/" -EventGroup $eventGroups -ManagementGroup $managementGroups -Dataset $datasets -Stream $streams
 ```
 
 ```output
@@ -60,7 +207,43 @@ Attribute                            : {
 Code                                 :
 ConfigLastTransitionTime             :
 ConfigVersion                        :
-Dataset                              :
+Dataset                              : {{
+                                         "name": "dataset1",
+                                         "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc"
+                                       }, {
+                                         "name": "dataSet2",
+                                         "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/Oven;i=5",
+                                         "typeRef": "dataset1TypeRef",
+                                         "datasetConfiguration":
+                                       "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}",
+                                         "destinations": [
+                                           {
+                                             "target": "Mqtt",
+                                             "configuration": {
+                                               "topic": "/contoso/test2",
+                                               "retain": "Keep",
+                                               "qos": "Qos1",
+                                               "ttl": 3600
+                                             }
+                                           }
+                                         ],
+                                         "dataPoints": [
+                                           {
+                                             "name": "dataset1DataPoint1",
+                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt3",
+                                             "dataPointConfiguration":
+                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}",
+                                             "typeRef": "dataset1DataPoint1TypeRef"
+                                           },
+                                           {
+                                             "name": "dataset1DataPoint2",
+                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt4",
+                                             "dataPointConfiguration":
+                                       "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}",
+                                             "typeRef": "dataset1DataPoint2TypeRef"
+                                           }
+                                         ]
+                                       }}
 DefaultDatasetsConfiguration         :
 DefaultDatasetsDestination           :
 DefaultEventsConfiguration           :
@@ -76,9 +259,51 @@ DiscoveredAssetRef                   :
 DisplayName                          : My Asset Display Name
 DocumentationUri                     : https://www.example.com/manual/
 Enabled                              : True
-Event                                :
+EventGroup                           : {{
+                                         "name": "eventGroup1",
+                                         "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/EventGroup1",
+                                         "eventGroupConfiguration": "{\"publishingInterval\":10,\"samplingInterval\":15,\"queueSize\":20}",
+                                         "typeRef": "eventGroup1TypeRef",
+                                         "events": [
+                                           {
+                                             "name": "event1",
+                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt5",
+                                             "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
+                                             "destinations": [
+                                               {
+                                                 "target": "Mqtt",
+                                                 "configuration": {
+                                                   "topic": "/contoso/testEvent1",
+                                                   "retain": "Keep",
+                                                   "qos": "Qos0",
+                                                   "ttl": 7200
+                                                 }
+                                               }
+                                             ],
+                                             "typeRef": "event1Ref"
+                                           }
+                                         ]
+                                       }, {
+                                         "name": "eventGroup2",
+                                         "events": [
+                                           {
+                                             "name": "event2",
+                                             "dataSource": "nsu=http://microsoft.com/Opc/OpcPlc/;s=FastUInt8",
+                                             "eventConfiguration": "{\"publishingInterval\":7,\"samplingInterval\":1,\"queueSize\":8}",
+                                             "destinations": [
+                                               {
+                                                 "target": "Storage",
+                                                 "configuration": {
+                                                   "path": "/tmp/event2"
+                                                 }
+                                               }
+                                             ],
+                                             "typeRef": "event2Ref"
+                                           }
+                                         ]
+                                       }}
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : my-external-asset-id
 HardwareRevision                     : 1.0
@@ -86,7 +311,33 @@ Id                                   : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-x
                                        /microsoft.deviceregistry/namespaces/my-namespace/assets/my-asset
 LastTransitionTime                   :
 Location                             : eastus
-ManagementGroup                      :
+ManagementGroup                      : {{
+                                         "name": "managementGroup1",
+                                         "managementGroupConfiguration": "{\"retryCount\":10,\"retryBackoffInterval\":15}",
+                                         "typeRef": "managementGroup1TypeRef",
+                                         "defaultTopic": "/contoso/managementGroup1",
+                                         "defaultTimeoutInSeconds": 100,
+                                         "actions": [
+                                           {
+                                             "name": "action1",
+                                             "actionConfiguration": "{\"retryCount\":5,\"retryBackoffInterval\":5}",
+                                             "targetUri": "/onvif/device_service?ONVIFProfile=Profile1",
+                                             "typeRef": "action1TypeRef",
+                                             "topic": "/contoso/managementGroup1/action1",
+                                             "actionType": "Call",
+                                             "timeoutInSeconds": 60
+                                           },
+                                           {
+                                             "name": "action2",
+                                             "actionConfiguration": "{\"retryCount\":5,\"retryBackoffInterval\":5}",
+                                             "targetUri": "/onvif/device_service?ONVIFProfile=Profile2",
+                                             "typeRef": "action2TypeRef",
+                                             "topic": "/contoso/managementGroup1/action2",
+                                             "actionType": "Call",
+                                             "timeoutInSeconds": 60
+                                           }
+                                         ]
+                                       }}
 Manufacturer                         : Contoso
 ManufacturerUri                      : https://www.contoso.com/manufacturerUri
 Message                              :
@@ -98,10 +349,37 @@ ResourceGroupName                    : my-resource-group
 SerialNumber                         : 64-103816-519918-8
 SoftwareRevision                     : 2.0
 StatusDataset                        :
-StatusEvent                          :
+StatusEventGroup                     :
 StatusManagementGroup                :
 StatusStream                         :
-Stream                               :
+Stream                               : {{
+                                         "name": "stream1",
+                                         "streamConfiguration": "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}",
+                                         "typeRef": "stream1TypeRef",
+                                         "destinations": [
+                                           {
+                                             "target": "Storage",
+                                             "configuration": {
+                                               "path": "/tmp/stream1"
+                                             }
+                                           }
+                                         ]
+                                       }, {
+                                         "name": "stream2",
+                                         "streamConfiguration": "{\"publishingInterval\":8,\"samplingInterval\":8,\"queueSize\":4}",
+                                         "typeRef": "stream2TypeRef",
+                                         "destinations": [
+                                           {
+                                             "target": "Mqtt",
+                                             "configuration": {
+                                               "topic": "/contoso/testStream2",
+                                               "retain": "Never",
+                                               "qos": "Qos0",
+                                               "ttl": 7200
+                                             }
+                                           }
+                                         ]
+                                       }}
 SystemDataCreatedAt                  : 7/25/2025 4:15:11 AM
 SystemDataCreatedBy                  : 6ce3f5ab-5f16-4633-a660-21ceb8d74c01
 SystemDataCreatedByType              : Application
@@ -145,9 +423,9 @@ DiscoveredAssetRef                   :
 DisplayName                          : fooasset
 DocumentationUri                     :
 Enabled                              : True
-Event                                :
+EventGroup                           :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
 HardwareRevision                     :
@@ -167,7 +445,7 @@ ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
-StatusEvent                          :
+StatusEventGroup                     :
 StatusManagementGroup                :
 StatusStream                         :
 Stream                               :
@@ -215,9 +493,9 @@ DiscoveredAssetRef                   :
 DisplayName                          : fooasset
 DocumentationUri                     :
 Enabled                              : True
-Event                                :
+EventGroup                           :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 8e2ffbae-11d8-4fdf-bcf6-fc9afbdd764d
 HardwareRevision                     :
@@ -237,7 +515,7 @@ ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
-StatusEvent                          :
+StatusEventGroup                     :
 StatusManagementGroup                :
 StatusStream                         :
 Stream                               :
@@ -566,12 +844,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Event
-Array of events that are part of the asset.
-Each event can have per-event configuration.
+### -EventGroup
+Array of event groups that are part of the asset.
+Each event group can have per-event group configuration.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -925,6 +1203,677 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset
+
+## NOTES
+
+## RELATED LINKS
+
+## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssetName
+The name of the asset.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssetTypeRef
+URIs or type definition IDs.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Attribute
+A set of key-value pairs that contain custom attributes set by the customer.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Dataset
+Array of datasets that are part of the asset.
+Each dataset describes the data points that make up the set.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceDataset[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultDatasetsConfiguration
+Stringified JSON that contains connector-specific default configuration for all datasets.
+Each dataset can have its own configuration that overrides the default settings here.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultDatasetsDestination
+Default destinations for a dataset.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IDatasetDestination[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultEventsConfiguration
+Stringified JSON that contains connector-specific default configuration for all events.
+Each event can have its own configuration that overrides the default settings here.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultEventsDestination
+Default destinations for an event.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IEventDestination[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultManagementGroupsConfiguration
+Stringified JSON that contains connector-specific default configuration for all management groups.
+Each management group can have its own configuration that overrides the default settings here.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultStreamsConfiguration
+Stringified JSON that contains connector-specific default configuration for all streams.
+Each stream can have its own configuration that overrides the default settings here.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultStreamsDestination
+Default destinations for a stream.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IStreamDestination[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+Human-readable description of the asset.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeviceRefDeviceName
+Name of the device resource
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeviceRefEndpointName
+The name of endpoint to use
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiscoveredAssetRef
+Reference to a list of discovered assets.
+Populated only if the asset has been created from discovery flow.
+Discovered asset names must be provided.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+Human-readable display name.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DocumentationUri
+Asset documentation reference.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Enabled
+Enabled/disabled status of the asset.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EventGroup
+Array of event groups that are part of the asset.
+Each event group can have per-event group configuration.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedLocationName
+The extended location name.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedLocationType
+The extended location type.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExternalAssetId
+Asset ID provided by the customer.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HardwareRevision
+Asset hardware revision number.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagementGroup
+Array of management groups that are part of the asset.
+Each management group can have a per-group configuration.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IManagementGroup[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Manufacturer
+Asset manufacturer.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManufacturerUri
+Asset manufacturer URI.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Model
+Asset model.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The name of the namespace.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProductCode
+Asset product code.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SerialNumber
+Asset serial number.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftwareRevision
+Asset software revision number.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Stream
+Array of streams that are part of the asset.
+Each stream can have a per-stream configuration.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceStream[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
 
 ## NOTES
 

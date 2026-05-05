@@ -13,8 +13,8 @@ Create an in-memory object for StorageDiscoveryScope.
 ## SYNTAX
 
 ```
-New-AzStorageDiscoveryScopeObject -DisplayName <String> -ResourceType <String[]> [-Tag <ITags>]
- [-TagKeysOnly <String[]>] [<CommonParameters>]
+New-AzStorageDiscoveryScopeObject -DisplayName <String> -ResourceType <String[]>
+ [-Tag <IStorageDiscoveryScopeTags>] [-TagKeysOnly <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScopeTags
 Parameter Sets: (All)
 Aliases:
 

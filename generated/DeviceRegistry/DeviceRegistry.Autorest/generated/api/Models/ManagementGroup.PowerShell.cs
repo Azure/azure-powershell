@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IManagementGroupInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IManagementGroupInternal)this).Name, global::System.Convert.ToString);
             }
+            if (content.Contains("DataSource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IManagementGroupInternal)this).DataSource = (string) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IManagementGroupInternal)this).DataSource, global::System.Convert.ToString);
+            }
             if (content.Contains("Configuration"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IManagementGroupInternal)this).Configuration = (string) content.GetValueForProperty("Configuration",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IManagementGroupInternal)this).Configuration, global::System.Convert.ToString);
@@ -153,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models
             if (content.Contains("Name"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IManagementGroupInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IManagementGroupInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataSource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IManagementGroupInternal)this).DataSource = (string) content.GetValueForProperty("DataSource",((Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.IManagementGroupInternal)this).DataSource, global::System.Convert.ToString);
             }
             if (content.Contains("Configuration"))
             {

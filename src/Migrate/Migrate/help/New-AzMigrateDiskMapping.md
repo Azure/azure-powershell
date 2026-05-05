@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 schema: 2.0.0
@@ -13,8 +13,8 @@ Creates a new disk mapping
 ## SYNTAX
 
 ```
-New-AzMigrateDiskMapping -DiskID <String> -DiskType <String> -IsOSDisk <String>
- [-DiskEncryptionSetID <String>] [<CommonParameters>]
+New-AzMigrateDiskMapping -DiskID <String> -IsOSDisk <String> -DiskType <String> [-DiskEncryptionSetID <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,8 +32,6 @@ DiskEncryptionSetId DiskId DiskType     IsOSDisk LogStorageAccountId LogStorageA
 ------------------- ------ --------     -------- ------------------- ------------------------------   
                     a      Standard_LRS true
 ```
-
-
 
 ### Example 2: Make Premium V2 disks
 ```powershell
@@ -117,9 +115,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtDiskInput
 
 ## NOTES
 
 ## RELATED LINKS
-

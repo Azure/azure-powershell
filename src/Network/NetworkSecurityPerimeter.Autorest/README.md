@@ -34,7 +34,7 @@ require:
 commit: main
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/c9c3e8b9ec547d82c487f36f1126228f9eef0e79/specification/network/resource-manager/Microsoft.Network/stable/2024-07-01/networkSecurityPerimeter.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/b6d0dc8ef749d50348f0e27f5eee38ac3e5469d0/specification/network/resource-manager/Microsoft.Network/stable/2025-05-01/networkSecurityPerimeter.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -106,6 +106,10 @@ directive:
       subject-prefix: ''
   - where:
       subject: NetworkSecurityPerimeterAssociableResourceType
+    set:
+      subject-prefix: ''
+  - where:
+      subject: NetworkSecurityPerimeterServiceTag
     set:
       subject-prefix: ''
   - where:

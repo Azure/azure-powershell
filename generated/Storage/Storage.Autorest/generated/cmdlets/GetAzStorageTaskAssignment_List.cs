@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"List all the storage task assignments in an account")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments", ApiVersion = "2025-06-01")]
     public partial class GetAzStorageTaskAssignment_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IContext
@@ -111,22 +111,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>Backing field for <see cref="Maxpagesize" /> property.</summary>
-        private int _maxpagesize;
-
-        /// <summary>
-        /// Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.",
-        SerializedName = @"$maxpagesize",
-        PossibleTypes = new [] { typeof(int) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Storage.ParameterCategory.Query)]
-        public int Maxpagesize { get => this._maxpagesize; set => this._maxpagesize = value; }
-
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -173,12 +157,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>The ID of the target subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The ID of the target subscription.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(
@@ -189,17 +173,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Storage.ParameterCategory.Path)]
         public string[] SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
+        /// <summary>Backing field for <see cref="Top" /> property.</summary>
+        private int _top;
+
+        /// <summary>
+        /// Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Optional, specifies the maximum number of storage task assignment Ids to be included in the list response.",
+        SerializedName = @"$top",
+        PossibleTypes = new [] { typeof(int) })]
+        [global::System.Management.Automation.Alias("Maxpagesize")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Storage.ParameterCategory.Query)]
+        public int Top { get => this._top; set => this._top = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated">Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
@@ -405,13 +406,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.StorageTaskAssignmentsList(SubscriptionId, ResourceGroupName, AccountName, this.InvocationInformation.BoundParameters.ContainsKey("Maxpagesize") ? Maxpagesize : default(int?), onOk, onDefault, this, Pipeline);
+                        await this.Client.StorageTaskAssignmentsList(SubscriptionId, ResourceGroupName, AccountName, this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?), onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,AccountName=AccountName,Maxpagesize=this.InvocationInformation.BoundParameters.ContainsKey("Maxpagesize") ? Maxpagesize : default(int?)})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,AccountName=AccountName,Top=this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?)})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -449,12 +450,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated">Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -471,7 +472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponseAutoGenerated>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }

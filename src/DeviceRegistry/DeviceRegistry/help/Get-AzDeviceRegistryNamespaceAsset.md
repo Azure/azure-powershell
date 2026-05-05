@@ -91,9 +91,9 @@ DiscoveredAssetRef                   :
 DisplayName                          : test-asset-123
 DocumentationUri                     :
 Enabled                              : True
-Event                                :
+EventGroup                           :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :
@@ -112,7 +112,7 @@ ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
-StatusEvent                          :
+StatusEventGroup                     :
 StatusManagementGroup                :
 StatusStream                         :
 Stream                               :
@@ -159,9 +159,9 @@ DiscoveredAssetRef                   :
 DisplayName                          : test-asset-123
 DocumentationUri                     :
 Enabled                              : True
-Event                                :
+EventGroup                           :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :
@@ -180,7 +180,7 @@ ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
-StatusEvent                          :
+StatusEventGroup                     :
 StatusManagementGroup                :
 StatusStream                         :
 Stream                               :
@@ -233,9 +233,9 @@ DiscoveredAssetRef                   :
 DisplayName                          : test-asset-123
 DocumentationUri                     :
 Enabled                              : True
-Event                                :
+EventGroup                           :
 ExtendedLocationName                 : /subscriptions/xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/adr-pwsh-test-rg/providers
-                                       /Microsoft.ExtendedLocation/customLocations/location-2pnh4
+                                       /Microsoft.ExtendedLocation/customLocations/location-mkzkq
 ExtendedLocationType                 : CustomLocation
 ExternalAssetId                      : 63174c22-6858-4d69-b515-68b641ad537e
 HardwareRevision                     :
@@ -254,7 +254,7 @@ ResourceGroupName                    : my-resource-group
 SerialNumber                         :
 SoftwareRevision                     :
 StatusDataset                        :
-StatusEvent                          :
+StatusEventGroup                     :
 StatusManagementGroup                :
 StatusStream                         :
 Stream                               :

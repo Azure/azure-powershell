@@ -20,6 +20,20 @@
 
 ## Upcoming Release
 
+## Version 6.0.2
+* Announced upcoming breaking changes for all `Az*CdnEdgeAction*` cmdlets and the `SubjectAlternativeName` parameter of `New-AzCdnSecretCustomerCertificateParametersObject`, which will be removed in a future release.
+
+## Version 6.0.1
+* Bug fix for https://github.com/Azure/azure-powershell/issues/29231
+
+## Version 6.0.0
+* Added support for edge action
+* Upgraded Api version to 2025-06-01
+
+## Version 5.0.1
+* Fixed content types comtent bug with null content
+* Added breaking change message for 2025-06-01
+
 ## Version 5.0.0
 * Upgraded Api version to 2025-04-15
 * Added support for cipher

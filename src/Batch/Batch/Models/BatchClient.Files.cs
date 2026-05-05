@@ -266,47 +266,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
             }
         }
-
-        /// <summary>
-        /// Downloads a Remote Desktop Protocol file using the specified options.
-        /// </summary>
-        /// <param name="options">The download options.</param>
-        public void DownloadRemoteDesktopProtocolFile(DownloadRemoteDesktopProtocolFileOptions options)
-        {
-            if (options == null)
-            {
-                throw new ArgumentNullException("options");
-            }
-
-            if (options.Stream != null)
-            {
-                // Don't dispose supplied Stream
-                CopyRDPStream(options.Stream, options.Context.BatchOMClient, options.PoolId, options.ComputeNodeId, options.ComputeNode, options.AdditionalBehaviors);
-            }
-            else
-            {
-                string computeNodeId = options.ComputeNode == null ? options.ComputeNodeId : options.ComputeNode.Id;
-                WriteVerbose(string.Format(Resources.DownloadingRDPFile, computeNodeId, options.DestinationPath));
-
-                using (FileStream fs = new FileStream(options.DestinationPath, FileMode.Create))
-                {
-                    CopyRDPStream(fs, options.Context.BatchOMClient, options.PoolId, options.ComputeNodeId, options.ComputeNode, options.AdditionalBehaviors);
-                }
-            }
-        }
-
-        private void CopyRDPStream(Stream destinationStream, Microsoft.Azure.Batch.BatchClient client, string poolId, string computeNodeId,
-            PSComputeNode computeNode, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-        {
-            if (computeNode == null)
-            {
-                PoolOperations poolOperations = client.PoolOperations;
-                poolOperations.GetRDPFile(poolId, computeNodeId, destinationStream, additionalBehaviors);
-            }
-            else
-            {
-                computeNode.omObject.GetRDPFile(destinationStream, additionalBehaviors);
-            }
-        }
     }
 }

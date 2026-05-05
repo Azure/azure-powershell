@@ -15,31 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFunctionApp.ACA'))
 }
 
 
-Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
+Describe 'New-AzFunctionApp ACA Tests' -Tag 'LiveOnly' {
     
     BeforeAll {
 
-        $resourceGroupNameACA = "Functions-ACA-Test-" + (GetRandomStringValue -len 4)
-        $locationACA = "WestCentralUS"
-        $storageAccountNameACA = "funcacastotorage" + (GetRandomStringValue -len 4)
-        $workSpaceACAName = "workspace-azpstest" + (GetRandomStringValue -len 4)
-        $environmentACAName = "azps-env-test" + (GetRandomStringValue -len 3)
-        $functionAppACAName = "test1appaca" + (GetRandomStringValue -len 4)
+        $resourceGroupNameACA = $env.resourceGroupNameACA
+        $locationACA = $env.locationACA
+        $storageAccountNameACA = $env.storageAccountNameACA
+        $workSpaceACAName = $env.workSpaceACAName
+        $environmentACAName = $env.environmentACAName
+        $acaTestRunId = $env.acaTestRunId
 
+        Write-Host "acaTestRunId: $($acaTestRunId)"
         Write-Host "resourceGroupNameACA: $($resourceGroupNameACA)"
         Write-Host "locationACA: $($locationACA)"
         Write-Host "storageAccountNameACA: $($storageAccountNameACA)"
         Write-Host "workSpaceACAName: $($workSpaceACAName)"
         Write-Host "environmentACAName: $($environmentACAName)"
-        Write-Host "functionAppACAName: $($functionAppACAName)"
 
-        # Create test resources
-        Write-Host ""
-        Write-Host "Create resource group and storage account." -ForegroundColor Yellow
-        New-AzResourceGroup -Name $resourceGroupNameACA -Location $locationACA 
-        New-AzStorageAccount -Name $storageAccountNameACA -ResourceGroupName $resourceGroupNameACA -Location $locationACA -SkuName "Standard_GRS" | Out-Null
-        
-        Write-Host ""
         Write-Host "Create Log Analytics workspace." -ForegroundColor Yellow
         New-AzOperationalInsightsWorkspace -ResourceGroupName $resourceGroupNameACA `
                                            -Name $workSpaceACAName `
@@ -66,13 +59,10 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
                                      -WorkloadProfile $workloadProfile | Out-Null
     }
 
-    AfterAll {
-        
-        Write-Host "Removing test resources." -ForegroundColor Yellow
-        Remove-AzResourceGroup -Name $resourceGroupNameACA
-    }
-
     It "Creating a function app ACA should throw an error when ResourceCpu is specified without ResourceMemory." {
+
+        $functionAppACAName = "test1appaca1" + $acaTestRunId
+        Write-Host "functionAppACAName: $($functionAppACAName)"
 
         $result = {
             New-AzFunctionApp -ResourceGroupName $resourceGroupNameACA `
@@ -91,6 +81,9 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
 
     It "Creating a function app ACA should throw an error when ResourceMemory is specified without ResourceCpu." {
 
+        $functionAppACAName = "test1appaca2" + $acaTestRunId
+        Write-Host "functionAppACAName: $($functionAppACAName)"
+
         $result = {
             New-AzFunctionApp -ResourceGroupName $resourceGroupNameACA `
                               -Name $functionAppACAName `
@@ -107,6 +100,9 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
     }
 
     It "Creating a function app ACA should throw an error when ResourceMemory is not specified in Gi." {
+
+        $functionAppACAName = "test1appaca3" + $acaTestRunId
+        Write-Host "functionAppACAName: $($functionAppACAName)"
 
         $result = {
             New-AzFunctionApp -ResourceGroupName $resourceGroupNameACA `
@@ -126,17 +122,29 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
 
     It "Creating a function app ACA with minimum required parameters should succeed." {
 
+        $functionAppACAName = "test1appaca4" + $acaTestRunId
+        Write-Host "functionAppACAName: $($functionAppACAName)"
+
         $expectedLinuxFxVersion = "DOCKER|mcr.microsoft.com/azure-functions/dotnet8-quickstart-demo:1.0"
+
+        Write-Verbose "Resource group name: $resourceGroupNameACA" -Verbose
+        Write-Verbose "Storage account name: $storageAccountNameACA" -Verbose
+        Write-Verbose "Environment name: $environmentACAName" -Verbose
+        Write-Verbose "Workload profile name: $($workloadProfile.Name)" -Verbose
 
         try
         {
+            Write-Verbose "Creating function app ACA..." -Verbose
             New-AzFunctionApp -ResourceGroupName $resourceGroupNameACA `
                               -Name $functionAppACAName `
                               -StorageAccountName $storageAccountNameACA `
                               -Environment $environmentACAName `
                               -WorkloadProfileName $workloadProfile.Name
 
+            Write-Verbose "Retrieving function app ACA..." -Verbose
             $functionApp = Get-AzFunctionApp -Name $functionAppACAName -ResourceGroupName $resourceGroupNameACA
+
+            Write-Verbose "Function app ACA retrieved. Validating properties..." -Verbose
             $functionApp.OSType | Should -Be "Linux"
             $functionApp.Runtime | Should -Be "Container App"
             $functionApp.SiteConfig.LinuxFxVersion | Should -Be $expectedLinuxFxVersion
@@ -155,6 +163,9 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
 
     It "Creating a function app ACA with all options should succeed." {
 
+        $functionAppACAName = "test1appaca5" + $acaTestRunId
+        Write-Host "functionAppACAName: $($functionAppACAName)"
+
         $expectedLinuxFxVersion = "DOCKER|mcr.microsoft.com/azure-functions/dotnet8-quickstart-demo:1.0"
         $resourceCpu = 1
         $resourceMemory = "2.0Gi"
@@ -163,8 +174,18 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
 
         $expectedResourceConfigMemory = ([double]::Parse($resourceMemory.Substring(0, $resourceMemory.Length - 2))).ToString() + "Gi"
 
+        Write-Verbose "Resource group name: $resourceGroupNameACA" -Verbose
+        Write-Verbose "Storage account name: $storageAccountNameACA" -Verbose
+        Write-Verbose "Environment name: $environmentACAName" -Verbose
+        Write-Verbose "Workload profile name: $($workloadProfile.Name)" -Verbose
+        Write-Verbose "Resource CPU: $resourceCpu" -Verbose
+        Write-Verbose "Resource Memory: $resourceMemory" -Verbose
+        Write-Verbose "Scale minimum replica: $scaleMinReplica" -Verbose
+        Write-Verbose "Scale maximum replica: $scaleMaxReplica" -Verbose
+
         try
         {
+            Write-Verbose "Creating function app ACA..." -Verbose
             New-AzFunctionApp -ResourceGroupName $resourceGroupNameACA `
                               -Name $functionAppACAName `
                               -StorageAccountName $storageAccountNameACA `
@@ -175,7 +196,10 @@ Describe 'New-AzFunctionApp ACA Tests' -Tags 'LiveOnly' {
                               -ScaleMinReplica $scaleMinReplica `
                               -ScaleMaxReplica $scaleMaxReplica
 
+            Write-Verbose "Retrieving function app ACA..." -Verbose
             $functionApp = Get-AzFunctionApp -Name $functionAppACAName -ResourceGroupName $resourceGroupNameACA
+
+            Write-Verbose "Function app ACA retrieved. Validating properties..." -Verbose
             $functionApp.OSType | Should -Be "Linux"
             $functionApp.Runtime | Should -Be "Container App"
             $functionApp.SiteConfig.LinuxFxVersion | Should -Be $expectedLinuxFxVersion

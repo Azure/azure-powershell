@@ -28,14 +28,16 @@ For information on how to develop for `Az.Storage`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 2219e4e4e0409bcb88a2b82e8febe1a3baecaf18
+commit: ec3df311a63c6e653824b4018bb1a39d483bf9fc
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/storage.json
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/file.json
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/storageTaskAssignments.json
+  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-06-01/openapi.json
+  # - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storage.json
+  # - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/file.json
+  # - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storageTaskAssignments.json
+  # - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/networkSecurityPerimeter.json
 
 # For new RP, the version is 0.1.0
 module-version: 5.9.1
@@ -43,12 +45,7 @@ module-version: 5.9.1
 title: Storage
 subject-prefix: $(service-name)
 nested-object-to-string: true
-identity-correction-for-post: true
-
-# Pin to an old version to workaround a regression issue of generator. link to the issue - blabla
-use-extension:
-  "@autorest/powershell": "4.0.734"
- 
+identity-correction-for-post: true 
 
 directive:
   - where:
@@ -77,6 +74,12 @@ directive:
       parameter-name: StorageAccountMigrationDetailTargetSkuName
     set:
       parameter-name: TargetSku
+  - where:
+      verb: Get
+      subject: ^StorageTaskAssignment$
+      parameter-name: Top
+    set:
+      alias: Maxpagesize
   - where:
       subject: ^FileServiceUsage$
       parameter-name: AccountName
@@ -111,7 +114,7 @@ directive:
     set:
       property-name: StorageAccountLimitMaxProvisionedIops
   - where:
-      subject: ^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Sku$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
+      subject: .*Blob.*|.*Table.*|.*Queue.*|^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
     remove: true
   - where:
       parameter-name: ParameterEndBy
@@ -153,21 +156,25 @@ directive:
       property-name: ParameterStartOn
     set:
       property-name: StartOn
-  - from: storageTaskAssignments.json
+  - from: openapi.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/reports"].get
     transform: > 
       $["operationId"] = "StorageTaskAssignmentInstancesReport_List"
   # Renaming the operationId to StorageTaskAssignmentInstancesReport_Get, but the operation actually lists all the reports under a specific storage task assignment. 
-  - from: storageTaskAssignments.json
+  - from: openapi.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports"].get
     transform: > 
       $["operationId"] = "StorageTaskAssignmentInstancesReport_Get"
-  - from: storageTaskAssignments.json
+  - from: openapi.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/reports"].get
     transform: > 
       $["operationId"] = "StorageTaskAssignmentInstancesReport_Get"
   - where: 
       model-name: StorageTaskReportInstance
+    set:
+      suppress-format: true
+  - where:
+      model-name: ^SkuInformation$
     set:
       suppress-format: true
 ```

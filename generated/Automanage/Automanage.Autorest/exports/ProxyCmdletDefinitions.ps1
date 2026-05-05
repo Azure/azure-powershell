@@ -25,12 +25,12 @@ Get-AzAutomanageBestPractice
 Get-AzAutomanageBestPractice -Name AzureBestPracticesProduction
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IBestPractice
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IBestPractice
 .Link
 https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanagebestpractice
 #>
 function Get-AzAutomanageBestPractice {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IBestPractice])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IBestPractice])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -96,6 +96,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -125,6 +134,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -183,11 +195,24 @@ Get-AzAutomanageConfigProfileAssignment -ResourceGroupName automangerg -VMName a
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CONFIGURATIONPROFILEASSIGNMENTINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
 
 INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [BestPracticeName <String>]: The Automanage best practice name.
@@ -205,7 +230,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofileassignment
 #>
 function Get-AzAutomanageConfigProfileAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment])]
 [CmdletBinding(DefaultParameterSetName='List2', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -230,6 +255,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityConfigurationProfileAssignment', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
     # The name of the virtual machine.
@@ -239,8 +265,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityConfigurationProfileAssignment', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ConfigurationProfileAssignmentInputObject},
 
     [Parameter(ParameterSetName='List3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
@@ -310,6 +341,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -331,22 +371,21 @@ begin {
         $mapping = @{
             Get = 'Az.Automanage.private\Get-AzAutomanageConfigProfileAssignment_Get';
             GetViaIdentity = 'Az.Automanage.private\Get-AzAutomanageConfigProfileAssignment_GetViaIdentity';
+            GetViaIdentityConfigurationProfileAssignment = 'Az.Automanage.private\Get-AzAutomanageConfigProfileAssignment_GetViaIdentityConfigurationProfileAssignment';
             List1 = 'Az.Automanage.private\Get-AzAutomanageConfigProfileAssignment_List1';
             List2 = 'Az.Automanage.private\Get-AzAutomanageConfigProfileAssignment_List2';
             List3 = 'Az.Automanage.private\Get-AzAutomanageConfigProfileAssignment_List3';
             List4 = 'Az.Automanage.private\Get-AzAutomanageConfigProfileAssignment_List4';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = 'default'
-        }
-        if (('Get', 'List1', 'List2', 'List3', 'List4') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List1', 'List2', 'List3', 'List4') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -355,6 +394,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -413,11 +455,24 @@ Get-AzAutomanageConfigProfileHciAssignment -ResourceGroupName automangerg -Clust
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
 
 INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [BestPracticeName <String>]: The Automanage best practice name.
@@ -435,7 +490,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofilehciassignment
 #>
 function Get-AzAutomanageConfigProfileHciAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -462,8 +517,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityCluster', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -521,6 +581,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -542,18 +611,17 @@ begin {
         $mapping = @{
             Get = 'Az.Automanage.private\Get-AzAutomanageConfigProfileHciAssignment_Get';
             GetViaIdentity = 'Az.Automanage.private\Get-AzAutomanageConfigProfileHciAssignment_GetViaIdentity';
+            GetViaIdentityCluster = 'Az.Automanage.private\Get-AzAutomanageConfigProfileHciAssignment_GetViaIdentityCluster';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = 'default'
-        }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Get', 'GetViaIdentityCluster') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -562,6 +630,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -620,7 +691,7 @@ Get-AzAutomanageConfigProfileHcrpAssignment -ResourceGroupName automangerg -Mach
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -638,11 +709,24 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
+
+MACHINEINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
 .Link
 https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofilehcrpassignment
 #>
 function Get-AzAutomanageConfigProfileHcrpAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -669,8 +753,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMachine', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${MachineInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -728,6 +817,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -749,18 +847,17 @@ begin {
         $mapping = @{
             Get = 'Az.Automanage.private\Get-AzAutomanageConfigProfileHcrpAssignment_Get';
             GetViaIdentity = 'Az.Automanage.private\Get-AzAutomanageConfigProfileHcrpAssignment_GetViaIdentity';
+            GetViaIdentityMachine = 'Az.Automanage.private\Get-AzAutomanageConfigProfileHcrpAssignment_GetViaIdentityMachine';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = 'default'
-        }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Get', 'GetViaIdentityMachine') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -769,6 +866,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -827,7 +927,7 @@ Get-AzAutomanageConfigProfile -ResourceGroupName automangerg -Name lucas-best-pr
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfile
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -849,7 +949,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofile
 #>
 function Get-AzAutomanageConfigProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfile])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -880,7 +980,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -939,6 +1038,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -963,9 +1071,7 @@ begin {
             List = 'Az.Automanage.private\Get-AzAutomanageConfigProfile_List';
             List1 = 'Az.Automanage.private\Get-AzAutomanageConfigProfile_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -979,6 +1085,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1035,11 +1144,37 @@ Get-AzAutomanageHciReport -ResourceGroupName automangerg -ClusterName aglinuxclu
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IReport
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+
+CONFIGURATIONPROFILEASSIGNMENTINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
 
 INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [BestPracticeName <String>]: The Automanage best practice name.
@@ -1057,7 +1192,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanagehcireport
 #>
 function Get-AzAutomanageHciReport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IReport])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1068,6 +1203,8 @@ param(
     ${ClusterName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityCluster', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityConfigurationProfileAssignment', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
     # The report name.
@@ -1093,8 +1230,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityCluster', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityConfigurationProfileAssignment', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ConfigurationProfileAssignmentInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1152,6 +1300,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1173,19 +1330,19 @@ begin {
         $mapping = @{
             Get = 'Az.Automanage.private\Get-AzAutomanageHciReport_Get';
             GetViaIdentity = 'Az.Automanage.private\Get-AzAutomanageHciReport_GetViaIdentity';
+            GetViaIdentityCluster = 'Az.Automanage.private\Get-AzAutomanageHciReport_GetViaIdentityCluster';
+            GetViaIdentityConfigurationProfileAssignment = 'Az.Automanage.private\Get-AzAutomanageHciReport_GetViaIdentityConfigurationProfileAssignment';
             List = 'Az.Automanage.private\Get-AzAutomanageHciReport_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ConfigProfileAssignmentName')) {
-            $PSBoundParameters['ConfigProfileAssignmentName'] = 'default'
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Get', 'GetViaIdentityCluster', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ConfigProfileAssignmentName') ) {
+            $PSBoundParameters['ConfigProfileAssignmentName'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1194,6 +1351,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1250,13 +1410,39 @@ Get-AzAutomanageHcrpReport -ResourceGroupName automangerg -MachineName aglinuxma
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IReport
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CONFIGURATIONPROFILEASSIGNMENTINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+
 INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+
+MACHINEINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [BestPracticeName <String>]: The Automanage best practice name.
   [ClusterName <String>]: The name of the Arc machine.
   [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
@@ -1272,7 +1458,7 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanagehcrpreport
 #>
 function Get-AzAutomanageHcrpReport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IReport])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1283,6 +1469,8 @@ param(
     ${MachineName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityConfigurationProfileAssignment', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityMachine', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
     # The report name.
@@ -1308,8 +1496,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityConfigurationProfileAssignment', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ConfigurationProfileAssignmentInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMachine', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${MachineInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1367,6 +1566,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1388,19 +1596,19 @@ begin {
         $mapping = @{
             Get = 'Az.Automanage.private\Get-AzAutomanageHcrpReport_Get';
             GetViaIdentity = 'Az.Automanage.private\Get-AzAutomanageHcrpReport_GetViaIdentity';
+            GetViaIdentityConfigurationProfileAssignment = 'Az.Automanage.private\Get-AzAutomanageHcrpReport_GetViaIdentityConfigurationProfileAssignment';
+            GetViaIdentityMachine = 'Az.Automanage.private\Get-AzAutomanageHcrpReport_GetViaIdentityMachine';
             List = 'Az.Automanage.private\Get-AzAutomanageHcrpReport_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ConfigProfileAssignmentName')) {
-            $PSBoundParameters['ConfigProfileAssignmentName'] = 'default'
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Get', 'GetViaIdentityMachine', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ConfigProfileAssignmentName') ) {
+            $PSBoundParameters['ConfigProfileAssignmentName'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1409,6 +1617,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1465,13 +1676,39 @@ Get-AzAutomanageReport -ResourceGroupName automangerg -VMName aglinuxvm -Name cb
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IReport
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CONFIGURATIONPROFILEASSIGNMENTINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+
 INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+
+REPORTINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [BestPracticeName <String>]: The Automanage best practice name.
   [ClusterName <String>]: The name of the Arc machine.
   [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
@@ -1487,10 +1724,11 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanagereport
 #>
 function Get-AzAutomanageReport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IReport])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityConfigurationProfileAssignment', Mandatory)]
     [Alias('ReportName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
@@ -1514,6 +1752,8 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityConfigurationProfileAssignment', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityReport', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
@@ -1524,8 +1764,19 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityConfigurationProfileAssignment', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ConfigurationProfileAssignmentInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityReport', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ReportInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1583,6 +1834,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1604,19 +1864,19 @@ begin {
         $mapping = @{
             Get = 'Az.Automanage.private\Get-AzAutomanageReport_Get';
             GetViaIdentity = 'Az.Automanage.private\Get-AzAutomanageReport_GetViaIdentity';
+            GetViaIdentityConfigurationProfileAssignment = 'Az.Automanage.private\Get-AzAutomanageReport_GetViaIdentityConfigurationProfileAssignment';
+            GetViaIdentityReport = 'Az.Automanage.private\Get-AzAutomanageReport_GetViaIdentityReport';
             List = 'Az.Automanage.private\Get-AzAutomanageReport_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ConfigProfileAssignmentName')) {
-            $PSBoundParameters['ConfigProfileAssignmentName'] = 'default'
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ConfigProfileAssignmentName') ) {
+            $PSBoundParameters['ConfigProfileAssignmentName'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1625,6 +1885,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1670,46 +1933,88 @@ end {
 
 <#
 .Synopsis
-Creates an association between a VM and Automanage configuration profile
+Create an association between a VM and Automanage configuration profile
 .Description
-Creates an association between a VM and Automanage configuration profile
+Create an association between a VM and Automanage configuration profile
 .Example
 New-AzAutomanageConfigProfileAssignment -ResourceGroupName automangerg -VMName aglinuxvm -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CONFIGURATIONPROFILEASSIGNMENTINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
 .Link
 https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofileassignment
 #>
 function New-AzAutomanageConfigProfileAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
     # The name of the virtual machine.
     ${VMName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityConfigurationProfileAssignmentExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ConfigurationProfileAssignmentInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityConfigurationProfileAssignmentExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
     [System.String]
     # The Automanage configurationProfile ARM Resource URI.
     ${ConfigurationProfile},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1767,6 +2072,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1787,18 +2101,19 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Automanage.private\New-AzAutomanageConfigProfileAssignment_CreateExpanded';
+            CreateViaIdentityConfigurationProfileAssignmentExpanded = 'Az.Automanage.private\New-AzAutomanageConfigProfileAssignment_CreateViaIdentityConfigurationProfileAssignmentExpanded';
+            CreateViaJsonFilePath = 'Az.Automanage.private\New-AzAutomanageConfigProfileAssignment_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Automanage.private\New-AzAutomanageConfigProfileAssignment_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = 'default'
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1807,6 +2122,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1852,46 +2170,90 @@ end {
 
 <#
 .Synopsis
-Creates an association between a AzureStackHCI cluster and Automanage configuration profile
+Create an association between a AzureStackHCI cluster and Automanage configuration profile
 .Description
-Creates an association between a AzureStackHCI cluster and Automanage configuration profile
+Create an association between a AzureStackHCI cluster and Automanage configuration profile
 .Example
 New-AzAutomanageConfigProfileHciAssignment -ResourceGroupName automangerg -ClusterName aglinuxcluster -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
 .Link
 https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehciassignment
 #>
 function New-AzAutomanageConfigProfileHciAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
     # The name of the Arc machine.
     ${ClusterName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
     [System.String]
     # The Automanage configurationProfile ARM Resource URI.
     ${ConfigurationProfile},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1949,6 +2311,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1969,18 +2340,19 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Automanage.private\New-AzAutomanageConfigProfileHciAssignment_CreateExpanded';
+            CreateViaIdentityClusterExpanded = 'Az.Automanage.private\New-AzAutomanageConfigProfileHciAssignment_CreateViaIdentityClusterExpanded';
+            CreateViaJsonFilePath = 'Az.Automanage.private\New-AzAutomanageConfigProfileHciAssignment_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Automanage.private\New-AzAutomanageConfigProfileHciAssignment_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = 'default'
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('CreateExpanded', 'CreateViaIdentityClusterExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1989,6 +2361,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2034,46 +2409,90 @@ end {
 
 <#
 .Synopsis
-Creates an association between a ARC machine and Automanage configuration profile
+Create an association between a ARC machine and Automanage configuration profile
 .Description
-Creates an association between a ARC machine and Automanage configuration profile
+Create an association between a ARC machine and Automanage configuration profile
 .Example
 New-AzAutomanageConfigProfileHcrpAssignment -ResourceGroupName automangerg -MachineName aglinuxmachines -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+MACHINEINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
 .Link
 https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofilehcrpassignment
 #>
 function New-AzAutomanageConfigProfileHcrpAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfileAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
     # The name of the Arc machine.
     ${MachineName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${MachineInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityMachineExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
     [System.String]
     # The Automanage configurationProfile ARM Resource URI.
     ${ConfigurationProfile},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2131,6 +2550,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2151,18 +2579,19 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Automanage.private\New-AzAutomanageConfigProfileHcrpAssignment_CreateExpanded';
+            CreateViaIdentityMachineExpanded = 'Az.Automanage.private\New-AzAutomanageConfigProfileHcrpAssignment_CreateViaIdentityMachineExpanded';
+            CreateViaJsonFilePath = 'Az.Automanage.private\New-AzAutomanageConfigProfileHcrpAssignment_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Automanage.private\New-AzAutomanageConfigProfileHcrpAssignment_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = 'default'
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('CreateExpanded', 'CreateViaIdentityMachineExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2171,6 +2600,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2216,9 +2648,9 @@ end {
 
 <#
 .Synopsis
-Creates a configuration profile
+Create a configuration profile
 .Description
-Creates a configuration profile
+Create a configuration profile
 .Example
 $confprof = @{
           "Antimalware/Enable"='false';
@@ -2234,12 +2666,12 @@ $confprof = @{
 New-AzAutomanageConfigProfile -ResourceGroupName automangerg -Name confpro-pwsh01 -Location eastus -Configuration $confprof
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfile
 .Link
 https://learn.microsoft.com/powershell/module/az.automanage/new-azautomanageconfigprofile
 #>
 function New-AzAutomanageConfigProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfile])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -2263,25 +2695,37 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationDictionary]))]
     [System.Collections.Hashtable]
     # configuration dictionary of the configuration profile.
     ${Configuration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2339,6 +2783,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2359,10 +2812,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Automanage.private\New-AzAutomanageConfigProfile_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Automanage.private\New-AzAutomanageConfigProfile_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Automanage.private\New-AzAutomanageConfigProfile_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2376,6 +2829,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2438,6 +2894,19 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CONFIGURATIONPROFILEASSIGNMENTINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+
 INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [BestPracticeName <String>]: The Automanage best practice name.
   [ClusterName <String>]: The name of the Arc machine.
@@ -2472,6 +2941,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityConfigurationProfileAssignment', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
     # The name of the virtual machine.
@@ -2481,8 +2951,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityConfigurationProfileAssignment', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ConfigurationProfileAssignmentInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2546,6 +3021,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2567,18 +3051,17 @@ begin {
         $mapping = @{
             Delete = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileAssignment_Delete';
             DeleteViaIdentity = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileAssignment_DeleteViaIdentity';
+            DeleteViaIdentityConfigurationProfileAssignment = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileAssignment_DeleteViaIdentityConfigurationProfileAssignment';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = 'default'
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2587,6 +3070,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2649,6 +3135,19 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CLUSTERINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+
 INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [BestPracticeName <String>]: The Automanage best practice name.
   [ClusterName <String>]: The name of the Arc machine.
@@ -2692,8 +3191,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityCluster', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2757,6 +3261,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2778,18 +3291,17 @@ begin {
         $mapping = @{
             Delete = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileHciAssignment_Delete';
             DeleteViaIdentity = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileHciAssignment_DeleteViaIdentity';
+            DeleteViaIdentityCluster = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileHciAssignment_DeleteViaIdentityCluster';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = 'default'
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Delete', 'DeleteViaIdentityCluster') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2798,6 +3310,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2872,6 +3387,19 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
+
+MACHINEINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
 .Link
 https://learn.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofilehcrpassignment
 #>
@@ -2903,8 +3431,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityMachine', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${MachineInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2968,6 +3501,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2989,18 +3531,17 @@ begin {
         $mapping = @{
             Delete = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileHcrpAssignment_Delete';
             DeleteViaIdentity = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileHcrpAssignment_DeleteViaIdentity';
+            DeleteViaIdentityMachine = 'Az.Automanage.private\Remove-AzAutomanageConfigProfileHcrpAssignment_DeleteViaIdentityMachine';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = 'default'
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('Delete', 'DeleteViaIdentityMachine') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3009,6 +3550,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3115,7 +3659,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3180,6 +3723,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3202,9 +3754,7 @@ begin {
             Delete = 'Az.Automanage.private\Remove-AzAutomanageConfigProfile_Delete';
             DeleteViaIdentity = 'Az.Automanage.private\Remove-AzAutomanageConfigProfile_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3218,6 +3768,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3263,22 +3816,33 @@ end {
 
 <#
 .Synopsis
-Updates a configuration profile
+Update an association between a VM and Automanage configuration profile
 .Description
-Updates a configuration profile
+Update an association between a VM and Automanage configuration profile
 .Example
-Update-AzAutomanageConfigProfile -ResourceGroupName automangerg -Name confpro-pwsh01 -Tag @{"Organization" = "Administration"}
-.Example
-Get-AzAutomanageConfigProfile -ResourceGroupName automangerg -Name confpro-pwsh01 | Update-AzAutomanageConfigProfile -Tag @{"Organization" = "Administration"}
+Update-AzAutomanageConfigProfileAssignment -ResourceGroupName automangerg -VMName aglinuxvm -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CONFIGURATIONPROFILEASSIGNMENTINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
 
 INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [BestPracticeName <String>]: The Automanage best practice name.
@@ -3293,19 +3857,12 @@ INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   [VMName <String>]: The name of the virtual machine.
   [VersionName <String>]: The Automanage best practice version name.
 .Link
-https://learn.microsoft.com/powershell/module/az.automanage/update-azautomanageconfigprofile
+https://learn.microsoft.com/powershell/module/az.automanage/update-azautomanageconfigprofileassignment
 #>
-function Update-AzAutomanageConfigProfile {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile])]
+function Update-AzAutomanageConfigProfileAssignment {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('ConfigurationProfileName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
-    [System.String]
-    # Name of the configuration profile.
-    ${Name},
-
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [System.String]
@@ -3320,26 +3877,30 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityConfigurationProfileAssignmentExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [System.String]
+    # The name of the virtual machine.
+    ${VMName},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityConfigurationProfileAssignmentExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ConfigurationProfileAssignmentInputObject},
+
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationDictionary]))]
-    [System.Collections.Hashtable]
-    # configuration dictionary of the configuration profile.
-    ${Configuration},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IUpdateResourceTags]))]
-    [System.Collections.Hashtable]
-    # The tags of the resource.
-    ${Tag},
+    [System.String]
+    # The Automanage configurationProfile ARM Resource URI.
+    ${ConfigurationProfile},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3397,6 +3958,741 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Automanage.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Automanage.private\Update-AzAutomanageConfigProfileAssignment_UpdateExpanded';
+            UpdateViaIdentityConfigurationProfileAssignmentExpanded = 'Az.Automanage.private\Update-AzAutomanageConfigProfileAssignment_UpdateViaIdentityConfigurationProfileAssignmentExpanded';
+            UpdateViaIdentityExpanded = 'Az.Automanage.private\Update-AzAutomanageConfigProfileAssignment_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Automanage.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an association between a AzureStackHCI cluster and Automanage configuration profile
+.Description
+Update an association between a AzureStackHCI cluster and Automanage configuration profile
+.Example
+Update-AzAutomanageConfigProfileHciAssignment -ResourceGroupName automangerg -ClusterName aglinuxcluster -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+
+INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+.Link
+https://learn.microsoft.com/powershell/module/az.automanage/update-azautomanageconfigprofilehciassignment
+#>
+function Update-AzAutomanageConfigProfileHciAssignment {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [System.String]
+    # The name of the Arc machine.
+    ${ClusterName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # The Automanage configurationProfile ARM Resource URI.
+    ${ConfigurationProfile},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Automanage.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Automanage.private\Update-AzAutomanageConfigProfileHciAssignment_UpdateExpanded';
+            UpdateViaIdentityClusterExpanded = 'Az.Automanage.private\Update-AzAutomanageConfigProfileHciAssignment_UpdateViaIdentityClusterExpanded';
+            UpdateViaIdentityExpanded = 'Az.Automanage.private\Update-AzAutomanageConfigProfileHciAssignment_UpdateViaIdentityExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        if (('UpdateExpanded', 'UpdateViaIdentityClusterExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Automanage.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an association between a ARC machine and Automanage configuration profile
+.Description
+Update an association between a ARC machine and Automanage configuration profile
+.Example
+Update-AzAutomanageConfigProfileHcrpAssignment -ResourceGroupName automangerg -MachineName aglinuxmachines -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+
+MACHINEINPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+.Link
+https://learn.microsoft.com/powershell/module/az.automanage/update-azautomanageconfigprofilehcrpassignment
+#>
+function Update-AzAutomanageConfigProfileHcrpAssignment {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfileAssignment])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [System.String]
+    # The name of the Arc machine.
+    ${MachineName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityMachineExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${MachineInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # The Automanage configurationProfile ARM Resource URI.
+    ${ConfigurationProfile},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Automanage.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.Automanage.private\Update-AzAutomanageConfigProfileHcrpAssignment_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.Automanage.private\Update-AzAutomanageConfigProfileHcrpAssignment_UpdateViaIdentityExpanded';
+            UpdateViaIdentityMachineExpanded = 'Az.Automanage.private\Update-AzAutomanageConfigProfileHcrpAssignment_UpdateViaIdentityMachineExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        if (('UpdateExpanded', 'UpdateViaIdentityMachineExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = 'default'
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Automanage.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a configuration profile
+.Description
+Update a configuration profile
+.Example
+Update-AzAutomanageConfigProfile -ResourceGroupName automangerg -Name confpro-pwsh01 -Tag @{"Organization" = "Administration"}
+.Example
+Get-AzAutomanageConfigProfile -ResourceGroupName automangerg -Name confpro-pwsh01 | Update-AzAutomanageConfigProfile -Tag @{"Organization" = "Administration"}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfile
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
+  [BestPracticeName <String>]: The Automanage best practice name.
+  [ClusterName <String>]: The name of the Arc machine.
+  [ConfigurationProfileAssignmentName <String>]: Name of the configuration profile assignment. Only default is supported.
+  [ConfigurationProfileName <String>]: Name of the configuration profile.
+  [Id <String>]: Resource identity path
+  [MachineName <String>]: The name of the Arc machine.
+  [ReportName <String>]: The report name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMName <String>]: The name of the virtual machine.
+  [VersionName <String>]: The Automanage best practice version name.
+.Link
+https://learn.microsoft.com/powershell/module/az.automanage/update-azautomanageconfigprofile
+#>
+function Update-AzAutomanageConfigProfile {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfile])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('ConfigurationProfileName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [System.String]
+    # Name of the configuration profile.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IAutomanageIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationDictionary]))]
+    [System.Collections.Hashtable]
+    # configuration dictionary of the configuration profile.
+    ${Configuration},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IUpdateResourceTags]))]
+    [System.Collections.Hashtable]
+    # The tags of the resource.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Automanage.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3418,10 +4714,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Automanage.private\Update-AzAutomanageConfigProfile_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Automanage.private\Update-AzAutomanageConfigProfile_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.Automanage.private\Update-AzAutomanageConfigProfile_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Automanage.private\Update-AzAutomanageConfigProfile_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Automanage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3435,6 +4731,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -14,8 +14,8 @@ Get a DbSystemShape
 
 ### List (Default)
 ```
-Get-AzOracleDbSystemShape -Location <String> [-SubscriptionId <String[]>] [-Zone <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzOracleDbSystemShape -Location <String> [-SubscriptionId <String[]>] [-ShapeAttribute <String>]
+ [-Zone <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -153,6 +153,21 @@ Parameter Sets: Get, GetViaIdentityLocation
 Aliases: Dbsystemshapename
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShapeAttribute
+Filters the result for the given Shape Attribute, such as BLOCK_STORAGE or SMART_STORAGE.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -32,6 +32,24 @@ Get-AzDevCenterAdminImage -DevCenterName <String> -GalleryName <String> -Name <S
  [<CommonParameters>]
 ```
 
+### Get1
+```
+Get-AzDevCenterAdminImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -ProjectName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzDevCenterAdminImage -ResourceGroupName <String> [-SubscriptionId <String[]>] -ProjectName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity1
+```
+Get-AzDevCenterAdminImage -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzDevCenterAdminImage -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
@@ -126,7 +144,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity1, GetViaIdentity
 Aliases:
 
 Required: True
@@ -141,8 +159,23 @@ The name of the image.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, Get1
 Aliases: ImageName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectName
+The name of the project.
+
+```yaml
+Type: System.String
+Parameter Sets: Get1, List2
+Aliases:
 
 Required: True
 Position: Named
@@ -157,7 +190,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, List1, Get
+Parameter Sets: List, List1, Get, Get1, List2
 Aliases:
 
 Required: True
@@ -172,7 +205,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, List1, Get
+Parameter Sets: List, List1, Get, Get1, List2
 Aliases:
 
 Required: False
@@ -191,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IImage
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IImage
 
 ## NOTES
 

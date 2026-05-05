@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicytagclientobject
 schema: 2.0.0
@@ -14,14 +14,14 @@ Adds or removes schedule tag in an existing backup policy.
 
 ### RemoveTag (Default)
 ```
-Edit-AzDataProtectionPolicyTagClientObject -Policy <IBackupPolicy> -Name <TagName> [-RemoveRule]
+Edit-AzDataProtectionPolicyTagClientObject -Name <TagName> -Policy <IBackupPolicy> -RemoveRule
  [<CommonParameters>]
 ```
 
 ### updateTag
 ```
-Edit-AzDataProtectionPolicyTagClientObject -Policy <IBackupPolicy> -Name <TagName>
- -Criteria <IScheduleBasedBackupCriteria[]> [<CommonParameters>]
+Edit-AzDataProtectionPolicyTagClientObject -Criteria <IScheduleBasedBackupCriteria[]> -Name <TagName>
+ -Policy <IBackupPolicy> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ Criterias to be associated with the schedule tag.
 To construct, see NOTES section for CRITERIA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IScheduleBasedBackupCriteria[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IScheduleBasedBackupCriteria[]
 Parameter Sets: updateTag
 Aliases:
 
@@ -81,7 +81,6 @@ Name of the Schedule tag.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.TagName
 Parameter Sets: (All)
 Aliases:
-Accepted values: Daily, Weekly, Monthly, Yearly
 
 Required: True
 Position: Named
@@ -95,7 +94,7 @@ Backup Policy Object.
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -128,8 +127,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupPolicy
 
 ## NOTES
 
 ## RELATED LINKS
+

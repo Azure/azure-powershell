@@ -1,6 +1,6 @@
 ---
 Module Name: Az.LoadTesting
-Module Guid: 739ddedf-3d49-40e0-bc84-00bedfe6b2ec
+Module Guid: ff12ec77-2eea-44bd-a3f0-1076cb249c14
 Download Help Link: https://learn.microsoft.com/powershell/module/az.loadtesting
 Help Version: 1.0.0.0
 Locale: en-US

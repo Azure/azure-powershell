@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>Read only system data</summary>
+    /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>
     [System.ComponentModel.TypeConverter(typeof(SystemDataTypeConverter))]
     public partial class SystemData
     {
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// Read only system data
+    /// Metadata pertaining to creation and last modification of the resource.
     [System.ComponentModel.TypeConverter(typeof(SystemDataTypeConverter))]
     public partial interface ISystemData
 

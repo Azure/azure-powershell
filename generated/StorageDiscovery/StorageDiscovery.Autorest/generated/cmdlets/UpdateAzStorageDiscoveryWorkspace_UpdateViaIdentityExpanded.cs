@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Description(@"update a StorageDiscoveryWorkspace")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}", ApiVersion = "2025-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}", ApiVersion = "2025-09-01")]
     public partial class UpdateAzStorageDiscoveryWorkspace_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IContext
@@ -170,8 +170,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
 
         /// <summary>The view level storage discovery data estate</summary>
         [global::System.Management.Automation.AllowEmptyCollection]

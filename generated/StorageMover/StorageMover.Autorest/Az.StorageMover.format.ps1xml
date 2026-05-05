@@ -2,9 +2,37 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureKeyVaultSmbCredentials</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ErrorDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.AzureKeyVaultSmbCredentials#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PasswordUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UsernameUri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PasswordUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UsernameUri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ErrorDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ErrorDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -36,9 +64,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ManagedServiceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ManagedServiceIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Operation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Operation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -76,9 +132,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.OperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -116,9 +172,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.OperationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -138,9 +194,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ProxyResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -196,9 +252,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -218,9 +274,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.StorageMoverUpdateParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.StorageMoverUpdateParametersTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.SystemData</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.SystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -270,9 +348,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Time</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Time#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Hour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Minute</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Hour</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Minute</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.TrackedResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.TrackedResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -334,9 +440,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api30.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.TrackedResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -356,161 +462,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.AzureKeyVaultSmbCredentials</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.UploadLimitWeeklyRecurrence</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.AzureKeyVaultSmbCredentials</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>PasswordUri</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UsernameUri</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PasswordUri</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UsernameUri</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.StorageMoverUpdateParametersTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.StorageMoverUpdateParametersTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Time</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.Time</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Hour</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Minute</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Hour</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Minute</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimit</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimit</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>LimitInMbps</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>LimitInMbps</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.UploadLimitWeeklyRecurrence</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Day</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EndTimeHour</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EndTimeMinute</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LimitInMbps</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StartTimeHour</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>StartTimeMinute</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Day</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EndTimeHour</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EndTimeMinute</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LimitInMbps</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StartTimeHour</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>StartTimeMinute</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.WeeklyRecurrence</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.WeeklyRecurrence</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.UploadLimitWeeklyRecurrence#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -527,7 +481,7 @@
             <Label>StartTimeMinute</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Day</Label>
+            <Label>LimitInMbps</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -546,7 +500,75 @@
                 <PropertyName>StartTimeMinute</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Day</PropertyName>
+                <PropertyName>LimitInMbps</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.UserAssignedIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.UserAssignedIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.WeeklyRecurrence</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.WeeklyRecurrence#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTimeHour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTimeMinute</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTimeHour</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTimeMinute</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTimeHour</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTimeMinute</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTimeHour</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTimeMinute</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

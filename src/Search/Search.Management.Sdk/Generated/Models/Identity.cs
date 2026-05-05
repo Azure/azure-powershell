@@ -8,7 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Identity for the resource.
+    /// Details about the search service identity. A null value indicates that the
+    /// search service has no identity assigned.
     /// </summary>
     public partial class Identity
     {
@@ -30,14 +31,24 @@ namespace Microsoft.Azure.Management.Search.Models
         /// <param name="tenantId">The tenant ID of the system-assigned identity of the search service.
         /// </param>
 
-        /// <param name="type">The identity type.
-        /// Possible values include: 'None', 'SystemAssigned'</param>
-        public Identity(IdentityType type, string principalId = default(string), string tenantId = default(string))
+        /// <param name="type">The type of identity used for the resource. The type &#39;SystemAssigned,
+        /// UserAssigned&#39; includes both an identity created by the system and a set of
+        /// user assigned identities. The type &#39;None&#39; will remove all identities from
+        /// the service.
+        /// Possible values include: &#39;None&#39;, &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;,
+        /// &#39;SystemAssigned, UserAssigned&#39;</param>
+
+        /// <param name="userAssignedIdentities">The list of user identities associated with the resource. The user identity
+        /// dictionary key references will be ARM resource IDs in the form:
+        /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
+        /// </param>
+        public Identity(string type, string principalId = default(string), string tenantId = default(string), System.Collections.Generic.IDictionary<string, UserAssignedIdentity> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, UserAssignedIdentity>))
 
         {
             this.PrincipalId = principalId;
             this.TenantId = tenantId;
             this.Type = type;
+            this.UserAssignedIdentities = userAssignedIdentities;
             CustomInit();
         }
 
@@ -61,10 +72,22 @@ namespace Microsoft.Azure.Management.Search.Models
         public string TenantId {get; private set; }
 
         /// <summary>
-        /// Gets or sets the identity type. Possible values include: &#39;None&#39;, &#39;SystemAssigned&#39;
+        /// Gets or sets the type of identity used for the resource. The type
+        /// &#39;SystemAssigned, UserAssigned&#39; includes both an identity created by the
+        /// system and a set of user assigned identities. The type &#39;None&#39; will remove
+        /// all identities from the service. Possible values include: &#39;None&#39;, &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;, &#39;SystemAssigned, UserAssigned&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public IdentityType Type {get; set; }
+        public string Type {get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of user identities associated with the resource. The
+        /// user identity dictionary key references will be ARM resource IDs in the
+        /// form:
+        /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "userAssignedIdentities")]
+        public System.Collections.Generic.IDictionary<string, UserAssignedIdentity> UserAssignedIdentities {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -73,6 +96,11 @@ namespace Microsoft.Azure.Management.Search.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (this.Type == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Type");
+            }
+
 
 
 

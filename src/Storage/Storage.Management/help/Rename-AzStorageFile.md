@@ -36,7 +36,7 @@ Rename-AzStorageFile [-ShareClient] <ShareClient> [-SourcePath] <String> [[-Dest
  [-Confirm] [<CommonParameters>]
 ```
 
-### DirectoryObject
+### DirecotryObject
 ```
 Rename-AzStorageFile [-ShareDirectoryClient] <ShareDirectoryClient> [-SourcePath] <String>
  [[-DestinationPath] <String>] [-ContentType <String>] [-Permission <String>] [-Force] [-AsJob]
@@ -256,7 +256,7 @@ ShareDirectoryClient indicated the share where the file would be listed.
 
 ```yaml
 Type: Azure.Storage.Files.Shares.ShareDirectoryClient
-Parameter Sets: DirectoryObject
+Parameter Sets: DirecotryObject
 Aliases:
 
 Required: True
@@ -301,7 +301,7 @@ Path to an existing file.
 
 ```yaml
 Type: System.String
-Parameter Sets: ShareName, ShareObject, DirectoryObject
+Parameter Sets: ShareName, ShareObject, DirecotryObject
 Aliases:
 
 Required: True

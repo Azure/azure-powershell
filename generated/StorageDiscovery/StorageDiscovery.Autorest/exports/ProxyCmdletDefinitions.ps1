@@ -247,7 +247,7 @@ To create the parameters described below, construct a hash table containing the 
 SCOPE <IStorageDiscoveryScope[]>: The scopes of the storage discovery workspace.
   DisplayName <String>: Display name of the collection
   ResourceType <List<String>>: Resource types for the collection
-  [Tag <ITags>]: Resource tags.
+  [Tag <IStorageDiscoveryScopeTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [TagKeysOnly <List<String>>]: The storage account tags keys to filter
 .Link
@@ -307,7 +307,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -718,7 +718,7 @@ INPUTOBJECT <IStorageDiscoveryIdentity>: Identity Parameter
 SCOPE <IStorageDiscoveryScope[]>: The scopes of the storage discovery workspace.
   DisplayName <String>: Display name of the collection
   ResourceType <List<String>>: Resource types for the collection
-  [Tag <ITags>]: Resource tags.
+  [Tag <IStorageDiscoveryScopeTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [TagKeysOnly <List<String>>]: The storage account tags keys to filter
 .Link
@@ -788,7 +788,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspaceUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -978,7 +978,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-TAG <ITags>: Resource tags.
+TAG <IStorageDiscoveryScopeTags>: Resource tags.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/Az.StorageDiscovery/new-azstoragediscoveryscopeobject
@@ -1002,7 +1002,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.ITags]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryScopeTags]
     # Resource tags.
     ${Tag},
 

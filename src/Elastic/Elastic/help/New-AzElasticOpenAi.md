@@ -8,15 +8,16 @@ schema: 2.0.0
 # New-AzElasticOpenAi
 
 ## SYNOPSIS
-create a OpenAI integration rule for a given monitor resource.
+Create an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Key <String>] [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Key <String>] [-OpenAiConnectorId <String>] [-OpenAiResourceEndpoint <String>]
+ [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -36,19 +37,19 @@ New-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGro
 ### CreateViaIdentityMonitorExpanded
 ```
 New-AzElasticOpenAi -IntegrationName <String> -MonitorInputObject <IElasticIdentity> [-Key <String>]
- [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-OpenAiConnectorId <String>] [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzElasticOpenAi -InputObject <IElasticIdentity> [-Key <String>] [-OpenAiResourceEndpoint <String>]
- [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzElasticOpenAi -InputObject <IElasticIdentity> [-Key <String>] [-OpenAiConnectorId <String>]
+ [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a OpenAI integration rule for a given monitor resource.
+Create an OpenAI integration rule for a given Elastic monitor resource, enabling advanced AI-driven observability and monitoring.
 
 ## EXAMPLES
 
@@ -182,6 +183,21 @@ Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OpenAiConnectorId
+The connector id of Open AI resource
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityMonitorExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

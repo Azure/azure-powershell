@@ -157,5 +157,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string Etag { get; private set; }
 
         public Placement Placement { get; set; }
+
+        // Gets or sets the AddProxyAgentExtension
+        public bool? AddProxyAgentExtension { get; set; }
     }
 }

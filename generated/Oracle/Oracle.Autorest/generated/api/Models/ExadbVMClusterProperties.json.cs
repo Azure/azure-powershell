@@ -108,6 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {_ociUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("ociUrl"), out var __jsonOciUrl) ? (string)__jsonOciUrl : (string)_ociUrl;}
             {_backupSubnetOcid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("backupSubnetOcid"), out var __jsonBackupSubnetOcid) ? (string)__jsonBackupSubnetOcid : (string)_backupSubnetOcid;}
             {_subnetOcid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("subnetOcid"), out var __jsonSubnetOcid) ? (string)__jsonSubnetOcid : (string)_subnetOcid;}
+            {_shapeAttribute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString>("shapeAttribute"), out var __jsonShapeAttribute) ? (string)__jsonShapeAttribute : (string)_shapeAttribute;}
             AfterFromJson(json);
         }
 
@@ -342,6 +343,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._subnetOcid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._subnetOcid.ToString()) : null, "subnetOcid" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.SerializationMode.IncludeCreate))
+            {
+                AddIf( null != (((object)this._shapeAttribute)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Oracle.Runtime.Json.JsonString(this._shapeAttribute.ToString()) : null, "shapeAttribute" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

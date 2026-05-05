@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalserverreplication
 schema: 2.0.0
@@ -14,37 +14,39 @@ Retrieves the details of the replicating server.
 
 ### ListByName (Default)
 ```
-Get-AzMigrateLocalServerReplication -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetByInputObject
-```
-Get-AzMigrateLocalServerReplication -InputObject <IMigrateIdentity> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetByItemID
-```
-Get-AzMigrateLocalServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateLocalServerReplication -ResourceGroupName <String> -ProjectName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetByMachineName
 ```
-Get-AzMigrateLocalServerReplication -MachineName <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMigrateLocalServerReplication -ResourceGroupName <String> -ProjectName <String>
+ [-SubscriptionId <String>] -MachineName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByItemID
+```
+Get-AzMigrateLocalServerReplication [-SubscriptionId <String>] -TargetObjectID <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetBySDSID
 ```
-Get-AzMigrateLocalServerReplication -DiscoveredMachineId <String> [-SubscriptionId <String>]
+Get-AzMigrateLocalServerReplication [-SubscriptionId <String>] -DiscoveredMachineId <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByInputObject
+```
+Get-AzMigrateLocalServerReplication [-SubscriptionId <String>] -InputObject <IMigrateIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
-Get-AzMigrateLocalServerReplication -ProjectID <String> -ResourceGroupID <String> [-SubscriptionId <String>]
+Get-AzMigrateLocalServerReplication [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -75,8 +77,7 @@ Get by id.
 
 ### Example 2: Get detail by discovered machine id
 ```powershell
-Get-AzMigrateLocalServerReplication -DiscoveredMachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/siteName1/machines/503a4f02-916c-d6b0-8d14-222bbd4767e5" 
-
+Get-AzMigrateLocalServerReplication -DiscoveredMachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/siteName1/machines/503a4f02-916c-d6b0-8d14-222bbd4767e5"
 ```
 
 ```output
@@ -100,7 +101,6 @@ Get-AzMigrateServerReplication -ResourceGroupName testResourceGroup -ProjectName
 ```
 
 ```output
-
 Id                           : /subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.DataReplication/replicationVaults/proj62434replicationvault/protectedItems/503a4f02-916c-d6b0-8d14-222bbd4767e5
 Name                         : 503a4f02-916c-d6b0-8d14-222bbd4767e5
 Property                     : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelProperties
@@ -209,7 +209,7 @@ Specifies the Azure Migrate project  in the current subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByMachineName, ListByName
+Parameter Sets: ListByName, GetByMachineName
 Aliases:
 
 Required: True
@@ -239,7 +239,7 @@ Specifies the Resource Group of the Azure Migrate Project in the current subscri
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByMachineName, ListByName
+Parameter Sets: ListByName, GetByMachineName
 Aliases:
 
 Required: True
@@ -293,4 +293,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

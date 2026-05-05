@@ -39,24 +39,30 @@ INPUTOBJECT <IAksIdentity>: Identity Parameter
   [CommandId <String>]: Id of the command.
   [ConfigName <String>]: The name of the maintenance configuration.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
+  [Location <String>]: The name of the Azure region.
+  [MachineName <String>]: host name of the machine
+  [Mode <String>]: The mode of the mesh.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the managed cluster resource.
   [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TrustedAccessRoleBindingName <String>]: The name of trusted access role binding.
 
 MANAGEDCLUSTERINPUTOBJECT <IAksIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the agent pool.
   [CommandId <String>]: Id of the command.
   [ConfigName <String>]: The name of the maintenance configuration.
   [Id <String>]: Resource identity path
-  [Location <String>]: The name of Azure region.
+  [Location <String>]: The name of the Azure region.
+  [MachineName <String>]: host name of the machine
+  [Mode <String>]: The mode of the mesh.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the managed cluster resource.
   [RoleName <String>]: The name of the role for managed cluster accessProfile resource.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TrustedAccessRoleBindingName <String>]: The name of trusted access role binding.
 .Link
 https://learn.microsoft.com/powershell/module/az.aks/remove-azaksmaintenanceconfiguration
 #>
@@ -89,6 +95,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]

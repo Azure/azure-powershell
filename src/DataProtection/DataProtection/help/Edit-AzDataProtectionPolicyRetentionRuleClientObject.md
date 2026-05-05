@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicyretentionruleclientobject
 schema: 2.0.0
@@ -14,15 +14,14 @@ Adds or removes Retention Rule to existing Policy
 
 ### RemoveRetention (Default)
 ```
-Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy <IBackupPolicy> -Name <RetentionRuleName>
- [-RemoveRule] [<CommonParameters>]
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Name <RetentionRuleName> -Policy <IBackupPolicy>
+ -RemoveRule [<CommonParameters>]
 ```
 
 ### AddRetention
 ```
-Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy <IBackupPolicy> -Name <RetentionRuleName>
- -IsDefault <Boolean> -LifeCycles <ISourceLifeCycle[]> [-OverwriteLifeCycle <Boolean>]
- [<CommonParameters>]
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -IsDefault <Boolean> -LifeCycles <ISourceLifeCycle[]>
+ -Name <RetentionRuleName> -Policy <IBackupPolicy> [-OverwriteLifeCycle <Boolean?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +81,7 @@ Life cycles associated with the retention rule.
 To construct, see NOTES section for LIFECYCLES properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ISourceLifeCycle[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ISourceLifeCycle[]
 Parameter Sets: AddRetention
 Aliases:
 
@@ -100,7 +99,6 @@ Retention Rule Name
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName
 Parameter Sets: (All)
 Aliases:
-Accepted values: Default, Daily, Weekly, Monthly, Yearly
 
 Required: True
 Position: Named
@@ -113,7 +111,7 @@ Accept wildcard characters: False
 Specifies whether to modify an existing LifeCycle.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: AddRetention
 Aliases:
 
@@ -129,7 +127,7 @@ Backup Policy Object
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -162,8 +160,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupPolicy
 
 ## NOTES
 
 ## RELATED LINKS
+

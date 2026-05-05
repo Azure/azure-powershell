@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ApiKindHelpMessage = "The type of Cosmos DB database account to create. Accepted values: Sql, MongoDB, Gremlin, Table, Cassandra. Default value: Sql ";
         public const string AccountKeyTypeHelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys.";
         public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "Disable write operations on metadata resources (databases, containers, throughput) via account keys";
+        public const string DisableLocalAuthHelpMessage = "Opt out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.";
         public const string PublicNetworkAccessHelpMessage = "Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'";
         public const string DisableTtlHelpMessage = "Bool to indicate if restored account is going to have Time-To-Live disabled.";
         public const string KeyVaultUriHelpMessage = "URI of the KeyVault";
@@ -64,9 +65,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string NetworkAclBypassResourceIdHelpMessage = "List of Resource Ids to allow Network Acl Bypass for Synapse Link.";
         public const string DatabaseResourceIdHelpMessage = "ResourceId of the database.";
         public const string AnalyticalStorageSchemaTypeHelpMessage = "The schema type for analytical storage. Valid values include: 'WellDefined' and 'FullFidelity'.";
+        public const string EnablePriorityBasedExecutionHelpMessage = "Bool to indicate if Priority Based Execution is enabled on the account.";
+        public const string DefaultPriorityLevelHelpMessage = "The Default Priority Level of requests for the CosmosDB database account. Accepted values: High, Low. Default is High.";
         public const string EnablePartitionMergeHelpMessage = "Enables partition merge feature on the Cosmos DB database account. Accepted values: false, true";
         public const string MinimalTlsVersionHelpMessage = "Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2. Possible values include: 'Tls', 'Tls11', 'Tls12'.";
         public const string EnablePerRegionPerPartitionAutoscaleHelpMessage = "Bool to indicate if Dynamic Scaling (Per Region Per Partition Autoscale) is enabled on the account.";
+        public const string CapabilitiesHelpMessage = "List of Cosmos DB capabilities for the account. e.g. EnableMongo, EnablePerPartitionFailoverPreview, DisableRateLimitingResponses.";
 
         //Restore specific help messages
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";
@@ -79,10 +83,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string RestoreDatabaseNameHelpMessage = "The name of the database to restore";
         public const string RestoreCollectionNamesHelpMessage = "The names of the collections to be restored. (If not provided, all the collections will be restored)";
         public const string RestoreSourceDatabaseAccountNameHelpMessage = "The name of the source database account of the restore.";
-        public const string RestoreLocationNameHelpMessage = "The location of the source account from which restore is triggered. This will also be the write region of the restored account";
+        public const string RestoreLocationNameHelpMessage = "This is the write region of the restored account. This is also the location of the source account where its backups are located if source_backup_location is not provided.";
         public const string RestorableDatabaseAccountObjectHelpMessage = "CosmosDB Restorable Database Account object";
         public const string RestorableSqlDatabaseObjectHelpMessage = "CosmosDB Restorable Sql Database object";
         public const string RestorableMongoDBDatabaseObjectHelpMessage = "CosmosDB Restorable MongoDB Database object";
+        public const string SourceBackupLocationHelpMessage = "This is the location of the source account where backups are located. Provide this value if the source and target are in different locations.";
 
         //Backup specific help messages
         public const string BackupPolicyHelpMessage = "The backup policy to indicate how the backups of the account should be taken";
@@ -127,6 +132,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string SpatialPathHelpMessage = "Path in JSON document to index.";
         public const string VectorIndexPathHelpMessage = "The path to the vector field in the document.";
         public const string VectorIndexTypeHelpMessage = "The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.";
+        public const string VectorIndexQuantizationByteSizeHelpMessage = "The number of bytes used in product quantization of the vectors. A larger value may result in better recall for vector searches at the expense of latency. This is only applicable for the quantizedFlat and diskANN vector index types.";
+        public const string VectorIndexIndexingSearchListSizeHelpMessage = "This is the size of the candidate list of approximate neighbors stored while building the DiskANN index as part of the optimization processes. Large values may improve recall at the expense of latency. This is only applicable for the diskANN vector index type.";
+        public const string VectorIndexShardKeyHelpMessage = "Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types.";
         public const string SortOrderHelpMessage = "The sort order of the CompositeIndex";
         public const string PathHelpMessage = "String value of the path";
         public const string PartitionKeyVersionHelpMessage = "The version of the partition key definition";
@@ -298,5 +306,25 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ServiceName = "Name of the service";
         public const string ServiceInstanceSize = "Instance count of the service";
         public const string ServiceInstanceCount = "Instance size of the service";
+
+        // Fleet constants
+        public const string FleetNameHelpMessage = "Name of the Fleet.";
+        public const string FleetObjectHelpMessage = "Fleet Object.";
+        public const string TagsHelpMessage = "Hashtable of tags as key-value pairs.";
+
+        // Fleetspace constants
+        public const string FleetspaceNameHelpMessage = "Name of the Fleetspace.";
+        public const string FleetspaceObjectHelpMessage = "Fleetspace Object.";
+        public const string FleetspaceApiKindHelpMessage = "The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'";
+        public const string ServiceTierHelpMessage = "Service Tier for the fleetspace. GeneralPurpose refers to single write region accounts, BusinessCritical refers to multi write region. Possible values: 'GeneralPurpose', 'BusinessCritical'";
+        public const string DataRegionHelpMessage = "List of data regions assigned to the fleetspace. Example: westus2, eastus";
+        public const string ThroughputPoolMinThroughputHelpMessage = "Minimum throughput for the throughput pool in the fleetspace.";
+        public const string ThroughputPoolMaxThroughputHelpMessage = "Maximum throughput for the throughput pool in the fleetspace.";
+
+        // FleetspaceAccount constants
+        public const string FleetspaceAccountNameHelpMessage = "Name of the Fleetspace Account.";
+        public const string FleetspaceAccountObjectHelpMessage = "Fleetspace Account Object.";
+        public const string GlobalDatabaseAccountResourceIdHelpMessage = "Resource ID of the global database account to associate with the fleetspace account.";
+        public const string GlobalDatabaseAccountLocationHelpMessage = "Location of the global database account to associate with the fleetspace account.";
     }
 }

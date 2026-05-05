@@ -5626,7 +5626,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
-    # Name of FrontendIpConfigration.
+    # Name of FrontendIpConfiguration.
     ${Name},
 
     [Parameter(ParameterSetName='DefaultParameterSet')]

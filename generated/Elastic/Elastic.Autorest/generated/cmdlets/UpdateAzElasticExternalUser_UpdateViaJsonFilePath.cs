@@ -11,16 +11,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using System;
 
     /// <summary>
-    /// update User inside elastic deployment which are used by customers to perform operations on the elastic deployment
+    /// update external user configurations for your Elastic monitor resource, enabling access and management by external users.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createOrUpdateExternalUser"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzElasticExternalUser_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IExternalUserCreationResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"update User inside elastic deployment which are used by customers to perform operations on the elastic deployment")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"update external user configurations for your Elastic monitor resource, enabling access and management by external users.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createOrUpdateExternalUser", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createOrUpdateExternalUser", ApiVersion = "2025-06-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.NotSuggestDefaultParameterSet]
     public partial class UpdateAzElasticExternalUser_UpdateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.OperationProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for PropertyServiceSpecification</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSpecification Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationInternal.PropertyServiceSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationPropertiesInternal)Property).ServiceSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationPropertiesInternal)Property).ServiceSpecification = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IServiceSpecification Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationInternal.PropertyServiceSpecification { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationPropertiesInternal)Property).ServiceSpecification; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IOperationPropertiesInternal)Property).ServiceSpecification = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

@@ -1,6 +1,6 @@
 {
   "resourceType": "amlFilesystems",
-  "apiVersion": "2023-05-01",
+  "apiVersion": "2025-07-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.storagecache"
   },

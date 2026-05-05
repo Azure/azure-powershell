@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
         /// <summary>Backing field for <see cref="BillingCycle" /> property.</summary>
         private string _billingCycle;
 
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Origin(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PropertyOrigin.Owned)]
         public string BillingCycle { get => this._billingCycle; set => this._billingCycle = value; }
 
@@ -51,17 +51,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
     public partial interface IPlanData :
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IJsonSerializable
     {
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Different billing cycles like MONTHLY/WEEKLY. this could be enum",
+        Description = @"Different billing cycles like Monthly/Weekly.",
         SerializedName = @"billingCycle",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
         string BillingCycle { get; set; }
         /// <summary>date when plan was applied</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
@@ -103,8 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models
     internal partial interface IPlanDataInternal
 
     {
-        /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
+        /// <summary>Different billing cycles like Monthly/Weekly.</summary>
         string BillingCycle { get; set; }
         /// <summary>date when plan was applied</summary>
         global::System.DateTime? EffectiveDate { get; set; }

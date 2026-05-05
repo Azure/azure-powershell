@@ -30,7 +30,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ReplicationId = replication.ReplicationId,
                 EndpointType = replication.EndpointType,
                 RemoteVolumeRegion = replication.RemoteVolumeRegion,
-                RemoteVolumeResourceId = replication.RemoteVolumeResourceId
+                RemoteVolumeResourceId = replication.RemoteVolumeResourceId,
+                ReplicationSchedule = replication.ReplicationSchedule,
+                MirrorState = replication.MirrorState,
+                ReplicationCreationTime = replication.ReplicationCreationTime,
+                ReplicationDeletionTime = replication.ReplicationDeletionTime
             };
             return psReplicaitonObject;
         }
@@ -45,9 +49,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             var psSvmPeerCommandResponse = new PSSvmPeerCommandResponse
             {
-                SvmPeeringCommand = svmPeerCommandResponse.SvmPeeringCommand
+                SvmPeeringCommand = svmPeerCommandResponse.Properties?.SvmPeeringCommand
             };
             return psSvmPeerCommandResponse;
+        }
+
+        public static PSClusterPeerCommandResponse ConvertToPs(this Management.NetApp.Models.ClusterPeerCommandResponse clusterPeerCommandResponse)
+        {
+            return new PSClusterPeerCommandResponse
+            {
+                ClusterPeeringCommand = clusterPeerCommandResponse.Properties?.ClusterPeeringCommand,
+                Passphrase = clusterPeerCommandResponse.Properties?.Passphrase
+            };
         }
 
         public static PSNetAppFilesDestinationReplication ConvertToPs(this Management.NetApp.Models.DestinationReplication destinationReplication)

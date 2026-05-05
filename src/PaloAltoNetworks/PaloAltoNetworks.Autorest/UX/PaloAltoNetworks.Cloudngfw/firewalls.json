@@ -1,6 +1,6 @@
 {
   "resourceType": "firewalls",
-  "apiVersion": "2023-09-01",
+  "apiVersion": "2025-10-08",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.paloaltonetworks"
   },
@@ -120,6 +120,44 @@
       ]
     },
     {
+      "name": "Get-AzPaloAltoNetworksMetricsObjectFirewall",
+      "description": "Get a MetricsObjectFirewallResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}/metrics/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.paloaltonetworks/get-azpaloaltonetworksmetricsobjectfirewall"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FirewallName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a MetricsObjectFirewallResource",
+          "parameters": [
+            {
+              "name": "-FirewallName",
+              "value": "[Path.firewallName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Remove-AzPaloAltoNetworksFirewall",
       "description": "Delete a FirewallResource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}",
@@ -143,6 +181,44 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.firewallName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzPaloAltoNetworksMetricsObjectFirewall",
+      "description": "Delete a MetricsObjectFirewallResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/firewalls/{firewallName}/metrics/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.paloaltonetworks/remove-azpaloaltonetworksmetricsobjectfirewall"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FirewallName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a MetricsObjectFirewallResource",
+          "parameters": [
+            {
+              "name": "-FirewallName",
               "value": "[Path.firewallName]"
             },
             {

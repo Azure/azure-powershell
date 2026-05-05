@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageDiscoveryWorkspa
 }
 
 Describe 'New-AzStorageDiscoveryWorkspace' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        {
+            $scope1 = New-AzStorageDiscoveryScopeObject -DisplayName "scope1" -ResourceType "Microsoft.Storage/storageAccounts" -TagKeysOnly "key1" -Tag @{"tag1" = "value1"; "tag2" = "value2"}
+            New-AzStorageDiscoveryWorkspace -Name $env.testWorkspaceName2 -ResourceGroupName $env.resourceGroup -Location $env.region -WorkspaceRoot $env.workspaceRoot -Sku Standard -Scope $scope1 -Description "test storage discovery workspace 2"
+        } | Should -Not -Throw
     }
 
     It 'CreateViaJsonFilePath' -skip {

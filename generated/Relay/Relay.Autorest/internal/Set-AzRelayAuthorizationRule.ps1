@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates or updates an authorization rule for a namespace.
+Update an authorization rule for a namespace.
 .Description
-Creates or updates an authorization rule for a namespace.
+Update an authorization rule for a namespace.
 .Example
 Set-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name authRule-01 -Rights 'Listen' | Format-List
 .Example
@@ -39,27 +39,21 @@ $authRule.Rights += 'Send'
 Set-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01 -Name authRule-01 -InputObject $authRule | Format-List
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAuthorizationRule>: Single item in a List or Get AuthorizationRule operation
-  [Rights <AccessRights[]>]: The rights associated with the rule.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Rights <List<String>>]: The rights associated with the rule.
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/set-azrelayauthorizationrule
 #>
 function Set-AzRelayAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -91,6 +85,8 @@ param(
 
     [Parameter(ParameterSetName='Update1', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The hybrid connection name.
@@ -98,6 +94,8 @@ param(
 
     [Parameter(ParameterSetName='Update2', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded2', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath2', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString2', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Path')]
     [System.String]
     # The relay name.
@@ -107,20 +105,35 @@ param(
     [Parameter(ParameterSetName='Update1', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='Update2', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule]
     # Single item in a List or Get AuthorizationRule operation
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateExpanded1')]
     [Parameter(ParameterSetName='UpdateExpanded2')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Manage", "Send", "Listen")]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights[]]
+    [System.String[]]
     # The rights associated with the rule.
     ${Rights},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath2', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString1', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString2', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -178,6 +191,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Relay.private\Set-AzRelayAuthorizationRule_Update';
@@ -186,10 +202,14 @@ begin {
             UpdateExpanded = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateExpanded';
             UpdateExpanded1 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateExpanded1';
             UpdateExpanded2 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateExpanded2';
+            UpdateViaJsonFilePath = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonFilePath';
+            UpdateViaJsonFilePath1 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonFilePath1';
+            UpdateViaJsonFilePath2 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonFilePath2';
+            UpdateViaJsonString = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonString';
+            UpdateViaJsonString1 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonString1';
+            UpdateViaJsonString2 = 'Az.Relay.private\Set-AzRelayAuthorizationRule_UpdateViaJsonString2';
         }
-        if (('Update', 'Update1', 'Update2', 'UpdateExpanded', 'UpdateExpanded1', 'UpdateExpanded2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'Update1', 'Update2', 'UpdateExpanded', 'UpdateExpanded1', 'UpdateExpanded2', 'UpdateViaJsonFilePath', 'UpdateViaJsonFilePath1', 'UpdateViaJsonFilePath2', 'UpdateViaJsonString', 'UpdateViaJsonString1', 'UpdateViaJsonString2') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -198,6 +218,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

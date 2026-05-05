@@ -306,6 +306,45 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Runs a packet capture operation on AzureFirewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the azure firewall.
+        /// </param>
+        public static AzureFirewallPacketCaptureResponse PacketCaptureOperation(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters)
+        {
+                return ((IAzureFirewallsOperations)operations).PacketCaptureOperationAsync(resourceGroupName, azureFirewallName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Runs a packet capture operation on AzureFirewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the azure firewall.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AzureFirewallPacketCaptureResponse> PacketCaptureOperationAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PacketCaptureOperationWithHttpMessagesAsync(resourceGroupName, azureFirewallName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified Azure Firewall.
         /// </summary>
         /// <param name='operations'>
@@ -497,6 +536,45 @@ namespace Microsoft.Azure.Management.Network
             using (var _result = await operations.BeginPacketCaptureWithHttpMessagesAsync(resourceGroupName, azureFirewallName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Runs a packet capture operation on AzureFirewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the azure firewall.
+        /// </param>
+        public static AzureFirewallPacketCaptureResponse BeginPacketCaptureOperation(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters)
+        {
+                return ((IAzureFirewallsOperations)operations).BeginPacketCaptureOperationAsync(resourceGroupName, azureFirewallName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Runs a packet capture operation on AzureFirewall.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='azureFirewallName'>
+        /// The name of the azure firewall.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<AzureFirewallPacketCaptureResponse> BeginPacketCaptureOperationAsync(this IAzureFirewallsOperations operations, string resourceGroupName, string azureFirewallName, FirewallPacketCaptureParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginPacketCaptureOperationWithHttpMessagesAsync(resourceGroupName, azureFirewallName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
         /// <summary>

@@ -19,6 +19,33 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Fixed commands and added autorest tests.
+    - Undo ExtendedLocationName to CustomLocationID parameter rename in `src/AksArc/AksArc.Autorest/README.md`.
+    - Get-AzAksArcNodepool
+        - Removed `-InputObject` parameter.
+    - New-AzAksArcCluster
+        - Parameter `-VnetId` only available for `CreateExpanded` parameter set.
+        - Parameter `-EnableAzureHybridBenefit` only available for `CreateExpanded` parameter set.
+        - Removed redundant, complex logical network validation already done by webhook.
+    - New-AzAksArcNodepool
+        - Removed `-InputObject` parameter.
+    - New-AzAksArcVirtualNetwork
+        - Fixed `CreateViaJsonFilePath` and `CreateViaJsonString` parameter sets.
+    - Remove-AzAksArcNodepool
+        - Parameters `ClusterName`, `ResourceGroupName`, and `SubscriptionId` are part of `Delete` parameter set.
+        - Add work-around for `InputObject` parameter.
+    - Update-AzAksArcCluster
+        - Parameter `SubscriptionId` is mandatory.
+        - Parameters `MinCount`, `MaxCount`, and `EnableAutoScaling` are available for all parameter sets.
+        - Removed `return` statemenet after only updating the nodepool.
+    - Update-AzAksArcNodepool
+        - Parameters `ClusterName`, `ResourceGroupName`, `SubscriptionId`, and `Name` are part of `UpdateExpanded` parameter set.
+        - Removed `AutoScaling` parameter set.
+        - Added `MaxPod`, `OSSku`, and `OSType` parameters.
+        - Changed parameter set name from `CreateViaIdentityExpanded` to `UpdateViaIdentityExpanded`.
+        - Add work-around for `InputObject` parameter.
+
 ## Version 0.1.4
 * Fixed module name in module metadata
 
@@ -31,7 +58,7 @@
 
 ## Version 0.1.1
 * Fixed bug where `Invoke-AzAksArcClusterUpgrade` would throw false exception when kubernetes version is passed as a parameter. 
-* Fixed bug where default nodepool labels and taints parameters would not work for `New-AzAksArcCluster` command. 
+* Fixed bug where default nodepool labels and taints parameters would not work for `New-AzAksArcCluster` command.
 
 ## Version 0.1.0
 * Added cmdlets for virtual networks
@@ -39,4 +66,3 @@
 * Renamed Parameters to make more consistent with Azure CLI
 * Added new cmdlet for upgrading clusters
 * First preview release for module Az.AksArc
-

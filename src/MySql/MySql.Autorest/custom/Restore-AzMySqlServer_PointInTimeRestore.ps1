@@ -16,6 +16,7 @@
 function Restore-AzMySqlServer_PointInTimeRestore {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.CmdletBreakingChangeAttribute("16.0.0", "2.0.0", "2026/05")]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Restore a server from an existing backup')]
     param(
         [Parameter(Mandatory, HelpMessage = 'The name of the server.')]

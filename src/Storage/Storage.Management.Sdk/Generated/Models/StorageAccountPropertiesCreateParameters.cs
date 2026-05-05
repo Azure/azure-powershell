@@ -85,6 +85,9 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// for data transfer
         /// </param>
 
+        /// <param name="dualStackEndpointPreference">Maintains information about the Internet protocol opted by the user.
+        /// </param>
+
         /// <param name="allowBlobPublicAccess">Allow or disallow public access to all blobs or containers in the storage
         /// account. The default interpretation is false for this property.
         /// </param>
@@ -124,7 +127,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// accounts in an Azure DNS Zone and the endpoint URL will have an
         /// alphanumeric DNS Zone identifier.
         /// Possible values include: &#39;Standard&#39;, &#39;AzureDnsZone&#39;</param>
-        public StorageAccountPropertiesCreateParameters(string allowedCopyScope = default(string), string publicNetworkAccess = default(string), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), RoutingPreference routingPreference = default(RoutingPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string dnsEndpointType = default(string))
+
+        /// <param name="geoPriorityReplicationStatus">Status indicating whether Geo Priority Replication is enabled for the
+        /// account.
+        /// </param>
+        public StorageAccountPropertiesCreateParameters(string allowedCopyScope = default(string), string publicNetworkAccess = default(string), SasPolicy sasPolicy = default(SasPolicy), KeyPolicy keyPolicy = default(KeyPolicy), CustomDomain customDomain = default(CustomDomain), Encryption encryption = default(Encryption), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), AccessTier? accessTier = default(AccessTier?), AzureFilesIdentityBasedAuthentication azureFilesIdentityBasedAuthentication = default(AzureFilesIdentityBasedAuthentication), bool? enableHttpsTrafficOnly = default(bool?), bool? isSftpEnabled = default(bool?), bool? isLocalUserEnabled = default(bool?), bool? enableExtendedGroups = default(bool?), bool? isHnsEnabled = default(bool?), string largeFileSharesState = default(string), RoutingPreference routingPreference = default(RoutingPreference), DualStackEndpointPreference dualStackEndpointPreference = default(DualStackEndpointPreference), bool? allowBlobPublicAccess = default(bool?), string minimumTlsVersion = default(string), bool? allowSharedKeyAccess = default(bool?), bool? enableNfsV3 = default(bool?), bool? allowCrossTenantReplication = default(bool?), bool? defaultToOAuthAuthentication = default(bool?), ImmutableStorageAccount immutableStorageWithVersioning = default(ImmutableStorageAccount), string dnsEndpointType = default(string), GeoPriorityReplicationStatus geoPriorityReplicationStatus = default(GeoPriorityReplicationStatus))
 
         {
             this.AllowedCopyScope = allowedCopyScope;
@@ -143,6 +150,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.IsHnsEnabled = isHnsEnabled;
             this.LargeFileSharesState = largeFileSharesState;
             this.RoutingPreference = routingPreference;
+            this.DualStackEndpointPreference = dualStackEndpointPreference;
             this.AllowBlobPublicAccess = allowBlobPublicAccess;
             this.MinimumTlsVersion = minimumTlsVersion;
             this.AllowSharedKeyAccess = allowSharedKeyAccess;
@@ -151,6 +159,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.DefaultToOAuthAuthentication = defaultToOAuthAuthentication;
             this.ImmutableStorageWithVersioning = immutableStorageWithVersioning;
             this.DnsEndpointType = dnsEndpointType;
+            this.GeoPriorityReplicationStatus = geoPriorityReplicationStatus;
             CustomInit();
         }
 
@@ -273,6 +282,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         public RoutingPreference RoutingPreference {get; set; }
 
         /// <summary>
+        /// Gets or sets maintains information about the Internet protocol opted by the
+        /// user.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dualStackEndpointPreference")]
+        public DualStackEndpointPreference DualStackEndpointPreference {get; set; }
+
+        /// <summary>
         /// Gets or sets allow or disallow public access to all blobs or containers in
         /// the storage account. The default interpretation is false for this property.
         /// </summary>
@@ -336,6 +352,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "dnsEndpointType")]
         public string DnsEndpointType {get; set; }
+
+        /// <summary>
+        /// Gets or sets status indicating whether Geo Priority Replication is enabled
+        /// for the account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "geoPriorityReplicationStatus")]
+        public GeoPriorityReplicationStatus GeoPriorityReplicationStatus {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -371,10 +394,12 @@ namespace Microsoft.Azure.Management.Storage.Models
 
 
 
+
             if (this.ImmutableStorageWithVersioning != null)
             {
                 this.ImmutableStorageWithVersioning.Validate();
             }
+
 
         }
     }

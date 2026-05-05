@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
 
         /// <summary>The maximum number of concurrent HTTP trigger invocations per instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public float? HttpPerInstanceConcurrency { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).HttpPerInstanceConcurrency; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).HttpPerInstanceConcurrency = value ?? default(float); }
+        public int? HttpPerInstanceConcurrency { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).HttpPerInstanceConcurrency; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).HttpPerInstanceConcurrency = value ?? default(int); }
 
         /// <summary>Internal Acessors for Deployment</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsDeployment Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionAppConfigInternal.Deployment { get => (this._deployment = this._deployment ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.FunctionsDeployment()); set { {_deployment = value;} } }
@@ -99,11 +99,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         /// proportionally.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public float? ScaleAndConcurrencyInstanceMemoryMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).InstanceMemoryMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).InstanceMemoryMb = value ?? default(float); }
+        public int? ScaleAndConcurrencyInstanceMemoryMb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).InstanceMemoryMb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).InstanceMemoryMb = value ?? default(int); }
 
         /// <summary>The maximum number of instances for the function app.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public float? ScaleAndConcurrencyMaximumInstanceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).MaximumInstanceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).MaximumInstanceCount = value ?? default(float); }
+        public int? ScaleAndConcurrencyMaximumInstanceCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).MaximumInstanceCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyInternal)ScaleAndConcurrency).MaximumInstanceCount = value ?? default(int); }
 
         /// <summary>Property to select Azure Storage type. Available options: blobContainer.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
@@ -164,8 +164,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         ReadOnly = false,
         Description = @"The maximum number of concurrent HTTP trigger invocations per instance.",
         SerializedName = @"perInstanceConcurrency",
-        PossibleTypes = new [] { typeof(float) })]
-        float? HttpPerInstanceConcurrency { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? HttpPerInstanceConcurrency { get; set; }
         /// <summary>
         /// Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
         /// </summary>
@@ -201,16 +201,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         ReadOnly = false,
         Description = @"Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.",
         SerializedName = @"instanceMemoryMB",
-        PossibleTypes = new [] { typeof(float) })]
-        float? ScaleAndConcurrencyInstanceMemoryMb { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? ScaleAndConcurrencyInstanceMemoryMb { get; set; }
         /// <summary>The maximum number of instances for the function app.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"The maximum number of instances for the function app.",
         SerializedName = @"maximumInstanceCount",
-        PossibleTypes = new [] { typeof(float) })]
-        float? ScaleAndConcurrencyMaximumInstanceCount { get; set; }
+        PossibleTypes = new [] { typeof(int) })]
+        int? ScaleAndConcurrencyMaximumInstanceCount { get; set; }
         /// <summary>Property to select Azure Storage type. Available options: blobContainer.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         /// <summary>Storage for deployed package used by the function app.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsDeploymentStorage DeploymentStorage { get; set; }
         /// <summary>The maximum number of concurrent HTTP trigger invocations per instance.</summary>
-        float? HttpPerInstanceConcurrency { get; set; }
+        int? HttpPerInstanceConcurrency { get; set; }
         /// <summary>Function app runtime settings.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsRuntime Runtime { get; set; }
         /// <summary>
@@ -272,9 +272,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201
         /// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated
         /// proportionally.
         /// </summary>
-        float? ScaleAndConcurrencyInstanceMemoryMb { get; set; }
+        int? ScaleAndConcurrencyInstanceMemoryMb { get; set; }
         /// <summary>The maximum number of instances for the function app.</summary>
-        float? ScaleAndConcurrencyMaximumInstanceCount { get; set; }
+        int? ScaleAndConcurrencyMaximumInstanceCount { get; set; }
         /// <summary>Scale and concurrency settings for the function app triggers.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsScaleAndConcurrencyTriggers ScaleAndConcurrencyTrigger { get; set; }
         /// <summary>Authentication method to access the storage account for deployment.</summary>

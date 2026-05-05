@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Models.IStorageDiscoveryWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Description(@"List StorageDiscoveryWorkspace resources by subscription ID")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces", ApiVersion = "2025-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces", ApiVersion = "2025-09-01")]
     public partial class GetAzStorageDiscoveryWorkspace_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageDiscovery.Runtime.IContext

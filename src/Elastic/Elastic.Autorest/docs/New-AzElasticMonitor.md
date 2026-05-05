@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticMonitor
 
 ## SYNOPSIS
-create a monitor resource.
+Create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure resources through Elastic.
 
 ## SYNTAX
 
@@ -17,9 +17,10 @@ create a monitor resource.
 New-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-CompanyInfoBusiness <String>] [-CompanyInfoCountry <String>] [-CompanyInfoDomain <String>]
  [-CompanyInfoEmployeesNumber <String>] [-CompanyInfoState <String>] [-EnableSystemAssignedIdentity]
- [-GenerateApiKey] [-Location <String>] [-MonitoringStatus <String>] [-PlanDetailOfferId <String>]
- [-PlanDetailPlanId <String>] [-PlanDetailPlanName <String>] [-PlanDetailPublisherId <String>]
- [-PlanDetailTermId <String>] [-SaaSAzureSubscriptionStatus <String>] [-Sku <String>]
+ [-GenerateApiKey] [-HostingType <String>] [-Kind <String>] [-Location <String>] [-MonitoringStatus <String>]
+ [-PlanDetailOfferId <String>] [-PlanDetailPlanId <String>] [-PlanDetailPlanName <String>]
+ [-PlanDetailPublisherId <String>] [-PlanDetailTermId <String>] [-ProjectDetailConfigurationType <String>]
+ [-ProjectDetailProjectType <String>] [-SaaSAzureSubscriptionStatus <String>] [-Sku <String>]
  [-SourceCampaignId <String>] [-SourceCampaignName <String>] [-SubscriptionState <String>] [-Tag <Hashtable>]
  [-UserInfoCompanyName <String>] [-UserInfoEmailAddress <String>] [-UserInfoFirstName <String>]
  [-UserInfoLastName <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -41,7 +42,7 @@ New-AzElasticMonitor -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-create a monitor resource.
+Create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure resources through Elastic.
 
 ## EXAMPLES
 
@@ -196,6 +197,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HostingType
+Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
@@ -220,6 +236,21 @@ Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Kind
+The kind of the Elastic resource - observability, security, search etc.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -348,6 +379,36 @@ Accept wildcard characters: False
 
 ### -PlanDetailTermId
 Term ID of the plan
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectDetailConfigurationType
+Configuration type of the Elasticsearch project
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectDetailProjectType
+Project type; ex: Elasticsearch / Observability / Security
 
 ```yaml
 Type: System.String

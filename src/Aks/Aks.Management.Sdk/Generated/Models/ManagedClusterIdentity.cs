@@ -32,19 +32,28 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// components.
         /// </param>
 
-        /// <param name="type">For more information see [use managed identities in
+        /// <param name="type">The type of identity used for the managed cluster. For more information see
+        /// [use managed identities in
         /// AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
         /// Possible values include: &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;, &#39;None&#39;</param>
 
-        /// <param name="userAssignedIdentities">The keys must be ARM resource IDs in the form:
+        /// <param name="delegatedResources">The delegated identity resources assigned to this managed cluster. This can
+        /// only be set by another Azure Resource Provider, and managed cluster only
+        /// accept one delegated identity resource. Internal use only.
+        /// </param>
+
+        /// <param name="userAssignedIdentities">The user identity associated with the managed cluster. This identity will
+        /// be used in control plane. Only one user assigned identity is allowed. The
+        /// keys must be ARM resource IDs in the form:
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
         /// </param>
-        public ManagedClusterIdentity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), System.Collections.Generic.IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>))
+        public ManagedClusterIdentity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), System.Collections.Generic.IDictionary<string, DelegatedResource> delegatedResources = default(System.Collections.Generic.IDictionary<string, DelegatedResource>), System.Collections.Generic.IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(System.Collections.Generic.IDictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>))
 
         {
             this.PrincipalId = principalId;
             this.TenantId = tenantId;
             this.Type = type;
+            this.DelegatedResources = delegatedResources;
             this.UserAssignedIdentities = userAssignedIdentities;
             CustomInit();
         }
@@ -70,14 +79,26 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string TenantId {get; private set; }
 
         /// <summary>
-        /// Gets or sets for more information see [use managed identities in
+        /// Gets or sets the type of identity used for the managed cluster. For more
+        /// information see [use managed identities in
         /// AKS](https://docs.microsoft.com/azure/aks/use-managed-identity). Possible values include: &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;, &#39;None&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public ResourceIdentityType? Type {get; set; }
 
         /// <summary>
-        /// Gets or sets the keys must be ARM resource IDs in the form:
+        /// Gets or sets the delegated identity resources assigned to this managed
+        /// cluster. This can only be set by another Azure Resource Provider, and
+        /// managed cluster only accept one delegated identity resource. Internal use
+        /// only.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "delegatedResources")]
+        public System.Collections.Generic.IDictionary<string, DelegatedResource> DelegatedResources {get; set; }
+
+        /// <summary>
+        /// Gets or sets the user identity associated with the managed cluster. This
+        /// identity will be used in control plane. Only one user assigned identity is
+        /// allowed. The keys must be ARM resource IDs in the form:
         /// &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "userAssignedIdentities")]

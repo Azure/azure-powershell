@@ -60,7 +60,7 @@
                 "app0disk0"
               ]
             },
-            "hostName": "apphostName0",
+            "hostName": "apphostname0",
             "networkInterfaces": [
               {
                 "networkInterfaceName": "appnic0"
@@ -234,8 +234,8 @@
     "storageConfiguration": {
       "transportFileShareConfiguration": {
         "configurationType": "Mount",
-        "id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG/providers/Microsoft.Storage/storageAccounts/psclitfstorageaccount1/fileServices/default/shares/usrsaptransnonprod",
-        "privateEndpointId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG/providers/Microsoft.Network/privateEndpoints/psclitfstorageaccount1_pe"
+        "id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG1/providers/Microsoft.Storage/storageAccounts/psclitfstorageaccount2/fileServices/default/shares/usrsaptransnonprod",
+        "privateEndpointId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG1/providers/Microsoft.Network/privateEndpoints/psclitfstorageaccount2_pe"
       }
     }
   },
@@ -244,8 +244,8 @@
   },
   "softwareConfiguration": {
     "softwareInstallationType": "SAPInstallWithoutOSConfig",
-    "bomUrl": "https://ybteststorageaccount.blob.core.windows.net/sapbitss4hana2022/sapfiles/boms/S42022SPS00_v0006ms/S42022SPS00_v0006ms.yaml",
-    "sapBitsStorageAccountId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/yb-SapInstall/providers/Microsoft.Storage/storageAccounts/ybteststorageaccount",
+    "bomUrl": "https://acsssapbitsne.blob.core.windows.net/sapbitss4hana2022/sapfiles/boms/S42022SPS00_v0006ms/S42022SPS00_v0006ms.yaml",
+    "sapBitsStorageAccountId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/sapbits-ne/providers/Microsoft.Storage/storageAccounts/acsssapbitsne",
     "softwareVersion": "SAP S/4HANA 2022 ISS 00",
     "highAvailabilitySoftwareConfiguration": {
       "fencingClientId": "fencingClientId",

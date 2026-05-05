@@ -35,7 +35,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
 
-        /// <summary>Identity type</summary>
+        /// <summary>
+        /// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Origin(Microsoft.Azure.PowerShell.Cmdlets.Datadog.PropertyOrigin.Owned)]
         public string Type { get => this._type; set => this._type = value; }
 
@@ -70,14 +72,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         SerializedName = @"tenantId",
         PossibleTypes = new [] { typeof(string) })]
         string TenantId { get;  }
-        /// <summary>Identity type</summary>
+        /// <summary>
+        /// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Identity type",
+        Description = @"Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned")]
@@ -91,7 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models
         string PrincipalId { get; set; }
         /// <summary>The tenant ID of resource.</summary>
         string TenantId { get; set; }
-        /// <summary>Identity type</summary>
+        /// <summary>
+        /// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.PSArgumentCompleterAttribute("SystemAssigned", "UserAssigned")]
         string Type { get; set; }
 

@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Get-AzRedisEnterpriseCacheDatabase' {
     It 'List' {
         $splat = @{
-            Name = $env.ClusterName
+            Name = $env.ClusterName3
             ResourceGroupName = $env.ResourceGroupName
         }
         $databases = Get-AzRedisEnterpriseCacheDatabase @splat
@@ -23,7 +23,7 @@ Describe 'Get-AzRedisEnterpriseCacheDatabase' {
         $databases[0].Type | Should -Be "Microsoft.Cache/redisEnterprise/databases"
 
         $splat2 = @{
-            Name = $env.ClusterName2
+            Name = $env.ClusterName4
             ResourceGroupName = $env.ResourceGroupName
         }
         $databases2 = Get-AzRedisEnterpriseCacheDatabase @splat2

@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionrecoverypoint
 schema: 2.0.0
@@ -15,15 +15,14 @@ Gets a Recovery Point using recoveryPointId for a Datasource.
 ### List (Default)
 ```
 Get-AzDataProtectionRecoveryPoint [-BackupInstanceName <String>] [-ResourceGroupName <String>]
- [-SubscriptionId <String[]>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-StartTime <DateTime>]
- [-EndTime <DateTime>] [-UseSecondaryRegion] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-EndTime <DateTime>]
+ [-StartTime <DateTime>] [-UseSecondaryRegion] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDataProtectionRecoveryPoint -BackupInstanceName <String> -Id <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] -VaultName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -VaultName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -94,19 +93,7 @@ The name of the backup instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -184,19 +171,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -227,7 +202,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -257,19 +232,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -288,10 +251,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRecoveryPointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRecoveryPointResource
 
 ### System.Management.Automation.PSObject
 
 ## NOTES
 
 ## RELATED LINKS
+

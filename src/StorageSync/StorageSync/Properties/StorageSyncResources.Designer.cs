@@ -268,6 +268,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The given azure context do not have tenant id..
+        /// </summary>
+        internal static string MissingAzureContextTenantId {
+            get {
+                return ResourceManager.GetString("MissingAzureContextTenantId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The given parent resource is not in the required format. Please check the format and try again..
         /// </summary>
         internal static string MissingParentResourceIdErrorMessage {

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
 schema: 2.0.0
@@ -15,7 +15,8 @@ The operation to create a replication policy.
 ```
 New-AzMigrateReplicationPolicy -PolicyName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] [-ProviderSpecificInput <IPolicyProviderSpecificInput>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +38,6 @@ New-AzMigrateReplicationPolicy -PolicyName TestPolicy -ResourceGroupName Resourc
 Location Name       Type
 -------- ----       ----
          TestPolicy Microsoft.RecoveryServices/vaults/replicationPolicies
-         
 ```
 
 Creates a policy for VmWare Cbt
@@ -110,7 +110,7 @@ The ReplicationProviderSettings.
 To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicyProviderSpecificInput
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IPolicyProviderSpecificInput
 Parameter Sets: (All)
 Aliases:
 
@@ -204,9 +204,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IPolicy
 
 ## NOTES
 
 ## RELATED LINKS
-

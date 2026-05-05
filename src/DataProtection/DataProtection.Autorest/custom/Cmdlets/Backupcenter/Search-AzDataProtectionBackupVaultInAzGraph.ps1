@@ -1,4 +1,4 @@
-﻿function Search-AzDataProtectionBackupVaultInAzGraph
+function Search-AzDataProtectionBackupVaultInAzGraph
 {
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false)]
@@ -94,7 +94,7 @@
         foreach($argVault in $argAllVaults)
         {
             $jsonStringResponse = $argVault | ConvertTo-Json -Depth 100                                                 
-            $backupVaults += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.BackupVaultResource]::FromJsonString($jsonStringResponse)
+            $backupVaults += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupVaultResource]::FromJsonString($jsonStringResponse)
         }
         return $backupVaults
     }

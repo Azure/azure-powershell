@@ -1,11 +1,11 @@
-﻿
+
 function GetDatasourceSetInfo
 {
 	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
-		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IDatasource]
+		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IDatasource]
 		$DatasourceInfo,
 
 		[Parameter(Mandatory=$true)]
@@ -16,7 +16,7 @@ function GetDatasourceSetInfo
 
 	process 
 	{
-		$DataSourceSetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.DatasourceSet]::new()
+		$DataSourceSetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DatasourceSet]::new()
 		$DataSourceSetInfo.DatasourceType = $DatasourceInfo.Type
 		$DataSourceSetInfo.ObjectType = "DatasourceSet"        
 		$DataSourceSetInfo.ResourceLocation = $DatasourceInfo.ResourceLocation
@@ -35,6 +35,11 @@ function GetDatasourceSetInfo
 			$splitResourceType = $DatasourceInfo.ResourceType.Split("/")
 			$DataSourceSetInfo.ResourceType =  [System.String]::Join('/', $splitResourceType[0..($splitResourceType.Count -2)])
 			$DataSourceSetInfo.ResourceUri = ""
+		}
+
+		if($DataSourceSetInfo.PSObject.Properties.Name -contains "ResourceProperties")
+		{
+			$DataSourceSetInfo.PSObject.Properties.Remove("ResourceProperties") | Out-Null
 		}
 
 		return $DataSourceSetInfo
@@ -64,7 +69,7 @@ function GetDatasourceInfo
 	process
 	{
 		$manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
-		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.Datasource]::new()
+		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.Datasource]::new()
 		$DataSourceInfo.ObjectType = "Datasource"
         $DataSourceInfo.ResourceId = $ResourceId
         $DataSourceInfo.ResourceLocation = $ResourceLocation

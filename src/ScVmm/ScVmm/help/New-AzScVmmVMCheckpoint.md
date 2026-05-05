@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzScVmmVMCheckpoint
 
 ## SYNOPSIS
-create a checkpoint in virtual machine.
+Create a checkpoint in virtual machine.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzScVmmVMCheckpoint -Name <String> -ResourceGroupName <String> [-Subscriptio
 ```
 
 ## DESCRIPTION
-create a checkpoint in virtual machine.
+Create a checkpoint in virtual machine.
 
 ## EXAMPLES
 

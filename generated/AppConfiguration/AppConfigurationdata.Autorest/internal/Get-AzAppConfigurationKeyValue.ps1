@@ -37,7 +37,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IAppConfigurationdataIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [Key <String>]: The key of the key-value to retrieve.
+  [Key <String>]: The key of the key-value.
+  [Name <String>]: The name of the snapshot.
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationkeyvalue
 #>
@@ -56,6 +57,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Path')]
     [System.String]
     # A filter used to match keys.
+    # Syntax reference:
+    # https://aka.ms/azconfig/docs/keyvaluefiltering
     ${Key},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -67,13 +70,16 @@ param(
     [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [System.String]
-    # Instructs the server to return elements that appear after the element referred to by the specified token.
+    # Instructs the server to return elements that appear after the element referred
+    # to by the specified token.
     ${After},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [System.String]
-    # A filter used to match labels
+    # A filter used to match labels.
+    # Syntax reference:
+    # https://aka.ms/azconfig/docs/keyvaluefiltering
     ${Label},
 
     [Parameter()]
@@ -85,11 +91,45 @@ param(
     # Used to select what fields are present in the returned resource(s).
     ${Select},
 
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
+    [System.String]
+    # A filter used get key-values for a snapshot.
+    # The value should be the name of
+    # the snapshot.
+    # Not valid when used with 'key' and 'label' filters.
+    ${Snapshot},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
+    # A filter used to query by tags.
+    # Syntax reference:
+    # https://aka.ms/azconfig/docs/keyvaluefiltering
+    ${Tag},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
     [System.String]
-    # Requests the server to respond with the state of the resource at the specified time.
+    # Requests the server to respond with the state of the resource at the specified
+    # time.
     ${AcceptDatetime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
+    [System.String]
+    # Used to perform an operation only if the targeted resource's etag matches the
+    # value provided.
+    ${IfMatch},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
+    [System.String]
+    # Used to perform an operation only if the targeted resource's etag does not
+    # match the value provided.
+    ${IfNoneMatch},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
@@ -101,15 +141,8 @@ param(
     [Parameter(ParameterSetName='GetViaIdentity')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
     [System.String]
-    # Used to perform an operation only if the targeted resource's etag matches the value provided.
-    ${IfMatch},
-
-    [Parameter(ParameterSetName='Get1')]
-    [Parameter(ParameterSetName='GetViaIdentity')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
-    [System.String]
-    # Used to perform an operation only if the targeted resource's etag does not match the value provided.
-    ${IfNoneMatch},
+    # An opaque, globally-unique, client-generated string identifier for the request.
+    ${ClientRequestId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

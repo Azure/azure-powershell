@@ -27,10 +27,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         private string _importPrefix;
 
         /// <summary>
-        /// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+        /// Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This
+        /// is only used during initial creation of the AML file system. It automatically creates an import job resource that can
+        /// be deleted.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
         public string ImportPrefix { get => this._importPrefix; set => this._importPrefix = value; }
+
+        /// <summary>Backing field for <see cref="ImportPrefixesInitial" /> property.</summary>
+        private System.Collections.Generic.List<string> _importPrefixesInitial;
+
+        /// <summary>
+        /// Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the
+        /// cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value.
+        /// It automatically creates an import job resource that can be deleted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> ImportPrefixesInitial { get => this._importPrefixesInitial; set => this._importPrefixesInitial = value; }
 
         /// <summary>Backing field for <see cref="LoggingContainer" /> property.</summary>
         private string _loggingContainer;
@@ -68,7 +81,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         PossibleTypes = new [] { typeof(string) })]
         string Container { get; set; }
         /// <summary>
-        /// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+        /// Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This
+        /// is only used during initial creation of the AML file system. It automatically creates an import job resource that can
+        /// be deleted.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
         Required = false,
@@ -76,10 +91,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.",
+        Description = @"Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.",
         SerializedName = @"importPrefix",
         PossibleTypes = new [] { typeof(string) })]
         string ImportPrefix { get; set; }
+        /// <summary>
+        /// Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the
+        /// cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value.
+        /// It automatically creates an import job resource that can be deleted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.",
+        SerializedName = @"importPrefixesInitial",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> ImportPrefixesInitial { get; set; }
         /// <summary>
         /// Resource ID of storage container used for logging events and errors. Must be a separate container in the same storage
         /// account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the
@@ -107,9 +137,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         /// </summary>
         string Container { get; set; }
         /// <summary>
-        /// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
+        /// Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This
+        /// is only used during initial creation of the AML file system. It automatically creates an import job resource that can
+        /// be deleted.
         /// </summary>
         string ImportPrefix { get; set; }
+        /// <summary>
+        /// Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the
+        /// cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value.
+        /// It automatically creates an import job resource that can be deleted.
+        /// </summary>
+        System.Collections.Generic.List<string> ImportPrefixesInitial { get; set; }
         /// <summary>
         /// Resource ID of storage container used for logging events and errors. Must be a separate container in the same storage
         /// account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the

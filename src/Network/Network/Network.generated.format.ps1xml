@@ -6028,6 +6028,56 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSGatewayRouteSetsInformation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSGatewayRouteSetsInformation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>LastComputedTime</Label></TableColumnHeader>
+          <TableColumnHeader><Label>NextEligibleComputeTime</Label></TableColumnHeader>
+          <TableColumnHeader><Label>RouteSetVersion</Label></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>LastComputedTime</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>NextEligibleComputeTime</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>RouteSetVersion</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSGatewayResiliencyInformation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSGatewayResiliencyInformation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>OverallScore</Label></TableColumnHeader>
+          <TableColumnHeader><Label>ScoreChange</Label></TableColumnHeader>
+          <TableColumnHeader><Label>LastComputedTime</Label></TableColumnHeader>
+          <TableColumnHeader><Label>MinScore</Label></TableColumnHeader>
+          <TableColumnHeader><Label>MaxScore</Label></TableColumnHeader>
+          <TableColumnHeader><Label>Components</Label></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>OverallScore</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>ScoreChange</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>LastComputedTime</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>MinScoreFromRecommendations</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>MaxScoreFromRecommendations</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>ComponentsText</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress</TypeName>
@@ -7304,6 +7354,10 @@
 							  <Label>Tag</Label>
 							  <PropertyName>Tag</PropertyName>
 						  </ListItem>
+							<ListItem>
+								<Label>NvaInterfaceConfigurations</Label>
+								<PropertyName>NvaInterfaceConfigurations</PropertyName>
+							</ListItem>
 					  </ListItems>
 				  </ListEntry>
 			  </ListEntries>

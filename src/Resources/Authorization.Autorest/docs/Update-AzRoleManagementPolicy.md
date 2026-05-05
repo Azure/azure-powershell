@@ -26,6 +26,18 @@ Update-AzRoleManagementPolicy -InputObject <IAuthorizationIdentity> [-Descriptio
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzRoleManagementPolicy -Name <String> -Scope <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzRoleManagementPolicy -Name <String> -Scope <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Update a role management policy
 
@@ -34,11 +46,11 @@ Update a role management policy
 ### Example 1: Update expiration rule of a policy
 ```powershell
 $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-$expirationRule = [RoleManagementPolicyExpirationRule]@{
+$expirationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyExpirationRule]@{
             isExpirationRequired = "false";
             maximumDuration = "P180D";
             id = "Expiration_Admin_Eligibility";
-            ruleType = [RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
+            ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
             targetCaller = "Admin";
             targetOperation = @('All');
             targetLevel = "Eligibility";
@@ -62,11 +74,11 @@ Each individual `Rule` on a policy can be update independently.
 ### Example 2: Update expiration rule and a notification rule of a policy
 ```powershell
 $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-$expirationRule = [RoleManagementPolicyExpirationRule]@{
+$expirationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyExpirationRule]@{
             isExpirationRequired = "false";
             maximumDuration = "P180D";
             id = "Expiration_Admin_Eligibility";
-            ruleType = [RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
+            ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
             targetCaller = "Admin";
             targetOperation = @('All');
             targetLevel = "Eligibility";
@@ -74,14 +86,14 @@ $expirationRule = [RoleManagementPolicyExpirationRule]@{
             targetInheritableSetting = $null;
             targetEnforcedSetting = $null;
         }
-$notificationRule = [RoleManagementPolicyNotificationRule]@{
+$notificationRule = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.RoleManagementPolicyNotificationRule]@{
             notificationType = "Email";
             recipientType = "Approver";
             isDefaultRecipientsEnabled = "false";
             notificationLevel = "Critical";
             notificationRecipient = $null;                
             id = "Notification_Approver_Admin_Eligibility";
-            ruleType = [RoleManagementPolicyRuleType]("RoleManagementPolicyNotificationRule");
+            ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyNotificationRule");
             targetCaller = "Admin";
             targetOperation = @('All');
             targetLevel = "Eligibility";
@@ -125,7 +137,7 @@ The role management policy description.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -140,7 +152,7 @@ The role management policy display name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -152,7 +164,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
@@ -171,10 +182,40 @@ The role management policy is default policy.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -186,7 +227,7 @@ The name (guid) of the role management policy to upsert.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: RoleManagementPolicyName
 
 Required: True
@@ -198,11 +239,10 @@ Accept wildcard characters: False
 
 ### -Rule
 The rule applied to the policy.
-To construct, see NOTES section for RULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyRule[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicyRule[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -217,7 +257,7 @@ The scope of the role management policy to upsert.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -267,7 +307,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleManagementPolicy
 
 ## NOTES
 

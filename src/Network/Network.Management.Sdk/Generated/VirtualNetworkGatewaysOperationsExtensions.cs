@@ -536,6 +536,47 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// List all Radius servers with respective radius secrets from virtual network
+        /// gateway VpnClientConfiguration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        public static RadiusAuthServerListResult ListRadiusSecrets(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).ListRadiusSecretsAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List all Radius servers with respective radius secrets from virtual network
+        /// gateway VpnClientConfiguration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<RadiusAuthServerListResult> ListRadiusSecretsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListRadiusSecretsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// This operation retrieves a list of routes the virtual network gateway has
         /// learned, including routes learned from BGP peers.
         /// </summary>

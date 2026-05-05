@@ -1,8 +1,13 @@
-﻿function New-AzDataProtectionBackupVault
+function New-AzDataProtectionBackupVault
 {
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates or updates a BackupVault resource belonging to a resource group.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                           *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486  *`n
+    ***************************************************************************************************")]
 
     param(
         [Parameter(Mandatory=$false, HelpMessage='Subscription Id of the vault')]
@@ -30,7 +35,7 @@
         ${Location},
 
         [Parameter(Mandatory, HelpMessage='Storage Settings of the vault. Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IStorageSetting[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IStorageSetting[]]
         ${StorageSetting},
 
         [Parameter(Mandatory=$false, HelpMessage='Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.')]
@@ -160,13 +165,13 @@
             return
         }
 
-        $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.EncryptionSettings]::new()
+        $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.EncryptionSettings]::new()
         $encryptionSettings.State = $CmkEncryptionState
         $encryptionSettings.CmkInfrastructureEncryption = $CmkInfrastructureEncryption
-        $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.CmkKekIdentity]::new()
+        $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CmkKekIdentity]::new()
         $encryptionSettings.CmkIdentity.IdentityType = $CmkIdentityType
         $encryptionSettings.CmkIdentity.IdentityId = $CmkUserAssignedIdentityId
-        $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.CmkKeyVaultProperties]::new()
+        $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CmkKeyVaultProperties]::new()
         $encryptionSettings.CmkKeyVaultProperty.KeyUri = $CmkEncryptionKeyUri
 
         $PSBoundParameters.Add("EncryptionSetting", $encryptionSettings)

@@ -24,10 +24,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the FirewallPacketCaptureParameters class.
         /// </summary>
 
-        /// <param name="durationInSeconds">Duration of packet capture in seconds.
+        /// <param name="durationInSeconds">Duration of packet capture in seconds. If the field is not provided, the
+        /// default value is 60.
         /// </param>
 
-        /// <param name="numberOfPacketsToCapture">Number of packets to be captured.
+        /// <param name="numberOfPacketsToCapture">Number of packets to be captured. If the field is not provided, the default
+        /// value is 1000.
         /// </param>
 
         /// <param name="sasUrl">Upload capture location
@@ -44,7 +46,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="filters">Rules to filter packet captures.
         /// </param>
-        public FirewallPacketCaptureParameters(int? durationInSeconds = default(int?), int? numberOfPacketsToCapture = default(int?), string sasUrl = default(string), string fileName = default(string), string protocol = default(string), System.Collections.Generic.IList<AzureFirewallPacketCaptureFlags> flags = default(System.Collections.Generic.IList<AzureFirewallPacketCaptureFlags>), System.Collections.Generic.IList<AzureFirewallPacketCaptureRule> filters = default(System.Collections.Generic.IList<AzureFirewallPacketCaptureRule>))
+
+        /// <param name="operation">The Azure Firewall packet capture operation to perform
+        /// Possible values include: &#39;Start&#39;, &#39;Status&#39;, &#39;Stop&#39;</param>
+        public FirewallPacketCaptureParameters(int? durationInSeconds = default(int?), int? numberOfPacketsToCapture = default(int?), string sasUrl = default(string), string fileName = default(string), string protocol = default(string), System.Collections.Generic.IList<AzureFirewallPacketCaptureFlags> flags = default(System.Collections.Generic.IList<AzureFirewallPacketCaptureFlags>), System.Collections.Generic.IList<AzureFirewallPacketCaptureRule> filters = default(System.Collections.Generic.IList<AzureFirewallPacketCaptureRule>), string operation = default(string))
 
         {
             this.DurationInSeconds = durationInSeconds;
@@ -54,6 +59,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Protocol = protocol;
             this.Flags = flags;
             this.Filters = filters;
+            this.Operation = operation;
             CustomInit();
         }
 
@@ -64,13 +70,15 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets duration of packet capture in seconds.
+        /// Gets or sets duration of packet capture in seconds. If the field is not
+        /// provided, the default value is 60.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "durationInSeconds")]
         public int? DurationInSeconds {get; set; }
 
         /// <summary>
-        /// Gets or sets number of packets to be captured.
+        /// Gets or sets number of packets to be captured. If the field is not
+        /// provided, the default value is 1000.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "numberOfPacketsToCapture")]
         public int? NumberOfPacketsToCapture {get; set; }
@@ -104,6 +112,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "filters")]
         public System.Collections.Generic.IList<AzureFirewallPacketCaptureRule> Filters {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure Firewall packet capture operation to perform Possible values include: &#39;Start&#39;, &#39;Status&#39;, &#39;Stop&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "operation")]
+        public string Operation {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -134,6 +148,7 @@ namespace Microsoft.Azure.Management.Network.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "NumberOfPacketsToCapture", 100);
                 }
             }
+
 
 
 

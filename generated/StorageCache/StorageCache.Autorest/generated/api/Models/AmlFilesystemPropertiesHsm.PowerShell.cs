@@ -96,6 +96,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesHsmInternal)this).SettingImportPrefix = (string) content.GetValueForProperty("SettingImportPrefix",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesHsmInternal)this).SettingImportPrefix, global::System.Convert.ToString);
             }
+            if (content.Contains("SettingImportPrefixesInitial"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesHsmInternal)this).SettingImportPrefixesInitial = (System.Collections.Generic.List<string>) content.GetValueForProperty("SettingImportPrefixesInitial",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesHsmInternal)this).SettingImportPrefixesInitial, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -132,6 +136,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             if (content.Contains("SettingImportPrefix"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesHsmInternal)this).SettingImportPrefix = (string) content.GetValueForProperty("SettingImportPrefix",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesHsmInternal)this).SettingImportPrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("SettingImportPrefixesInitial"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesHsmInternal)this).SettingImportPrefixesInitial = (System.Collections.Generic.List<string>) content.GetValueForProperty("SettingImportPrefixesInitial",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesHsmInternal)this).SettingImportPrefixesInitial, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

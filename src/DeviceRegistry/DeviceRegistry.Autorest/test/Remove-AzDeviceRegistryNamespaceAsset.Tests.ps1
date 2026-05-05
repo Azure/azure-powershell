@@ -18,30 +18,32 @@ Describe 'Remove-AzDeviceRegistryNamespaceAsset' {
     It 'Delete' {
         $testConfig = $env.namespaceAssetTests.deleteTests.Delete
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.deleteTests.jsonFilePath
         
         # Create test asset to delete
-        New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
-        
+        New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
+
         # Delete the asset
-        Remove-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name
-        
+        Remove-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name
+
         # Verify the asset is deleted by trying to get it (should throw)
-        { Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -ErrorAction Stop } | Should -Throw
+        { Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentityNamespace' {
         $testConfig = $env.namespaceAssetTests.deleteTests.DeleteViaIdentityNamespace
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.deleteTests.jsonFilePath
         
         # Create test asset to delete
-        New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
-        
+        New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
+
         # Create namespace identity object
         $namespaceIdentity = @{
             SubscriptionId = $env.SubscriptionId
-            ResourceGroupName = $env.resourceGroup
+            ResourceGroupName = $resourceGroupName
             NamespaceName = $namespaceName
         }
         
@@ -55,11 +57,12 @@ Describe 'Remove-AzDeviceRegistryNamespaceAsset' {
     It 'DeleteViaIdentity' {
         $testConfig = $env.namespaceAssetTests.deleteTests.DeleteViaIdentity
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.deleteTests.jsonFilePath
         
         # Create test asset to delete
-        $asset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
-        
+        $asset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
+
         # Delete the asset using the asset object as identity
         Remove-AzDeviceRegistryNamespaceAsset -InputObject $asset
         

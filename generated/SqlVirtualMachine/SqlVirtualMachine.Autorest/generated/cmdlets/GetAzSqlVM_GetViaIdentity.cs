@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSqlVM_GetViaIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\r\n* At least one change applies to this cmdlet.                                                    *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Description(@"Gets a SQL virtual machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Generated]

@@ -14,6 +14,9 @@ The topics in this section document the Azure PowerShell cmdlets for Azure NetAp
 ### [Approve-AzNetAppFilesReplication](Approve-AzNetAppFilesReplication.md)
 Approve/Authorize replication connection on the source volume
 
+### [Clear-AzNetAppFilesRansomwareReportSuspect](Clear-AzNetAppFilesRansomwareReportSuspect.md)
+Clears suspects for an Azure NetApp Files (ANF) Advanced Ransomware Protection (ARP) report.
+
 ### [Convert-AzNetAppFilesAccountToCmk](Convert-AzNetAppFilesAccountToCmk.md)
 Transition volumes encryption from PMK to CMK.
 
@@ -35,6 +38,15 @@ Gets details of an Azure NetApp Files (ANF) Backup Policy.
 ### [Get-AzNetAppFilesBackupVault](Get-AzNetAppFilesBackupVault.md)
 Gets details of an Azure NetApp Files (ANF) BackupVault.
 
+### [Get-AzNetAppFilesBucket](Get-AzNetAppFilesBucket.md)
+Get the details of the specified volume's bucket. A bucket allows additional services, such as AI services, connect to the volume data contained in those buckets.
+
+### [Get-AzNetAppFilesCache](Get-AzNetAppFilesCache.md)
+Gets details of an Azure NetApp Files (ANF) Cache or lists all Caches in a Capacity Pool.
+
+### [Get-AzNetAppFilesCachePeeringPassphrase](Get-AzNetAppFilesCachePeeringPassphrase.md)
+Gets the cluster-peering and vserver-peering commands and passphrases required to complete peering between an Azure NetApp Files (ANF) Cache and its on-prem ONTAP origin.
+
 ### [Get-AzNetAppFilesFilePathAvailability](Get-AzNetAppFilesFilePathAvailability.md)
 Check file path availability
 
@@ -52,6 +64,9 @@ Check quota availability
 
 ### [Get-AzNetAppFilesQuotaLimit](Get-AzNetAppFilesQuotaLimit.md)
 Get quota limits
+
+### [Get-AzNetAppFilesRansomwareReport](Get-AzNetAppFilesRansomwareReport.md)
+Gets details of an Azure NetApp Files (ANF) Advanced Ransomware Protection (ARP) report.
 
 ### [Get-AzNetAppFilesRegionInfo](Get-AzNetAppFilesRegionInfo.md)
 Describes region specific information
@@ -75,7 +90,7 @@ Gets details of an Azure NetApp Files (ANF) subvolume.
 Gets metadata details of an Azure NetApp Files (ANF) subvolume.
 
 ### [Get-AzNetAppFilesUsage](Get-AzNetAppFilesUsage.md)
-{{ Fill in the Synopsis }}
+Get usages
 
 ### [Get-AzNetAppFilesVolume](Get-AzNetAppFilesVolume.md)
 Gets details of an Azure NetApp Files (ANF) volume.
@@ -88,6 +103,9 @@ Gets details of an Azure NetApp Files (ANF) VolumeGroup.
 
 ### [Get-AzNetAppFilesVolumeGroupIdListForLDAPUser](Get-AzNetAppFilesVolumeGroupIdListForLDAPUser.md)
 Get Group Id List for LDAP User
+
+### [Get-AzNetAppFilesVolumeQuotaReport](Get-AzNetAppFilesVolumeQuotaReport.md)
+Gets a quota report for an Azure NetApp Files (ANF) volume.
 
 ### [Get-AzNetAppFilesVolumeQuotaRule](Get-AzNetAppFilesVolumeQuotaRule.md)
 Gets details of an Azure NetApp Files (ANF) Volume Quota Rule.
@@ -118,6 +136,15 @@ Creates a new Azure NetApp Files (ANF) backup policy for an ANF account.
 
 ### [New-AzNetAppFilesBackupVault](New-AzNetAppFilesBackupVault.md)
 Creates a new Azure NetApp Files (ANF) BackupVault.
+
+### [New-AzNetAppFilesBucket](New-AzNetAppFilesBucket.md)
+Creates a new Bucket on an Azure NetApp Files (ANF) Volume.
+
+### [New-AzNetAppFilesBucketCredential](New-AzNetAppFilesBucketCredential.md)
+Generates a new Access Key / Secret Key pair for an Azure NetApp Files (ANF) Bucket and returns the credentials in cleartext.
+
+### [New-AzNetAppFilesCache](New-AzNetAppFilesCache.md)
+Creates a new Azure NetApp Files (ANF) Cache (FlexCache) in a Capacity Pool.
 
 ### [New-AzNetAppFilesExportPolicyObject](New-AzNetAppFilesExportPolicyObject.md)
 Creates export policy object.
@@ -162,6 +189,12 @@ Deletes an Azure NetApp Files (ANF) backup policy.
 ### [Remove-AzNetAppFilesBackupVault](Remove-AzNetAppFilesBackupVault.md)
 Deletes an Azure NetApp Files (ANF) BackupVault.
 
+### [Remove-AzNetAppFilesBucket](Remove-AzNetAppFilesBucket.md)
+Deletes an Azure NetApp Files (ANF) Bucket.
+
+### [Remove-AzNetAppFilesCache](Remove-AzNetAppFilesCache.md)
+Deletes an Azure NetApp Files (ANF) Cache.
+
 ### [Remove-AzNetAppFilesPool](Remove-AzNetAppFilesPool.md)
 Deletes an Azure NetApp Files (ANF) pool.
 
@@ -185,6 +218,9 @@ Deletes an Azure NetApp Files (ANF) VolumeGroup. This delete the specified volum
 
 ### [Remove-AzNetAppFilesVolumeQuotaRule](Remove-AzNetAppFilesVolumeQuotaRule.md)
 Deletes an Azure NetApp Files (ANF) Volume Quota Rule. 
+
+### [Reset-AzNetAppFilesCacheSmbPassword](Reset-AzNetAppFilesCacheSmbPassword.md)
+Resets the SMB machine account password on an Azure NetApp Files (ANF) Cache.
 
 ### [Reset-AzNetAppFilesVolumeCifsPassword](Reset-AzNetAppFilesVolumeCifsPassword.md)
 Reset the Cifs password for the volume
@@ -213,6 +249,12 @@ Updates an Azure NetApp Files (ANF) Backup Policy with the new data set.
 ### [Set-AzNetAppFilesBackupVault](Set-AzNetAppFilesBackupVault.md)
 Updates an Azure NetApp Files (ANF) BackupVault with the new data set.
 
+### [Set-AzNetAppFilesBucketAkvCredential](Set-AzNetAppFilesBucketAkvCredential.md)
+Generates an Azure NetApp Files (ANF) Bucket Access Key / Secret Key pair and stores it in Azure Key Vault.
+
+### [Set-AzNetAppFilesCachePool](Set-AzNetAppFilesCachePool.md)
+Moves an Azure NetApp Files (ANF) Cache to a different Capacity Pool.
+
 ### [Set-AzNetAppFilesPool](Set-AzNetAppFilesPool.md)
 Updates an Azure NetApp Files (ANF) Capacity Pool with the new data set. 
 
@@ -221,6 +263,9 @@ Updates an Azure NetApp Files (ANF) Snapshot Policy with the new data set.
 
 ### [Set-AzNetAppFilesVolumePool](Set-AzNetAppFilesVolumePool.md)
 Change pool for an Azure NetApp Files (ANF) volume.
+
+### [Split-AzNetAppFilesCloneFromParent](Split-AzNetAppFilesCloneFromParent.md)
+Split clone from parent volume
 
 ### [Start-AzNetAppFilesAuthorizeExternalReplication](Start-AzNetAppFilesAuthorizeExternalReplication.md)
 Start migration process
@@ -257,6 +302,15 @@ Updates an Azure NetApp Files (ANF) backup policy to the optional modifiers prov
 
 ### [Update-AzNetAppFilesBackupVault](Update-AzNetAppFilesBackupVault.md)
 Updates an Azure NetApp Files (ANF) BackupVault according to the optional modifiers provided.
+
+### [Update-AzNetAppFilesBucket](Update-AzNetAppFilesBucket.md)
+Updates an existing Azure NetApp Files (ANF) Bucket.
+
+### [Update-AzNetAppFilesBucketCertificate](Update-AzNetAppFilesBucketCertificate.md)
+Refreshes an Azure NetApp Files (ANF) Bucket server certificate from Azure Key Vault.
+
+### [Update-AzNetAppFilesCache](Update-AzNetAppFilesCache.md)
+Updates an existing Azure NetApp Files (ANF) Cache.
 
 ### [Update-AzNetAppFilesNetworkSiblingSet](Update-AzNetAppFilesNetworkSiblingSet.md)
 Update the network features of a network sibling set

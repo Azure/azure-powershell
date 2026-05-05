@@ -1,0 +1,95 @@
+{
+  "resourceType": "amlFilesystems/autoExportJobs",
+  "apiVersion": "2025-07-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.storagecache"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStorageCacheAutoExportJob",
+      "description": "Returns an auto export job.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecacheautoexportjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AmlFilesystemName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns an auto export job.",
+          "parameters": [
+            {
+              "name": "-AmlFilesystemName",
+              "value": "[Path.amlFilesystemName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.autoExportJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStorageCacheAutoExportJob",
+      "description": "Schedules an auto export job for deletion.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs/{autoExportJobName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storagecache/remove-azstoragecacheautoexportjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AmlFilesystemName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Schedules an auto export job for deletion.",
+          "parameters": [
+            {
+              "name": "-AmlFilesystemName",
+              "value": "[Path.amlFilesystemName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.autoExportJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

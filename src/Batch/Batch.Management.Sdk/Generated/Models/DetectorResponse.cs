@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Batch.Models
     /// Contains the information for a detector.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class DetectorResponse : ProxyResource
+    public partial class DetectorResponse : AzureProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the DetectorResponse class.
@@ -37,11 +37,14 @@ namespace Microsoft.Azure.Management.Batch.Models
         /// <param name="etag">The ETag of the resource, used for concurrency statements.
         /// </param>
 
+        /// <param name="tags">The tags of the resource.
+        /// </param>
+
         /// <param name="value">A base64 encoded string that represents the content of a detector.
         /// </param>
-        public DetectorResponse(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string value = default(string))
+        public DetectorResponse(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string value = default(string))
 
-        : base(id, name, type, etag)
+        : base(id, name, type, etag, tags)
         {
             this.Value = value;
             CustomInit();

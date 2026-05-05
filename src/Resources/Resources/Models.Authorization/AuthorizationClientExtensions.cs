@@ -98,7 +98,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 if (oe.IsAuthorizationDeniedException() || oe.IsNotFoundException())
                 {
-                    adObject = new PSADObject() { Id = assignment.PrincipalId, Type = UnknownType};
+                    // fall back to cached principal type from response,
+                    // then finally fall back to "Unknown"
+                    adObject = new PSADObject() { Id = assignment.PrincipalId, Type = assignment.PrincipalType ?? UnknownType};
                 }
                 //Swallow exceptions when displaying active directive object
             }
@@ -197,7 +199,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             foreach (RoleAssignment assignment in assignments)
             {
                 assignment.RoleDefinitionId = assignment.RoleDefinitionId.GuidFromFullyQualifiedId();
-                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == assignment.PrincipalId) ?? new PSADObject() { Id = assignment.PrincipalId, Type = UnknownType };
+                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == assignment.PrincipalId) ?? new PSADObject() { Id = assignment.PrincipalId, Type = assignment.PrincipalType ?? UnknownType };
                 PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.RoleDefinitionId) ?? new PSRoleDefinition() { Id = assignment.RoleDefinitionId };
                 var psRoleAssignment = new PSRoleAssignment()
                 {
@@ -242,18 +244,29 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         private static IEnumerable<PSPrincipal> ToPSPrincipals(this IEnumerable<Principal> principals, IEnumerable<PSADObject> adObjects)
         {
+            return principals.ToPSPrincipalsCore(adObjects, p => p.Id, p => p.Type);
+        }
+
+        private static IEnumerable<PSPrincipal> ToPSPrincipals(this IEnumerable<DenyAssignmentPrincipal> principals, IEnumerable<PSADObject> adObjects)
+        {
+            return principals.ToPSPrincipalsCore(adObjects, p => p.Id, p => p.Type);
+        }
+
+        private static IEnumerable<PSPrincipal> ToPSPrincipalsCore<T>(this IEnumerable<T> principals, IEnumerable<PSADObject> adObjects,
+            Func<T, string> idSelector, Func<T, string> typeSelector)
+        {
             var psPrincipals = new List<PSPrincipal>();
             foreach (var p in principals)
             {
-                var pid = Guid.Parse(p.Id);
+                var pid = Guid.Parse(idSelector(p));
                 if (pid == Guid.Empty)
                 {
-                    psPrincipals.Add(new PSPrincipal { DisplayName = AllPrincipals, ObjectType = SystemDefined, ObjectId = new Guid(p.Id) });
+                    psPrincipals.Add(new PSPrincipal { DisplayName = AllPrincipals, ObjectType = SystemDefined, ObjectId = pid });
                 }
                 else
                 {
                     var adObject = adObjects.SingleOrDefault(o => o.Id == pid.ToString()) ?? new PSADObject() { Id = pid.ToString()};
-                    psPrincipals.Add(new PSPrincipal { DisplayName = adObject?.DisplayName, ObjectType = p.Type, ObjectId = new Guid(p.Id) });
+                    psPrincipals.Add(new PSPrincipal { DisplayName = adObject?.DisplayName, ObjectType = typeSelector(p), ObjectId = pid });
                 }
             }
             return psPrincipals;

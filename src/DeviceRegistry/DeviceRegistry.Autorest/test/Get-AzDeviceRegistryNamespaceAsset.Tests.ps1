@@ -18,11 +18,12 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
     It 'List' {
         $testConfig = $env.namespaceAssetTests.getTests.List
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.getTests.jsonFilePath
-        New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name1 -JsonFilePath $jsonFilePath
-        New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name2 -JsonFilePath $jsonFilePath
-        
-        $result = Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName
+        New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name1 -JsonFilePath $jsonFilePath
+        New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name2 -JsonFilePath $jsonFilePath
+
+        $result = Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
         
         $result | Should -Not -BeNullOrEmpty
         $result.Count | Should -BeGreaterOrEqual 2
@@ -34,11 +35,13 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
     It 'GetViaIdentityNamespace' {
         $testConfig = $env.namespaceAssetTests.getTests.GetViaIdentityNamespace
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
+        $extendedLocationName = $env.namespaceAssetTests.extendedLocationName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.getTests.jsonFilePath
-        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
+        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
         $namespaceIdentity = @{
             SubscriptionId = $env.SubscriptionId
-            ResourceGroupName = $env.resourceGroup
+            ResourceGroupName = $resourceGroupName
             NamespaceName = $namespaceName
         }
         
@@ -46,7 +49,7 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
         
         $result.Name | Should -Be $testConfig.name
         $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.DeviceRefDeviceName | Should -Be "myDeviceName"
         $result.DeviceRefEndpointName | Should -Be "myEndpointName"
@@ -59,7 +62,7 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
         $result.SerialNumber | Should -Be "64-103816-519918-8"
         $result.DocumentationUri | Should -Be "https://www.example.com/manual/"
         $result.Dataset | Should -HaveCount 2
-        $result.Event | Should -HaveCount 2
+        $result.EventGroup | Should -HaveCount 2
         $result.Stream | Should -HaveCount 2
         $result.ManagementGroup | Should -HaveCount 1
     }
@@ -67,14 +70,16 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
     It 'Get' {
         $testConfig = $env.namespaceAssetTests.getTests.Get
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
+        $extendedLocationName = $env.namespaceAssetTests.extendedLocationName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.getTests.jsonFilePath
-        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
-        
-        $result = Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name
-        
+        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
+
+        $result = Get-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name
+
         $result.Name | Should -Be $testConfig.name
         $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.DeviceRefDeviceName | Should -Be "myDeviceName"
         $result.DeviceRefEndpointName | Should -Be "myEndpointName"
@@ -87,7 +92,7 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
         $result.SerialNumber | Should -Be "64-103816-519918-8"
         $result.DocumentationUri | Should -Be "https://www.example.com/manual/"
         $result.Dataset | Should -HaveCount 2
-        $result.Event | Should -HaveCount 2
+        $result.EventGroup | Should -HaveCount 2
         $result.Stream | Should -HaveCount 2
         $result.ManagementGroup | Should -HaveCount 1
     }
@@ -95,11 +100,13 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
     It 'GetViaIdentity' {
         $testConfig = $env.namespaceAssetTests.getTests.GetViaIdentity
         $namespaceName = $env.namespaceAssetTests.namespaceName
+        $resourceGroupName = $env.namespaceAssetTests.resourceGroupName
+        $extendedLocationName = $env.namespaceAssetTests.extendedLocationName
         $jsonFilePath = Join-Path $PSScriptRoot $env.namespaceAssetTests.getTests.jsonFilePath
-        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $env.resourceGroup -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
+        $createdAsset = New-AzDeviceRegistryNamespaceAsset -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -AssetName $testConfig.name -JsonFilePath $jsonFilePath
         $identity = @{
             SubscriptionId = $env.SubscriptionId
-            ResourceGroupName = $env.resourceGroup
+            ResourceGroupName = $resourceGroupName
             NamespaceName = $namespaceName
             AssetName = $testConfig.name
         }
@@ -108,7 +115,7 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
         
         $result.Name | Should -Be $testConfig.name
         $result.Location | Should -Be $env.location
-        $result.ExtendedLocationName | Should -Be $env.extendedLocationName
+        $result.ExtendedLocationName | Should -Be $extendedLocationName
         $result.ExtendedLocationType | Should -Be $env.extendedLocationType
         $result.DeviceRefDeviceName | Should -Be "myDeviceName"
         $result.DeviceRefEndpointName | Should -Be "myEndpointName"
@@ -121,7 +128,7 @@ Describe 'Get-AzDeviceRegistryNamespaceAsset' {
         $result.SerialNumber | Should -Be "64-103816-519918-8"
         $result.DocumentationUri | Should -Be "https://www.example.com/manual/"
         $result.Dataset | Should -HaveCount 2
-        $result.Event | Should -HaveCount 2
+        $result.EventGroup | Should -HaveCount 2
         $result.Stream | Should -HaveCount 2
         $result.ManagementGroup | Should -HaveCount 1
     }

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
+external help file: Az.FrontDoor-help.xml
 Module Name: Az.FrontDoor
 online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy
 schema: 2.0.0
@@ -8,22 +8,37 @@ schema: 2.0.0
 # New-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
-Create WAF policy
+Create policy with specified rule set name within a resource group.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzFrontDoorWafPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
- [-Mode <String>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
- [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>] [-Tag <Hashtable>]
- [-RequestBodyCheck <String>] [-Sku <String>] [-LogScrubbingSetting <PSFrontDoorWafLogScrubbingSetting>]
- [-JavascriptChallengeExpirationInMinutes <Int32>] [-CaptchaExpirationInMinutes <Int32>]
- [-DefaultProfile <IAzureContextContainer>][-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-CustomBlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-Customrule <ICustomRule[]>]
+ [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinutes <Int32>]
+ [-CaptchaExpirationInMinutes <Int32>] [-LogScrubbingSetting <IPolicySettingsLogScrubbing>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>] [-RedirectUrl <String>] [-RequestBodyCheck <String>]
+ [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzFrontDoorWafPolicy** cmdlet creates a new Azure WAF policy in the specified resource group under current subscription
+Create policy with specified rule set name within a resource group.
 
 ## EXAMPLES
 
@@ -33,21 +48,65 @@ New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-Name         PolicyMode PolicyEnabledState RedirectUrl
-----         ---------- ------------------ -----------
-{policyName} Prevention            Enabled https://www.bing.com/
+Customrule           : {customrule0, customrule01}
+Etag                 :
+FrontendEndpointLink : {}
+Id                   : /subscriptions/{subid}/resourcegroups/{rg}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
+Location             : Global
+ManagedRuleSet       : {{
+                         "ruleSetType": "Microsoft_DefaultRuleSet",
+                         "ruleSetVersion": "2.0",
+                         "ruleSetAction": "Block",
+                         "exclusions": [ ],
+                         "ruleGroupOverrides": [ ]
+                       }}
+Name                 : {policyName}
+PolicySetting        : {
+                         "enabledState": "Enabled",
+                         "mode": "Detection",
+                         "customBlockResponseStatusCode": 403,
+                         "requestBodyCheck": "Enabled"
+                       }
+ProvisioningState    : Succeeded
+ResourceGroupName    : {rg}
+ResourceState        : Enabled
+RoutingRuleLink      :
+SecurityPolicyLink   : {{
+                         "id": "/subscriptions/{subid}/resourcegroups/{rg}/providers/Microsoft.Cdn/profiles/hdis-fe/securitypolicies/premium"
+                       }}
+SkuName              : Premium_AzureFrontDoor
+Tag                  : {
+                       }
+Type                 : Microsoft.Network/frontdoorwebapplicationfirewallpolicies
 ```
 
 Create WAF policy
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CaptchaExpirationInMinutes
-setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440
+Defines the Captcha cookie validity lifetime in minutes.
+This setting is only applicable to Premium_AzureFrontDoor.
+Value must be an integer between 5 and 1440 with the default value being 30.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -58,11 +117,12 @@ Accept wildcard characters: False
 ```
 
 ### -CustomBlockResponseBody
-Custom Response Body
+If the action type is block, customer can override the response body.
+The body must be specified in base64 encoding.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -73,11 +133,11 @@ Accept wildcard characters: False
 ```
 
 ### -CustomBlockResponseStatusCode
-Custom Response Status Code
+If the action type is block, customer can override the response status code.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -88,11 +148,11 @@ Accept wildcard characters: False
 ```
 
 ### -Customrule
-Custom rules inside the policy
+List of rules
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -103,12 +163,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -118,14 +179,28 @@ Accept wildcard characters: False
 ```
 
 ### -EnabledState
-Whether the policy is in enabled state or disabled state.
-Possible values include: 'Disabled', 'Enabled'
+Describes if the policy is in enabled or disabled state.
+Defaults to Enabled if not specified.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
-Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Etag
+Gets a unique read-only string that changes whenever the resource is updated.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -135,14 +210,46 @@ Accept wildcard characters: False
 ```
 
 ### -JavascriptChallengeExpirationInMinutes
-setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
+Defines the JavaScript challenge cookie validity lifetime in minutes.
+This setting is only applicable to Premium_AzureFrontDoor.
+Value must be an integer between 5 and 1440 with the default value being 30.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -150,11 +257,11 @@ Accept wildcard characters: False
 ```
 
 ### -LogScrubbingSetting
-Defines rules that scrub sensitive fields in the Web Application Firewall.
+Defines rules that scrub sensitive fields in the Web Application Firewall logs.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoorWafLogScrubbingSetting
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -164,13 +271,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedRule
-Managed rules inside the policy
+### -ManagedRuleSet
+List of rule sets.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[]
-Parameter Sets: (All)
-Aliases:
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]
+Parameter Sets: CreateExpanded
+Aliases: ManagedRule
 
 Required: False
 Position: Named
@@ -180,12 +287,11 @@ Accept wildcard characters: False
 ```
 
 ### -Mode
-Describes if it is in detection mode  or prevention mode at policy level.
-Possible values include:'Prevention', 'Detection'
+Describes if it is in detection mode or prevention mode at policy level.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -196,12 +302,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-WebApplicationFireWallPolicy name.
+The name of the Web Application Firewall Policy.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PolicyName
 
 Required: True
 Position: Named
@@ -210,12 +316,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RedirectUrl
-Redirect URL
+If action type is redirect, this field represents redirect URL for the client.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -226,11 +347,11 @@ Accept wildcard characters: False
 ```
 
 ### -RequestBodyCheck
-Defines if the body should be inspected by managed rules. Possible values include: 'Enabled', 'Disabled'
+Describes if policy managed rules will inspect the request body content.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -241,7 +362,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
@@ -255,13 +376,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sku
-Sets Sku. Possible values include: 'Classic_AzureFrontDoor', 'Standard_AzureFrontDoor', 'Premium_AzureFrontDoor'
+### -SkuName
+Name of the pricing tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: CreateExpanded
+Aliases: Sku
 
 Required: False
 Position: Named
@@ -270,12 +391,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
-The tags associate with the FrontDoor WAF Policy.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -321,18 +458,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Update-AzFrontDoorWafPolicy](./Update-AzFrontDoorWafPolicy.md)
-[Get-AzFrontDoorWafPolicy](./Get-AzFrontDoorWafPolicy.md)
-[Remove-AzFrontDoorWafPolicy](./Remove-AzFrontDoorWafPolicy.md)
-[New-AzFrontDoorWafManagedRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)
-[New-AzFrontDoorWafCustomRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)

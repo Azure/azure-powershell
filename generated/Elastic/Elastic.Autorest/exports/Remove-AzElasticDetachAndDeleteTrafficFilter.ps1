@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Detach and Delete traffic filter from the given deployment.
+Detach and delete an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 .Description
-Detach and Delete traffic filter from the given deployment.
+Detach and delete an existing traffic filter from your Elastic monitor resource, removing its network traffic control capabilities.
 .Example
 Remove-AzElasticDetachAndDeleteTrafficFilter -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 
@@ -32,6 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name

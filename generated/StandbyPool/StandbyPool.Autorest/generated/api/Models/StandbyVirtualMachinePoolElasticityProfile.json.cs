@@ -77,8 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return;
             }
+            {_dynamicSizing = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonObject>("dynamicSizing"), out var __jsonDynamicSizing) ? Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.DynamicSizing.FromJson(__jsonDynamicSizing) : _dynamicSizing;}
             {_maxReadyCapacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber>("maxReadyCapacity"), out var __jsonMaxReadyCapacity) ? (long)__jsonMaxReadyCapacity : _maxReadyCapacity;}
             {_minReadyCapacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber>("minReadyCapacity"), out var __jsonMinReadyCapacity) ? (long?)__jsonMinReadyCapacity : _minReadyCapacity;}
+            {_postProvisioningDelay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString>("postProvisioningDelay"), out var __jsonPostProvisioningDelay) ? (string)__jsonPostProvisioningDelay : (string)_postProvisioningDelay;}
             AfterFromJson(json);
         }
 
@@ -103,8 +105,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 return container;
             }
+            AddIf( null != this._dynamicSizing ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) this._dynamicSizing.ToJson(null,serializationMode) : null, "dynamicSizing" ,container.Add );
             AddIf( (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber(this._maxReadyCapacity), "maxReadyCapacity" ,container.Add );
             AddIf( null != this._minReadyCapacity ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber((long)this._minReadyCapacity) : null, "minReadyCapacity" ,container.Add );
+            AddIf( null != (((object)this._postProvisioningDelay)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonString(this._postProvisioningDelay.ToString()) : null, "postProvisioningDelay" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

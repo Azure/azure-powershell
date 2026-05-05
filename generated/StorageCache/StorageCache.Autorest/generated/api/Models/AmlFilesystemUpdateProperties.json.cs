@@ -67,6 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             }
             {_encryptionSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonObject>("encryptionSettings"), out var __jsonEncryptionSettings) ? Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemEncryptionSettings.FromJson(__jsonEncryptionSettings) : _encryptionSetting;}
             {_maintenanceWindow = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonObject>("maintenanceWindow"), out var __jsonMaintenanceWindow) ? Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemUpdatePropertiesMaintenanceWindow.FromJson(__jsonMaintenanceWindow) : _maintenanceWindow;}
+            {_rootSquashSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonObject>("rootSquashSettings"), out var __jsonRootSquashSettings) ? Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemRootSquashSettings.FromJson(__jsonRootSquashSettings) : _rootSquashSetting;}
             AfterFromJson(json);
         }
 
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             }
             AddIf( null != this._encryptionSetting ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) this._encryptionSetting.ToJson(null,serializationMode) : null, "encryptionSettings" ,container.Add );
             AddIf( null != this._maintenanceWindow ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) this._maintenanceWindow.ToJson(null,serializationMode) : null, "maintenanceWindow" ,container.Add );
+            AddIf( null != this._rootSquashSetting ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) this._rootSquashSetting.ToJson(null,serializationMode) : null, "rootSquashSettings" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

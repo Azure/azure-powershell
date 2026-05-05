@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceAsset))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Description(@"create a NamespaceAsset")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}", ApiVersion = "2025-07-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}", ApiVersion = "2025-10-01")]
     public partial class NewAzDeviceRegistryNamespaceAsset_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.IContext
@@ -295,18 +295,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Cmdlets
         public global::System.Management.Automation.SwitchParameter Enabled { get => _resourceBody.Enabled ?? default(global::System.Management.Automation.SwitchParameter); set => _resourceBody.Enabled = value; }
 
         /// <summary>
-        /// Array of events that are part of the asset. Each event can have per-event configuration.
+        /// Array of event groups that are part of the asset. Each event group can have per-event group configuration.
         /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Array of events that are part of the asset. Each event can have per-event configuration.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Array of event groups that are part of the asset. Each event group can have per-event group configuration.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Array of events that are part of the asset. Each event can have per-event configuration.",
-        SerializedName = @"events",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent[] Event { get => _resourceBody.Event?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.Event = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEvent>(value) : null); }
+        Description = @"Array of event groups that are part of the asset. Each event group can have per-event group configuration.",
+        SerializedName = @"eventGroups",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup[] EventGroup { get => _resourceBody.EventGroup?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.EventGroup = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DeviceRegistry.Models.INamespaceEventGroup>(value) : null); }
 
         /// <summary>The extended location name.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The extended location name.")]
