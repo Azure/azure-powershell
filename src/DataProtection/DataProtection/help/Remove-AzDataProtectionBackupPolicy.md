@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionbackuppolicy
 schema: 2.0.0
@@ -14,8 +14,9 @@ Deletes a backup policy belonging to a backup vault
 
 ### Delete (Default)
 ```
-Remove-AzDataProtectionBackupPolicy -Name <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDataProtectionBackupPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -VaultName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityBackupVault
@@ -28,7 +29,7 @@ Remove-AzDataProtectionBackupPolicy -Name <String> -BackupVaultInputObject <IDat
 ### DeleteViaIdentity
 ```
 Remove-AzDataProtectionBackupPolicy -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -214,4 +215,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

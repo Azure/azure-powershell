@@ -64,7 +64,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
         ${AutoProtection},
 
         [Parameter(Mandatory=$false, HelpMessage='List of auto-protection exclusion rules. Each rule is a BlobBackupAutoProtectionRule object specifying container name prefix patterns to exclude. Use this parameter along with -AutoProtection.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBlobBackupAutoProtectionRule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBlobBackupAutoProtectionRule[]]
         ${AutoProtectionExclusionRule}
     )
 
@@ -138,11 +138,11 @@ function New-AzDataProtectionBackupConfigurationClientObject{
                 }
 
                 if($DatasourceType.ToString() -eq "AzureBlob"){ 
-                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupDatasourceParameters]::new()
+                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BlobBackupDatasourceParameters]::new()
                     $dataSourceParam.ObjectType = "BlobBackupDatasourceParameters"
                 } 
                 elseif($DatasourceType.ToString() -eq "AzureDataLakeStorage"){
-                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdlsBlobBackupDatasourceParameters]::new()
+                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AdlsBlobBackupDatasourceParameters]::new()
                     $dataSourceParam.ObjectType = "AdlsBlobBackupDatasourceParameters"
                 }
             

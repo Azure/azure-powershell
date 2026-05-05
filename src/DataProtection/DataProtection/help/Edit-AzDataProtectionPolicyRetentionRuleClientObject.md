@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicyretentionruleclientobject
 schema: 2.0.0
@@ -14,14 +14,15 @@ Adds or removes Retention Rule to existing Policy
 
 ### RemoveRetention (Default)
 ```
-Edit-AzDataProtectionPolicyRetentionRuleClientObject -Name <RetentionRuleName> -Policy <IBackupPolicy>
- -RemoveRule [<CommonParameters>]
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy <IBackupPolicy> -Name <RetentionRuleName>
+ [-RemoveRule] [<CommonParameters>]
 ```
 
 ### AddRetention
 ```
-Edit-AzDataProtectionPolicyRetentionRuleClientObject -IsDefault <Boolean> -LifeCycles <ISourceLifeCycle[]>
- -Name <RetentionRuleName> -Policy <IBackupPolicy> [-OverwriteLifeCycle <Boolean?>] [<CommonParameters>]
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy <IBackupPolicy> -Name <RetentionRuleName>
+ -IsDefault <Boolean> -LifeCycles <ISourceLifeCycle[]> [-OverwriteLifeCycle <Boolean>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,6 +99,7 @@ Retention Rule Name
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName
 Parameter Sets: (All)
 Aliases:
+Accepted values: Default, Daily, Weekly, Monthly, Yearly
 
 Required: True
 Position: Named
@@ -110,7 +112,7 @@ Accept wildcard characters: False
 Specifies whether to modify an existing LifeCycle.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: AddRetention
 Aliases:
 
@@ -163,4 +165,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

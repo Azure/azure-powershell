@@ -54,7 +54,7 @@ function Start-AzDataProtectionBackupInstanceRestore
         ${RestoreTargetInfo},
 
         [Parameter(ParameterSetName="TriggerExpanded", Mandatory, HelpMessage='Type of the source data store')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SourceDataStoreType]
+        [System.String]
         ${SourceDataStoreType},
 
         [Parameter(ParameterSetName="TriggerExpanded", Mandatory=$false, HelpMessage='ARM URL for User Assigned Identity')]

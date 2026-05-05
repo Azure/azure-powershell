@@ -41,7 +41,7 @@ This command creates a backup configuration client object with auto-protection e
 
 ### Example 4: Create a BackupConfiguration for enabling auto-protection for AzureDataLakeStorage with exclusion rules.
 ```powershell
-$rule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupAutoProtectionRule]::new()
+$rule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BlobBackupAutoProtectionRule]::new()
 $rule.ObjectType = "BlobBackupAutoProtectionRule"
 $rule.Pattern = "logs-"
 $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureDataLakeStorage -AutoProtection -AutoProtectionExclusionRule @($rule)

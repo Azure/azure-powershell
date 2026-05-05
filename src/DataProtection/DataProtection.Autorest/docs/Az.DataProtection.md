@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataProtection
-Module Guid: 1b18256c-690e-40a8-882c-7d045b84092e
+Module Guid: b99f7df0-98cb-4eb1-b38f-d6e871ac179d
 Download Help Link: https://learn.microsoft.com/powershell/module/az.dataprotection
 Help Version: 1.0.0.0
 Locale: en-US
