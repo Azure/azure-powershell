@@ -22,10 +22,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Factories
 {
     public class AzureCredentialFactory
     {
+#pragma warning disable CS0618 // ManagedIdentityCredential(string) is obsolete; suppressed pending migration to ManagedIdentityId API
         public virtual TokenCredential CreateManagedIdentityCredential(string clientId)
         {
             return new ManagedIdentityCredential(clientId);
         }
+#pragma warning restore CS0618
 
         public virtual TokenCredential CreateClientSecretCredential(string tenantId, string clientId, SecureString secret, ClientSecretCredentialOptions options)
         {
@@ -42,9 +44,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Factories
             return new ClientCertificateCredential(tenantId, clientId, certificatePath, options);
 	}
 
+#pragma warning disable CS0618 // SharedTokenCacheCredential is obsolete; suppressed pending migration to replacement API
         public virtual TokenCredential CreateSharedTokenCacheCredentials(SharedTokenCacheCredentialOptions options)
         {
             return new SharedTokenCacheCredential(options);
         }
+#pragma warning restore CS0618
     }
 }

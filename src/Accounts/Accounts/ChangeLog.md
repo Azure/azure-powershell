@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Upgraded `Azure.Core` dependency from 1.50.0 to 1.54.0.
+* Upgraded `Azure.Identity` dependency from 1.13.0 to 1.21.0.
+* Upgraded `Azure.Identity.Broker` dependency from 1.1.0 to 1.6.0.
+* Upgraded MSAL (Microsoft Authentication Library) dependencies from 4.83.1 to 4.83.3.
+* Upgraded `System.Text.Json` dependency from 8.0.6 to 10.0.3.
+* Upgraded `System.ClientModel` dependency from 1.8.0 to 1.10.0.
 * Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.
 * Added `AzureAppConfigurationEndpointSuffix` and `AzureAppConfigurationEndpointResourceId` parameters to `Add-AzEnvironment` and `Set-AzEnvironment`
     - Users can now configure Azure App Configuration endpoints when adding or updating custom environments

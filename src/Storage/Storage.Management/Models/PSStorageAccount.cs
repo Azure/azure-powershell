@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.ZonePlacementPolicy = storageAccount.Placement is null ? null : storageAccount.Placement.ZonePlacementPolicy;
             this.GeoPriorityReplicationStatus = storageAccount.GeoPriorityReplicationStatus is null ? null : new PSGeoPriorityReplicationStatus(storageAccount.GeoPriorityReplicationStatus);
         }
-        public bool? AllowCrossTenantReplication { get; set; }          
+        public bool? AllowCrossTenantReplication { get; set; }
 
         public PSKeyCreationTime KeyCreationTime { get; set; }
         public KeyPolicy KeyPolicy { get; }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSCustomDomain CustomDomain { get; set; }
 
-        public Identity Identity { get; set; }
+        public StorageModels.Identity Identity { get; set; }
 
         public DateTime? LastGeoFailoverTime { get; set; }
 

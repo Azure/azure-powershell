@@ -157,10 +157,12 @@ namespace Common.Authentication.Test
             try
             {
                 InitializeSession(armToken);
+#pragma warning disable CS0618 // SharedTokenCacheCredential is obsolete; suppressed pending migration
                 var mockTokenCredential = new Mock<SharedTokenCacheCredential>();
                 mockTokenCredential.Setup(f => f.GetTokenAsync(It.IsAny<TokenRequestContext>(), It.IsAny<CancellationToken>()))
                     .ReturnsAsync(new AccessToken(armToken, DateTimeOffset.Now));
                 mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(mockTokenCredential.Object);
+#pragma warning restore CS0618
 
                 //var mockTokenManagedIdentityCredential = new Mock<ManagedIdentityCredential>();
                 //mockTokenManagedIdentityCredential.Setup(f => f.GetTokenAsync(It.IsAny<TokenRequestContext>(), It.IsAny<CancellationToken>()))

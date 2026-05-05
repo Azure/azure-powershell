@@ -167,6 +167,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 // Setup
                 InitializeSession();
                 var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
+#pragma warning disable CS0618 // SharedTokenCacheCredentialOptions is obsolete; suppressed pending migration
                 mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(() => new TokenCredentialMock(
                     (times) =>
                     {
@@ -177,6 +178,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         throw new CredentialUnavailableException(identityExceptionMessage);
                     }
                     ));
+#pragma warning restore CS0618
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
                 AzureSession.Instance.ClientFactory.AddHandler(new HttpMockHandler(
                     (times) =>
@@ -217,11 +219,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 InitializeSession();
                 cmdlet.TenantId = Guid.NewGuid().ToString();
                 var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
+#pragma warning disable CS0618 // SharedTokenCacheCredentialOptions is obsolete; suppressed pending migration
                 mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(() => new TokenCredentialMock(
                     (firstTime) =>
                     {
                         return new ValueTask<AccessToken>(new AccessToken(fakeToken, DateTimeOffset.Now.AddHours(1)));
                     }));
+#pragma warning restore CS0618
 
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
                 AzureSession.Instance.ClientFactory.AddHandler(new HttpMockHandler(
@@ -276,11 +280,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 InitializeSession();
                 cmdlet.TenantId = Guid.NewGuid().ToString();
                 var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
+#pragma warning disable CS0618 // SharedTokenCacheCredentialOptions is obsolete; suppressed pending migration
                 mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(() => new TokenCredentialMock(
                     (times) =>
                     {
                         return new ValueTask<AccessToken>(new AccessToken(fakeToken, DateTimeOffset.Now.AddHours(1)));
                     }));
+#pragma warning restore CS0618
 
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
                 AzureSession.Instance.ClientFactory.AddHandler(new HttpMockHandler(
