@@ -108,7 +108,7 @@ pac106,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac107,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.KeyVault.6.4.3.zip;sourceType=sa]Az.KeyVault,6.4.3
 pac108,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.KubernetesConfiguration.0.8.0.zip;sourceType=sa]Az.KubernetesConfiguration,0.8.0
 pac109,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.KubernetesRuntime.0.2.0.zip;sourceType=sa]Az.KubernetesRuntime,0.2.0
-pac110,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Kusto.2.4.0.zip;sourceType=sa]Az.Kusto,2.4.0
+pac110,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Kusto.2.4.1.zip;sourceType=sa]Az.Kusto,2.4.1
 pac111,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LabServices.0.2.0.zip;sourceType=sa]Az.LabServices,0.2.0
 pac112,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LambdaTest.1.0.0.zip;sourceType=sa]Az.LambdaTest,1.0.0
 pac113,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.LoadTesting.1.1.1.zip;sourceType=sa]Az.LoadTesting,1.1.1
