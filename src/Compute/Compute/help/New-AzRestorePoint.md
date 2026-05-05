@@ -85,6 +85,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -InstantAccessDurationInMinutes
+Duration in minutes for which the instant access snapshot is retained. Valid range: 1 to 300. Only applicable when the parent restore point collection has InstantAccess enabled.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Set the region of the restore point
 
@@ -157,21 +172,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InstantAccessDurationInMinutes
-Duration in minutes for which the instant access snapshot is retained. Valid range: 1 to 300. Only applicable when the parent restore point collection has InstantAccess enabled.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

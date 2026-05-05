@@ -34,7 +34,6 @@
     - `Get-AzGallery`: Now returns managed identity details in the `Identity` property
 * Compute ComputeRP related cmdlets will now use 2025-11-01 version of the ComputeRP API.
 
-
 ## Version 11.4.0
 * Added `-DiskIOPSReadWrite` and `-DiskMBpsReadWrite` parameters to `Add-AzVMDataDisk` cmdlet
 * Added `-Tag` and `-Location` parameters to `New-AzSshKey` cmdlet
