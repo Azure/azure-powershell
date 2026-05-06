@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Allow `Set-AzRoleAssignment` to delete conditions from a role assignment
 
 ## Version 9.1.0
 * Made `Remove-AzDenyAssignment` honor `-Confirm:$false` and idempotent when no matching deny assignment exists. The redundant `-Force` switch was removed (the cmdlet relies on the standard `SupportsShouldProcess`/`ConfirmImpact` pattern).
