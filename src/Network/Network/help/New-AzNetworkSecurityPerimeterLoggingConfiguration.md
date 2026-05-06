@@ -1,5 +1,5 @@
 ---
-external help file: Az.NetworkSecurityPerimeter.psm1-help.xml
+external help file:
 Module Name: Az.Network
 online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeterloggingconfiguration
 schema: 2.0.0
@@ -8,63 +8,63 @@ schema: 2.0.0
 # New-AzNetworkSecurityPerimeterLoggingConfiguration
 
 ## SYNOPSIS
-create NSP logging configuration.
+Create NSP logging configuration.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>] -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-EnabledLogCategory <String[]>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>] -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>] -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityNetworkSecurityPerimeterExpanded
-```
-New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>]
- -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-EnabledLogCategory <String[]>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityNetworkSecurityPerimeter
-```
-New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>]
- -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -Parameter <INspLoggingConfiguration>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
+ [-Name <String>] [-SubscriptionId <String>] [-EnabledLogCategory <String[]>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzNetworkSecurityPerimeterLoggingConfiguration [-Name <String>] -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] -Parameter <INspLoggingConfiguration>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
+ -Parameter <INspLoggingConfiguration> [-Name <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject <INetworkSecurityPerimeterIdentity>
- [-EnabledLogCategory <String[]>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnabledLogCategory <String[]>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityNetworkSecurityPerimeter
+```
+New-AzNetworkSecurityPerimeterLoggingConfiguration
+ -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity>
+ -Parameter <INspLoggingConfiguration> [-Name <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityNetworkSecurityPerimeterExpanded
+```
+New-AzNetworkSecurityPerimeterLoggingConfiguration
+ -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-Name <String>]
+ [-EnabledLogCategory <String[]>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
+ -JsonFilePath <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
+ -JsonString <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create NSP logging configuration.
+Create NSP logging configuration.
 
 ## EXAMPLES
 
@@ -114,7 +114,7 @@ The log categories to enable in the NSP logging configuration.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded
 Aliases:
 
 Required: False
@@ -175,7 +175,7 @@ Accepts 'instance' as name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityNetworkSecurityPerimeter, Create
+Parameter Sets: Create, CreateExpanded, CreateViaIdentityNetworkSecurityPerimeter, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: LoggingConfigurationName
 
 Required: False
@@ -190,7 +190,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
-Parameter Sets: CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityNetworkSecurityPerimeter
+Parameter Sets: CreateViaIdentityNetworkSecurityPerimeter, CreateViaIdentityNetworkSecurityPerimeterExpanded
 Aliases:
 
 Required: True
@@ -205,7 +205,7 @@ The NSP logging configuration
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration
-Parameter Sets: CreateViaIdentityNetworkSecurityPerimeter, Create
+Parameter Sets: Create, CreateViaIdentityNetworkSecurityPerimeter
 Aliases:
 
 Required: True
@@ -217,10 +217,11 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -235,7 +236,7 @@ The name of the network security perimeter.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: NetworkSecurityPerimeterName, NSPName
 
 Required: True
@@ -246,12 +247,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -266,7 +267,7 @@ The version of the NSP logging configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded
 Aliases:
 
 Required: False
@@ -323,3 +324,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.NetworkSecurityPerimeter.psm1-help.xml
+external help file:
 Module Name: Az.Network
 online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterprofile
 schema: 2.0.0
@@ -19,13 +19,6 @@ Get-AzNetworkSecurityPerimeterProfile -ResourceGroupName <String> -SecurityPerim
  [<CommonParameters>]
 ```
 
-### GetViaIdentityNetworkSecurityPerimeter
-```
-Get-AzNetworkSecurityPerimeterProfile -Name <String>
- -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### Get
 ```
 Get-AzNetworkSecurityPerimeterProfile -Name <String> -ResourceGroupName <String>
@@ -37,6 +30,13 @@ Get-AzNetworkSecurityPerimeterProfile -Name <String> -ResourceGroupName <String>
 ```
 Get-AzNetworkSecurityPerimeterProfile -InputObject <INetworkSecurityPerimeterIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityNetworkSecurityPerimeter
+```
+Get-AzNetworkSecurityPerimeterProfile -Name <String>
+ -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,7 +143,7 @@ The name of the NSP profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetViaIdentityNetworkSecurityPerimeter, Get
+Parameter Sets: Get, GetViaIdentityNetworkSecurityPerimeter
 Aliases: ProfileName
 
 Required: True
@@ -170,10 +170,11 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -188,7 +189,7 @@ The name of the network security perimeter.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases: NetworkSecurityPerimeterName, NSPName
 
 Required: True
@@ -215,12 +216,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -259,3 +260,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

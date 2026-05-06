@@ -1,5 +1,5 @@
 ---
-external help file: Az.NetworkSecurityPerimeter.psm1-help.xml
+external help file:
 Module Name: Az.Network
 online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeter
 schema: 2.0.0
@@ -15,15 +15,14 @@ Deletes a network security perimeter.
 ### Delete (Default)
 ```
 Remove-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ForceDeletion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ForceDeletion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity> [-ForceDeletion]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,6 +155,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -170,8 +170,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -230,3 +230,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

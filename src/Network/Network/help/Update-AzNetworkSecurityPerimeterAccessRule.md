@@ -1,5 +1,5 @@
 ---
-external help file: Az.NetworkSecurityPerimeter.psm1-help.xml
+external help file:
 Module Name: Az.Network
 online version: https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeteraccessrule
 schema: 2.0.0
@@ -14,20 +14,19 @@ Updates an access rule.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzNetworkSecurityPerimeterAccessRule -ResourceGroupName <String> -Name <String>
- -SecurityPerimeterName <String> -ProfileName <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>]
- [-FullyQualifiedDomainName <String[]>] [-EmailAddress <String[]>] [-PhoneNumber <String[]>]
- [-ServiceTag <String[]>] [-Direction <String>] [-Subscription <ISubscriptionId[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>] [-Direction <String>]
+ [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>]
+ [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
- [-AddressPrefix <String[]>] [-FullyQualifiedDomainName <String[]>] [-EmailAddress <String[]>]
- [-PhoneNumber <String[]>] [-ServiceTag <String[]>] [-Direction <String>] [-Subscription <ISubscriptionId[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
+ [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
+ [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -386,3 +385,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

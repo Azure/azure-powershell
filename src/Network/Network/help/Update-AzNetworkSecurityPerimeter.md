@@ -1,5 +1,5 @@
 ---
-external help file: Az.NetworkSecurityPerimeter.psm1-help.xml
+external help file:
 Module Name: Az.Network
 online version: https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeter
 schema: 2.0.0
@@ -15,42 +15,37 @@ Patch Tags for a Network Security Perimeter.
 ### PatchExpanded (Default)
 ```
 Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### PatchViaJsonString
-```
-Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### PatchViaJsonFilePath
-```
-Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Patch
 ```
-Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Parameter <IUpdateTagsRequest> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### PatchViaIdentityExpanded
-```
-Update-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -Parameter <IUpdateTagsRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PatchViaIdentity
 ```
 Update-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity>
- -Parameter <IUpdateTagsRequest> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Parameter <IUpdateTagsRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PatchViaIdentityExpanded
+```
+Update-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity> [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PatchViaJsonFilePath
+```
+Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PatchViaJsonString
+```
+Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +82,7 @@ Update NetworkSecurityPerimeter
 
 ### Example 2: Update NetworkSecurityPerimeter by Identity (using pipe)
 ```powershell
-$GETObj = Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
+ $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1
  Update-AzNetworkSecurityPerimeter -InputObject $GETObj -Tag @{'Owner'='user-test-2'}
 ```
 
@@ -136,7 +131,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
-Parameter Sets: PatchViaIdentityExpanded, PatchViaIdentity
+Parameter Sets: PatchViaIdentity, PatchViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -181,7 +176,7 @@ The name of the network security perimeter.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaJsonString, PatchViaJsonFilePath, Patch
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases: NetworkSecurityPerimeterName, SecurityPerimeterName, NSPName
 
 Required: True
@@ -208,10 +203,11 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaJsonString, PatchViaJsonFilePath, Patch
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: True
@@ -222,12 +218,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchViaJsonString, PatchViaJsonFilePath, Patch
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: False
@@ -299,3 +295,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

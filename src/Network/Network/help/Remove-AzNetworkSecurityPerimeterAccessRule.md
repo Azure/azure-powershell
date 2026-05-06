@@ -1,5 +1,5 @@
 ---
-external help file: Az.NetworkSecurityPerimeter.psm1-help.xml
+external help file:
 Module Name: Az.Network
 online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeteraccessrule
 schema: 2.0.0
@@ -16,28 +16,27 @@ Deletes an NSP access rule.
 ```
 Remove-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityProfile
-```
-Remove-AzNetworkSecurityPerimeterAccessRule -Name <String>
- -ProfileInputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityNetworkSecurityPerimeter
-```
-Remove-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String>
- -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityNetworkSecurityPerimeter
+```
+Remove-AzNetworkSecurityPerimeterAccessRule -Name <String>
+ -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -ProfileName <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityProfile
+```
+Remove-AzNetworkSecurityPerimeterAccessRule -Name <String>
+ -ProfileInputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +97,7 @@ The name of the NSP access rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityProfile, DeleteViaIdentityNetworkSecurityPerimeter
+Parameter Sets: Delete, DeleteViaIdentityNetworkSecurityPerimeter, DeleteViaIdentityProfile
 Aliases: AccessRuleName
 
 Required: True
@@ -170,6 +169,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -199,8 +199,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -259,3 +259,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

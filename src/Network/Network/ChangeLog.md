@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Updated `Get-AzNetworkSecurityPerimeterAssociableResourceType` to use API version 2025-07-01
+    - Added `Description`, `OutboundSupported`, `ReadinessState`, and `ServiceTag` properties to the response
 * Added new cmdlets for DDoS Custom Policy management
     - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy with detection rules
     - `New-AzDdosCustomPolicy` requires at least one detection rule at creation time

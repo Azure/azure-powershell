@@ -1,5 +1,5 @@
 ---
-external help file: Az.NetworkSecurityPerimeter.psm1-help.xml
+external help file:
 Module Name: Az.Network
 online version: https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeterlink
 schema: 2.0.0
@@ -14,18 +14,18 @@ Updates a NSP Link
 
 ### UpdateExpanded (Default)
 ```
-Update-AzNetworkSecurityPerimeterLink -ResourceGroupName <String> -Name <String>
+Update-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AutoApprovedRemotePerimeterResourceId <String>]
  [-LocalInboundProfile <String[]>] [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterLink -InputObject <INetworkSecurityPerimeterIdentity>
  [-AutoApprovedRemotePerimeterResourceId <String>] [-LocalInboundProfile <String[]>]
- [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -312,3 +312,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.NetworkSecurityPerimeter.psm1-help.xml
+external help file:
 Module Name: Az.Network
 online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeteraccessrule
 schema: 2.0.0
@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkSecurityPerimeterAccessRule
 
 ## SYNOPSIS
-create a network access rule.
+Create a network access rule.
 
 ## SYNTAX
 
@@ -17,61 +17,15 @@ create a network access rule.
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>] [-Direction <String>]
  [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>]
- [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityProfileExpanded
-```
-New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileInputObject <INetworkSecurityPerimeterIdentity>
- [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
- [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
- [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityProfile
-```
-New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileInputObject <INetworkSecurityPerimeterIdentity>
- -Parameter <INspAccessRule> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityNetworkSecurityPerimeterExpanded
-```
-New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String>
- -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-AddressPrefix <String[]>]
- [-Direction <String>] [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>]
- [-PhoneNumber <String[]>] [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateViaIdentityNetworkSecurityPerimeter
-```
-New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String>
- -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -Parameter <INspAccessRule>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] -Parameter <INspAccessRule>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SecurityPerimeterName <String> -Parameter <INspAccessRule> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -79,12 +33,57 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -R
 New-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
  [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
  [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
- [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityNetworkSecurityPerimeter
+```
+New-AzNetworkSecurityPerimeterAccessRule -Name <String>
+ -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -ProfileName <String>
+ -Parameter <INspAccessRule> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityNetworkSecurityPerimeterExpanded
+```
+New-AzNetworkSecurityPerimeterAccessRule -Name <String>
+ -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -ProfileName <String>
+ [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
+ [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>] [-ServiceTag <String[]>]
+ [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfile
+```
+New-AzNetworkSecurityPerimeterAccessRule -Name <String>
+ -ProfileInputObject <INetworkSecurityPerimeterIdentity> -Parameter <INspAccessRule>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityProfileExpanded
+```
+New-AzNetworkSecurityPerimeterAccessRule -Name <String>
+ -ProfileInputObject <INetworkSecurityPerimeterIdentity> [-AddressPrefix <String[]>] [-Direction <String>]
+ [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-PhoneNumber <String[]>]
+ [-ServiceTag <String[]>] [-Subscription <ISubscriptionId[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ -SecurityPerimeterName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ -SecurityPerimeterName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a network access rule.
+Create a network access rule.
 
 ## EXAMPLES
 
@@ -155,7 +154,7 @@ Inbound address prefixes (IPv4/IPv6)
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -186,7 +185,7 @@ Direction that specifies whether the access rules is inbound/outbound.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -202,7 +201,7 @@ This access rule type is currently unavailable for use.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -217,7 +216,7 @@ Outbound rules in fully qualified domain name format.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -277,7 +276,7 @@ The name of the NSP access rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityProfileExpanded, CreateViaIdentityProfile, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityNetworkSecurityPerimeter, Create
+Parameter Sets: Create, CreateExpanded, CreateViaIdentityNetworkSecurityPerimeter, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfile, CreateViaIdentityProfileExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: AccessRuleName
 
 Required: True
@@ -292,7 +291,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
-Parameter Sets: CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityNetworkSecurityPerimeter
+Parameter Sets: CreateViaIdentityNetworkSecurityPerimeter, CreateViaIdentityNetworkSecurityPerimeterExpanded
 Aliases:
 
 Required: True
@@ -307,7 +306,7 @@ The NSP access rule resource
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule
-Parameter Sets: CreateViaIdentityProfile, CreateViaIdentityNetworkSecurityPerimeter, Create
+Parameter Sets: Create, CreateViaIdentityNetworkSecurityPerimeter, CreateViaIdentityProfile
 Aliases:
 
 Required: True
@@ -323,7 +322,7 @@ This access rule type is currently unavailable for use.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -338,7 +337,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
-Parameter Sets: CreateViaIdentityProfileExpanded, CreateViaIdentityProfile
+Parameter Sets: CreateViaIdentityProfile, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: True
@@ -353,7 +352,7 @@ The name of the NSP profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityNetworkSecurityPerimeter, Create
+Parameter Sets: Create, CreateExpanded, CreateViaIdentityNetworkSecurityPerimeter, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: SecurityPerimeterProfileName, NSPProfileName
 
 Required: True
@@ -365,10 +364,11 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -383,7 +383,7 @@ The name of the network security perimeter.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: NetworkSecurityPerimeterName, NSPName
 
 Required: True
@@ -399,7 +399,7 @@ This access rule type is currently unavailable for use.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -414,7 +414,7 @@ List of subscription ids
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId[]
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -425,12 +425,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -487,3 +487,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
