@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdWorkspace
 
 ## SYNOPSIS
-create a workspace.
+Create a workspace.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzWvdWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <
 ```
 
 ## DESCRIPTION
-create a workspace.
+Create a workspace.
 
 ## EXAMPLES
 

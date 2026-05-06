@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.PolicyInsights;
 using Microsoft.Azure.Management.PolicyInsights.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,14 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
     /// <summary>
     /// Updates a policy attestation.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(
+        typeof(PSAttestation),
+        deprecateByAzVersion: "16.0.0",
+        deprecateByVersion: "2.0.0",
+        ReplacementCmdletOutputTypeName = "Attestation",
+        DeprecatedOutputProperties = new string[] { "SystemData" },
+        NewOutputProperties = new string[] { "ResourceGroupName", "SystemDataCreatedAt", "SystemDataCreatedBy", "SystemDataCreatedByType", "SystemDataLastModifiedAt", "SystemDataLastModifiedBy", "SystemDataLastModifiedByType" }
+    )]
     [Cmdlet(verbName: VerbsCommon.Set, AzureRMConstants.AzureRMPrefix + "PolicyAttestation", DefaultParameterSetName = ParameterSetNames.ByName, SupportsShouldProcess = true), OutputType(typeof(PSAttestation))]
     public class SetAzureRmPolicyAttestation : AttestationCmdletBase
     {
