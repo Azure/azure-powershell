@@ -12,17 +12,9 @@ Gets the status of operation.
 
 ## SYNTAX
 
-### Get (Default)
 ```
-Get-AzRedisEnterpriseCacheOperationStatus -OperationId <String> -Location <String> [-SubscriptionId <String[]>]
+Get-AzRedisEnterpriseCacheOperationStatus -Location <String> -OperationId <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityLocation
-```
-Get-AzRedisEnterpriseCacheOperationStatus -OperationId <String>
- -LocationInputObject <IRedisEnterpriseCacheIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,28 +58,13 @@ The name of Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LocationInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: GetViaIdentityLocation
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -111,7 +88,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -126,11 +103,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IOperationStatus
 
 ## NOTES
 

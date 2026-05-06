@@ -1,0 +1,47 @@
+{
+  "Get-AzRedisEnterpriseCacheSku+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-1/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-3/listSkusForScaling?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-1/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-3/listSkusForScaling?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "3b257e6a-97ca-4d64-be20-914695a6c30b" ],
+        "CommandName": [ "Get-AzRedisEnterpriseCacheSku" ],
+        "FullCommandName": [ "Get-AzRedisEnterpriseCacheSku_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.RedisEnterpriseCache/1.5.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-rp-server-mvid": [ "f4f6654a-0925-42fb-9cb8-ca861a4c4494" ],
+        "x-ms-request-id": [ "401ec7a7-b1bd-4d17-add0-b8484ce0edda" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f39f71e1-608c-4626-8485-ddf5a519b312/centraluseuap/817a673a-3c8a-4285-9bd7-2e02ff120140" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-correlation-request-id": [ "c3fdb3e0-d096-40cd-8499-01daf3a784a0" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251015T061121Z:c3fdb3e0-d096-40cd-8499-01daf3a784a0" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 761C395B3AE24EDE8F94FACA70316184 Ref B: PNQ231110907029 Ref C: 2025-10-15T06:11:21Z" ],
+        "Date": [ "Wed, 15 Oct 2025 06:11:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2397" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"skus\": [\r\n    {\r\n      \"name\": \"ComputeOptimized_X700\",\r\n      \"sizeInGB\": 720.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M700\",\r\n      \"sizeInGB\": 720.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M10\",\r\n      \"sizeInGB\": 12.0\r\n    },\r\n    {\r\n      \"name\": \"ComputeOptimized_X250\",\r\n      \"sizeInGB\": 235.0\r\n    },\r\n    {\r\n      \"name\": \"ComputeOptimized_X500\",\r\n      \"sizeInGB\": 480.0\r\n    },\r\n    {\r\n      \"name\": \"Balanced_B500\",\r\n      \"sizeInGB\": 480.0\r\n    },\r\n    {\r\n      \"name\": \"ComputeOptimized_X20\",\r\n      \"sizeInGB\": 24.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M2000\",\r\n      \"sizeInGB\": 1920.0\r\n    },\r\n    {\r\n      \"name\": \"Balanced_B250\",\r\n      \"sizeInGB\": 240.0\r\n    },\r\n    {\r\n      \"name\": \"Balanced_B10\",\r\n      \"sizeInGB\": 12.0\r\n    },\r\n    {\r\n      \"name\": \"Balanced_B150\",\r\n      \"sizeInGB\": 180.0\r\n    },\r\n    {\r\n      \"name\": \"Balanced_B20\",\r\n      \"sizeInGB\": 24.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M500\",\r\n      \"sizeInGB\": 480.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M20\",\r\n      \"sizeInGB\": 24.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M250\",\r\n      \"sizeInGB\": 240.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M50\",\r\n      \"sizeInGB\": 60.0\r\n    },\r\n    {\r\n      \"name\": \"ComputeOptimized_X10\",\r\n      \"sizeInGB\": 12.0\r\n    },\r\n    {\r\n      \"name\": \"ComputeOptimized_X350\",\r\n      \"sizeInGB\": 360.0\r\n    },\r\n    {\r\n      \"name\": \"Balanced_B700\",\r\n      \"sizeInGB\": 720.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M100\",\r\n      \"sizeInGB\": 120.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M150\",\r\n      \"sizeInGB\": 180.0\r\n    },\r\n    {\r\n      \"name\": \"Balanced_B50\",\r\n      \"sizeInGB\": 60.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M350\",\r\n      \"sizeInGB\": 360.0\r\n    },\r\n    {\r\n      \"name\": \"Balanced_B1000\",\r\n      \"sizeInGB\": 960.0\r\n    },\r\n    {\r\n      \"name\": \"ComputeOptimized_X150\",\r\n      \"sizeInGB\": 180.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M1000\",\r\n      \"sizeInGB\": 960.0\r\n    },\r\n    {\r\n      \"name\": \"MemoryOptimized_M1500\",\r\n      \"sizeInGB\": 1440.0\r\n    },\r\n    {\r\n      \"name\": \"ComputeOptimized_X100\",\r\n      \"sizeInGB\": 120.0\r\n    },\r\n    {\r\n      \"name\": \"Balanced_B350\",\r\n      \"sizeInGB\": 360.0\r\n    },\r\n    {\r\n      \"name\": \"Balanced_B100\",\r\n      \"sizeInGB\": 120.0\r\n    },\r\n    {\r\n      \"name\": \"ComputeOptimized_X50\",\r\n      \"sizeInGB\": 60.0\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

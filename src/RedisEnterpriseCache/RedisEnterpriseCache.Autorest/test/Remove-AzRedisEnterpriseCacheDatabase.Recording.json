@@ -1,0 +1,43 @@
+{
+  "Remove-AzRedisEnterpriseCacheDatabase+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-1/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-2?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-1/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-2?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "91" ],
+        "x-ms-client-request-id": [ "18d91ff6-e474-4852-a132-85a03839d044" ],
+        "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
+        "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.RedisEnterpriseCache/1.5.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-request-id": [ "045903ac-f623-414c-a510-206e62280d0b" ],
+        "x-ms-correlation-request-id": [ "045903ac-f623-414c-a510-206e62280d0b" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251015T063843Z:045903ac-f623-414c-a510-206e62280d0b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A93AE97AC4784FC6B6B843B7B887D104 Ref B: PNQ231110907029 Ref C: 2025-10-15T06:38:43Z" ],
+        "Date": [ "Wed, 15 Oct 2025 06:38:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

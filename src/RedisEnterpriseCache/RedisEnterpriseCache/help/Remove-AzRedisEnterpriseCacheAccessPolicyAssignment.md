@@ -19,20 +19,6 @@ Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -Datab
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityRedisEnterprise
-```
-Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -DatabaseName <String> -Name <String>
- -RedisEnterpriseInputObject <IRedisEnterpriseCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityDatabase
-```
-Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -Name <String>
- -DatabaseInputObject <IRedisEnterpriseCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### DeleteViaIdentity
 ```
 Remove-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
@@ -87,27 +73,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: DeleteViaIdentityDatabase
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DatabaseName
 The name of the Redis Enterprise database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityRedisEnterprise
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -135,6 +106,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
@@ -153,7 +125,7 @@ The name of the Redis Enterprise database access policy assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityRedisEnterprise, DeleteViaIdentityDatabase
+Parameter Sets: Delete
 Aliases: AccessPolicyAssignmentName
 
 Required: True
@@ -190,21 +162,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RedisEnterpriseInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: DeleteViaIdentityRedisEnterprise
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -13,40 +13,33 @@ Forcibly recreates an existing database on the specified cluster, and rejoins it
 
 ## SYNTAX
 
-### ForceViaIdentityExpanded (Default)
+### ForceViaIdentity (Default)
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
- -GroupNickname <String> -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ForceViaJsonString
-```
-Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ForceViaJsonFilePath
-```
-Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Parameter <IForceLinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ForceExpanded
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -GroupNickname <String>
- -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ForceViaIdentityRedisEnterpriseExpanded
+### Force
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -DatabaseName <String>
- -RedisEnterpriseInputObject <IRedisEnterpriseCacheIdentity> -GroupNickname <String>
- -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Parameter <IForceLinkParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ForceViaIdentityExpanded
+```
+Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup -InputObject <IRedisEnterpriseCacheIdentity>
+ -GroupNickname <String> -LinkedDatabase <ILinkedDatabase[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -88,7 +81,7 @@ There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceViaJsonString, ForceViaJsonFilePath, ForceExpanded
+Parameter Sets: ForceExpanded, Force
 Aliases:
 
 Required: True
@@ -103,7 +96,7 @@ The name of the Redis Enterprise database.
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceViaJsonString, ForceViaJsonFilePath, ForceExpanded, ForceViaIdentityRedisEnterpriseExpanded
+Parameter Sets: ForceExpanded, Force
 Aliases:
 
 Required: True
@@ -135,7 +128,7 @@ This should match the existing replication group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceViaIdentityExpanded, ForceExpanded, ForceViaIdentityRedisEnterpriseExpanded
+Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -147,10 +140,11 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: ForceViaIdentityExpanded
+Parameter Sets: ForceViaIdentity, ForceViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -160,43 +154,14 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Force operation
-
-```yaml
-Type: System.String
-Parameter Sets: ForceViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Force operation
-
-```yaml
-Type: System.String
-Parameter Sets: ForceViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LinkedDatabase
 The resource IDs of the databases that are expected to be linked and included in the replication group.
 This parameter is used to validate that the linking is to the expected (unlinked) part of the replication group, if it is splintered.
+To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ILinkedDatabase[]
-Parameter Sets: ForceViaIdentityExpanded, ForceExpanded, ForceViaIdentityRedisEnterpriseExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ILinkedDatabase[]
+Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -221,27 +186,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Parameter
+Parameters for reconfiguring active geo-replication, of an existing database that was previously unlinked from a replication group.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RedisEnterpriseInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: ForceViaIdentityRedisEnterpriseExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IForceLinkParameters
+Parameter Sets: ForceViaIdentity, Force
 Aliases:
 
 Required: True
@@ -257,7 +208,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceViaJsonString, ForceViaJsonFilePath, ForceExpanded
+Parameter Sets: ForceExpanded, Force
 Aliases:
 
 Required: True
@@ -272,7 +223,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ForceViaJsonString, ForceViaJsonFilePath, ForceExpanded
+Parameter Sets: ForceExpanded, Force
 Aliases:
 
 Required: False
@@ -317,6 +268,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IForceLinkParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 
