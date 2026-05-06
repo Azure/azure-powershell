@@ -46,7 +46,7 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
             {
                 throw  "Removing Default Retention Rule is not allowed. Please try again with different rule name."
             }
-            $filteredRules = $Policy.PolicyRule | Where-Object { $_.Name –ne $Name }
+            $filteredRules = $Policy.PolicyRule | Where-Object { $_.Name -ne $Name }
             $Policy.PolicyRule = $filteredRules
             return $Policy
         }

@@ -64,7 +64,7 @@ function Edit-AzDataProtectionPolicyTagClientObject{
         {
             if($parameterSetName -eq "RemoveTag")
             {
-                $filteredTags = $Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion | Where-Object { $_.TagInfoTagName –ne $Name }
+                $filteredTags = $Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion | Where-Object { $_.TagInfoTagName -ne $Name }
                 $Policy.PolicyRule[$backupRuleIndex].Trigger.TaggingCriterion = $filteredTags
                 return $Policy
             }
