@@ -21,22 +21,8 @@ Get-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -Database
 
 ### Get
 ```
-Get-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityRedisEnterprise
-```
-Get-AzRedisEnterpriseCacheAccessPolicyAssignment -DatabaseName <String> -Name <String>
- -RedisEnterpriseInputObject <IRedisEnterpriseCacheIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityDatabase
-```
-Get-AzRedisEnterpriseCacheAccessPolicyAssignment -Name <String>
- -DatabaseInputObject <IRedisEnterpriseCacheIdentity> [-DefaultProfile <PSObject>]
+Get-AzRedisEnterpriseCacheAccessPolicyAssignment -ClusterName <String> -DatabaseName <String>
+ -ResourceGroupName <String> -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -81,7 +67,7 @@ There can be no leading nor trailing nor consecutive hyphens
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -91,27 +77,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: GetViaIdentityDatabase
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DatabaseName
 The name of the Redis Enterprise database.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get, GetViaIdentityRedisEnterprise
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -142,7 +113,7 @@ The name of the Redis Enterprise database access policy assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityRedisEnterprise, GetViaIdentityDatabase
+Parameter Sets: Get
 Aliases: AccessPolicyAssignmentName
 
 Required: True
@@ -152,28 +123,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RedisEnterpriseInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: GetViaIdentityRedisEnterprise
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -188,7 +144,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -203,11 +159,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAccessPolicyAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IAccessPolicyAssignment
 
 ## NOTES
 

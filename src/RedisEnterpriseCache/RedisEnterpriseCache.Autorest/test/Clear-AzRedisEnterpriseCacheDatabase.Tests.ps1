@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRedisEnterpriseCacheAccessPolicyAssignment'))
+if(($null -eq $TestName) -or ($TestName -contains 'Clear-AzRedisEnterpriseCacheDatabase'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzRedisEnterpriseCacheAccessPolicyAssignment.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Clear-AzRedisEnterpriseCacheDatabase.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRedisEnterpriseCache
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzRedisEnterpriseCacheAccessPolicyAssignment' {
-    It 'Delete' -skip {
+Describe 'Clear-AzRedisEnterpriseCacheDatabase' {
+    It 'FlushExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'Flush' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'FlushViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'FlushViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

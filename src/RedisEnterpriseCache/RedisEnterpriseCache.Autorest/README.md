@@ -43,23 +43,13 @@ module-version: 1.0.0
 title: RedisEnterpriseCache
 subject-prefix: 'RedisEnterpriseCache'
 
-directive:
-  - from: swagger-document
-    where: $.definitions.AccessPolicyAssignment
-    transform: $['required'] = ['properties']
-  - from: swagger-document
-    where: $.definitions.AccessPolicyAssignmentProperties.properties.user
-    transform: $['required'] = ['objectId']
-  - from: swagger-document
-    where: $.definitions.ForceLinkParameters.properties.geoReplication
-    transform: $['required'] = ['linkedDatabases','groupNickname']
+# This will remove the 'RedisEnterprise' prefix from the subject of every cmdlet
+# beginning with 'RedisEnterprise', because we have already set the subject-prefix above
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}"].put
-    transform: $['operationId'] = 'AccessPolicyAssignment_CreateOrUpdate'
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}"].put
-    transform: $['description'] = 'Creates or updates a particular access policy assignment for a database'
+directive:
   # This will remove the 'RedisEnterprise' prefix from the subject of every cmdlet
   # beginning with 'RedisEnterprise', because we have already set the subject-prefix above
   - where:
@@ -90,6 +80,11 @@ directive:
       alias:
         - Get-AzRedisEnterpriseCacheDatabaseKey
         - Get-AzRedisEnterpriseCacheAccessKey
+  - where:
+      verb: New
+      subject: AccessPolicyAssignmentUpdate
+    set:
+      subject: AccessPolicyAssignment
   - where:
       verb: Import|Export
       subject: (^Database)(.*)
@@ -213,24 +208,15 @@ directive:
       subject: Key
       variant: ^Regenerate$|ViaIdentity
     remove: true
-
-  # Remove unexpanded variant
   - where:
-      verb: Invoke
-      variant: ^(Flush|Force)(?!.*?(Expanded|JsonFilePath|JsonString))
-    remove: true
-  - where:
+      verb: New
       subject: ^$|Database
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+      variant: ^Create$|ViaIdentity
     remove: true
   - where:
-      subject: AccessPolicyAssignment
-      variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))
-    remove: true
-  # Remove because cannot update
-  - where:
-      verb: Set|Update
-      subject: AccessPolicyAssignment
+      verb: Update
+      subject: ^$|Database
+      variant: ^Update$|ViaIdentity$
     remove: true
 
   # Hide cmdlets
@@ -258,6 +244,17 @@ directive:
     set:
       default:
         script: '"default"'
+
+  - from: swagger-document
+    where: $.definitions.AccessPolicyAssignment
+    transform: $['required'] = ['properties']
+  - from: swagger-document
+    where: $.definitions.AccessPolicyAssignmentProperties.properties.user
+    transform: $['required'] = ['objectId']
+  - from: swagger-document
+    where: $.definitions.ForceLinkParameters.properties.geoReplication
+    transform: $['required'] = ['linkedDatabases','groupNickname']
+
   # DatabaseName parameter to have value 'default'
   - where:
       verb: Invoke
@@ -278,15 +275,12 @@ directive:
         estimated-ga-date:  2025/11/19
 
   # Fix bugs in generated code from namespace conflict
-  # - from: source-file-csharp
-  #   where: $
-  #   transform: $ = $.replace(/Origin\(System.Convert.ToString\(/g, 'Origin(global::System.Convert.ToString(');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/Origin\(System.Convert.ToString\(/g, 'Origin(global::System.Convert.ToString(');
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/Module.Instance.SetProxyConfiguration\(/g, 'Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Module.Instance.SetProxyConfiguration(');
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/Forcibly reforce an existing database/g, 'Forcibly recreates an existing database');
 
   # Breaking change
   - where:

@@ -14,10 +14,10 @@ Creates a database for a Redis Enterprise cache.
 
 ```
 New-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AccessKeysAuthentication <String>] [-AofPersistenceEnabled]
- [-AofPersistenceFrequency <String>] [-ClientProtocol <String>] [-ClusteringPolicy <String>]
- [-EvictionPolicy <String>] [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>]
- [-Module <IModule[]>] [-Port <Int32>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
+ [-SubscriptionId <String>] [-AccessKeysAuthentication <AccessKeysAuthentication>] [-AofPersistenceEnabled]
+ [-AofPersistenceFrequency <AofFrequency>] [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>]
+ [-EvictionPolicy <EvictionPolicy>] [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>]
+ [-Module <IModule[]>] [-Port <Int32>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ This property can be Enabled/Disabled to allow or deny access with the current a
 Can be updated even after database is created.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Allowed values: 1s, always
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +126,7 @@ Specifies whether redis clients can connect using TLS-encrypted or plaintext red
 Allowed values: Encrypted, Plaintext
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +143,7 @@ Specified at create time.
 Allowed values: EnterpriseCluster, OSSCluster
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +189,7 @@ Redis eviction policy - default is VolatileLRU
 Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -218,9 +218,10 @@ Accept wildcard characters: False
 ### -LinkedDatabase
 List of database resources to link with this database
 To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
+To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ILinkedDatabase[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.ILinkedDatabase[]
 Parameter Sets: (All)
 Aliases:
 
@@ -236,7 +237,7 @@ Optional set of redis modules to enable in this database - modules can only be a
 To construct, see NOTES section for MODULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IModule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IModule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -300,7 +301,7 @@ Accept wildcard characters: False
 Allowed values: 1h, 6h, 12h
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency
 Parameter Sets: (All)
 Aliases:
 
@@ -380,7 +381,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250701.IDatabase
 
 ## NOTES
 

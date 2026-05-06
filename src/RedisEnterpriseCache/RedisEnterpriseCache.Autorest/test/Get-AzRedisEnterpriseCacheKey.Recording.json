@@ -1,0 +1,47 @@
+{
+  "Get-AzRedisEnterpriseCacheKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-1/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-3/databases/default/listKeys?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-1/providers/Microsoft.Cache/redisEnterprise/ps-cache-test3-3/databases/default/listKeys?api-version=2025-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "293927de-21c4-4f11-bfa1-2155029f4de3" ],
+        "CommandName": [ "Az.RedisEnterpriseCache.internal\\Get-AzRedisEnterpriseCacheKey" ],
+        "FullCommandName": [ "Get-AzRedisEnterpriseCacheKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.5.3", "Az.RedisEnterpriseCache/1.5.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-rp-server-mvid": [ "f4f6654a-0925-42fb-9cb8-ca861a4c4494" ],
+        "x-ms-request-id": [ "60ed7dcb-8a00-4d4d-a753-656a4b0d9b19" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f39f71e1-608c-4626-8485-ddf5a519b312/centraluseuap/ce383f94-3371-4722-ad0c-4b3329ac0eba" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-correlation-request-id": [ "56ade418-469e-4506-b134-a329d805a39f" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251015T061119Z:56ade418-469e-4506-b134-a329d805a39f" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9F5A801567AE4B0C8FF601C76653F416 Ref B: PNQ231110907029 Ref C: 2025-10-15T06:11:19Z" ],
+        "Date": [ "Wed, 15 Oct 2025 06:11:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "135" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"***\",\r\n  \"secondaryKey\": \"****\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

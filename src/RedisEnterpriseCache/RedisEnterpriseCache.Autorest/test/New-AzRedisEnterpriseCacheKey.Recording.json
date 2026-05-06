@@ -1,0 +1,82 @@
+{
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-1/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-1/databases/default/regenerateKey?api-version=2025-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-1/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-1/databases/default/regenerateKey?api-version=2025-07-01",
+      "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-rp-server-mvid": [ "f4f6654a-0925-42fb-9cb8-ca861a4c4494" ],
+        "x-ms-request-id": [ "ad4376a1-65ac-43f9-b66d-f7c91718ca18" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f39f71e1-608c-4626-8485-ddf5a519b312/centraluseuap/a3ff7580-d7b3-4b6b-ab59-8f1b55ef800b" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-correlation-request-id": [ "bf784718-8b2e-4cc5-85b3-c61b5ffb14bf" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251015T063151Z:bf784718-8b2e-4cc5-85b3-c61b5ffb14bf" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F015ACFA8948401CA86117209724B8B2 Ref B: PNQ231110907029 Ref C: 2025-10-15T06:31:51Z" ],
+        "Date": [ "Wed, 15 Oct 2025 06:31:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "135" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"*****\",\r\n  \"secondaryKey\": \"****\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-1/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-1/databases/default/regenerateKey?api-version=2025-07-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9508734a-8a49-4b3e-bd1e-d039b249a023/resourceGroups/ps-redisenterprise-rg-1/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-1/databases/default/regenerateKey?api-version=2025-07-01",
+      "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "30" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-rp-server-mvid": [ "f4f6654a-0925-42fb-9cb8-ca861a4c4494" ],
+        "x-ms-request-id": [ "9ccdd7af-909c-42ac-a3d1-65f06cb03ebd" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f39f71e1-608c-4626-8485-ddf5a519b312/centraluseuap/753b6e6b-da5f-49ba-af08-dd0fe9d0c469" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-correlation-request-id": [ "ded961f7-bb0f-4094-8d5e-7222a2e84499" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20251015T063152Z:ded961f7-bb0f-4094-8d5e-7222a2e84499" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 23D88C929D874C1C9D4A2D62D2DE90B9 Ref B: PNQ231110907029 Ref C: 2025-10-15T06:31:52Z" ],
+        "Date": [ "Wed, 15 Oct 2025 06:31:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "135" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"*****\",\r\n  \"secondaryKey\": \"***\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}
