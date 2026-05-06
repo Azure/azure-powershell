@@ -58,7 +58,7 @@ pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeAnalytics.1.1.0.zip;sourceType=sa]Az.DataLakeAnalytics,1.1.0
 pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeStore.1.5.2.zip;sourceType=sa]Az.DataLakeStore,1.5.2
 pac59,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataMigration.1.0.0.zip;sourceType=sa]Az.DataMigration,1.0.0
-pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataProtection.2.10.0.zip;sourceType=sa]Az.DataProtection,2.10.0
+pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataProtection.2.10.1.zip;sourceType=sa]Az.DataProtection,2.10.1
 pac61,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataShare.1.1.1.zip;sourceType=sa]Az.DataShare,1.1.1
 pac62,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataTransfer.1.0.0.zip;sourceType=sa]Az.DataTransfer,1.0.0
 pac63,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DedicatedHsm.0.4.0.zip;sourceType=sa]Az.DedicatedHsm,0.4.0
