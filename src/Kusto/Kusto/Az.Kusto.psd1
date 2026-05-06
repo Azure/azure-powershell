@@ -57,10 +57,10 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.4.0'; })
 RequiredAssemblies = 'Kusto.Autorest/bin/Az.Kusto.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Kusto.Autorest/Az.Kusto.format.ps1xml'
@@ -146,7 +146,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','PSModule','Kusto'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Kusto'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -171,7 +171,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
- } # End of PrivateData hashtable
+} # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
