@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceOutputPathAssetReferenceObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspaceoutputpathassetreferenceobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,7 @@ Create an in-memory object for OutputPathAssetReference.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceOutputPathAssetReferenceObject -ReferenceType <ReferenceType> [-JobId <String>]
- [-Path <String>] [<CommonParameters>]
+New-AzMLWorkspaceOutputPathAssetReferenceObject [-JobId <String>] [-Path <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,21 +60,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReferenceType
-[Required] Specifies the type of asset reference.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ReferenceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -83,7 +67,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.OutputPathAssetReference
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.OutputPathAssetReference
 
 ## NOTES
 
