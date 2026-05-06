@@ -71,7 +71,7 @@ commit: 6e8964026a4ed0f55fdb2c55a141fc7d501b94a6
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/DnsResolver/preview/2025-10-01-preview/openapi.json
+  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/DnsResolver/preview/2026-07-01-preview/openapi.json
 
 module-version: 0.2.9
 title: DnsResolver
@@ -127,14 +127,14 @@ directive:
     set:
       preview-announcement:
         preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
-  # Breaking change: ActionBlockResponseCode parameter removed in 2025-10-01-preview
+  # Breaking change: ActionBlockResponseCode parameter removed in 2026-07-01-preview
   - where:
       verb: New|Update
       subject: PolicyDnsSecurityRule
       parameter-name: ActionBlockResponseCode
     set:
       breaking-change:
-        change-description: The parameter 'ActionBlockResponseCode' has been removed. The block response code is no longer configurable in API version 2025-10-01-preview.
+        change-description: The parameter 'ActionBlockResponseCode' has been removed. The block response code is no longer configurable in API version 2026-07-01-preview.
         deprecated-by-version: 2.0.0
         deprecated-by-azversion: 16.0.0
         change-effective-date: 2026/05/01

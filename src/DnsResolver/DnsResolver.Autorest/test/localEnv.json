@@ -1,0 +1,15 @@
+{
+  "ResourceLocation": "westus2",
+  "Tenant": "f686d426-8d16-42db-81b7-ab578e110ccd",
+  "MalformedVirtualNetworkErrorMessage": "Resource ID is not a valid virtual network resource ID",
+  "ResourceGroupName": "ps-postmerge-test-rg",
+  "SubscriptionId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "DnsResolverNamePrefix": "psdnsresolvername",
+  "VirtualNetworkNamePrefix": "psvirtualnetworkname",
+  "SuccessProvisioningState": "Succeeded",
+  "InboundEnpointNamePrefix": "psinboundendpointname",
+  "LocationForVirtualNetwork": "westus2",
+  "SubnetNamePrefix": "pssubnetname",
+  "InboundEndpointNamePrefix": "psinboundendpointname",
+  "AddressPrefix": "40.121.0.0/16"
+}
