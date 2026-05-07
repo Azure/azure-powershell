@@ -1,0 +1,182 @@
+{
+  "Get-AzStorageCacheExpansionJob+[NoContext]+List+$GET+https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs?api-version=2026-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs?api-version=2026-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "f7e03eb5-9587-4d19-bfcf-29678e7bb380" ],
+        "CommandName": [ "Get-AzStorageCacheExpansionJob" ],
+        "FullCommandName": [ "Get-AzStorageCacheExpansionJob_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.StorageCache/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830,6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830" ],
+        "x-ms-request-id": [ "922e4faf-443a-4e6e-bcbb-8bb5a7e73493" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/australiaeast/79250df6-a459-499c-8e59-bd7c23cae0f5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "404846c2-72f9-4eac-90a2-d1cbcb15d793" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260507T032453Z:404846c2-72f9-4eac-90a2-d1cbcb15d793" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6EAB3EB3DCF846B4846E691F58E0AC87 Ref B: MNZ221060619031 Ref C: 2026-05-07T03:24:53Z" ],
+        "Date": [ "Thu, 07 May 2026 03:24:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3415" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"sampleCreateAmlId\",\r\n      \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/ACCTEST0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateAmlId\",\r\n      \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n      \"location\": \"australiaeast\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"newStorageCapacityTiB\": 80.0,\r\n        \"status\": {\r\n          \"state\": \"Completed\",\r\n          \"percentComplete\": 100.0,\r\n          \"startTimeUTC\": \"2026-05-07T03:06:40+00:00\",\r\n          \"completionTimeUTC\": \"2026-05-07T03:13:58+00:00\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"sampleCreateExpanded\",\r\n      \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/ACCTEST0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded\",\r\n      \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n      \"location\": \"australiaeast\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"newStorageCapacityTiB\": 56.0,\r\n        \"status\": {\r\n          \"state\": \"Completed\",\r\n          \"percentComplete\": 100.0,\r\n          \"startTimeUTC\": \"2026-05-07T02:45:13+00:00\",\r\n          \"completionTimeUTC\": \"2026-05-07T02:52:56+00:00\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"sampleCreateFile\",\r\n      \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/ACCTEST0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateFile\",\r\n      \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n      \"location\": \"australiaeast\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"newStorageCapacityTiB\": 72.0,\r\n        \"status\": {\r\n          \"state\": \"Completed\",\r\n          \"percentComplete\": 100.0,\r\n          \"startTimeUTC\": \"2026-05-07T02:59:22+00:00\",\r\n          \"completionTimeUTC\": \"2026-05-07T03:06:31+00:00\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"sampleCreateIdentity\",\r\n      \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/ACCTEST0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateIdentity\",\r\n      \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n      \"location\": \"australiaeast\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"newStorageCapacityTiB\": 88.0,\r\n        \"status\": {\r\n          \"state\": \"Completed\",\r\n          \"percentComplete\": 100.0,\r\n          \"startTimeUTC\": \"2026-05-07T03:14:09+00:00\",\r\n          \"completionTimeUTC\": \"2026-05-07T03:21:03+00:00\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"sampleCreateJson\",\r\n      \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/ACCTEST0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateJson\",\r\n      \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n      \"location\": \"australiaeast\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"newStorageCapacityTiB\": 64.0,\r\n        \"status\": {\r\n          \"state\": \"Completed\",\r\n          \"percentComplete\": 100.0,\r\n          \"startTimeUTC\": \"2026-05-07T02:53:04+00:00\",\r\n          \"completionTimeUTC\": \"2026-05-07T02:59:17+00:00\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzStorageCacheExpansionJob+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "fb4bd6e7-bdc9-4178-ba38-c2cf9e138e67" ],
+        "CommandName": [ "Get-AzStorageCacheExpansionJob" ],
+        "FullCommandName": [ "Get-AzStorageCacheExpansionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.StorageCache/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830,6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830" ],
+        "x-ms-request-id": [ "6aff9c5e-b181-43c8-854d-680eda6ceb79" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/australiaeast/8be26607-f857-4402-ab97-7bd37f2bf169" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "3e09c042-647e-471f-b8f3-268404336362" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260507T032454Z:3e09c042-647e-471f-b8f3-268404336362" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E98683E9384F494586F78B60364CC348 Ref B: MNZ221060619031 Ref C: 2026-05-07T03:24:53Z" ],
+        "Date": [ "Thu, 07 May 2026 03:24:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "616" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"australiaeast\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 56.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-07T02:45:13+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-07T02:52:56+00:00\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzStorageCacheExpansionJob+[NoContext]+GetViaIdentityAmlFilesystem+$GET+https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "b07d2ed9-fb38-41c5-87cb-f6efcc767452" ],
+        "CommandName": [ "Get-AzStorageCacheExpansionJob" ],
+        "FullCommandName": [ "Get-AzStorageCacheExpansionJob_GetViaIdentityAmlFilesystem" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.StorageCache/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830,6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830" ],
+        "x-ms-request-id": [ "8d1ce73a-0bff-49b6-b8e4-bfeb06cebd84" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/australiaeast/11461b39-5c0f-41c6-9fa2-94bf964e7500" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "e0f7805d-0530-4607-aa36-87e0024956e6" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260507T032454Z:e0f7805d-0530-4607-aa36-87e0024956e6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2A386AACC031496DB916207F9450724E Ref B: MNZ221060619031 Ref C: 2026-05-07T03:24:54Z" ],
+        "Date": [ "Thu, 07 May 2026 03:24:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "616" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"australiaeast\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 56.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-07T02:45:13+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-07T02:52:56+00:00\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzStorageCacheExpansionJob+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "b5393114-0906-490d-b3c4-d448e8a2087e" ],
+        "CommandName": [ "Get-AzStorageCacheExpansionJob" ],
+        "FullCommandName": [ "Get-AzStorageCacheExpansionJob_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.StorageCache/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830,6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830" ],
+        "x-ms-request-id": [ "e8c12ad2-1239-4ad4-b999-ab01f14fca7e" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/australiaeast/07fa7dfa-4926-4f59-ab40-add726db13ca" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "f1655684-7540-43f8-bacc-0864fd4954a1" ],
+        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260507T032454Z:f1655684-7540-43f8-bacc-0864fd4954a1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 248A366E3B5D4DE7B693E0DD12AD006B Ref B: MNZ221060619031 Ref C: 2026-05-07T03:24:54Z" ],
+        "Date": [ "Thu, 07 May 2026 03:24:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "616" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"australiaeast\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 56.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-07T02:45:13+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-07T02:52:56+00:00\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

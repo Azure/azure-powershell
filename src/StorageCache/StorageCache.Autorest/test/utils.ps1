@@ -108,3 +108,28 @@ function cleanupEnv() {
     # Remove-AzResourceGroup -Name $env.resourceGroup
 }
 
+function Wait-AzStorageCacheExpansionJobProvisioned {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string]$AmlFilesystemName,
+        [Parameter(Mandatory)]
+        [string]$Name,
+        [Parameter(Mandatory)]
+        [string]$ResourceGroupName,
+        [int]$TimeoutSeconds = 6000,
+        [int]$IntervalSeconds = 10
+    )
+    $elapsed = 0
+    while ($elapsed -lt $TimeoutSeconds) {
+        $job = Get-AzStorageCacheExpansionJob -AmlFilesystemName $AmlFilesystemName -Name $Name -ResourceGroupName $ResourceGroupName
+        if ($job.StatusState -eq 'Completed' -or $job.StatusState -eq 'Failed' -or $job.StatusState -eq 'Canceled') {
+            return $job
+        }
+        if ($TestMode -eq 'playback') { return $job }
+        Start-Sleep -Seconds $IntervalSeconds
+        $elapsed += $IntervalSeconds
+    }
+    throw "Timed out waiting for ExpansionJob '$Name' to complete. Last state: $($job.StatusState)"
+}
+

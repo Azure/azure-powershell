@@ -27,12 +27,12 @@ For information on how to develop for `Az.StorageCache`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 213441b94d4801b488e57f22187bdc862c2d51b3
+commit: 60cf75bf79bb56ef1cd47cca726ed7c42b8f9f6f
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
 input-file:
-  - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2025-07-01/amlfilesystem.json
+  - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/StorageCache/stable/2026-01-01/amlfilesystem.json
 
 module-version: 0.1.0
 title: StorageCache
