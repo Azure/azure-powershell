@@ -52,10 +52,10 @@ BACKENDPOOLSSETTING <IBackendPoolsSettings>: Settings for all backendPools
   [SendRecvTimeoutInSeconds <Int32?>]: Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
 
 FRONTENDENDPOINT <IFrontendEndpoint[]>: Frontend endpoints available to routing rules.
-  [Id <String>]: Resource ID.
   [CertificateSource <String>]: Defines the source of the SSL certificate
   [CertificateType <String>]: Defines the type of the certificate used for secure connections to a frontendEndpoint
   [HostName <String>]: The host name of the frontendEndpoint. Must be a domain name.
+  [Id <String>]: Resource ID.
   [MinimumTlsVersion <String>]: The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
   [Name <String>]: Resource name.
   [SecretName <String>]: The name of the Key Vault secret representing the full certificate PFX
@@ -274,8 +274,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

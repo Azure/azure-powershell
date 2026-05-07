@@ -198,9 +198,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).Customrule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule>) content.GetValueForProperty("Customrule",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).Customrule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CustomRuleTypeConverter.ConvertFrom));
             }
+            if (content.Contains("ManagedRuleExceptionsList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ManagedRuleExceptionsList = (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionList) content.GetValueForProperty("ManagedRuleExceptionsList",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ManagedRuleExceptionsList, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetExceptionListTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ManagedRuleSet"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ManagedRuleSet = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet>) content.GetValueForProperty("ManagedRuleSet",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ManagedRuleSet, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ExceptionListException"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ExceptionListException = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException>) content.GetValueForProperty("ExceptionListException",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ExceptionListException, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetExceptionTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -291,9 +299,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).Customrule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule>) content.GetValueForProperty("Customrule",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).Customrule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CustomRuleTypeConverter.ConvertFrom));
             }
+            if (content.Contains("ManagedRuleExceptionsList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ManagedRuleExceptionsList = (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionList) content.GetValueForProperty("ManagedRuleExceptionsList",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ManagedRuleExceptionsList, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetExceptionListTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ManagedRuleSet"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ManagedRuleSet = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet>) content.GetValueForProperty("ManagedRuleSet",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ManagedRuleSet, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ExceptionListException"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ExceptionListException = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException>) content.GetValueForProperty("ExceptionListException",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicyInternal)this).ExceptionListException, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetExceptionTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }
