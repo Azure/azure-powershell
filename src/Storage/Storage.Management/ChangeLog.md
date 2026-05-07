@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported cross tenant user delegation SAS token generation with OAuth-based storage contexts
+    - `New-AzStorageBlobSASToken`
+    - `New-AzStorageContainerSASToken`
+    - `New-AzDataLakeGen2SasToken`
+    - `New-AzStorageFileSASToken`
+    - `New-AzStorageShareSASToken`
+    - `New-AzStorageQueueSASToken`
 
 ## Version 9.6.1
 * Removed breaking change warnings for TLS 1.0 and TLS 1.1 deprecation

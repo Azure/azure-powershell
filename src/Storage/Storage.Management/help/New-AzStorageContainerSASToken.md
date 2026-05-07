@@ -16,17 +16,19 @@ Generates an SAS token for an Azure storage container.
 ### SasPolicy
 ```
 New-AzStorageContainerSASToken [-Name] <String> -Policy <String> [-DelegatedUserObjectId <String>]
- [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DelegatedUserTenantId <String>] [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
 New-AzStorageContainerSASToken [-Name] <String> [-Permission <String>] [-DelegatedUserObjectId <String>]
- [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DelegatedUserTenantId <String>] [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +57,7 @@ New-AzStorageContainerSASToken -Name "Test" -Policy "PolicyName"
 
 This example generates a container SAS token with shared access policy.
 
-### Example 3: Generate a User Identity container SAS token with storage context based on OAuth authentication
+### Example 4: Generate a User Identity container SAS token with storage context based on OAuth authentication
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
 $StartTime = Get-Date
@@ -64,6 +66,14 @@ New-AzStorageContainerSASToken -Name "ContainerName" -Permission rwd -StartTime 
 ```
 
 This example generates a User Identity container SAS token with storage context based on OAuth authentication
+
+### Example 5: Generate a User Delegation container SAS token with delegated user credentials
+```powershell
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
+New-AzStorageContainerSASToken -Name "ContainerName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $ctx -DelegatedUserObjectId "00000000-0000-0000-0000-000000000000" -DelegatedUserTenantId "00000000-0000-0000-0000-000000000000"
+```
+
+This example generates a User Delegation container SAS token with OAuth authentication context, specifying the delegated user object ID and tenant ID for enhanced security.
 
 ## PARAMETERS
 
@@ -101,6 +111,21 @@ Accept wildcard characters: False
 
 ### -DelegatedUserObjectId
 This value specifies the Entra ID of the user who is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DelegatedUserTenantId
+Optional. The delegated user tenant id in Azure AD. This parameter can only be specified when input Storage Context is OAuth based.
 
 ```yaml
 Type: System.String

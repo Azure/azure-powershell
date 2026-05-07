@@ -16,32 +16,33 @@ Generates a shared access signature token for a Storage file.
 ### NameSasPermission
 ```
 New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> [-DelegatedUserObjectId <String>]
- [-Permission <String>] [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-DelegatedUserTenantId <String>] [-Permission <String>] [-Protocol <String>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NameSasPolicy
 ```
 New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> -Policy <String>
- [-DelegatedUserObjectId <String>] [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-DelegatedUserObjectId <String>] [-DelegatedUserTenantId <String>] [-Protocol <String>]
+ [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FileSasPermission
 ```
 New-AzStorageFileSASToken -ShareFileClient <ShareFileClient> [-DelegatedUserObjectId <String>]
- [-Permission <String>] [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-DelegatedUserTenantId <String>] [-Permission <String>] [-Protocol <String>] [-IPAddressOrRange <String>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FileSasPolicy
 ```
 New-AzStorageFileSASToken -ShareFileClient <ShareFileClient> -Policy <String> [-DelegatedUserObjectId <String>]
- [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DelegatedUserTenantId <String>] [-Protocol <String>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +71,14 @@ This object is a time two hours in the future.
 The third command generates a shared access signature token that has the specified permissions.
 This token becomes valid at the current time.
 The token remains valid until time stored in $EndTime.
+
+### Example 3: Generate a User Delegation file SAS token with OAuth authentication context, and delegated user object ID and tenant ID
+```powershell
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount  -EnableFileBackupRequestIntent
+New-AzStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd" -StartTime $StartTime -ExpiryTime $EndTime -Context $ctx -DelegatedUserObjectId "00000000-0000-0000-0000-000000000000" -DelegatedUserTenantId "00000000-0000-0000-0000-000000000000"
+```
+
+This example generates a User Delegation file SAS token with OAuth authentication context, specifying the delegated user object ID and tenant ID for enhanced security.
 
 ## PARAMETERS
 
@@ -106,6 +115,21 @@ Accept wildcard characters: False
 
 ### -DelegatedUserObjectId
 This value specifies the Entra ID of the user who is authorized to use the resulting SAS URL. The resulting SAS URL must be used in conjunction with an Entra ID token that has been issued to the user specified in this value. This parameter can only be specified when input Storage Context is OAuth based.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DelegatedUserTenantId
+Optional. The delegated user tenant id in Azure AD. This parameter can only be specified when input Storage Context is OAuth based.
 
 ```yaml
 Type: System.String

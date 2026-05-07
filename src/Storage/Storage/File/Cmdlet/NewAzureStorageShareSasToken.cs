@@ -59,6 +59,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string DelegatedUserObjectId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Optional. The delegated user tenant id in Azure AD. This parameter can only be specified when input Storage Context is OAuth based.")]
+        [ValidateNotNullOrEmpty]
+        public string DelegatedUserTenantId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Permissions for a share. Permissions can be any subset of \"rwdl\".",
             ParameterSetName = SasPermissionParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -133,6 +137,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 {
                     throw new ArgumentException("DelegatedUserObjectId can only be specified when input Storage Context is OAuth based without using SAS token.", "DelegatedUserObjectId");
                 }
+                if (this.DelegatedUserTenantId != null)
+                {
+                    throw new ArgumentException("DelegatedUserTenantId can only be specified when input Storage Context is OAuth based without using SAS token.", "DelegatedUserTenantId");
+                }
             }
 
             // Get share saved policy if any
@@ -143,10 +151,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
 
             //Create SAS builder
-            ShareSasBuilder sasBuilder = SasTokenHelper.SetShareSasBuilder_FromShare(share, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.DelegatedUserObjectId);
+            ShareSasBuilder sasBuilder = SasTokenHelper.SetShareSasBuilder_FromShare(share, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.DelegatedUserObjectId, this.DelegatedUserTenantId);
 
             //Create SAS and output it
-            string sasToken = SasTokenHelper.GetFileSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, CmdletCancellationToken);
+            string sasToken = SasTokenHelper.GetFileSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, CmdletCancellationToken, this.DelegatedUserTenantId);
 
             // remove prefix "?" of SAS if any
             sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);
