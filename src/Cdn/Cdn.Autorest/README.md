@@ -771,4 +771,59 @@ directive:
         $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
       }
       return $;
+  - where:
+      subjectPrefix: Cdn
+      subject: Profile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Profile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: ProfileSku
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+
+  # Breaking change: all EdgeAction cmdlets are being removed.
+  # The EdgeAction preview API (2024-07-22-preview) is being retired and will
+  # no longer be exposed by this module.
+  # Affected cmdlets (matched via subjectPrefix: Cdn + subject starting with EdgeAction):
+  #   Add-AzCdnEdgeActionAttachment, Deploy-AzCdnEdgeActionVersionCode,
+  #   Get-AzCdnEdgeAction, Get-AzCdnEdgeActionExecutionFilter,
+  #   Get-AzCdnEdgeActionVersion, Get-AzCdnEdgeActionVersionCode,
+  #   New-AzCdnEdgeAction, New-AzCdnEdgeActionExecutionFilter,
+  #   New-AzCdnEdgeActionVersion, Remove-AzCdnEdgeAction,
+  #   Remove-AzCdnEdgeActionAttachment, Remove-AzCdnEdgeActionExecutionFilter,
+  #   Remove-AzCdnEdgeActionVersion, Update-AzCdnEdgeAction,
+  #   Update-AzCdnEdgeActionExecutionFilter, Update-AzCdnEdgeActionVersion
+  - where:
+      subjectPrefix: Cdn
+      subject: ^EdgeAction.*$
+    set:
+      breaking-change:
+        change-description: All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired.
+        deprecated-by-version: 5.4.0
+        deprecated-by-azversion: 14.5.0
+        change-effective-date: 2026/05/15
 ```

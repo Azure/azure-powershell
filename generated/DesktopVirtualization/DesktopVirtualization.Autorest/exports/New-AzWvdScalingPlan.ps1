@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a scaling plan.
+Create a scaling plan.
 .Description
-create a scaling plan.
+Create a scaling plan.
 .Example
 New-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
@@ -378,8 +378,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

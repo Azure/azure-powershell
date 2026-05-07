@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/undo-azdataprotectionvaultdeletion
 schema: 2.0.0
@@ -13,10 +13,9 @@ Undeletes a soft deleted backup vault
 ## SYNTAX
 
 ```
-Undo-AzDataProtectionVaultDeletion -DeletedVaultName <String> -Location <String> [-SubscriptionId <String>]
- [-ResourceGroupName <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Undo-AzDataProtectionVaultDeletion -DeletedVaultName <String> -Location <String> [-AsJob]
+ [-DefaultProfile <PSObject>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-NoWait]
+ [-ResourceGroupName <String>] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,6 +97,7 @@ Shows a complete workflow: lists deleted vaults with their original properties, 
 
 ### -AsJob
 
+
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -111,6 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -185,6 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -267,8 +269,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource
 
 ## NOTES
 
 ## RELATED LINKS
+

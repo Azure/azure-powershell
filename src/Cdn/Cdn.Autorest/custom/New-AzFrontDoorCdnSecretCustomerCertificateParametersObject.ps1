@@ -37,6 +37,10 @@ function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
         [Parameter(HelpMessage="Version of the secret to be used.")]
         [string]
         $SecretVersion,
+        [Parameter(HelpMessage="The list of SANs.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ParameterBreakingChangeAttribute("SubjectAlternativeName", "14.5.0", "5.4.0", "2026/05/15", ChangeDescription = "The '-SubjectAlternativeName' parameter is being deprecated and will be removed in a future release, following the removal of the 'subjectAlternativeNames' property from the 'CustomerCertificateParameters' schema in the service contract.")]
+        [string[]]
+        $SubjectAlternativeName,
         [Parameter(HelpMessage="Whether to use the latest version for the certificate.")]
         [bool]
         $UseLatestVersion,
@@ -53,6 +57,9 @@ function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
         }
         if ($PSBoundParameters.ContainsKey('SecretVersion')) {
             $Object.SecretVersion = $SecretVersion
+        }
+        if ($PSBoundParameters.ContainsKey('SubjectAlternativeName')) {
+            $Object.SubjectAlternativeName = $SubjectAlternativeName
         }
         if ($PSBoundParameters.ContainsKey('UseLatestVersion')) {
             $Object.UseLatestVersion = $UseLatestVersion

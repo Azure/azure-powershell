@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 2.10.1
+* Fixed non-ASCII U+2013 characters failed module import in WindowsPowerShell
+
+## Version 2.10.0
+* Added auto-protection support for Blob and ADLS (Azure Data Lake Storage) backup in `New-AzDataProtectionBackupConfigurationClientObject`
+    - Added `-AutoProtection` switch parameter to enable auto-protection
+    - Added `-AutoProtectionExclusionRule` parameter to specify exclusion rules for auto-protection
+* Updated API version from 2025-09-01 to 2026-03-01
+
 ## Version 2.9.1
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 

@@ -1,8 +1,8 @@
 {
-  "Get-AzDataProtectionBackupVault+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2025-09-01+1": {
+  "Get-AzDataProtectionBackupVault+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2025-09-01",
+      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/adkayeth/providers/Microsoft.DataProtection/backupVaults/sadsasad?api-version=2026-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

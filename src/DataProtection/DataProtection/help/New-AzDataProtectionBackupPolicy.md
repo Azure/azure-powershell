@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackuppolicy
 schema: 2.0.0
@@ -13,9 +13,9 @@ Creates a new backup policy in a given backup vault
 ## SYNTAX
 
 ```
-New-AzDataProtectionBackupPolicy -ResourceGroupName <String> -VaultName <String> -Name <String>
- -Policy <IBackupPolicy> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDataProtectionBackupPolicy -Name <String> -Policy <IBackupPolicy> -ResourceGroupName <String>
+ -VaultName <String> [-DefaultProfile <PSObject>] [-SubscriptionId <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,7 +179,7 @@ Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $defau
 $defaultPol.PolicyRule[0].Trigger.ScheduleRepeatingTimeInterval[0] = "R/2023-05-09T02:30:00+01:00/P1W"
 $timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Europe" }
 $defaultPol.PolicyRule[0].Trigger.ScheduleTimeZone = $timeZone[0].Id
-$operationalVaultedPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "operationalVaultedPolicyName" -Policy $defaultPol
+$operationalVaultedPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "operationalVaultedPolicyName" -Policy $defaultPol 
 ```
 
 ```output
@@ -211,7 +211,7 @@ $trigger =  New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays 
 Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $defaultPol
 $tagCriteria = New-AzDataProtectionPolicyTagCriteriaClientObject -MonthsOfYear January -DaysOfMonth 1,5,Last
 Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Monthly -Criteria $tagCriteria
-$pgflexPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "pgflex-policy" -Policy $defaultPol
+$pgflexPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "pgflex-policy" -Policy $defaultPol 
 ```
 
 ```output
@@ -269,6 +269,7 @@ The last command creates the policy.
 
 ### -DefaultProfile
 
+
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -301,7 +302,7 @@ Policy Request Object
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -395,8 +396,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBaseBackupPolicyResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBaseBackupPolicyResource
 
 ## NOTES
 
 ## RELATED LINKS
+

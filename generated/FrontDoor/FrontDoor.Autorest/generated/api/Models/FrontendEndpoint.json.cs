@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 return;
             }
-            __subResource = new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.SubResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontendEndpointProperties.FromJson(__jsonProperties) : _property;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
             AfterFromJson(json);
@@ -103,8 +103,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 return container;
             }
-            __subResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.SerializationMode.IncludeRead))
             {

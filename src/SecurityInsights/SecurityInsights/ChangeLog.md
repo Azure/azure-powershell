@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.2.2
 * Updated preannouncement breaking changes date to May 2026.
 
 ## Version 3.2.1

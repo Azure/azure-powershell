@@ -109,9 +109,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ExceptionsList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ExceptionsList = (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionList) content.GetValueForProperty("ExceptionsList",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ExceptionsList, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetExceptionListTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ManagedRuleSet"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ManagedRuleSet = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet>) content.GetValueForProperty("ManagedRuleSet",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ManagedRuleSet, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ExceptionListException"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ExceptionListException = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException>) content.GetValueForProperty("ExceptionListException",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ExceptionListException, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetExceptionTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -130,9 +138,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ExceptionsList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ExceptionsList = (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetExceptionList) content.GetValueForProperty("ExceptionsList",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ExceptionsList, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetExceptionListTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ManagedRuleSet"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ManagedRuleSet = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet>) content.GetValueForProperty("ManagedRuleSet",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ManagedRuleSet, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ExceptionListException"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ExceptionListException = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException>) content.GetValueForProperty("ExceptionListException",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetListInternal)this).ExceptionListException, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException>(__y, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSetExceptionTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

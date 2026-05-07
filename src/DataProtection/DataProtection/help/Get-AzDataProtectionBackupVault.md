@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackupvault
 schema: 2.0.0
@@ -14,19 +14,18 @@ Returns resource collection belonging to a subscription.
 
 ### Get (Default)
 ```
-Get-AzDataProtectionBackupVault [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get2
-```
-Get-AzDataProtectionBackupVault [-SubscriptionId <String[]>] -ResourceGroupName <String> -VaultName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataProtectionBackupVault [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzDataProtectionBackupVault [-SubscriptionId <String[]>] -ResourceGroupName <String>
+Get-AzDataProtectionBackupVault -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get2
+```
+Get-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -160,7 +159,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get2, Get1
+Parameter Sets: Get1, Get2
 Aliases:
 
 Required: True
@@ -176,7 +175,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Get2, Get1
+Parameter Sets: Get, Get1, Get2
 Aliases:
 
 Required: False
@@ -210,8 +209,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource
 
 ## NOTES
 
 ## RELATED LINKS
+
