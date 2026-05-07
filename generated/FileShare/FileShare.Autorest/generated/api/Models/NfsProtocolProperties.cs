@@ -11,6 +11,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.INfsProtocolPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="EncryptionInTransitRequired" /> property.</summary>
+        private string _encryptionInTransitRequired;
+
+        /// <summary>Encryption in transit defines whether data is encrypted for NFS shares.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Origin(Microsoft.Azure.PowerShell.Cmdlets.FileShare.PropertyOrigin.Owned)]
+        public string EncryptionInTransitRequired { get => this._encryptionInTransitRequired; set => this._encryptionInTransitRequired = value; }
+
         /// <summary>Backing field for <see cref="RootSquash" /> property.</summary>
         private string _rootSquash;
 
@@ -28,6 +35,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
     public partial interface INfsProtocolProperties :
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IJsonSerializable
     {
+        /// <summary>Encryption in transit defines whether data is encrypted for NFS shares.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Encryption in transit defines whether data is encrypted for NFS shares.",
+        SerializedName = @"encryptionInTransitRequired",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string EncryptionInTransitRequired { get; set; }
         /// <summary>Root squash defines how root users on clients are mapped to the NFS share.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
         Required = false,
@@ -46,6 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
     internal partial interface INfsProtocolPropertiesInternal
 
     {
+        /// <summary>Encryption in transit defines whether data is encrypted for NFS shares.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string EncryptionInTransitRequired { get; set; }
         /// <summary>Root squash defines how root users on clients are mapped to the NFS share.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.PSArgumentCompleterAttribute("NoRootSquash", "RootSquash", "AllSquash")]
         string RootSquash { get; set; }
