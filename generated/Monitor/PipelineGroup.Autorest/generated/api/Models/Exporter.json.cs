@@ -66,7 +66,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
                 return;
             }
             {_azureMonitorWorkspaceLog = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("azureMonitorWorkspaceLogs"), out var __jsonAzureMonitorWorkspaceLogs) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.AzureMonitorWorkspaceLogsExporter.FromJson(__jsonAzureMonitorWorkspaceLogs) : _azureMonitorWorkspaceLog;}
-            {_tcp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("tcp"), out var __jsonTcp) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TcpExporter.FromJson(__jsonTcp) : _tcp;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             AfterFromJson(json);
@@ -104,7 +103,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
                 return container;
             }
             AddIf( null != this._azureMonitorWorkspaceLog ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._azureMonitorWorkspaceLog.ToJson(null,serializationMode) : null, "azureMonitorWorkspaceLogs" ,container.Add );
-            AddIf( null != this._tcp ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._tcp.ToJson(null,serializationMode) : null, "tcp" ,container.Add );
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AfterToJson(ref container);
