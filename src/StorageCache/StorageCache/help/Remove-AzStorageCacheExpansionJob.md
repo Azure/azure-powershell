@@ -42,7 +42,7 @@ Schedules an expansion job for deletion.
 Remove-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -Name 'expansionjob1' -ResourceGroupName 'scgroup'
 ```
 
-Removes the specified expansion job from an AML file system.
+Removes the specified expansion job from the AML file system.
 
 ## PARAMETERS
 

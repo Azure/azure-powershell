@@ -63,7 +63,7 @@ Name                Location      ProvisioningState NewStorageCapacityTiB Status
 expansionjob1       eastus        Succeeded         16                    Completed
 ```
 
-Creates a new expansion job for the specified AML file system to expand storage capacity.
+Creates a new expansion job to expand the AML file system storage capacity to 16 TiB.
 
 ## PARAMETERS
 

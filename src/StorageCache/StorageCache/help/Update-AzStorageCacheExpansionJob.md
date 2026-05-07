@@ -63,7 +63,7 @@ Name                Location      ProvisioningState NewStorageCapacityTiB Status
 expansionjob1       eastus        Succeeded         16                    Completed
 ```
 
-Updates the tags of the specified expansion job for an AML file system.
+Updates the tags of the specified expansion job.
 
 ## PARAMETERS
 

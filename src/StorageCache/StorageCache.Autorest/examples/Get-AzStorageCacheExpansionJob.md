@@ -12,11 +12,3 @@ Get-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -Name 'expansionjob1' -R
 
 Gets the specified expansion job by name.
 
-```output
-Name                Location      ProvisioningState NewStorageCapacityTiB StatusState
-----                --------      ----------------- --------------------- -----------
-expansionjob1       eastus        Succeeded         16                    Completed
-```
-
-Gets the specified expansion job by name.
-

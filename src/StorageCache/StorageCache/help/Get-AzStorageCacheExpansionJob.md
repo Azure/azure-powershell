@@ -61,7 +61,7 @@ Name                Location      ProvisioningState NewStorageCapacityTiB Status
 expansionjob1       eastus        Succeeded         16                    Completed
 ```
 
-Gets the details of the specified expansion job for an AML file system.
+Gets the specified expansion job by name.
 
 ## PARAMETERS
 

@@ -3,8 +3,6 @@
 Update-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -Name 'expansionjob1' -ResourceGroupName 'scgroup' -Tag @{'Dept' = 'ContosoFinance'}
 ```
 
-Updates the tags of the specified expansion job.
-
 ```output
 Name                Location      ProvisioningState NewStorageCapacityTiB StatusState
 ----                --------      ----------------- --------------------- -----------
