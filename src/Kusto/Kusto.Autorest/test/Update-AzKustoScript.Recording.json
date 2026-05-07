@@ -255,7 +255,7 @@
     "Request": {
       "Method": "PATCH",
       "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/Databases/testdatabaseoe8s0u/scripts/testScript2?api-version=2024-04-13",
-      "Content": "{\"properties\":{\"scriptUrl\":\"https://sasloc4i.blob.core.windows.net/scripts/update-script.kql\",\"continueOnErrors\":true,\"principalPermissionsAction\":\"RemovePermissionOnScriptCompletion\",\"forceUpdateTag\":\"tag2\",\"scriptUrlSasToken\":\"sv=2025-07-05\u0026se=2026-05-07T07%3A08%3A40Z\u0026sr=b\u0026sp=r\u0026sig=XdVNUAYN%2BTpbbSwVURh6l8KIlxQI4Q6NYUjAMHjx25o%3D\",\"scriptLevel\":\"Database\"}}",
+      "Content": "{\"properties\":{\"scriptUrl\":\"https://sasloc4i.blob.core.windows.net/scripts/update-script.kql\",\"continueOnErrors\":true,\"principalPermissionsAction\":\"RemovePermissionOnScriptCompletion\",\"forceUpdateTag\":\"tag2\",\"scriptUrlSasToken\":\"REDACTED\",\"scriptLevel\":\"Database\"}}",
       "isContentBase64": false,
       "Headers": {
       },
