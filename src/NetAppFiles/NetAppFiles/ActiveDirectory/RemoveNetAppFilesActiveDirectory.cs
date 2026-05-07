@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
             if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;             
-                var NameParts = AccountObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(AccountObject.Id);
                 AccountName = NameParts[0];
             }
             else if (ParameterSetName == ObjectParameterSet)

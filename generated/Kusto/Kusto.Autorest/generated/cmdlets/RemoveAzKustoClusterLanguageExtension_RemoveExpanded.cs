@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
     /// [OpenAPI] RemoveLanguageExtensions=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/removeLanguageExtensions"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzKustoClusterLanguageExtension_RemoveExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Description(@"Remove a list of language extensions that can run within KQL queries.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Generated]

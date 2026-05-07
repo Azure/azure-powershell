@@ -26,7 +26,7 @@ $backupInstanceResource.Property.PolicyInfo.PolicyId = $newPolicyARMId
 Test-AzDataProtectionBackupInstanceUpdate -Name $backupInstanceResource.Name -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -BackupInstance $backupInstanceResource.Property
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -70,7 +70,7 @@ BACKUPINSTANCE <IBackupInstance>: Backup Instance
 https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstanceupdate
 #>
 function Test-AzDataProtectionBackupInstanceUpdate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -103,7 +103,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupInstance]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupInstance]
     # Backup Instance
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},

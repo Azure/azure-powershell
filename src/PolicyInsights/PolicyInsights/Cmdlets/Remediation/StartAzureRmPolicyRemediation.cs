@@ -14,9 +14,6 @@
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
 {
-    using System.Globalization;
-    using System.Linq;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.PolicyInsights.Common;
     using Microsoft.Azure.Commands.PolicyInsights.Models.Remediation;
     using Microsoft.Azure.Commands.PolicyInsights.Properties;
@@ -24,10 +21,24 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Remediation
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.PolicyInsights;
     using Microsoft.Azure.Management.PolicyInsights.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using System.Globalization;
+    using System.Linq;
+    using System.Management.Automation;
 
     /// <summary>
     /// Creates and starts a policy remediation.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(
+        typeof(PSRemediation),
+        deprecateByAzVersion: "16.0.0",
+        deprecateByVersion: "2.0.0",
+        ReplacementCmdletOutputTypeName = "Remediation",
+        DeprecatedOutputProperties = new string[] { "Filters", "DeploymentSummary", "FailureThreshold", "ParallelDeployments" },
+        NewOutputProperties = new string[] { "FilterLocation", "FilterResourceId", "DeploymentStatusFailedDeployment", "DeploymentStatusSuccessfulDeployment", "DeploymentStatusTotalDeployment", "FailureThresholdPercentage", "ParallelDeployment",
+            "ResourceGroupName", "SystemDataCreatedAt", "SystemDataCreatedBy", "SystemDataCreatedByType", "SystemDataLastModifiedAt", "SystemDataLastModifiedBy", "SystemDataLastModifiedByType" },
+        ChangeDescription = "Start-AzPolicyRemediation will now return when the Remediation reaches a terminal state unless you use the new NoWait parameter."
+    )]
     [Cmdlet("Start", AzureRMConstants.AzureRMPrefix + "PolicyRemediation", DefaultParameterSetName = ParameterSetNames.ByName, SupportsShouldProcess = true), OutputType(typeof(PSRemediation))]
     public class StartAzureRmPolicyRemediation : RemediationCmdletBase
     {

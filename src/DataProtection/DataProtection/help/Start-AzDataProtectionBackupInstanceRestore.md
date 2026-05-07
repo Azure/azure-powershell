@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/start-azdataprotectionbackupinstancerestore
 schema: 2.0.0
@@ -14,21 +14,22 @@ Triggers restore for a BackupInstance
 
 ### Trigger (Default)
 ```
-Start-AzDataProtectionBackupInstanceRestore -ResourceGroupName <String> -BackupInstanceName <String>
- -VaultName <String> -Parameter <IAzureBackupRestoreRequest> [-SubscriptionId <String>]
- [-ResourceGuardOperationRequest <String[]>] [-Token <String>] [-SecureToken <SecureString>]
- [-RestoreToSecondaryRegion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String>
+ -Parameter <IAzureBackupRestoreRequest> -ResourceGroupName <String> -VaultName <String> [-AsJob]
+ [-DefaultProfile <PSObject>] [-NoWait] [-ResourceGuardOperationRequest <String[]>]
+ [-RestoreToSecondaryRegion] [-SecureToken <SecureString>] [-SubscriptionId <String>] [-Token <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### TriggerExpanded
 ```
-Start-AzDataProtectionBackupInstanceRestore -ResourceGroupName <String> -BackupInstanceName <String>
- -VaultName <String> [-SubscriptionId <String>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
- [-SecureToken <SecureString>] [-RestoreToSecondaryRegion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- -ObjectType <String> -RestoreTargetInfo <IRestoreTargetInfoBase> -SourceDataStoreType <SourceDataStoreType>
- [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity]
- [-SourceResourceId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ObjectType <String>
+ -ResourceGroupName <String> -RestoreTargetInfo <IRestoreTargetInfoBase>
+ -SourceDataStoreType <SourceDataStoreType> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
+ [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity] [-NoWait]
+ [-ResourceGuardOperationRequest <String[]>] [-RestoreToSecondaryRegion] [-SecureToken <SecureString>]
+ [-SourceResourceId <String>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +44,8 @@ $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxx-xxx-xxx" -ResourceG
 $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDisk -SourceDataStore OperationalStore -RestoreLocation "westus"  -RestoreType AlternateLocation -TargetResourceId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/disks/{DiskName}" -RecoveryPoint $rp[0].name
 Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instance.BackupInstanceName -ResourceGroupName sarath-rg -VaultName sarath-vault -SubscriptionId "xxx-xxx-xxx" -Parameter $restorerequest
 ```
+
+
 
 ### Example 2: Trigger restore as DB for protected AzureDatabaseForPostgreSQL using secret store.
 ```powershell
@@ -235,6 +238,7 @@ The last command triggers prefix match Item level restore for vaulted blob conta
 
 ### Example 11: Trigger alternate location vaulted restore for AzureKubernetesService
 ```powershell
+
 $subId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 $resourceGroupName = "resourceGroupName"
 $vaultName = "vaultName" 
@@ -257,6 +261,7 @@ Set-AzDataProtectionMSIPermission -VaultResourceGroup $resourceGroupName -VaultN
 $validateRestore = Test-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -RestoreRequest $aksALRRestoreRequest -Name $instance.BackupInstanceName 
 
 $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $aksALRRestoreRequest
+
 ```
 
 First, we initialize the necessary variables that will be used in the restore script.
@@ -303,6 +308,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -381,7 +387,7 @@ Restore request object to be initialized using Initialize-AzDataProtectionRestor
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRestoreRequest
 Parameter Sets: Trigger
 Aliases:
 
@@ -428,7 +434,7 @@ Gets or sets the restore target information
 To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IRestoreTargetInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IRestoreTargetInfoBase
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -582,12 +588,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRestoreRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IOperationJobExtendedInfo
 
 ## NOTES
 
 ## RELATED LINKS
+

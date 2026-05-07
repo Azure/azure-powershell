@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).Batch = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IBatchProcessor) content.GetValueForProperty("Batch",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).Batch, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.BatchProcessorTypeConverter.ConvertFrom);
             }
+            if (content.Contains("TransformLanguage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).TransformLanguage = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITransformLanguageProcessor) content.GetValueForProperty("TransformLanguage",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).TransformLanguage, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TransformLanguageProcessorTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).Type, global::System.Convert.ToString);
@@ -128,6 +132,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             if (content.Contains("BatchTimeout"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).BatchTimeout = (int?) content.GetValueForProperty("BatchTimeout",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).BatchTimeout, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("TransformLanguageTransformStatement"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).TransformLanguageTransformStatement = (string) content.GetValueForProperty("TransformLanguageTransformStatement",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).TransformLanguageTransformStatement, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -150,6 +158,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).Batch = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IBatchProcessor) content.GetValueForProperty("Batch",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).Batch, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.BatchProcessorTypeConverter.ConvertFrom);
             }
+            if (content.Contains("TransformLanguage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).TransformLanguage = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITransformLanguageProcessor) content.GetValueForProperty("TransformLanguage",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).TransformLanguage, Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.TransformLanguageProcessorTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).Type, global::System.Convert.ToString);
@@ -165,6 +177,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             if (content.Contains("BatchTimeout"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).BatchTimeout = (int?) content.GetValueForProperty("BatchTimeout",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).BatchTimeout, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("TransformLanguageTransformStatement"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).TransformLanguageTransformStatement = (string) content.GetValueForProperty("TransformLanguageTransformStatement",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessorInternal)this).TransformLanguageTransformStatement, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
