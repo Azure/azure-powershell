@@ -1,5 +1,5 @@
 ---
-external help file: Az.MonitorWorkspace.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azmonitorworkspace
 schema: 2.0.0
@@ -8,36 +8,36 @@ schema: 2.0.0
 # Get-AzMonitorWorkspace
 
 ## SYNOPSIS
-Returns the specific Azure Monitor workspace
+Returns the specified Azure Monitor Workspace
 
 ## SYNTAX
 
 ### List1 (Default)
 ```
 Get-AzMonitorWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMonitorWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzMonitorWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMonitorWorkspace -InputObject <IMonitorWorkspaceIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the specific Azure Monitor workspace
+Returns the specified Azure Monitor Workspace
 
 ## EXAMPLES
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure Monitor workspace.
+The name of the Azure Monitor Workspace.
 The name is case insensitive
 
 ```yaml
@@ -123,6 +123,21 @@ Parameter Sets: Get
 Aliases: AzureMonitorWorkspaceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -147,6 +162,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

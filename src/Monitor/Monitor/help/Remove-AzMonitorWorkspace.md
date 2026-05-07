@@ -1,5 +1,5 @@
 ---
-external help file: Az.MonitorWorkspace.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/remove-azmonitorworkspace
 schema: 2.0.0
@@ -8,25 +8,25 @@ schema: 2.0.0
 # Remove-AzMonitorWorkspace
 
 ## SYNOPSIS
-Delete a workspace
+Deletes an Azure Monitor Workspace
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
 Remove-AzMonitorWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzMonitorWorkspace -InputObject <IMonitorWorkspaceIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a workspace
+Deletes an Azure Monitor Workspace
 
 ## EXAMPLES
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure Monitor workspace.
+The name of the Azure Monitor Workspace.
 The name is case insensitive
 
 ```yaml
@@ -138,6 +138,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -156,6 +171,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
