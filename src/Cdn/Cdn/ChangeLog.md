@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed placeholder text in help examples for `New-AzFrontDoorCdnRuleEdgeActionObject`.
 
 ## Version 6.0.1
 * Bug fix for https://github.com/Azure/azure-powershell/issues/29231
