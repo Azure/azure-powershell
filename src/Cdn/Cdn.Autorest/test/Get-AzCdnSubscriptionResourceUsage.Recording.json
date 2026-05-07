@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "160" ],
-        "x-ms-client-request-id": [ "4f1ec7f3-a54d-4970-b80d-634d6b520802" ],
+        "x-ms-unique-id": [ "172" ],
+        "x-ms-client-request-id": [ "f7e02fa1-b5cc-4194-9249-372cdf1d26d2" ],
         "CommandName": [ "Get-AzCdnSubscriptionResourceUsage" ],
         "FullCommandName": [ "Get-AzCdnSubscriptionResourceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.5.5", "Az.Cdn/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v13.2.0", "PSVersion/v7.6.1", "Az.Cdn/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,17 +23,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "c69d763e-3f7c-456c-a22e-ef20f6a8f641" ],
-        "x-ms-client-request-id": [ "4f1ec7f3-a54d-4970-b80d-634d6b520802" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/australiaeast/f2eacbbc-3308-483d-bef9-b70f9ddf518b" ],
+        "x-ms-request-id": [ "53a710ae-ce16-4022-9c3b-ae56146a5f0c" ],
+        "x-ms-client-request-id": [ "f7e02fa1-b5cc-4194-9249-372cdf1d26d2" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/australiasoutheast/6ec61910-ea3b-4b1e-8ba1-cf943b7b82ee" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "944c0e1e-a44e-455a-bf91-56872a76822c" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260424T082237Z:944c0e1e-a44e-455a-bf91-56872a76822c" ],
+        "x-ms-correlation-request-id": [ "1f046a1b-2c70-4c37-a4a0-9070727fb05d" ],
+        "x-ms-routing-request-id": [ "AUSTRALIASOUTHEAST:20260507T134302Z:1f046a1b-2c70-4c37-a4a0-9070727fb05d" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A77B0A3AC2244C038F34891C5899BBDE Ref B: SYD03EDGE1711 Ref C: 2026-04-24T08:22:35Z" ],
-        "Date": [ "Fri, 24 Apr 2026 08:22:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FBAB260894DC48739E76B717413117B6 Ref B: SYD03EDGE1914 Ref C: 2026-05-07T13:42:59Z" ],
+        "Date": [ "Thu, 07 May 2026 13:43:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "158" ],
