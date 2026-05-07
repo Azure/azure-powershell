@@ -6,8 +6,10 @@ Update-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -Name 'expansionjob1'
 Updates the tags of the specified expansion job.
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Location      ProvisioningState NewStorageCapacityTiB StatusState
+----                --------      ----------------- --------------------- -----------
+expansionjob1       eastus        Succeeded         16                    Completed
 ```
 
-{{ Add description here }}
+Updates the tags of the specified expansion job.
 

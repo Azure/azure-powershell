@@ -34,7 +34,7 @@ require:
 input-file:
   - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/StorageCache/stable/2026-01-01/amlfilesystem.json
 
-module-version: 0.1.0
+module-version: 0.3.0
 title: StorageCache
 subject-prefix: $(service-name)
 

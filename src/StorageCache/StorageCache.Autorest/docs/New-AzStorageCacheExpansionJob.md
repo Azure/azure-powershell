@@ -58,10 +58,12 @@ New-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -Name 'expansionjob1' -R
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Location      ProvisioningState NewStorageCapacityTiB StatusState
+----                --------      ----------------- --------------------- -----------
+expansionjob1       eastus        Succeeded         16                    Completed
 ```
 
-{{ Add description here }}
+Creates a new expansion job for the specified AML file system to expand storage capacity.
 
 ## PARAMETERS
 

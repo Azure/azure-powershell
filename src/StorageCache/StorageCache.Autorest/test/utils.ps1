@@ -108,7 +108,7 @@ function cleanupEnv() {
     # Remove-AzResourceGroup -Name $env.resourceGroup
 }
 
-function Wait-AzStorageCacheExpansionJobProvisioned {
+function Wait-AzStorageCacheExpansionJobComplete {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]

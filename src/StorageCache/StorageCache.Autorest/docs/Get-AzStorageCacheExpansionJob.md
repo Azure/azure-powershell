@@ -54,10 +54,12 @@ Get-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -Name 'expansionjob1' -R
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Location      ProvisioningState NewStorageCapacityTiB StatusState
+----                --------      ----------------- --------------------- -----------
+expansionjob1       eastus        Succeeded         16                    Completed
 ```
 
-{{ Add description here }}
+Gets the details of the specified expansion job for an AML file system.
 
 ## PARAMETERS
 

@@ -18,7 +18,7 @@ Describe 'New-AzStorageCacheExpansionJob' {
     It 'CreateExpanded' {
         {
             $job = New-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest0040' -Location 'australiaeast' -NewStorageCapacityTiB 56
-            Wait-AzStorageCacheExpansionJobProvisioned -AmlFilesystemName 'acctest0040' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest0040'
+            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest0040' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest0040'
         } | Should -Not -Throw
     }
 
@@ -32,7 +32,7 @@ Describe 'New-AzStorageCacheExpansionJob' {
             } | ConvertTo-Json -Depth 3
 
             $job = New-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateJson' -ResourceGroupName 'acctest0040' -JsonString $json
-            Wait-AzStorageCacheExpansionJobProvisioned -AmlFilesystemName 'acctest0040' -Name 'sampleCreateJson' -ResourceGroupName 'acctest0040'
+            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest0040' -Name 'sampleCreateJson' -ResourceGroupName 'acctest0040'
         } | Should -Not -Throw
     }
 
@@ -50,7 +50,7 @@ Describe 'New-AzStorageCacheExpansionJob' {
 
             try {
                 $job = New-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateFile' -ResourceGroupName 'acctest0040' -JsonFilePath $tempFile.FullName
-                Wait-AzStorageCacheExpansionJobProvisioned -AmlFilesystemName 'acctest0040' -Name 'sampleCreateFile' -ResourceGroupName 'acctest0040'
+                Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest0040' -Name 'sampleCreateFile' -ResourceGroupName 'acctest0040'
             } finally {
                 Remove-Item $tempFile.FullName -Force -ErrorAction SilentlyContinue
             }
@@ -65,7 +65,7 @@ Describe 'New-AzStorageCacheExpansionJob' {
             $identity.SubscriptionId = "733b22ab-69e4-4f63-a7e5-0f2312c2e35f"
 
             $job = New-AzStorageCacheExpansionJob -AmlFilesystemInputObject $identity -Name 'sampleCreateAmlId' -Location 'australiaeast' -NewStorageCapacityTiB 80
-            Wait-AzStorageCacheExpansionJobProvisioned -AmlFilesystemName 'acctest0040' -Name 'sampleCreateAmlId' -ResourceGroupName 'acctest0040'
+            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest0040' -Name 'sampleCreateAmlId' -ResourceGroupName 'acctest0040'
         } | Should -Not -Throw
     }
 
@@ -78,7 +78,7 @@ Describe 'New-AzStorageCacheExpansionJob' {
             $identity.ExpansionJobName = "sampleCreateIdentity"
 
             $job = New-AzStorageCacheExpansionJob -InputObject $identity -Location 'australiaeast' -NewStorageCapacityTiB 88
-            Wait-AzStorageCacheExpansionJobProvisioned -AmlFilesystemName 'acctest0040' -Name 'sampleCreateIdentity' -ResourceGroupName 'acctest0040'
+            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest0040' -Name 'sampleCreateIdentity' -ResourceGroupName 'acctest0040'
         } | Should -Not -Throw
     }
 }

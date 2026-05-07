@@ -28,7 +28,7 @@ Describe 'Remove-AzStorageCacheExpansionJob' {
             $identity.ResourceGroupName = "acctest0040"
             $identity.SubscriptionId = "733b22ab-69e4-4f63-a7e5-0f2312c2e35f"
 
-            Remove-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateAmlId' -ResourceGroupName 'acctest0040' -Confirm:$false
+            Remove-AzStorageCacheExpansionJob -Name 'sampleCreateAmlId' -AmlFilesystemInputObject $identity -Confirm:$false
         } | Should -Not -Throw
     }
 
@@ -40,7 +40,7 @@ Describe 'Remove-AzStorageCacheExpansionJob' {
             $identity.SubscriptionId = "733b22ab-69e4-4f63-a7e5-0f2312c2e35f"
             $identity.ExpansionJobName = "sampleDeleteId"
 
-            Remove-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateIdentity' -ResourceGroupName 'acctest0040' -Confirm:$false
+            Remove-AzStorageCacheExpansionJob -InputObject $identity -Confirm:$false
         } | Should -Not -Throw
     }
 }
