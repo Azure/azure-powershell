@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 9.6.2
 * Supported cross tenant user delegation SAS token generation with OAuth-based storage contexts
     - `New-AzStorageBlobSASToken`
     - `New-AzStorageContainerSASToken`
