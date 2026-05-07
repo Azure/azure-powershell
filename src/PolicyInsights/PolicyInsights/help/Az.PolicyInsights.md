@@ -1,14 +1,14 @@
 ---
 Module Name: Az.PolicyInsights
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: 8e5143cc-e222-4c80-9e62-c87989326174
+Download Help Link: https://learn.microsoft.com/powershell/module/az.policyinsights
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # Az.PolicyInsights Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: PolicyInsights cmdlets
 
 ## Az.PolicyInsights Cmdlets
 ### [Get-AzPolicyAttestation](Get-AzPolicyAttestation.md)
