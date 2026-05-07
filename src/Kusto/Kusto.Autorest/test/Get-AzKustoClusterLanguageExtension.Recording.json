@@ -1,17 +1,17 @@
 {
-  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-2ekhd9/providers/Microsoft.Kusto/Clusters/pssdk2ekhd9/listLanguageExtensions?api-version=2024-04-13+1": {
+  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/listLanguageExtensions?api-version=2024-04-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-2ekhd9/providers/Microsoft.Kusto/Clusters/pssdk2ekhd9/listLanguageExtensions?api-version=2024-04-13",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/listLanguageExtensions?api-version=2024-04-13",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "125" ],
-        "x-ms-client-request-id": [ "40a8b001-bd8e-417b-86ac-5e0c5b2d986d" ],
+        "x-ms-unique-id": [ "121" ],
+        "x-ms-client-request-id": [ "32a72f83-0b5d-456b-906b-55d6ae2615ec" ],
         "CommandName": [ "Get-AzKustoClusterLanguageExtension" ],
         "FullCommandName": [ "Get-AzKustoClusterLanguageExtension_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.5.0", "PSVersion/v7.4.6", "Az.Kusto/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.6.0", "PSVersion/v7.6.1", "Az.Kusto/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,16 +22,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e7daf15d-411c-406d-97e9-4eeacbb8712f" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "104dde2d-8048-48b1-8fe3-e62cbc3d7a7b" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241201T001514Z:104dde2d-8048-48b1-8fe3-e62cbc3d7a7b" ],
+        "x-ms-request-id": [ "c3a37f60-3c90-4211-a4a8-7345e48113bb" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/bdb04416-76a6-4d50-bcec-a513c48eae7c" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "cce17100-2f6a-4ea3-badf-9b70e9602127" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260507T010218Z:cce17100-2f6a-4ea3-badf-9b70e9602127" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 59B92D7C88C8494F96BB9630D986A964 Ref B: MRS211050315025 Ref C: 2024-12-01T00:15:12Z" ],
-        "Date": [ "Sun, 01 Dec 2024 00:15:13 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C211ECF9AD494B15BA374C243FC8FD51 Ref B: SG2AA1070305023 Ref C: 2026-05-07T01:02:18Z" ],
+        "Date": [ "Thu, 07 May 2026 01:02:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "76" ],

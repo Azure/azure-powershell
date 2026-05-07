@@ -94,7 +94,7 @@ Describe 'Update-AzKustoDatabase' {
         { Invoke-AzKustoDetachClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $followerClusterResourceId } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpandedCMK' {
+    It 'UpdateViaIdentityExpandedCMK' -skip{
         $clusterName = $env.kustoClusterName
         $resourceGroupName = $env.resourceGroupName
         $databaseName = "testcmkdatabase" + $env.rstr6

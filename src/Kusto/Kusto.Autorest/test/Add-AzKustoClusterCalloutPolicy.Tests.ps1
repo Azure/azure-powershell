@@ -23,12 +23,12 @@ Describe 'Add-AzKustoClusterCalloutPolicy' {
         $kustoCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy]@{
             calloutType = "kusto"
             outboundAccess = "Allow"
-            calloutUriRegex = "*"
+            calloutUriRegex = ".*"
         }
         $sqlCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy]@{
             calloutType = "sql"
             outboundAccess = "Deny"
-            calloutUriRegex = "*"
+            calloutUriRegex = ".*"
         }
         $policies = @($kustoCalloutPolicy, $sqlCalloutPolicy)
         { Add-AzKustoClusterCalloutPolicy -ResourceGroupName $resourceGroupName -ClusterName $clusterName -SubscriptionId $subscriptionId -Value $policies } | Should -Not -Throw

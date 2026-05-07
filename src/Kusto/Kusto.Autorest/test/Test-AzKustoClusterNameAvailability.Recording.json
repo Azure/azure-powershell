@@ -1,9 +1,9 @@
 {
-  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2024-04-13+1": {
+  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2024-04-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2024-04-13",
-      "Content": "{\r\n  \"name\": \"pssdk2ekhd9\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2024-04-13",
+      "Content": "{\r\n  \"name\": \"pssdksloc4i\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,23 +17,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9970d3c5-4246-4011-95a3-cd9c98cc0e49" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
-        "x-ms-correlation-request-id": [ "e97ad43e-3e73-42bc-82cd-17319b6759fb" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241201T031032Z:e97ad43e-3e73-42bc-82cd-17319b6759fb" ],
+        "x-ms-request-id": [ "900a7182-9513-4912-8c03-fd90aff4c2cd" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/southeastasia/89f2abd9-7fa1-4dca-8d36-1239ce586742" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "da8bc6a4-d771-405c-9af4-a8d96a695d1d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260507T034406Z:da8bc6a4-d771-405c-9af4-a8d96a695d1d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 931EB90DC35F4F21ACE17D975A322432 Ref B: MRS211050315025 Ref C: 2024-12-01T03:10:31Z" ],
-        "Date": [ "Sun, 01 Dec 2024 03:10:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5B5E1F2EDF064EACA5BB4996A698CBFA Ref B: SG2AA1070306034 Ref C: 2026-05-07T03:44:05Z" ],
+        "Date": [ "Thu, 07 May 2026 03:44:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "142" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"pssdk2ekhd9\",\"nameAvailable\":false,\"message\":\"Name \u0027pssdk2ekhd9\u0027 with type Engine is already taken. Please specify a different name\"}",
+      "Content": "{\"name\":\"pssdksloc4i\",\"nameAvailable\":false,\"message\":\"Name \u0027pssdksloc4i\u0027 with type Engine is already taken. Please specify a different name\"}",
       "isContentBase64": false
     }
   }
