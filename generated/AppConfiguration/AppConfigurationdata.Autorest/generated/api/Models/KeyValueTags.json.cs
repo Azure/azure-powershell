@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Extensions;
 
-    /// <summary>Dictionary of <string></summary>
+    /// <summary>The tags of the key-value</summary>
     public partial class KeyValueTags
     {
 

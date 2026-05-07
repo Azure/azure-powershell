@@ -537,10 +537,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? allowBlobPublicAccess = null;
 
-        [CmdletParameterBreakingChangeWithVersion("MinimumTlsVersion", "15.4.0", "9.7.0", ChangeDescription = "The MinimumTlsVersion parameter will no longer allow TLS 1.0 or TLS 1.1. TLS 1.2 or later will be required.")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.")]
+            HelpMessage = "The minimum TLS version to be permitted on requests to storage. TLS 1.3 is not yet supported.")]
         [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
             StorageModels.MinimumTlsVersion.TLS11,
             StorageModels.MinimumTlsVersion.TLS12,

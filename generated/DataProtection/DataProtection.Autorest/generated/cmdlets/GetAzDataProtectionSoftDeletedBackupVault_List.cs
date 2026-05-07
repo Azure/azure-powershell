@@ -13,10 +13,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
     /// [OpenAPI] ListByLocation=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDataProtectionSoftDeletedBackupVault_List")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IDeletedBackupVaultResource))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\r\n* At least one change applies to this cmdlet.                                                    *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IDeletedBackupVaultResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Lists deleted backup vaults by location")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults", ApiVersion = "2025-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.DataProtection/locations/{location}/deletedVaults", ApiVersion = "2026-03-01")]
     public partial class GetAzDataProtectionSoftDeletedBackupVault_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener
     {
@@ -151,12 +152,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IDeletedBackupVaultResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IDeletedBackupVaultResourceListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IDeletedBackupVaultResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IDeletedBackupVaultResourceListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IDeletedBackupVaultResourceListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IDeletedBackupVaultResourceListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -404,12 +405,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IDeletedBackupVaultResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IDeletedBackupVaultResourceListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IDeletedBackupVaultResourceListResult">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IDeletedBackupVaultResourceListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IDeletedBackupVaultResourceListResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IDeletedBackupVaultResourceListResult> response)
         {
             using( NoSynchronizationContext )
             {
