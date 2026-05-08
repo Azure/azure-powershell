@@ -61,7 +61,7 @@ Describe 'Get-AzSqlVMGroup' {
     }
 
     It 'GetViaIdentity' {
-        $group1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroup]@{Id = $env.SqlVMGroupId }
+        $group1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroup]@{Id = $env.SqlVMGroupId }
         $groups = Get-AzSqlVMGroup  -InputObject $group1
 
         $groups.Count | Should -Be 1

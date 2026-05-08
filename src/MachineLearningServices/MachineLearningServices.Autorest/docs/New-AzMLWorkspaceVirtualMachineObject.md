@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceVirtualMachineObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacevirtualmachineobject
 schema: 2.0.0
 ---
 
@@ -16,8 +16,8 @@ Create an in-memory object for VirtualMachine.
 New-AzMLWorkspaceVirtualMachineObject [-Address <String>] [-AdministratorAccountPassword <String>]
  [-AdministratorAccountPrivateKeyData <String>] [-AdministratorAccountPublicKeyData <String>]
  [-AdministratorAccountUsername <String>] [-Description <String>] [-DisableLocalAuth <Boolean>]
- [-IsNotebookInstanceCompute <Boolean>] [-NotebookServerPort <Int32>] [-ResourceId <String>] [-Size <String>]
- [-SshPort <Int32>] [<CommonParameters>]
+ [-IsNotebookInstanceCompute <Boolean>] [-Location <String>] [-NotebookServerPort <Int32>]
+ [-ResourceId <String>] [-Size <String>] [-SshPort <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,6 +154,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+Location for the underlying compute.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NotebookServerPort
 Notebook server port open for ssh connections.
 
@@ -221,7 +236,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.VirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.VirtualMachine
 
 ## NOTES
 

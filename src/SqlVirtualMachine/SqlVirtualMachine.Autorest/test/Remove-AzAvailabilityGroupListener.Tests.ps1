@@ -20,7 +20,7 @@ Describe 'Remove-AzAvailabilityGroupListener' {
     }
 
     It 'DeleteViaIdentity' {
-        $msListner = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AvailabilityGroupListener]@{Id = $env.SqlVMGroupMultiSubnetIPListnerId }
+        $msListner = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AvailabilityGroupListener]@{Id = $env.SqlVMGroupMultiSubnetIPListnerId }
         Remove-AzAvailabilityGroupListener -InputObject $msListner
         { Get-AzAvailabilityGroupListener -InputObject $msListner } | Should -Throw -ExpectedMessage "The requested resource of type 'Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/availabilityGroupListeners' with name 'agmslistener' was not found."
     }

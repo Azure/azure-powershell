@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceCommandJobObject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacecommandjobobject
 schema: 2.0.0
 ---
 
@@ -13,12 +13,15 @@ Create an in-memory object for CommandJob.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceCommandJobObject -Command <String> -EnvironmentId <String> [-CodeId <String>]
- [-ComputeId <String>] [-Description <String>] [-DisplayName <String>] [-DistributionType <DistributionType>]
- [-EnvironmentVariable <Hashtable>] [-ExperimentName <String>] [-IdentityType <IdentityConfigurationType>]
- [-IsArchived <Boolean>] [-JobInput <ICommandJobInputs>] [-JobOutput <ICommandJobOutputs>]
- [-LimitTimeout <TimeSpan>] [-Property <IResourceBaseProperties>] [-ResourceInstanceCount <Int32>]
- [-ResourceInstanceType <String>] [-ResourceProperty <IResourceConfigurationProperties>]
+New-AzMLWorkspaceCommandJobObject -Command <String> [-CodeId <String>] [-ComponentId <String>]
+ [-ComputeId <String>] [-Description <String>] [-DisplayName <String>] [-DistributionType <String>]
+ [-EnvironmentId <String>] [-EnvironmentVariable <Hashtable>] [-ExperimentName <String>]
+ [-IdentityType <String>] [-IsArchived <Boolean>] [-JobInput <ICommandJobInputs>]
+ [-JobOutput <ICommandJobOutputs>] [-LimitTimeout <TimeSpan>] [-NotificationSettingEmail <String[]>]
+ [-NotificationSettingEmailOn <String[]>] [-NotificationSettingWebhook <INotificationSettingWebhooks>]
+ [-Property <IResourceBaseProperties>] [-QueueSettingJobTier <String>] [-ResourceDockerArg <String>]
+ [-ResourceInstanceCount <Int32>] [-ResourceInstanceType <String>]
+ [-ResourceProperty <IResourceConfigurationProperties>] [-ResourceShmSize <String>]
  [-ServiceEndpoint <String>] [-ServicePort <Int32>] [-ServiceProperty <IJobServiceProperties>]
  [-ServiceType <String>] [-Tag <IResourceBaseTags>] [<CommonParameters>]
 ```
@@ -89,6 +92,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ComponentId
+ARM resource ID of the component resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ComputeId
 ARM resource ID of the compute resource.
 
@@ -138,7 +156,7 @@ Accept wildcard characters: False
 [Required] Specifies the type of distribution framework.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +175,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -199,7 +217,7 @@ Accept wildcard characters: False
 [Required] Specifies the type of identity framework.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -227,10 +245,9 @@ Accept wildcard characters: False
 
 ### -JobInput
 Mapping of input data bindings used in the job.
-To construct, see NOTES section for JOBINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICommandJobInputs
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICommandJobInputs
 Parameter Sets: (All)
 Aliases:
 
@@ -243,10 +260,9 @@ Accept wildcard characters: False
 
 ### -JobOutput
 Mapping of output data bindings used in the job.
-To construct, see NOTES section for JOBOUTPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICommandJobOutputs
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICommandJobOutputs
 Parameter Sets: (All)
 Aliases:
 
@@ -273,12 +289,89 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Property
-The asset property dictionary.
-To construct, see NOTES section for PROPERTY properties and create a hash table.
+### -NotificationSettingEmail
+This is the email recipient list which has a limitation of 499 characters in total concat with comma separator.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationSettingEmailOn
+Send email notification to user on specified notification type.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationSettingWebhook
+Send webhook callback to a service.
+Key is a user-provided name for the webhook.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.INotificationSettingWebhooks
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Property
+The asset property dictionary.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QueueSettingJobTier
+Controls the compute job tier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceDockerArg
+Extra arguments to pass to the Docker run command.
+This would override any parameters that have already been set by the system, or in this section.
+This parameter is only supported for Azure ML compute types.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -321,10 +414,25 @@ Accept wildcard characters: False
 
 ### -ResourceProperty
 Additional properties bag.
-To construct, see NOTES section for RESOURCEPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceConfigurationProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceConfigurationProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceShmSize
+Size of the docker container's shared memory block.
+This should be in the format of (number)(unit) where number as to be greater than 0 and the unit can be one of b(bytes), k(kilobytes), m(megabytes), or g(gigabytes).
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -367,10 +475,9 @@ Accept wildcard characters: False
 
 ### -ServiceProperty
 Additional properties to set on the endpoint.
-To construct, see NOTES section for SERVICEPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobServiceProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -399,10 +506,9 @@ Accept wildcard characters: False
 ### -Tag
 Tag dictionary.
 Tags can be added, removed, and updated.
-To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseTags
 Parameter Sets: (All)
 Aliases:
 
@@ -420,7 +526,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CommandJob
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CommandJob
 
 ## NOTES
 

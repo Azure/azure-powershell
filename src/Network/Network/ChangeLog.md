@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Updated `UserAssignedIdentityId` parameter type from string to string[] in Azure Firewall Policy to input multiple UAMIs
 
 ## Version 7.27.0
 * Added support to associate a DDoS custom policy with a Load Balancer frontend IP configuration.
