@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added Service Principal support for SSH certificate generation in 'SshCredentialFactory'
+    - Service Principals authenticated with client secret or certificate can now obtain SSH certificates for Entra ID login
+    - Enables CI/CD pipelines and automation scenarios that use Service Principal authentication with Az.SSH and Az.SFTP modules
 
 ## Version 5.4.0
 * Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.

@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added Service Principal support for SFTP with Entra ID (AAD) login
+    - Users authenticated as Service Principals can now use SFTP commands with Entra ID certificate authentication
+    - Removed restriction that limited SSH certificate generation to User accounts only
 
 ## Version 0.2.0
 * Added confirmation prompt when an SSH key pair already exists at the target location

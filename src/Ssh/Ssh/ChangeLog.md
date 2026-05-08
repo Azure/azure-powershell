@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added Service Principal support for SSH with Entra ID (AAD) login
+    - Users authenticated as Service Principals can now use SSH commands with Entra ID certificate authentication
+    - Removed restriction that limited SSH certificate generation to User accounts only
 
 ## Version 0.2.3
 * Implemented code refactoring, no behavior changes expected.
