@@ -15,12 +15,12 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
+using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
-using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterMaintenanceWindowStatus"), OutputType(typeof(ManagedMaintenanceWindowStatus))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterMaintenanceWindowStatus"), OutputType(typeof(PSManagedMaintenanceWindowStatus))]
     public class GetAzServiceFabricManagedClusterMaintenanceWindowStatus : ServiceFabricManagedCmdletBase
     {
         #region Params
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             try
             {
                 var status = this.SfrpMcClient.ManagedMaintenanceWindowStatus.Get(this.ResourceGroupName, this.Name);
-                WriteObject(status, false);
+                WriteObject(new PSManagedMaintenanceWindowStatus(status), false);
             }
             catch (Exception ex)
             {

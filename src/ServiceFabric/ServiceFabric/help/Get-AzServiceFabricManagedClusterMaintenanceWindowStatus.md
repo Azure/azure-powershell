@@ -100,7 +100,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.ServiceFabricManagedClusters.Models.ManagedMaintenanceWindowStatus
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedMaintenanceWindowStatus
 
 ## NOTES
 
