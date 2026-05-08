@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicytagclientobject
 schema: 2.0.0
@@ -14,14 +14,14 @@ Adds or removes schedule tag in an existing backup policy.
 
 ### RemoveTag (Default)
 ```
-Edit-AzDataProtectionPolicyTagClientObject -Name <TagName> -Policy <IBackupPolicy> -RemoveRule
+Edit-AzDataProtectionPolicyTagClientObject -Policy <IBackupPolicy> -Name <TagName> [-RemoveRule]
  [<CommonParameters>]
 ```
 
 ### updateTag
 ```
-Edit-AzDataProtectionPolicyTagClientObject -Criteria <IScheduleBasedBackupCriteria[]> -Name <TagName>
- -Policy <IBackupPolicy> [<CommonParameters>]
+Edit-AzDataProtectionPolicyTagClientObject -Policy <IBackupPolicy> -Name <TagName>
+ -Criteria <IScheduleBasedBackupCriteria[]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,6 +81,7 @@ Name of the Schedule tag.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.TagName
 Parameter Sets: (All)
 Aliases:
+Accepted values: Daily, Weekly, Monthly, Yearly
 
 Required: True
 Position: Named
@@ -132,4 +133,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

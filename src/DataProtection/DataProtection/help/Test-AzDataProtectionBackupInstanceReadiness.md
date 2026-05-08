@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancereadiness
 schema: 2.0.0
@@ -14,8 +14,8 @@ Validate whether adhoc backup will be successful or not
 
 ```
 Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName <String> -VaultName <String>
- -BackupInstance <IBackupInstance> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -BackupInstance <IBackupInstance> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ Validate whether adhoc backup will be successful or not
 
 ## EXAMPLES
 
-### Example 1: Test the backup instance 
+### Example 1: Test the backup instance
 ```powershell
 $vault = Get-AzDataProtectionBackupVault -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
 $diskBackupPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName "resourceGroupName" -VaultName $vault.Name -Name "diskBackupPolicy"
@@ -194,4 +194,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

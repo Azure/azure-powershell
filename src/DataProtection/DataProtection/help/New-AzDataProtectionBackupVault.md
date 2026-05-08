@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 schema: 2.0.0
@@ -13,16 +13,15 @@ Creates or updates a BackupVault resource belonging to a resource group.
 ## SYNTAX
 
 ```
-New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
- -StorageSetting <IStorageSetting[]> -VaultName <String> [-AsJob]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CmkEncryptionKeyUri <String>]
- [-CmkEncryptionState <EncryptionState>] [-CmkIdentityType <IdentityType>]
- [-CmkInfrastructureEncryption <InfrastructureEncryptionState>] [-CmkUserAssignedIdentityId <String>]
+New-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> -Location <String>
+ -StorageSetting <IStorageSetting[]> [-SubscriptionId <String>] [-ETag <String>] [-IdentityType <String>]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-ImmutabilityState <ImmutabilityState>]
  [-CrossRegionRestoreState <CrossRegionRestoreState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
- [-ETag <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-ImmutabilityState <ImmutabilityState>] [-NoWait] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-CmkEncryptionState <EncryptionState>] [-CmkInfrastructureEncryption <InfrastructureEncryptionState>]
+ [-CmkIdentityType <IdentityType>] [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -93,7 +92,6 @@ This command creates a backup vault with CMK encryption enabled
 ## PARAMETERS
 
 ### -AsJob
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -235,7 +233,6 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 
-
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -325,7 +322,6 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -490,4 +486,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

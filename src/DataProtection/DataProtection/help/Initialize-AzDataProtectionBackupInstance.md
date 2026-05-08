@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionbackupinstance
 schema: 2.0.0
@@ -13,11 +13,11 @@ Initializes Backup instance Request object for configuring backup
 ## SYNTAX
 
 ```
-Initialize-AzDataProtectionBackupInstance -DatasourceLocation <String> -DatasourceType <DatasourceTypes>
- [-BackupConfiguration <IBackupDatasourceParameters>] [-DatasourceId <String>] [-FriendlyName <String>]
- [-PolicyId <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
- [-SnapshotResourceGroupId <String>] [-UserAssignedIdentityArmId <String>]
- [-UseSystemAssignedIdentity <Boolean?>] [<CommonParameters>]
+Initialize-AzDataProtectionBackupInstance -DatasourceType <DatasourceTypes> -DatasourceLocation <String>
+ [-PolicyId <String>] [-DatasourceId <String>] [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>]
+ [-SnapshotResourceGroupId <String>] [-FriendlyName <String>]
+ [-BackupConfiguration <IBackupDatasourceParameters>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,7 +130,7 @@ Name BackupInstanceName
 The first command specifies the ADLS storage account id.
 The second command gets the backup vault.
 The third command gets an ADLS policy within the vault.
-The fourth command creates a backup configuration with auto-protection enabled — new containers will be automatically protected.
+The fourth command creates a backup configuration with auto-protection enabled - new containers will be automatically protected.
 The fifth command initializes the backup instance with auto-protection.
 This object can now be used to configure backup using New-AzDataProtectionBackupInstance.
 
@@ -190,6 +190,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
 
 Required: True
 Position: Named
@@ -236,6 +237,7 @@ This parameter is only supported for AzureDatabaseForPostgreSQL currently.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes
 Parameter Sets: (All)
 Aliases:
+Accepted values: AzureKeyVault
 
 Required: False
 Position: Named
@@ -294,7 +296,7 @@ Accept wildcard characters: False
 Use system assigned identity
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -317,4 +319,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

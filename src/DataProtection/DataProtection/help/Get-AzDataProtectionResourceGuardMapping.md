@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionresourceguardmapping
 schema: 2.0.0
@@ -14,20 +14,20 @@ Returns the ResourceGuardProxy object associated with the vault, and that matche
 
 ### Get (Default)
 ```
-Get-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -VaultName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -VaultName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDataProtectionResourceGuardMapping -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List
-```
-Get-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,4 +153,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

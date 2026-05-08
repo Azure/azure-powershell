@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionjob
 schema: 2.0.0
@@ -14,19 +14,20 @@ Gets or lists jobs in a backup vault
 
 ### List (Default)
 ```
-Get-AzDataProtectionJob -ResourceGroupName <String> -VaultName <String> [-DefaultProfile <PSObject>]
- [-SubscriptionId <String[]>] [-UseSecondaryRegion] [<CommonParameters>]
+Get-AzDataProtectionJob -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String[]>]
+ [-UseSecondaryRegion] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDataProtectionJob -Id <String> -ResourceGroupName <String> -VaultName <String>
- [-DefaultProfile <PSObject>] [-SubscriptionId <String[]>] [-UseSecondaryRegion] [<CommonParameters>]
+Get-AzDataProtectionJob -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String[]>]
+ [-UseSecondaryRegion] [-DefaultProfile <PSObject>] -Id <String>
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDataProtectionJob -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
+Get-AzDataProtectionJob [-DefaultProfile <PSObject>] -InputObject <IDataProtectionIdentity>
  [<CommonParameters>]
 ```
 
@@ -84,7 +85,6 @@ This command gets cross region restore jobs in a backup vault from secondary reg
 
 ### -DefaultProfile
 
-
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -133,7 +133,7 @@ Resource Group of the backup vault
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -148,7 +148,7 @@ Subscription Id of the vault
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -163,7 +163,7 @@ Switch parameter to fetch dataprotection job from secondary region (Cross Region
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -178,7 +178,7 @@ Name of the backup vault
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -202,4 +202,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

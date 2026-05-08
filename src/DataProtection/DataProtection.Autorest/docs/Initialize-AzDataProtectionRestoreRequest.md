@@ -218,6 +218,30 @@ Note that the $aksRestoreCriteria object contains the necessary parameters for V
 The RestoreConfiguration object is passed to the Initialize-AzDataProtectionRestoreRequest cmdlet to create the restore request object.
 The restore request object is then used to trigger the restore operation.
 
+### Example 8: Get restore request object for vaulted AzureBlob alternate location item level restore with container renaming
+```powershell
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "storageAccountName" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
+$backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
+$renameTo = @{}
+$renameTo[$backedUpContainers[0]] = "newContainerName1"
+$renameTo[$backedUpContainers[1]] = "newContainerName2"
+$targetStorageAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/targetStorageAccount"
+$restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation "vaultLocation" -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccountId -ContainersList $backedUpContainers[0,1] -RenameTo $renameTo
+```
+
+```output
+ObjectType                                  RestoreTargetInfoObjectType  RestoreTargetInfoRecoveryOption RestoreTargetInfoRestoreLocation SourceDataStoreType RecoveryPointId
+----------                                  ---------------------------  ------------------------------- -------------------------------- ------------------- ---------------
+AzureBackupRecoveryPointBasedRestoreRequest  itemLevelRestoreTargetInfo   FailIfExists                    vaultLocation                    VaultStore
+```
+
+The first and second commands fetch the backup instance and recovery points.
+The third command retrieves the list of containers that are protected under the vaulted backup policy.
+The fourth through sixth commands build a RenameTo hashtable that maps each original container name to a new container name for the restore.
+The seventh command sets the target storage account ARM ID for the alternate location restore.
+The last command initializes the restore request with -ItemLevelRecovery, -ContainersList, and -RenameTo to perform an alternate-location vaulted blob restore while renaming the specified containers.
+
 ## PARAMETERS
 
 ### -BackupInstance
@@ -583,7 +607,7 @@ Accept wildcard characters: False
 Use system assigned identity
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 

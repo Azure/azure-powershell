@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionsoftdeletedvaultbackupinstanceinazgraph
 schema: 2.0.0
@@ -13,8 +13,9 @@ Gets soft deleted backup instances from a deleted vault using Azure Resource Gra
 ## SYNTAX
 
 ```
-Search-AzDataProtectionSoftDeletedVaultBackupInstanceInAzGraph [-DefaultProfile <PSObject>]
- [-DeletedVaultId <String>] [-DeletedVaultName <String>] [-Subscription <String[]>] [<CommonParameters>]
+Search-AzDataProtectionSoftDeletedVaultBackupInstanceInAzGraph [-Subscription <String[]>]
+ [-DeletedVaultName <String>] [-DeletedVaultId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +73,6 @@ Retrieves deleted backup vaults first, then searches for all soft-deleted backup
 ## PARAMETERS
 
 ### -DefaultProfile
-
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -143,4 +143,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

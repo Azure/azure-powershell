@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/find-azdataprotectionrestorabletimerange
 schema: 2.0.0
@@ -14,9 +14,9 @@ Finds the valid recovery point in time ranges for the restore.
 
 ```
 Find-AzDataProtectionRestorableTimeRange -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> -SourceDataStoreType <RestoreSourceDataStoreType> [-SubscriptionId <String>]
- [-EndTime <String>] [-StartTime <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -VaultName <String> [-SubscriptionId <String>] -SourceDataStoreType <RestoreSourceDataStoreType>
+ [-EndTime <String>] [-StartTime <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -214,4 +214,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

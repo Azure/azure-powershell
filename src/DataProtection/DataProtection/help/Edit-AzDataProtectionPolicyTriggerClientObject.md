@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicytriggerclientobject
 schema: 2.0.0
@@ -14,7 +14,8 @@ Updates Backup schedule of an existing backup policy.
 
 ### RemoveBackupSchedule (Default)
 ```
-Edit-AzDataProtectionPolicyTriggerClientObject -Policy <IBackupPolicy> -RemoveSchedule [<CommonParameters>]
+Edit-AzDataProtectionPolicyTriggerClientObject -Policy <IBackupPolicy> [-RemoveSchedule]
+ [<CommonParameters>]
 ```
 
 ### ModifyBackupSchedule
@@ -102,4 +103,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

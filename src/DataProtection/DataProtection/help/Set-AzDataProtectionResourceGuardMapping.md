@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionresourceguardmapping
 schema: 2.0.0
@@ -14,8 +14,8 @@ Creates or Updates a ResourceGuardProxy
 
 ```
 Set-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-ResourceGuardId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-ResourceGuardId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,4 +169,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

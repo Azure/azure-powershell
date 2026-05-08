@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionsoftdeletedbackupvault
 schema: 2.0.0
@@ -20,8 +20,9 @@ Get-AzDataProtectionSoftDeletedBackupVault -Location <String> [-SubscriptionId <
 
 ### Get
 ```
-Get-AzDataProtectionSoftDeletedBackupVault -DeletedVaultName <String> -Location <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataProtectionSoftDeletedBackupVault -Location <String> -DeletedVaultName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -145,4 +146,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

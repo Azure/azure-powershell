@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionbackupinstance
 schema: 2.0.0
@@ -14,15 +14,16 @@ Delete a backupInstances
 
 ### Delete (Default)
 ```
-Remove-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-Token <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -VaultName <String> [-Token <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzDataProtectionBackupInstance -InputObject <IDataProtectionIdentity> [-Token <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,4 +241,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

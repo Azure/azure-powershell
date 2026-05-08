@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancerestore
 schema: 2.0.0
@@ -13,9 +13,10 @@ Validates if Restore can be triggered for a DataSource
 ## SYNTAX
 
 ```
-Test-AzDataProtectionBackupInstanceRestore -Name <String> -ResourceGroupName <String>
- -RestoreRequest <IAzureBackupRestoreRequest> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
- [-NoWait] [-RestoreToSecondaryRegion] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzDataProtectionBackupInstanceRestore -ResourceGroupName <String> -Name <String> -VaultName <String>
+ -RestoreRequest <IAzureBackupRestoreRequest> [-SubscriptionId <String>] [-RestoreToSecondaryRegion]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +47,6 @@ For normal restore (non-CRR), DO NOT use RestoreToSecondaryRegion switch.
 
 ### -AsJob
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -60,7 +60,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -90,7 +89,6 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -223,4 +221,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

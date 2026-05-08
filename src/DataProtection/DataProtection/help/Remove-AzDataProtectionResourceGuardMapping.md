@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionresourceguardmapping
 schema: 2.0.0
@@ -14,14 +14,15 @@ Deletes the ResourceGuardProxy
 
 ### Delete (Default)
 ```
-Remove-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> [-SubscriptionId <String>]
+ -VaultName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDataProtectionResourceGuardMapping -InputObject <IDataProtectionIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDataProtectionResourceGuardMapping -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -188,4 +189,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

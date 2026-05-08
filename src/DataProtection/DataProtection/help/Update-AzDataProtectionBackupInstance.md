@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupinstance
 schema: 2.0.0
@@ -13,11 +13,12 @@ Updates a given backup instance
 ## SYNTAX
 
 ```
-Update-AzDataProtectionBackupInstance -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PolicyId <String>]
- [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>] [-SubscriptionId <String>]
- [-Token <String>] [-UserAssignedIdentityArmId <String>] [-UseSystemAssignedIdentity <Boolean?>]
- [-VaultedBackupContainer <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String>
+ -BackupInstanceName <String> [-SubscriptionId <String>] [-PolicyId <String>]
+ [-UseSystemAssignedIdentity <Boolean>] [-UserAssignedIdentityArmId <String>]
+ [-VaultedBackupContainer <String[]>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
+ [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +69,6 @@ Second command updates the backup instance with the new User Assigned Managed Id
 
 ### -AsJob
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -98,7 +98,6 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 
-
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -112,7 +111,6 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -238,7 +236,7 @@ Accept wildcard characters: False
 Use system assigned identity
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -323,4 +321,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
