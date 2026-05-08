@@ -1,0 +1,97 @@
+# .pipelines/sln-check.yml
+# PUBLIC pipeline — detects new .sln files in PRs.
+# Contains NO secrets. Safe to run with PR-sourced YAML.
+#
+# When new .sln files are found, this pipeline publishes an artifact
+# consumed by an internal pipeline (sln-trigger-internal) that:
+#   1. Posts a "pending" GitHub status check ('module-onboarding') to the PR
+#   2. Triggers internal pipeline 678 for each new module
+#   3. Waits for pipeline 678 to complete
+#   4. Posts "success" or "failure" to the same GitHub status check
+#
+# Configure GitHub branch protection to require the 'module-onboarding'
+# status check so the PR cannot merge until the internal work finishes.
+
+trigger: none
+
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - checkout: self
+    fetchDepth: 0
+    submodules: false
+    persistCredentials: false
+    lfs: false
+
+  - pwsh: |
+      Set-StrictMode -Version 2.0
+      $ErrorActionPreference = 'Stop'
+
+      # Validate and normalize the target branch
+      $targetBranch = "$(System.PullRequest.TargetBranch)" -replace '^refs/heads/', ''
+      if ($targetBranch -notmatch '^[a-zA-Z0-9._/-]+$') {
+        Write-Error "Invalid target branch name: $targetBranch"
+        exit 1
+      }
+
+      Write-Host "Fetching target branch: $targetBranch"
+      git fetch origin "+refs/heads/${targetBranch}:refs/remotes/origin/${targetBranch}"
+
+      # Find new .sln files added in this PR (three-dot = merge-base comparison)
+      $newSlnFiles = git diff --name-only --diff-filter=A "origin/${targetBranch}...HEAD" -- '*.sln'
+
+      if (-not $newSlnFiles) {
+        Write-Host "##[section]No new .sln files found. Nothing to do."
+        Write-Host "##vso[task.setvariable variable=hasNewSln]false"
+        return
+      }
+
+      $slnList = @($newSlnFiles -split "`n" | Where-Object { $_.Trim() -ne '' })
+
+      if ($slnList.Count -gt 5) {
+        Write-Error "Too many new .sln files ($($slnList.Count)). Refusing to proceed — maximum is 5."
+        exit 1
+      }
+
+      Write-Host "##[section]New .sln files detected ($($slnList.Count)):"
+
+      $moduleNames = @()
+      foreach ($slnPath in $slnList) {
+        $slnPath = $slnPath.Trim()
+        $moduleName = [System.IO.Path]::GetFileNameWithoutExtension($slnPath)
+
+        # Validate module name: alphanumeric start, safe characters, max 100 chars
+        if ($moduleName -notmatch '^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,99}$') {
+          Write-Error "Invalid module name derived from '$slnPath': '$moduleName'"
+          exit 1
+        }
+
+        Write-Host "  $slnPath -> ModuleName: $moduleName"
+        $moduleNames += $moduleName
+      }
+
+      # Write module names and PR metadata to artifact for the internal pipeline
+      $artifactDir = Join-Path "$(Build.ArtifactStagingDirectory)" 'sln-check'
+      New-Item -ItemType Directory -Path $artifactDir -Force | Out-Null
+      $moduleNames | Set-Content -Path (Join-Path $artifactDir 'new-modules.txt') -Encoding utf8
+
+      # Include the PR commit SHA so the internal pipeline can post status checks
+      $prSha = "$(Build.SourceVersion)"
+      $prSha | Set-Content -Path (Join-Path $artifactDir 'pr-commit-sha.txt') -Encoding utf8
+
+      Write-Host "PR commit SHA: $prSha"
+      Write-Host "##vso[task.setvariable variable=hasNewSln]true"
+    displayName: 'Detect new SLN files'
+
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish new module names'
+    condition: eq(variables['hasNewSln'], 'true')
+    inputs:
+      targetPath: '$(Build.ArtifactStagingDirectory)/sln-check'
+      artifactName: 'sln-check'
