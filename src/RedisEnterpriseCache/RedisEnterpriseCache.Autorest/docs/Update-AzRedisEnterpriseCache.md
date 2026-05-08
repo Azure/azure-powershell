@@ -33,7 +33,7 @@ Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Cap
 ```
 
 ## DESCRIPTION
-Update an existing (overwrite/reupdate  with potential downtime) cache cluster
+Updates an existing Redis Enterprise cluster
 
 ## EXAMPLES
 
