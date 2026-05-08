@@ -56,10 +56,8 @@ namespace Common.Authenticators.Test
 
             var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
             //id must be equal to accountId
-#pragma warning disable CS0618 // ManagedIdentityCredential(string) is obsolete; suppressed pending migration
             mockAzureCredentialFactory.Setup(f => f.CreateManagedIdentityCredential(It.Is<string>(id => id == accountId)))
-                .Returns(new ManagedIdentityCredential(accountId));
-#pragma warning restore CS0618
+                .Returns(new ManagedIdentityCredential(ManagedIdentityId.FromUserAssignedClientId(accountId)));
             AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
 
             var account = new AzureAccount
@@ -101,10 +99,8 @@ namespace Common.Authenticators.Test
 
             var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
             //id must be equal to null
-#pragma warning disable CS0618 // ManagedIdentityCredential(string) is obsolete; suppressed pending migration
             mockAzureCredentialFactory.Setup(f => f.CreateManagedIdentityCredential(It.Is<string>(id => id == null)))
-                .Returns(new ManagedIdentityCredential(accountId));
-#pragma warning restore CS0618
+                .Returns(new ManagedIdentityCredential(ManagedIdentityId.SystemAssigned));
             AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
 
             var account = new AzureAccount

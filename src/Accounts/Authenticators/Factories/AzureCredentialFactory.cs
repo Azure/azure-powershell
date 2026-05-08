@@ -22,12 +22,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Factories
 {
     public class AzureCredentialFactory
     {
-#pragma warning disable CS0618 // ManagedIdentityCredential(string) is obsolete; suppressed pending migration to ManagedIdentityId API
         public virtual TokenCredential CreateManagedIdentityCredential(string clientId)
         {
-            return new ManagedIdentityCredential(clientId);
+            if (clientId != null)
+            {
+                return new ManagedIdentityCredential(ManagedIdentityId.FromUserAssignedClientId(clientId));
+            }
+            return new ManagedIdentityCredential(ManagedIdentityId.SystemAssigned);
         }
-#pragma warning restore CS0618
 
         public virtual TokenCredential CreateClientSecretCredential(string tenantId, string clientId, SecureString secret, ClientSecretCredentialOptions options)
         {
