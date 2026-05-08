@@ -3,7 +3,6 @@ options:
     service-dir: "src"
     emitter-output-dir: "{output-dir}/{service-dir}/StorageAction/StorageAction.Autorest"
     clear-output-folder: true
-    debug: true
     azure: true
     module-version: 0.1.0
     prefix: "Az"

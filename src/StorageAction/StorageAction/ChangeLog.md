@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Migrated to typespec
+* Internal code generation updated. No user-facing changes in this release.
 
 ## Version 1.0.0
 * General availability for module Az.StorageAction
