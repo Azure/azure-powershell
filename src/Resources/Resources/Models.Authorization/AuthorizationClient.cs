@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ActiveDirectory;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Resources.Helper;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Rest.Azure.OData;
@@ -81,8 +82,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public IEnumerable<PSRoleDefinition> FilterRoleDefinitions(string name, string scope, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             ODataQuery<RoleDefinitionFilter> odataFilter = new ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
-            return AuthorizationManagementClient.RoleDefinitions.List(scope, odataFilter)
-                  .Select(r => r.ToPSRoleDefinition());
+            try
+            {
+                return AuthorizationManagementClient.RoleDefinitions.List(scope, odataFilter)
+                      .Select(r => r.ToPSRoleDefinition());
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
+            }
         }
 
         public IEnumerable<PSRoleDefinition> FilterRoleDefinitions(FilterRoleDefinitionOptions options)
@@ -171,7 +179,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 ConditionVersion = parameters.ConditionVersion
             };
 
-            return AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId.ToString(), createParameters).ToPSRoleAssignment(this, ActiveDirectoryClient);
+            try
+            {
+                return AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId.ToString(), createParameters).ToPSRoleAssignment(this, ActiveDirectoryClient);
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
+            }
         }
 
         /// <summary>
@@ -377,7 +392,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 ConditionVersion = ConditionVersion
             };
 
-            return AuthorizationManagementClient.RoleAssignments.Create(scope, roleAssignmentId, createParameters).ToPSRoleAssignment(this, ActiveDirectoryClient);
+            try
+            {
+                return AuthorizationManagementClient.RoleAssignments.Create(scope, roleAssignmentId, createParameters).ToPSRoleAssignment(this, ActiveDirectoryClient);
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
+            }
         }
 
         /// <summary>
@@ -726,10 +748,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         /// <summary>
         /// Removes a deny assignment by its fully qualified ID or by name + scope.
+        /// Idempotent: returns null (without throwing) when no matching deny assignment exists.
         /// </summary>
         public PSDenyAssignment RemoveDenyAssignment(string denyAssignmentId, string denyAssignmentName, string scope, string subscriptionId)
         {
-            // Resolve the deny assignment to delete
             PSDenyAssignment toDelete = null;
 
             if (!string.IsNullOrEmpty(denyAssignmentId))
@@ -747,8 +769,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
                 catch (Microsoft.Rest.Azure.CloudException ex) when (ex.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    throw new KeyNotFoundException(
-                        string.Format("Deny assignment '{0}' not found at scope '{1}'.", denyAssignmentId, resolvedScope));
+                    // Idempotent: nothing to delete.
+                    return null;
                 }
             }
             else if (!string.IsNullOrEmpty(denyAssignmentName) && !string.IsNullOrEmpty(scope))
@@ -761,8 +783,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 var matches = FilterDenyAssignments(options, subscriptionId);
                 if (matches == null || matches.Count == 0)
                 {
-                    throw new KeyNotFoundException(
-                        string.Format("No deny assignment named '{0}' found at scope '{1}'.", denyAssignmentName, scope));
+                    // Idempotent: nothing to delete.
+                    return null;
                 }
                 if (matches.Count > 1)
                 {
@@ -777,8 +799,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 throw new ArgumentException("Either denyAssignmentId or (denyAssignmentName + scope) must be provided.");
             }
 
-            AuthorizationManagementClient.DenyAssignments
-                .Delete(toDelete.Scope, toDelete.Id.GuidFromFullyQualifiedId());
+            try
+            {
+                AuthorizationManagementClient.DenyAssignments
+                    .Delete(toDelete.Scope, toDelete.Id.GuidFromFullyQualifiedId());
+            }
+            catch (Microsoft.Rest.Azure.CloudException ex) when (ex.Response?.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                // Idempotent: tolerate a race where the DA was deleted between Get and Delete.
+                return null;
+            }
 
             return toDelete;
         }
@@ -800,15 +830,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 roleDef = AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
                     roleDefinition.AssignableScopes.First(), roleDefinitionId.ToString(), parameters).ToPSRoleDefinition();
             }
-            catch (Hyak.Common.CloudException ce)
+            catch (ErrorResponseException ex)
             {
-                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized &&
-                    ce.Error.Code.Equals("TenantNotAllowed", StringComparison.InvariantCultureIgnoreCase))
+                if (ex.Response?.StatusCode == HttpStatusCode.Unauthorized &&
+                    ex.Body?.Error?.Code?.Equals("TenantNotAllowed", StringComparison.InvariantCultureIgnoreCase) == true)
                 {
                     throw new InvalidOperationException("The tenant is not currently authorized to create/update Custom role definition. Please refer to http://aka.ms/customrolespreview for more details");
                 }
-
-                throw;
+                throw AuthorizationErrorResponseExceptionHelper.CreateDescriptiveException(ex);
             }
 
             return roleDef;
