@@ -47,7 +47,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.Name, action: string.Format("Apply maintenance window on cluster {0}", this.Name)))
+            if (ShouldProcess(
+                target: string.Format("cluster '{0}' in resource group '{1}'", this.Name, this.ResourceGroupName),
+                action: "Apply maintenance window"))
             {
                 try
                 {
