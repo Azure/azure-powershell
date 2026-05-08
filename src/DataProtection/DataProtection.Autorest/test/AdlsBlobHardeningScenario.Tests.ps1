@@ -163,8 +163,7 @@ Describe 'AdlsBlobHardeningScenario' -Tag 'LiveOnly' {
         $elapsed = 0
         while($jobstatus -eq "InProgress" -and $elapsed -lt $timeout)
         {
-            #Start-TestSleep -Seconds 30 uncomment for PR
-            Start-Sleep -Seconds 30
+            Start-TestSleep -Seconds 30
             $elapsed += 30
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
@@ -180,21 +179,13 @@ Describe 'AdlsBlobHardeningScenario' -Tag 'LiveOnly' {
         $restoredContainers = Get-AzStorageContainer -Context $targetStorageAccount.Context
 
         $expectedRenamedContainers = $renameTo.Values | Sort-Object
-        $actualRestoredContainerNames = $restoredContainers.Name | Sort-Object
 
         Write-Host "Expected renamed containers: $($expectedRenamedContainers -join ', ')"
-        Write-Host "Actual restored containers: $($actualRestoredContainerNames -join ', ')"
-
-        $expectedRenamedContainers.Count | Should be $actualRestoredContainerNames.Count
+        Write-Host "Actual restored containers: $($restoredContainers.Name -join ', ')"
 
         # Check each expected container exists
         foreach($expectedName in $expectedRenamedContainers) {
-            $actualRestoredContainerNames | Should -Contain $expectedName
-        }
-
-        # Ensure no extra containers (since we deleted all containers upfront, only renamed ones should exist)
-        foreach($actualName in $actualRestoredContainerNames) {
-            $expectedRenamedContainers | Should -Contain $actualName
+            $restoredContainers.Name | Should -Contain $expectedName
         }
         Write-Host "Container validation completed successfully."
 

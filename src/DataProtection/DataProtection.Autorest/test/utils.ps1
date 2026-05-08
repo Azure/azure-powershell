@@ -36,7 +36,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2025 -Month 12 -Day 25 -Hour 17 -Minute 31 -Second 02).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2026 -Month 05 -Day 06 -Hour 16 -Minute 21 -Second 00).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
 
     $BackupInstanceTestVariables = @{
@@ -174,10 +174,10 @@ function setupEnv() {
         NewPolicyName = "" #"pstest-aks-policy"
         PolicyName = "test01"
         DataSourceLocation = "eastasia"
-        SourceClusterId = "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/tiering-test/providers/Microsoft.ContainerService/managedClusters/aks-test-priyansh"
+        SourceClusterId = "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/tiering-test/providers/Microsoft.ContainerService/managedClusters/aks-test-ps-backup"
         SnapshotResourceGroupId = "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/tiering-test"
-        FriendlyName = "aks-test-priyansh\newBI"
-        ClusterName = "aks-test-priyansh"
+        FriendlyName = "aks-test-ps-backup\newBI"
+        ClusterName = "aks-test-ps-backup"
     }
 
     $BlobHardeningVariables = @{
@@ -318,7 +318,8 @@ function setupEnv() {
     $DPPVaultSoftDeleteVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         Location = "eastus2euap" 
-        DeletedVaultName = "raghav-dpp-sami-soft-delete-ON"  
+        DeletedVaultName = "raghavchugh-test-dpp-uami-soft-delete-ON"
+        ResourceGroupName = "raghavchugh-test-rg"
     }
 
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
