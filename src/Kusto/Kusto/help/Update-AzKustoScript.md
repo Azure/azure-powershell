@@ -93,7 +93,7 @@ Update a database script.
 
 ### Example 1: Update an existing kusto script by name
 ```powershell
-Update-AzKustoScript -DatabaseName mykustodatabase -Name newkustoscript -ClusterName testnewkustocluster -ResourceGroupName testrg -ScriptUrl $BlobSASURL -ScriptUrlSasToken $BlobSASToken -PrincipalPermissionsAction RemovePermissionOnScriptCompletion -ScriptLevel Database
+Update-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $scriptName -ResourceGroupName $resourceGroupName -SubscriptionId $SubscriptionId -JsonString $jsonBody
 ```
 
 ```output
