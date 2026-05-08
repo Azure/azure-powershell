@@ -61,7 +61,7 @@ Describe 'Get-AzAvailabilityGroupListener' {
     }
 
     It 'GetViaIdentity' {
-        $msListner = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AvailabilityGroupListener]@{Id = $env.SqlVMGroupMultiSubnetIPListnerId }
+        $msListner = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AvailabilityGroupListener]@{Id = $env.SqlVMGroupMultiSubnetIPListnerId }
         $msListner = Get-AzAvailabilityGroupListener -InputObject $msListner
 
         $msListner.AvailabilityGroupName | Should -Be $env.SqlVMGroupName2
