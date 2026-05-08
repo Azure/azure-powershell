@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string ImmutabilityPolicyState { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
+        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD', 'All'")]
         [PSArgumentCompleter("PrivateLink", "AAD", "All")]
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }

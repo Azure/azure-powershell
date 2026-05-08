@@ -231,14 +231,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     serviceProperties.Cors = corsRules.ParseCorsRules();
                 }
 
-                if (this.enableStaticWebsite != null || this.StaticWebsiteIndexDocument != null || this.StaticWebsiteDefaultIndexDocumentPath != null || this.StaticWebsiteErrorDocument404Path != null)
+                if (this.enableStaticWebsite != null)
                 {
                     serviceProperties.StaticWebsite = new StaticWebsite();
-
-                    if (this.enableStaticWebsite != null)
-                    {
-                        serviceProperties.StaticWebsite.Enabled = this.enableStaticWebsite.Value;
-                    }
+                    serviceProperties.StaticWebsite.Enabled = this.enableStaticWebsite.Value;
 
                     if (this.StaticWebsiteIndexDocument != null)
                     {
@@ -255,16 +251,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         serviceProperties.StaticWebsite.ErrorDocument404Path = this.StaticWebsiteErrorDocument404Path;
                     }
                 }
-                //else
-                //{
-                //    // If EnableStaticWebsite is not specified, check if any static website properties are provided
-                //    if (this.StaticWebsiteIndexDocument != null || 
-                //        this.StaticWebsiteDefaultIndexDocumentPath != null || 
-                //        this.StaticWebsiteErrorDocument404Path != null)
-                //    {
-                //        throw new ArgumentException("StaticWebsite properties can only be specified when EnableStaticWebsite is set.", "StaticWebsite");
-                //    }
-                //}
+                else
+                {
+                    // If EnableStaticWebsite is not specified, check if any static website properties are provided
+                    if (this.StaticWebsiteIndexDocument != null ||
+                        this.StaticWebsiteDefaultIndexDocumentPath != null ||
+                        this.StaticWebsiteErrorDocument404Path != null)
+                    {
+                        throw new ArgumentException("StaticWebsite properties can only be specified when EnableStaticWebsite is set.", "StaticWebsite");
+                    }
+                }
 
                 serviceProperties = this.StorageClient.BlobServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, serviceProperties);
 

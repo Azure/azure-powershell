@@ -18,28 +18,26 @@ Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccou
  [-DefaultServiceVersion <String>] [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>]
  [-IsVersioningEnabled <Boolean>] [-CorsRule <PSCorsRule[]>] [-EnableStaticWebsite <Boolean>]
  [-StaticWebsiteIndexDocument <String>] [-StaticWebsiteDefaultIndexDocumentPath <String>]
- [-StaticWebsiteErrorDocument404Path <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StaticWebsiteErrorDocument404Path <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-DefaultServiceVersion <String>]
  [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
- [-CorsRule <PSCorsRule[]>] [-EnableStaticWebsite <Boolean>]
- [-StaticWebsiteIndexDocument <String>] [-StaticWebsiteDefaultIndexDocumentPath <String>]
- [-StaticWebsiteErrorDocument404Path <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CorsRule <PSCorsRule[]>] [-EnableStaticWebsite <Boolean>] [-StaticWebsiteIndexDocument <String>]
+ [-StaticWebsiteDefaultIndexDocumentPath <String>] [-StaticWebsiteErrorDocument404Path <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobServicePropertiesResourceId
 ```
 Update-AzStorageBlobServiceProperty [-ResourceId] <String> [-DefaultServiceVersion <String>]
  [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
- [-CorsRule <PSCorsRule[]>] [-EnableStaticWebsite <Boolean>]
- [-StaticWebsiteIndexDocument <String>] [-StaticWebsiteDefaultIndexDocumentPath <String>]
- [-StaticWebsiteErrorDocument404Path <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CorsRule <PSCorsRule[]>] [-EnableStaticWebsite <Boolean>] [-StaticWebsiteIndexDocument <String>]
+ [-StaticWebsiteDefaultIndexDocumentPath <String>] [-StaticWebsiteErrorDocument404Path <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,18 +157,31 @@ Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -Storag
 ```
 
 ```output
-StorageAccountName            : mystorageaccount
-ResourceGroupName             : myresourcegroup
-DefaultServiceVersion         : 
-StaticWebsite.Enabled         : True
-StaticWebsite.IndexDocument   : index.html
-StaticWebsite.ErrorDocument404Path : error.html
-ChangeFeed.Enabled            : 
-ChangeFeed.RetentionInDays    :
-IsVersioningEnabled           :
+StorageAccountName                                     : mystorageaccount
+ResourceGroupName                                      : myresourcegroup
+DefaultServiceVersion                                  : 
+DeleteRetentionPolicy.Enabled                          : False
+DeleteRetentionPolicy.Days                             : 
+DeleteRetentionPolicy.AllowPermanentDelete             : False
+ContainerDeleteRetentionPolicy.Enabled                 : 
+ContainerDeleteRetentionPolicy.Days                    : 
+RestorePolicy.Enabled                                  : 
+RestorePolicy.Days                                     : 
+RestorePolicy.MinRestoreTime                           : 
+ChangeFeed.Enabled                                     : 
+ChangeFeed.RetentionInDays                             : 
+IsVersioningEnabled                                    : 
+LastAccessTimeTrackingPolicy.Enable                    : 
+LastAccessTimeTrackingPolicy.Name                      : 
+LastAccessTimeTrackingPolicy.TrackingGranularityInDays : 
+LastAccessTimeTrackingPolicy.BlobType                  : 
+StaticWebsite.Enabled                                  : True
+StaticWebsite.IndexDocument                            : index.html
+StaticWebsite.DefaultIndexDocumentPath                 : 
+StaticWebsite.ErrorDocument404Path                     : error.html
 ```
 
-This command enables static website on Blob service of a Storage account with index document as "index.html" and error document as "error.html".
+This command enables static website on Blob service of a Storage account with index document as "index.html" and error document as "error.html". The StaticWebsiteIndexDocument is mutually exclusive to StaticWebsiteDefaultIndexDocumentPath parameter.
 
 ### Example 7: Disable static website
 ```powershell
@@ -317,36 +328,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -StorageAccount
-Storage account object
-
-```yaml
-Type: Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
-Parameter Sets: AccountObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -StorageAccountName
-Storage Account Name.
-
-```yaml
-Type: System.String
-Parameter Sets: AccountName
-Aliases: AccountName, Name
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -StaticWebsiteDefaultIndexDocumentPath
 The absolute path where the default index file is present. This absolute path is mutually exclusive to IndexDocument and it is case-sensitive.
 
@@ -387,6 +368,36 @@ Aliases:
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccount
+Storage account object
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
+Parameter Sets: AccountObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -StorageAccountName
+Storage Account Name.
+
+```yaml
+Type: System.String
+Parameter Sets: AccountName
+Aliases: AccountName, Name
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
