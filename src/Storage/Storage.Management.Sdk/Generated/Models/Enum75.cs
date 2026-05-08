@@ -7,37 +7,37 @@ namespace Microsoft.Azure.Management.Storage.Models
 {
 
     /// <summary>
-    /// Defines values for Enum56.
+    /// Defines values for Enum75.
     /// </summary>
 
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum Enum56
+    public enum Enum75
     {
-        [System.Runtime.Serialization.EnumMember(Value = "Planned")]
-        Planned
+        [System.Runtime.Serialization.EnumMember(Value = "kerb")]
+        Kerb
     }
-    internal static class Enum56EnumExtension
+    internal static class Enum75EnumExtension
     {
-        internal static string ToSerializedValue(this Enum56? value)
+        internal static string ToSerializedValue(this Enum75? value)
         {
-            return value == null ? null : ((Enum56)value).ToSerializedValue();
+            return value == null ? null : ((Enum75)value).ToSerializedValue();
         }
-        internal static string ToSerializedValue(this Enum56 value)
+        internal static string ToSerializedValue(this Enum75 value)
         {
             switch( value )
             {
-                case Enum56.Planned:
-                    return "Planned";
+                case Enum75.Kerb:
+                    return "kerb";
             }
             return null;
         }
-        internal static Enum56? ParseEnum56(this string value)
+        internal static Enum75? ParseEnum75(this string value)
         {
             switch( value )
             {
-                case "Planned":
-                    return Enum56.Planned;
+                case "kerb":
+                    return Enum75.Kerb;
             }
             return null;
         }
