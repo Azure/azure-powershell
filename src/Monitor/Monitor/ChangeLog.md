@@ -19,6 +19,15 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure Monitor Pipelines API version from 2024-10-01-preview to GA version 2026-04-01
+    - Added 'DistributionMaxInstancesPerHost' parameter to control maximum instances per compute unit
+    - Added 'ExecutionPlacementConstraint' parameter to guide where pipeline group instances should run
+    - Added 'TlsConfiguration' parameter to configure TLS (Transport Layer Security) settings for pipeline group receivers
+    - Removed 'NetworkingConfiguration' parameter from 'New-AzPipelineGroup' and 'Update-AzPipelineGroup'
+    - Removed UDP receiver type support from pipeline group receivers
+    - Removed public properties/parameters 'TcpUrl', 'JsonArrayMapperKey', 'SourceFieldName', and 'SyslogProtocol'
+    - Removed 'DestinationField*' public properties/parameters
+    - Expanded parameter sets for the updated pipeline-related cmdlets, which may require script changes when upgrading
 
 ## Version 7.0.0
 * Parameters EmailSendToSubscriptionAdministrator and EmailSendToSubscriptionCoAdministrator of cmdlet `New-AzAutoscaleNotificationObject` was unavailable after April 3, 2024 due to Azure classic administrator retirement.

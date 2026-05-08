@@ -1007,5 +1007,25 @@
   {
     "alias": "ArtifactSigning",
     "module": "ArtifactSigning"
+  },
+  {
+    "module": "FileShare",
+    "alias": "FileShare"
+  },
+  {
+    "module": "ComputeLimit",
+    "alias": "ComputeLimit"
+  },
+  {
+    "module": "ServiceGroups",
+    "alias": "ServiceGroups"
+  },
+  {
+    "module": "PlanetaryComputer",
+    "alias": "PlanetaryComputer"
+  },
+  {
+    "module": "Relationships",
+    "alias": "Relationships"
   }
 ]

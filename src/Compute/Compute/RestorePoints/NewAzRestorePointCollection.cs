@@ -89,6 +89,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Location of the source Restore Point Collection")]
         public string Location { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables or disables instant access snapshot for restore points created under this restore point collection for Premium SSD v2 or Ultra disk.")]
+        public bool? InstantAccess { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -116,6 +121,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                         }
 
+                        if (this.IsParameterBound(c => c.InstantAccess))
+                        {
+                            restorePointCollection.InstantAccess = this.InstantAccess;
+                        }
+
                         var result = RestorePointCollectionsClient.CreateOrUpdate(resourceGroup, restorePointCollectionName, restorePointCollection);
                         var psObject = new PSRestorePointCollection();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePointCollection, PSRestorePointCollection>(result, psObject);
@@ -130,6 +140,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                         RestorePointCollection restorePointCollection = new RestorePointCollection(location, restorePointCollectionId: restorePointCollectionId);
                         restorePointCollection.Source = new RestorePointCollectionSourceProperties(location, RestorePointCollectionId);
+
+                        if (this.IsParameterBound(c => c.InstantAccess))
+                        {
+                            restorePointCollection.InstantAccess = this.InstantAccess;
+                        }
 
                         var result = RestorePointCollectionsClient.CreateOrUpdate(resourceGroup, restorePointCollectionName, restorePointCollection);
                         var psObject = new PSRestorePointCollection();

@@ -67,8 +67,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </param>
 
         /// <param name="placement">Placement section specifies the user-defined constraints for virtual
-        /// machine scale set hardware placement. This property cannot be changed once
-        /// VMSS is provisioned. Minimum api-version: 2025-04-01.
+        /// machine scale set hardware placement. Minimum api-version: 2025-04-01.
         /// </param>
 
         /// <param name="upgradePolicy">The upgrade policy.
@@ -156,12 +155,18 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="zonalPlatformFaultDomainAlignMode">Specifies the align mode between Virtual Machine Scale Set compute and
         /// storage Fault Domain count.
-        /// Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;</param>
+        /// Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;, &#39;BestEffortAligned&#39;</param>
 
         /// <param name="highSpeedInterconnectPlacement">Specifies the high speed interconnect placement for the virtual machine
         /// scale set.
         /// Possible values include: &#39;None&#39;, &#39;Trunk&#39;</param>
-        public VirtualMachineScaleSet(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), Placement placement = default(Placement), UpgradePolicy upgradePolicy = default(UpgradePolicy), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), string orchestrationMode = default(string), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), SkuProfile skuProfile = default(SkuProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMS = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), string zonalPlatformFaultDomainAlignMode = default(string), string highSpeedInterconnectPlacement = default(string))
+
+        /// <param name="lifecycleHooksProfile">Specifies the lifecycle hooks profile for the virtual machine scale set.
+        /// </param>
+
+        /// <param name="externalHealthPolicy">Specifies the external health policy for the virtual machine scale set.
+        /// </param>
+        public VirtualMachineScaleSet(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), Placement placement = default(Placement), UpgradePolicy upgradePolicy = default(UpgradePolicy), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), string orchestrationMode = default(string), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), SkuProfile skuProfile = default(SkuProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMS = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), string zonalPlatformFaultDomainAlignMode = default(string), string highSpeedInterconnectPlacement = default(string), LifecycleHooksProfile lifecycleHooksProfile = default(LifecycleHooksProfile), ExternalHealthPolicy externalHealthPolicy = default(ExternalHealthPolicy))
 
         : base(location, id, name, type, tags)
         {
@@ -196,6 +201,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.ConstrainedMaximumCapacity = constrainedMaximumCapacity;
             this.ZonalPlatformFaultDomainAlignMode = zonalPlatformFaultDomainAlignMode;
             this.HighSpeedInterconnectPlacement = highSpeedInterconnectPlacement;
+            this.LifecycleHooksProfile = lifecycleHooksProfile;
+            this.ExternalHealthPolicy = externalHealthPolicy;
             CustomInit();
         }
 
@@ -250,8 +257,8 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets placement section specifies the user-defined constraints for
-        /// virtual machine scale set hardware placement. This property cannot be
-        /// changed once VMSS is provisioned. Minimum api-version: 2025-04-01.
+        /// virtual machine scale set hardware placement. Minimum api-version:
+        /// 2025-04-01.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "placement")]
         public Placement Placement {get; set; }
@@ -413,7 +420,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies the align mode between Virtual Machine Scale Set
-        /// compute and storage Fault Domain count. Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;
+        /// compute and storage Fault Domain count. Possible values include: &#39;Aligned&#39;, &#39;Unaligned&#39;, &#39;BestEffortAligned&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.zonalPlatformFaultDomainAlignMode")]
         public string ZonalPlatformFaultDomainAlignMode {get; set; }
@@ -424,6 +431,20 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.highSpeedInterconnectPlacement")]
         public string HighSpeedInterconnectPlacement {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the lifecycle hooks profile for the virtual machine
+        /// scale set.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lifecycleHooksProfile")]
+        public LifecycleHooksProfile LifecycleHooksProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the external health policy for the virtual machine
+        /// scale set.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.externalHealthPolicy")]
+        public ExternalHealthPolicy ExternalHealthPolicy {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -467,6 +488,8 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.PriorityMixPolicy.Validate();
             }
+
+
 
 
         }

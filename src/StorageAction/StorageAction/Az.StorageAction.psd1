@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -113,7 +113,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* General availability for module Az.StorageAction'
+        ReleaseNotes = '* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229'
 
         # Prerelease string of this module
         # Prerelease = ''

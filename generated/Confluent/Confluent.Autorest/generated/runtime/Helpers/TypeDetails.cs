@@ -8,7 +8,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.Json
 {
     
     

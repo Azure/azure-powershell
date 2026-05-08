@@ -1,0 +1,90 @@
+{
+  "Get-AzFileShareLimit+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/getLimits?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/getLimits?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "447" ],
+        "x-ms-client-request-id": [ "731f4df5-4228-4c54-b218-7d8e01aa0b91" ],
+        "CommandName": [ "Get-AzFileShareLimit" ],
+        "FullCommandName": [ "Get-AzFileShareLimit_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.5", "Az.FileShare/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c83a9de419c2e66fac22d339a628f765" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/66410548-ea7b-44af-b599-01c6251701f8" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "735e05a4-b3d9-43fc-9de6-df20a2db0f6a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260428T094417Z:735e05a4-b3d9-43fc-9de6-df20a2db0f6a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 27E02C0F388440CBA1D95B643219BA3F Ref B: SG2AA1040517060 Ref C: 2026-04-28T09:44:16Z" ],
+        "Date": [ "Tue, 28 Apr 2026 09:44:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "546" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"limits\":{\"maxFileShares\":1000,\"maxFileShareSnapshots\":200,\"maxFileShareSubnets\":400,\"maxFileSharePrivateEndpointConnections\":100,\"minProvisionedStorageGiB\":32,\"maxProvisionedStorageGiB\":262144,\"minProvisionedIOPerSec\":3000,\"maxProvisionedIOPerSec\":102400,\"minProvisionedThroughputMiBPerSec\":100,\"maxProvisionedThroughputMiBPerSec\":10340},\"provisioningConstants\":{\"baseIOPerSec\":3000,\"scalarIOPerSec\":1.0,\"baseThroughputMiBPerSec\":100,\"scalarThroughputMiBPerSec\":0.1,\"guardrailIOPerSecScalar\":5.0,\"guardrailThroughputScalar\":5.0}}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFileShareLimit+[NoContext]+GetViaIdentity+$POST+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/getLimits?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/getLimits?api-version=2026-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "448" ],
+        "x-ms-client-request-id": [ "2dd36e18-112b-41ec-b13d-56640ccd3683" ],
+        "CommandName": [ "Get-AzFileShareLimit" ],
+        "FullCommandName": [ "Get-AzFileShareLimit_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.5", "Az.FileShare/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "97695b50da9cc736b61b19b2d792e2ee" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/0fdd19fe-f8d4-46d7-ba82-71d6f5a9d230" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "9360e33d-3c73-44af-95f7-734e901bad26" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260428T094417Z:9360e33d-3c73-44af-95f7-734e901bad26" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C2FCE9C856FC43238E6B9F33793BCC85 Ref B: SG2AA1040517060 Ref C: 2026-04-28T09:44:17Z" ],
+        "Date": [ "Tue, 28 Apr 2026 09:44:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "546" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"limits\":{\"maxFileShares\":1000,\"maxFileShareSnapshots\":200,\"maxFileShareSubnets\":400,\"maxFileSharePrivateEndpointConnections\":100,\"minProvisionedStorageGiB\":32,\"maxProvisionedStorageGiB\":262144,\"minProvisionedIOPerSec\":3000,\"maxProvisionedIOPerSec\":102400,\"minProvisionedThroughputMiBPerSec\":100,\"maxProvisionedThroughputMiBPerSec\":10340},\"provisioningConstants\":{\"baseIOPerSec\":3000,\"scalarIOPerSec\":1.0,\"baseThroughputMiBPerSec\":100,\"scalarThroughputMiBPerSec\":0.1,\"guardrailIOPerSecScalar\":5.0,\"guardrailThroughputScalar\":5.0}}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -19,13 +19,14 @@ New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations]
  -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
- [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>]
- [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
- [-DefaultPriorityLevel <String>] [-AsJob] [-NetworkAclBypass <String>]
- [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
- [-BackupRetentionIntervalInHours <Int32>] [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>]
- [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
- [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-DisableLocalAuth <Boolean>]
+ [-EnableAnalyticalStorage <Boolean>] [-EnablePartitionMerge <Boolean>] [-EnableBurstCapacity <Boolean>]
+ [-AsJob] [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>]
+ [-AnalyticalStorageSchemaType <String>] [-MinimalTlsVersion <String>]
+ [-EnablePerRegionPerPartitionAutoscale <Boolean>] [-EnablePriorityBasedExecution <Boolean>]
+ [-DefaultPriorityLevel <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -175,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -Capabilities
-Add a location to the Cosmos DB database account. Array of strings, ordered by failover priority.
+List of Cosmos DB capabilities for the account. e.g. EnableMongo, EnablePerPartitionFailoverPreview, DisableRateLimitingResponses.
 
 ```yaml
 Type: System.String[]
@@ -220,6 +221,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultPriorityLevel
+Default priority level of requests for Cosmos DB database account.
+Accepted values: High, Low
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -240,6 +257,21 @@ Disable write operations on metadata resources (databases, containers, throughpu
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableLocalAuth
+Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -287,37 +319,6 @@ Bool to indicate if Burst Capacity is enabled on the account.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnablePriorityBasedExecution
-Bool to indicate if Priority Based Execution is enabled on the account.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultPriorityLevel
-Default priority level of requests for Cosmos DB database account.
-Accepted values: High, Low
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -378,6 +379,21 @@ Accept wildcard characters: False
 
 ### -EnablePerRegionPerPartitionAutoscale
 Bool to indicate if Dynamic Scaling (Per Region Per Partition Autoscale) is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePriorityBasedExecution
+Bool to indicate if Priority Based Execution is enabled on the account.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

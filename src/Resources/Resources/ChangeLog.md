@@ -19,6 +19,17 @@
 -->
 
 ## Upcoming Release
+
+## Version 9.1.0
+* Made `Remove-AzDenyAssignment` honor `-Confirm:$false` and idempotent when no matching deny assignment exists. The redundant `-Force` switch was removed (the cmdlet relies on the standard `SupportsShouldProcess`/`ConfirmImpact` pattern).
+* Improved error messages for role assignment and role definition operations to include the underlying service error code and message instead of just the HTTP status code. [#19605] [#19374]
+* Added `-PrincipalId` and `-PrincipalType` to `New-AzDenyAssignment` to support per-principal deny assignments targeting a specific User or ServicePrincipal, in addition to the existing Everyone mode.
+* Added `New-AzDenyAssignment` for creating user-assigned deny assignments using the `2024-07-01-preview` API. Deny assignments allow denying specific write, delete, and action operations to all principals at a given scope while excluding specified principals.
+* Added `Remove-AzDenyAssignment` for removing user-assigned deny assignments by ID, name and scope, or pipeline input.
+* Regenerated Authorization Management SDK from `2024-07-01-preview` swagger specification to include deny assignment create and delete operations.
+* Fixed `New-AzDeployment` not reporting nested ARM (Azure Resource Manager) error details (e.g. `KeyVaultParameterReferenceSecretRetrieveFailed`) when a `MultipleErrorsOccurred` validation failure is returned. Previously, the inner errors were silently dropped and only the generic top-level error was shown. [#28308]
+
+## Version 9.0.3
 * Updated the implementation of -Metadata parameter processing for cmdlets that use it for security. No behavior change.
 
 ## Version 9.0.1

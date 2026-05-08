@@ -32,6 +32,11 @@ https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodataconnect
 function Update-AzKustoDataConnection {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpandedEventHub', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                                     *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n
+    ***************************************************************************************************")]
     param(
         [Parameter(ParameterSetName = 'UpdateExpandedEventHub', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedEventGrid', Mandatory)]

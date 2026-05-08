@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Extensions;
 
     /// <summary>
-    /// The parameters used to check the availability of the trusted signing account name.
+    /// The parameters used to check the availability of the artifact signing account name.
     /// </summary>
     public partial class CheckNameAvailability :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICheckNameAvailability,
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Trusted signing account name.</summary>
+        /// <summary>Artifact signing account name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
 
@@ -35,18 +35,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 
         }
     }
-    /// The parameters used to check the availability of the trusted signing account name.
+    /// The parameters used to check the availability of the artifact signing account name.
     public partial interface ICheckNameAvailability :
         Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.IJsonSerializable
     {
-        /// <summary>Trusted signing account name.</summary>
+        /// <summary>Artifact signing account name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Trusted signing account name.",
+        Description = @"Artifact signing account name.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
@@ -63,11 +63,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
         string Type { get; set; }
 
     }
-    /// The parameters used to check the availability of the trusted signing account name.
+    /// The parameters used to check the availability of the artifact signing account name.
     internal partial interface ICheckNameAvailabilityInternal
 
     {
-        /// <summary>Trusted signing account name.</summary>
+        /// <summary>Artifact signing account name.</summary>
         string Name { get; set; }
         /// <summary>The type of the resource, "Microsoft.CodeSigning/codeSigningAccounts".</summary>
         string Type { get; set; }

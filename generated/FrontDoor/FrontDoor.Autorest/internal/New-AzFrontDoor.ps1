@@ -52,10 +52,10 @@ BACKENDPOOLSSETTING <IBackendPoolsSettings>: Settings for all backendPools
   [SendRecvTimeoutInSeconds <Int32?>]: Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
 
 FRONTENDENDPOINT <IFrontendEndpoint[]>: Frontend endpoints available to routing rules.
-  [Id <String>]: Resource ID.
   [CertificateSource <String>]: Defines the source of the SSL certificate
   [CertificateType <String>]: Defines the type of the certificate used for secure connections to a frontendEndpoint
   [HostName <String>]: The host name of the frontendEndpoint. Must be a domain name.
+  [Id <String>]: Resource ID.
   [MinimumTlsVersion <String>]: The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
   [Name <String>]: Resource name.
   [SecretName <String>]: The name of the Key Vault secret representing the full certificate PFX
@@ -110,15 +110,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded')]

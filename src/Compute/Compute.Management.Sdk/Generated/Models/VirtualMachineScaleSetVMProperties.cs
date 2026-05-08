@@ -106,7 +106,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="timeCreated">Specifies the time at which the Virtual Machine resource was created.
         /// Minimum api-version: 2021-11-01.
         /// </param>
-        public VirtualMachineScaleSetVMProperties(bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), string resilientVMDeletionStatus = default(string), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?))
+
+        /// <param name="virtualMachineResourceId">Specifies the ARM resource ID of the standalone virtual machine associated
+        /// with this VMSS VM. This property is only applicable to Virtual Machine
+        /// Scale Sets with Flexible orchestration mode. Minimum api-version:
+        /// 2025-11-01.
+        /// </param>
+        public VirtualMachineScaleSetVMProperties(bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), string resilientVMDeletionStatus = default(string), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?), string virtualMachineResourceId = default(string))
 
         {
             this.LatestModelApplied = latestModelApplied;
@@ -128,6 +134,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.ProtectionPolicy = protectionPolicy;
             this.UserData = userData;
             this.TimeCreated = timeCreated;
+            this.VirtualMachineResourceId = virtualMachineResourceId;
             CustomInit();
         }
 
@@ -282,6 +289,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "timeCreated")]
         public System.DateTime? TimeCreated {get; private set; }
+
+        /// <summary>
+        /// Gets specifies the ARM resource ID of the standalone virtual machine
+        /// associated with this VMSS VM. This property is only applicable to Virtual
+        /// Machine Scale Sets with Flexible orchestration mode. Minimum api-version:
+        /// 2025-11-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "virtualMachineResourceId")]
+        public string VirtualMachineResourceId {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -298,6 +314,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.StorageProfile.Validate();
             }
+
 
 
 
