@@ -19,7 +19,7 @@ Enable-AzServiceFabricManagedClusterMaintenanceWindow [-ResourceGroupName] <Stri
 ```
 
 ## DESCRIPTION
-This cmdlet applies the maintenance window on the Service Fabric Managed Cluster. Any pending update will be applied.
+This cmdlet applies the maintenance window on the Service Fabric Managed Cluster. Any pending updates will be applied.
 
 ## EXAMPLES
 
