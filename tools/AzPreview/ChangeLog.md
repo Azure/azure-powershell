@@ -1,3 +1,10 @@
+## 15.6.1 - May 2026
+#### Az.DataProtection 2.10.1
+* Fixed non-ASCII U+2013 characters failed module import in WindowsPowerShell
+
+#### Az.Kusto 2.4.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## 15.6.0 - May 2026
 #### Az.Accounts 5.4.0
 * Updated the 'System.Memory' dependency to v4.6.3 to support the Storage SDK update.

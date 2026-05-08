@@ -44,22 +44,26 @@ CUSTOMHTTPSCONFIGURATION <ICustomHttpsConfiguration>: Https settings for a domai
   [VaultId <String>]: Resource ID.
 
 FRONTDOORINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/enable-azfrontdoorcustomdomainhttps
 #>
@@ -92,7 +96,8 @@ param(
     [Parameter(ParameterSetName='EnableViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Enable')]
@@ -102,8 +107,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='EnableViaIdentity', Mandatory, ValueFromPipeline)]

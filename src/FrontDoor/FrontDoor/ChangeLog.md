@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2025-11-01.
+* Hid newly introduced `NetworkExperimentProfile`, `Experiment`, `PreconfiguredEndpoint`, `ReportLatencyScorecard`, and `ReportTimesery` cmdlets that are not part of the public Az.FrontDoor surface area.
+* Fixed `New-AzFrontDoorWafPolicy` / `Remove-AzFrontDoorWafPolicy` failing with `UriFormatException: Invalid URI: The URI is empty.` by rewriting the long-running-operation `final-state-via` from `location` to `original-uri` on WAF `Policies_CreateOrUpdate` and `Policies_Delete` (the service returns the terminal state synchronously and does not emit a `Location` header).
 
 ## Version 2.1.0
 * Fixed New-AzFrontDoorWafManagedRuleOverrideObject issue.

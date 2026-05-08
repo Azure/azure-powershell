@@ -49,6 +49,20 @@ CUSTOMRULE <ICustomRule[]>: List of rules
   [RateLimitDurationInMinutes <Int32?>]: Time window for resetting the rate limit count. Default is 1 minute.
   [RateLimitThreshold <Int32?>]: Number of allowed requests per client within the time window.
 
+EXCEPTIONLISTEXCEPTION <IManagedRuleSetException[]>: List of exceptions.
+  MatchValue <List<String>>: List of values to be matched with.
+  MatchVariable <String>: The variable to be evaluated for excluding the request.
+  Scope <List<IManagedRuleSetScope>>: Scope(s) of the exception.
+    RuleSetType <String>: Defines the rule set type.         Examples: DefaultRuleSet, Microsoft_DefaultRuleSet,         Microsoft_BotManagerRuleSet, Microsoft_HTTPDDoSRuleSet, BotProtection
+    RuleSetVersion <String>: Defines the version of the rule set.
+    [RuleGroupScope <List<IRuleGroupScope>>]: List of rule group scopes.
+      RuleGroupName <String>: Defines the rule group name.
+      [RuleScope <List<IRuleScope>>]: List of rule scopes.
+        RuleId <String>: Defines the rule id.
+  ValueMatchOperator <String>: Comparison operator to apply to the value to be matched.
+  [Selector <String>]: When matchVariable is a collection, operator used to specify which elements         in the collection this exception applies to.         Currently supported only for RequestHeaderNames.
+  [SelectorMatchOperator <String>]: Comparison operator to apply to the selector when specifying which elements         in the collection this exception applies to.
+
 MANAGEDRULESET <IManagedRuleSet[]>: List of rule sets.
   Type <String>: Defines the rule set type to use.
   Version <String>: Defines the version of the rule set to use.
@@ -100,15 +114,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -123,6 +137,13 @@ param(
     [System.String]
     # Gets a unique read-only string that changes whenever the resource is updated.
     ${Etag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetException[]]
+    # List of exceptions.
+    ${ExceptionListException},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]

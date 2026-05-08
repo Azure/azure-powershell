@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Added new optional parameter to rename restore containers for Blob and ADLS (Azure Data Lake Storage) backup in `Initialize-AzDataProtectionRestoreRequest.ps1`
 
+## Version 2.10.1
+* Fixed non-ASCII U+2013 characters failed module import in WindowsPowerShell
+
 ## Version 2.10.0
 * Added auto-protection support for Blob and ADLS (Azure Data Lake Storage) backup in `New-AzDataProtectionBackupConfigurationClientObject`
     - Added `-AutoProtection` switch parameter to enable auto-protection
