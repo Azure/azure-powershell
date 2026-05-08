@@ -116,11 +116,11 @@ Describe 'FileShare-ComplexScenarios' {
                     -ProvisionedThroughputMiBPerSec 400 `
                     -Redundancy "Zone" `
                     -PublicNetworkAccess "Enabled" `
-                    -NfProtocolPropertyRootSquash "RootSquash" `
+                    -RootSquash "RootSquash" `
                     -Tag @{"protocol" = "nfs"; "config" = "rootsquash"}
                 
                 $share.Protocol | Should -Be "NFS"
-                $share.NfProtocolPropertyRootSquash | Should -Be "RootSquash"
+                $share.RootSquash | Should -Be "RootSquash"
             } | Should -Not -Throw
         }
 

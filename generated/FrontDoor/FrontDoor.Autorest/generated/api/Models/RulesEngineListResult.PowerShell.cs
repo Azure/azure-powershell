@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PowerShell;
 
-    /// <summary>
-    /// Result of the request to list Rules Engine Configurations. It contains a list of RulesEngine objects and a URL link to
-    /// get the next set of results.
-    /// </summary>
+    /// <summary>Paged collection of RulesEngine items</summary>
     [System.ComponentModel.TypeConverter(typeof(RulesEngineListResultTypeConverter))]
     public partial class RulesEngineListResult
     {
@@ -165,8 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             return ToJsonString();
         }
     }
-    /// Result of the request to list Rules Engine Configurations. It contains a list of RulesEngine objects and a URL link to
-    /// get the next set of results.
+    /// Paged collection of RulesEngine items
     [System.ComponentModel.TypeConverter(typeof(RulesEngineListResultTypeConverter))]
     public partial interface IRulesEngineListResult
 
