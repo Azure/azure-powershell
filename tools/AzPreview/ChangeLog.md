@@ -1,3 +1,60 @@
+## 15.4.0 - March 2026
+#### Az.Accounts 5.3.3
+* Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
+
+#### Az.ArtifactSigning 0.1.5
+* Renamed from Az.TrustedSigning
+
+#### Az.Compute 11.4.0
+* Added '-DiskIOPSReadWrite' and '-DiskMBpsReadWrite' parameters to 'Add-AzVMDataDisk' cmdlet
+* Added '-Tag' and '-Location' parameters to 'New-AzSshKey' cmdlet
+* Added '-Tag' parameter to 'Update-AzSshKey' cmdlet
+* Added support for Disk Availability Policy
+    - Added '-ActionOnDiskDelay' parameter to 'New-AzDiskConfig' cmdlet to configure disk availability behavior
+    - Added '-ActionOnDiskDelay' parameter to 'New-AzDiskUpdateConfig' cmdlet to update disk availability behavior
+
+#### Az.Databricks 1.11.0
+* Upgraded API version to 2026-01-01
+    - Added ComputeMode parameter to New-AzDatabricksWorkspace cmdlet supporting 'Hybrid' and 'Serverless' compute modes
+    - Changed ComplianceStandard parameter type from enum to String[] for greater flexibility
+
+#### Az.EdgeMarketplace 0.1.0
+* First preview release for module Az.EdgeMarketplace
+
+#### Az.ElasticSan 1.7.0
+* Supported auto scale when creating and updating an Elastic SAN.
+    - 'New-AzElasticSan'
+    - 'Update-AzElasticSan'
+* Supported checking whether disk snapshot backup can be taken for volumes.
+    - 'Test-AzElasticSanVolumeBackup'
+    - 'Test-AzElasticSanVolumeRestore'
+
+#### Az.KeyVault 6.4.3
+* Added upcoming breaking change warning messages to 'Get-AzKeyVaultKey' and 'Get-AzKeyVaultSecret' for filtering certificate-backed keys and secrets.
+
+#### Az.Network 7.25.1
+* Onboarded 'Microsoft.DataReplication/replicationVaults' to Private Link Common Cmdlets
+
+#### Az.Resources 9.0.3
+* Updated the implementation of -Metadata parameter processing for cmdlets that use it for security. No behavior change.
+
+#### Az.Sftp 0.1.1
+* Added 'BufferSizeInBytes' parameter to 'Connect-AzSftp' cmdlet
+    - Allows users to specify buffer size in bytes for SFTP file transfers using the sftp -B flag
+    - Default value is 262144 (256 KB)
+* Added 'StorageAccountEndpoint' parameter to 'Connect-AzSftp' cmdlet
+    - Allows users to specify a custom storage account endpoint suffix
+    - Useful for connecting to storage accounts with custom endpoints
+
+#### Az.Sql 6.4.1
+* Add support for the versionless AKV keys.
+    - The cmdlets supported are 'Add-AzSqlServerKeyVaultKey', 'Get-AzSqlServerKeyVaultKey', 'Set-AzSqlServerTransparentDataEncryptionProtector', 'Get-AzSqlServerTransparentDataEncryptionProtector', 'New-AzSqlDatabase', 'Get-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlDatabaseCopy', 'New-AzSqlDatabaseSecondary' and 'Restore-AzSqlDatabase'
+* Added public preview tag for 'EnableSoftDelete' and 'SoftDeleteRetentionDays' properties in 'New-AzSqlServer' and 'Set-AzSqlServer' cmdlets
+* Added public preview tag for 'Get-AzSqlDeletedServer' and 'Restore-AzSqlServer' cmdlets
+
+#### Az.StorageAction 1.0.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## 15.3.0 - February 2026
 #### Az.Aks 7.1.1
 * Fixed the default SSH key generation logic in 'New-AzAksCluster' to enforce RSA key type (instead of ed25519 that became the default in OpenSSH 9.4 and above)

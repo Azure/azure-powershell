@@ -13,11 +13,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDatabricksVNetPeering_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering", "16.0.0", "2.0.0", "May 2026", DeprecatedOutputProperties=new string[] {"DatabrickAddressSpaceAddressPrefix","RemoteAddressSpaceAddressPrefix"}, NewOutputProperties=new string[] {"DatabrickAddressSpaceAddressPrefix","RemoteAddressSpaceAddressPrefix"}, ChangeDescription="The types of the properties 'DatabrickAddressSpaceAddressPrefix' and 'RemoteAddressSpaceAddressPrefix' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering", "16.0.0", "2.0.0", "May 2026", DeprecatedOutputProperties=new string[] {"DatabrickAddressSpaceAddressPrefix","RemoteAddressSpaceAddressPrefix"}, NewOutputProperties=new string[] {"DatabrickAddressSpaceAddressPrefix","RemoteAddressSpaceAddressPrefix"}, ChangeDescription="The types of the properties 'DatabrickAddressSpaceAddressPrefix' and 'RemoteAddressSpaceAddressPrefix' will be changed from 'System.String[]' to 'System.Collections.Generic.List`1[System.String]'")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Creates vNet Peering for workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}", ApiVersion = "2024-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}", ApiVersion = "2026-01-01")]
     public partial class NewAzDatabricksVNetPeering_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener
     {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Peerings in a VirtualNetwork resource</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering _virtualNetworkPeeringParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.VirtualNetworkPeering();
+        private Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering _virtualNetworkPeeringParametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.VirtualNetworkPeering();
 
         /// <summary>
         /// Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
@@ -290,12 +290,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -598,12 +598,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering">Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering> response)
         {
             using( NoSynchronizationContext )
             {
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api202601.IVirtualNetworkPeering
                 WriteObject((await response));
             }
         }

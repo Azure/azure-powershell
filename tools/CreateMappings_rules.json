@@ -1011,5 +1011,9 @@
   {
     "alias": "ArtifactSigning",
     "module": "ArtifactSigning"
+  },
+  {
+    "module": "FileShare",
+    "alias": "FileShare"
   }
 ]

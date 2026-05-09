@@ -1,7 +1,7 @@
 variables:
-  AgentPoolName: pool-windows-2019
+  AgentPoolName: pool-windows-2022
   WindowsName: windows
-  WindowsImage: windows-2019
+  WindowsImage: windows-2022
   TestFramework: net8.0
   TestTarget: Test
   Configuration: Debug
