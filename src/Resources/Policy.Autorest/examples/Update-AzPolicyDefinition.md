@@ -25,7 +25,7 @@ This command updates the metadata of a policy definition named VMPolicyDefinitio
 
 ### Example 4: Update a policy definition to add an older version by using a policy file
 
-```powershell
+```
 {
    "if": {
       "field": "location",
@@ -35,6 +35,9 @@ This command updates the metadata of a policy definition named VMPolicyDefinitio
       "effect": "audit"
    }
 }
+```
+
+```powershell
 Update-AzPolicyDefinition -Name 'LocationDefinition' -Policy C:\LocationPolicy.json -Version '1.1.0'
 ```
 
