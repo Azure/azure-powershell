@@ -55,12 +55,6 @@ Lists all expansion jobs for the specified AML file system.
 Get-AzStorageCacheExpansionJob -AmlFilesystemName 'fs1' -Name 'expansionjob1' -ResourceGroupName 'scgroup'
 ```
 
-```output
-Name                Location      ProvisioningState NewStorageCapacityTiB StatusState
-----                --------      ----------------- --------------------- -----------
-expansionjob1       eastus        Succeeded         16                    Completed
-```
-
 Gets the specified expansion job by name.
 
 ## PARAMETERS
