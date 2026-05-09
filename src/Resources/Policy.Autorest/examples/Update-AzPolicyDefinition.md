@@ -24,19 +24,6 @@ Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Vir
 This command updates the metadata of a policy definition named VMPolicyDefinition to indicate its category is "Virtual Machine".
 
 ### Example 4: Update a policy definition to add an older version by using a policy file
-
-```
-{
-   "if": {
-      "field": "location",
-      "notIn": ["eastus", "westus", "centralus"]
-   },
-   "then": {
-      "effect": "audit"
-   }
-}
-```
-
 ```powershell
 Update-AzPolicyDefinition -Name 'LocationDefinition' -Policy C:\LocationPolicy.json -Version '1.1.0'
 ```
