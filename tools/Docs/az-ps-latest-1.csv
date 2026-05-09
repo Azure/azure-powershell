@@ -85,7 +85,7 @@ pac83,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac84,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EventGrid.2.2.0.zip;sourceType=sa]Az.EventGrid,2.2.0
 pac85,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EventHub.5.4.0.zip;sourceType=sa]Az.EventHub,5.4.0
 pac86,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Fabric.1.0.0.zip;sourceType=sa]Az.Fabric,1.0.0
-pac87,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FileShare.0.1.0.zip;sourceType=sa]Az.FileShare,0.1.0
+pac87,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FileShare.1.0.0.zip;sourceType=sa]Az.FileShare,1.0.0
 pac88,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FirmwareAnalysis.1.0.0.zip;sourceType=sa]Az.FirmwareAnalysis,1.0.0
 pac89,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Fleet.0.2.2.zip;sourceType=sa]Az.Fleet,0.2.2
 pac90,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.FluidRelay.0.2.0.zip;sourceType=sa]Az.FluidRelay,0.2.0
