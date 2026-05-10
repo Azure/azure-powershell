@@ -54,6 +54,31 @@ $ErrorActionPreference = $preference
 Set-Location $currentPath
 Write-Host -ForegroundColor DarkGreen "-------------------- End testing AutoGen modules with PowerShell Core ... --------------------`n`n`n`n`n"
 
+# Test AutoGen Modules With Windows PowerShell 5.1
+if ($IsWindows) {
+    Write-Host -ForegroundColor Green "-------------------- Start testing AutoGen modules with Windows PowerShell 5.1 ... --------------------"
+    $executeCIStepScriptPath = Join-Path $RepoRoot "tools" "ExecuteCIStep.ps1"
+    $currentPath = $PWD
+    $debugFolderPath = Join-Path $RepoRoot "artifacts" "Debug"
+    Set-Location $debugFolderPath
+    
+    $winPs = Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
+    & $winPs -NoProfile -Command @"
+    `$ErrorActionPreference = 'Continue'
+    Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force
+    `$env:PSModulePath = `$env:PSModulePath + ';' + (pwd).Path
+    `$rootFolder = (Get-item `$PWD).Parent.Parent
+    Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
+        Write-Host `$_.Directory.FullName
+        cd `$rootFolder
+        & '$executeCIStepScriptPath' -TestAutorest -AutorestDirectory `$_.Directory.FullName
+    }
+"@
+    
+    Set-Location $currentPath
+    Write-Host -ForegroundColor DarkGreen "-------------------- End testing AutoGen modules with Windows PowerShell 5.1 ... --------------------`n`n`n`n`n"
+}
+
 # Analyze test coverage
 Write-Host -ForegroundColor Green "-------------------- Start analyzing test coverage ... --------------------"
 $validateTestCoverageScriptPath = Join-Path $RepoRoot 'tools' 'TestFx' 'Coverage' 'ValidateTestCoverage.ps1'
