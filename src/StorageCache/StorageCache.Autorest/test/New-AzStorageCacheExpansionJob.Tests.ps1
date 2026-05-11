@@ -17,29 +17,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageCacheExpansionJo
 Describe 'New-AzStorageCacheExpansionJob' {
     It 'CreateExpanded' {
         {
-            $job = New-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest0040' -Location 'australiaeast' -NewStorageCapacityTiB 56
-            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest0040' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest0040'
+            $job = New-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -NewStorageCapacityTiB 56
+            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511'
         } | Should -Not -Throw
     }
 
     It 'CreateViaJsonString' {
         {
             $json = @{
-                location = "australiaeast"
+                location = "Canada Central"
                 properties = @{
                     newStorageCapacityTiB = 64
                 }
             } | ConvertTo-Json -Depth 3
 
-            $job = New-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateJson' -ResourceGroupName 'acctest0040' -JsonString $json
-            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest0040' -Name 'sampleCreateJson' -ResourceGroupName 'acctest0040'
+            $job = New-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateJson' -ResourceGroupName 'acctest43511' -JsonString $json
+            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest43511' -Name 'sampleCreateJson' -ResourceGroupName 'acctest43511'
         } | Should -Not -Throw
     }
 
     It 'CreateViaJsonFilePath' {
         {
             $json = @{
-                location = "australiaeast"
+                location = "Canada Central"
                 properties = @{
                     newStorageCapacityTiB = 72
                 }
@@ -49,8 +49,8 @@ Describe 'New-AzStorageCacheExpansionJob' {
             $json | Out-File -FilePath $tempFile.FullName -Encoding UTF8
 
             try {
-                $job = New-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateFile' -ResourceGroupName 'acctest0040' -JsonFilePath $tempFile.FullName
-                Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest0040' -Name 'sampleCreateFile' -ResourceGroupName 'acctest0040'
+                $job = New-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateFile' -ResourceGroupName 'acctest43511' -JsonFilePath $tempFile.FullName
+                Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest43511' -Name 'sampleCreateFile' -ResourceGroupName 'acctest43511'
             } finally {
                 Remove-Item $tempFile.FullName -Force -ErrorAction SilentlyContinue
             }
@@ -60,25 +60,25 @@ Describe 'New-AzStorageCacheExpansionJob' {
     It 'CreateViaIdentityAmlFilesystemExpanded' {
         {
             $identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.StorageCacheIdentity]::new()
-            $identity.AmlFilesystemName = "acctest0040"
-            $identity.ResourceGroupName = "acctest0040"
-            $identity.SubscriptionId = "733b22ab-69e4-4f63-a7e5-0f2312c2e35f"
+            $identity.AmlFilesystemName = "acctest43511"
+            $identity.ResourceGroupName = "acctest43511"
+            $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
 
-            $job = New-AzStorageCacheExpansionJob -AmlFilesystemInputObject $identity -Name 'sampleCreateAmlId' -Location 'australiaeast' -NewStorageCapacityTiB 80
-            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest0040' -Name 'sampleCreateAmlId' -ResourceGroupName 'acctest0040'
+            $job = New-AzStorageCacheExpansionJob -AmlFilesystemInputObject $identity -Name 'sampleCreateAmlId' -Location 'Canada Central' -NewStorageCapacityTiB 80
+            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest43511' -Name 'sampleCreateAmlId' -ResourceGroupName 'acctest43511'
         } | Should -Not -Throw
     }
 
     It 'CreateViaIdentityExpanded' {
         {
             $identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.StorageCacheIdentity]::new()
-            $identity.AmlFilesystemName = "acctest0040"
-            $identity.ResourceGroupName = "acctest0040"
-            $identity.SubscriptionId = "733b22ab-69e4-4f63-a7e5-0f2312c2e35f"
+            $identity.AmlFilesystemName = "acctest43511"
+            $identity.ResourceGroupName = "acctest43511"
+            $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
             $identity.ExpansionJobName = "sampleCreateIdentity"
 
-            $job = New-AzStorageCacheExpansionJob -InputObject $identity -Location 'australiaeast' -NewStorageCapacityTiB 88
-            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest0040' -Name 'sampleCreateIdentity' -ResourceGroupName 'acctest0040'
+            $job = New-AzStorageCacheExpansionJob -InputObject $identity -Location 'Canada Central' -NewStorageCapacityTiB 88
+            Wait-AzStorageCacheExpansionJobComplete -AmlFilesystemName 'acctest43511' -Name 'sampleCreateIdentity' -ResourceGroupName 'acctest43511'
         } | Should -Not -Throw
     }
 }

@@ -17,22 +17,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStorageCacheExpansionJo
 Describe 'Get-AzStorageCacheExpansionJob' {
     It 'List' {
         {
-            Get-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -ResourceGroupName 'acctest0040'
+            Get-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -ResourceGroupName 'acctest43511'
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            Get-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest0040'
+            Get-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511'
         } | Should -Not -Throw
     }
 
     It 'GetViaIdentityAmlFilesystem' {
         {
             $identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.StorageCacheIdentity]::new()
-            $identity.AmlFilesystemName = "acctest0040"
-            $identity.ResourceGroupName = "acctest0040"
-            $identity.SubscriptionId = "733b22ab-69e4-4f63-a7e5-0f2312c2e35f"
+            $identity.AmlFilesystemName = "acctest43511"
+            $identity.ResourceGroupName = "acctest43511"
+            $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
 
             Get-AzStorageCacheExpansionJob -Name sampleCreateExpanded -AmlFilesystemInputObject $identity
         } | Should -Not -Throw
@@ -41,9 +41,9 @@ Describe 'Get-AzStorageCacheExpansionJob' {
     It 'GetViaIdentity' {
         {
             $identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.StorageCacheIdentity]::new()
-            $identity.AmlFilesystemName = "acctest0040"
-            $identity.ResourceGroupName = "acctest0040"
-            $identity.SubscriptionId = "733b22ab-69e4-4f63-a7e5-0f2312c2e35f"
+            $identity.AmlFilesystemName = "acctest43511"
+            $identity.ResourceGroupName = "acctest43511"
+            $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
             $identity.ExpansionJobName = "sampleCreateExpanded"
 
             Get-AzStorageCacheExpansionJob -InputObject $identity

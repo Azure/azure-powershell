@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageCacheExpansio
 Describe 'Update-AzStorageCacheExpansionJob' {
     It 'UpdateExpanded' {
         {
-            Update-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest0040' -Tag @{"testKey" = "testValue"}
+            Update-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -Tag @{"testKey" = "testValue"}
         } | Should -Not -Throw
     }
 
@@ -29,7 +29,7 @@ Describe 'Update-AzStorageCacheExpansionJob' {
                 }
             } | ConvertTo-Json -Depth 3
 
-            Update-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest0040' -JsonString $json
+            Update-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -JsonString $json
         } | Should -Not -Throw
     }
 
@@ -45,7 +45,7 @@ Describe 'Update-AzStorageCacheExpansionJob' {
             $json | Out-File -FilePath $tempFile.FullName -Encoding UTF8
 
             try {
-                Update-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest0040' -JsonFilePath $tempFile.FullName
+                Update-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -JsonFilePath $tempFile.FullName
             } finally {
                 Remove-Item $tempFile.FullName -Force -ErrorAction SilentlyContinue
             }
@@ -55,9 +55,9 @@ Describe 'Update-AzStorageCacheExpansionJob' {
     It 'UpdateViaIdentityAmlFilesystemExpanded' {
         {
             $identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.StorageCacheIdentity]::new()
-            $identity.AmlFilesystemName = "acctest0040"
-            $identity.ResourceGroupName = "acctest0040"
-            $identity.SubscriptionId = "733b22ab-69e4-4f63-a7e5-0f2312c2e35f"
+            $identity.AmlFilesystemName = "acctest43511"
+            $identity.ResourceGroupName = "acctest43511"
+            $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
 
             Update-AzStorageCacheExpansionJob -Name sampleCreateExpanded -AmlFilesystemInputObject $identity -Tag @{"amlKey" = "amlValue"}
         } | Should -Not -Throw
@@ -66,9 +66,9 @@ Describe 'Update-AzStorageCacheExpansionJob' {
     It 'UpdateViaIdentityExpanded' {
         {
             $identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.StorageCacheIdentity]::new()
-            $identity.AmlFilesystemName = "acctest0040"
-            $identity.ResourceGroupName = "acctest0040"
-            $identity.SubscriptionId = "733b22ab-69e4-4f63-a7e5-0f2312c2e35f"
+            $identity.AmlFilesystemName = "acctest43511"
+            $identity.ResourceGroupName = "acctest43511"
+            $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
             $identity.ExpansionJobName = "sampleCreateExpanded"
 
             Update-AzStorageCacheExpansionJob -InputObject $identity -Tag @{"idKey" = "idValue"}

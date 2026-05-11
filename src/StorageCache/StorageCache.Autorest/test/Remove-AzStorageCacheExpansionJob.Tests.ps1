@@ -17,16 +17,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageCacheExpansio
 Describe 'Remove-AzStorageCacheExpansionJob' {
     It 'Delete' {
         {
-            Remove-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest0040' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest0040' -Confirm:$false
+            Remove-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -Confirm:$false
         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentityAmlFilesystem' {
         {
             $identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.StorageCacheIdentity]::new()
-            $identity.AmlFilesystemName = "acctest0040"
-            $identity.ResourceGroupName = "acctest0040"
-            $identity.SubscriptionId = "733b22ab-69e4-4f63-a7e5-0f2312c2e35f"
+            $identity.AmlFilesystemName = "acctest43511"
+            $identity.ResourceGroupName = "acctest43511"
+            $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
 
             Remove-AzStorageCacheExpansionJob -Name 'sampleCreateAmlId' -AmlFilesystemInputObject $identity -Confirm:$false
         } | Should -Not -Throw
@@ -35,9 +35,9 @@ Describe 'Remove-AzStorageCacheExpansionJob' {
     It 'DeleteViaIdentity' {
         {
             $identity = [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.StorageCacheIdentity]::new()
-            $identity.AmlFilesystemName = "acctest0040"
-            $identity.ResourceGroupName = "acctest0040"
-            $identity.SubscriptionId = "733b22ab-69e4-4f63-a7e5-0f2312c2e35f"
+            $identity.AmlFilesystemName = "acctest43511"
+            $identity.ResourceGroupName = "acctest43511"
+            $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
             $identity.ExpansionJobName = "sampleDeleteId"
 
             Remove-AzStorageCacheExpansionJob -InputObject $identity -Confirm:$false
