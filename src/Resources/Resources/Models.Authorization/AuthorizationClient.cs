@@ -886,6 +886,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 throw new ArgumentException(ProjectResources.InvalidPermissions);
             }
 
+            if (roleDefinition.Permissions.Any(p => p == null))
+            {
+                throw new ArgumentException(ProjectResources.InvalidPermissions);
+            }
+
             if (roleDefinition.Permissions.Any(p =>
                 (p.Actions == null || !p.Actions.Any()) && (p.DataActions == null || !p.DataActions.Any())))
             {

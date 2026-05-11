@@ -35,7 +35,7 @@ Provide the updated role definition as an input to the command as a JSON file or
 
 The role definition for the updated custom role MUST contain:
 - Id: the unique identifier of the role definition to update
-- Name (or DisplayName): the name of the custom role
+- Name: the name of the custom role
 - Description: a short description of the role
 - Permissions: an array of permission objects containing Actions and/or DataActions
 - AssignableScopes: the scopes where the role can be assigned

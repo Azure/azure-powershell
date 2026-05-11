@@ -599,6 +599,22 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Authorization
             Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateRoleDefinition_PermissionsCollectionContainsNullEntry_ThrowsArgumentException()
+        {
+            // Defensive guard: a JSON input file with `"Permissions": [null]` deserializes
+            // to a list containing a literal null element, which would otherwise NRE in the
+            // subsequent Actions/DataActions check.
+            var roleDef = CreatePSRoleDefinition(permissions:
+            [
+                null,
+                new PSPermission { Actions = ["*/read"] }
+            ]);
+
+            Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+        }
+
         #endregion
 
         #region ToRoleDefinitionPermissions Tests (PSRoleDefinition -> SDK Permission, outbound direction)
