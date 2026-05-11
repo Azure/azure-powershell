@@ -324,6 +324,9 @@
   <data name="InvalidPermissions" xml:space="preserve">
     <value>Invalid value for Permissions</value>
   </data>
+  <data name="RoleDefinitionMultiplePermissionsNotAllowed" xml:space="preserve">
+    <value>Roles cannot contain more than one permission. The Permissions array must contain exactly one permission entry.</value>
+  </data>
   <data name="InvalidAssignableScopes" xml:space="preserve">
     <value>Invalid value for AssignableScopes</value>
   </data>

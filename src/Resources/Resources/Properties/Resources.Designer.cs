@@ -304,6 +304,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Roles cannot contain more than one permission. The Permissions array must contain exactly one permission entry.
+        /// </summary>
+        internal static string RoleDefinitionMultiplePermissionsNotAllowed {
+            get {
+                return ResourceManager.GetString("RoleDefinitionMultiplePermissionsNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid format of the resource group identifier. Expected &apos;subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}&apos;..
         /// </summary>
         internal static string InvalidFormatOfResourceGroupId {

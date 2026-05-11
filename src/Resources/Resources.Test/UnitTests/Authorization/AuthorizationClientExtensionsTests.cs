@@ -588,19 +588,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Authorization
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ValidateRoleDefinition_MultiplePermissionsWithOneEmpty_ThrowsException()
-        {
-            var roleDef = CreatePSRoleDefinition(permissions:
-            [
-                new PSPermission { Actions = [] },  // Empty actions - invalid
-                new PSPermission { Actions = ["*/read"] }
-            ]);
-
-            Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidateRoleDefinition_PermissionsCollectionContainsNullEntry_ThrowsArgumentException()
         {
             // Defensive guard: a JSON input file with `"Permissions": [null]` deserializes
@@ -613,6 +600,37 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Authorization
             ]);
 
             Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateRoleDefinition_TwoPermissionEntries_ThrowsRoleDefinitionMultiplePermissionsNotAllowed()
+        {
+            // Mirrors the service-side RoleDefinitionMultiplePermissionsNotAllowed contract:
+            // RBAC currently rejects role definitions with more than one permission entry.
+            var roleDef = CreatePSRoleDefinition(permissions:
+            [
+                new PSPermission { Actions = ["a1"] },
+                new PSPermission { Actions = ["a2"] }
+            ]);
+
+            var ex = Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+            Assert.Contains("more than one permission", ex.Message, StringComparison.OrdinalIgnoreCase);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateRoleDefinition_SinglePermissionEntry_NoException()
+        {
+            // Positive: exactly one permission entry is the supported shape.
+            var roleDef = CreatePSRoleDefinition(permissions:
+            [
+                new PSPermission { Actions = ["*/read"], Condition = "cond", ConditionVersion = "2.0" }
+            ]);
+
+            var exception = Record.Exception(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
+
+            Assert.Null(exception);
         }
 
         #endregion

@@ -891,6 +891,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 throw new ArgumentException(ProjectResources.InvalidPermissions);
             }
 
+            // The Azure RBAC service currently rejects role definitions with more than one
+            // permission entry (RoleDefinitionMultiplePermissionsNotAllowed). Fail fast
+            // client-side with a descriptive message instead of round-tripping to the service.
+            if (roleDefinition.Permissions.Count > 1)
+            {
+                throw new ArgumentException(ProjectResources.RoleDefinitionMultiplePermissionsNotAllowed);
+            }
+
             if (roleDefinition.Permissions.Any(p =>
                 (p.Actions == null || !p.Actions.Any()) && (p.DataActions == null || !p.DataActions.Any())))
             {
