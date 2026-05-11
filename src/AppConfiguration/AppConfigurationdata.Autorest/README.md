@@ -44,11 +44,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 498ccf7ddf78ced8ef515f88b755b2eb3775de9e
+commit: 1d3a6fbdea5ce574dd89ae581d11f7b7cbcdba3b
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/appconfiguration/data-plane/Microsoft.AppConfiguration/stable/1.0/appconfiguration.json
+  - $(repo)/specification/appconfiguration/data-plane/AppConfiguration/stable/2024-09-01/appconfiguration.json
 
 root-module-name: $(prefix).AppConfiguration
 module-version: 1.0.0
@@ -63,6 +63,9 @@ nested-object-to-string: true
 endpoint-resource-id-key-name: AzureAppConfigurationEndpointResourceId
 
 directive:
+  # Break circular reference in AzureCoreFoundationsInnerError
+  - no-inline:
+    - AzureCoreFoundationsInnerError
   # Remove the Etag and Last-Modified in headers from the response
   - from: swagger-document
     where: $.*.*.*.*.*.headers
@@ -71,9 +74,31 @@ directive:
     where: $.paths["/kv"]
     transform: delete $.head
 
+  # Add 200 response to CreateSnapshot so the LRO final result is deserialized
+  # as a Snapshot instead of falling through to the default error handler.
+  - from: swagger-document
+    where: $.paths["/snapshots/{name}"].put.responses
+    transform: >-
+      $["200"] = {
+        "description": "The snapshot was successfully created.",
+        "schema": { "$ref": "#/definitions/Snapshot" },
+        "headers": {
+          "Sync-Token": { "description": "Used to guarantee real-time consistency between requests.", "type": "string" },
+          "ETag": { "description": "An identifier representing the returned state of the resource.", "type": "string" },
+          "Link": { "description": "Provides a link to the next page of results.", "type": "string" }
+        }
+      };
+
   # Hide the get operation for KeyValue because the parameter key doesn't have a consistent meaning in /kv and /kv/{key}
   - where:
       subject: ^KeyValue$
+      verb: Get
+    hide: true
+
+  # Hide the get operation for Snapshot to provide a custom cmdlet with clean Get/List parameter sets
+  # instead of the auto-generated Get/Get1 naming (matching the Python SDK's get_snapshot vs list_snapshots pattern)
+  - where:
+      subject: ^Snapshot$
       verb: Get
     hide: true
 
@@ -88,4 +113,32 @@ directive:
       variant: ^Put$
       verb: Set
     remove: true
+
+  # Mark label as read-only on KeyValue to prevent it from being settable
+  - from: swagger-document
+    where: $.definitions.KeyValue.properties.label
+    transform: $["readOnly"] = true
+
+  # Remove the body 'etag' property from Snapshot to avoid CLS conflict with
+  # the response header 'ETag' property (they differ only in casing).
+  - from: swagger-document
+    where: $.definitions.Snapshot.properties
+    transform: delete $.etag
+
+  # Fix descriptions where newlines in the API spec are stripped without adding a space,
+  # causing words to run together (e.g., "arecomposed", "valuescontaining", "archivedstate").
+  - from: swagger-document
+    where: $.definitions.Snapshot.properties.composition_type
+    transform: >-
+      $.description = "The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label.";
+  - from: swagger-document
+    where: $.definitions.Snapshot.properties.retention_period
+    transform: >-
+      $.description = "The amount of time, in seconds, that a snapshot will remain in the archived state before expiring. This property is only writable during the creation of a snapshot. If not specified, the default lifetime of key-value revisions will be used.";
+
+  # Improve the Endpoint parameter description for all cmdlets
+  - where:
+      parameter-name: Endpoint
+    set:
+      parameter-description: The endpoint of the App Configuration instance to send requests to.
 ```

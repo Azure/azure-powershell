@@ -41,7 +41,9 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   [Location <String>]: The location in which uniqueness will be verified.
   [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 
 REGENERATEKEYPARAMETER <IRegenerateKeyParameters>: The parameters used to regenerate an API key.

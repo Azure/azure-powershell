@@ -16,28 +16,28 @@ Gets a quota report for an Azure NetApp Files (ANF) volume.
 ```
 Get-AzNetAppFilesVolumeQuotaReport -ResourceGroupName <String> -AccountName <String> -PoolName <String>
  -Name <String> [-QuotaType <String>] [-QuotaTarget <String>] [-UsageThresholdPercentage <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzNetAppFilesVolumeQuotaReport -Name <String> [-QuotaType <String>] [-QuotaTarget <String>]
  [-UsageThresholdPercentage <Int32>] -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzNetAppFilesVolumeQuotaReport [-QuotaType <String>] [-QuotaTarget <String>]
  [-UsageThresholdPercentage <Int32>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Get-AzNetAppFilesVolumeQuotaReport [-QuotaType <String>] [-QuotaTarget <String>]
  [-UsageThresholdPercentage <Int32>] -InputObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +72,7 @@ This command gets the quota report for the volume "MyAnfVolume" returning only r
 The name of the ANF account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The volume object to return the quota report for
 
 ```yaml
-Type: PSNetAppFilesVolume
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The name of the ANF volume
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: VolumeName
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 The name of the ANF pool
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 The pool object containing the volume to return the quota report for
 
 ```yaml
-Type: PSNetAppFilesPool
+Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -158,27 +158,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-Determines how the cmdlet responds to progress updates.
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -QuotaTarget
 UserID/GroupID/SID based on the quota target type.
 If provided, QuotaType must also be specified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -195,7 +180,7 @@ If provided, QuotaTarget must also be specified.
 Possible values include: 'DefaultUserQuota', 'DefaultGroupQuota', 'IndividualUserQuota', 'IndividualGroupQuota'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +195,7 @@ Accept wildcard characters: False
 The resource group of the ANF volume
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -225,7 +210,7 @@ Accept wildcard characters: False
 The resource id of the ANF volume
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -240,7 +225,7 @@ Accept wildcard characters: False
 Returns records where the usage is greater than or equal to this percentage value (1-100).
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 

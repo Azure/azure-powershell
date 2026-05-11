@@ -1,3 +1,75 @@
+## 15.6.1 - May 2026
+
+## 15.6.0 - May 2026
+#### Az.Accounts 5.4.0 
+* Modified cmdlet `Add-AzEnvironment`
+   - Added parameters `-AzureAppConfigurationEndpointSuffix`, `-AzureAppConfigurationEndpointResourceId`
+* Modified cmdlet `Set-AzEnvironment`
+   - Added parameters `-AzureAppConfigurationEndpointSuffix`, `-AzureAppConfigurationEndpointResourceId`
+#### Az.AppConfiguration 2.1.0 
+* Modified cmdlet `Get-AzAppConfigurationKeyValue`
+   - Added parameter `-Snapshot`
+* Modified cmdlet `Get-AzAppConfigurationLabel`
+   - Added parameter `-ClientRequestId`
+* Modified cmdlet `Get-AzAppConfigurationRevision`
+   - Added parameters `-Tag`, `-ClientRequestId`
+* Modified cmdlet `New-AzAppConfigurationStore`
+   - Added parameters `-DataPlaneProxyAuthenticationMode`, `-DataPlaneProxyPrivateLinkDelegation`, `-DefaultKeyValueRevisionRetentionPeriodInSecond`
+* Modified cmdlet `Remove-AzAppConfigurationKeyValue`
+   - Added parameter `-ClientRequestId`
+* Modified cmdlet `Remove-AzAppConfigurationLock`
+   - Added parameter `-ClientRequestId`
+* Modified cmdlet `Set-AzAppConfigurationKeyValue`
+   - Removed parameters `-Key1`, `-Label1`
+   - Added parameter `-ClientRequestId`
+* Modified cmdlet `Set-AzAppConfigurationLock`
+   - Added parameter `-ClientRequestId`
+* Modified cmdlet `Test-AzAppConfigurationKeyValue`
+   - Added parameters `-Tag`, `-ClientRequestId`
+* Modified cmdlet `Update-AzAppConfigurationStore`
+   - Added parameters `-DataPlaneProxyAuthenticationMode`, `-DataPlaneProxyPrivateLinkDelegation`, `-DefaultKeyValueRevisionRetentionPeriodInSecond`
+* Added cmdlet `Get-AzAppConfigurationOperationDetail`, `Get-AzAppConfigurationReplica`, `Get-AzAppConfigurationSnapshot`, `New-AzAppConfigurationReplica`, `New-AzAppConfigurationSnapshot`, `Remove-AzAppConfigurationReplica`, `Test-AzAppConfigurationSnapshot`, `Update-AzAppConfigurationSnapshot`
+#### Az.Compute 11.5.0 
+* Modified cmdlet `New-AzGallery`
+   - Added parameters `-EnableSystemAssignedIdentity`, `-UserAssignedIdentity`
+* Modified cmdlet `Update-AzGallery`
+   - Added parameters `-EnableSystemAssignedIdentity`, `-DisableSystemAssignedIdentity`, `-UserAssignedIdentity`, `-RemoveUserAssignedIdentity`
+* Modified cmdlet `Update-AzGalleryImageDefinition`
+   - Added parameters `-Feature`, `-AllowUpdateImage`
+#### Az.DataProtection 2.10.0 
+* Modified cmdlet `New-AzDataProtectionBackupConfigurationClientObject`
+   - Added parameters `-AutoProtection`, `-AutoProtectionExclusionRule`
+#### Az.NetAppFiles 1.2.0 
+* Added cmdlet `Get-AzNetAppFilesBucket`, `Get-AzNetAppFilesCache`, `Get-AzNetAppFilesCachePeeringPassphrase`, `New-AzNetAppFilesBucket`, `New-AzNetAppFilesBucketCredential`, `New-AzNetAppFilesCache`, `Remove-AzNetAppFilesBucket`, `Remove-AzNetAppFilesCache`, `Reset-AzNetAppFilesCacheSmbPassword`, `Set-AzNetAppFilesBucketAkvCredential`, `Set-AzNetAppFilesCachePool`, `Update-AzNetAppFilesBucket`, `Update-AzNetAppFilesBucketCertificate`, `Update-AzNetAppFilesCache`
+#### Az.Network 7.27.0 
+* Modified cmdlet `Add-AzLoadBalancerFrontendIpConfig`
+   - Added parameter `-DdosCustomPolicyId`
+* Modified cmdlet `New-AzLoadBalancerFrontendIpConfig`
+   - Added parameter `-DdosCustomPolicyId`
+* Modified cmdlet `Set-AzLoadBalancerFrontendIpConfig`
+   - Added parameters `-DdosCustomPolicyId`, `-RemoveDdosCustomPolicy`
+#### Az.Resources 9.1.0 
+* Added cmdlet `New-AzDenyAssignment`, `Remove-AzDenyAssignment`
+
+## 15.5.0 - April 2026
+#### Az.CosmosDB 1.20.0 
+* Modified cmdlet `New-AzCosmosDBAccount`
+   - Added parameter `-DisableLocalAuth`
+* Modified cmdlet `Update-AzCosmosDBAccount`
+   - Added parameters `-Capabilities`, `-DisableLocalAuth`
+#### Az.Migrate 2.12.0 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameters `-TargetSecurityType`, `-TargetVMSecureBootEnabled`
+#### Az.NetAppFiles 1.1.0 
+* Modified cmdlet `New-AzNetAppFilesVolume`
+   - Added parameter `-DesiredRansomwareProtectionState`
+* Modified cmdlet `Update-AzNetAppFilesVolume`
+   - Added parameter `-DesiredRansomwareProtectionState`
+* Added cmdlet `Clear-AzNetAppFilesRansomwareReportSuspect`, `Get-AzNetAppFilesRansomwareReport`, `Get-AzNetAppFilesVolumeQuotaReport`
+#### Az.Network 7.26.0 
+* Modified cmdlet `New-AzFirewall`
+   - Added parameter `-EdgeZone`
+
 ## 15.4.0 - March 2026
 #### Az.Compute 11.4.0 
 * Modified cmdlet `Add-AzVMDataDisk`
@@ -1240,6 +1312,9 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
+
+
 
 
 

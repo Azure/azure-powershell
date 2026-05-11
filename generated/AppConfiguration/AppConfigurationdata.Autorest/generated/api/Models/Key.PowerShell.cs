@@ -7,6 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.PowerShell;
 
+    /// <summary>
+    /// Keys serve as identifiers for key-values and are used to store and retrieve corresponding values.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(KeyTypeConverter))]
     public partial class Key
     {
@@ -153,6 +156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             return ToJsonString();
         }
     }
+    /// Keys serve as identifiers for key-values and are used to store and retrieve corresponding values.
     [System.ComponentModel.TypeConverter(typeof(KeyTypeConverter))]
     public partial interface IKey
 

@@ -518,9 +518,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupInstanceResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupInstanceResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupInstanceResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupInstanceResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -546,9 +546,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupVaultResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupVaultResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupVaultResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupVaultResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -616,9 +616,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AbsoluteDeleteOption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AbsoluteDeleteOption</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AbsoluteDeleteOption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AbsoluteDeleteOption</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -644,9 +644,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AdHocBackupRuleOptions</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdHocBackupRuleOptions</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AdHocBackupRuleOptions</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdHocBackupRuleOptions</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -666,9 +666,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AdhocBackupTriggerOption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdhocBackupTriggerOption</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AdhocBackupTriggerOption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdhocBackupTriggerOption</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -688,9 +688,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AdhocBasedTriggerContext</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdhocBasedTriggerContext</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AdhocBasedTriggerContext</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdhocBasedTriggerContext</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -710,9 +710,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AdlsBlobBackupDatasourceParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdlsBlobBackupDatasourceParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AdlsBlobBackupDatasourceParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdlsBlobBackupDatasourceParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -738,9 +738,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AuthCredentials</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdlsBlobBackupDatasourceParametersForAutoProtection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AuthCredentials</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdlsBlobBackupDatasourceParametersForAutoProtection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -760,9 +760,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupDiscreteRecoveryPoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AuthCredentials</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupDiscreteRecoveryPoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AuthCredentials</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ObjectType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ObjectType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupDiscreteRecoveryPoint</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupDiscreteRecoveryPoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -842,9 +864,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupFindRestorableTimeRangesRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupFindRestorableTimeRangesRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupFindRestorableTimeRangesRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupFindRestorableTimeRangesRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -876,9 +898,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupFindRestorableTimeRangesResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupFindRestorableTimeRangesResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupFindRestorableTimeRangesResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupFindRestorableTimeRangesResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -898,9 +920,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupFindRestorableTimeRangesResponseResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupFindRestorableTimeRangesResponseResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupFindRestorableTimeRangesResponseResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupFindRestorableTimeRangesResponseResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -956,9 +978,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupJob</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupJob</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupJob</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupJob</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1146,9 +1168,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupJobResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupJobResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupJobResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupJobResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1204,9 +1226,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupJobResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupJobResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupJobResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupJobResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1226,9 +1248,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupParams</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupParams</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupParams</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupParams</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1254,9 +1276,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRecoveryPoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRecoveryPoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRecoveryPoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRecoveryPoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1276,9 +1298,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRecoveryPointBasedRestoreRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRecoveryPointBasedRestoreRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRecoveryPointBasedRestoreRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRecoveryPointBasedRestoreRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1334,9 +1356,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRecoveryPointResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRecoveryPointResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRecoveryPointResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRecoveryPointResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1392,9 +1414,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRecoveryPointResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRecoveryPointResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRecoveryPointResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRecoveryPointResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1414,9 +1436,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRecoveryTimeBasedRestoreRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRecoveryTimeBasedRestoreRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRecoveryTimeBasedRestoreRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRecoveryTimeBasedRestoreRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1472,9 +1494,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRehydrationRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRehydrationRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRehydrationRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRehydrationRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1506,9 +1528,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRestoreRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRestoreRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRestoreRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRestoreRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1546,9 +1568,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRestoreWithRehydrationRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRestoreWithRehydrationRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRestoreWithRehydrationRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRestoreWithRehydrationRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1616,9 +1638,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureBackupRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1644,9 +1666,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureMonitorAlertSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureMonitorAlertSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureMonitorAlertSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureMonitorAlertSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1666,9 +1688,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureOperationalStoreParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureOperationalStoreParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureOperationalStoreParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureOperationalStoreParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1700,9 +1722,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureRetentionRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureRetentionRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.AzureRetentionRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureRetentionRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1734,9 +1756,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupCriteria</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupCriteria</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupCriteria</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupCriteria</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1756,9 +1778,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupDatasourceParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupDatasourceParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupDatasourceParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupDatasourceParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1778,9 +1800,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupInstance</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupInstance</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupInstance</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupInstance</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1830,9 +1852,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupInstanceResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupInstanceResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupInstanceResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupInstanceResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1852,9 +1874,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1874,9 +1896,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupPolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupPolicy</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1902,9 +1924,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupSchedule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupSchedule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupSchedule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupSchedule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1930,9 +1952,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupVault</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupVault</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupVault</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupVault</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1988,9 +2010,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupVaultResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupVaultResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupVaultResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupVaultResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2022,9 +2044,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupVaultResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupVaultResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupVaultResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupVaultResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2044,9 +2066,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseBackupPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BaseBackupPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseBackupPolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BaseBackupPolicy</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2072,9 +2094,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseBackupPolicyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BaseBackupPolicyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseBackupPolicyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BaseBackupPolicyResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2130,9 +2152,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseBackupPolicyResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BaseBackupPolicyResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseBackupPolicyResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BaseBackupPolicyResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2152,9 +2174,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BasePolicyRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BasePolicyRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BasePolicyRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BasePolicyRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2180,9 +2202,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BaseResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BaseResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2202,9 +2224,71 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BlobBackupDatasourceParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupAutoProtectionRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BlobBackupDatasourceParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupAutoProtectionRule</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Mode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ObjectType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Pattern</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Mode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ObjectType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Pattern</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupAutoProtectionSettings</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupAutoProtectionSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ObjectType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ObjectType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupDatasourceParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupDatasourceParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2230,9 +2314,59 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CheckNameAvailabilityRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupDatasourceParametersForAutoProtection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CheckNameAvailabilityRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupDatasourceParametersForAutoProtection</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ObjectType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ObjectType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupRuleBasedAutoProtectionSettings</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupRuleBasedAutoProtectionSettings</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ObjectType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ObjectType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CheckNameAvailabilityRequest</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CheckNameAvailabilityRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2252,9 +2386,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CheckNameAvailabilityResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CheckNameAvailabilityResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CheckNameAvailabilityResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CheckNameAvailabilityResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2286,9 +2420,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CmkKekIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CmkKekIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CmkKekIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CmkKekIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2314,9 +2448,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CmkKeyVaultProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CmkKeyVaultProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CmkKeyVaultProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CmkKeyVaultProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2336,9 +2470,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CopyOnExpiryOption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CopyOnExpiryOption</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CopyOnExpiryOption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CopyOnExpiryOption</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2358,9 +2492,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CopyOption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CopyOption</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CopyOption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CopyOption</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2380,9 +2514,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CrossRegionRestoreDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CrossRegionRestoreDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CrossRegionRestoreDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CrossRegionRestoreDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2408,9 +2542,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CrossRegionRestoreJobRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CrossRegionRestoreJobRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CrossRegionRestoreJobRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CrossRegionRestoreJobRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2442,9 +2576,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CrossRegionRestoreJobsRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CrossRegionRestoreJobsRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CrossRegionRestoreJobsRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CrossRegionRestoreJobsRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2470,9 +2604,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CrossRegionRestoreSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CrossRegionRestoreSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CrossRegionRestoreSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CrossRegionRestoreSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2492,9 +2626,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CrossSubscriptionRestoreSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CrossSubscriptionRestoreSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CrossSubscriptionRestoreSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CrossSubscriptionRestoreSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2514,9 +2648,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CustomCopyOption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CustomCopyOption</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.CustomCopyOption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.CustomCopyOption</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2542,9 +2676,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.Datasource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.Datasource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.Datasource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.Datasource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2594,9 +2728,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DatasourceSet</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DatasourceSet</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DatasourceSet</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DatasourceSet</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2652,9 +2786,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DataStoreInfoBase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DataStoreInfoBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DataStoreInfoBase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DataStoreInfoBase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2680,9 +2814,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DataStoreParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DataStoreParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DataStoreParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DataStoreParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2708,9 +2842,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.Day</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.Day</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.Day</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.Day</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2736,9 +2870,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DefaultResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DefaultResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DefaultResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DefaultResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2758,9 +2892,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupInstance</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupInstance</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupInstance</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupInstance</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2810,9 +2944,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupInstanceResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupInstanceResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupInstanceResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupInstanceResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2868,9 +3002,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupInstanceResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupInstanceResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupInstanceResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupInstanceResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2890,9 +3024,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupVault</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupVault</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupVault</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupVault</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2966,9 +3100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupVaultResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupVaultResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletedBackupVaultResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletedBackupVaultResourceListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2988,9 +3122,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeleteOption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeleteOption</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeleteOption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeleteOption</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3016,9 +3150,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletionInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletionInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DeletionInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DeletionInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3056,9 +3190,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppBaseResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppBaseResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppBaseResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppBaseResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3114,9 +3248,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppBaseResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppBaseResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppBaseResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppBaseResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3136,9 +3270,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppIdentityDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppIdentityDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppIdentityDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppIdentityDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3164,9 +3298,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppProxyResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3186,9 +3320,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppProxyResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppProxyResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppProxyResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppProxyResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3208,9 +3342,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3230,9 +3364,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3252,9 +3386,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppTrackedResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppTrackedResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.DppTrackedResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.DppTrackedResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3274,9 +3408,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.EncryptionSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.EncryptionSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.EncryptionSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.EncryptionSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3302,9 +3436,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.Error</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.Error</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.Error</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.Error</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3336,9 +3470,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ExportJobsResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ExportJobsResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ExportJobsResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ExportJobsResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3376,9 +3510,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.FeatureValidationRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.FeatureValidationRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.FeatureValidationRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.FeatureValidationRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3410,9 +3544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.FeatureValidationRequestBase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.FeatureValidationRequestBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.FeatureValidationRequestBase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.FeatureValidationRequestBase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3432,9 +3566,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.FeatureValidationResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.FeatureValidationResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.FeatureValidationResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.FeatureValidationResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3460,9 +3594,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.FeatureValidationResponseBase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.FeatureValidationResponseBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.FeatureValidationResponseBase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.FeatureValidationResponseBase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3482,9 +3616,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.FetchSecondaryRPsRequestParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.FetchSecondaryRPsRequestParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.FetchSecondaryRPsRequestParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.FetchSecondaryRPsRequestParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3510,9 +3644,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IdentityDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IdentityDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IdentityDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IdentityDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3538,9 +3672,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ImmediateCopyOption</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ImmediateCopyOption</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ImmediateCopyOption</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ImmediateCopyOption</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3560,9 +3694,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ImmutabilitySettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ImmutabilitySettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ImmutabilitySettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ImmutabilitySettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3582,9 +3716,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.InnerError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.InnerError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.InnerError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.InnerError</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3604,9 +3738,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.InnerErrorAdditionalInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.InnerErrorAdditionalInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.InnerErrorAdditionalInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.InnerErrorAdditionalInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3626,9 +3760,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ItemLevelRestoreCriteria</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ItemLevelRestoreCriteria</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ItemLevelRestoreCriteria</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ItemLevelRestoreCriteria</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3648,9 +3782,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ItemLevelRestoreTargetInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ItemLevelRestoreTargetInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ItemLevelRestoreTargetInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ItemLevelRestoreTargetInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3682,9 +3816,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ItemPathBasedRestoreCriteria</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ItemPathBasedRestoreCriteria</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ItemPathBasedRestoreCriteria</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ItemPathBasedRestoreCriteria</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3728,9 +3862,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.JobExtendedInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.JobExtendedInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.JobExtendedInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.JobExtendedInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3762,9 +3896,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.JobExtendedInfoAdditionalDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.JobExtendedInfoAdditionalDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.JobExtendedInfoAdditionalDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.JobExtendedInfoAdditionalDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3784,9 +3918,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.JobSubTask</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.JobSubTask</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.JobSubTask</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.JobSubTask</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3824,9 +3958,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.JobSubTaskAdditionalDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.JobSubTaskAdditionalDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.JobSubTaskAdditionalDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.JobSubTaskAdditionalDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3846,9 +3980,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesClusterBackupDatasourceParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterBackupDatasourceParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesClusterBackupDatasourceParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterBackupDatasourceParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3916,9 +4050,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesClusterRestoreCriteria</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterRestoreCriteria</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesClusterRestoreCriteria</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterRestoreCriteria</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3986,9 +4120,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesClusterRestoreCriteriaNamespaceMappings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterRestoreCriteriaNamespaceMappings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesClusterRestoreCriteriaNamespaceMappings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterRestoreCriteriaNamespaceMappings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4008,9 +4142,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesClusterVaultTierRestoreCriteria</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterVaultTierRestoreCriteria</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesClusterVaultTierRestoreCriteria</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterVaultTierRestoreCriteria</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4090,9 +4224,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesClusterVaultTierRestoreCriteriaNamespaceMappings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterVaultTierRestoreCriteriaNamespaceMappings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesClusterVaultTierRestoreCriteriaNamespaceMappings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterVaultTierRestoreCriteriaNamespaceMappings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4112,9 +4246,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesPvRestoreCriteria</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesPvRestoreCriteria</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesPvRestoreCriteria</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesPvRestoreCriteria</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4146,9 +4280,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesStorageClassRestoreCriteria</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesStorageClassRestoreCriteria</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.KubernetesStorageClassRestoreCriteria</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesStorageClassRestoreCriteria</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4180,9 +4314,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.NamespacedNameResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.NamespacedNameResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.NamespacedNameResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.NamespacedNameResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4208,9 +4342,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.OperationExtendedInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.OperationExtendedInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.OperationExtendedInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.OperationExtendedInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4230,9 +4364,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.OperationJobExtendedInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.OperationJobExtendedInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.OperationJobExtendedInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.OperationJobExtendedInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4258,9 +4392,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.OperationResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.OperationResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.OperationResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.OperationResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4298,9 +4432,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.PatchBackupVaultInput</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.PatchBackupVaultInput</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.PatchBackupVaultInput</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.PatchBackupVaultInput</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4320,9 +4454,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.PatchResourceGuardInputTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.PatchResourceGuardInputTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.PatchResourceGuardInputTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.PatchResourceGuardInputTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4342,9 +4476,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.PatchResourceRequestInputTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.PatchResourceRequestInputTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.PatchResourceRequestInputTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.PatchResourceRequestInputTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4364,9 +4498,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.PolicyInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.PolicyInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.PolicyInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.PolicyInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4392,9 +4526,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ProtectionStatusDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ProtectionStatusDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ProtectionStatusDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ProtectionStatusDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4414,9 +4548,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RangeBasedItemLevelRestoreCriteria</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RangeBasedItemLevelRestoreCriteria</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RangeBasedItemLevelRestoreCriteria</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RangeBasedItemLevelRestoreCriteria</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4448,9 +4582,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RecoveryPointDataStoreDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RecoveryPointDataStoreDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RecoveryPointDataStoreDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RecoveryPointDataStoreDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4506,9 +4640,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceDeletionInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceDeletionInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceDeletionInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceDeletionInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4540,9 +4674,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuard</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuard</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuard</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuard</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4580,9 +4714,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardOperation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardOperation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardOperation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardOperation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4608,9 +4742,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardOperationDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardOperationDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardOperationDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardOperationDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4636,9 +4770,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardProxyBase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardProxyBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardProxyBase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardProxyBase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4670,9 +4804,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardProxyBaseResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardProxyBaseResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardProxyBaseResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardProxyBaseResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4728,9 +4862,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardProxyBaseResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardProxyBaseResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardProxyBaseResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardProxyBaseResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4750,9 +4884,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4820,9 +4954,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardResourceList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardResourceList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceGuardResourceList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceGuardResourceList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4842,9 +4976,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceMoveDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceMoveDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ResourceMoveDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ResourceMoveDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4888,9 +5022,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RestorableTimeRange</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RestorableTimeRange</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RestorableTimeRange</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RestorableTimeRange</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4922,9 +5056,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RestoreFilesTargetInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RestoreFilesTargetInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RestoreFilesTargetInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RestoreFilesTargetInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4956,9 +5090,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RestoreJobRecoveryPointDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RestoreJobRecoveryPointDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RestoreJobRecoveryPointDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RestoreJobRecoveryPointDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4984,9 +5118,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RestoreTargetInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RestoreTargetInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RestoreTargetInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RestoreTargetInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5018,9 +5152,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RestoreTargetInfoBase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RestoreTargetInfoBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RestoreTargetInfoBase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RestoreTargetInfoBase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5052,9 +5186,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RetentionTag</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RetentionTag</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.RetentionTag</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.RetentionTag</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5080,9 +5214,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ScheduleBasedBackupCriteria</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ScheduleBasedBackupCriteria</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ScheduleBasedBackupCriteria</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ScheduleBasedBackupCriteria</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5132,9 +5266,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ScheduleBasedTriggerContext</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ScheduleBasedTriggerContext</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ScheduleBasedTriggerContext</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ScheduleBasedTriggerContext</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5154,9 +5288,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SecretStoreBasedAuthCredentials</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SecretStoreBasedAuthCredentials</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SecretStoreBasedAuthCredentials</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SecretStoreBasedAuthCredentials</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5176,9 +5310,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SecretStoreResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SecretStoreResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SecretStoreResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SecretStoreResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5210,9 +5344,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SoftDeleteSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SoftDeleteSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SoftDeleteSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SoftDeleteSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5238,9 +5372,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.StopProtectionRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.StopProtectionRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.StopProtectionRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.StopProtectionRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5260,9 +5394,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.StorageSetting</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.StorageSetting</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.StorageSetting</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.StorageSetting</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5282,9 +5416,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SupportedFeature</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SupportedFeature</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SupportedFeature</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SupportedFeature</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5316,9 +5450,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SuspendBackupRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SuspendBackupRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SuspendBackupRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SuspendBackupRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5338,9 +5472,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SyncBackupInstanceRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SyncBackupInstanceRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SyncBackupInstanceRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SyncBackupInstanceRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5360,9 +5494,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SystemData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5412,9 +5546,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.TaggingCriteria</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.TaggingCriteria</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.TaggingCriteria</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.TaggingCriteria</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5440,9 +5574,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.TargetDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.TargetDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.TargetDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.TargetDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5480,9 +5614,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.TriggerContext</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.TriggerContext</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.TriggerContext</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.TriggerContext</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5502,9 +5636,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.UnlockDeleteRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.UnlockDeleteRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.UnlockDeleteRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.UnlockDeleteRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5530,9 +5664,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.UnlockDeleteResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.UnlockDeleteResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.UnlockDeleteResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.UnlockDeleteResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5552,9 +5686,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.UserFacingError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.UserFacingError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.UserFacingError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.UserFacingError</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5604,9 +5738,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.UserFacingErrorProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.UserFacingErrorProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.UserFacingErrorProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.UserFacingErrorProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5626,9 +5760,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.UserFacingWarningDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.UserFacingWarningDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.UserFacingWarningDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.UserFacingWarningDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

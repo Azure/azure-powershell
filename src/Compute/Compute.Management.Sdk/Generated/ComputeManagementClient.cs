@@ -144,6 +144,10 @@ namespace Microsoft.Azure.Management.Compute
         /// </summary>
         public virtual IVirtualMachineScaleSetExtensionsOperations VirtualMachineScaleSetExtensions { get; private set; }
         /// <summary>
+        /// Gets the IVirtualMachineScaleSetLifeCycleHookEventsOperations
+        /// </summary>
+        public virtual IVirtualMachineScaleSetLifeCycleHookEventsOperations VirtualMachineScaleSetLifeCycleHookEvents { get; private set; }
+        /// <summary>
         /// Gets the IVirtualMachineScaleSetVMSOperations
         /// </summary>
         public virtual IVirtualMachineScaleSetVMSOperations VirtualMachineScaleSetVMS { get; private set; }
@@ -511,6 +515,7 @@ namespace Microsoft.Azure.Management.Compute
             this.RestorePoints = new RestorePointsOperations(this);
             this.VirtualMachineScaleSetRollingUpgrades = new VirtualMachineScaleSetRollingUpgradesOperations(this);
             this.VirtualMachineScaleSetExtensions = new VirtualMachineScaleSetExtensionsOperations(this);
+            this.VirtualMachineScaleSetLifeCycleHookEvents = new VirtualMachineScaleSetLifeCycleHookEventsOperations(this);
             this.VirtualMachineScaleSetVMS = new VirtualMachineScaleSetVMSOperations(this);
             this.VirtualMachineScaleSetVMExtensions = new VirtualMachineScaleSetVMExtensionsOperations(this);
             this.VirtualMachineScaleSetVMRunCommands = new VirtualMachineScaleSetVMRunCommandsOperations(this);
