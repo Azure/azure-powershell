@@ -45,6 +45,14 @@ Describe 'FileShare-PrivateEndpoint' {
         # Even in playback mode, we need Az.Network cmdlets to be callable (HttpPipelineMocking intercepts them)
         $azNetworkAvailable = $null -ne (Get-Module -ListAvailable Az.Network | Where-Object { $_.Version -ge [Version]"7.0.0" })
         
+        Write-Host "--------------------- ListAvailable"
+        Get-Module -ListAvailable Az.Network | ForEach-Object {Write-Host "Az.NetWork Version is" $_.Version}
+        Get-Module -ListAvailable Az.Accounts | ForEach-Object {Write-Host "Az.Accounts Version is" $_.Version $_.Path}
+        Write-Host "-------------------- Imported"
+        Get-Module Az.Network | ForEach-Object {Write-Host "Az.NetWork Version is" $_.Version}
+        Get-Module Az.Accounts | ForEach-Object {Write-Host "Az.Accounts Version is" $_.Version $_.Path}
+        Write-Host "--------------------"
+        
         if (-not $azNetworkAvailable) {
             Write-Warning "Az.Network module not available or version too old. Private Endpoint tests will be skipped."
             $script:skipPrivateEndpointTests = $true
