@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Roles cannot contain more than one permission. The Permissions array must contain exactly one permission entry.
+        ///   Looks up a localized string similar to Custom role definitions created or updated with this cmdlet must have exactly one permission entry in Permissions.
         /// </summary>
         internal static string RoleDefinitionMultiplePermissionsNotAllowed {
             get {

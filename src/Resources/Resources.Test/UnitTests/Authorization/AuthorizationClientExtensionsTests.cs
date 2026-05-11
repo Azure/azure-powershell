@@ -606,8 +606,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Authorization
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidateRoleDefinition_TwoPermissionEntries_ThrowsRoleDefinitionMultiplePermissionsNotAllowed()
         {
-            // Mirrors the service-side RoleDefinitionMultiplePermissionsNotAllowed contract:
-            // RBAC currently rejects role definitions with more than one permission entry.
+            // The Azure RBAC service currently rejects custom role create/update requests with
+            // more than one permission entry. We mirror this client-side so users get a clear,
+            // descriptive error instead of an HTTP round-trip. Note: this restriction is scoped
+            // to create/update via these cmdlets; existing built-in role definitions can
+            // legitimately expose multiple permission entries on read.
             var roleDef = CreatePSRoleDefinition(permissions:
             [
                 new PSPermission { Actions = ["a1"] },
@@ -615,7 +618,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Authorization
             ]);
 
             var ex = Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
-            Assert.Contains("more than one permission", ex.Message, StringComparison.OrdinalIgnoreCase);
+            Assert.Contains("exactly one permission entry", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
         [Fact]

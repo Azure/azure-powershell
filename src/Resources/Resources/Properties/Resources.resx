@@ -325,7 +325,7 @@
     <value>Invalid value for Permissions</value>
   </data>
   <data name="RoleDefinitionMultiplePermissionsNotAllowed" xml:space="preserve">
-    <value>Roles cannot contain more than one permission. The Permissions array must contain exactly one permission entry.</value>
+    <value>Custom role definitions created or updated with this cmdlet must have exactly one permission entry in Permissions.</value>
   </data>
   <data name="InvalidAssignableScopes" xml:space="preserve">
     <value>Invalid value for AssignableScopes</value>
