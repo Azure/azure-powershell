@@ -74,8 +74,12 @@ if ($IsWindows) {
         & '$executeCIStepScriptPath' -TestAutorest -AutorestDirectory `$_.Directory.FullName
     }
 "@
+    $winPsExitCode = $LASTEXITCODE
     
     Set-Location $currentPath
+    if ($winPsExitCode -ne 0) {
+        throw "Windows PowerShell 5.1 AutoGen module tests failed with exit code $winPsExitCode."
+    }
     Write-Host -ForegroundColor DarkGreen "-------------------- End testing AutoGen modules with Windows PowerShell 5.1 ... --------------------`n`n`n`n`n"
 }
 
