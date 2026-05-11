@@ -131,5 +131,33 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RemoveSyncMember");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateSyncGroupWithIdentity()
+        {
+            TestRunner.RunTestScript("Test-CreateSyncGroupWithIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateSyncGroupWithIdentity()
+        {
+            TestRunner.RunTestScript("Test-UpdateSyncGroupWithIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateSyncMemberWithIdentity()
+        {
+            TestRunner.RunTestScript("Test-CreateSyncMemberWithIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateSyncMemberWithIdentity()
+        {
+            TestRunner.RunTestScript("Test-UpdateSyncMemberWithIdentity");
+        }
     }
 }
