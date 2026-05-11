@@ -30,50 +30,38 @@ Set-AzRoleDefinition -Role <PSRoleDefinition> [-SkipClientSideScopeValidation]
 ```
 
 ## DESCRIPTION
-The Set-AzRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control. Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object. The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes. NotActions, DataActions, NotDataActions are optional.
+The Set-AzRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control.
+Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object.
+
+The role definition for the updated custom role MUST contain:
+- Id: the unique identifier of the role definition to update
+- Name (or DisplayName): the name of the custom role
+- Description: a short description of the role
+- Permissions: an array of permission objects containing Actions and/or DataActions
+- AssignableScopes: the scopes where the role can be assigned
+
+Each permission object in the Permissions array can contain Actions, NotActions, DataActions, NotDataActions, and optionally Condition and ConditionVersion for Attribute-Based Access Control (ABAC) conditions.
+
+> [!NOTE]
+> The Azure RBAC API currently supports only a single element in the Permissions array when updating custom roles. While the data model supports multiple permission entries, update operations must use exactly one permission object.
 
 ## EXAMPLES
 
 ### Example 1: Update using PSRoleDefinitionObject
 ```powershell
 $roleDef = Get-AzRoleDefinition "Contoso On-Call"
-$roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
+$roleDef.Permissions[0].Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
 $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
 $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 Set-AzRoleDefinition -Role $roleDef
 ```
 
-### Example 2: Create using JSON file
+### Example 2: Update using JSON file
 ```powershell
 Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
-<#
-Following is a sample updated role definition json for Set-AzRoleDefinition:
-{
-        "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
-        "Name": "Updated Role",
-        "Description": "Can monitor all resources and start and restart virtual machines",
-        "Actions":
-        [
-            "*/read",
-            "Microsoft.ClassicCompute/virtualmachines/restart/action",
-            "Microsoft.ClassicCompute/virtualmachines/start/action"
-        ],
-        "NotActions":
-        [
-            "*/write"
-        ],
-        "DataActions":
-        [
-            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
-        ],
-        "NotDataActions":
-        [
-            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
-        ],
-        "AssignableScopes": ["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
-}
-#>
 ```
+
+Updates a custom role definition from a JSON file. The JSON file must include the role's Id property.
 
 ## PARAMETERS
 
