@@ -32,11 +32,13 @@ namespace Microsoft.Azure.PowerShell.Authentication.Test.Mocks
 
         public Func<AccessToken> TokenFactory { get; set; }
 
+#pragma warning disable CS0618 // ManagedIdentityCredential(string) is obsolete; suppressed pending migration to ManagedIdentityId API
         public MockManagedIdentityCredential(string accountId)
             : base(accountId)
         {
             AccountId = accountId;
         }
+#pragma warning restore CS0618
 
         public override ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken = default(CancellationToken))
         {

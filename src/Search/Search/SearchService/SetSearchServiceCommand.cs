@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                         // Update the properties passed in (treating nulls as no change to be consistent)
                         NetworkRuleSet = networkRuleSet ?? service.NetworkRuleSet,
                         PublicNetworkAccess = publicNetworkAccess ?? service.PublicNetworkAccess,
-                        Identity = (Identity)identity ?? service.Identity,
+                        Identity = (Azure.Management.Search.Models.Identity)identity ?? service.Identity,
 
                         PartitionCount = PartitionCount,
                         ReplicaCount = ReplicaCount,

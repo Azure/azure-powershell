@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         [Ps1Xml(Label = "Type", Target = ViewControl.List, Position = 0)]
         public PSIdentityType Type { get; set; }
 
-        public static explicit operator PSIdentity(Identity v)
+        public static explicit operator PSIdentity(Azure.Management.Search.Models.Identity v)
         {
             PSIdentityType? identityType = v?.Type.ParsePSIdentityType();
 
@@ -45,12 +45,12 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             }
         }
 
-        public static explicit operator Identity(PSIdentity v)
+        public static explicit operator Azure.Management.Search.Models.Identity(PSIdentity v)
         {
             string identityType = v?.Type.ToString();
             if (identityType != null)
             {
-                return new Identity(
+                return new Azure.Management.Search.Models.Identity(
                     type: identityType,
                     principalId: v?.PrincipalId,
                     tenantId: v?.TenantId);

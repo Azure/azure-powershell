@@ -52,6 +52,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authority = upParameters.Environment.ActiveDirectoryAuthority;
 
             var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
+#pragma warning disable CS0618 // UsernamePasswordCredential is obsolete (ROPC incompatible with MFA); suppressed for backward compatibility
             UsernamePasswordCredential passwordCredential;
 
             var credentialOptions = new UsernamePasswordCredentialOptions()
@@ -82,6 +83,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             {
                 throw new InvalidOperationException(Resources.MissingPasswordAndNoCache);
             }
+#pragma warning restore CS0618
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
