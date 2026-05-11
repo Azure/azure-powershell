@@ -6361,25 +6361,25 @@ function Test-VirtualMachineScaleSetZonalPlatformFaultDomainAlignMode
         # Common
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $vmssName = 'vs' + $rgname;
+        $vmssName = 'vmss' + $rgname;
         $domainNameLabel1 = "d1" + $rgname;
         $adminUsername = Get-ComputeTestResourceName;
         $password = Get-PasswordForVM;
         $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
-        # Create VMSS with BestEffortAligned ZonalPlatformFaultDomainAlignMode using SimpleParameterSet
+        # Create VMSS with Aligned ZonalPlatformFaultDomainAlignMode using SimpleParameterSet
         $vmss = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName `
-            -DomainNameLabel $domainNameLabel1 -ZonalPlatformFaultDomainAlignMode "BestEffortAligned" `
+            -DomainNameLabel $domainNameLabel1 -ZonalPlatformFaultDomainAlignMode "Aligned" `
             -OrchestrationMode "Flexible";
 
-        Assert-AreEqual $vmss.ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
+        Assert-AreEqual $vmss.ZonalPlatformFaultDomainAlignMode "Aligned";
 
         # Update the VMSS ZonalPlatformFaultDomainAlignMode
         $updatedVmss = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName `
-            -ZonalPlatformFaultDomainAlignMode "Aligned";
+            -ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
 
-        Assert-AreEqual $updatedVmss.ZonalPlatformFaultDomainAlignMode "Aligned";
+        Assert-AreEqual $updatedVmss.ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
     }
     finally
     {
@@ -6390,7 +6390,7 @@ function Test-VirtualMachineScaleSetZonalPlatformFaultDomainAlignMode
 
 <#
 .SYNOPSIS
-Test New-AzVmssConfig with ZonalPlatformFaultDomainAlignMode and per-disk StorageFaultDomainAlignment
+Test New-AzVmssConfig with ZonalPlatformFaultDomainAlignMode and per-disk StorageFaultDomainAlignment, then create the VMSS
 #>
 function Test-VirtualMachineScaleSetConfigStorageFaultDomainAlignment
 {
@@ -6403,11 +6403,38 @@ function Test-VirtualMachineScaleSetConfigStorageFaultDomainAlignment
         # Common
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
+        $vmssName = 'vmss' + $rgname;
+        $subnetName = 'subnet' + $rgname;
+        $vnetName = 'vnet' + $rgname;
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+
         # Create a VMSS config with BestEffortAligned VMSS-level alignment
         $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName "Standard_D4s_v3" `
             -OrchestrationMode "Flexible" -ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
 
         Assert-AreEqual $vmssConfig.ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
+
+        # Create VNet and Subnet
+        $vnetAddressPrefix = "10.0.0.0/16";
+        $subnetAddressPrefix = "10.0.0.0/24";
+        $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $subnetAddressPrefix;
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddressPrefix -Subnet $subnetConfig;
+
+        # Get subnet object
+        $subnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnetName;
+
+        # Configure IP and NIC
+        $ipCfg = New-AzVmssIpConfig -Name "ipconfig1" -SubnetId $subnet.Id;
+        $vmssConfig = Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig `
+            -Name "nicConfig" -Primary $true -IPConfiguration $ipCfg;
+
+        # Configure OS profile
+        $vmssConfig = Set-AzVmssOSProfile -VirtualMachineScaleSet $vmssConfig `
+            -ComputerNamePrefix "test" `
+            -AdminUsername $adminUsername `
+            -AdminPassword $password;
 
         # Set OS disk with BestEffortAligned per-disk alignment
         Set-AzVmssStorageProfile -VirtualMachineScaleSet $vmssConfig `
@@ -6423,6 +6450,21 @@ function Test-VirtualMachineScaleSetConfigStorageFaultDomainAlignment
             -DiskSizeGB 128 -StorageAccountType "Standard_LRS" -StorageFaultDomainAlignment "Aligned";
 
         Assert-AreEqual $vmssConfig.VirtualMachineProfile.StorageProfile.DataDisks[0].StorageFaultDomainAlignment "Aligned";
+
+        # Create the VMSS using the config
+        $vmssResult = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssConfig;
+
+        # Verify the created VMSS has the correct properties
+        Assert-AreEqual $vmssResult.ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
+        Assert-AreEqual $vmssResult.VirtualMachineProfile.StorageProfile.OsDisk.StorageFaultDomainAlignment "BestEffortAligned";
+        Assert-AreEqual $vmssResult.VirtualMachineProfile.StorageProfile.DataDisks[0].StorageFaultDomainAlignment "Aligned";
+
+        # Get the VMSS and verify properties persisted
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+
+        Assert-AreEqual $vmssGet.ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.StorageProfile.OsDisk.StorageFaultDomainAlignment "BestEffortAligned";
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.StorageProfile.DataDisks[0].StorageFaultDomainAlignment "Aligned";
     }
     finally
     {

@@ -2478,6 +2478,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
             }
+
+            if (this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode))
+            {
+                this.VirtualMachineScaleSet.ZonalPlatformFaultDomainAlignMode = this.ZonalPlatformFaultDomainAlignMode;
+            }
         }
     }
 }

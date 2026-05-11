@@ -8170,3 +8170,56 @@ function Test-VMDataDiskIOPSMBPS
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Set-AzVMOSDisk and Add-AzVMDataDisk with StorageFaultDomainAlignment parameter
+#>
+function Test-VMStorageFaultDomainAlignment
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = 'vm' + $rgname;
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+
+        # Test Set-AzVMOSDisk with StorageFaultDomainAlignment
+        $vmConfig = Set-AzVMOSDisk -VM $vmConfig -Name 'osdisk' -CreateOption 'FromImage' `
+            -StorageFaultDomainAlignment 'BestEffortAligned';
+
+        Assert-AreEqual $vmConfig.StorageProfile.OsDisk.StorageFaultDomainAlignment 'BestEffortAligned';
+
+        # Test Add-AzVMDataDisk with StorageFaultDomainAlignment (managed disk path)
+        $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk0' -Lun 0 -CreateOption 'Empty' `
+            -DiskSizeInGB 128 -StorageAccountType 'Standard_LRS' -Caching 'ReadOnly' `
+            -StorageFaultDomainAlignment 'Aligned';
+
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].StorageFaultDomainAlignment 'Aligned';
+
+        # Test Add-AzVMDataDisk with BestEffortAligned on a second disk
+        $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk1' -Lun 1 -CreateOption 'Empty' `
+            -DiskSizeInGB 64 -StorageAccountType 'Standard_LRS' -Caching 'None' `
+            -StorageFaultDomainAlignment 'BestEffortAligned';
+
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[1].StorageFaultDomainAlignment 'BestEffortAligned';
+
+        # Verify disk without StorageFaultDomainAlignment has null value
+        $vmConfig = Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk2' -Lun 2 -CreateOption 'Empty' `
+            -DiskSizeInGB 32 -StorageAccountType 'Standard_LRS' -Caching 'None';
+
+        Assert-Null $vmConfig.StorageProfile.DataDisks[2].StorageFaultDomainAlignment;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
