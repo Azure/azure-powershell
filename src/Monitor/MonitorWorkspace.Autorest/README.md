@@ -40,16 +40,20 @@ subject-prefix: $(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
 
 directive:
+  # Strip the 'AzureMonitorWorkspace' prefix from all subjects so cmdlets are named as MonitorWorkspace*
   - where:
       subject: ^AzureMonitorWorkspace(.*)
     set:
       subject: $1
+  # Remove non-expanded Create/Update variants (JSON body variants); keep only Expanded, JsonFilePath, and JsonString
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+  # Remove the operations list cmdlet as it is internal scaffolding not intended for public use
   - where:
       subject: MonitorOperation
     remove: true
+  # Configure default table view for workspace resources to show the most relevant columns
   - where:
       model-name: AzureMonitorWorkspaceResource
     set:
@@ -60,6 +64,8 @@ directive:
           - ProvisioningState
           - PublicNetworkAccess
           - ResourceGroupName
+  # Announce breaking change: PrivateEndpointConnection and ProvisioningState output types change from
+  # single object / fixed array to List in the next major version (7.0.0 / Az 15.0.0)
   - where:
       verb: Get|New|Update
     set:
