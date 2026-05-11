@@ -12,13 +12,13 @@ Microsoft Azure PowerShell: MonitorWorkspace cmdlets
 
 ## Az.MonitorWorkspace Cmdlets
 ### [Add-AzMonitorWorkspaceIssueAlert](Add-AzMonitorWorkspaceIssueAlert.md)
-Add or add alerts in the issue
+Add or update alerts associated with an issue
 
 ### [Add-AzMonitorWorkspaceIssueInvestigationResult](Add-AzMonitorWorkspaceIssueInvestigationResult.md)
 Adds investigation result
 
 ### [Add-AzMonitorWorkspaceIssueResource](Add-AzMonitorWorkspaceIssueResource.md)
-Add or add resources in the issue
+Add or update resources associated with an issue
 
 ### [Get-AzMonitorWorkspace](Get-AzMonitorWorkspace.md)
 Returns the specified Azure Monitor Workspace
@@ -57,13 +57,13 @@ Deletes an Azure Monitor Workspace
 Delete an issue
 
 ### [Set-AzMonitorWorkspace](Set-AzMonitorWorkspace.md)
-Update an Azure Monitor Workspace
+Create or update an Azure Monitor Workspace
 
 ### [Set-AzMonitorWorkspaceIssueBackgroundVisualization](Set-AzMonitorWorkspaceIssueBackgroundVisualization.md)
 Set the background visualization for the issue
 
 ### [Set-AzMonitorWorkspaceMetricsContainer](Set-AzMonitorWorkspaceMetricsContainer.md)
-Update metrics container settings for a monitoring account.
+Create or update metrics container settings for a monitoring account.
 
 ### [Update-AzMonitorWorkspace](Update-AzMonitorWorkspace.md)
 Update an Azure Monitor Workspace
@@ -72,10 +72,10 @@ Update an Azure Monitor Workspace
 Update an issue
 
 ### [Update-AzMonitorWorkspaceIssueAlert](Update-AzMonitorWorkspaceIssueAlert.md)
-Add or add alerts in the issue
+Add or update alerts associated with an issue
 
 ### [Update-AzMonitorWorkspaceIssueResource](Update-AzMonitorWorkspaceIssueResource.md)
-Add or add resources in the issue
+Add or update resources associated with an issue
 
 ### [Update-AzMonitorWorkspaceMetricsContainer](Update-AzMonitorWorkspaceMetricsContainer.md)
 Update metrics container settings for a monitoring account.

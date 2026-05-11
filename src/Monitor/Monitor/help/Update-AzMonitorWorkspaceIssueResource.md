@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMonitorWorkspaceIssueResource
 
 ## SYNOPSIS
-Add or add resources in the issue
+Add or update resources associated with an issue
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ Update-AzMonitorWorkspaceIssueResource -AzureMonitorWorkspaceName <String> -Issu
 ```
 
 ## DESCRIPTION
-Add or add resources in the issue
+Add or update resources associated with an issue
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzMonitorWorkspaceIssueAlert
 
 ## SYNOPSIS
-Add or add alerts in the issue
+Add or update alerts associated with an issue
 
 ## SYNTAX
 
@@ -65,7 +65,7 @@ Add-AzMonitorWorkspaceIssueAlert -AzureMonitorWorkspaceName <String> -IssueName 
 ```
 
 ## DESCRIPTION
-Add or add alerts in the issue
+Add or update alerts associated with an issue
 
 ## EXAMPLES
 
