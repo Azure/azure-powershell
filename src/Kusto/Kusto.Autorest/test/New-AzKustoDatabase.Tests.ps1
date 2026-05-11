@@ -36,7 +36,7 @@ Describe 'New-AzKustoDatabase' {
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
 
-    It 'CreateWithCMK' -skip {
+    It 'CreateWithCMK' {
         $name = "testdatabase" + $env.rstr6
         $databaseFullName = $env.kustoClusterName + "/" + $name
         $keyVaultPropertyKeyName = $env.keyName
