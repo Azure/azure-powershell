@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the `System.Security.Cryptography.Cng` dependency to v5.0.0.
 
 ## Version 7.11.2
 * Added Cross region restore support for upcoming regions Southeast Asia 3
