@@ -295,6 +295,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid value for Permissions.
+        /// </summary>
+        internal static string InvalidPermissions {
+            get {
+                return ResourceManager.GetString("InvalidPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid format of the resource group identifier. Expected &apos;subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}&apos;..
         /// </summary>
         internal static string InvalidFormatOfResourceGroupId {
