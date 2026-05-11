@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Get-AzStorageFileContent` and `Set-AzStorageFileContent` to properly inherit dynamic parameters from base cmdlet class
 
 ## Version 9.6.1
 * Removed breaking change warnings for TLS 1.0 and TLS 1.1 deprecation

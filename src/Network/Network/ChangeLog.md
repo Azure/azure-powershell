@@ -19,9 +19,7 @@
 --->
 
 ## Upcoming Release
-<<<<<<< yash/dynamic-parameter-fix
-* Fixed private endpoint connection and private link resource cmdlets to properly inherit dynamic parameters from base cmdlet class
-=======
+* Fixed `Approve-AzPrivateEndpointConnection`, `Deny-AzPrivateEndpointConnection`, `Get-AzPrivateEndpointConnection`, `Remove-AzPrivateEndpointConnection`, and `Get-AzPrivateLinkResource` to properly inherit dynamic parameters from base cmdlet class
 * Updated `UserAssignedIdentityId` parameter type from string to string[] in Azure Firewall Policy to input multiple UAMIs
 
 ## Version 7.27.0
@@ -31,11 +29,10 @@
 
 ## Version 7.26.0
 * Onboarded `Microsoft.KubernetesConfiguration/privateLinkScopes` to Private Link Common Cmdlets
->>>>>>> main
 * Added EdgeZone (Extended Location) parameter support for Azure Firewall
     - Added `-EdgeZone` parameter to `New-AzFirewall` cmdlet
     - When `-EdgeZone` is specified, availability zones are not supported for Azure Firewall resources
-    
+
 ## Version 7.25.1
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
 * Onboarded `Microsoft.DurableTask/schedulers` to Private Link Common Cmdlets
