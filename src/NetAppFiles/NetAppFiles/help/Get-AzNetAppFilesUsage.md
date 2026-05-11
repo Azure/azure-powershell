@@ -31,7 +31,7 @@ Gets `totalTibsPerSubscription` usage information on "westus" region
 
 ### Example 2
 ```powershell
-Get-AzNetAppFilesUsage -Location "westus" 
+Get-AzNetAppFilesUsage -Location "westus"
 ```
 
 Lists of usage information for all usage types on "westus" region

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.4.3
+* Updated preannouncement breaking changes date to May 2026. 
+
 ## Version 3.4.2
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 

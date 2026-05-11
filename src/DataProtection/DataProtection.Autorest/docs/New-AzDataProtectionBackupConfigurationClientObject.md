@@ -13,7 +13,8 @@ Creates new backup configuration object
 ## SYNTAX
 
 ```
-New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceTypes>
+New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceTypes> [-AutoProtection]
+ [-AutoProtectionExclusionRule <IBlobBackupAutoProtectionRule[]>]
  [-BackupHookReference <NamespacedNameResource[]>] [-ExcludedNamespace <String[]>]
  [-ExcludedResourceType <String[]>] [-IncludeAllContainer] [-IncludeClusterScopeResource <Boolean?>]
  [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>] [-LabelSelector <String[]>]
@@ -55,14 +56,80 @@ BlobBackupDatasourceParameters {conabb, conwxy, conzzz}
 
 This command can be used to create a backup configuration client object used for configuring backup for vaulted Blob backup containers.
 
+### Example 3: Create a BackupConfiguration for enabling auto-protection for AzureBlob.
+```powershell
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -AutoProtection
+```
+
+```output
+ObjectType                                          AutoProtectionSettingEnabled AutoProtectionSettingObjectType
+----------                                          --------------------------- ------------------------------
+BlobBackupDatasourceParametersForAutoProtection      True                        BlobBackupRuleBasedAutoProtectionSettings
+```
+
+This command creates a backup configuration client object with auto-protection enabled for Azure Blob.
+When auto-protection is enabled, new containers will be automatically protected without requiring manual configuration.
+
+### Example 4: Create a BackupConfiguration for enabling auto-protection for AzureDataLakeStorage with exclusion rules.
+```powershell
+$rule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupAutoProtectionRule]::new()
+$rule.ObjectType = "BlobBackupAutoProtectionRule"
+$rule.Pattern = "logs-"
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureDataLakeStorage -AutoProtection -AutoProtectionExclusionRule @($rule)
+```
+
+```output
+ObjectType                                              AutoProtectionSettingEnabled AutoProtectionSettingObjectType
+----------                                              --------------------------- ------------------------------
+AdlsBlobBackupDatasourceParametersForAutoProtection      True                        BlobBackupRuleBasedAutoProtectionSettings
+```
+
+This command creates a backup configuration client object with auto-protection enabled for Azure Data Lake Storage.
+The exclusion rule excludes containers whose names match the prefix "logs-" from auto-protection.
+
 ## PARAMETERS
+
+### -AutoProtection
+Switch parameter to enable auto-protection.
+When enabled, new containers matching the rules will be automatically protected.
+Use this parameter for DatasourceType AzureBlob or AzureDataLakeStorage.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoProtectionExclusionRule
+List of auto-protection exclusion rules.
+Each rule is a BlobBackupAutoProtectionRule object specifying container name prefix patterns to exclude.
+Use this parameter along with -AutoProtection.
+To construct, see NOTES section for AUTOPROTECTIONEXCLUSIONRULE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBlobBackupAutoProtectionRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BackupHookReference
 Hook reference to be executed during backup.
 To construct, see NOTES section for BACKUPHOOKREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.NamespacedNameResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.NamespacedNameResource[]
 Parameter Sets: (All)
 Aliases:
 

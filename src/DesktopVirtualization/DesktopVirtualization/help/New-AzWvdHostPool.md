@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdHostPool
 
 ## SYNOPSIS
-create a host pool.
+Create a host pool.
 
 ## SYNTAX
 
@@ -51,7 +51,7 @@ New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
 ```
 
 ## DESCRIPTION
-create a host pool.
+Create a host pool.
 
 ## EXAMPLES
 

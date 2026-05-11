@@ -16,42 +16,53 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDisconnectedOperationsD
 
 Describe 'New-AzDisconnectedOperationsDisconnectedOperation' {
     It 'CreateExpanded' {
-        $result = New-AzDisconnectedOperationsDisconnectedOperation -Name $env.NewResource -ResourceGroupName $env.ResourceGroupName -Location $env.Location -ConnectionIntent 'Disconnected' -Tag @{}
+        $result = New-AzDisconnectedOperationsDisconnectedOperation -Name "winfield-ps-test-3" -ResourceGroupName $env.ResourceGroupName -ConnectionIntent "Disconnected" -BillingConfigurationAutoRenew $env.DisabledAutoRenew -CurrentCore $env.CurrentCore -CurrentPricingModel $env.AnnualPricingModel -BenefitPlanAzureHybridWindowsServerBenefit "Enabled" -BenefitPlanWindowsServerVMCount 10 -Location $env.Location -Tag @{}
 
         $result | Should -Not -BeNullOrEmpty
         $result.BillingModel | Should -Be "Capacity"
         $result.ConnectionIntent | Should -Be "Disconnected"
-        $result.Name | Should -Be $env.NewResource
+        $result.Name | Should -Be "winfield-ps-test-3"
         $result.ResourceGroupName | Should -Be $env.ResourceGroupName
         $result.Type | Should -Be "Microsoft.Edge/disconnectedOperations"
         $result.Location | Should -Be $env.Location
+        $result.CurrentCore | Should -Be $env.CurrentCore
+        $result.CurrentPricingModel | Should -Be $env.AnnualPricingModel
+        $result.BenefitPlanAzureHybridWindowsServerBenefit | Should -Be "Enabled"
+        $result.BenefitPlanWindowsServerVMCount | Should -Be 10
 
-        Remove-AzDisconnectedOperationsDisconnectedOperation -Name $env.NewResource -ResourceGroupName $env.ResourceGroupName
     }
 
     It 'CreateViaJsonFilePath' {
-        $result = New-AzDisconnectedOperationsDisconnectedOperation -Name $env.NewResource -ResourceGroupName $env.ResourceGroupName -JsonFilePath (Join-Path $PSScriptRoot './jsonFiles/CreateDisconnectedOperations.json')
+        $result = New-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -JsonFilePath (Join-Path $PSScriptRoot './jsonFiles/CreateDisconnectedOperations.json')
 
         $result | Should -Not -BeNullOrEmpty
         $result.BillingModel | Should -Be "Capacity"
         $result.ConnectionIntent | Should -Be "Disconnected"
-        $result.Name | Should -Be $env.NewResource
+        $result.Name | Should -Be $env.Name
         $result.ResourceGroupName | Should -Be $env.ResourceGroupName
+        $result.Type | Should -Be "Microsoft.Edge/disconnectedOperations"
+        $result.Location | Should -Be $env.Location
+        $result.CurrentCore | Should -Be $env.CurrentCore
+        $result.CurrentPricingModel | Should -Be $env.AnnualPricingModel
+        $result.BenefitPlanAzureHybridWindowsServerBenefit | Should -Be "Enabled"
+        $result.BenefitPlanWindowsServerVMCount | Should -Be 10
 
-        Remove-AzDisconnectedOperationsDisconnectedOperation -Name $env.NewResource -ResourceGroupName $env.ResourceGroupName
     }
 
     It 'CreateViaJsonString' {
-        $result = New-AzDisconnectedOperationsDisconnectedOperation -Name $env.NewResource -ResourceGroupName $env.ResourceGroupName -JsonString '{"properties":{"connectionIntent":"Disconnected","billingModel":"Capacity"},"tags":{},"location":"westus3"}'
+        $result = New-AzDisconnectedOperationsDisconnectedOperation -Name $env.Name -ResourceGroupName $env.ResourceGroupName -JsonString '{"properties":{"connectionIntent":"Disconnected","billingModel":"Capacity","billingConfiguration":{"autoRenew":"Disabled","current":{"cores":8,"pricingModel":"Annual"},"upcoming":{"cores":8,"pricingModel":"Annual"}},"benefitPlans":{"azureHybridWindowsServerBenefit":"Enabled","windowsServerVmCount":10}},"tags":{},"location":"eastus2euap"}'
 
         $result | Should -Not -BeNullOrEmpty
         $result.BillingModel | Should -Be "Capacity"
         $result.ConnectionIntent | Should -Be "Disconnected"
-        $result.Name | Should -Be $env.NewResource
+        $result.Name | Should -Be $env.Name
         $result.ResourceGroupName | Should -Be $env.ResourceGroupName
         $result.Type | Should -Be "Microsoft.Edge/disconnectedOperations"
-        $result.Location | Should -Be "westus3"
+        $result.Location | Should -Be $env.Location
+        $result.CurrentCore | Should -Be $env.CurrentCore
+        $result.CurrentPricingModel | Should -Be $env.AnnualPricingModel
+        $result.BenefitPlanAzureHybridWindowsServerBenefit | Should -Be "Enabled"
+        $result.BenefitPlanWindowsServerVMCount | Should -Be 10
 
-        Remove-AzDisconnectedOperationsDisconnectedOperation -Name $env.NewResource -ResourceGroupName $env.ResourceGroupName
     }
 }

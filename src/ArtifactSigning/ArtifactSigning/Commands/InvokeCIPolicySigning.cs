@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ArtifactSigning
             Position = 2,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The endpoint url used to submit request to Azure TrustedSigning.")]
+            HelpMessage = "The endpoint url used to submit request to Azure ArtifactSigning.")]
         public string EndpointUrl { get; set; }
 
         /// <summary>

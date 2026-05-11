@@ -361,4 +361,15 @@ directive:
         deprecated-by-version: 2.0.0
         deprecated-by-azversion: 16.0.0
         change-effective-date: May 2026
+
+  - where:
+      verb: Update
+      subject: VNetPeering
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-change: Update-AzDatabricksVNetPeering
+        change-description: The parameter types of 'AllowForwardedTraffic', 'AllowGatewayTransit', 'AllowVirtualNetworkAccess' and 'UseRemoteGateway' will be changed from 'System.Boolean' to 'System.Management.Automation.SwitchParameter'. To disable these options, omit the switch parameter instead of passing ':$false', as '-SwitchParam:$false' may not behave as expected due to a known PowerShell issue (see https://github.com/PowerShell/PowerShell/issues/25027).
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: May 2026
 ```

@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionpolicytriggerscheduleclientobject
 schema: 2.0.0
@@ -13,9 +13,8 @@ Creates new Schedule object
 ## SYNTAX
 
 ```
-New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays <DateTime[]>
- -IntervalType <BackupFrequency> -IntervalCount <Int32>
- [<CommonParameters>]
+New-AzDataProtectionPolicyTriggerScheduleClientObject -IntervalCount <Int32> -IntervalType <BackupFrequency>
+ -ScheduleDays <DateTime[]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +44,7 @@ New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $date -Inter
 R/2021-03-03T12:49:55+05:30/PT4H
 ```
 
-This command creates an hourly schedule for Azure Backup Rule.
+This command creates an hourly scheudle for Azure Backup Rule.
 
 ## PARAMETERS
 
@@ -71,7 +70,6 @@ Frequency of the backup.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency
 Parameter Sets: (All)
 Aliases:
-Accepted values: Daily, Weekly, Hourly
 
 Required: True
 Position: Named
@@ -107,3 +105,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

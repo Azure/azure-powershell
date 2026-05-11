@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 schema: 2.0.0
@@ -13,15 +13,16 @@ Creates or updates a BackupVault resource belonging to a resource group.
 ## SYNTAX
 
 ```
-New-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> -Location <String>
- -StorageSetting <IStorageSetting[]> [-SubscriptionId <String>] [-ETag <String>] [-IdentityType <String>]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-ImmutabilityState <ImmutabilityState>]
+New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
+ -StorageSetting <IStorageSetting[]> -VaultName <String> [-AsJob]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CmkEncryptionKeyUri <String>]
+ [-CmkEncryptionState <EncryptionState>] [-CmkIdentityType <IdentityType>]
+ [-CmkInfrastructureEncryption <InfrastructureEncryptionState>] [-CmkUserAssignedIdentityId <String>]
  [-CrossRegionRestoreState <CrossRegionRestoreState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-CmkEncryptionState <EncryptionState>] [-CmkInfrastructureEncryption <InfrastructureEncryptionState>]
- [-CmkIdentityType <IdentityType>] [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
+ [-ETag <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-ImmutabilityState <ImmutabilityState>] [-NoWait] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -92,6 +93,7 @@ This command creates a backup vault with CMK encryption enabled
 ## PARAMETERS
 
 ### -AsJob
+
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -233,6 +235,7 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 
+
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -323,6 +326,7 @@ Accept wildcard characters: False
 
 ### -NoWait
 
+
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -387,7 +391,7 @@ Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
 To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IStorageSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IStorageSetting[]
 Parameter Sets: (All)
 Aliases:
 
@@ -486,3 +490,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

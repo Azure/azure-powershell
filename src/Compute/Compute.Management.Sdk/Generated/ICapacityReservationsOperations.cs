@@ -29,6 +29,12 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
         /// </param>
+        /// <param name='expand'>
+        /// The expand expression to apply on the operation. Based on the expand
+        /// param(s) specified we return Virtual Machine or ScaleSet VM Instance or
+        /// both resource Ids which are associated to capacity reservation group in the
+        /// response.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -41,7 +47,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CapacityReservation>>> ListByCapacityReservationGroupWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CapacityReservation>>> ListByCapacityReservationGroupWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The operation that retrieves information about the capacity reservation.
