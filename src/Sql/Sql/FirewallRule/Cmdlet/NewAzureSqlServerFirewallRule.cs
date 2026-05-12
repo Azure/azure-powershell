@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
                     ModelAdapter.GetFirewallRule(this.ResourceGroupName, this.ServerName, AzureRuleName);
                 }
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
