@@ -15,11 +15,11 @@ Create a file share.
 ### CreateExpanded (Default)
 ```
 New-AzFileShare -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- -Location <String> [-MediaTier <String>] [-MountName <String>] [-NfProtocolPropertyRootSquash <String>]
- [-Protocol <String>] [-ProvisionedIoPerSec <Int32>] [-ProvisionedStorageGiB <Int32>]
- [-ProvisionedThroughputMiBPerSec <Int32>] [-PublicAccessPropertyAllowedSubnet <String[]>]
- [-PublicNetworkAccess <String>] [-Redundancy <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Location <String> [-AllowedSubnet <String[]>] [-EncryptionInTransitRequired <String>] [-MediaTier <String>]
+ [-MountName <String>] [-Protocol <String>] [-ProvisionedIoPerSec <Int32>] [-ProvisionedStorageGiB <Int32>]
+ [-ProvisionedThroughputMiBPerSec <Int32>] [-PublicNetworkAccess <String>] [-Redundancy <String>]
+ [-RootSquash <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -43,10 +43,13 @@ Create a file share.
 
 ### Example 1: Create a file share
 ```powershell
-New-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -Location uaecentral -MediaTier SSD -NfProtocolPropertyRootSquash AllSquash -Protocol NFS -ProvisionedIoPerSec 5000 -ProvisionedStorageGiB 100 -ProvisionedThroughputMiBPerSec 125 -PublicAccessPropertyAllowedSubnet $vnet1,$vnet2 -Tag @{"tag1" = "value1"; "tag2" = "value2" }
+New-AzFileShare -ResourceName "testshare" -ResourceGroupName "myresourcegroup" -Location uaecentral -MediaTier SSD -RootSquash AllSquash -Protocol NFS -ProvisionedIoPerSec 5000 -ProvisionedStorageGiB 100 -ProvisionedThroughputMiBPerSec 125 -AllowedSubnet $vnet1,$vnet2 -Tag @{"tag1" = "value1"; "tag2" = "value2" } -EncryptionInTransitRequired Enabled
 ```
 
 ```output
+AllowedSubnet                             : {/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1,
+                                            /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet2}
+EncryptionInTransitRequired               : Enabled
 HostName                                  : fs-xxxxxxxxxxxxxxxxx.z41.file.storage.azure.net
 Id                                        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.FileShares/fileShares/testshare
 IncludedBurstIoPerSec                     : 15000
@@ -55,7 +58,6 @@ MaxBurstIoPerSecCredit                    : 36000000
 MediaTier                                 : SSD
 MountName                                 : testshare
 Name                                      : testshare
-NfProtocolPropertyRootSquash              : AllSquash
 PrivateEndpointConnection                 : {}
 Protocol                                  : NFS
 ProvisionedIoPerSec                       : 5000
@@ -65,11 +67,10 @@ ProvisionedStorageNextAllowedDowngrade    : 2/26/2026 6:56:35 AM
 ProvisionedThroughputMiBPerSec            : 125
 ProvisionedThroughputNextAllowedDowngrade : 2/26/2026 6:56:35 AM
 ProvisioningState                         : Succeeded
-PublicAccessPropertyAllowedSubnet         : {/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1,
-                                            /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet2}
 PublicNetworkAccess                       : Enabled
 Redundancy                                : Local
 ResourceGroupName                         : myresourcegroup
+RootSquash                                : AllSquash
 SystemDataCreatedAt                       :
 SystemDataCreatedBy                       :
 SystemDataCreatedByType                   :
@@ -86,6 +87,21 @@ Type                                      : Microsoft.FileShares/fileShares
 This command creates a file share.
 
 ## PARAMETERS
+
+### -AllowedSubnet
+The allowed set of subnets when access is restricted.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -110,6 +126,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionInTransitRequired
+Encryption in transit defines whether data is encrypted for NFS shares.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -180,21 +211,6 @@ Accept wildcard characters: False
 
 ### -MountName
 The name of the file share as seen by the end user when mounting the share, such as in a URI or UNC format in their operating system.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NfProtocolPropertyRootSquash
-Root squash defines how root users on clients are mapped to the NFS share.
 
 ```yaml
 Type: System.String
@@ -284,21 +300,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicAccessPropertyAllowedSubnet
-The allowed set of subnets when access is restricted.
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublicNetworkAccess
 Gets or sets allow or disallow public network access to azure managed file share
 
@@ -354,6 +355,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RootSquash
+Root squash defines how root users on clients are mapped to the NFS share.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
