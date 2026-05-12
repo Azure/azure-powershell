@@ -1,5 +1,6 @@
 function New-AzDataProtectionBackupVault
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates or updates a BackupVault resource belonging to a resource group.')]
