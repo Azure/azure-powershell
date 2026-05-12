@@ -64,11 +64,11 @@ if ($IsWindows) {
     
     $winPs = Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
     & $winPs -NoProfile -Command @"
-    `$ErrorActionPreference = 'Continue'
-    Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force
+    `$ErrorActionPreference = 'Stop'
+    Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force -ErrorAction Stop
     `$env:PSModulePath = `$env:PSModulePath + ';' + (pwd).Path
-    `$rootFolder = (Get-item `$PWD).Parent.Parent
-    Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
+    `$rootFolder = (Get-Item `$PWD -ErrorAction Stop).Parent.Parent
+    Get-ChildItem -File -Recurse test-module.ps1 -ErrorAction Stop | ForEach-Object {
         Write-Host `$_.Directory.FullName
         cd `$rootFolder
         & '$executeCIStepScriptPath' -TestAutorest -AutorestDirectory `$_.Directory.FullName
