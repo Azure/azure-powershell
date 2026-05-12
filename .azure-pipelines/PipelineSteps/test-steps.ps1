@@ -63,7 +63,7 @@ if ($IsWindows) {
     Set-Location $debugFolderPath
     
     $winPs = Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
-    & $winPs -NoProfile -Command @"
+    & $winPs -NoLogo -NoProfile -NonInteractive -Command @"
     `$ErrorActionPreference = 'Stop'
     `$IsWindows = `$true
     `$IsLinux = `$false
