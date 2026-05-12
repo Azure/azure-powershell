@@ -68,6 +68,7 @@ if ($IsWindows) {
     `$IsWindows = `$true
     `$IsLinux = `$false
     `$IsMacOS = `$false
+    `$env:PowerShellPlatform = 'Windows PowerShell'
     Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force -ErrorAction Stop
     `$env:PSModulePath = `$env:PSModulePath + ';' + (pwd).Path
     `$rootFolder = (Get-Item `$PWD -ErrorAction Stop).Parent.Parent.FullName
