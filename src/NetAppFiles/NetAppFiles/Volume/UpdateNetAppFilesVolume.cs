@@ -198,6 +198,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         public string SmbNonBrowsable { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "The desired state of the Advanced Ransomware Protection (ARP) feature. Possible values include: 'Enabled', 'Disabled'")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string DesiredRansomwareProtectionState { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
@@ -248,7 +254,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 Location = InputObject.Location;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 Name = NameParts[2];
@@ -257,7 +263,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
                 Location = PoolObject.Location;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }
@@ -266,12 +272,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             //    ExecuteCmdlet_2022_11_01(tagPairs);
             //}
             PSNetAppFilesVolumeDataProtection dataProtection = null;
-            if (SnapshotPolicyId != null || Backup != null)
+            if (!string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null || !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState))
             {
                 dataProtection = new PSNetAppFilesVolumeDataProtection
                 {
-                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
-                    Backup = Backup
+                    Snapshot = !string.IsNullOrWhiteSpace(SnapshotPolicyId) ? new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId } : null,
+                    Backup = Backup,
+                    RansomwareProtection = !string.IsNullOrWhiteSpace(DesiredRansomwareProtectionState) ? new PSNetAppFilesVolumeRansomwareProperties { DesiredRansomwareProtectionState = DesiredRansomwareProtectionState } : null
                 };
             }
 

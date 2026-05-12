@@ -279,6 +279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         Description = @"tags to be updated",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchTags) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.ParameterBreakingChange("Tag", "16.0.0", "6.0.0", "2026/06/02", ChangeDescription="The parameter 'Tag' will be removed from the Update cmdlet of Application.")]
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchTags Tag { get => _applicationBody.Tag ?? null /* object */; set => _applicationBody.Tag = value; }
 
         /// <summary>

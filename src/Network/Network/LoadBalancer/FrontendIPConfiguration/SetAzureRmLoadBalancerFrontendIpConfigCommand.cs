@@ -121,6 +121,19 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         public string GatewayLoadBalancerId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The DDoS custom policy resource ID to associate with the frontend IP configuration.",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string DdosCustomPolicyId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Removes the DDoS custom policy association from the frontend IP configuration.",
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter RemoveDdosCustomPolicy { get; set; }
+
         public override void Execute()
         {
 
@@ -130,6 +143,11 @@ namespace Microsoft.Azure.Commands.Network
             if (vFrontendIPConfigurationsIndex == -1)
             {
                 throw new ArgumentException("FrontendIPConfigurations with the specified name does not exist");
+            }
+
+            if (this.RemoveDdosCustomPolicy.IsPresent && !string.IsNullOrEmpty(this.DdosCustomPolicyId))
+            {
+                throw new ArgumentException("Specify either DdosCustomPolicyId or RemoveDdosCustomPolicy, but not both.");
             }
 
             if (string.Equals(ParameterSetName, "SetByResourceSubnet"))
@@ -209,6 +227,26 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 vFrontendIpConfigurations.PublicIPPrefix.Id = this.PublicIpAddressPrefixId;
             }
+
+            if (!string.IsNullOrEmpty(this.DdosCustomPolicyId))
+            {
+                if (vFrontendIpConfigurations.DdosSettings == null)
+                {
+                    vFrontendIpConfigurations.DdosSettings = new PSDdosSettings();
+                }
+
+                vFrontendIpConfigurations.DdosSettings.DdosCustomPolicy = new PSResourceId { Id = this.DdosCustomPolicyId };
+            }
+            else if (this.RemoveDdosCustomPolicy.IsPresent)
+            {
+                if (vFrontendIpConfigurations.DdosSettings == null)
+                {
+                    vFrontendIpConfigurations.DdosSettings = new PSDdosSettings();
+                }
+
+                vFrontendIpConfigurations.DdosSettings.DdosCustomPolicy = null;
+            }
+
             this.LoadBalancer.FrontendIpConfigurations[vFrontendIPConfigurationsIndex] = vFrontendIpConfigurations;
             WriteObject(this.LoadBalancer, true);
         }

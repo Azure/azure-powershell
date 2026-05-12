@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a configuration store with the specified parameters.
+Update a configuration store with the specified parameters.
 .Description
-update a configuration store with the specified parameters.
+Update a configuration store with the specified parameters.
 .Example
 Update-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpstest_gp -DisableLocalAuth -EnablePurgeProtection -PublicNetworkAccess 'Enabled'
 .Example
@@ -40,7 +40,9 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [KeyValueName <String>]: Identifier of key and label combination. Key and label are joined by $ character. Label is optional.
   [Location <String>]: The location in which uniqueness will be verified.
   [PrivateEndpointConnectionName <String>]: Private endpoint connection name
+  [ReplicaName <String>]: The name of the replica.
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
+  [SnapshotName <String>]: The name of the snapshot.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/update-azappconfigurationstore
@@ -73,6 +75,29 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
     # Identity Parameter
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Local", "Pass-through")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The data plane proxy authentication mode.
+    # This property manages the authentication mode of request to the data plane resources.
+    ${DataPlaneProxyAuthenticationMode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
+    # The data plane proxy private link delegation.
+    # This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
+    ${DataPlaneProxyPrivateLinkDelegation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.Int64]
+    # The duration in seconds to retain new key value revisions.
+    # Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores.
+    ${DefaultKeyValueRevisionRetentionPeriodInSecond},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
@@ -212,8 +237,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

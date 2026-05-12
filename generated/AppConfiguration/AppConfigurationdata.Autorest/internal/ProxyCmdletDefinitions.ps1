@@ -37,7 +37,8 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IAppConfigurationdataIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [Key <String>]: The key of the key-value to retrieve.
+  [Key <String>]: The key of the key-value.
+  [Name <String>]: The name of the snapshot.
 .Link
 https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationkeyvalue
 #>
@@ -56,6 +57,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Path')]
     [System.String]
     # A filter used to match keys.
+    # Syntax reference:
+    # https://aka.ms/azconfig/docs/keyvaluefiltering
     ${Key},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -67,13 +70,16 @@ param(
     [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [System.String]
-    # Instructs the server to return elements that appear after the element referred to by the specified token.
+    # Instructs the server to return elements that appear after the element referred
+    # to by the specified token.
     ${After},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [System.String]
-    # A filter used to match labels
+    # A filter used to match labels.
+    # Syntax reference:
+    # https://aka.ms/azconfig/docs/keyvaluefiltering
     ${Label},
 
     [Parameter()]
@@ -85,11 +91,45 @@ param(
     # Used to select what fields are present in the returned resource(s).
     ${Select},
 
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
+    [System.String]
+    # A filter used get key-values for a snapshot.
+    # The value should be the name of
+    # the snapshot.
+    # Not valid when used with 'key' and 'label' filters.
+    ${Snapshot},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
+    # A filter used to query by tags.
+    # Syntax reference:
+    # https://aka.ms/azconfig/docs/keyvaluefiltering
+    ${Tag},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
     [System.String]
-    # Requests the server to respond with the state of the resource at the specified time.
+    # Requests the server to respond with the state of the resource at the specified
+    # time.
     ${AcceptDatetime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
+    [System.String]
+    # Used to perform an operation only if the targeted resource's etag matches the
+    # value provided.
+    ${IfMatch},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
+    [System.String]
+    # Used to perform an operation only if the targeted resource's etag does not
+    # match the value provided.
+    ${IfNoneMatch},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
@@ -101,15 +141,8 @@ param(
     [Parameter(ParameterSetName='GetViaIdentity')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
     [System.String]
-    # Used to perform an operation only if the targeted resource's etag matches the value provided.
-    ${IfMatch},
-
-    [Parameter(ParameterSetName='Get1')]
-    [Parameter(ParameterSetName='GetViaIdentity')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
-    [System.String]
-    # Used to perform an operation only if the targeted resource's etag does not match the value provided.
-    ${IfNoneMatch},
+    # An opaque, globally-unique, client-generated string identifier for the request.
+    ${ClientRequestId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -175,6 +208,208 @@ begin {
             Get = 'Az.AppConfigurationdata.private\Get-AzAppConfigurationKeyValue_Get';
             Get1 = 'Az.AppConfigurationdata.private\Get-AzAppConfigurationKeyValue_Get1';
             GetViaIdentity = 'Az.AppConfigurationdata.private\Get-AzAppConfigurationKeyValue_GetViaIdentity';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Gets a list of key-value snapshots.
+.Description
+Gets a list of key-value snapshots.
+.Example
+Get-AzAppConfigurationSnapshot -Endpoint $endpoint
+.Example
+Get-AzAppConfigurationSnapshot -Endpoint $endpoint -Name "mySnapshot"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IAppConfigurationdataIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IAppConfigurationdataIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [Key <String>]: The key of the key-value.
+  [Name <String>]: The name of the snapshot.
+.Link
+https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationsnapshot
+#>
+function Get-AzAppConfigurationSnapshot {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Uri')]
+    [System.String]
+    # The endpoint of the App Configuration instance to send requests to.
+    ${Endpoint},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Path')]
+    [System.String]
+    # A filter for the name of the returned snapshots.
+    ${Name},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IAppConfigurationdataIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
+    [System.String]
+    # Instructs the server to return elements that appear after the element referred
+    # to by the specified token.
+    ${After},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("name", "status", "filters", "composition_type", "created", "expires", "retention_period", "size", "items_count", "tags", "etag")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
+    # Used to select what fields are present in the returned resource(s).
+    ${Select},
+
+    [Parameter(ParameterSetName='Get')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("provisioning", "ready", "archived", "failed")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
+    # Used to filter returned snapshots by their status property.
+    ${Status},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
+    [System.String]
+    # Used to guarantee real-time consistency between requests.
+    ${SyncToken},
+
+    [Parameter(ParameterSetName='Get1')]
+    [Parameter(ParameterSetName='GetViaIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
+    [System.String]
+    # An opaque, globally-unique, client-generated string identifier for the request.
+    ${ClientRequestId},
+
+    [Parameter(ParameterSetName='Get1')]
+    [Parameter(ParameterSetName='GetViaIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
+    [System.String]
+    # Used to perform an operation only if the targeted resource's etag matches the
+    # value provided.
+    ${IfMatch},
+
+    [Parameter(ParameterSetName='Get1')]
+    [Parameter(ParameterSetName='GetViaIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Header')]
+    [System.String]
+    # Used to perform an operation only if the targeted resource's etag does not
+    # match the value provided.
+    ${IfNoneMatch},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            Get = 'Az.AppConfigurationdata.private\Get-AzAppConfigurationSnapshot_Get';
+            Get1 = 'Az.AppConfigurationdata.private\Get-AzAppConfigurationSnapshot_Get1';
+            GetViaIdentity = 'Az.AppConfigurationdata.private\Get-AzAppConfigurationSnapshot_GetViaIdentity';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

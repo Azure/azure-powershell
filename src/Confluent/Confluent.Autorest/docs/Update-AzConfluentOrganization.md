@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.Confluent
+Module Name: Az.confluent
 online version: https://learn.microsoft.com/powershell/module/az.confluent/update-azconfluentorganization
 schema: 2.0.0
 ---
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConfluentOrganization
 
 ## SYNOPSIS
-update Organization resource
+Update Organization resource
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzConfluentOrganization -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-update Organization resource
+Update Organization resource
 
 ## EXAMPLES
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.confluent.Models.IConfluentIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -146,7 +146,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -161,7 +162,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Microsoft Azure subscription id
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -226,11 +228,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IConfluentIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.confluent.Models.IConfluentIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOrganizationResource
+### Microsoft.Azure.PowerShell.Cmdlets.confluent.Models.IOrganizationResource
 
 ## NOTES
 

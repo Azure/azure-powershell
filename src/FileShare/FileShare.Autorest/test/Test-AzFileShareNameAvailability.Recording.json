@@ -1,0 +1,236 @@
+{
+  "Test-AzFileShareNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01",
+      "Content": "{\r\n  \"name\": \"testshare-available\",\r\n  \"type\": \"Microsoft.FileShares/fileShares\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "83" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1ce76977dce6531d7373ed7b02fbcdb8" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/fceb8551-0d42-4cea-a780-39622b2cd8bb" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "53aad3ac-fc90-4072-89a4-f5035a81860f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260428T094906Z:53aad3ac-fc90-4072-89a4-f5035a81860f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 96AB0C45DDC047618A7D2AF4AF3E0CF8 Ref B: SG2AA1040517060 Ref C: 2026-04-28T09:49:05Z" ],
+        "Date": [ "Tue, 28 Apr 2026 09:49:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzFileShareNameAvailability+[NoContext]+CheckViaJsonString+$POST+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01",
+      "Content": "{\r\n  \"type\": \"Microsoft.FileShares/fileShares\",\r\n  \"name\": \"testshare-json\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "78" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d2b8d67386bde5013e63ae876f74ef3e" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/801316f4-2ced-4c0f-876f-597dd2c244be" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "2e26f189-1d79-4dc8-a09c-6d1fbdd210ce" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260428T094907Z:2e26f189-1d79-4dc8-a09c-6d1fbdd210ce" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AB90E8AAF5564AECAF7798A34790760D Ref B: SG2AA1040517060 Ref C: 2026-04-28T09:49:06Z" ],
+        "Date": [ "Tue, 28 Apr 2026 09:49:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzFileShareNameAvailability+[NoContext]+CheckViaJsonFilePath+$POST+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01",
+      "Content": "ew0KICAidHlwZSI6ICJNaWNyb3NvZnQuRmlsZVNoYXJlcy9maWxlU2hhcmVzIiwNCiAgIm5hbWUiOiAidGVzdHNoYXJlLWZpbGUiDQp9DQo=",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "80" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c5be2414cffbb561962e600c3e033f1c" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/f4acc3df-ac8e-4f85-8d4d-40df4478ab0f" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "187cba88-78f0-4231-baa4-58252d92f620" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260428T094908Z:187cba88-78f0-4231-baa4-58252d92f620" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 168E276CE3C1450C9558E890313D5970 Ref B: SG2AA1040517060 Ref C: 2026-04-28T09:49:07Z" ],
+        "Date": [ "Tue, 28 Apr 2026 09:49:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzFileShareNameAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01",
+      "Content": "{\r\n  \"name\": \"testshare-body\",\r\n  \"type\": \"Microsoft.FileShares/fileShares\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "78" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "7d11339ba27efe811f0fe7ab4c7ad66d" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/2ef90b16-e4dd-40d1-bbcc-76f61781b684" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
+        "x-ms-correlation-request-id": [ "dea11668-d3fb-4f43-a6a6-39b64b63b944" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260428T094908Z:dea11668-d3fb-4f43-a6a6-39b64b63b944" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 99A9F8708F7B415796C974477FDA4F4B Ref B: SG2AA1040517060 Ref C: 2026-04-28T09:49:08Z" ],
+        "Date": [ "Tue, 28 Apr 2026 09:49:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzFileShareNameAvailability+[NoContext]+CheckViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01",
+      "Content": "{\r\n  \"name\": \"testshare-identity\",\r\n  \"type\": \"Microsoft.FileShares/fileShares\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "82" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "42ec0348d7932c5bd21fbf1f488c42a2" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/24be4cf9-bb7a-4fbb-a249-72727aa0e417" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "b4e7c8d5-ff4b-41d9-9efa-26c56fc3bbb0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260428T094909Z:b4e7c8d5-ff4b-41d9-9efa-26c56fc3bbb0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1BFE581A97CE4720BD4A9A141AE5DD5E Ref B: SG2AA1040517060 Ref C: 2026-04-28T09:49:08Z" ],
+        "Date": [ "Tue, 28 Apr 2026 09:49:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzFileShareNameAvailability+[NoContext]+CheckViaIdentity+$POST+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.FileShares/locations/eastus2euap/checkNameAvailability?api-version=2026-06-01",
+      "Content": "{\r\n  \"name\": \"testshare-identity-body\",\r\n  \"type\": \"Microsoft.FileShares/fileShares\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "87" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "4b85b71a0d5c1a6b3021442778607f21" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/57777976-e771-4dfe-8ea4-5da93bfb552d" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "9fb3b91d-6d31-444e-962b-bb49b7f6f1ee" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260428T094910Z:9fb3b91d-6d31-444e-962b-bb49b7f6f1ee" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6FEDB1EAC5354954972EE4DC10ED545D Ref B: SG2AA1040517060 Ref C: 2026-04-28T09:49:09Z" ],
+        "Date": [ "Tue, 28 Apr 2026 09:49:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}

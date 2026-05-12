@@ -27,7 +27,7 @@ Get-AzMigrateJob -ResourceGroupName 'azmigratepwshtestasr13072020' -ProjectName 
 Get-AzMigrateJob -ResourceGroupName 'azmigratepwshtestasr13072020' -ProjectName 'AzMigrateTestProjectPWSH' -JobName 7ae1ee7c-442c-499d-8b0e-81d52a42b71e
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,12 +36,12 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
   [Location <String>]: Resource Location
   [ActivityId <String>]: The activity id.
-  [AllowedAction <String[]>]: The Allowed action the job.
+  [AllowedAction <List<String>>]: The Allowed action the job.
   [CustomDetailAffectedObjectDetail <IJobDetailsAffectedObjectDetails>]: The affected object properties like source server, source cloud, target server, target cloud etc. based on the workflow object details.
     [(Any) <String>]: This indicates any property can be added to this object.
   [CustomDetailInstanceType <String>]: Gets the type of job details (see JobDetailsTypes enum for possible values).
   [EndTime <DateTime?>]: The end time.
-  [Error <IJobErrorDetails[]>]: The errors.
+  [Error <List<IJobErrorDetails>>]: The errors.
     [CreationTime <DateTime?>]: The creation time of job error.
     [ErrorLevel <String>]: Error level of error.
     [ProviderErrorDetailErrorCode <Int32?>]: The Error code.
@@ -63,13 +63,13 @@ INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
   [TargetInstanceType <String>]: The type of the affected object which is of Microsoft.Azure.SiteRecovery.V2015_11_10.AffectedObjectType class.
   [TargetObjectId <String>]: The affected Object Id.
   [TargetObjectName <String>]: The name of the affected object.
-  [Task <IAsrTask[]>]: The tasks.
-    [AllowedAction <String[]>]: The state/actions applicable on this task.
+  [Task <List<IAsrTask>>]: The tasks.
+    [AllowedAction <List<String>>]: The state/actions applicable on this task.
     [CustomDetailInstanceType <String>]: The type of task details.
     [EndTime <DateTime?>]: The end time.
-    [Error <IJobErrorDetails[]>]: The task error details.
+    [Error <List<IJobErrorDetails>>]: The task error details.
     [FriendlyName <String>]: The name.
-    [GroupTaskCustomDetailChildTask <IAsrTask[]>]: The child tasks.
+    [GroupTaskCustomDetailChildTask <List<IAsrTask>>]: The child tasks.
     [GroupTaskCustomDetailInstanceType <String>]: The type of task details.
     [Name <String>]: The unique Task name.
     [StartTime <DateTime?>]: The start time.
@@ -81,7 +81,7 @@ INPUTOBJECT <IJob>: Specifies the job object of the replicating server.
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratejob
 #>
 function Get-AzMigrateJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob])]
 [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ListByName', Mandatory)]
@@ -105,23 +105,22 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetById', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # Specifies the job id for which the details needs to be retrieved.
-    ${JobID},
-
     [Parameter(ParameterSetName='GetByName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Job identifier
     ${JobName},
 
+    [Parameter(ParameterSetName='GetById', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the job id for which the details needs to be retrieved.
+    ${JobID},
+
     [Parameter(ParameterSetName='GetByInputObject', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob]
     # Specifies the job object of the replicating server.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='ListById', Mandatory)]
@@ -198,6 +197,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -218,14 +225,12 @@ begin {
 
         $mapping = @{
             ListByName = 'Az.Migrate.custom\Get-AzMigrateJob';
-            GetById = 'Az.Migrate.custom\Get-AzMigrateJob';
             GetByName = 'Az.Migrate.custom\Get-AzMigrateJob';
+            GetById = 'Az.Migrate.custom\Get-AzMigrateJob';
             GetByInputObject = 'Az.Migrate.custom\Get-AzMigrateJob';
             ListById = 'Az.Migrate.custom\Get-AzMigrateJob';
         }
-        if (('ListByName', 'GetById', 'GetByName', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ListByName', 'GetByName', 'GetById', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -239,6 +244,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

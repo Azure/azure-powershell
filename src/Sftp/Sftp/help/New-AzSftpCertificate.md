@@ -15,25 +15,29 @@ Generate SSH certificates for SFTP authentication using Microsoft Entra credenti
 ### Default (Default)
 ```
 New-AzSftpCertificate [-CertificatePath <String>] [-PrivateKeyFile <String>] [-SshClientFolder <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### FromPublicKey
 ```
-New-AzSftpCertificate [-CertificatePath <String>] -PublicKeyFile <String> [-SshClientFolder <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzSftpCertificate [-CertificatePath <String>] -PublicKeyFile <String> [-SshClientFolder <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### FromPrivateKey
 ```
-New-AzSftpCertificate [-CertificatePath <String>] -PrivateKeyFile <String> [-SshClientFolder <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzSftpCertificate [-CertificatePath <String>] -PrivateKeyFile <String> [-SshClientFolder <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### LocalUser
 ```
-New-AzSftpCertificate [-CertificatePath <String>] -LocalUser <String> [-PrivateKeyFile <String>]
- [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzSftpCertificate [-CertificatePath <String>] [-PrivateKeyFile <String>] -LocalUser <String>
+ [-SshClientFolder <String>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -137,7 +141,7 @@ Path to write SSH certificate to.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: OutputFile, o
 
 Required: False
 Position: Named
@@ -153,6 +157,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Forces the command to run without asking for user confirmation to overwrite existing SSH key pairs.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -181,10 +200,10 @@ Path to private key file.
 
 ```yaml
 Type: System.String
-Parameter Sets: FromPrivateKey
-Aliases:
+Parameter Sets: Default, LocalUser
+Aliases: i
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,10 +212,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Default, LocalUser
-Aliases:
+Parameter Sets: FromPrivateKey
+Aliases: i
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -209,7 +228,7 @@ Path to public key file.
 ```yaml
 Type: System.String
 Parameter Sets: FromPublicKey
-Aliases:
+Aliases: p
 
 Required: True
 Position: Named
@@ -225,6 +244,36 @@ Directory containing SSH executables (ssh-keygen).
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

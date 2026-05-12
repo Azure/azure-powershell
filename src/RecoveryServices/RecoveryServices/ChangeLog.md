@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 
+## Version 7.11.2
+* Added Cross region restore support for upcoming regions Southeast Asia 3
+
+
 ## Version 7.11.1
 * Added Cross region restore support for upcoming regions IndiaSouthCentral
 

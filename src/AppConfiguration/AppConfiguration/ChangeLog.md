@@ -19,6 +19,22 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+* Upgraded API version from 2022-05-01 to 2024-06-01
+* Added support for App Configuration store replicas
+    - Added `New-AzAppConfigurationReplica`
+    - Added `Get-AzAppConfigurationReplica`
+    - Added `Remove-AzAppConfigurationReplica`
+* Added `DataPlaneProxyAuthenticationMode`, `DataPlaneProxyPrivateLinkDelegation`, and `DefaultKeyValueRevisionRetentionPeriodInSecond` to `New-AzAppConfigurationStore` and `Update-AzAppConfigurationStore`
+* Removed `SoftDeleteRetentionInDay` from `Update-AzAppConfigurationStore` as it is a create-only property
+* Added data plane snapshot cmdlets for Azure App Configuration
+    - Added `New-AzAppConfigurationSnapshot`
+    - Added `Get-AzAppConfigurationSnapshot`
+    - Added `Update-AzAppConfigurationSnapshot`
+    - Added `Test-AzAppConfigurationSnapshot`
+* Added `Snapshot` to `Get-AzAppConfigurationKeyValue` to support retrieving key-values by snapshot name
+* Added `Get-AzAppConfigurationOperationDetail` to retrieve data plane operation details
+
 ## Version 2.0.1
 * Fixed GitHub issue #23731 'Problem with Get-AzAppConfigurationKeyValue when more that 100 records are present'
     - Fixed `NextLink` property to give absolute URI, allowing subsequent pages of results to be retrieved.

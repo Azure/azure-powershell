@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `New-AzKeyVault` `RequestDisallowedByPolicy` error by explicitly setting `enableSoftDelete` in the request body to satisfy Azure Policy checks
+
+## Version 6.4.3
 * Added upcoming breaking change warning messages to `Get-AzKeyVaultKey` and `Get-AzKeyVaultSecret` for filtering certificate-backed keys and secrets.
 
 ## Version 6.4.2
