@@ -45,7 +45,8 @@ directive:
       subject: ^AzureMonitorWorkspace(.*)
     set:
       subject: $1
-  # Remove non-expanded Create/Update variants (JSON body variants); keep only Expanded, JsonFilePath, and JsonString
+  # Remove the implicit body-object Create/Update variants (those not ending in Expanded, JsonFilePath, or JsonString)
+  # to keep only the parameter-expanded and JSON-file input variants, which are the intended public surface
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true

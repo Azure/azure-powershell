@@ -52,11 +52,11 @@ function setupEnv() {
     $env.Add("monitorWorkspace2", $monitorWorkspace2)
     $env.Add("metricsContainer1", "default")
 
-    write-host "start to create test group"
     $env.Add("location", "eastus")
-    # Use existing resource group instead of creating a new one
-    $resourceGroup = "gokulpk-test"
+    $resourceGroup = "azps-test-group-monitorworkspace-" + (RandomString -allChars $false -len 6)
     $env.Add("resourceGroup", $resourceGroup)
+    write-host "start to create test group $resourceGroup"
+    New-AzResourceGroup -Name $resourceGroup -Location $env.location | Out-Null
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -67,6 +67,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    # Remove-AzResourceGroup -Name $env.resourceGroup
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 
