@@ -1351,7 +1351,15 @@ Accept wildcard characters: False
 ```
 
 ### -LifecycleHooksProfile
-Specifies the lifecycle hooks profile for the virtual machine scale set. Use 'New-AzVmssLifecycleHookConfig' to create hook objects and 'Set-AzVmssLifecycleHooksProfile' to build the profile, or create a LifecycleHooksProfile object directly.
+Specifies the lifecycle hooks profile for the virtual machine scale set.
+
+Use 'New-AzVmssLifecycleHookConfig' to create hook objects, then build the profile with 'Set-AzVmssLifecycleHooksProfile', or create a LifecycleHooksProfile object directly as shown:
+
+```powershell
+$hook    = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling' -WaitDuration 'PT8H'
+$profile = [Microsoft.Azure.Management.Compute.Models.LifecycleHooksProfile]@{ LifecycleHooks = @($hook) }
+New-AzVmssConfig -Location eastus -SkuCapacity 2 -LifecycleHooksProfile $profile
+```
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.LifecycleHooksProfile
