@@ -28,7 +28,7 @@
         $parameterSetName = $PsCmdlet.ParameterSetName
 
         if($parameterSetName -eq "RemoveBackupSchedule"){
-            $filteredRules = $Policy.PolicyRule | Where-Object { $_.ObjectType –ne "AzureBackupRule" }
+            $filteredRules = $Policy.PolicyRule | Where-Object { $_.ObjectType -ne "AzureBackupRule" }
             $Policy.PolicyRule = $filteredRules
             return $Policy
         }

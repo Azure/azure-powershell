@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '15.6.0'
+ModuleVersion = '15.6.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -112,7 +112,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.4.0'; },
             @{ModuleName = 'Az.DataLakeAnalytics'; RequiredVersion = '1.1.0'; }, 
             @{ModuleName = 'Az.DataLakeStore'; RequiredVersion = '1.5.2'; }, 
             @{ModuleName = 'Az.DataMigration'; RequiredVersion = '1.0.0'; }, 
-            @{ModuleName = 'Az.DataProtection'; RequiredVersion = '2.10.0'; }, 
+            @{ModuleName = 'Az.DataProtection'; RequiredVersion = '2.10.1'; }, 
             @{ModuleName = 'Az.DataShare'; RequiredVersion = '1.1.1'; }, 
             @{ModuleName = 'Az.DataTransfer'; RequiredVersion = '1.0.0'; }, 
             @{ModuleName = 'Az.DedicatedHsm'; RequiredVersion = '0.4.0'; }, 
@@ -162,7 +162,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '5.4.0'; },
             @{ModuleName = 'Az.KeyVault'; RequiredVersion = '6.4.3'; }, 
             @{ModuleName = 'Az.KubernetesConfiguration'; RequiredVersion = '0.8.0'; }, 
             @{ModuleName = 'Az.KubernetesRuntime'; RequiredVersion = '0.2.0'; }, 
-            @{ModuleName = 'Az.Kusto'; RequiredVersion = '2.4.0'; }, 
+            @{ModuleName = 'Az.Kusto'; RequiredVersion = '2.4.1'; }, 
             @{ModuleName = 'Az.LabServices'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.LambdaTest'; RequiredVersion = '1.0.0'; }, 
             @{ModuleName = 'Az.LoadTesting'; RequiredVersion = '1.1.1'; }, 

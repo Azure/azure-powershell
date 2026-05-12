@@ -16,6 +16,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.DataSync.Model;
+using Microsoft.Azure.Management.Sql.Models;
 using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
@@ -101,6 +102,17 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             try
             {
                 ModelAdapter.GetSyncAgent(this.ResourceGroupName, this.ServerName, this.Name);
+            }
+            catch (ErrorResponseException ex)
+            {
+                if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    // This is what we want.  We looked and there is no sync agent with this name.
+                    return null;
+                }
+
+                // Unexpected exception encountered
+                throw;
             }
             catch (CloudException ex)
             {

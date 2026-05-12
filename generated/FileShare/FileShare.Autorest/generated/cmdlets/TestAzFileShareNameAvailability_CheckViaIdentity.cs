@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.ICheckNameAvailabilityResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Description(@"Implements local CheckNameAvailability operations")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/checkNameAvailability", ApiVersion = "2025-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/checkNameAvailability", ApiVersion = "2026-06-01")]
     public partial class TestAzFileShareNameAvailability_CheckViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IContext

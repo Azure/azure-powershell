@@ -1,7 +1,7 @@
 @{
   GUID = '710e22cd-f105-43dd-9e6b-e9df422749d6'
   RootModule = './Az.FileShare.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '1.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
