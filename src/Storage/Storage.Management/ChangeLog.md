@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated Storage Resource Provider SDK to API version 2025-08-01
 * Added support for Smart access tier
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

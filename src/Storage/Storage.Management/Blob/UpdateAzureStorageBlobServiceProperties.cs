@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         this.StaticWebsiteDefaultIndexDocumentPath != null ||
                         this.StaticWebsiteErrorDocument404Path != null)
                     {
-                        throw new ArgumentException("StaticWebsite properties can only be specified when EnableStaticWebsite is set.", "StaticWebsite");
+                        throw new ArgumentException("StaticWebsite properties can only be specified when EnableStaticWebsite is set.");
                     }
                 }
 

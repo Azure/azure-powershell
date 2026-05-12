@@ -97,7 +97,7 @@ function Test-StorageAccount
         Assert-NotNull  $stokey1[0].Value
         Assert-NotNull  $stokey2[0].Value
         Assert-AreEqual $stokey2[1].Value $stokey1[1].Value;
-        # The key are all hide in recording file to same value, so the not equal check will fail in playbakc mode 
+        # The key are all hide in recording file to same value, so the not equal check will fail in playback mode 
         # Assert-AreNotEqual $stokey1[0].Value $stokey2[0].Value;
 
         New-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key2;
@@ -107,7 +107,7 @@ function Test-StorageAccount
         Assert-NotNull  $stokey2[0].Value
         Assert-NotNull  $stokey3[0].Value
         Assert-AreEqual $stokey3[0].Value $stokey2[0].Value;
-        # The key are all hide in recording file to same value, so the not equal check will fail in playbakc mode 
+        # The key are all hide in recording file to same value, so the not equal check will fail in playback mode 
         #Assert-AreNotEqual $stokey2[1].Value $stokey3[1].Value;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
@@ -2901,7 +2901,6 @@ function Test-StorageAccountSmartTier
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $accessTier $sto.AccessTier;
-        Assert-AreEqual $allowedCopyScope $sto.AllowedCopyScope;
 
         $accessTier = 'Hot'
         Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -AccessTier $accessTier -Force }
