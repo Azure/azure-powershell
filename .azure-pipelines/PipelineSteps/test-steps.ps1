@@ -72,7 +72,7 @@ if ($IsWindows) {
     Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force -ErrorAction Stop
     `$env:PSModulePath = `$env:PSModulePath + ';' + (pwd).Path
     `$rootFolder = (Get-Item `$PWD -ErrorAction Stop).Parent.Parent.FullName
-    Get-ChildItem -File -Recurse test-module.ps1 -ErrorAction Stop | ForEach-Object {
+    Get-ChildItem -Recurse -File -Filter test-module.ps1 -ErrorAction Stop | ForEach-Object {
         Write-Host `$_.Directory.FullName
         Set-Location `$rootFolder
         & '$executeCIStepScriptPath' -TestAutorest -AutorestDirectory `$_.Directory.FullName

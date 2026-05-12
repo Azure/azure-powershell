@@ -38,7 +38,7 @@ steps:
     if ($IsWindows) { $sp = ";" } else { $sp = ":" }
     $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
     $rootFolder = (Get-item $PWD).Parent.Parent.FullName
-    Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
+    Get-ChildItem -Recurse -File -Filter test-module.ps1 | ForEach-Object {
       Write-Host $_.Directory.FullName
       Set-Location $rootFolder
       .\tools\ExecuteCIStep.ps1 -TestAutorest -AutorestDirectory $_.Directory.FullName
@@ -58,7 +58,7 @@ steps:
     $sp = [System.IO.Path]::PathSeparator
     $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
     $rootFolder = (Get-item $PWD).Parent.Parent.FullName
-    Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
+    Get-ChildItem -Recurse -File -Filter test-module.ps1 | ForEach-Object {
       Write-Host $_.Directory.FullName
       Set-Location $rootFolder
       & .\tools\ExecuteCIStep.ps1 -TestAutorest -AutorestDirectory $_.Directory.FullName
@@ -67,7 +67,7 @@ steps:
   displayName: 'Test for AutoGen Modules With Windows PowerShell 5.1'
   condition: and(succeeded(), eq(variables['Agent.OS'], 'Windows_NT'), eq('${{ parameters.testTarget }}', 'Test'))
   env:
-    PowerShellPlatform: WindowsPowerShell
+    PowerShellPlatform: Windows PowerShell
 
 - task: PowerShell@2
   displayName: Analyze Test Coverage
