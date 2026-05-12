@@ -137,5 +137,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SimpleNewVmssSkipExtOverprovision");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVmssLifecycleHookConfig()
+        {
+            TestRunner.RunTestScript("Test-VmssLifecycleHookConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetVmssLifecycleHooksProfile()
+        {
+            TestRunner.RunTestScript("Test-SetVmssLifecycleHooksProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewVmssConfigWithLifecycleHooksProfile()
+        {
+            TestRunner.RunTestScript("Test-NewVmssConfigWithLifecycleHooksProfile");
+        }
     }
 }

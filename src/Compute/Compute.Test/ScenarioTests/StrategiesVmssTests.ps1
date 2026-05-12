@@ -551,3 +551,74 @@ function Test-SimpleNewVmssSkipExtOverprovision
         Clean-ResourceGroup $vmssname
     }
 }
+
+<#
+.SYNOPSIS
+Test New-AzVmssLifecycleHookConfig creates an in-memory lifecycle hook config object.
+#>
+function Test-VmssLifecycleHookConfig
+{
+    # Test creating a lifecycle hook config object in memory (no Azure calls needed)
+    $hook = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling' -WaitDuration 'PT8H'
+    Assert-NotNull $hook
+    Assert-AreEqual 'UpgradeAutoOSScheduling' $hook.Type
+    Assert-AreEqual ([System.TimeSpan]::FromHours(8)) $hook.WaitDuration
+    Assert-AreEqual 'Approve' $hook.DefaultAction
+
+    # With explicit default action
+    $hook2 = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSRollingBatchStarting' -WaitDuration 'PT30M' -DefaultAction 'Approve'
+    Assert-NotNull $hook2
+    Assert-AreEqual 'UpgradeAutoOSRollingBatchStarting' $hook2.Type
+    Assert-AreEqual ([System.TimeSpan]::FromMinutes(30)) $hook2.WaitDuration
+    Assert-AreEqual 'Approve' $hook2.DefaultAction
+
+    # Without wait duration
+    $hook3 = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling'
+    Assert-NotNull $hook3
+    Assert-Null $hook3.WaitDuration
+    Assert-AreEqual 'Approve' $hook3.DefaultAction
+}
+
+<#
+.SYNOPSIS
+Test Set-AzVmssLifecycleHooksProfile attaches hooks to a VMSS config object.
+#>
+function Test-SetVmssLifecycleHooksProfile
+{
+    # Test attaching lifecycle hooks to an in-memory VMSS config (no Azure calls)
+    $hook = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling' -WaitDuration 'PT8H'
+    $config = New-AzVmssConfig -Location 'eastus' -SkuCapacity 2
+
+    $config = Set-AzVmssLifecycleHooksProfile -VirtualMachineScaleSet $config -LifecycleHook $hook
+
+    Assert-NotNull $config
+    Assert-NotNull $config.LifecycleHooksProfile
+    Assert-AreEqual 1 $config.LifecycleHooksProfile.LifecycleHooks.Count
+    Assert-AreEqual 'UpgradeAutoOSScheduling' $config.LifecycleHooksProfile.LifecycleHooks[0].Type
+
+    # Test with multiple hooks
+    $hook2 = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSRollingBatchStarting' -WaitDuration 'PT30M'
+    $config = Set-AzVmssLifecycleHooksProfile -VirtualMachineScaleSet $config -LifecycleHook @($hook, $hook2)
+
+    Assert-AreEqual 2 $config.LifecycleHooksProfile.LifecycleHooks.Count
+}
+
+<#
+.SYNOPSIS
+Test New-AzVmssConfig with -LifecycleHooksProfile parameter.
+#>
+function Test-NewVmssConfigWithLifecycleHooksProfile
+{
+    # Test creating VMSS config with inline LifecycleHooksProfile
+    $hook = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling' -WaitDuration 'PT8H'
+    $profile = [Microsoft.Azure.Management.Compute.Models.LifecycleHooksProfile]::new()
+    $profile.LifecycleHooks = [System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.LifecycleHook]]::new()
+    $profile.LifecycleHooks.Add($hook)
+
+    $config = New-AzVmssConfig -Location 'eastus' -SkuCapacity 2 -LifecycleHooksProfile $profile
+
+    Assert-NotNull $config
+    Assert-NotNull $config.LifecycleHooksProfile
+    Assert-AreEqual 1 $config.LifecycleHooksProfile.LifecycleHooks.Count
+    Assert-AreEqual 'UpgradeAutoOSScheduling' $config.LifecycleHooksProfile.LifecycleHooks[0].Type
+}

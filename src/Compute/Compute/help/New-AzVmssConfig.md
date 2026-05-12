@@ -37,7 +37,7 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
  [-AutomaticZoneRebalanceBehavior <String>] [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>]
  [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>] [-IncludeZone <String[]>]
- [-ExcludeZone <String[]>] [-HighSpeedInterconnectPlacement <String>] [-DefaultProfile <IAzureContextContainer>] 
+ [-ExcludeZone <String[]>] [-HighSpeedInterconnectPlacement <String>] [-LifecycleHooksProfile <LifecycleHooksProfile>] [-DefaultProfile <IAzureContextContainer>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,7 +66,7 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
  [-AutomaticZoneRebalanceBehavior <String>] [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>]
  [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>] [-IncludeZone <String[]>]
- [-ExcludeZone <String[]>] [-HighSpeedInterconnectPlacement <String>] [-DefaultProfile <IAzureContextContainer>] 
+ [-ExcludeZone <String[]>] [-HighSpeedInterconnectPlacement <String>] [-LifecycleHooksProfile <LifecycleHooksProfile>] [-DefaultProfile <IAzureContextContainer>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -1340,6 +1340,21 @@ Specifies the policy for resource's placement in availability zone. Possible val
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LifecycleHooksProfile
+Specifies the lifecycle hooks profile for the virtual machine scale set. Use 'New-AzVmssLifecycleHookConfig' to create hook objects and 'Set-AzVmssLifecycleHooksProfile' to build the profile, or create a LifecycleHooksProfile object directly.
+
+```yaml
+Type: Microsoft.Azure.Management.Compute.Models.LifecycleHooksProfile
 Parameter Sets: (All)
 Aliases:
 
