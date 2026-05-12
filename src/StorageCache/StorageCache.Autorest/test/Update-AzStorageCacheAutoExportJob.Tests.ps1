@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageCacheAutoExpo
 
 Describe 'Update-AzStorageCacheAutoExportJob' {
     BeforeAll {
-        New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/path1')
+        New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/')
         Start-Sleep 30
     }
 
@@ -37,7 +37,7 @@ Describe 'Update-AzStorageCacheAutoExportJob' {
                     "jsonKey" = "jsonValue"
                 }
             } | ConvertTo-Json -Depth 3
-            
+
             Update-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -JsonString $json
         } | Should -Not -Throw
     }
@@ -49,10 +49,10 @@ Describe 'Update-AzStorageCacheAutoExportJob' {
                     "fileKey" = "fileValue"
                 }
             } | ConvertTo-Json -Depth 3
-            
+
             $tempFile = New-TemporaryFile
             $json | Out-File -FilePath $tempFile.FullName -Encoding UTF8
-            
+
             try {
                 Update-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -JsonFilePath $tempFile.FullName
             } finally {

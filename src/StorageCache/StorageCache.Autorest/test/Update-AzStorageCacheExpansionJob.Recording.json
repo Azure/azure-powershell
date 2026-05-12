@@ -1,8 +1,8 @@
 {
-  "Update-AzStorageCacheExpansionJob+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
+  "Update-AzStorageCacheExpansionJob+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"testKey\": \"testValue\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,31 +18,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830,6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830" ],
-        "x-ms-request-id": [ "e58aae57-2b92-4c6c-99e3-a86918e488cc" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/australiaeast/9f043f96-7628-4476-8fe4-80c1ed214a01" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134169431964429665,e2006655-ee35-4933-86ed-4f353fb1f9b7_134169431964429665" ],
+        "x-ms-request-id": [ "912819c1-9c2a-478b-9140-602cf2b26d9f" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/canadacentral/698ffe08-7c44-4790-9968-1827d88c8b64" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "d4843e24-3bd8-4363-99eb-a89628e61c85" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260507T032522Z:d4843e24-3bd8-4363-99eb-a89628e61c85" ],
+        "x-ms-correlation-request-id": [ "bbfef4a7-c95f-46b9-b0b1-8bc93ea7edd3" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20260512T144916Z:bbfef4a7-c95f-46b9-b0b1-8bc93ea7edd3" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3214418F87F74BF58C9C3C10812CD63B Ref B: MNZ221060609009 Ref C: 2026-05-07T03:25:22Z" ],
-        "Date": [ "Thu, 07 May 2026 03:25:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C0B06AEAC57446ADBC264BACCDECA95A Ref B: MNZ221060610045 Ref C: 2026-05-12T14:49:16Z" ],
+        "Date": [ "Tue, 12 May 2026 14:49:16 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "663" ],
+        "Content-Length": [ "665" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"australiaeast\",\r\n  \"tags\": {\r\n    \"testKey\": \"testValue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 56.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-07T02:45:13+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-07T02:52:56+00:00\"\r\n    }\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"testKey\": \"testValue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 16.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-12T14:23:21+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-12T14:26:59+00:00\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Update-AzStorageCacheExpansionJob+[NoContext]+UpdateViaJsonString+$PATCH+https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
+  "Update-AzStorageCacheExpansionJob+[NoContext]+UpdateViaJsonString+$PATCH+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"jsonKey\": \"jsonValue\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -58,31 +58,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830,6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830" ],
-        "x-ms-request-id": [ "55c26d09-4d85-4758-b3f3-3e751d92c1e1" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/australiaeast/c4e96b3f-f7c0-4049-8cbe-8c527b6639e4" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134169431964429665,e2006655-ee35-4933-86ed-4f353fb1f9b7_134169431964429665" ],
+        "x-ms-request-id": [ "0e355aba-b62e-4a44-a5a1-738bfa2dc934" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/canadacentral/5aaf6f7c-013e-4971-a7b5-b713ed24cf2f" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "ee48d8f0-9b05-4847-b667-05fef1309375" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260507T032523Z:ee48d8f0-9b05-4847-b667-05fef1309375" ],
+        "x-ms-correlation-request-id": [ "3a405dc3-aa41-4600-9d9c-e4075fbdd211" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20260512T144917Z:3a405dc3-aa41-4600-9d9c-e4075fbdd211" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 390B3DF8AED04AB58100AC667F9F4998 Ref B: MNZ221060609009 Ref C: 2026-05-07T03:25:22Z" ],
-        "Date": [ "Thu, 07 May 2026 03:25:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8D67F6F28B35484DBEE073339F3659CD Ref B: MNZ221060610045 Ref C: 2026-05-12T14:49:17Z" ],
+        "Date": [ "Tue, 12 May 2026 14:49:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "663" ],
+        "Content-Length": [ "665" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"australiaeast\",\r\n  \"tags\": {\r\n    \"jsonKey\": \"jsonValue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 56.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-07T02:45:13+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-07T02:52:56+00:00\"\r\n    }\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"jsonKey\": \"jsonValue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 16.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-12T14:23:21+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-12T14:26:59+00:00\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Update-AzStorageCacheExpansionJob+[NoContext]+UpdateViaJsonFilePath+$PATCH+https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
+  "Update-AzStorageCacheExpansionJob+[NoContext]+UpdateViaJsonFilePath+$PATCH+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
       "Content": "ew0KICAidGFncyI6IHsNCiAgICAiZmlsZUtleSI6ICJmaWxlVmFsdWUiDQogIH0NCn0NCg==",
       "isContentBase64": false,
       "Headers": {
@@ -98,31 +98,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830,6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830" ],
-        "x-ms-request-id": [ "242d93e3-cd41-481f-9681-7faeb30f900d" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/australiaeast/a91f5814-bd98-4366-bd4a-614d60f7ef03" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134169431964429665,e2006655-ee35-4933-86ed-4f353fb1f9b7_134169431964429665" ],
+        "x-ms-request-id": [ "2eaaf6dc-4e07-428c-898a-3470edc1a6fc" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/canadacentral/a18cf98f-e1d6-4370-80f8-8ad25868f3e2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "3401c5bb-0598-403d-be31-e87ac2318f58" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260507T032523Z:3401c5bb-0598-403d-be31-e87ac2318f58" ],
+        "x-ms-correlation-request-id": [ "adf3ecd3-83c2-4eab-a86d-1bc21d24879b" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20260512T144917Z:adf3ecd3-83c2-4eab-a86d-1bc21d24879b" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7A9B674B3B934C53A8B48778225539D1 Ref B: MNZ221060609009 Ref C: 2026-05-07T03:25:23Z" ],
-        "Date": [ "Thu, 07 May 2026 03:25:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 107C7BA93A224F6989705B900200F71B Ref B: MNZ221060610045 Ref C: 2026-05-12T14:49:17Z" ],
+        "Date": [ "Tue, 12 May 2026 14:49:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "663" ],
+        "Content-Length": [ "665" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"australiaeast\",\r\n  \"tags\": {\r\n    \"fileKey\": \"fileValue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 56.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-07T02:45:13+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-07T02:52:56+00:00\"\r\n    }\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"fileKey\": \"fileValue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 16.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-12T14:23:21+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-12T14:26:59+00:00\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Update-AzStorageCacheExpansionJob+[NoContext]+UpdateViaIdentityAmlFilesystemExpanded+$PATCH+https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
+  "Update-AzStorageCacheExpansionJob+[NoContext]+UpdateViaIdentityAmlFilesystemExpanded+$PATCH+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"amlKey\": \"amlValue\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -138,31 +138,31 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830,6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830" ],
-        "x-ms-request-id": [ "35d7ace2-8dfc-4078-9671-567385910220" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/australiaeast/dbcb1d9e-9eec-4db7-8f3b-3eb1357f26cb" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134169431964429665,e2006655-ee35-4933-86ed-4f353fb1f9b7_134169431964429665" ],
+        "x-ms-request-id": [ "efa57699-ec3e-4c7d-8635-0f2b397b5516" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/canadacentral/6ae86a1e-b080-42c3-8090-8a6b9611e15f" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "851c799a-9eb9-4136-bf9f-3c98f85757ab" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260507T032524Z:851c799a-9eb9-4136-bf9f-3c98f85757ab" ],
+        "x-ms-correlation-request-id": [ "24882593-5658-4e56-897d-d3a2d691e7e4" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20260512T144917Z:24882593-5658-4e56-897d-d3a2d691e7e4" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9B17E7D0EB7F4E9583382DEC8CB07D5A Ref B: MNZ221060609009 Ref C: 2026-05-07T03:25:23Z" ],
-        "Date": [ "Thu, 07 May 2026 03:25:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6BEC7CB15D6147FF90698BA85D190EA4 Ref B: MNZ221060610045 Ref C: 2026-05-12T14:49:17Z" ],
+        "Date": [ "Tue, 12 May 2026 14:49:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "661" ],
+        "Content-Length": [ "663" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"australiaeast\",\r\n  \"tags\": {\r\n    \"amlKey\": \"amlValue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 56.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-07T02:45:13+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-07T02:52:56+00:00\"\r\n    }\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"amlKey\": \"amlValue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 16.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-12T14:23:21+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-12T14:26:59+00:00\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Update-AzStorageCacheExpansionJob+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
+  "Update-AzStorageCacheExpansionJob+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded?api-version=2026-01-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded?api-version=2026-01-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"idKey\": \"idValue\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -178,24 +178,24 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-served-by": [ "6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830,6e7e7095-6e72-421d-b11e-6a1da956e67f_134225776361578830" ],
-        "x-ms-request-id": [ "6fcd1794-fbf7-4eaa-b92b-2ef1a6b8ff8a" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/australiaeast/f4a214c0-8a88-45cc-a075-cc691c9d49d6" ],
+        "x-ms-served-by": [ "e2006655-ee35-4933-86ed-4f353fb1f9b7_134169431964429665,e2006655-ee35-4933-86ed-4f353fb1f9b7_134169431964429665" ],
+        "x-ms-request-id": [ "233bb00b-bdc2-4069-ab9c-e5d71dd1f5be" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=5b6f93fb-9681-4be9-a906-3a8b714fd24c/canadacentral/01bb7934-ee81-4b09-9962-cb00cfe8c409" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "89a478cd-c126-4aa5-94f7-fb75225902cc" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260507T032524Z:89a478cd-c126-4aa5-94f7-fb75225902cc" ],
+        "x-ms-correlation-request-id": [ "4aad7fea-64ed-498e-b4a4-d9853d2222f4" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20260512T144918Z:4aad7fea-64ed-498e-b4a4-d9853d2222f4" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 11DAD3A0E5284C728191B3773C118A6E Ref B: MNZ221060609009 Ref C: 2026-05-07T03:25:24Z" ],
-        "Date": [ "Thu, 07 May 2026 03:25:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5E158B896421422395E32D641BF86E2B Ref B: MNZ221060610045 Ref C: 2026-05-12T14:49:18Z" ],
+        "Date": [ "Tue, 12 May 2026 14:49:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "659" ],
+        "Content-Length": [ "661" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/733b22ab-69e4-4f63-a7e5-0f2312c2e35f/resourceGroups/acctest0040/providers/Microsoft.StorageCache/amlFilesystems/acctest0040/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"australiaeast\",\r\n  \"tags\": {\r\n    \"idKey\": \"idValue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 56.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-07T02:45:13+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-07T02:52:56+00:00\"\r\n    }\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"sampleCreateExpanded\",\r\n  \"id\": \"/subscriptions/0a715a3b-8a16-43ba-a6bb-1e38ad050791/resourceGroups/acctest43511/providers/Microsoft.StorageCache/amlFilesystems/acctest43511/expansionJobs/sampleCreateExpanded\",\r\n  \"type\": \"Microsoft.StorageCache/amlFilesystems/expansionJobs\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {\r\n    \"idKey\": \"idValue\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"newStorageCapacityTiB\": 16.0,\r\n    \"status\": {\r\n      \"state\": \"Completed\",\r\n      \"percentComplete\": 100.0,\r\n      \"startTimeUTC\": \"2026-05-12T14:23:21+00:00\",\r\n      \"completionTimeUTC\": \"2026-05-12T14:26:59+00:00\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false
     }
   }

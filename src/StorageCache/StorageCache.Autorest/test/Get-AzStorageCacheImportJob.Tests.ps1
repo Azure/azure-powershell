@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStorageCacheImportJob')
 
 Describe 'Get-AzStorageCacheImportJob' {
     BeforeAll {
-        New-AzStorageCacheImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleImportJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -ImportPrefix @('/path1', '/path2')
+        New-AzStorageCacheImportJob -AmlFilesystemName 'acctest43511' -Name 'sampleImportJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -ImportPrefix @('/')
     }
 
     AfterAll {

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStorageCacheAutoExportJ
 
 Describe 'Get-AzStorageCacheAutoExportJob' {
     BeforeAll {
-        New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoExportJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/path1')
+        New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleAutoExportJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/')
     }
 
     AfterAll {
