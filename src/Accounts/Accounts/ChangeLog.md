@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.4.1
 * Upgraded `Azure.Identity` dependency from 1.13.0 to 1.17.2.
 
 ## Version 5.4.0

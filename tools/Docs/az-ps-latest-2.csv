@@ -1,4 +1,4 @@
-pac0,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Accounts.5.4.0.zip;sourceType=sa]Az.Accounts,5.4.0
+pac0,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Accounts.5.4.1.zip;sourceType=sa]Az.Accounts,5.4.1
 pac1,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MonitoringSolutions.0.2.0.zip;sourceType=sa]Az.MonitoringSolutions,0.2.0
 pac2,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MySql.1.5.2.zip;sourceType=sa]Az.MySql,1.5.2
 pac3,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetAppFiles.1.2.0.zip;sourceType=sa]Az.NetAppFiles,1.2.0
