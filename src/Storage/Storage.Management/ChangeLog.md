@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Storage task assignment TriggerType new value "MockRun"
+    - `New-AzStorageTaskAssignment`
+    - `Update-AzStorageTaskAssignment`
 
 ## Version 9.6.1
 * Removed breaking change warnings for TLS 1.0 and TLS 1.1 deprecation

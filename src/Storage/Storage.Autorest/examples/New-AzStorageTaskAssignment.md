@@ -84,3 +84,48 @@ Type                            : Microsoft.Storage/storageAccounts/storageTaskA
 ```
 
 This command creates a task assignment that runs every 10 days from 8/6/2024 5:30:39 PM to 12/24/2024 6:45:03 PM.
+
+### Example 3: Create a task assignment with MockRun
+```powershell
+$start = Get-Date -Year 2026 -Month 8 -Day 7 -Hour 1 -Minute 30
+$end = Get-Date -Year 2026 -Month 12 -Day 25 -Hour 2 -Minute 45
+$taskid = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask"
+New-AzStorageTaskAssignment -accountname myaccount -name mytaskassignment -resourcegroupname myresourcegroup -TriggerType MockRun -StartOn (Get-Date).AddDays(1).ToUniversalTime() -TaskId $taskid -ReportPrefix test -Description "my task assignment" 
+```
+
+```output
+Description                     : my task assignment
+Enabled                         : True
+EndBy                           : 
+Id                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount/storageTaskAssignments/myassignment
+Interval                        : 
+IntervalUnit                    : 
+Name                            : mytaskassignment
+ProvisioningState               : Succeeded
+ReportPrefix                    : test
+ResourceGroupName               : myresourcegroup
+RunStatusEnum                   :
+RunStatusError                  :
+RunStatusFinishTime             :
+RunStatusObjectFailedCount      :
+RunStatusObjectsOperatedOnCount :
+RunStatusObjectsSucceededCount  :
+RunStatusObjectsTargetedCount   :
+RunStatusRunResult              :
+RunStatusStartTime              :
+RunStatusStorageAccountId       :
+RunStatusSummaryReportPath      :
+RunStatusTaskAssignmentId       :
+RunStatusTaskId                 :
+RunStatusTaskVersion            :
+StartFrom                       : 
+StartOn                         : 5/6/2026 5:30:39 PM
+TargetExcludePrefix             :
+TargetPrefix                    :
+TaskId                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/
+                                  mytask
+TriggerType                     : MockRun
+Type                            : Microsoft.Storage/storageAccounts/storageTaskAssignments
+```
+
+This command creates a task assignment with MockRun.

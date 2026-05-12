@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageTaskAssignment')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment reports' {
+Describe 'TaskAssignmentTests' {
     It 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment reports' {
         $assignmentname1 = "testassignment01"
         $reportprefix = "testc1"
@@ -39,6 +39,15 @@ Describe 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment re
         $assignment2.StartFrom.Year| Should -Be $start.ToUniversalTime().Year
         $assignment2.EndBy.Year | Should -Be $end.ToUniversalTime().Year
 
+        $assignmentname3 = "testassignment03"
+        $startOn3 = Get-Date -Year 2205 -Month 11 -Day 10 -Hour 2 -Minute 35 -Second 29 -Millisecond 0
+        $assignment3 = New-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -Name $assignmentname3 -ResourceGroupName $env.TaskAssignmentResourceGroup -TaskId $env.TaskID  -Description "test assignment2" -ReportPrefix $reportprefix -TriggerType MockRun -StartOn $startOn3.ToUniversalTime() -Enabled 
+        $assignment3.Name | Should -Be $assignmentname3
+        $assignment3.ReportPrefix | Should -Be $reportprefix
+        $assignment3.TriggerType | Should -Be "MockRun"
+        $assignment3.Enabled | Should -Be $true
+        $assignment3.StartOn.Year| Should -Be $startOn3.ToUniversalTime().Year
+
         $assignment1 = Get-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -ResourceGroupName $env.TaskAssignmentResourceGroup -Name $assignmentname1
         $assignment1.Name | Should -Be $assignmentname1
         $assignment1.ReportPrefix | Should -Be $reportprefix
@@ -53,8 +62,15 @@ Describe 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment re
         $assignment2.IntervalUnit | Should -Be "days"
         $assignment2.Interval | Should -Be 10 
 
+        $assignment3 = Get-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -ResourceGroupName $env.TaskAssignmentResourceGroup -Name $assignmentname3
+        $assignment3.Name | Should -Be $assignmentname3
+        $assignment3.ReportPrefix | Should -Be $reportprefix
+        $assignment3.TriggerType | Should -Be "MockRun"
+        $assignment3.Enabled | Should -Be $true
+        $assignment3.StartOn.Year| Should -Be $startOn3.ToUniversalTime().Year
+
         $assignments = Get-AzStorageTaskAssignment -ResourceGroupName $env.TaskAssignmentResourceGroup -AccountName $env.TaskAssignmentAccount 
-        $assignments.Count | Should -BeGreaterThan 1
+        $assignments.Count | Should -BeGreaterThan 2
 
         $assignment1 = Update-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -ResourceGroupName $env.TaskAssignmentResourceGroup -Name $assignmentname1 -StartOn $end.ToUniversalTime()
         $assignment1.Name | Should -Be $assignmentname1
