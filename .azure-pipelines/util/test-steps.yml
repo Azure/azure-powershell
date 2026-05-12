@@ -52,6 +52,9 @@ steps:
 
 - powershell: |
     Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
+    $IsWindows = $true
+    $IsLinux = $false
+    $IsMacOS = $false
     $sp = [System.IO.Path]::PathSeparator
     $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
     $rootFolder = (Get-item $PWD).Parent.Parent.FullName
@@ -63,6 +66,8 @@ steps:
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With Windows PowerShell 5.1'
   condition: and(succeeded(), eq(variables['Agent.OS'], 'Windows_NT'), eq('${{ parameters.testTarget }}', 'Test'))
+  env:
+    PowerShellPlatform: WindowsPowerShell
 
 - task: PowerShell@2
   displayName: Analyze Test Coverage

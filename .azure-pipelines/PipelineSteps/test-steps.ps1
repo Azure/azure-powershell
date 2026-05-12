@@ -65,6 +65,9 @@ if ($IsWindows) {
     $winPs = Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
     & $winPs -NoProfile -Command @"
     `$ErrorActionPreference = 'Stop'
+    `$IsWindows = `$true
+    `$IsLinux = `$false
+    `$IsMacOS = `$false
     Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force -ErrorAction Stop
     `$env:PSModulePath = `$env:PSModulePath + ';' + (pwd).Path
     `$rootFolder = (Get-Item `$PWD -ErrorAction Stop).Parent.Parent.FullName
