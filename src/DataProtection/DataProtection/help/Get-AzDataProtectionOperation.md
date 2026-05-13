@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionoperation
 schema: 2.0.0
@@ -13,8 +13,7 @@ List the operations for the provider
 ## SYNTAX
 
 ```
-Get-AzDataProtectionOperation [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDataProtectionOperation [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,3 +115,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

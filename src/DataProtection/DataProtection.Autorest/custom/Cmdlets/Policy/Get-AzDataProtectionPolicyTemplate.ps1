@@ -1,7 +1,7 @@
-﻿
+
 
 function Get-AzDataProtectionPolicyTemplate {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupPolicy')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Gets default policy template for a selected datasource type.')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
@@ -22,7 +22,7 @@ function Get-AzDataProtectionPolicyTemplate {
         $manifestPolicyObject = $manifest.policySettings.defaultPolicy
         $jsonPolicyString = $manifestPolicyObject | ConvertTo-Json -Depth 100 
         
-        $defaultPolicy = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupPolicy]::FromJsonString($jsonPolicyString)
+        $defaultPolicy = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupPolicy]::FromJsonString($jsonPolicyString)
 
         return $defaultPolicy
     }
