@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.PowerShell;
 
-    /// <summary>Trusted signing account resource.</summary>
+    /// <summary>Artifact signing account resource.</summary>
     [System.ComponentModel.TypeConverter(typeof(CodeSigningAccountTypeConverter))]
     public partial class CodeSigningAccount
     {
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
             return ToJsonString();
         }
     }
-    /// Trusted signing account resource.
+    /// Artifact signing account resource.
     [System.ComponentModel.TypeConverter(typeof(CodeSigningAccountTypeConverter))]
     public partial interface ICodeSigningAccount
 

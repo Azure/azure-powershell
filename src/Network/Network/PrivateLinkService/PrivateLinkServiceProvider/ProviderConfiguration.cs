@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.HealthDataAIServices/deidServices", "2024-09-20", true, false);
             RegisterConfiguration("Microsoft.HDInsight/clusters", "2018-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.HybridCompute/privateLinkScopes", "2021-05-20", true, true);
+            RegisterConfiguration("Microsoft.KubernetesConfiguration/privateLinkScopes", "2024-11-01-preview", true, true);
             RegisterConfiguration("Microsoft.Insights/privateLinkScopes", "2019-10-17-preview", true, true);
             RegisterConfiguration("Microsoft.KeyVault/vaults", "2018-02-14", false, false);
             RegisterConfiguration("Microsoft.Keyvault/managedHSMs", "2021-06-01-preview", true, false);

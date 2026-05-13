@@ -173,6 +173,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 actualPrivateKeyFile = Path.Combine(keysFolder, "id_rsa");
                 actualPublicKeyFile = Path.Combine(keysFolder, "id_rsa.pub");
                 WriteDebug($"[CertGen] Key files will be: private='{actualPrivateKeyFile}', public='{actualPublicKeyFile}'");
+
+                // Check if key pair already exists and prompt user for overwrite confirmation
+                if (ShouldRegenerateKeyPair(actualPrivateKeyFile, actualPublicKeyFile))
+                {
+                    // User wants new keys (or no existing keys found) - remove existing files if present
+                    if (File.Exists(actualPrivateKeyFile))
+                    {
+                        WriteVerbose($"[CertGen] Removing existing private key: '{actualPrivateKeyFile}'");
+                        FileUtils.DeleteFile(actualPrivateKeyFile);
+                    }
+                    if (File.Exists(actualPublicKeyFile))
+                    {
+                        WriteVerbose($"[CertGen] Removing existing public key: '{actualPublicKeyFile}'");
+                        FileUtils.DeleteFile(actualPublicKeyFile);
+                    }
+                }
+                else
+                {
+                    WriteVerbose("[CertGen] Using existing SSH key pair for certificate generation");
+                }
             }
             else if (!string.IsNullOrEmpty(PrivateKeyFile) && string.IsNullOrEmpty(PublicKeyFile))
             {
@@ -206,9 +226,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 // Check for cancellation before starting
                 CmdletCancellationToken.ThrowIfCancellationRequested();
 
+                WriteVerbose("[CertGen] Preparing SSH key pair...");
+                var keyPrepStartTime = DateTime.UtcNow;
                 var (pubKeyFile, _, _) = FileUtils.CheckOrCreatePublicPrivateFiles(
                     actualPublicKeyFile, actualPrivateKeyFile, keysFolder, SshClientFolder);
                 actualPublicKeyFile = pubKeyFile;
+                var keyPrepElapsed = DateTime.UtcNow - keyPrepStartTime;
+                WriteVerbose($"[CertGen] SSH key pair ready in {keyPrepElapsed.TotalSeconds:F1} seconds (public key: '{actualPublicKeyFile}')");
 
                 // Check for cancellation before authentication
                 CmdletCancellationToken.ThrowIfCancellationRequested();
@@ -217,6 +241,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 string certFile;
                 string username;
                 
+                WriteVerbose("[CertGen] Requesting SSH certificate from Microsoft Entra...");
+                var certRequestStartTime = DateTime.UtcNow;
+
                 if (isLocalUser)
                 {
                     // For local user, use a different authentication flow or mock the certificate
@@ -234,6 +261,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     certFile = cf;
                     username = un;
                 }
+
+                var certRequestElapsed = DateTime.UtcNow - certRequestStartTime;
+                WriteVerbose($"[CertGen] SSH certificate obtained in {certRequestElapsed.TotalSeconds:F1} seconds");
 
                 // Output success message
                 try

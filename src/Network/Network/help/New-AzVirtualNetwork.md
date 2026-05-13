@@ -86,12 +86,12 @@ $subnet = New-AzVirtualNetworkSubnetConfig -Name "testSubnet" -IpamPoolPrefixAll
 New-AzVirtualNetwork -Name "testVnet" -ResourceGroupName "testRG" -Location "centralus" -Subnet $subnet -IpamPoolPrefixAllocation $ipamPoolPrefixAllocation
 ```
 
-This example creates a virtual network with an IPAM (IP Address Management) pool to automatically allocate address prefixes. 
+This example creates a virtual network with an IPAM (IP Address Management) pool to automatically allocate address prefixes.
 First, an IPAM pool named testIpamPool is created in the testRG resource group and testNM network manager in the centralus region with the address prefix 10.0.0.0/16.
 The Get-AzNetworkManagerIpamPool cmdlet retrieves the IPAM pool that was just created.
-Next, a custom object representing the IPAM pool prefix allocation is created. This object includes the Id of the IPAM pool and the NumberOfIpAddresses to allocate. 
+Next, a custom object representing the IPAM pool prefix allocation is created. This object includes the Id of the IPAM pool and the NumberOfIpAddresses to allocate.
 The New-AzVirtualNetworkSubnetConfig cmdlet creates a subnet named testSubnet configured to use the IPAM pool prefix allocation object.
-Finally, the New-AzVirtualNetwork cmdlet creates a virtual network named testVnet in the testRG resource group and centralus location. 
+Finally, the New-AzVirtualNetwork cmdlet creates a virtual network named testVnet in the testRG resource group and centralus location.
 The virtual network includes the subnet created in the previous step and uses the IPAM pool prefix allocation for address prefix allocation.
 
 ## PARAMETERS
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -EdgeZone
-{{ Fill EdgeZone Description }}
+The edge zone of the virtual network
 
 ```yaml
 Type: System.String
