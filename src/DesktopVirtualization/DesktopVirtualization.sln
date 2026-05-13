@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopVirtualization", "De
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DesktopVirtualization.Autorest", "DesktopVirtualization.Autorest", "{6EAAB2DE-27EC-A6E3-837A-D93ECFB9C10D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DesktopVirtualization", "..\..\generated\DesktopVirtualization\DesktopVirtualization.Autorest\Az.DesktopVirtualization.csproj", "{6CAF6B36-6B43-490A-81A6-B05A08681898}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DesktopVirtualization", "..\..\generated\DesktopVirtualization\DesktopVirtualization.Autorest\Az.DesktopVirtualization.csproj", "{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,18 +117,18 @@ Global
 		{5A48C81F-E33C-47D2-9648-F65C1160A9C9}.Release|x64.Build.0 = Release|Any CPU
 		{5A48C81F-E33C-47D2-9648-F65C1160A9C9}.Release|x86.ActiveCfg = Release|Any CPU
 		{5A48C81F-E33C-47D2-9648-F65C1160A9C9}.Release|x86.Build.0 = Release|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Debug|x64.Build.0 = Debug|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Debug|x86.Build.0 = Debug|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Release|x64.ActiveCfg = Release|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Release|x64.Build.0 = Release|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Release|x86.ActiveCfg = Release|Any CPU
-		{6CAF6B36-6B43-490A-81A6-B05A08681898}.Release|x86.Build.0 = Release|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Debug|x64.Build.0 = Debug|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Debug|x86.Build.0 = Debug|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Release|x64.ActiveCfg = Release|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Release|x64.Build.0 = Release|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Release|x86.ActiveCfg = Release|Any CPU
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +140,6 @@ Global
 		{3175C1D3-6E42-44EC-9C11-9263E9E0A4D0} = {32836310-FB5E-5A92-56B4-44D826EF11F5}
 		{39125BF7-CD27-4A62-8620-25ED7E2CF8B1} = {32836310-FB5E-5A92-56B4-44D826EF11F5}
 		{DD3ABAB4-136B-4C6E-A60E-3C9E1EB43A54} = {32836310-FB5E-5A92-56B4-44D826EF11F5}
-		{6CAF6B36-6B43-490A-81A6-B05A08681898} = {6EAAB2DE-27EC-A6E3-837A-D93ECFB9C10D}
+		{DE4A0063-F842-488E-B9AC-190A0F0BFF9A} = {6EAAB2DE-27EC-A6E3-837A-D93ECFB9C10D}
 	EndGlobalSection
 EndGlobal
