@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Extensions;
 
-    /// <summary>Information about metrics for the Azure Monitor workspace</summary>
+    /// <summary>Properties related to the metrics container in the Azure Monitor Workspace</summary>
     public partial class AzureMonitorWorkspaceMetrics
     {
 
@@ -65,7 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             {
                 return;
             }
-            __metrics = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Metrics(json);
+            {_prometheusQueryEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString>("prometheusQueryEndpoint"), out var __jsonPrometheusQueryEndpoint) ? (string)__jsonPrometheusQueryEndpoint : (string)_prometheusQueryEndpoint;}
+            {_internalId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString>("internalId"), out var __jsonInternalId) ? (string)__jsonInternalId : (string)_internalId;}
+            {_enableAccessUsingResourcePermission = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonBoolean>("enableAccessUsingResourcePermissions"), out var __jsonEnableAccessUsingResourcePermissions) ? (bool?)__jsonEnableAccessUsingResourcePermissions : _enableAccessUsingResourcePermission;}
             AfterFromJson(json);
         }
 
@@ -100,7 +102,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             {
                 return container;
             }
-            __metrics?.ToJson(container, serializationMode);
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._prometheusQueryEndpoint)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString(this._prometheusQueryEndpoint.ToString()) : null, "prometheusQueryEndpoint" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._internalId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString(this._internalId.ToString()) : null, "internalId" ,container.Add );
+            }
+            AddIf( null != this._enableAccessUsingResourcePermission ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonBoolean((bool)this._enableAccessUsingResourcePermission) : null, "enableAccessUsingResourcePermissions" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

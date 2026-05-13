@@ -10,30 +10,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
     /// <summary>The Data Collection Rule and Endpoint used for ingestion by default.</summary>
     public partial class AzureMonitorWorkspaceDefaultIngestionSettings :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettings,
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettings"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettings __ingestionSettings = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IngestionSettings();
+
+        /// <summary>Backing field for <see cref="DataCollectionEndpointResourceId" /> property.</summary>
+        private string _dataCollectionEndpointResourceId;
 
         /// <summary>
-        /// The Azure resource Id of the default data collection endpoint for this workspace.
+        /// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inherited)]
-        public string DataCollectionEndpointResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)__ingestionSettings).DataCollectionEndpointResourceId; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
+        public string DataCollectionEndpointResourceId { get => this._dataCollectionEndpointResourceId; }
 
-        /// <summary>The Azure resource Id of the default data collection rule for this workspace.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inherited)]
-        public string DataCollectionRuleResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)__ingestionSettings).DataCollectionRuleResourceId; }
+        /// <summary>Backing field for <see cref="DataCollectionRuleImmutableId" /> property.</summary>
+        private string _dataCollectionRuleImmutableId;
+
+        /// <summary>
+        /// The immutable Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
+        public string DataCollectionRuleImmutableId { get => this._dataCollectionRuleImmutableId; }
+
+        /// <summary>Backing field for <see cref="DataCollectionRuleResourceId" /> property.</summary>
+        private string _dataCollectionRuleResourceId;
+
+        /// <summary>
+        /// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
+        public string DataCollectionRuleResourceId { get => this._dataCollectionRuleResourceId; }
+
+        /// <summary>Backing field for <see cref="IngestionEndpoint" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints _ingestionEndpoint;
+
+        /// <summary>The ingestion endpoints for this Azure Monitor Workspace.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints IngestionEndpoint { get => (this._ingestionEndpoint = this._ingestionEndpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IngestionEndpoints()); }
+
+        /// <summary>The metrics ingestion endpoint for this Azure Monitor Workspace.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inlined)]
+        public string IngestionEndpointMetric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpointsInternal)IngestionEndpoint).Metric; }
 
         /// <summary>Internal Acessors for DataCollectionEndpointResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal.DataCollectionEndpointResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)__ingestionSettings).DataCollectionEndpointResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)__ingestionSettings).DataCollectionEndpointResourceId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal.DataCollectionEndpointResourceId { get => this._dataCollectionEndpointResourceId; set { {_dataCollectionEndpointResourceId = value;} } }
+
+        /// <summary>Internal Acessors for DataCollectionRuleImmutableId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal.DataCollectionRuleImmutableId { get => this._dataCollectionRuleImmutableId; set { {_dataCollectionRuleImmutableId = value;} } }
 
         /// <summary>Internal Acessors for DataCollectionRuleResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal.DataCollectionRuleResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)__ingestionSettings).DataCollectionRuleResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)__ingestionSettings).DataCollectionRuleResourceId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal.DataCollectionRuleResourceId { get => this._dataCollectionRuleResourceId; set { {_dataCollectionRuleResourceId = value;} } }
+
+        /// <summary>Internal Acessors for IngestionEndpoint</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal.IngestionEndpoint { get => (this._ingestionEndpoint = this._ingestionEndpoint ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IngestionEndpoints()); set { {_ingestionEndpoint = value;} } }
+
+        /// <summary>Internal Acessors for IngestionEndpointMetric</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal.IngestionEndpointMetric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpointsInternal)IngestionEndpoint).Metric; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpointsInternal)IngestionEndpoint).Metric = value ?? null; }
 
         /// <summary>
         /// Creates an new <see cref="AzureMonitorWorkspaceDefaultIngestionSettings" /> instance.
@@ -42,30 +73,83 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__ingestionSettings), __ingestionSettings);
-            await eventListener.AssertObjectIsValid(nameof(__ingestionSettings), __ingestionSettings);
-        }
     }
     /// The Data Collection Rule and Endpoint used for ingestion by default.
     public partial interface IAzureMonitorWorkspaceDefaultIngestionSettings :
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettings
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.",
+        SerializedName = @"dataCollectionEndpointResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string DataCollectionEndpointResourceId { get;  }
+        /// <summary>
+        /// The immutable Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The immutable Id of the default data collection rule for this Azure Monitor Workspace.",
+        SerializedName = @"dataCollectionRuleImmutableId",
+        PossibleTypes = new [] { typeof(string) })]
+        string DataCollectionRuleImmutableId { get;  }
+        /// <summary>
+        /// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.",
+        SerializedName = @"dataCollectionRuleResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string DataCollectionRuleResourceId { get;  }
+        /// <summary>The metrics ingestion endpoint for this Azure Monitor Workspace.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The metrics ingestion endpoint for this Azure Monitor Workspace.",
+        SerializedName = @"metrics",
+        PossibleTypes = new [] { typeof(string) })]
+        string IngestionEndpointMetric { get;  }
 
     }
     /// The Data Collection Rule and Endpoint used for ingestion by default.
-    internal partial interface IAzureMonitorWorkspaceDefaultIngestionSettingsInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal
+    internal partial interface IAzureMonitorWorkspaceDefaultIngestionSettingsInternal
+
     {
+        /// <summary>
+        /// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
+        /// </summary>
+        string DataCollectionEndpointResourceId { get; set; }
+        /// <summary>
+        /// The immutable Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
+        string DataCollectionRuleImmutableId { get; set; }
+        /// <summary>
+        /// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
+        string DataCollectionRuleResourceId { get; set; }
+        /// <summary>The ingestion endpoints for this Azure Monitor Workspace.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints IngestionEndpoint { get; set; }
+        /// <summary>The metrics ingestion endpoint for this Azure Monitor Workspace.</summary>
+        string IngestionEndpointMetric { get; set; }
 
     }
 }

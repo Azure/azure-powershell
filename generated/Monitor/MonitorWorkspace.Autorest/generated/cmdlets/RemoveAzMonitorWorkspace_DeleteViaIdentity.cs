@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Delete a workspace</summary>
+    /// <summary>Deletes an Azure Monitor Workspace</summary>
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzMonitorWorkspace_DeleteViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Description(@"Delete a workspace")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Description(@"Deletes an Azure Monitor Workspace")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}", ApiVersion = "2023-04-03")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}", ApiVersion = "2025-10-03")]
     public partial class RemoveAzMonitorWorkspace_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IContext

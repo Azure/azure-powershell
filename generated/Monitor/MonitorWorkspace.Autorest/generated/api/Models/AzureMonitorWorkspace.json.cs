@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Extensions;
 
-    /// <summary>Properties of an Azure Monitor workspace</summary>
+    /// <summary>Properties of an Azure Monitor Workspace</summary>
     public partial class AzureMonitorWorkspace
     {
 
@@ -105,10 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._metric ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) this._metric.ToJson(null,serializationMode) : null, "metrics" ,container.Add );
-            }
+            AddIf( null != this._metric ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) this._metric.ToJson(null,serializationMode) : null, "metrics" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._defaultIngestionSetting ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) this._defaultIngestionSetting.ToJson(null,serializationMode) : null, "defaultIngestionSettings" ,container.Add );
@@ -133,10 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
                     container.Add("privateEndpointConnections",__w);
                 }
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
-            }
+            AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

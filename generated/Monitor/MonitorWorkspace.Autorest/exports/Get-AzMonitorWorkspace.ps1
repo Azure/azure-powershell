@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Returns the specific Azure Monitor workspace
+Returns the specified Azure Monitor Workspace
 .Description
-Returns the specific Azure Monitor workspace
+Returns the specified Azure Monitor Workspace
 .Example
 Get-AzMonitorWorkspace
 .Example
@@ -36,27 +36,29 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMonitorWorkspaceIdentity>: Identity Parameter
-  [AzureMonitorWorkspaceName <String>]: The name of the Azure Monitor workspace.  The name is case insensitive
+  [AzureMonitorWorkspaceName <String>]: The name of the Azure Monitor Workspace. The name is case insensitive
   [Id <String>]: Resource identity path
+  [IssueName <String>]: The name of the IssueResource
+  [MetricsContainerName <String>]: The name of the MetricsContainer
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.monitor/get-azmonitorworkspace
 #>
 function Get-AzMonitorWorkspace {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource])]
-[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('AzureMonitorWorkspaceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Path')]
     [System.String]
-    # The name of the Azure Monitor workspace.
+    # The name of the Azure Monitor Workspace.
     # The name is case insensitive
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -70,6 +72,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]

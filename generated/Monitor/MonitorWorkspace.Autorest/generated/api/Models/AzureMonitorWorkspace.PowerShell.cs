@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.PowerShell;
 
-    /// <summary>Properties of an Azure Monitor workspace</summary>
+    /// <summary>Properties of an Azure Monitor Workspace</summary>
     [System.ComponentModel.TypeConverter(typeof(AzureMonitorWorkspaceTypeConverter))]
     public partial class AzureMonitorWorkspace
     {
@@ -100,13 +100,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
-            if (content.Contains("MetricInternalId"))
+            if (content.Contains("DefaultIngestionSettingIngestionEndpoint"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricInternalId = (string) content.GetValueForProperty("MetricInternalId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricInternalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingIngestionEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints) content.GetValueForProperty("DefaultIngestionSettingIngestionEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingIngestionEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IngestionEndpointsTypeConverter.ConvertFrom);
             }
             if (content.Contains("MetricPrometheusQueryEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricPrometheusQueryEndpoint = (string) content.GetValueForProperty("MetricPrometheusQueryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricPrometheusQueryEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetricInternalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricInternalId = (string) content.GetValueForProperty("MetricInternalId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricInternalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetricEnableAccessUsingResourcePermission"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricEnableAccessUsingResourcePermission = (bool?) content.GetValueForProperty("MetricEnableAccessUsingResourcePermission",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricEnableAccessUsingResourcePermission, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("DefaultIngestionSettingDataCollectionRuleResourceId"))
             {
@@ -115,6 +123,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             if (content.Contains("DefaultIngestionSettingDataCollectionEndpointResourceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingDataCollectionEndpointResourceId = (string) content.GetValueForProperty("DefaultIngestionSettingDataCollectionEndpointResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingDataCollectionEndpointResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DefaultIngestionSettingDataCollectionRuleImmutableId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingDataCollectionRuleImmutableId = (string) content.GetValueForProperty("DefaultIngestionSettingDataCollectionRuleImmutableId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingDataCollectionRuleImmutableId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IngestionEndpointMetric"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).IngestionEndpointMetric = (string) content.GetValueForProperty("IngestionEndpointMetric",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).IngestionEndpointMetric, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -157,13 +173,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).PublicNetworkAccess = (string) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).PublicNetworkAccess, global::System.Convert.ToString);
             }
-            if (content.Contains("MetricInternalId"))
+            if (content.Contains("DefaultIngestionSettingIngestionEndpoint"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricInternalId = (string) content.GetValueForProperty("MetricInternalId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricInternalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingIngestionEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints) content.GetValueForProperty("DefaultIngestionSettingIngestionEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingIngestionEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IngestionEndpointsTypeConverter.ConvertFrom);
             }
             if (content.Contains("MetricPrometheusQueryEndpoint"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricPrometheusQueryEndpoint = (string) content.GetValueForProperty("MetricPrometheusQueryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricPrometheusQueryEndpoint, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetricInternalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricInternalId = (string) content.GetValueForProperty("MetricInternalId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricInternalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetricEnableAccessUsingResourcePermission"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricEnableAccessUsingResourcePermission = (bool?) content.GetValueForProperty("MetricEnableAccessUsingResourcePermission",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).MetricEnableAccessUsingResourcePermission, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("DefaultIngestionSettingDataCollectionRuleResourceId"))
             {
@@ -172,6 +196,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             if (content.Contains("DefaultIngestionSettingDataCollectionEndpointResourceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingDataCollectionEndpointResourceId = (string) content.GetValueForProperty("DefaultIngestionSettingDataCollectionEndpointResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingDataCollectionEndpointResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DefaultIngestionSettingDataCollectionRuleImmutableId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingDataCollectionRuleImmutableId = (string) content.GetValueForProperty("DefaultIngestionSettingDataCollectionRuleImmutableId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).DefaultIngestionSettingDataCollectionRuleImmutableId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IngestionEndpointMetric"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).IngestionEndpointMetric = (string) content.GetValueForProperty("IngestionEndpointMetric",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)this).IngestionEndpointMetric, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
@@ -226,7 +258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             return ToJsonString();
         }
     }
-    /// Properties of an Azure Monitor workspace
+    /// Properties of an Azure Monitor Workspace
     [System.ComponentModel.TypeConverter(typeof(AzureMonitorWorkspaceTypeConverter))]
     public partial interface IAzureMonitorWorkspace
 
