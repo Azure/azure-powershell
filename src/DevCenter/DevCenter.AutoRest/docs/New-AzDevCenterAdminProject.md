@@ -15,36 +15,32 @@ Creates or updates a project.
 ### CreateExpanded (Default)
 ```
 New-AzDevCenterAdminProject -Name <String> -ResourceGroupName <String> -DevCenterId <String>
- -Location <String> [-SubscriptionId <String>]
- [-AzureAiServiceSettingAzureAiServicesMode <AzureAiServicesMode>]
- [-CatalogSettingCatalogItemSyncType <CatalogItemType[]>]
+ -Location <String> [-SubscriptionId <String>] [-AzureAiServiceSettingAzureAiServicesMode <String>]
+ [-CatalogSettingCatalogItemSyncType <String[]>]
  [-CustomizationSettingIdentity <IProjectCustomizationManagedIdentity[]>]
- [-CustomizationSettingUserCustomizationsEnableStatus <UserCustomizationsEnableStatus>]
- [-Description <String>] [-DevBoxAutoDeleteSettingDeleteMode <DevBoxDeleteMode>]
- [-DevBoxAutoDeleteSettingGracePeriod <String>] [-DevBoxAutoDeleteSettingInactiveThreshold <String>]
- [-DisplayName <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-CustomizationSettingUserCustomizationsEnableStatus <String>] [-Description <String>]
+ [-DevBoxAutoDeleteSettingDeleteMode <String>] [-DevBoxAutoDeleteSettingGracePeriod <String>]
+ [-DevBoxAutoDeleteSettingInactiveThreshold <String>] [-DisplayName <String>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-MaxDevBoxesPerUser <Int32>]
  [-ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject <Int32>]
- [-ServerlessGpuSessionSettingServerlessGpuSessionsMode <ServerlessGpuSessionsMode>] [-Tag <Hashtable>]
- [-WorkspaceStorageSettingWorkspaceStorageMode <WorkspaceStorageMode>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ServerlessGpuSessionSettingServerlessGpuSessionsMode <String>] [-Tag <Hashtable>]
+ [-WorkspaceStorageSettingWorkspaceStorageMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminProject -InputObject <IDevCenterIdentity> -DevCenterId <String> -Location <String>
- [-AzureAiServiceSettingAzureAiServicesMode <AzureAiServicesMode>]
- [-CatalogSettingCatalogItemSyncType <CatalogItemType[]>]
+ [-AzureAiServiceSettingAzureAiServicesMode <String>] [-CatalogSettingCatalogItemSyncType <String[]>]
  [-CustomizationSettingIdentity <IProjectCustomizationManagedIdentity[]>]
- [-CustomizationSettingUserCustomizationsEnableStatus <UserCustomizationsEnableStatus>]
- [-Description <String>] [-DevBoxAutoDeleteSettingDeleteMode <DevBoxDeleteMode>]
- [-DevBoxAutoDeleteSettingGracePeriod <String>] [-DevBoxAutoDeleteSettingInactiveThreshold <String>]
- [-DisplayName <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-CustomizationSettingUserCustomizationsEnableStatus <String>] [-Description <String>]
+ [-DevBoxAutoDeleteSettingDeleteMode <String>] [-DevBoxAutoDeleteSettingGracePeriod <String>]
+ [-DevBoxAutoDeleteSettingInactiveThreshold <String>] [-DisplayName <String>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-MaxDevBoxesPerUser <Int32>]
  [-ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject <Int32>]
- [-ServerlessGpuSessionSettingServerlessGpuSessionsMode <ServerlessGpuSessionsMode>] [-Tag <Hashtable>]
- [-WorkspaceStorageSettingWorkspaceStorageMode <WorkspaceStorageMode>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ServerlessGpuSessionSettingServerlessGpuSessionsMode <String>] [-Tag <Hashtable>]
+ [-WorkspaceStorageSettingWorkspaceStorageMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +84,7 @@ Accept wildcard characters: False
 The property indicates whether Azure AI services is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.AzureAiServicesMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +99,7 @@ Accept wildcard characters: False
 Indicates catalog item types that can be synced.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.CatalogItemType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +115,7 @@ The identities that can to be used in customization scenarios; e.g., to clone a 
 To construct, see NOTES section for CUSTOMIZATIONSETTINGIDENTITY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProjectCustomizationManagedIdentity[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IProjectCustomizationManagedIdentity[]
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +130,7 @@ Accept wildcard characters: False
 Indicates whether user customizations are enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.UserCustomizationsEnableStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +176,7 @@ Accept wildcard characters: False
 Indicates the delete mode for Dev Boxes within this project.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.DevBoxDeleteMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -257,7 +253,7 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -397,7 +393,7 @@ Accept wildcard characters: False
 The property indicates whether serverless GPU access is enabled on the project.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ServerlessGpuSessionsMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -442,7 +438,7 @@ Accept wildcard characters: False
 Indicates whether workspace storage is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.WorkspaceStorageMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -493,7 +489,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IProject
 
 ## NOTES
 

@@ -19,6 +19,13 @@ Get-AzDevCenterAdminProjectAllowedEnvironmentType -ProjectName <String> -Resourc
  [<CommonParameters>]
 ```
 
+### GetViaIdentityProject
+```
+Get-AzDevCenterAdminProjectAllowedEnvironmentType -EnvironmentTypeName <String>
+ -ProjectInputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzDevCenterAdminProjectAllowedEnvironmentType -EnvironmentTypeName <String> -ProjectName <String>
@@ -82,7 +89,7 @@ The name of the environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityProject, Get
 Aliases:
 
 Required: True
@@ -94,11 +101,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: GetViaIdentityProject
 Aliases:
 
 Required: True
@@ -163,7 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20250401Preview.IAllowedEnvironmentType
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IAllowedEnvironmentType
 
 ## NOTES
 
