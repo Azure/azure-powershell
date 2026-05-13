@@ -15,8 +15,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
     internal class Track2VaultClient
     {
-        private Track2TokenCredential _credential;
-        private VaultUriHelper _vaultUriHelper;
+        private readonly Track2TokenCredential _credential;
+        private readonly VaultUriHelper _vaultUriHelper;
 
         // After a track 2 client is created, the vault / hsm uri associated to it cannot be changed
         // however azure powershell may deal with multiple vaults / hsms
@@ -53,9 +53,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             {
                 options = new CreateEcKeyOptions(keyName, isHsm) { CurveName = string.IsNullOrEmpty(curveName) ? (KeyCurveName?)null : new KeyCurveName(curveName) };
             }
+
+            else if (keyAttributes.KeyType == KeyType.Oct || keyAttributes.KeyType == KeyType.OctHsm)
+            {
+                options = new CreateOctKeyOptions(keyName, hardwareProtected: true) { KeySize = size };
+            }
             else
             {
-                // oct (AES) is only supported by managed HSM
                 throw new NotSupportedException($"{keyAttributes.KeyType} is not supported");
             }
             options.NotBefore = keyAttributes.NotBefore;
@@ -86,6 +90,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             else if (keyAttributes.KeyType == KeyType.Ec || keyAttributes.KeyType == KeyType.EcHsm)
             {
                 return new PSKeyVaultKey(client.CreateEcKey(options as CreateEcKeyOptions).Value, _vaultUriHelper, false);
+            }
+            else if (keyAttributes.KeyType == KeyType.Oct || keyAttributes.KeyType == KeyType.OctHsm)
+            {
+                return new PSKeyVaultKey(client.CreateOctKey(options as CreateOctKeyOptions).Value, _vaultUriHelper, false);
             }
             else
             {

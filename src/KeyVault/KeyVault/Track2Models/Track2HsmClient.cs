@@ -103,6 +103,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                     (options as CreateEcKeyOptions).CurveName = new KeyCurveName(curveName);
                 }
             }
+            else if (keyAttributes.KeyType == KeyType.Oct || keyAttributes.KeyType == KeyType.OctHsm)
+            {
+                options = new CreateOctKeyOptions(keyName, hardwareProtected: true) { KeySize = size };
+            }
             else
             {
                 options = new CreateKeyOptions();
@@ -139,9 +143,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             {
                 return new PSKeyVaultKey(client.CreateEcKey(options as CreateEcKeyOptions).Value, _uriHelper, isHsm: true);
             }
-            else if (keyAttributes.KeyType == KeyType.Oct || keyAttributes.KeyType.ToString() == "oct-HSM")
+            else if (keyAttributes.KeyType == KeyType.Oct || keyAttributes.KeyType == KeyType.OctHsm)
             {
-                return new PSKeyVaultKey(client.CreateKey(keyName, KeyType.Oct, options).Value, _uriHelper, isHsm: true);
+                return new PSKeyVaultKey(client.CreateOctKey(options as CreateOctKeyOptions).Value, _uriHelper, isHsm: true);
             }
             else
             {

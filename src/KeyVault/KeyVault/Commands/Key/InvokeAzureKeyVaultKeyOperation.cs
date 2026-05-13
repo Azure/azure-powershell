@@ -1,14 +1,8 @@
-﻿using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.KeyVault.Models;
+﻿using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
-using System.Collections;
 using System.Management.Automation;
-using System.Security;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
 {
@@ -52,7 +46,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         [Parameter(Mandatory = true,
             HelpMessage = "Algorithm identifier")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("RSA-OAEP", "RSA-OAEP-256", "RSA1_5")]
+        [PSArgumentCompleter(
+            // RSA (asymmetric)
+            "RSA-OAEP", "RSA-OAEP-256", "RSA1_5",
+            // AES (symmetric, supported on Managed HSM)
+            "A128CBC", "A128CBCPAD", "A128GCM",
+            "A192CBC", "A192CBCPAD", "A192GCM",
+            "A256CBC", "A256CBCPAD", "A256GCM")]
         [Alias("EncryptionAlgorithm", "WrapAlgorithm")]
         public string Algorithm { get; set; }
 
