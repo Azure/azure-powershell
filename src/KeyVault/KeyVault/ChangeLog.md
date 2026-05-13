@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed `New-AzKeyVault` `RequestDisallowedByPolicy` error by explicitly setting `enableSoftDelete` in the request body to satisfy Azure Policy checks
-* Added support for creating AES (oct) hardware keys in Azure Key Vault Premium via `Add-AzKeyVaultKey -KeyType oct -Destination HSM` (resulting `KeyType` is `oct-HSM`).
+* Added support for creating AES (Advanced Encryption Standard, `oct`) HSM (hardware security module) keys in Azure Key Vault Premium via `Add-AzKeyVaultKey -KeyType oct -Destination HSM` (resulting `KeyType` is `oct-HSM`).
 
 ## Version 6.4.3
 * Added upcoming breaking change warning messages to `Get-AzKeyVaultKey` and `Get-AzKeyVaultSecret` for filtering certificate-backed keys and secrets.
