@@ -118,6 +118,68 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         # $pol | Should be $null
     }
 
+    It 'AzureCosmosDbPolicy' {
+        $subId = $env.TestCosmosDB.SubscriptionId
+        $resourceGroupName = $env.TestCosmosDB.ResourceGroupName
+        $vaultName = $env.TestCosmosDB.VaultName
+        $newPolicyName = $env.TestCosmosDB.NewPolicyName
+
+        # get default
+        $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureCosmosDB
+
+        # update default retention rule (VaultStore is the only supported datastore for CosmosDB)
+        $lifeCycleVault = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Months -SourceRetentionDurationCount 3
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Default -LifeCycles $lifeCycleVault -IsDefault $true
+
+        # add monthly retention rule
+        $lifeCycleVault = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Months -SourceRetentionDurationCount 6
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Monthly -LifeCycles $lifeCycleVault -IsDefault $false
+
+        # add yearly retention rule
+        $lifeCycleVault = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Years -SourceRetentionDurationCount 1
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Yearly -LifeCycles $lifeCycleVault -IsDefault $false
+
+        # add policy schedule weekly - Monday, Tuesday (CosmosDB only supports Weekly frequency)
+        $schDates = @(
+        (
+            (Get-Date -Year 2024 -Month 03 -Day 04 -Hour 09 -Minute 0 -Second 0)
+        ),
+        (
+            (Get-Date -Year 2024 -Month 03 -Day 05 -Hour 09 -Minute 0 -Second 0)
+        ))
+
+        $trigger =  New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $schDates -IntervalType Weekly -IntervalCount 1
+        Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $defaultPol
+
+        # Monthly tag criteria
+        $tagCriteriaMonthly = New-AzDataProtectionPolicyTagCriteriaClientObject -MonthsOfYear January -DaysOfMonth 1,5,Last
+        Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Monthly -Criteria $tagCriteriaMonthly
+
+        # Yearly tag criteria
+        $tagCriteriaYearly = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfYear
+        Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Yearly -Criteria $tagCriteriaYearly
+
+        # create policy
+        $cosmosDbPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -Name $newPolicyName -Policy $defaultPol
+        $cosmosDbPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -Name $newPolicyName
+
+        # Verify
+        $cosmosDbPolicy.Name | Should be $newPolicyName
+        $cosmosDbPolicy.Property.PolicyRule[-1].Lifecycle[0].SourceDataStoreType | Should be "VaultStore"
+        $cosmosDbPolicy.Property.DatasourceType.ToLower().Equals("microsoft.documentdb/databaseaccounts") | Should be $true
+        ($cosmosDbPolicy.Property.PolicyRule | Where-Object { $_.Name -match "Default" }) -eq $null | Should be $false
+        ($cosmosDbPolicy.Property.PolicyRule | Where-Object { $_.Name -match "Monthly" }) -eq $null | Should be $false
+        ($cosmosDbPolicy.Property.PolicyRule | Where-Object { $_.Name -match "Yearly" }) -eq $null | Should be $false
+        ($cosmosDbPolicy.Property.PolicyRule | Where-Object { $_.Name -match "BackupWeekly" }) -eq $null | Should be $false
+
+        #Remove policy
+        Remove-AzDataProtectionBackupPolicy -Name $newPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+
+        # TODO: uncomment later
+        # $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -match $newPolicyName }
+        # $pol | Should be $null
+    }
+
     It '__AllParameterSets' -skip {
         $sub = $env.TestOssBackupScenario.SubscriptionId
         $rgName = $env.TestOssBackupScenario.ResourceGroupName
