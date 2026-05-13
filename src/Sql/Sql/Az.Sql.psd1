@@ -364,7 +364,7 @@ PrivateData = @{
         ReleaseNotes = '* Fixed error handling in Az.Sql cmdlets that inherit from ''AzureSqlCmdletBase'' to surface descriptive error messages instead of generic ''Operation returned an invalid status code'' when API calls fail. This restores meaningful error details such as Azure Policy violation messages.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
