@@ -12,10 +12,39 @@ Stop in-progress database migration to SQL Db.
 
 ## SYNTAX
 
+### CancelExpanded (Default)
 ```
-Stop-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> -TargetDbName <String>
+Stop-AzDataMigrationToSqlDb -TargetDbName <String> -ResourceGroupName <String> -SqlDbInstanceName <String>
  [-SubscriptionId <String>] -MigrationOperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CancelViaJsonString
+```
+Stop-AzDataMigrationToSqlDb -TargetDbName <String> -ResourceGroupName <String> -SqlDbInstanceName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CancelViaJsonFilePath
+```
+Stop-AzDataMigrationToSqlDb -TargetDbName <String> -ResourceGroupName <String> -SqlDbInstanceName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CancelViaIdentityServerExpanded
+```
+Stop-AzDataMigrationToSqlDb -TargetDbName <String> -ServerInputObject <IDataMigrationIdentity>
+ -MigrationOperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CancelViaIdentityServer
+```
+Stop-AzDataMigrationToSqlDb -TargetDbName <String> -ServerInputObject <IDataMigrationIdentity>
+ -Parameter <IMigrationOperationInput> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,12 +101,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Cancel operation
+
+```yaml
+Type: System.String
+Parameter Sets: CancelViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Cancel operation
+
+```yaml
+Type: System.String
+Parameter Sets: CancelViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MigrationOperationId
 ID tracking migration operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CancelExpanded, CancelViaIdentityServerExpanded
 Aliases:
 
 Required: True
@@ -102,6 +161,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Migration Operation Input
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IMigrationOperationInput
+Parameter Sets: CancelViaIdentityServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -123,7 +197,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CancelExpanded, CancelViaJsonString, CancelViaJsonFilePath
 Aliases:
 
 Required: True
@@ -133,12 +207,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: CancelViaIdentityServerExpanded, CancelViaIdentityServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SqlDbInstanceName
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CancelExpanded, CancelViaJsonString, CancelViaJsonFilePath
 Aliases:
 
 Required: True
@@ -153,7 +242,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CancelExpanded, CancelViaJsonString, CancelViaJsonFilePath
 Aliases:
 
 Required: False
@@ -213,6 +302,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IMigrationOperationInput
 
 ## OUTPUTS
 

@@ -66,7 +66,7 @@ function New-AzDataMigrationToSqlManagedInstance
         [string[]]${AzureBlobUserAssignedIdentity},
 
         [Parameter(HelpMessage = "Resource type.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType]${Kind},
+        [string]${Kind},
 
         [Parameter(HelpMessage = "Resource Id of the Migration Service.")]
         [string]${MigrationService},

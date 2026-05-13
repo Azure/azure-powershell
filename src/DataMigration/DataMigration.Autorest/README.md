@@ -36,10 +36,6 @@ input-file:
 title: DataMigration
 module-version: 0.1.0
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
 
   #Swagger description changes
@@ -151,8 +147,9 @@ directive:
     set:
       subject: ToSqlManagedInstance
 
+  # Match both standalone and compound subjects (e.g. CutoverDatabaseMigrationsSqlMi)
   - where:
-      subject: DatabaseMigrationsSqlMi
+      subject: (DatabaseMigrationsSqlMi$)
     set:
       subject: ToSqlManagedInstance
 
@@ -161,8 +158,9 @@ directive:
     set:
       subject: ToSqlVM
 
+  # Match both standalone and compound subjects (e.g. CutoverDatabaseMigrationsSqlVM)
   - where:
-      subject: DatabaseMigrationsSqlVM
+      subject: (DatabaseMigrationsSqlVM$)
     set:
       subject: ToSqlVM
   
@@ -171,8 +169,9 @@ directive:
     set:
       subject: ToSqlDb
 
+  # Match both standalone and compound subjects (e.g. RetryDatabaseMigrationsSqlDb)
   - where:
-      subject: DatabaseMigrationsSqlDb
+      subject: (DatabaseMigrationsSqlDb$)
     set:
       subject: ToSqlDb
   
@@ -232,7 +231,8 @@ directive:
   - where:
       verb: New
       subject: ToSqlVM
-      parameter-name: AzureBlobAuthType|IdentityType|IdentityUserAssignedIdentity
+      # IdentityUserAssignedIdentity removed - auto-handled by UserAssignedIdentity in v4
+      parameter-name: AzureBlobAuthType|IdentityType
     hide: true
 
   #Changing parameter names
@@ -393,5 +393,12 @@ directive:
   - from: swagger-document
     where: $.definitions.MigrationOperationInput
     transform: $['required'] = ['migrationOperationId']
+
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+  - where:
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
 
 ```

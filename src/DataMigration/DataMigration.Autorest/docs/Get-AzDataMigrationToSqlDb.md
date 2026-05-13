@@ -25,6 +25,13 @@ Get-AzDataMigrationToSqlDb -InputObject <IDataMigrationIdentity> [-Expand <Strin
  [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
+### GetViaIdentityServer
+```
+Get-AzDataMigrationToSqlDb -ServerInputObject <IDataMigrationIdentity> -TargetDbName <String>
+ [-Expand <String>] [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Retrieve the specified database migration for a given SQL Db.
 
@@ -90,7 +97,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
@@ -152,6 +158,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: GetViaIdentityServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SqlDbInstanceName
 .
 
@@ -187,7 +208,7 @@ The name of the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityServer
 Aliases:
 
 Required: True
@@ -206,7 +227,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlDb
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDatabaseMigrationSqlDb
 
 ## NOTES
 

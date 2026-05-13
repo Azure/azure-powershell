@@ -17,7 +17,7 @@ New-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceG
  -TargetDbName <String> [-SubscriptionId <String>] [-AzureBlobAccountKey <String>]
  [-AzureBlobAuthType <String>] [-AzureBlobContainerName <String>] [-AzureBlobIdentityType <String>]
  [-AzureBlobStorageAccountResourceId <String>] [-FileSharePassword <SecureString>] [-FileSharePath <String>]
- [-FileShareUsername <String>] [-AzureBlobUserAssignedIdentity <String[]>] [-Kind <ResourceType>]
+ [-FileShareUsername <String>] [-AzureBlobUserAssignedIdentity <String[]>] [-Kind <String>]
  [-MigrationService <String>] [-Offline] [-OfflineConfigurationLastBackupName <String>] [-Scope <String>]
  [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
  [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
@@ -266,7 +266,7 @@ Accept wildcard characters: False
 Resource type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

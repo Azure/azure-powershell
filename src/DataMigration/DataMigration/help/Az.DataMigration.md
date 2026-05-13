@@ -96,7 +96,7 @@ Creates a new instance of the Azure Database Migration Service (classic).
 Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers.
 
 ### [New-AzDataMigrationSqlService](New-AzDataMigrationSqlService.md)
-Create or Update Database Migration Service.
+Create Database Migration Service.
 
 ### [New-AzDataMigrationSqlServiceAuthKey](New-AzDataMigrationSqlServiceAuthKey.md)
 Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
