@@ -76,13 +76,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("IngestionEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).IngestionEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints) content.GetValueForProperty("IngestionEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).IngestionEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IngestionEndpointsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("DataCollectionRuleResourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)this).DataCollectionRuleResourceId = (string) content.GetValueForProperty("DataCollectionRuleResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)this).DataCollectionRuleResourceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionRuleResourceId = (string) content.GetValueForProperty("DataCollectionRuleResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionRuleResourceId, global::System.Convert.ToString);
             }
             if (content.Contains("DataCollectionEndpointResourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)this).DataCollectionEndpointResourceId = (string) content.GetValueForProperty("DataCollectionEndpointResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)this).DataCollectionEndpointResourceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionEndpointResourceId = (string) content.GetValueForProperty("DataCollectionEndpointResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionEndpointResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataCollectionRuleImmutableId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionRuleImmutableId = (string) content.GetValueForProperty("DataCollectionRuleImmutableId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionRuleImmutableId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IngestionEndpointMetric"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).IngestionEndpointMetric = (string) content.GetValueForProperty("IngestionEndpointMetric",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).IngestionEndpointMetric, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -101,13 +113,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("IngestionEndpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).IngestionEndpoint = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints) content.GetValueForProperty("IngestionEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).IngestionEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IngestionEndpointsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("DataCollectionRuleResourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)this).DataCollectionRuleResourceId = (string) content.GetValueForProperty("DataCollectionRuleResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)this).DataCollectionRuleResourceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionRuleResourceId = (string) content.GetValueForProperty("DataCollectionRuleResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionRuleResourceId, global::System.Convert.ToString);
             }
             if (content.Contains("DataCollectionEndpointResourceId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)this).DataCollectionEndpointResourceId = (string) content.GetValueForProperty("DataCollectionEndpointResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)this).DataCollectionEndpointResourceId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionEndpointResourceId = (string) content.GetValueForProperty("DataCollectionEndpointResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionEndpointResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataCollectionRuleImmutableId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionRuleImmutableId = (string) content.GetValueForProperty("DataCollectionRuleImmutableId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).DataCollectionRuleImmutableId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IngestionEndpointMetric"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).IngestionEndpointMetric = (string) content.GetValueForProperty("IngestionEndpointMetric",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)this).IngestionEndpointMetric, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
