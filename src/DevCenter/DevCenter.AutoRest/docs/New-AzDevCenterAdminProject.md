@@ -20,12 +20,11 @@ New-AzDevCenterAdminProject -Name <String> -ResourceGroupName <String> -DevCente
  [-CustomizationSettingIdentity <IProjectCustomizationManagedIdentity[]>]
  [-CustomizationSettingUserCustomizationsEnableStatus <String>] [-Description <String>]
  [-DevBoxAutoDeleteSettingDeleteMode <String>] [-DevBoxAutoDeleteSettingGracePeriod <String>]
- [-DevBoxAutoDeleteSettingInactiveThreshold <String>] [-DisplayName <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-MaxDevBoxesPerUser <Int32>]
- [-ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject <Int32>]
+ [-DevBoxAutoDeleteSettingInactiveThreshold <String>] [-DisplayName <String>] [-EnableSystemAssignedIdentity]
+ [-MaxDevBoxesPerUser <Int32>] [-ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject <Int32>]
  [-ServerlessGpuSessionSettingServerlessGpuSessionsMode <String>] [-Tag <Hashtable>]
- [-WorkspaceStorageSettingWorkspaceStorageMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-WorkspaceStorageSettingWorkspaceStorageMode <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -35,12 +34,11 @@ New-AzDevCenterAdminProject -InputObject <IDevCenterIdentity> -DevCenterId <Stri
  [-CustomizationSettingIdentity <IProjectCustomizationManagedIdentity[]>]
  [-CustomizationSettingUserCustomizationsEnableStatus <String>] [-Description <String>]
  [-DevBoxAutoDeleteSettingDeleteMode <String>] [-DevBoxAutoDeleteSettingGracePeriod <String>]
- [-DevBoxAutoDeleteSettingInactiveThreshold <String>] [-DisplayName <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-MaxDevBoxesPerUser <Int32>]
- [-ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject <Int32>]
+ [-DevBoxAutoDeleteSettingInactiveThreshold <String>] [-DisplayName <String>] [-EnableSystemAssignedIdentity]
+ [-MaxDevBoxesPerUser <Int32>] [-ServerlessGpuSessionSettingMaxConcurrentSessionsPerProject <Int32>]
  [-ServerlessGpuSessionSettingServerlessGpuSessionsMode <String>] [-Tag <Hashtable>]
- [-WorkspaceStorageSettingWorkspaceStorageMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-WorkspaceStorageSettingWorkspaceStorageMode <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -249,28 +247,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -424,6 +405,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

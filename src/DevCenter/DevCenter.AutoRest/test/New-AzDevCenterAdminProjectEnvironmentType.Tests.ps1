@@ -15,7 +15,6 @@ if (($null -eq $TestName) -or ($TestName -contains 'New-AzDevCenterAdminProjectE
 
 Describe 'New-AzDevCenterAdminProjectEnvironmentType' {
     It 'CreateExpanded' {
-        $identityHashTable = @{$env.identityId = @{} }
         $deploymentTargetId = '/subscriptions/' + $env.subscriptionId
         $creatorRoleAssignmentRole = @{"8e3af657-a8ff-443c-a75c-2fe8c4bcb635" = @{} }
         $userRoleAssignment = @{
@@ -26,7 +25,7 @@ Describe 'New-AzDevCenterAdminProjectEnvironmentType' {
             }
         }
 
-        $envType = New-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName $env.envForProjEnvTypeNew -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -CreatorRoleAssignmentRole $creatorRoleAssignmentRole -DeploymentTargetId $deploymentTargetId -IdentityType "SystemAssigned,UserAssigned" -IdentityUserAssignedIdentity $identityHashTable -Location $env.location -Status "Enabled" -UserRoleAssignment $userRoleAssignment
+        $envType = New-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName $env.envForProjEnvTypeNew -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -CreatorRoleAssignmentRole $creatorRoleAssignmentRole -DeploymentTargetId $deploymentTargetId -EnableSystemAssignedIdentity -UserAssignedIdentity @($env.identityId) -Location $env.location -Status "Enabled" -UserRoleAssignment $userRoleAssignment
         $envType.IdentityType | Should -Be "SystemAssigned, UserAssigned"
         $envType.DeploymentTargetId | Should -Be $deploymentTargetId
         $envType.CreatorRoleAssignmentRole.Keys[0] | Should -Be "8e3af657-a8ff-443c-a75c-2fe8c4bcb635"

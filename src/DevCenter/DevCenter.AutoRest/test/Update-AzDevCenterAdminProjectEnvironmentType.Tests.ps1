@@ -26,7 +26,7 @@ Describe 'Update-AzDevCenterAdminProjectEnvironmentType' {
             }
         }
 
-        $envType = Update-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName $env.projectEnvironmentTypeUpdate -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -CreatorRoleAssignmentRole $creatorRoleAssignmentRole -IdentityType "SystemAssigned" -Status "Disabled" -UserRoleAssignment $userRoleAssignment
+        $envType = Update-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName $env.projectEnvironmentTypeUpdate -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup -CreatorRoleAssignmentRole $creatorRoleAssignmentRole -EnableSystemAssignedIdentity $true -Status "Disabled" -UserRoleAssignment $userRoleAssignment
         $envType.IdentityType | Should -Be "SystemAssigned"
         $envType.DeploymentTargetId | Should -Be $deploymentTargetId
         $creatorRoles = $envType.CreatorRoleAssignmentRole.Keys | ConvertTo-Json | ConvertFrom-Json
@@ -50,7 +50,7 @@ Describe 'Update-AzDevCenterAdminProjectEnvironmentType' {
             }
         }
 
-        $envType = Update-AzDevCenterAdminProjectEnvironmentType -InputObject $projEnvTypeInput -CreatorRoleAssignmentRole $creatorRoleAssignmentRole -IdentityType "SystemAssigned" -Status "Disabled" -UserRoleAssignment $userRoleAssignment
+        $envType = Update-AzDevCenterAdminProjectEnvironmentType -InputObject $projEnvTypeInput -CreatorRoleAssignmentRole $creatorRoleAssignmentRole -EnableSystemAssignedIdentity $true -Status "Disabled" -UserRoleAssignment $userRoleAssignment
         $envType.IdentityType | Should -Be "SystemAssigned"
         $envType.DeploymentTargetId | Should -Be $deploymentTargetId
         $creatorRoles = $envType.CreatorRoleAssignmentRole.Keys | ConvertTo-Json | ConvertFrom-Json
