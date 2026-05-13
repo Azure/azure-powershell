@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
+* Removed validations to allow newly added AuxiliarySkus in New-AzNetworkInterface command without needing to add them in ValidateSet.
 * Added new cmdlets for DDoS Custom Policy management
     - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy with detection rules
     - `New-AzDdosCustomPolicy` requires at least one detection rule at creation time
