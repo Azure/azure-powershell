@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Azure Cosmos DB protection scenarios
+    - Users can now configure protection, backup, and restore for Azure Cosmos DB workloads
 
 ## Version 2.10.1
 * Fixed non-ASCII U+2013 characters failed module import in WindowsPowerShell
