@@ -423,6 +423,34 @@ Release Policy :
 Tags           :
 ```
 
+### Example 11: Create an AES (oct) HSM-protected key in a Premium Azure Key Vault
+
+```powershell
+Add-AzKeyVaultKey -VaultName 'MyPremiumVault' -Name 'aesKey' -KeyType oct -Destination HSM -Size 256
+```
+
+```output
+Vault/HSM Name : MyPremiumVault
+Name           : aesKey
+Key Type       : oct-HSM
+Key Size       : 256
+Curve Name     :
+Version        : <Version>
+Id             : https://mypremiumvault.vault.azure.net:443/keys/aesKey/<Version>
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 1/1/2025 12:00:00 AM
+Updated        : 1/1/2025 12:00:00 AM
+Recovery Level : Recoverable+Purgeable
+Tags           :
+```
+
+Creates an AES (symmetric) HSM-protected key named `aesKey` in the Premium-SKU Azure Key Vault `MyPremiumVault`.
+The `-Destination HSM` switch is required because symmetric (oct) keys in Azure Key Vault are always HSM-backed,
+and the resulting key type is reported as `oct-HSM`. Supported key sizes are 128, 192, and 256 bits.
+AES keys are only supported on Key Vault Premium SKU and Managed HSM.
+
 ## PARAMETERS
 
 ### -CurveName
