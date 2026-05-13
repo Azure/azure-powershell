@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzMonitorWorkspaceMetricsContainer
 
 ## SYNOPSIS
-Create or update metrics container settings for a monitoring account.
+Update metrics container settings for a monitoring account.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Set-AzMonitorWorkspaceMetricsContainer -AzureMonitorWorkspaceName <String> -Name
 ```
 
 ## DESCRIPTION
-Create or update metrics container settings for a monitoring account.
+Update metrics container settings for a monitoring account.
 
 ## EXAMPLES
 

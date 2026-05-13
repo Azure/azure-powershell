@@ -27,11 +27,11 @@ For information on how to develop for `Az.MonitorWorkspace`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 936922b8f9c7e5dbadf806a73a888a8e93e9a1f8
+commit: 0f6e9449f47da92f7dfc8b7bf91d5398fdd55056
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/monitoringservice/resource-manager/Microsoft.Monitor/Accounts/stable/2025-10-03/azuremonitorworkspace.json
+  - https://raw.githubusercontent.com/GokulPrasad-Work/azure-rest-api-specs/0f6e9449f47da92f7dfc8b7bf91d5398fdd55056/specification/monitoringservice/resource-manager/Microsoft.Monitor/Accounts/stable/2025-10-03/azuremonitorworkspace.json
 
 root-module-name: $(prefix).Monitor
 title: MonitorWorkspace

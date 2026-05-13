@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataCollectionRule.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azdatacollectionruleassociation
 schema: 2.0.0
@@ -16,14 +16,14 @@ update an association.
 ```
 Update-AzDataCollectionRuleAssociation -AssociationName <String> -ResourceUri <String>
  [-DataCollectionEndpointId <String>] [-DataCollectionRuleId <String>] [-Description <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDataCollectionRuleAssociation -InputObject <IDataCollectionRuleIdentity>
  [-DataCollectionEndpointId <String>] [-DataCollectionRuleId <String>] [-Description <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -177,6 +177,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

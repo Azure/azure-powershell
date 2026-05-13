@@ -1,5 +1,5 @@
 ---
-external help file: Az.DiagnosticSetting.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azdiagnosticsetting
 schema: 2.0.0
@@ -18,7 +18,7 @@ Update-AzDiagnosticSetting -Name <String> -ResourceId <String> [-EventHubAuthori
  [-EventHubName <String>] [-Log <ILogSettings[]>] [-LogAnalyticsDestinationType <String>]
  [-MarketplacePartnerId <String>] [-Metric <IMetricSettings[]>] [-ServiceBusRuleId <String>]
  [-StorageAccountId <String>] [-WorkspaceId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -27,7 +27,7 @@ Update-AzDiagnosticSetting -InputObject <IDiagnosticSettingIdentity> [-EventHubA
  [-EventHubName <String>] [-Log <ILogSettings[]>] [-LogAnalyticsDestinationType <String>]
  [-MarketplacePartnerId <String>] [-Metric <IMetricSettings[]>] [-ServiceBusRuleId <String>]
  [-StorageAccountId <String>] [-WorkspaceId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,6 +179,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzMonitorWorkspace
 
 ## SYNOPSIS
-Create or update an Azure Monitor Workspace
+Update an Azure Monitor Workspace
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Set-AzMonitorWorkspace -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-Create or update an Azure Monitor Workspace
+Update an Azure Monitor Workspace
 
 ## EXAMPLES
 

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Monitor-help.xml
+external help file:
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/add-azmonitorworkspaceissuealert
 schema: 2.0.0
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzMonitorWorkspaceIssueAlert
 
 ## SYNOPSIS
-Add or update alerts associated with an issue
+Add or add alerts in the issue
 
 ## SYNTAX
 
@@ -65,7 +65,7 @@ Add-AzMonitorWorkspaceIssueAlert -AzureMonitorWorkspaceName <String> -IssueName 
 ```
 
 ## DESCRIPTION
-Add or update alerts associated with an issue
+Add or add alerts in the issue
 
 ## EXAMPLES
 

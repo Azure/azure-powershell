@@ -1,5 +1,5 @@
 ---
-external help file: Az.DiagnosticSetting.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azsubscriptiondiagnosticsetting
 schema: 2.0.0
@@ -17,7 +17,7 @@ Update subscription diagnostic settings for the specified resource.
 Update-AzSubscriptionDiagnosticSetting -Name <String> [-SubscriptionId <String>]
  [-EventHubAuthorizationRuleId <String>] [-EventHubName <String>] [-Log <ISubscriptionLogSettings[]>]
  [-MarketplacePartnerId <String>] [-ServiceBusRuleId <String>] [-StorageAccountId <String>]
- [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzSubscriptionDiagnosticSetting -Name <String> [-SubscriptionId <String>]
 Update-AzSubscriptionDiagnosticSetting -InputObject <IDiagnosticSettingIdentity>
  [-EventHubAuthorizationRuleId <String>] [-EventHubName <String>] [-Log <ISubscriptionLogSettings[]>]
  [-MarketplacePartnerId <String>] [-ServiceBusRuleId <String>] [-StorageAccountId <String>]
- [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -146,6 +146,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

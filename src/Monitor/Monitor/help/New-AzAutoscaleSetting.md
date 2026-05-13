@@ -1,5 +1,5 @@
 ---
-external help file: Az.Autoscale.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azautoscalesetting
 schema: 2.0.0
@@ -18,20 +18,20 @@ New-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> [-Subscription
  -Profile <IAutoscaleProfile[]> [-Enabled] [-Notification <IAutoscaleNotification[]>]
  [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>] [-PredictiveAutoscalePolicyScaleMode <String>]
  [-PropertiesName <String>] [-Tag <Hashtable>] [-TargetResourceLocation <String>] [-TargetResourceUri <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -203,6 +203,21 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,5 +1,5 @@
 ---
-external help file: Az.PipelineGroup.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azpipelinegroup
 schema: 2.0.0
@@ -15,34 +15,32 @@ Update a pipeline group instance
 ### UpdateExpanded (Default)
 ```
 Update-AzPipelineGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DistributionMaxInstancesPerHost <Int32>] [-ExecutionPlacementConstraint <IPlacementConstraint[]>]
- [-Exporter <IExporter[]>] [-PersistencePersistentVolumeName <String>] [-Processor <IProcessor[]>]
- [-Receiver <IReceiver[]>] [-Replica <Int32>] [-ServicePipeline <IPipeline[]>] [-Tag <Hashtable>]
- [-TlsConfiguration <ITlsConfiguration[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Exporter <IExporter[]>] [-NetworkingConfiguration <INetworkingConfiguration[]>]
+ [-PersistencePersistentVolumeName <String>] [-Processor <IProcessor[]>] [-Receiver <IReceiver[]>]
+ [-Replica <Int32>] [-ServicePipeline <IPipeline[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzPipelineGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzPipelineGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzPipelineGroup -InputObject <IPipelineGroupIdentity> [-DistributionMaxInstancesPerHost <Int32>]
- [-ExecutionPlacementConstraint <IPlacementConstraint[]>] [-Exporter <IExporter[]>]
- [-PersistencePersistentVolumeName <String>] [-Processor <IProcessor[]>] [-Receiver <IReceiver[]>]
- [-Replica <Int32>] [-ServicePipeline <IPipeline[]>] [-Tag <Hashtable>]
- [-TlsConfiguration <ITlsConfiguration[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzPipelineGroup -InputObject <IPipelineGroupIdentity> [-Exporter <IExporter[]>]
+ [-NetworkingConfiguration <INetworkingConfiguration[]>] [-PersistencePersistentVolumeName <String>]
+ [-Processor <IProcessor[]>] [-Receiver <IReceiver[]>] [-Replica <Int32>] [-ServicePipeline <IPipeline[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -83,37 +81,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DistributionMaxInstancesPerHost
-Maximum number of instances allowed per compute unit (node/VM).
-If not specified, default scheduling applies.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExecutionPlacementConstraint
-A list of placement constraints to guide where pipelineGroup instances should run.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
 
 Required: False
 Position: Named
@@ -198,6 +165,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkingConfiguration
+Networking configurations for the pipeline group instance.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -235,6 +217,21 @@ The processors specified for a pipeline group instance.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IProcessor[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -325,21 +322,6 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TlsConfiguration
-TLS configurations for the pipeline group instance.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

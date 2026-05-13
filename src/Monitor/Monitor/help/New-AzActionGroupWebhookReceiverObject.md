@@ -1,5 +1,5 @@
 ---
-external help file: Az.ActionGroup.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactiongroupwebhookreceiverobject
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create an in-memory object for WebhookReceiver.
 ```
 New-AzActionGroupWebhookReceiverObject -Name <String> -ServiceUri <String> [-IdentifierUri <String>]
  [-ObjectId <String>] [-TenantId <String>] [-UseAadAuth <Boolean>] [-UseCommonAlertSchema <Boolean>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,6 +97,21 @@ Indicates the webhook app object Id for aad auth.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

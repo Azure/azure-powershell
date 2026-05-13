@@ -1,5 +1,5 @@
 ---
-external help file: Az.Monitor-help.xml
+external help file:
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azmonitorworkspacemetricscontainer
 schema: 2.0.0

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Monitor-help.xml
+external help file:
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azmonitorworkspace
 schema: 2.0.0
@@ -260,3 +260,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

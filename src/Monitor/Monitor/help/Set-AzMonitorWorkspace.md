@@ -1,5 +1,5 @@
 ---
-external help file: Az.Monitor-help.xml
+external help file:
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/set-azmonitorworkspace
 schema: 2.0.0
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzMonitorWorkspace
 
 ## SYNOPSIS
-Create or update an Azure Monitor Workspace
+Update an Azure Monitor Workspace
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Set-AzMonitorWorkspace -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-Create or update an Azure Monitor Workspace
+Update an Azure Monitor Workspace
 
 ## EXAMPLES
 

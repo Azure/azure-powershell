@@ -1,5 +1,5 @@
 ---
-external help file: Az.Autoscale.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azAutoscaleSetting
 schema: 2.0.0
@@ -19,7 +19,7 @@ Update-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> [-Subscript
  [-Enabled <Boolean>] [-Notification <IAutoscaleNotification[]>]
  [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>] [-PredictiveAutoscalePolicyScaleMode <String>]
  [-Profile <IAutoscaleProfile[]>] [-Tag <Hashtable>] [-TargetResourceLocation <String>]
- [-TargetResourceUri <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-TargetResourceUri <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ Update-AzAutoscaleSetting -InputObject <IAutoscaleIdentity> [-Enabled <Boolean>]
  [-Notification <IAutoscaleNotification[]>] [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>]
  [-PredictiveAutoscalePolicyScaleMode <String>] [-Profile <IAutoscaleProfile[]>] [-Tag <Hashtable>]
  [-TargetResourceLocation <String>] [-TargetResourceUri <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,6 +166,21 @@ To construct, see NOTES section for PROFILE properties and create a hash table.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleProfile[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

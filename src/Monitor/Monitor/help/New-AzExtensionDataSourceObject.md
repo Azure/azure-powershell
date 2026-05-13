@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataCollectionRule.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azextensiondatasourceobject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create an in-memory object for ExtensionDataSource.
 
 ```
 New-AzExtensionDataSourceObject -ExtensionName <String> [-ExtensionSetting <Hashtable>]
- [-InputDataSource <String[]>] [-Name <String>] [-Stream <String[]>]
+ [-InputDataSource <String[]>] [-Name <String>] [-Stream <String[]>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -97,6 +97,21 @@ A friendly name for the data source.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

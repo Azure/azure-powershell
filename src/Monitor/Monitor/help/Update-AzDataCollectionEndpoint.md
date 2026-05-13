@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataCollectionRule.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azdatacollectionendpoint
 schema: 2.0.0
@@ -17,7 +17,7 @@ update a data collection endpoint.
 Update-AzDataCollectionEndpoint -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Description <String>] [-EnableSystemAssignedIdentity <Boolean>] [-ImmutableId <String>] [-Kind <String>]
  [-NetworkAclsPublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -25,7 +25,7 @@ Update-AzDataCollectionEndpoint -Name <String> -ResourceGroupName <String> [-Sub
 Update-AzDataCollectionEndpoint -InputObject <IDataCollectionRuleIdentity> [-Description <String>]
  [-EnableSystemAssignedIdentity <Boolean>] [-ImmutableId <String>] [-Kind <String>]
  [-NetworkAclsPublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,6 +193,21 @@ The configuration to set whether network access from public internet to the endp
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

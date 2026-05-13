@@ -1,5 +1,5 @@
 ---
-external help file: Az.ActivityLogAlert.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azactivitylogalertactiongroupobject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create an in-memory object for ActionGroup.
 
 ```
 New-AzActivityLogAlertActionGroupObject -Id <String> [-WebhookProperty <IActionGroupWebhookProperties>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +41,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

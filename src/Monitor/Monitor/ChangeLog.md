@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Restored `Etag` output property on `Get-AzMonitorWorkspace`, `New-AzMonitorWorkspace`, and `Update-AzMonitorWorkspace` (property was dropped in the 2025-10-03 TypeSpec migration and is now re-added in the swagger)
 * Updated MonitorWorkspace module to API version 2025-10-03
     - Added `New-AzMonitorWorkspaceIssue`, `Get-AzMonitorWorkspaceIssue`, `Update-AzMonitorWorkspaceIssue`, `Remove-AzMonitorWorkspaceIssue` cmdlets for managing workspace issues
     - Added `Add-AzMonitorWorkspaceIssueAlert`, `Get-AzMonitorWorkspaceIssueAlert`, `Update-AzMonitorWorkspaceIssueAlert` cmdlets for managing issue alerts

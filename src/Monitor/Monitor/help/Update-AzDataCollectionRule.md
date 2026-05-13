@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataCollectionRule.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azdatacollectionrule
 schema: 2.0.0
@@ -32,7 +32,7 @@ Update-AzDataCollectionRule -Name <String> -ResourceGroupName <String> [-Subscri
  [-DestinationStorageBlobsDirect <IStorageBlobDestination[]>]
  [-DestinationStorageTablesDirect <IStorageTableDestination[]>] [-EnableSystemAssignedIdentity <Boolean>]
  [-Kind <String>] [-StreamDeclaration <Hashtable>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -54,7 +54,7 @@ Update-AzDataCollectionRule -InputObject <IDataCollectionRuleIdentity> [-DataCol
  [-DestinationStorageBlobsDirect <IStorageBlobDestination[]>]
  [-DestinationStorageTablesDirect <IStorageTableDestination[]>] [-EnableSystemAssignedIdentity <Boolean>]
  [-Kind <String>] [-StreamDeclaration <Hashtable>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -568,6 +568,21 @@ Parameter Sets: UpdateExpanded
 Aliases: DataCollectionRuleName, RuleName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

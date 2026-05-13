@@ -1,5 +1,5 @@
 ---
-external help file: Az.Monitor-help.xml
+external help file:
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azmonitorworkspaceissueresource
 schema: 2.0.0
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzMonitorWorkspaceIssueResource
 
 ## SYNOPSIS
-Add or update resources associated with an issue
+Add or add resources in the issue
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ Update-AzMonitorWorkspaceIssueResource -AzureMonitorWorkspaceName <String> -Issu
 ```
 
 ## DESCRIPTION
-Add or update resources associated with an issue
+Add or add resources in the issue
 
 ## EXAMPLES
 

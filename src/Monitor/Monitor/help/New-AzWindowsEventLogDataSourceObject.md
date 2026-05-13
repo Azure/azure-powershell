@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataCollectionRule.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azwindowseventlogdatasourceobject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create an in-memory object for WindowsEventLogDataSource.
 
 ```
 New-AzWindowsEventLogDataSourceObject [-Name <String>] [-Stream <String[]>] [-XPathQuery <String[]>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +58,21 @@ A friendly name for the data source.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

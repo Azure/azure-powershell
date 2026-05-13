@@ -1,5 +1,5 @@
 ---
-external help file: Az.Autoscale.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azautoscalepredictivemetric
 schema: 2.0.0
@@ -16,14 +16,14 @@ Get predictive autoscale metric future data
 ```
 Get-AzAutoscalePredictiveMetric -InputObject <IAutoscaleIdentity> -Aggregation <String> -Interval <TimeSpan>
  -MetricName <String> -MetricNamespace <String> -Timespan <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzAutoscalePredictiveMetric -AutoscaleSettingName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -Aggregation <String> -Interval <TimeSpan> -MetricName <String>
- -MetricNamespace <String> -Timespan <String> [-DefaultProfile <PSObject>]
+ -MetricNamespace <String> -Timespan <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -144,6 +144,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

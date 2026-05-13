@@ -94,7 +94,7 @@ Gets metric definitions.
 Lists the metric values for multiple resources.
 
 ### [Get-AzMonitorWorkspace](Get-AzMonitorWorkspace.md)
-Returns the specific Azure Monitor workspace
+Returns the specified Azure Monitor Workspace
 
 ### [Get-AzPipelineGroup](Get-AzPipelineGroup.md)
 Returns the specific pipeline group instance.
@@ -238,7 +238,7 @@ Creates a metric dimension filter that can be used to query metrics.
 Create an in-memory object for MonitoringAccountDestination.
 
 ### [New-AzMonitorWorkspace](New-AzMonitorWorkspace.md)
-Create a workspace
+Create an Azure Monitor Workspace
 
 ### [New-AzPerfCounterDataSourceObject](New-AzPerfCounterDataSourceObject.md)
 Create an in-memory object for PerfCounterDataSource.
@@ -316,7 +316,7 @@ Removes a log profile.
 Removes a V2 (non-classic) metric alert rule.
 
 ### [Remove-AzMonitorWorkspace](Remove-AzMonitorWorkspace.md)
-Delete a workspace
+Deletes an Azure Monitor Workspace
 
 ### [Remove-AzPipelineGroup](Remove-AzPipelineGroup.md)
 Delete a pipeline group instance.
@@ -358,7 +358,7 @@ Update diagnostic settings for the specified resource.
 Update for private link scope
 
 ### [Update-AzMonitorWorkspace](Update-AzMonitorWorkspace.md)
-Update part of a workspace
+Update an Azure Monitor Workspace
 
 ### [Update-AzPipelineGroup](Update-AzPipelineGroup.md)
 Update a pipeline group instance

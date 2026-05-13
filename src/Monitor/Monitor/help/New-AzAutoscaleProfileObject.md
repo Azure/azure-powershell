@@ -1,5 +1,5 @@
 ---
-external help file: Az.Autoscale.psm1-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/Az.Monitor/new-azautoscaleprofileobject
 schema: 2.0.0
@@ -17,7 +17,7 @@ New-AzAutoscaleProfileObject -CapacityDefault <String> -CapacityMaximum <String>
  -Name <String> -Rule <IScaleRule[]> [-FixedDateEnd <DateTime>] [-FixedDateStart <DateTime>]
  [-FixedDateTimeZone <String>] [-RecurrenceFrequency <String>] [-ScheduleDay <String[]>]
  [-ScheduleHour <Int32[]>] [-ScheduleMinute <Int32[]>] [-ScheduleTimeZone <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,6 +147,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
