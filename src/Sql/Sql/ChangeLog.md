@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for User Assigned Managed Identity (UAMI) authentication in Data Sync cmdlets (`New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember`, `Update-AzSqlSyncMember`)
 
 ## Version 6.4.2
 * Fixed error handling in Az.Sql cmdlets that inherit from `AzureSqlCmdletBase` to surface descriptive error messages instead of generic 'Operation returned an invalid status code' when API calls fail. This restores meaningful error details such as Azure Policy violation messages.
