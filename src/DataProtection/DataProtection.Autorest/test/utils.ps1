@@ -36,7 +36,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2025 -Month 12 -Day 25 -Hour 17 -Minute 31 -Second 02).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2026 -Month 02 -Day 13 -Hour 10 -Minute 31 -Second 02).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
 
     $BackupInstanceTestVariables = @{
@@ -168,16 +168,17 @@ function setupEnv() {
     }
 
     $AksRestoreVariables = @{
-        SubscriptionId = "2c6832bf-90ef-457a-a663-9aeae88a7f80" 
-        ResourceGroupName = "tiering-test"
-        VaultName = "aks-tiering-test" #"demobackupvault"
-        NewPolicyName = "" #"pstest-aks-policy"
-        PolicyName = "test01"
-        DataSourceLocation = "eastasia"
-        SourceClusterId = "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/tiering-test/providers/Microsoft.ContainerService/managedClusters/aks-test-priyansh"
-        SnapshotResourceGroupId = "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/tiering-test"
-        FriendlyName = "aks-test-priyansh\newBI"
-        ClusterName = "aks-test-priyansh"
+        # just does backup and restore, any cluster would work with healthy state
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c" #"2c6832bf-90ef-457a-a663-9aeae88a7f80" 
+        ResourceGroupName = "payalsinghal" #"priyansh-rg"
+        VaultName = "payaUAMIECY" #"priyansh-vault"
+        NewPolicyName = "pstest-aks-policy"
+        PolicyName = "uami01" #"choudharypr-gc-policy-1"
+        DataSourceLocation = "eastus2euap" #"eastasia"
+        SourceClusterId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/payalsinghal/providers/microsoft.containerservice/managedClusters/payaUAMIECY" #"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/priyansh-rg/providers/Microsoft.ContainerService/managedClusters/priyansh-scaletest"
+        SnapshotResourceGroupId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/payalsinghal" #"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/priyansh-rg"
+        FriendlyName = "payaUAMIECY\uami01ECY" #"priyansh-scaletest\small-sizes"
+        ClusterName = "payaUAMIECY"
     }
 
     $BlobHardeningVariables = @{

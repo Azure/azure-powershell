@@ -27,7 +27,7 @@ Get-AzMLServiceQuota -Location eastus | Update-AzMLServiceQuota -Value @{'key1'=
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IUpdateWorkspaceQuotasResult
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IUpdateWorkspaceQuotasResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -61,12 +61,12 @@ VALUE <IQuotaBaseProperties[]>: The list for update quota.
   [Id <String>]: Specifies the resource ID.
   [Limit <Int64?>]: The maximum permitted quota of the resource.
   [Type <String>]: Specifies the resource type.
-  [Unit <QuotaUnit?>]: An enum describing the unit of quota measurement.
+  [Unit <String>]: An enum describing the unit of quota measurement.
 .Link
 https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlservicequota
 #>
 function Update-AzMLServiceQuota {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IUpdateWorkspaceQuotasResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IUpdateWorkspaceQuotasResult])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -76,6 +76,8 @@ param(
     ${Location},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -86,7 +88,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -95,13 +96,25 @@ param(
     # Region of workspace quota to be updated.
     ${Location1},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IQuotaBaseProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IQuotaBaseProperties[]]
     # The list for update quota.
-    # To construct, see NOTES section for VALUE properties and create a hash table.
     ${Value},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -159,6 +172,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -180,10 +201,10 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.MachineLearningServices.private\Update-AzMLServiceQuota_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.MachineLearningServices.private\Update-AzMLServiceQuota_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.MachineLearningServices.private\Update-AzMLServiceQuota_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.MachineLearningServices.private\Update-AzMLServiceQuota_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -197,6 +218,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
