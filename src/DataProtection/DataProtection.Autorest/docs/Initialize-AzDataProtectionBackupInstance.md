@@ -134,6 +134,27 @@ The fourth command creates a backup configuration with auto-protection enabled â
 The fifth command initializes the backup instance with auto-protection.
 This object can now be used to configure backup using New-AzDataProtectionBackupInstance.
 
+### Example 6: Initialize Backup instance object for AzureCosmosDB
+```powershell
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+$pol = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -Name "cosmosdb-policy"
+$cosmosDbAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/source-cosmos-account"
+$backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureCosmosDB -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $cosmosDbAccountId
+$backupInstance
+```
+
+```output
+Name BackupInstanceName
+---- ------------------
+     source-cosmos-account-source-cosmos-account-ed68435e-069t-4b4a-9d84-d0c194800fc2
+```
+
+The first command gets the backup vault.
+The second command gets the AzureCosmosDB policy.
+The third command stores the Cosmos DB account ARM id.
+The fourth command initializes the backup instance object for AzureCosmosDB.
+This object can now be used to configure backup using New-AzDataProtectionBackupInstance after assigning the necessary permissions with Set-AzDataProtectionMSIPermission.
+
 ## PARAMETERS
 
 ### -BackupConfiguration

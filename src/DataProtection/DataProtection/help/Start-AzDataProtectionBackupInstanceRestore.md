@@ -293,10 +293,8 @@ $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId
 First, we initialize the necessary variables that will be used in the restore script.
 AzureCosmosDB only supports VaultStore source data store and AlternateLocation restore type, so the target must be a different Cosmos DB account.
 Next, we fetch the backup vault, the backup instance for the source Cosmos DB account, and the recovery point for the instance.
-
 We then initialize the restore request object for an AzureCosmosDB alternate location restore.
 After that, we assign the required permissions to the backup vault and the target Cosmos DB account to enable the restore operation.
-
 Finally, we use the Test command to validate the restore configuration and ensure that the necessary permissions are in place before triggering the restore for AzureCosmosDB.
 
 ## PARAMETERS
