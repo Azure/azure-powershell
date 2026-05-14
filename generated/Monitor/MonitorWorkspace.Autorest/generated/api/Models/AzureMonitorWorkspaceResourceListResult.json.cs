@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Extensions;
 
-    /// <summary>A pageable list of resources</summary>
+    /// <summary>The response of a AzureMonitorWorkspaceResource list operation.</summary>
     public partial class AzureMonitorWorkspaceResourceListResult
     {
 

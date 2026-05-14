@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Delete a workspace
+Deletes an Azure Monitor Workspace
 .Description
-Delete a workspace
+Deletes an Azure Monitor Workspace
 .Example
  Remove-AzMonitorWorkspace -Name azps-monitor-workspace -ResourceGroupName azps_test_group
 .Example
@@ -34,10 +34,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMonitorWorkspaceIdentity>: Identity Parameter
-  [AzureMonitorWorkspaceName <String>]: The name of the Azure Monitor workspace.  The name is case insensitive
+  [AzureMonitorWorkspaceName <String>]: The name of the Azure Monitor Workspace. The name is case insensitive
   [Id <String>]: Resource identity path
+  [IssueName <String>]: The name of the IssueResource
+  [MetricsContainerName <String>]: The name of the MetricsContainer
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.monitor/remove-azmonitorworkspace
 #>
@@ -49,7 +51,7 @@ param(
     [Alias('AzureMonitorWorkspaceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Path')]
     [System.String]
-    # The name of the Azure Monitor workspace.
+    # The name of the Azure Monitor Workspace.
     # The name is case insensitive
     ${Name},
 
@@ -65,6 +67,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
