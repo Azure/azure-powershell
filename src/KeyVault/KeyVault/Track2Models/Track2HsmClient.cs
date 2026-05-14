@@ -94,7 +94,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
             if (keyAttributes.KeyType == KeyType.Oct || keyAttributes.KeyType == KeyType.OctHsm)
             {
-                var options = Track2KeyOptionsFactory.BuildOctKeyOptions(keyName, keyAttributes, size);
+                // Managed HSM is HSM-backed by definition; oct keys are always
+                // hardware-protected here regardless of the requested KeyType.
+                var options = Track2KeyOptionsFactory.BuildOctKeyOptions(keyName, hardwareProtected: true, keyAttributes, size);
                 return new PSKeyVaultKey(client.CreateOctKey(options).Value, _uriHelper, isHsm: true);
             }
 
