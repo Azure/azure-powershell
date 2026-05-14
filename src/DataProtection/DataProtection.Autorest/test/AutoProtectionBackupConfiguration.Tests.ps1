@@ -32,7 +32,7 @@ Describe 'AutoProtectionBackupConfiguration' {
     }
 
     It 'BlobAutoProtectionWithExclusionRules' {
-        $rule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupAutoProtectionRule]::new()
+        $rule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BlobBackupAutoProtectionRule]::new()
         $rule.ObjectType = "BlobBackupAutoProtectionRule"
         $rule.Pattern = "logs-"
 
@@ -47,11 +47,11 @@ Describe 'AutoProtectionBackupConfiguration' {
     }
 
     It 'AdlsAutoProtectionWithExclusionRules' {
-        $rule1 = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupAutoProtectionRule]::new()
+        $rule1 = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BlobBackupAutoProtectionRule]::new()
         $rule1.ObjectType = "BlobBackupAutoProtectionRule"
         $rule1.Pattern = "logs-"
 
-        $rule2 = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupAutoProtectionRule]::new()
+        $rule2 = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BlobBackupAutoProtectionRule]::new()
         $rule2.ObjectType = "BlobBackupAutoProtectionRule"
         $rule2.Pattern = "temp-"
 
