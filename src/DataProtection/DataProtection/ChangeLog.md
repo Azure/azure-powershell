@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 
+* Added support for Azure Cosmos DB protection scenarios
+    - Users can now configure protection, backup, and restore for Azure Cosmos DB workloads
+
 ## Version 2.10.0
 * Added auto-protection support for Blob and ADLS (Azure Data Lake Storage) backup in `New-AzDataProtectionBackupConfigurationClientObject`
     - Added `-AutoProtection` switch parameter to enable auto-protection
