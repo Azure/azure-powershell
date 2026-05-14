@@ -10,20 +10,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Cmdlets;
     using System;
 
-    /// <summary>
-    /// Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine. Properties
-    /// and tag update can be done independently.
-    /// </summary>
+    /// <summary>Run one or more read-only commands on the provided storage appliance.</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}"
+    /// [OpenAPI] RunReadCommands=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/runReadCommands"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzNetworkCloudVirtualMachine_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine. Properties and tag update can be done independently.")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzNetworkCloudStorageApplianceReadCommand_RunViaJsonFilePath", SupportsShouldProcess = true)]
+    [global::System.Management.Automation.OutputType(typeof(bool))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Run one or more read-only commands on the provided storage appliance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/virtualMachines/{virtualMachineName}", ApiVersion = "2025-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/storageAppliances/{storageApplianceName}/runReadCommands", ApiVersion = "2025-09-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.NotSuggestDefaultParameterSet]
-    public partial class UpdateAzNetworkCloudVirtualMachine_UpdateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
+    public partial class InvokeAzNetworkCloudStorageApplianceReadCommand_RunViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IContext
     {
@@ -87,52 +84,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>Backing field for <see cref="IfMatch" /> property.</summary>
-        private string _ifMatch;
-
-        /// <summary>
-        /// The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value
-        /// to prevent accidentally overwriting concurrent changes.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.",
-        SerializedName = @"If-Match",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Header)]
-        public string IfMatch { get => this._ifMatch; set => this._ifMatch = value; }
-
-        /// <summary>Backing field for <see cref="IfNoneMatch" /> property.</summary>
-        private string _ifNoneMatch;
-
-        /// <summary>
-        /// Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result
-        /// in error from server as they are not supported.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Set to '*' to allow a new record set to be created, but to prevent updating an existing resource. Other values will result in error from server as they are not supported.",
-        SerializedName = @"If-None-Match",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Header)]
-        public string IfNoneMatch { get => this._ifNoneMatch; set => this._ifNoneMatch = value; }
-
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>Backing field for <see cref="JsonFilePath" /> property.</summary>
         private string _jsonFilePath;
 
-        /// <summary>Path of Json file supplied to the Update operation</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Path of Json file supplied to the Update operation")]
+        /// <summary>Path of Json file supplied to the Run operation</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Path of Json file supplied to the Run operation")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Path of Json file supplied to the Update operation",
+        Description = @"Path of Json file supplied to the Run operation",
         SerializedName = @"JsonFilePath",
         PossibleTypes = new [] { typeof(string) })]
         public string JsonFilePath { get => this._jsonFilePath; set { if (!System.IO.File.Exists(value)) { throw new Exception("Cannot find File " + value); } this._jsonString = System.IO.File.ReadAllText(value); this._jsonFilePath = value; } }
@@ -145,21 +108,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
-
-        /// <summary>The name of the virtual machine.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the virtual machine.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the virtual machine.",
-        SerializedName = @"virtualMachineName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::System.Management.Automation.Alias("VirtualMachineName")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Path)]
-        public string Name { get => this._name; set => this._name = value; }
-
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
         /// asynchronously.
@@ -167,6 +115,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
+
+        /// <summary>
+        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.HttpPipeline" /> that the remote call will use.
@@ -202,6 +157,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="StorageApplianceName" /> property.</summary>
+        private string _storageApplianceName;
+
+        /// <summary>The name of the storage appliance.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the storage appliance.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of the storage appliance.",
+        SerializedName = @"storageApplianceName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Path)]
+        public string StorageApplianceName { get => this._storageApplianceName; set => this._storageApplianceName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -239,12 +208,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine</see>
-        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -266,11 +233,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
         /// <returns>
-        /// a duplicate instance of UpdateAzNetworkCloudVirtualMachine_UpdateViaJsonFilePath
+        /// a duplicate instance of InvokeAzNetworkCloudStorageApplianceReadCommand_RunViaJsonFilePath
         /// </returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets.UpdateAzNetworkCloudVirtualMachine_UpdateViaJsonFilePath Clone()
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets.InvokeAzNetworkCloudStorageApplianceReadCommand_RunViaJsonFilePath Clone()
         {
-            var clone = new UpdateAzNetworkCloudVirtualMachine_UpdateViaJsonFilePath();
+            var clone = new InvokeAzNetworkCloudStorageApplianceReadCommand_RunViaJsonFilePath();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -285,9 +252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
-            clone.Name = this.Name;
-            clone.IfMatch = this.IfMatch;
-            clone.IfNoneMatch = this.IfNoneMatch;
+            clone.StorageApplianceName = this.StorageApplianceName;
             clone.JsonFilePath = this.JsonFilePath;
             return clone;
         }
@@ -313,6 +278,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InvokeAzNetworkCloudStorageApplianceReadCommand_RunViaJsonFilePath" /> cmdlet
+        /// class.
+        /// </summary>
+        public InvokeAzNetworkCloudStorageApplianceReadCommand_RunViaJsonFilePath()
+        {
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -436,7 +410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'VirtualMachinesUpdate' operation"))
+                if (ShouldProcess($"Call remote 'StorageAppliancesRunReadCommands' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -500,12 +474,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.VirtualMachinesUpdateViaJsonString(SubscriptionId, ResourceGroupName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _jsonString, onOk, onDefault, this, Pipeline);
+                    await this.Client.StorageAppliancesRunReadCommandsViaJsonString(SubscriptionId, ResourceGroupName, StorageApplianceName, _jsonString, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,StorageApplianceName=StorageApplianceName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -522,14 +496,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateAzNetworkCloudVirtualMachine_UpdateViaJsonFilePath" /> cmdlet class.
-        /// </summary>
-        public UpdateAzNetworkCloudVirtualMachine_UpdateViaJsonFilePath()
-        {
-
         }
 
         /// <param name="sendToPipeline"></param>
@@ -591,26 +557,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine">Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine</see>
-        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage)
         {
             using( NoSynchronizationContext )
             {
                 var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnOk(responseMessage, response, ref _returnNow);
+                overrideOnOk(responseMessage, ref _returnNow);
                 // if overrideOnOk has returned true, then return right away.
                 if ((null != _returnNow && await _returnNow))
                 {
                     return ;
                 }
-                // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachine
-                var result = (await response);
-                WriteObject(result, false);
+                // onOk - response for 200 /
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
+                {
+                    WriteObject(true);
+                }
             }
         }
     }

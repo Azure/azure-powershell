@@ -8,12 +8,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
     using Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PowerShell;
 
     /// <summary>
-    /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-    /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    /// The dictionary values can be empty objects ({}) in requests.
+    /// VirtualMachineAssignRelayParameters represents the body of the request to update the relay used for a Microsoft.HybridCompute
+    /// machine associated with the virtual machine.
     /// </summary>
-    [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentitiesTypeConverter))]
-    public partial class UserAssignedIdentities
+    [System.ComponentModel.TypeConverter(typeof(VirtualMachineAssignRelayParametersTypeConverter))]
+    public partial class VirtualMachineAssignRelayParameters
     {
 
         /// <summary>
@@ -67,37 +66,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.UserAssignedIdentities"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachineAssignRelayParameters"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParameters"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParameters DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new UserAssignedIdentities(content);
+            return new VirtualMachineAssignRelayParameters(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.UserAssignedIdentities"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachineAssignRelayParameters"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParameters"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParameters DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new UserAssignedIdentities(content);
+            return new VirtualMachineAssignRelayParameters(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="UserAssignedIdentities" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="VirtualMachineAssignRelayParameters" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="UserAssignedIdentities" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>
+        /// an instance of the <see cref="VirtualMachineAssignRelayParameters" /> model class.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParameters FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -117,11 +120,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.UserAssignedIdentities"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachineAssignRelayParameters"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal UserAssignedIdentities(global::System.Collections.IDictionary content)
+        internal VirtualMachineAssignRelayParameters(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -130,17 +133,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
                 return;
             }
             // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
+            if (content.Contains("MachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParametersInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParametersInternal)this).MachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RelayType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParametersInternal)this).RelayType = (string) content.GetValueForProperty("RelayType",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParametersInternal)this).RelayType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.UserAssignedIdentities"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.VirtualMachineAssignRelayParameters"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal UserAssignedIdentities(global::System.Management.Automation.PSObject content)
+        internal VirtualMachineAssignRelayParameters(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -149,16 +158,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
                 return;
             }
             // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
+            if (content.Contains("MachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParametersInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParametersInternal)this).MachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RelayType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParametersInternal)this).RelayType = (string) content.GetValueForProperty("RelayType",((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineAssignRelayParametersInternal)this).RelayType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }
-    /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-    /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    /// The dictionary values can be empty objects ({}) in requests.
-    [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentitiesTypeConverter))]
-    public partial interface IUserAssignedIdentities
+    /// VirtualMachineAssignRelayParameters represents the body of the request to update the relay used for a Microsoft.HybridCompute
+    /// machine associated with the virtual machine.
+    [System.ComponentModel.TypeConverter(typeof(VirtualMachineAssignRelayParametersTypeConverter))]
+    public partial interface IVirtualMachineAssignRelayParameters
 
     {
 
