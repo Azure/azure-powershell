@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking] AzureBlob: OperationalStore retention lifecycle must now use the retention rule name `Default_OperationalStore`. Using `-Name Default` with an OperationalStore lifecycle is no longer accepted. `Edit-AzDataProtectionPolicyRetentionRuleClientObject` validates against duplicate retention-rule names and rejects OperationalStore lifecycles on any rule other than `Default_OperationalStore` for AzureBlob only.
 * Added new optional parameter to rename restore containers for Blob and ADLS (Azure Data Lake Storage) backup in `Initialize-AzDataProtectionRestoreRequest.ps1`
 
 ## Version 2.10.1

@@ -52,6 +52,20 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
         }
 
         if($parameterSetName -eq "AddRetention"){
+            $DatasourceType = GetClientDatasourceType -ServiceDatasourceType $Policy.DatasourceType[0]
+            $manifest = LoadManifest -DatasourceType $DatasourceType
+
+            $defaultRetentionMapping = $null
+            if($null -ne $manifest.policySettings -and ($manifest.policySettings.PSObject.Properties.Name -contains "defaultRetentionRuleNames")){
+                $defaultRetentionMapping = $manifest.policySettings.defaultRetentionRuleNames
+            }
+            $mappedDefaultNames = @()
+            if($null -ne $defaultRetentionMapping){
+                $mappedDefaultNames = ValidateRetentionRuleMatchesMappedStore -Name $Name.ToString() -DefaultRetentionMapping $defaultRetentionMapping -LifeCycles $LifeCycles -DatasourceType $DatasourceType
+
+                ValidateExclusiveSourceStoreAssignment -Name $Name.ToString() -Manifest $manifest -DefaultRetentionMapping $defaultRetentionMapping -LifeCycles $LifeCycles -DatasourceType $DatasourceType
+            }
+
             $retentionPolicyIndex = -1
             Foreach($index in (0..$Policy.PolicyRule.Length)){
                 if($Policy.PolicyRule[$index].Name -eq $Name){
@@ -60,15 +74,14 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
             }
 
             if($retentionPolicyIndex -eq -1){
-                $DatasourceType = GetClientDatasourceType -ServiceDatasourceType $Policy.DatasourceType[0]
-                $manifest = LoadManifest -DatasourceType $DatasourceType
                 if($manifest.policySettings.disableAddRetentionRule -eq $true)
                 {
                     $message = "Adding New Retention Rule is not supported for " + $DatasourceType + " datasource type."
                     throw $message
                 }
 
-                if($manifest.policySettings.supportedRetentionTags.Contains($Name.ToString()) -eq $false)
+                $isMappedDefault = ($mappedDefaultNames -contains $Name.ToString())
+                if(($manifest.policySettings.supportedRetentionTags.Contains($Name.ToString()) -eq $false) -and (-not $isMappedDefault))
                 {
                     throw "Selected Retention Rule " + $Name  + " is not applicable for datasource type " + $DatasourceType
                 }
@@ -91,8 +104,9 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
                         $message = "Adding $Name Retention rule isn't supported for DataStoreType OperationalStore"
                         throw $message
                     }
-
-                    if($Policy.PolicyRule[$retentionPolicyIndex].LifeCycle[0].SourceDataStoreType -eq $LifeCycles[0].SourceDataStoreType){
+                    
+                    $isMappedDefault = ($mappedDefaultNames -contains $Name.ToString())
+                    if(($manifest.policySettings.supportedRetentionTags.Contains($Name.ToString()) -eq $false) -and (-not $isMappedDefault)){
                         $message = "Lifecycles can't be created with same DataStoreType and Name"
                         throw $message
                     }
