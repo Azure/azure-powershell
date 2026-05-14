@@ -27,12 +27,11 @@ For information on how to develop for `Az.MonitorWorkspace`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 14268abc2d999d7c0425490f8ecf0c91b46ea44b
+commit: 936922b8f9c7e5dbadf806a73a888a8e93e9a1f8
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/monitor/resource-manager/Microsoft.Monitor/stable/2023-04-03/monitoringAccounts_API.json
-  - $(repo)/specification/monitor/resource-manager/Microsoft.Monitor/stable/2023-04-03/operations_API.json
+  - $(repo)/specification/monitoringservice/resource-manager/Microsoft.Monitor/Accounts/stable/2025-10-03/azuremonitorworkspace.json
 
 root-module-name: $(prefix).Monitor
 title: MonitorWorkspace
@@ -41,16 +40,21 @@ subject-prefix: $(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
 
 directive:
+  # Strip the 'AzureMonitorWorkspace' prefix from all subjects so cmdlets are named as MonitorWorkspace*
   - where:
       subject: ^AzureMonitorWorkspace(.*)
     set:
       subject: $1
+  # Remove the implicit body-object Create/Update variants (those not ending in Expanded, JsonFilePath, or JsonString)
+  # to keep only the parameter-expanded and JSON-file input variants, which are the intended public surface
   - where:
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+  # Remove the operations list cmdlet as it is internal scaffolding not intended for public use
   - where:
       subject: MonitorOperation
     remove: true
+  # Configure default table view for workspace resources to show the most relevant columns
   - where:
       model-name: AzureMonitorWorkspaceResource
     set:
@@ -61,6 +65,8 @@ directive:
           - ProvisioningState
           - PublicNetworkAccess
           - ResourceGroupName
+  # Announce breaking change: PrivateEndpointConnection and ProvisioningState output types change from
+  # single object / fixed array to List in the next major version (7.0.0 / Az 15.0.0)
   - where:
       verb: Get|New|Update
     set:

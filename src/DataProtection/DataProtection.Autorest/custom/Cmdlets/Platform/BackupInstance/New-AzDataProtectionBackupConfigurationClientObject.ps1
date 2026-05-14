@@ -1,5 +1,6 @@
 
 function New-AzDataProtectionBackupConfigurationClientObject{
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates new backup configuration object')]
@@ -39,7 +40,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
         ${IncludeClusterScopeResource},
 
         [Parameter(Mandatory=$false, HelpMessage='Hook reference to be executed during backup.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.NamespacedNameResource[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.NamespacedNameResource[]]
         ${BackupHookReference},
         
         [Parameter(Mandatory=$false, HelpMessage='List of containers to be backed up inside the VaultStore. Use this parameter for DatasourceType AzureBlob.')]
@@ -63,7 +64,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
         ${AutoProtection},
 
         [Parameter(Mandatory=$false, HelpMessage='List of auto-protection exclusion rules. Each rule is a BlobBackupAutoProtectionRule object specifying container name prefix patterns to exclude. Use this parameter along with -AutoProtection.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBlobBackupAutoProtectionRule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBlobBackupAutoProtectionRule[]]
         ${AutoProtectionExclusionRule}
     )
 
@@ -79,7 +80,7 @@ function New-AzDataProtectionBackupConfigurationClientObject{
                 throw $message
             }
 
-            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterBackupDatasourceParameters]::new()
+            $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.KubernetesClusterBackupDatasourceParameters]::new()
             $dataSourceParam.ObjectType = "KubernetesClusterBackupDatasourceParameters"
         
             $dataSourceParam.ExcludedResourceType = $ExcludedResourceType
@@ -115,11 +116,11 @@ function New-AzDataProtectionBackupConfigurationClientObject{
                 }
 
                 if($DatasourceType.ToString() -eq "AzureBlob"){
-                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupDatasourceParametersForAutoProtection]::new()
+                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BlobBackupDatasourceParametersForAutoProtection]::new()
                     $dataSourceParam.ObjectType = "BlobBackupDatasourceParametersForAutoProtection"
                 }
                 elseif($DatasourceType.ToString() -eq "AzureDataLakeStorage"){
-                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdlsBlobBackupDatasourceParametersForAutoProtection]::new()
+                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AdlsBlobBackupDatasourceParametersForAutoProtection]::new()
                     $dataSourceParam.ObjectType = "AdlsBlobBackupDatasourceParametersForAutoProtection"
                 }
 
@@ -137,11 +138,11 @@ function New-AzDataProtectionBackupConfigurationClientObject{
                 }
 
                 if($DatasourceType.ToString() -eq "AzureBlob"){ 
-                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupDatasourceParameters]::new()
+                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BlobBackupDatasourceParameters]::new()
                     $dataSourceParam.ObjectType = "BlobBackupDatasourceParameters"
                 } 
                 elseif($DatasourceType.ToString() -eq "AzureDataLakeStorage"){
-                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AdlsBlobBackupDatasourceParameters]::new()
+                    $dataSourceParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AdlsBlobBackupDatasourceParameters]::new()
                     $dataSourceParam.ObjectType = "AdlsBlobBackupDatasourceParameters"
                 }
             

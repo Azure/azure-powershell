@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.MonitorWorkspace.private.dll'
   FormatsToProcess = './Az.MonitorWorkspace.format.ps1xml'
-  FunctionsToExport = 'Get-AzMonitorWorkspace', 'New-AzMonitorWorkspace', 'Remove-AzMonitorWorkspace', 'Update-AzMonitorWorkspace'
+  FunctionsToExport = 'Add-AzMonitorWorkspaceIssueAlert', 'Add-AzMonitorWorkspaceIssueInvestigationResult', 'Add-AzMonitorWorkspaceIssueResource', 'Get-AzMonitorWorkspace', 'Get-AzMonitorWorkspaceIssue', 'Get-AzMonitorWorkspaceIssueAlert', 'Get-AzMonitorWorkspaceIssueResource', 'Get-AzMonitorWorkspaceMetricsContainer', 'Invoke-AzMonitorWorkspaceFetchIssueBackgroundVisualization', 'Invoke-AzMonitorWorkspaceFetchIssueInvestigationResult', 'New-AzMonitorWorkspace', 'New-AzMonitorWorkspaceIssue', 'New-AzMonitorWorkspaceMetricsContainer', 'Remove-AzMonitorWorkspace', 'Remove-AzMonitorWorkspaceIssue', 'Set-AzMonitorWorkspace', 'Set-AzMonitorWorkspaceIssueBackgroundVisualization', 'Set-AzMonitorWorkspaceMetricsContainer', 'Update-AzMonitorWorkspace', 'Update-AzMonitorWorkspaceIssue', 'Update-AzMonitorWorkspaceIssueAlert', 'Update-AzMonitorWorkspaceIssueResource', 'Update-AzMonitorWorkspaceMetricsContainer'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'MonitorWorkspace'

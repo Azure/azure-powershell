@@ -7,61 +7,100 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Extensions;
 
-    /// <summary>Information about metrics for the Azure Monitor workspace</summary>
+    /// <summary>Properties related to the metrics container in the Azure Monitor Workspace</summary>
     public partial class AzureMonitorWorkspaceMetrics :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetrics,
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetrics"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetrics __metrics = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Metrics();
 
-        /// <summary>An internal identifier for the metrics container. Only to be used by the system</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inherited)]
-        public string InternalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)__metrics).InternalId; }
+        /// <summary>Backing field for <see cref="EnableAccessUsingResourcePermission" /> property.</summary>
+        private bool? _enableAccessUsingResourcePermission;
+
+        /// <summary>Flag that indicates whether to enable access using resource permissions.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
+        public bool? EnableAccessUsingResourcePermission { get => this._enableAccessUsingResourcePermission; set => this._enableAccessUsingResourcePermission = value; }
+
+        /// <summary>Backing field for <see cref="InternalId" /> property.</summary>
+        private string _internalId;
+
+        /// <summary>
+        /// An internal identifier for the metrics container. Only to be used by the system.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
+        public string InternalId { get => this._internalId; }
 
         /// <summary>Internal Acessors for InternalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal.InternalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)__metrics).InternalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)__metrics).InternalId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal.InternalId { get => this._internalId; set { {_internalId = value;} } }
 
         /// <summary>Internal Acessors for PrometheusQueryEndpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal.PrometheusQueryEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)__metrics).PrometheusQueryEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)__metrics).PrometheusQueryEndpoint = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal.PrometheusQueryEndpoint { get => this._prometheusQueryEndpoint; set { {_prometheusQueryEndpoint = value;} } }
 
-        /// <summary>The Prometheus query endpoint for the workspace</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inherited)]
-        public string PrometheusQueryEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)__metrics).PrometheusQueryEndpoint; }
+        /// <summary>Backing field for <see cref="PrometheusQueryEndpoint" /> property.</summary>
+        private string _prometheusQueryEndpoint;
+
+        /// <summary>The Prometheus query endpoint for the Azure Monitor Workspace</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
+        public string PrometheusQueryEndpoint { get => this._prometheusQueryEndpoint; }
 
         /// <summary>Creates an new <see cref="AzureMonitorWorkspaceMetrics" /> instance.</summary>
         public AzureMonitorWorkspaceMetrics()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__metrics), __metrics);
-            await eventListener.AssertObjectIsValid(nameof(__metrics), __metrics);
-        }
     }
-    /// Information about metrics for the Azure Monitor workspace
+    /// Properties related to the metrics container in the Azure Monitor Workspace
     public partial interface IAzureMonitorWorkspaceMetrics :
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetrics
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IJsonSerializable
     {
+        /// <summary>Flag that indicates whether to enable access using resource permissions.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag that indicates whether to enable access using resource permissions.",
+        SerializedName = @"enableAccessUsingResourcePermissions",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? EnableAccessUsingResourcePermission { get; set; }
+        /// <summary>
+        /// An internal identifier for the metrics container. Only to be used by the system.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"An internal identifier for the metrics container. Only to be used by the system.",
+        SerializedName = @"internalId",
+        PossibleTypes = new [] { typeof(string) })]
+        string InternalId { get;  }
+        /// <summary>The Prometheus query endpoint for the Azure Monitor Workspace</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The Prometheus query endpoint for the Azure Monitor Workspace",
+        SerializedName = @"prometheusQueryEndpoint",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrometheusQueryEndpoint { get;  }
 
     }
-    /// Information about metrics for the Azure Monitor workspace
-    internal partial interface IAzureMonitorWorkspaceMetricsInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal
+    /// Properties related to the metrics container in the Azure Monitor Workspace
+    internal partial interface IAzureMonitorWorkspaceMetricsInternal
+
     {
+        /// <summary>Flag that indicates whether to enable access using resource permissions.</summary>
+        bool? EnableAccessUsingResourcePermission { get; set; }
+        /// <summary>
+        /// An internal identifier for the metrics container. Only to be used by the system.
+        /// </summary>
+        string InternalId { get; set; }
+        /// <summary>The Prometheus query endpoint for the Azure Monitor Workspace</summary>
+        string PrometheusQueryEndpoint { get; set; }
 
     }
 }
