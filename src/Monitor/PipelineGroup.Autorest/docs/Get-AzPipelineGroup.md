@@ -80,7 +80,8 @@ Id                              : /subscriptions/00000000-0000-0000-0000-0000000
                                   ers/Microsoft.Monitor/pipelineGroups/mygroup
 Location                        : eastus2euap
 Name                            : mygroup
-NetworkingConfiguration         : {}
+TlsConfiguration                : {}
+ExecutionPlacement              : {}
 PersistencePersistentVolumeName :
 Processor                       : {{
                                     "batch": {
@@ -97,12 +98,6 @@ Receiver                        : {{
                                     "type": "OTLP",
                                     "name": "otlp1"
                                   }, {
-                                    "udp": {
-                                      "endpoint": "0.0.0.0:5555"
-                                    },
-                                    "type": "UDP",
-                                    "name": "myudpreceiveralittlelong26283032"
-                                  }, {
                                     "syslog": {
                                       "endpoint": "0.0.0.0:4444"
                                     },
@@ -115,7 +110,7 @@ RetryAfter                      :
 ServicePipeline                 : {{
                                     "name": "MyPipeline1",
                                     "type": "logs",
-                                    "receivers": [ "otlp1", "myudpreceiveralittlelong26283032", "mysyslog1" ],
+                                    "receivers": [ "otlp1", "mysyslog1" ],
                                     "processors": [ "batchproc1" ],
                                     "exporters": [ "gigla1" ]
                                   }}

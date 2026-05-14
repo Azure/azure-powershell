@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionbackupinstance
 schema: 2.0.0
@@ -13,11 +13,11 @@ Initializes Backup instance Request object for configuring backup
 ## SYNTAX
 
 ```
-Initialize-AzDataProtectionBackupInstance -DatasourceLocation <String> -DatasourceType <DatasourceTypes>
- [-BackupConfiguration <IBackupDatasourceParameters>] [-DatasourceId <String>] [-FriendlyName <String>]
- [-PolicyId <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
- [-SnapshotResourceGroupId <String>] [-UserAssignedIdentityArmId <String>]
- [-UseSystemAssignedIdentity <Boolean?>] [<CommonParameters>]
+Initialize-AzDataProtectionBackupInstance -DatasourceType <DatasourceTypes> -DatasourceLocation <String>
+ [-PolicyId <String>] [-DatasourceId <String>] [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>]
+ [-SnapshotResourceGroupId <String>] [-FriendlyName <String>]
+ [-BackupConfiguration <IBackupDatasourceParameters>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,19 +130,39 @@ Name BackupInstanceName
 The first command specifies the ADLS storage account id.
 The second command gets the backup vault.
 The third command gets an ADLS policy within the vault.
-The fourth command creates a backup configuration with auto-protection enabled — new containers will be automatically protected.
+The fourth command creates a backup configuration with auto-protection enabled - new containers will be automatically protected.
 The fifth command initializes the backup instance with auto-protection.
 This object can now be used to configure backup using New-AzDataProtectionBackupInstance.
+
+### Example 6: Initialize Backup instance object for AzureCosmosDB
+```powershell
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+$pol = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -Name "cosmosdb-policy"
+$cosmosDbAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/source-cosmos-account"
+$backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureCosmosDB -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $cosmosDbAccountId
+$backupInstance
+```
+
+```output
+Name BackupInstanceName
+---- ------------------
+     source-cosmos-account-source-cosmos-account-ed68435e-069t-4b4a-9d84-d0c194800fc2
+```
+
+The first command gets the backup vault.
+The second command gets the AzureCosmosDB policy.
+The third command stores the Cosmos DB account ARM id.
+The fourth command initializes the backup instance object for AzureCosmosDB.
+This object can now be used to configure backup using New-AzDataProtectionBackupInstance after assigning the necessary permissions with Set-AzDataProtectionMSIPermission.
 
 ## PARAMETERS
 
 ### -BackupConfiguration
 Backup configuration for backup.
 Use this parameter to configure protection for AzureKubernetesService, AzureBlob, AzureDataLakeStorage.
-To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupDatasourceParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupDatasourceParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -190,6 +210,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL, AzureCosmosDB
 
 Required: True
 Position: Named
@@ -236,6 +257,7 @@ This parameter is only supported for AzureDatabaseForPostgreSQL currently.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes
 Parameter Sets: (All)
 Aliases:
+Accepted values: AzureKeyVault
 
 Required: False
 Position: Named
@@ -294,7 +316,7 @@ Accept wildcard characters: False
 Use system assigned identity
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -312,9 +334,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
 
 ## NOTES
 
 ## RELATED LINKS
-

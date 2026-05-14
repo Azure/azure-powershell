@@ -1,6 +1,6 @@
 ---
 Module Name: Az.NetworkCloud
-Module Guid: eb2cc21e-b11c-4bd1-93b0-ddc86e985310
+Module Guid: 8e193e71-a894-4938-9445-8cbd6d525411
 Download Help Link: https://learn.microsoft.com/powershell/module/az.networkcloud
 Help Version: 1.0.0.0
 Locale: en-US
@@ -90,6 +90,10 @@ Reimage the provided bare metal machine.
 ### [Invoke-AzNetworkCloudBareMetalMachineReplace](Invoke-AzNetworkCloudBareMetalMachineReplace.md)
 Replace the provided bare metal machine.
 
+### [Invoke-AzNetworkCloudBareMetalMachineRestrictedDataExtract](Invoke-AzNetworkCloudBareMetalMachineRestrictedDataExtract.md)
+Run one or more restricted data extractions on the provided bare metal machine.
+The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
+
 ### [Invoke-AzNetworkCloudBareMetalMachineRunCommand](Invoke-AzNetworkCloudBareMetalMachineRunCommand.md)
 Run the command or the script on the provided bare metal machine.
 The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
@@ -109,6 +113,9 @@ Update the version of the provided cluster to one of the available supported ver
 
 ### [Invoke-AzNetworkCloudScanClusterRuntime](Invoke-AzNetworkCloudScanClusterRuntime.md)
 Triggers the execution of a runtime protection scan to detect and remediate detected issues, in accordance with the cluster configuration.
+
+### [Invoke-AzNetworkCloudStorageApplianceReadCommand](Invoke-AzNetworkCloudStorageApplianceReadCommand.md)
+Run one or more read-only commands on the provided storage appliance.
 
 ### [Invoke-AzNetworkCloudVirtualMachineReimage](Invoke-AzNetworkCloudVirtualMachineReimage.md)
 Reimage the provided virtual machine.
@@ -327,8 +334,7 @@ Update properties of the provided storage appliance, or update tags associated w
 Update tags associated with the provided trunked network.
 
 ### [Update-AzNetworkCloudVirtualMachine](Update-AzNetworkCloudVirtualMachine.md)
-Patch the properties of the provided virtual machine, or update the tags associated with the virtual machine.
-Properties and tag update can be done independently.
+Update a new virtual machine or update the properties of the existing virtual machine.
 
 ### [Update-AzNetworkCloudVolume](Update-AzNetworkCloudVolume.md)
 Update tags associated with the provided volume.

@@ -1,5 +1,6 @@
-function New-AzDataProtectionRetentionLifeCycleClientObject {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ISourceLifeCycle')]
+﻿function New-AzDataProtectionRetentionLifeCycleClientObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISourceLifeCycle')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates new Lifecycle object')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
@@ -31,7 +32,7 @@ function New-AzDataProtectionRetentionLifeCycleClientObject {
     )
 
     process {
-        $lifeCycle = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.SourceLifeCycle]::new()
+        $lifeCycle = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.SourceLifeCycle]::new()
         $lifeCycle.SourceDataStoreObjectType = "DataStoreInfoBase"
         $lifeCycle.SourceDataStoreType = $SourceDataStore
         $lifeCycle.DeleteAfterObjectType = "AbsoluteDeleteOption"
@@ -39,7 +40,7 @@ function New-AzDataProtectionRetentionLifeCycleClientObject {
 
         if(($TargetDataStore -ne $null) -and ($CopyOption -ne $null))
         {
-            $targetCopySetting = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.TargetCopySetting]::new()
+            $targetCopySetting = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.TargetCopySetting]::new()
             $targetCopySetting.DataStoreObjectType = "DataStoreInfoBase"
             $targetCopySetting.DataStoreType = $TargetDataStore
             $targetCopySetting.CopyAfterObjectType = $CopyOption
