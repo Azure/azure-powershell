@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAutoExportJob))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Description(@"Returns all the auto export jobs the user has access to under an AML File System.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs", ApiVersion = "2026-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/autoExportJobs", ApiVersion = "2025-07-01")]
     public partial class GetAzStorageCacheAutoExportJob_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IContext

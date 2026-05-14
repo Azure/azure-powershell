@@ -34,13 +34,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Inlined)]
         public string ClientInfoMountCommand { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemClientInfoInternal)ClientInfo).MountCommand; }
 
-        /// <summary>Backing field for <see cref="ClusterUuid" /> property.</summary>
-        private string _clusterUuid;
-
-        /// <summary>The unique identifier of the AML file system cluster.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
-        public string ClusterUuid { get => this._clusterUuid; }
-
         /// <summary>Recommended AKS Persistent Volume for the CSI driver, in Base64 encoded YAML</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Inlined)]
         public string ContainerStorageInterfacePersistentVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemClientInfoInternal)ClientInfo).ContainerStorageInterfacePersistentVolume; }
@@ -54,15 +47,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         /// <summary>Recommended AKS Storage Class for the CSI driver, in Base64 encoded YAML</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Inlined)]
         public string ContainerStorageInterfaceStorageClass { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemClientInfoInternal)ClientInfo).ContainerStorageInterfaceStorageClass; }
-
-        /// <summary>Backing field for <see cref="CurrentStorageCapacityTiB" /> property.</summary>
-        private float? _currentStorageCapacityTiB;
-
-        /// <summary>
-        /// The current storage capacity of the AML file system, in TiB. This reflects the actual capacity including any expansions.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
-        public float? CurrentStorageCapacityTiB { get => this._currentStorageCapacityTiB; }
 
         /// <summary>Backing field for <see cref="EncryptionSetting" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemEncryptionSettings _encryptionSetting;
@@ -145,9 +129,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         /// <summary>Internal Acessors for ClientInfoMountCommand</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal.ClientInfoMountCommand { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemClientInfoInternal)ClientInfo).MountCommand; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemClientInfoInternal)ClientInfo).MountCommand = value ?? null; }
 
-        /// <summary>Internal Acessors for ClusterUuid</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal.ClusterUuid { get => this._clusterUuid; set { {_clusterUuid = value;} } }
-
         /// <summary>Internal Acessors for ContainerStorageInterfacePersistentVolume</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal.ContainerStorageInterfacePersistentVolume { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemClientInfoInternal)ClientInfo).ContainerStorageInterfacePersistentVolume; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemClientInfoInternal)ClientInfo).ContainerStorageInterfacePersistentVolume = value ?? null; }
 
@@ -156,9 +137,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
 
         /// <summary>Internal Acessors for ContainerStorageInterfaceStorageClass</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal.ContainerStorageInterfaceStorageClass { get => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemClientInfoInternal)ClientInfo).ContainerStorageInterfaceStorageClass; set => ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemClientInfoInternal)ClientInfo).ContainerStorageInterfaceStorageClass = value ?? null; }
-
-        /// <summary>Internal Acessors for CurrentStorageCapacityTiB</summary>
-        float? Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal.CurrentStorageCapacityTiB { get => this._currentStorageCapacityTiB; set { {_currentStorageCapacityTiB = value;} } }
 
         /// <summary>Internal Acessors for EncryptionSetting</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemEncryptionSettings Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemPropertiesInternal.EncryptionSetting { get => (this._encryptionSetting = this._encryptionSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemEncryptionSettings()); set { {_encryptionSetting = value;} } }
@@ -339,17 +317,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         SerializedName = @"mountCommand",
         PossibleTypes = new [] { typeof(string) })]
         string ClientInfoMountCommand { get;  }
-        /// <summary>The unique identifier of the AML file system cluster.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The unique identifier of the AML file system cluster.",
-        SerializedName = @"clusterUuid",
-        PossibleTypes = new [] { typeof(string) })]
-        string ClusterUuid { get;  }
         /// <summary>Recommended AKS Persistent Volume for the CSI driver, in Base64 encoded YAML</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
         Required = false,
@@ -386,19 +353,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         PossibleTypes = new [] { typeof(string) })]
         string ContainerStorageInterfaceStorageClass { get;  }
         /// <summary>
-        /// The current storage capacity of the AML file system, in TiB. This reflects the actual capacity including any expansions.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The current storage capacity of the AML file system, in TiB. This reflects the actual capacity including any expansions.",
-        SerializedName = @"currentStorageCapacityTiB",
-        PossibleTypes = new [] { typeof(float) })]
-        float? CurrentStorageCapacityTiB { get;  }
-        /// <summary>
         /// Subnet used for managing the AML file system and for client-facing operations. This subnet should have at least a /24
         /// subnet mask within the VNET's address space.
         /// </summary>
@@ -422,7 +376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         Description = @"List of AML file system health states.",
         SerializedName = @"state",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Unavailable", "Available", "Degraded", "Transitioning", "Maintenance", "Expanding")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Unavailable", "Available", "Degraded", "Transitioning", "Maintenance")]
         string HealthState { get;  }
         /// <summary>Server-defined error code for the AML file system health</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
@@ -675,8 +629,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         string ClientInfoMgsAddress { get; set; }
         /// <summary>Recommended command to mount the AML file system</summary>
         string ClientInfoMountCommand { get; set; }
-        /// <summary>The unique identifier of the AML file system cluster.</summary>
-        string ClusterUuid { get; set; }
         /// <summary>Recommended AKS Persistent Volume for the CSI driver, in Base64 encoded YAML</summary>
         string ContainerStorageInterfacePersistentVolume { get; set; }
         /// <summary>
@@ -685,10 +637,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         string ContainerStorageInterfacePersistentVolumeClaim { get; set; }
         /// <summary>Recommended AKS Storage Class for the CSI driver, in Base64 encoded YAML</summary>
         string ContainerStorageInterfaceStorageClass { get; set; }
-        /// <summary>
-        /// The current storage capacity of the AML file system, in TiB. This reflects the actual capacity including any expansions.
-        /// </summary>
-        float? CurrentStorageCapacityTiB { get; set; }
         /// <summary>Specifies encryption settings of the AML file system.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemEncryptionSettings EncryptionSetting { get; set; }
         /// <summary>Specifies the location of the encryption key in Key Vault.</summary>
@@ -701,7 +649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         /// <summary>Health of the AML file system.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystemHealth Health { get; set; }
         /// <summary>List of AML file system health states.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Unavailable", "Available", "Degraded", "Transitioning", "Maintenance", "Expanding")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("Unavailable", "Available", "Degraded", "Transitioning", "Maintenance")]
         string HealthState { get; set; }
         /// <summary>Server-defined error code for the AML file system health</summary>
         string HealthStatusCode { get; set; }
