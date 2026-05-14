@@ -8,17 +8,19 @@ schema: 2.0.0
 # New-AzPipelineGroup
 
 ## SYNOPSIS
-create a pipeline group instance.
+Create a pipeline group instance.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzPipelineGroup -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-DistributionMaxInstancesPerHost <Int32>] [-ExecutionPlacementConstraint <IPlacementConstraint[]>]
  [-Exporter <IExporter[]>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
- [-NetworkingConfiguration <INetworkingConfiguration[]>] [-PersistencePersistentVolumeName <String>]
- [-Processor <IProcessor[]>] [-Receiver <IReceiver[]>] [-Replica <Int32>] [-ServicePipeline <IPipeline[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PersistencePersistentVolumeName <String>] [-Processor <IProcessor[]>] [-Receiver <IReceiver[]>]
+ [-Replica <Int32>] [-ServicePipeline <IPipeline[]>] [-Tag <Hashtable>]
+ [-TlsConfiguration <ITlsConfiguration[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -35,7 +37,7 @@ New-AzPipelineGroup -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-create a pipeline group instance.
+Create a pipeline group instance.
 
 ## EXAMPLES
 
@@ -80,7 +82,8 @@ Id                              : /subscriptions/00000000-0000-0000-0000-0000000
                                   iders/Microsoft.Monitor/pipelineGroups/testgroup
 Location                        : centraluseuap
 Name                            : testgroup
-NetworkingConfiguration         :
+ExecutionPlacement              :
+TlsConfiguration                :
 PersistencePersistentVolumeName :
 Processor                       : {{
                                     "batch": {
@@ -97,12 +100,6 @@ Receiver                        : {{
                                     "type": "OTLP",
                                     "name": "otlp1"
                                   }, {
-                                    "udp": {
-                                      "endpoint": "0.0.0.0:5556"
-                                    },
-                                    "type": "UDP",
-                                    "name": "myudpreceiveralittlelong26283032"
-                                  }, {
                                     "syslog": {
                                       "endpoint": "0.0.0.0:4445"
                                     },
@@ -115,7 +112,7 @@ RetryAfter                      :
 ServicePipeline                 : {{
                                     "name": "MyPipeline1",
                                     "type": "logs",
-                                    "receivers": [ "otlp1", "myudpreceiveralittlelong26283032", "mysyslog1" ],
+                                    "receivers": [ "otlp1", "mysyslog1" ],
                                     "processors": [ "batchproc1" ],
                                     "exporters": [ "gigla1" ]
                                   }}
@@ -134,7 +131,7 @@ Create Pipeline Group with JSON file
 
 ### Example 2: Create Pipeline Group with expanded parameters
 ```powershell
-New-AzPipelineGroup -Name testgroup -ResourceGroupName kubetest -SubscriptionId 00000000-0000-0000-0000-000000000000 -Location centraluseuap -ExtendedLocationName "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/kubetest/providers/Microsoft.ExtendedLocation/customLocations/myloc" -ExtendedLocationType CustomLocation -NetworkingConfiguration @() -Replica 1 -Exporter @{name="gigla1"; type="AzureMonitorWorkspaceLogs"; azureMonitorWorkspaceLog=@{api=@{dataCollectionEndpointUrl="https://myexporter.eastus-1.ingest.monitor.azure.com"; dataCollectionRule="dcr-00000000000000000000000000000000"; stream="Custom-MyTableRawData"; schema=@{recordMap=@(@{from="body"; to="Body"},@{from="severity_text"; to="SeverityText"},@{from="time_unix_nano"; to="TimeGenerated"})}}}} -Processor @{name="batchproc1"; type="Batch"; batch=@{batchSize=10}} -Receiver @(@{name="otlp1"; type="OTLP"; otlp=@{endpoint="0.0.0.0:7777"}}, @{name="myudpreceiveralittlelong26283032"; type="UDP"; udp=@{endpoint="0.0.0.0:5555"}}, @{name="mysyslog1"; type="Syslog"; syslog=@{endpoint="0.0.0.0:4444"}}) -ServicePipeline @{name="MyPipeline1"; type="logs"; receiver=@("otlp1", "myudpreceiveralittlelong26283032", "mysyslog1"); processor=@("batchproc1"); exporter=@("gigla1")}
+New-AzPipelineGroup -Name testgroup -ResourceGroupName kubetest -SubscriptionId 00000000-0000-0000-0000-000000000000 -Location centraluseuap -ExtendedLocationName "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/kubetest/providers/Microsoft.ExtendedLocation/customLocations/myloc" -ExtendedLocationType CustomLocation -Replica 1 -Exporter @{name="gigla1"; type="AzureMonitorWorkspaceLogs"; azureMonitorWorkspaceLog=@{api=@{dataCollectionEndpointUrl="https://myexporter.eastus-1.ingest.monitor.azure.com"; dataCollectionRule="dcr-00000000000000000000000000000000"; stream="Custom-MyTableRawData"; schema=@{recordMap=@(@{from="body"; to="Body"},@{from="severity_text"; to="SeverityText"},@{from="time_unix_nano"; to="TimeGenerated"})}}}} -Processor @{name="batchproc1"; type="Batch"; batch=@{batchSize=10}} -Receiver @(@{name="otlp1"; type="OTLP"; otlp=@{endpoint="0.0.0.0:7777"}}, @{name="mysyslog1"; type="Syslog"; syslog=@{endpoint="0.0.0.0:4444"}}) -ServicePipeline @{name="MyPipeline1"; type="logs"; receiver=@("otlp1", "mysyslog1"); processor=@("batchproc1"); exporter=@("gigla1")}
 ```
 
 ```output
@@ -173,7 +170,8 @@ Id                              : /subscriptions/00000000-0000-0000-0000-0000000
                                   iders/Microsoft.Monitor/pipelineGroups/testgroup
 Location                        : centraluseuap
 Name                            : testgroup
-NetworkingConfiguration         : {}
+TlsConfiguration                : {}
+ExecutionPlacement              : {}
 PersistencePersistentVolumeName :
 Processor                       : {{
                                     "batch": {
@@ -190,12 +188,6 @@ Receiver                        : {{
                                     "type": "OTLP",
                                     "name": "otlp1"
                                   }, {
-                                    "udp": {
-                                      "endpoint": "0.0.0.0:5555"
-                                    },
-                                    "type": "UDP",
-                                    "name": "myudpreceiveralittlelong26283032"
-                                  }, {
                                     "syslog": {
                                       "endpoint": "0.0.0.0:4444"
                                     },
@@ -208,7 +200,7 @@ RetryAfter                      :
 ServicePipeline                 : {{
                                     "name": "MyPipeline1",
                                     "type": "logs",
-                                    "receivers": [ "otlp1", "myudpreceiveralittlelong26283032", "mysyslog1" ],
+                                    "receivers": [ "otlp1", "mysyslog1" ],
                                     "processors": [ "batchproc1" ],
                                     "exporters": [ "gigla1" ]
                                   }}
@@ -250,6 +242,37 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DistributionMaxInstancesPerHost
+Maximum number of instances allowed per compute unit (node/VM).
+If not specified, default scheduling applies.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExecutionPlacementConstraint
+A list of placement constraints to guide where pipelineGroup instances should run.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPlacementConstraint[]
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -358,21 +381,6 @@ Parameter Sets: (All)
 Aliases: PipelineGroupName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkingConfiguration
-Networking configurations for the pipeline group instance.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.INetworkingConfiguration[]
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -506,6 +514,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TlsConfiguration
+TLS configurations for the pipeline group instance.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ITlsConfiguration[]
 Parameter Sets: CreateExpanded
 Aliases:
 

@@ -73,6 +73,36 @@ function setupEnv() {
         }
     }
     
+    # Create Virtual Network and subnet if they doesn't exist
+    # make sure module "Az.Network" is installed
+    if ($env.resourceGroup -and $env.vnetName -and $env.subnetName) {
+        Write-Host "Checking for subnet : $($env.resourceGroup),$($env.vnetName),$($env.subnetName)"
+        $vnet = Get-AzVirtualNetwork -ResourceGroupName $env.resourceGroup -Name $env.vnetName -ErrorAction SilentlyContinue
+        if (-not $vnet) {
+            Write-Host "Creating Virtual Network and subnet: $($env.resourceGroup),$($env.vnetName),$($env.subnetName)"
+            $vnet = New-AzVirtualNetwork -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix 10.0.0.0/24 -Name $env.vnetName
+            Write-Host "Virtual Network created successfully"
+            $vnet = $vnet | Add-AzVirtualNetworkSubnetConfig -Name $env.subnetName -AddressPrefix "10.0.0.0/28" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
+            $env.subnetId = ($vnet.Subnets | ?{$_.Name -eq $env.subnetName} ).Id
+            Write-Host "Subnet created successfully"
+        } else {
+            Write-Host "Virtual Network already exists"
+            $subnet = $vnet.Subnets | ?{$_.Name -eq $env.subnetName} 
+            if (-not $subnet)
+            {
+                Write-Host "Creating subnet: $($env.resourceGroup),$($env.vnetName),$($env.subnetName)"
+                $vnet = $vnet | Add-AzVirtualNetworkSubnetConfig -Name $env.subnetName -AddressPrefix "10.0.0.0/28" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
+                $env.subnetId = ($vnet.Subnets | ?{$_.Name -eq $env.subnetName} ).Id
+                Write-Host "Subnet created successfully"
+            }
+            else
+            {
+                Write-Host "Subnet already exists"
+                $env.subnetId = $subnet.Id
+            }
+        }
+    }
+    
     # For any resources you created for test, you should add it to $env here.
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }

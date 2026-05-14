@@ -30,7 +30,7 @@ Get-AzMigrateServerReplication -ResourceGroupName testResourceGroup -ProjectName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -91,7 +91,7 @@ INPUTOBJECT <IMigrateIdentity>: Specifies the machine object of the replicating 
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratelocalserverreplication
 #>
 function Get-AzMigrateLocalServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IProtectedItemModel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IProtectedItemModel])]
 [CmdletBinding(DefaultParameterSetName='ListByName', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ListByName', Mandatory)]
@@ -137,7 +137,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
     # Specifies the machine object of the replicating server.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='ListById', Mandatory)]
@@ -207,6 +206,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -233,9 +240,7 @@ begin {
             GetByInputObject = 'Az.Migrate.custom\Get-AzMigrateLocalServerReplication';
             ListById = 'Az.Migrate.custom\Get-AzMigrateLocalServerReplication';
         }
-        if (('ListByName', 'GetByItemID', 'GetByMachineName', 'GetBySDSID', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ListByName', 'GetByItemID', 'GetByMachineName', 'GetBySDSID', 'GetByInputObject', 'ListById') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -249,6 +254,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

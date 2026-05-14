@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/undo-azdataprotectionvaultdeletion
 schema: 2.0.0
@@ -13,9 +13,10 @@ Undeletes a soft deleted backup vault
 ## SYNTAX
 
 ```
-Undo-AzDataProtectionVaultDeletion -DeletedVaultName <String> -Location <String> [-AsJob]
- [-DefaultProfile <PSObject>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-NoWait]
- [-ResourceGroupName <String>] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Undo-AzDataProtectionVaultDeletion -DeletedVaultName <String> -Location <String> [-SubscriptionId <String>]
+ [-ResourceGroupName <String>] [-EnableSystemAssignedIdentity] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +98,6 @@ Shows a complete workflow: lists deleted vaults with their original properties, 
 
 ### -AsJob
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -111,7 +111,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -140,28 +139,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The identityType can take values - "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None".
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-Gets or sets the user assigned identities.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases: UserAssignedIdentity, AssignUserIdentity
 
 Required: False
 Position: Named
@@ -186,7 +170,6 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -221,6 +204,22 @@ Subscription Id of the deleted vault
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+            The elements in array will be ARM resource ids in the form: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}."
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -269,9 +268,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource
 
 ## NOTES
 
 ## RELATED LINKS
-

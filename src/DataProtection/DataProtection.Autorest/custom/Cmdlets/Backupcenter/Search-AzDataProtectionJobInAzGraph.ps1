@@ -130,7 +130,7 @@ function Search-AzDataProtectionJobInAzGraph
         foreach($jobresponse in $argJobResponse)
         {
             $jsonStringResponse = $jobresponse | ConvertTo-Json -Depth 100
-            $backupJobs += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.AzureBackupJobResource]::FromJsonString($jsonStringResponse)
+            $backupJobs += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AzureBackupJobResource]::FromJsonString($jsonStringResponse)
         }
         return $backupJobs
     }
