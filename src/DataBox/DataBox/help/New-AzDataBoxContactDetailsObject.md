@@ -1,7 +1,7 @@
 ---
 external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxContactDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxcontactdetailsobject
 schema: 2.0.0
 ---
 
@@ -85,10 +85,9 @@ Accept wildcard characters: False
 
 ### -NotificationPreference
 Notification preference for a job stage.
-To construct, see NOTES section for NOTIFICATIONPREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.INotificationPreference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.INotificationPreference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.ContactDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ContactDetails
 
 ## NOTES
 

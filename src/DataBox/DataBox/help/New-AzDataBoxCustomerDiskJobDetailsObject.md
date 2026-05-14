@@ -13,7 +13,7 @@ Create an in-memory object for DataBoxCustomerDiskJobDetails.
 ## SYNTAX
 
 ```
-New-AzDataBoxCustomerDiskJobDetailsObject -ContactDetail <IContactDetails> -Type <ClassDiscriminator>
+New-AzDataBoxCustomerDiskJobDetailsObject -ContactDetail <IContactDetails> -Type <String>
  [-ImportDiskDetailsCollection <IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection>]
  [-ExportDiskDetailsCollection <IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection>]
  [-ReturnToCustomerPackageDetailCarrierAccountNumber <String>] [-DataExportDetail <IDataExportDetails[]>]
@@ -44,10 +44,9 @@ DataBoxCustomerDisk details in-memory object
 
 ### -ContactDetail
 Contact details for notification and shipping.
-To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IContactDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IContactDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -60,10 +59,9 @@ Accept wildcard characters: False
 
 ### -DataExportDetail
 Details of the data to be exported from azure.
-To construct, see NOTES section for DATAEXPORTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataExportDetails[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataExportDetails[]
 Parameter Sets: (All)
 Aliases:
 
@@ -76,10 +74,9 @@ Accept wildcard characters: False
 
 ### -DataImportDetail
 Details of the data to be imported into azure.
-To construct, see NOTES section for DATAIMPORTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataImportDetails[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataImportDetails[]
 Parameter Sets: (All)
 Aliases:
 
@@ -107,10 +104,9 @@ Accept wildcard characters: False
 
 ### -ExportDiskDetailsCollection
 Contains the map of disk serial number to the disk details for export jobs.
-To construct, see NOTES section for EXPORTDISKDETAILSCOLLECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection
 Parameter Sets: (All)
 Aliases:
 
@@ -123,10 +119,9 @@ Accept wildcard characters: False
 
 ### -ImportDiskDetailsCollection
 Contains the map of disk serial number to the disk details for import jobs.
-To construct, see NOTES section for IMPORTDISKDETAILSCOLLECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection
 Parameter Sets: (All)
 Aliases:
 
@@ -139,10 +134,9 @@ Accept wildcard characters: False
 
 ### -KeyEncryptionKey
 Details about which key encryption type is being used.
-To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IKeyEncryptionKey
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IKeyEncryptionKey
 Parameter Sets: (All)
 Aliases:
 
@@ -155,10 +149,9 @@ Accept wildcard characters: False
 
 ### -Preference
 Preferences for the order.
-To construct, see NOTES section for PREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IPreferences
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IPreferences
 Parameter Sets: (All)
 Aliases:
 
@@ -186,10 +179,9 @@ Accept wildcard characters: False
 
 ### -ReverseShippingDetail
 Optional Reverse Shipping details for order.
-To construct, see NOTES section for REVERSESHIPPINGDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IReverseShippingDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IReverseShippingDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -202,10 +194,9 @@ Accept wildcard characters: False
 
 ### -ShippingAddress
 Shipping address of the customer.
-To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.IShippingAddress
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IShippingAddress
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +211,7 @@ Accept wildcard characters: False
 Indicates the type of job details.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20250201.DataBoxCustomerDiskJobDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxCustomerDiskJobDetails
 
 ## NOTES
 
