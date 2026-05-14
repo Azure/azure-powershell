@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added `RoutingConfiguration`, `VirtualHubVnetConnection`, and `VirtualHubVnetConnectionId` parameters to `Add-AzRouteServerPeer` and `Update-AzRouteServerPeer`
+    - Allows configuring inbound/outbound route maps for Route Server BGP peer connections
+    - Allows specifying a hub virtual network connection for the peer (by object or resource id)
+* Added `RoutingConfiguration` parameter to `New-AzVirtualNetworkGatewayConnection` and `Set-AzVirtualNetworkGatewayConnection`
+    - Allows configuring routing configuration (inbound/outbound route maps) for Virtual Network Gateway connections
 * Added new cmdlets for DDoS Custom Policy management
     - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy with detection rules
     - `New-AzDdosCustomPolicy` requires at least one detection rule at creation time

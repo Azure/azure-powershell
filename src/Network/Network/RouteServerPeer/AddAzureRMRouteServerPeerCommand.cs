@@ -72,6 +72,24 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The routing configuration for this RouteServerPeer.")]
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The VirtualHubVnetConnection resource.")]
+        [ValidateNotNull]
+        public PSHubVirtualNetworkConnection VirtualHubVnetConnection { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The VirtualHubVnetConnection resource id.")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualHubVnetConnectionId { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -113,6 +131,20 @@ namespace Microsoft.Azure.Commands.Network
                     };
 
                     var bgpConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BgpConnection>(peer);
+
+                    if (this.RoutingConfiguration != null)
+                    {
+                        bgpConnectionModel.RoutingConfiguration = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingConfiguration>(RoutingConfiguration);
+                    }
+
+                    if (this.VirtualHubVnetConnection != null)
+                    {
+                        bgpConnectionModel.HubVirtualNetworkConnection = new MNM.SubResource(this.VirtualHubVnetConnection.Id);
+                    }
+                    else if (!string.IsNullOrEmpty(this.VirtualHubVnetConnectionId))
+                    {
+                        bgpConnectionModel.HubVirtualNetworkConnection = new MNM.SubResource(this.VirtualHubVnetConnectionId);
+                    }
 
                     this.NetworkClient.NetworkManagementClient.VirtualHubBgpConnection.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, this.PeerName, bgpConnectionModel);
                     var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.RouteServerName);

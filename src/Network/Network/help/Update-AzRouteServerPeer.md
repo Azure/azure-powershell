@@ -15,15 +15,17 @@ Update a Peer in an Azure RouteServer
 ### RouteServerNameParameterSet (Default)
 ```
 Update-AzRouteServerPeer -ResourceGroupName <String> -RouteServerName <String> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-VirtualHubVnetConnection <PSHubVirtualNetworkConnection>]
+ [-VirtualHubVnetConnectionId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RouteServerNPeerNameParameterSet
 ```
 Update-AzRouteServerPeer -ResourceGroupName <String> -PeerName <String> -PeerIp <String> -PeerAsn <UInt32>
- -RouteServerName <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -RouteServerName <String> [-Force] [-AsJob] [-RoutingConfiguration <PSRoutingConfiguration>]
+ [-VirtualHubVnetConnection <PSHubVirtualNetworkConnection>] [-VirtualHubVnetConnectionId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RouteServerNPeerInputObjectParameterSet
@@ -208,6 +210,51 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RoutingConfiguration
+The routing configuration for this RouteServerPeer, specifying inbound and outbound route maps.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualHubVnetConnection
+The VirtualHubVnetConnection resource to associate with this peer.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualHubVnetConnectionId
+The VirtualHubVnetConnection resource id to associate with this peer.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

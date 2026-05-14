@@ -206,3 +206,91 @@ function Test-RouteServerPeerRoutes
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test route server peer with routing configuration and hub virtual network connection
+#>
+function Test-RouteServerPeerWithRoutingConfiguration
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+    $routeServerName = Get-ResourceName
+    $subnetName = "RouteServerSubnet"
+    $peerName = Get-ResourceName
+    $publicIpAddressName = Get-ResourceName
+    $routeMapName = Get-ResourceName
+
+    try
+    {
+        # Create resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create virtual network with RouteServerSubnet
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $rglocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $hostedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+
+        # Create the public ip address for route server
+        $publicIp = New-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgname -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
+        $publicIp = Get-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgname
+
+        # Create route server
+        $routeServer = New-AzRouteServer -ResourceGroupName $rgname -Location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedSubnet.Id -PublicIpAddress $publicIp
+        $routeServer = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
+        Assert-AreEqual $routeServerName $routeServer.Name
+
+        # Get the route server hub and wait for provisioning
+        $virtualHubName = $routeServerName
+        $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName
+        while ($virtualHub.RoutingState -eq "Provisioning")
+        {
+            Start-TestSleep -Seconds 180
+            $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName
+        }
+        Assert-AreEqual $virtualHub.RoutingState "Provisioned"
+
+        # Create a route map on the route server hub
+        $routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
+        $routeMapActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
+        $routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapActionParameter1)
+        $routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapAction1) -NextStepIfMatched "Continue"
+
+        New-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName -RouteMapRule @($routeMapRule1)
+        $routeMap = Get-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName
+        Assert-AreEqual $routeMapName $routeMap.Name
+        Assert-AreEqual 1 $routeMap.Rules.Count
+
+        # Create routing configuration with inbound and outbound route maps
+        $routingConfig = New-AzRoutingConfiguration -InboundRouteMap $routeMap.Id -OutboundRouteMap $routeMap.Id
+
+        # Create route server peer with routing configuration
+        $result = Add-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -PeerIp "10.0.0.5" -PeerAsn "65010" -RoutingConfiguration $routingConfig
+        $peer = Get-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName
+        Assert-AreEqual $peerName $peer.PeerName
+        Assert-AreEqual "10.0.0.5" $peer.PeerIp
+        Assert-AreEqual "65010" $peer.PeerAsn
+        Assert-NotNull $peer.RoutingConfiguration
+        Assert-AreEqual $peer.RoutingConfiguration.InboundRouteMap.Id $routeMap.Id
+        Assert-AreEqual $peer.RoutingConfiguration.OutboundRouteMap.Id $routeMap.Id
+
+        # Delete route server peer
+        $deleteResult = Remove-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -Force
+        Assert-AreEqual 0 @($deleteResult.Peerings).Count
+
+        # Delete route map
+        Remove-AzRouteMap -ResourceGroupName $rgname -VirtualHubName $virtualHubName -Name $routeMapName -Force
+
+        # Delete route server
+        $deleteRouteServer = Remove-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -PassThru -Force
+        Assert-AreEqual true $deleteRouteServer
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
