@@ -57,7 +57,7 @@ Migrate logins from the source Sql Servers to the target Azure Sql Servers.
 Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers.
 
 ### [New-AzDataMigrationSqlService](New-AzDataMigrationSqlService.md)
-Create Database Migration Service.
+Create or Update Database Migration Service.
 
 ### [New-AzDataMigrationSqlServiceAuthKey](New-AzDataMigrationSqlServiceAuthKey.md)
 Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataMigrationSqlService
 
 ## SYNOPSIS
-Create Database Migration Service.
+Create or Update Database Migration Service.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzDataMigrationSqlService -Name <String> -ResourceGroupName <String> [-Subsc
 ```
 
 ## DESCRIPTION
-Create Database Migration Service.
+Create or Update Database Migration Service.
 
 ## EXAMPLES
 
