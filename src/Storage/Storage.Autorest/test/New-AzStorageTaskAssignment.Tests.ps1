@@ -95,5 +95,6 @@ Describe 'TaskAssignmentTests' {
 
         Remove-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -ResourceGroupName $env.TaskAssignmentResourceGroup -Name $assignmentname1
         Remove-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -ResourceGroupName $env.TaskAssignmentResourceGroup -Name $assignmentname2
+        Remove-AzStorageTaskAssignment -AccountName $env.TaskAssignmentAccount -ResourceGroupName $env.TaskAssignmentResourceGroup -Name $assignmentname3
     }
 }

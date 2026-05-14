@@ -118,8 +118,6 @@ This command creates a task assignment that runs every 10 days from 8/6/2024 5:3
 
 ### Example 3: Create a task assignment with MockRun
 ```powershell
-$start = Get-Date -Year 2026 -Month 8 -Day 7 -Hour 1 -Minute 30
-$end = Get-Date -Year 2026 -Month 12 -Day 25 -Hour 2 -Minute 45
 $taskid = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask"
 New-AzStorageTaskAssignment -accountname myaccount -name mytaskassignment -resourcegroupname myresourcegroup -TriggerType MockRun -StartOn (Get-Date).AddDays(1).ToUniversalTime() -TaskId $taskid -ReportPrefix test -Description "my task assignment" 
 ```
