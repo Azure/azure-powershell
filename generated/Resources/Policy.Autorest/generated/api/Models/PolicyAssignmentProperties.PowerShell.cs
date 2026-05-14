@@ -113,6 +113,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).DefinitionVersion = (string) content.GetValueForProperty("DefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).DefinitionVersion, global::System.Convert.ToString);
             }
+            if (content.Contains("LatestDefinitionVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).LatestDefinitionVersion = (string) content.GetValueForProperty("LatestDefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).LatestDefinitionVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("EffectiveDefinitionVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).EffectiveDefinitionVersion = (string) content.GetValueForProperty("EffectiveDefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).EffectiveDefinitionVersion, global::System.Convert.ToString);
+            }
             if (content.Contains("Scope"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).Scope, global::System.Convert.ToString);
@@ -148,6 +156,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             if (content.Contains("Override"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).Override = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride>) content.GetValueForProperty("Override",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).Override, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride>(__y, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.OverrideTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AssignmentType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).AssignmentType = (string) content.GetValueForProperty("AssignmentType",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).AssignmentType, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).InstanceId = (string) content.GetValueForProperty("InstanceId",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).InstanceId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -178,6 +194,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).DefinitionVersion = (string) content.GetValueForProperty("DefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).DefinitionVersion, global::System.Convert.ToString);
             }
+            if (content.Contains("LatestDefinitionVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).LatestDefinitionVersion = (string) content.GetValueForProperty("LatestDefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).LatestDefinitionVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("EffectiveDefinitionVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).EffectiveDefinitionVersion = (string) content.GetValueForProperty("EffectiveDefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).EffectiveDefinitionVersion, global::System.Convert.ToString);
+            }
             if (content.Contains("Scope"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).Scope, global::System.Convert.ToString);
@@ -213,6 +237,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             if (content.Contains("Override"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).Override = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride>) content.GetValueForProperty("Override",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).Override, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride>(__y, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.OverrideTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AssignmentType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).AssignmentType = (string) content.GetValueForProperty("AssignmentType",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).AssignmentType, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).InstanceId = (string) content.GetValueForProperty("InstanceId",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).InstanceId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
