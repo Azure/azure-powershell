@@ -29,9 +29,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private long _limitTimeSecond;
 
         /// <summary>
-        /// The maximum time the commands are allowed to run.
-        /// If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured,
-        /// and the exit code matching a timeout will be returned (252).
+        /// The maximum time the commands are allowed to run. If the execution time exceeds the maximum, the script will be stopped,
+        /// any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public long LimitTimeSecond { get => this._limitTimeSecond; set => this._limitTimeSecond = value; }
@@ -63,9 +62,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCommandSpecification) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCommandSpecification> Command { get; set; }
         /// <summary>
-        /// The maximum time the commands are allowed to run.
-        /// If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured,
-        /// and the exit code matching a timeout will be returned (252).
+        /// The maximum time the commands are allowed to run. If the execution time exceeds the maximum, the script will be stopped,
+        /// any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = true,
@@ -73,8 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The maximum time the commands are allowed to run.
-        If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).",
+        Description = @"The maximum time the commands are allowed to run. If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured, and the exit code matching a timeout will be returned (252).",
         SerializedName = @"limitTimeSeconds",
         PossibleTypes = new [] { typeof(long) })]
         long LimitTimeSecond { get; set; }
@@ -90,9 +87,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineCommandSpecification> Command { get; set; }
         /// <summary>
-        /// The maximum time the commands are allowed to run.
-        /// If the execution time exceeds the maximum, the script will be stopped, any output produced until then will be captured,
-        /// and the exit code matching a timeout will be returned (252).
+        /// The maximum time the commands are allowed to run. If the execution time exceeds the maximum, the script will be stopped,
+        /// any output produced until then will be captured, and the exit code matching a timeout will be returned (252).
         /// </summary>
         long LimitTimeSecond { get; set; }
 

@@ -8,11 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Extensions;
 
     /// <summary>
-    /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-    /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    /// The dictionary values can be empty objects ({}) in requests.
+    /// StorageApplianceCommandSpecification represents the command and optional arguments to run.
     /// </summary>
-    public partial class UserAssignedIdentities
+    public partial class StorageApplianceCommandSpecification
     {
 
         /// <summary>
@@ -58,25 +56,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceCommandSpecification.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceCommandSpecification.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities FromJson(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceCommandSpecification FromJson(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject json ? new UserAssignedIdentities(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject json ? new StorageApplianceCommandSpecification(json) : null;
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="UserAssignedIdentities" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject into a new instance of <see cref="StorageApplianceCommandSpecification" />.
+        /// </summary>
+        /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject instance to deserialize from.</param>
+        internal StorageApplianceCommandSpecification(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject json)
+        {
+            bool returnNow = false;
+            BeforeFromJson(json, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            {_argument = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray>("arguments"), out var __jsonArguments) ? If( __jsonArguments as Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _argument;}
+            {_command = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString>("command"), out var __jsonCommand) ? (string)__jsonCommand : (string)_command;}
+            AfterFromJson(json);
+        }
+
+        /// <summary>
+        /// Serializes this instance of <see cref="StorageApplianceCommandSpecification" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode"
+        /// />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="UserAssignedIdentities" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="StorageApplianceCommandSpecification" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.SerializationMode serializationMode)
         {
@@ -88,26 +104,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
             {
                 return container;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentity>)this).AdditionalProperties, container);
+            if (null != this._argument)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.XNodeArray();
+                foreach( var __x in this._argument )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("arguments",__w);
+            }
+            AddIf( null != (((object)this._command)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonString(this._command.ToString()) : null, "command" ,container.Add );
             AfterToJson(ref container);
             return container;
-        }
-
-        /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject into a new instance of <see cref="UserAssignedIdentities" />.
-        /// </summary>
-        /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject instance to deserialize from.</param>
-        /// <param name="exclusions"></param>
-        internal UserAssignedIdentities(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
-        {
-            bool returnNow = false;
-            BeforeFromJson(json, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentity>)this).AdditionalProperties, (j) => Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.UserAssignedIdentity.FromJson(j) ,exclusions );
-            AfterFromJson(json);
         }
     }
 }
