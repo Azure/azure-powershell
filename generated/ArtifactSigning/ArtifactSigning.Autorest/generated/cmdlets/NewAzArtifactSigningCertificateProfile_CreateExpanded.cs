@@ -46,12 +46,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Cmdlets
         /// <summary>Backing field for <see cref="AccountName" /> property.</summary>
         private string _accountName;
 
-        /// <summary>Trusted Signing account name.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Trusted Signing account name.")]
+        /// <summary>Artifact Signing account name.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Artifact Signing account name.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Trusted Signing account name.",
+        Description = @"Artifact Signing account name.",
         SerializedName = @"accountName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.ParameterCategory.Path)]

@@ -177,9 +177,6 @@ function New-AzMigrateLocalServerReplication {
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency
 
-        $HasMachineId = $PSBoundParameters.ContainsKey('MachineId')
-        $HasTargetStoragePathId = $PSBoundParameters.ContainsKey('TargetStoragePathId')
-        $HasTargetResourceGroupId = $PSBoundParameters.ContainsKey('TargetResourceGroupId')
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         if ($HasIsDynamicMemoryEnabled) {
@@ -212,7 +209,7 @@ function New-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
 
         # Validate ARM ID format from inputs
-        if ($HasMachineId -and !(Test-AzureResourceIdFormat -Data $MachineId -Format $IdFormats.MachineArmIdTemplate))
+        if (!(Test-AzureResourceIdFormat -Data $MachineId -Format $IdFormats.MachineArmIdTemplate))
         {
             throw New-InvalidResourceIdProvidedException `
                 -ResourceId $MachineId `
@@ -220,14 +217,14 @@ function New-AzMigrateLocalServerReplication {
                 -Format $IdFormats.MachineArmIdTemplate
         }
 
-        if ($HasTargetStoragePathId -and !(Test-AzureResourceIdFormat -Data $TargetStoragePathId -Format $IdFormats.StoragePathArmIdTemplate)) {
+        if (!(Test-AzureResourceIdFormat -Data $TargetStoragePathId -Format $IdFormats.StoragePathArmIdTemplate)) {
             throw New-InvalidResourceIdProvidedException `
                 -ResourceId $TargetStoragePathId `
                 -ResourceType "StorageContainer" `
                 -Format $IdFormats.StoragePathArmIdTemplate
         }
 
-        if ($HasTargetResourceGroupId -and !(Test-AzureResourceIdFormat -Data $TargetResourceGroupId -Format $IdFormats.ResourceGroupArmIdTemplate)) {
+        if (!(Test-AzureResourceIdFormat -Data $TargetResourceGroupId -Format $IdFormats.ResourceGroupArmIdTemplate)) {
             throw New-InvalidResourceIdProvidedException `
                 -ResourceId $TargetResourceGroupId `
                 -ResourceType "ResourceGroup" `
@@ -651,6 +648,34 @@ function New-AzMigrateLocalServerReplication {
         $customProperties.FabricDiscoveryMachineId = $machine.Id
         $customProperties.RunAsAccountId = $runAsAccountId
         $customProperties.SourceFabricAgentName = $sourceDra.Name
+
+        # Validate storage path exists and is in a usable state
+        $storagePath = Get-AzResource `
+            -ResourceId $TargetStoragePathId `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
+        if ($null -eq $storagePath) {
+            throw "Storage path with Id '$TargetStoragePathId' not found. Please provide a valid storage path ARM ID."
+        }
+
+        # Creation must have succeeded for the storage path to be usable
+        $creationStatus = $storagePath.Properties.status.provisioningStatus.status
+        if ([string]::IsNullOrEmpty($creationStatus)) {
+            throw "Storage path '$($storagePath.Name)' creation status is unavailable. Please verify the storage path resource is fully provisioned."
+        }
+        if ($creationStatus -ne "Succeeded") {
+            throw "Storage path '$($storagePath.Name)' has a creation provisioning status of '$creationStatus'. Only storage paths with a successful creation can be used. Please select a different storage path or wait for provisioning to complete."
+        }
+
+        # The latest operation (ProvisioningState) must also be Succeeded
+        $provisioningState = $storagePath.Properties.provisioningState
+        if ([string]::IsNullOrEmpty($provisioningState)) {
+            throw "Storage path '$($storagePath.Name)' provisioning state is unavailable. Please verify the storage path resource is fully provisioned."
+        }
+        if ($provisioningState -ne "Succeeded") {
+            throw "Storage path '$($storagePath.Name)' has a provisioning state of '$provisioningState'. Only storage paths with a 'Succeeded' provisioning state can be used. Please resolve the issue or select a different storage path."
+        }
+
         $customProperties.StorageContainerId = $TargetStoragePathId
         $customProperties.TargetArcClusterCustomLocationId = $arbArgResult.CustomLocation
         $customProperties.TargetFabricAgentName = $targetDra.Name

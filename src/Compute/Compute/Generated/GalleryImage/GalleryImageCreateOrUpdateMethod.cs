@@ -521,6 +521,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.PurchasePlan.Product = this.PurchasePlanProduct;
                     }
 
+                    if (this.IsParameterBound(c => c.Feature))
+                    {
+                        galleryImage.Features = new List<GalleryImageFeature>();
+                        for (int i = 0; i < this.Feature.Length; i++)
+                        {
+                            galleryImage.Features.Add(this.Feature[i]);
+                        }
+                    }
+
+                    if (this.IsParameterBound(c => c.AllowUpdateImage))
+                    {
+                        galleryImage.AllowUpdateImage = this.AllowUpdateImage;
+                    }
+
                     var result = GalleryImagesClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImage);
                     var psObject = new PSGalleryImage();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImage, PSGalleryImage>(result, psObject);
@@ -639,5 +653,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A list of gallery image features to update. Each feature can include a StartsAtVersion property to indicate the minimum gallery image version that supports it.")]
+        public GalleryImageFeature[] Feature { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Must be set to true if the gallery image features are being updated.")]
+        public bool AllowUpdateImage { get; set; }
     }
 }

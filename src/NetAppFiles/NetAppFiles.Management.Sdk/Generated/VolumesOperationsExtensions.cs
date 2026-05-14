@@ -684,6 +684,57 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
+        /// Get quota report for volume (with filter support)
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static ListQuotaReportResult ListQuotaReport(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest))
+        {
+                return ((IVolumesOperations)operations).ListQuotaReportAsync(resourceGroupName, accountName, poolName, volumeName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get quota report for volume (with filter support)
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ListQuotaReportResult> ListQuotaReportAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListQuotaReportWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// List all replications for a specified volume
         /// </summary>
         /// <param name='operations'>
@@ -1978,6 +2029,57 @@ namespace Microsoft.Azure.Management.NetApp
         public static async System.Threading.Tasks.Task<GetGroupIdListForLdapUserResponse> BeginListGetGroupIdListForLdapUserAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, GetGroupIdListForLdapUserRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginListGetGroupIdListForLdapUserWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get quota report for volume (with filter support)
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static ListQuotaReportResult BeginListQuotaReport(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest))
+        {
+                return ((IVolumesOperations)operations).BeginListQuotaReportAsync(resourceGroupName, accountName, poolName, volumeName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get quota report for volume (with filter support)
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ListQuotaReportResult> BeginListQuotaReportAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, QuotaReportFilterRequest body = default(QuotaReportFilterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginListQuotaReportWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

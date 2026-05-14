@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Extensions;
 
     /// <summary>
-    /// The parameters used to check the availability of the trusted signing account name.
+    /// The parameters used to check the availability of the artifact signing account name.
     /// </summary>
     public partial class CheckNameAvailability
     {

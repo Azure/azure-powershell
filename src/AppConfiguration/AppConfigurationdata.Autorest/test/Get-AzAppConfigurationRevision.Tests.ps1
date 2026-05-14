@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppConfigurationRevisio
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzAppConfigurationRevision' -Tag 'LiveOnly' {
+Describe 'Get-AzAppConfigurationRevision' {
     It 'Get' {
         {
             Get-AzAppConfigurationRevision -Endpoint $env.endpoint
