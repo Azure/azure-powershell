@@ -34,22 +34,26 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 FRONTDOORINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/disable-azfrontdoorcustomdomainhttps
 #>
@@ -73,15 +77,15 @@ param(
     [Parameter(ParameterSetName='Disable', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Disable')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DisableViaIdentity', Mandatory, ValueFromPipeline)]
@@ -176,8 +180,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -282,22 +285,26 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 FRONTDOORINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorrulesengine
 #>
@@ -324,7 +331,8 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -332,8 +340,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -410,8 +417,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -518,8 +524,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter()]
@@ -584,8 +589,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -688,19 +692,21 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorwafpolicy
 #>
 function Get-AzFrontDoorWafPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallPolicy])]
-[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('PolicyName')]
@@ -710,10 +716,11 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
+    [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -722,8 +729,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -794,8 +800,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -903,13 +908,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoor
 #>
@@ -928,7 +935,8 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -937,8 +945,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1009,8 +1016,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1121,7 +1127,7 @@ RULE <IRulesEngineRule[]>: A list of rules that define a particular Rules Engine
     [RouteConfigurationOverride <IRouteConfiguration>]: Override the route configuration.
       OdataType <String>: 
   Name <String>: A name to refer to this specific rule.
-  Priority <Int32>: A priority assigned to this rule. 
+  Priority <Int32>: A priority assigned to this rule.
   [MatchCondition <List<IRulesEngineMatchCondition>>]: A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
     MatchValue <List<String>>: Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
     MatchVariable <String>: Match Variable
@@ -1153,15 +1159,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1257,8 +1263,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1366,13 +1371,15 @@ CONTENTFILEPATH <IPurgeParameters>: Parameters required for content purge.
   ContentPath <List<String>>: The path to the content to be purged. Can describe a file path or a wild card directory.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorcontent
 #>
@@ -1395,7 +1402,8 @@ param(
     [Parameter(ParameterSetName='PurgeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Purge')]
@@ -1405,8 +1413,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='PurgeViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1524,8 +1531,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1633,22 +1639,26 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 FRONTDOORINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorrulesengine
 #>
@@ -1673,15 +1683,15 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -1776,8 +1786,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -1882,13 +1891,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorwafpolicy
 #>
@@ -1906,15 +1917,15 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2003,8 +2014,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2112,13 +2122,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoor
 #>
@@ -2136,15 +2148,15 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -2233,8 +2245,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2352,7 +2363,7 @@ RULE <IRulesEngineRule[]>: A list of rules that define a particular Rules Engine
     [RouteConfigurationOverride <IRouteConfiguration>]: Override the route configuration.
       OdataType <String>: 
   Name <String>: A name to refer to this specific rule.
-  Priority <Int32>: A priority assigned to this rule. 
+  Priority <Int32>: A priority assigned to this rule.
   [MatchCondition <List<IRulesEngineMatchCondition>>]: A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
     MatchValue <List<String>>: Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
     MatchVariable <String>: Match Variable
@@ -2384,15 +2395,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [System.String]
-    # Name of the Resource group within the Azure subscription.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter()]
@@ -2476,8 +2487,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2580,22 +2590,26 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 FRONTDOORINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/enable-azfrontdoorcustomdomainhttps
 #>
@@ -2776,8 +2790,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -2887,22 +2900,26 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 FRONTDOORINPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorfrontendendpoint
 #>
@@ -3021,8 +3038,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -3148,10 +3164,10 @@ BACKENDPOOLSSETTING <IBackendPoolsSettings>: Settings for all backendPools
   [SendRecvTimeoutInSeconds <Int32?>]: Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
 
 FRONTENDENDPOINT <IFrontendEndpoint[]>: Frontend endpoints available to routing rules.
-  [Id <String>]: Resource ID.
   [CertificateSource <String>]: Defines the source of the SSL certificate
   [CertificateType <String>]: Defines the type of the certificate used for secure connections to a frontendEndpoint
   [HostName <String>]: The host name of the frontendEndpoint. Must be a domain name.
+  [Id <String>]: Resource ID.
   [MinimumTlsVersion <String>]: The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
   [Name <String>]: Resource name.
   [SecretName <String>]: The name of the Key Vault secret representing the full certificate PFX
@@ -3370,8 +3386,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -6945,14 +6960,14 @@ param(
     ${MatchValue},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestHeader", "RequestBody", "Cookies", "SocketAddr")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestHeader", "RequestBody", "Cookies", "SocketAddr", "JA4")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # Request variable to compare with.
     ${MatchVariable},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch")]
+    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx", "ServiceTagMatch", "AsnMatch", "ClientFingerprint")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # Comparison type to use for matching with the variable value.
@@ -7334,8 +7349,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -7601,10 +7615,10 @@ BACKENDPOOLSSETTING <IBackendPoolsSettings>: Settings for all backendPools
   [SendRecvTimeoutInSeconds <Int32?>]: Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.
 
 FRONTENDENDPOINT <IFrontendEndpoint[]>: Frontend endpoints available to routing rules.
-  [Id <String>]: Resource ID.
   [CertificateSource <String>]: Defines the source of the SSL certificate
   [CertificateType <String>]: Defines the type of the certificate used for secure connections to a frontendEndpoint
   [HostName <String>]: The host name of the frontendEndpoint. Must be a domain name.
+  [Id <String>]: Resource ID.
   [MinimumTlsVersion <String>]: The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
   [Name <String>]: Resource name.
   [SecretName <String>]: The name of the Key Vault secret representing the full certificate PFX
@@ -7845,8 +7859,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
@@ -7976,13 +7989,15 @@ CUSTOMRULE <ICustomRule[]>: List of rules
   [RateLimitThreshold <Int32?>]: Number of allowed requests per client within the time window.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 LOGSCRUBBINGSETTING <IPolicySettingsLogScrubbing>: Defines rules that scrub sensitive fields in the Web Application Firewall logs.
   [ScrubbingRule <List<IWebApplicationFirewallScrubbingRules>>]: List of log scrubbing rules applied to the Web Application Firewall logs.
@@ -8218,8 +8233,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

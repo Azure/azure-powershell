@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzLoad
 
 ## SYNOPSIS
-Delete an Azure Load Testing resource.
+Delete a LoadTest resource.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-AzLoad -Name <String> -ResourceGroupName <String> [-SubscriptionId <Strin
 ```
 
 ## DESCRIPTION
-Delete an Azure Load Testing resource.
+Delete a LoadTest resource.
 
 ## EXAMPLES
 
@@ -47,7 +47,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -62,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Azure Load Testing resource.
+Load Test name.
 
 ```yaml
 Type: System.String
@@ -107,7 +108,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -122,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the subscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

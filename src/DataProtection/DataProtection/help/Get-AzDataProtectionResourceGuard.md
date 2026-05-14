@@ -1,5 +1,5 @@
 ---
-external help file: Az.DataProtection-help.xml
+external help file:
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionresourceguard
 schema: 2.0.0
@@ -119,7 +119,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, Get
+Parameter Sets: Get, Get1
 Aliases:
 
 Required: True
@@ -135,7 +135,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get1, Get
+Parameter Sets: Get, Get1
 Aliases:
 
 Required: False
@@ -154,8 +154,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IResourceGuardResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IResourceGuardResource
 
 ## NOTES
 
 ## RELATED LINKS
+
