@@ -56,13 +56,15 @@ CUSTOMRULE <ICustomRule[]>: List of rules
   [RateLimitThreshold <Int32?>]: Number of allowed requests per client within the time window.
 
 INPUTOBJECT <IFrontDoorIdentity>: Identity Parameter
+  [ExperimentName <String>]: The Experiment identifier associated with the Experiment
   [FrontDoorName <String>]: Name of the Front Door which is globally unique.
   [FrontendEndpointName <String>]: Name of the Frontend endpoint which is unique within the Front Door.
   [Id <String>]: Resource identity path
   [PolicyName <String>]: The name of the Web Application Firewall Policy.
-  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [ProfileName <String>]: The Profile identifier associated with the Tenant and Partner
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RulesEngineName <String>]: Name of the Rules Engine which is unique within the Front Door.
-  [SubscriptionId <String>]: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 LOGSCRUBBINGSETTING <IPolicySettingsLogScrubbing>: Defines rules that scrub sensitive fields in the Web Application Firewall logs.
   [ScrubbingRule <List<IWebApplicationFirewallScrubbingRules>>]: List of log scrubbing rules applied to the Web Application Firewall logs.
@@ -298,8 +300,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

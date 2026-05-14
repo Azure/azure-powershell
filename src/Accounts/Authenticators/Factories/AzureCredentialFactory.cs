@@ -42,9 +42,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Factories
             return new ClientCertificateCredential(tenantId, clientId, certificatePath, options);
 	}
 
+#pragma warning disable CS0618 // SharedTokenCacheCredential is obsolete; suppressed pending migration to replacement API
         public virtual TokenCredential CreateSharedTokenCacheCredentials(SharedTokenCacheCredentialOptions options)
         {
             return new SharedTokenCacheCredential(options);
         }
+#pragma warning restore CS0618
     }
 }
