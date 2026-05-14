@@ -233,8 +233,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         {
             var outputsPS = new Dictionary<string, DeploymentVariable>();
 
+            if (outputs == null)
+            {
+                return outputsPS;
+            }
+
             // Extract DeploymentVariables from the passed in json object.
-            var jObject = outputs as JObject ?? JObject.FromObject(outputs);
+            var jToken = outputs as JToken ?? JToken.FromObject(outputs);
+            var jObject = jToken as JObject;
+            if (jObject == null)
+            {
+                var jArray = jToken as JArray;
+                if (jArray != null && !jArray.Any())
+                {
+                    return outputsPS;
+                }
+
+                throw new InvalidOperationException(string.Format("Deployment stack outputs must serialize to a JSON object. Actual token type: {0}.", jToken.Type));
+            }
+
             foreach (var props in jObject.Properties())
             {
                 outputsPS[props.Name] = ExtractDeploymentVariableFromJObject(props.Value as JObject);
