@@ -97,18 +97,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
         [Theory]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [InlineData(128)]
-        [InlineData(192)]
-        [InlineData(256)]
-        public void BuildOct_SetsKeySizeAndAlwaysHsm(int size)
+        [InlineData(128, true)]
+        [InlineData(192, true)]
+        [InlineData(256, true)]
+        [InlineData(256, false)]
+        public void BuildOct_SetsKeySizeAndHardwareProtectedFromCaller(int size, bool hardwareProtected)
         {
-            var options = Track2KeyOptionsFactory.BuildOctKeyOptions(KeyName, EmptyAttrs(), size);
+            // The factory no longer hardcodes hardwareProtected: callers (Track2VaultClient /
+            // Track2HsmClient) decide based on the requested KeyType (Oct vs OctHsm) and the
+            // backing service. The factory just forwards the flag verbatim.
+            var options = Track2KeyOptionsFactory.BuildOctKeyOptions(KeyName, hardwareProtected, EmptyAttrs(), size);
 
             Assert.Equal(KeyName, options.Name);
             Assert.Equal(size, options.KeySize);
-            // Octet (AES) keys are HSM-protected on both AKV Premium and MHSM.
-            // The factory must enforce this regardless of caller intent.
-            Assert.True(options.HardwareProtected);
+            Assert.Equal(hardwareProtected, options.HardwareProtected);
         }
 
         // ---------- ApplyCommonAttributes ----------
@@ -170,7 +172,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         {
             var attrs = new PSKeyVaultKeyAttributes { Tags = null };
 
-            var options = Track2KeyOptionsFactory.BuildOctKeyOptions(KeyName, attrs, 256);
+            var options = Track2KeyOptionsFactory.BuildOctKeyOptions(KeyName, hardwareProtected: true, attrs, 256);
 
             Assert.Empty(options.Tags);
         }
@@ -184,7 +186,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 Tags = new Hashtable { { "scenario", "aes-validate" }, { "runId", "abc123" } }
             };
 
-            var options = Track2KeyOptionsFactory.BuildOctKeyOptions(KeyName, attrs, 256);
+            var options = Track2KeyOptionsFactory.BuildOctKeyOptions(KeyName, hardwareProtected: true, attrs, 256);
 
             Assert.Equal(2, options.Tags.Count);
             Assert.Equal("aes-validate", options.Tags["scenario"]);

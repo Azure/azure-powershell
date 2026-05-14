@@ -62,13 +62,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         }
 
         /// <summary>
-        /// Octet (AES) keys are always HSM-protected on both AKV Premium and
-        /// Managed HSM, so <c>hardwareProtected</c> is fixed to true.
+        /// Builds <see cref="CreateOctKeyOptions"/> for an octet (AES) key.
+        ///
+        /// <para>The caller is responsible for passing the correct
+        /// <paramref name="hardwareProtected"/> flag:</para>
+        /// <list type="bullet">
+        ///   <item><description><see cref="Track2HsmClient"/> always passes <c>true</c>
+        ///   (Managed HSM is HSM-backed by definition).</description></item>
+        ///   <item><description><see cref="Track2VaultClient"/> derives it from the
+        ///   requested <c>KeyType</c> (<c>OctHsm</c> = true, <c>Oct</c> = false) so
+        ///   that the user's <c>-Destination</c> choice is honored and any
+        ///   service-side restriction (e.g. software oct not being supported on AKV)
+        ///   surfaces as the authoritative service error rather than a silently
+        ///   promoted HSM create.</description></item>
+        /// </list>
         /// </summary>
-        internal static CreateOctKeyOptions BuildOctKeyOptions(string keyName,
+        internal static CreateOctKeyOptions BuildOctKeyOptions(string keyName, bool hardwareProtected,
             PSKeyVaultKeyAttributes attrs, int? size)
         {
-            var options = new CreateOctKeyOptions(keyName, hardwareProtected: true) { KeySize = size };
+            var options = new CreateOctKeyOptions(keyName, hardwareProtected) { KeySize = size };
             ApplyCommonAttributes(options, attrs);
             return options;
         }

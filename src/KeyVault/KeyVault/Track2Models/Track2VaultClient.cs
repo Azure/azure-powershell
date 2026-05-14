@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         private PSKeyVaultKey CreateKey(KeyClient client, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
         {
-            bool isHsm = keyAttributes.KeyType == KeyType.RsaHsm || keyAttributes.KeyType == KeyType.EcHsm;
+            bool isHsm = keyAttributes.KeyType == KeyType.RsaHsm || keyAttributes.KeyType == KeyType.EcHsm || keyAttributes.KeyType == KeyType.OctHsm;
 
             if (keyAttributes.KeyType == KeyType.Rsa || keyAttributes.KeyType == KeyType.RsaHsm)
             {
@@ -55,7 +55,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             }
             if (keyAttributes.KeyType == KeyType.Oct || keyAttributes.KeyType == KeyType.OctHsm)
             {
-                var options = Track2KeyOptionsFactory.BuildOctKeyOptions(keyName, keyAttributes, size);
+                // Honor the requested -Destination by deriving hardwareProtected from the
+                // resolved KeyType (Oct = software, OctHsm = HSM-backed). Software 'oct'
+                // is not supported on AKV vaults today; in that case the service will
+                // return the authoritative error rather than us silently promoting the
+                // request to an HSM-backed create.
+                bool isOctHsm = keyAttributes.KeyType == KeyType.OctHsm;
+                var options = Track2KeyOptionsFactory.BuildOctKeyOptions(keyName, isOctHsm, keyAttributes, size);
                 return new PSKeyVaultKey(client.CreateOctKey(options).Value, _vaultUriHelper, false);
             }
 
