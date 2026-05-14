@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageTaskAssignment')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'TaskAssignmentTests' {
+Describe 'New-AzStorageTaskAssignment' {
     It 'New/Get/Update/Remove-AzStorageTaskAssignment, List task assignment reports' {
         $assignmentname1 = "testassignment01"
         $reportprefix = "testc1"
