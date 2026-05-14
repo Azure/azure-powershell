@@ -159,6 +159,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RemoveDaWithPassThru");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void RemoveDaConfirmFalseHonored()
+        {
+            TestRunner.RunTestScript("Test-RemoveDaConfirmFalseHonored");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void RemoveDaIdempotentById()
+        {
+            TestRunner.RunTestScript("Test-RemoveDaIdempotentById");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void RemoveDaIdempotentByName()
+        {
+            TestRunner.RunTestScript("Test-RemoveDaIdempotentByName");
+        }
+
         // =============================================
         // End-to-end: Create then Delete
         // =============================================

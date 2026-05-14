@@ -15,7 +15,8 @@ Get properties of the provided the Kubernetes cluster feature.
 ### List (Default)
 ```
 Get-AzNetworkCloudKubernetesClusterFeature -KubernetesClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -173,6 +174,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipToken
+The opaque token that the server returns to indicate where to continue listing resources from.
+This is used for paging through large result sets.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -185,6 +202,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+The maximum number of resources to return from the operation.
+Example: '$top=10'.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMySqlFlexibleServerAdva
 }
 
 Describe 'Get-AzMySqlFlexibleServerAdvancedThreatProtectionSetting' {
-    It 'List' -skip {
+    It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

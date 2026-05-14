@@ -14,8 +14,7 @@ Get the properties of the provided rack SKU.
 
 ### List (Default)
 ```
-Get-AzNetworkCloudRackSku [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkCloudRackSku [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get

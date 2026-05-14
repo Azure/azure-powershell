@@ -23,12 +23,12 @@ Create a in-memory object for Target DNS server
 New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 10.0.0.3 -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c67/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub/subnets/test-subnet
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.TargetDnsServer
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.TargetDnsServer
 .Link
-https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolvertargetdnsserverobject
+https://learn.microsoft.com/powershell/module/Az.DnsResolver/new-azdnsresolvertargetdnsserverobject
 #>
 function New-AzDnsResolverTargetDnsServerObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.TargetDnsServer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.TargetDnsServer])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -51,6 +51,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -79,6 +82,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

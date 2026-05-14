@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkCloudRackSku+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudRackSku+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -46,10 +46,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudRackSku+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus/VNearEdge2_Compute_DellR650_16C2M?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudRackSku+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus/VNearEdge2_Compute_DellR650_16C2M?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus/VNearEdge2_Compute_DellR650_16C2M?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus/VNearEdge2_Compute_DellR650_16C2M?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
